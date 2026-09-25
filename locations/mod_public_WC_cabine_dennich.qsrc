@@ -1,0 +1,62 @@
+# mod_public_WC_cabine_dennich
+if $ARGS[0] = 'slaveday': 
+	menu_off = 1
+	gs 'stat'
+	$SEN += rand(1,100)
+	if $SEN <= 30:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '1gopevent'
+	end
+	if $SEN > 30 and $SEN <= 50:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '2fotoevent'
+	end
+	if $SEN > 50 and $SEN <= 70:
+		$SEN = 0
+		gt 'mod_public_WC_cabine_rapisttoy', 'start'
+	end
+	if $SEN > 70 and $SEN <= 95:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '3pavlinevent'
+	end
+	if $SEN > 95 and $SEN <= 150:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '4rapeevent'
+	end			
+end
+
+if npc_loyality >= 70  and  npc_loyality < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'slavenight': 
+	menu_off = 1
+	gs 'stat'
+	$SEN += rand(1,100)
+	if hour = 5 or hour = 6: $SEN = 200
+	if $SEN <= 35:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '1gopevent'
+	end
+	if $SEN > 35 and $SEN <= 50:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '2fotoevent'
+	end
+	if $SEN > 50 and $SEN <= 70:
+		$SEN = 0
+		gt 'mod_public_WC_cabine_rapisttoy', 'start'
+	end
+	if $SEN > 70 and $SEN <= 90:
+		$SEN = 0
+		gt 'mod_public_WC_cabine', '3pavlinevent'
+	end
+	if $SEN > 90 and $SEN <= 150:
+		$SEN = 0		
+		gt 'mod_public_WC_cabine', '4rapeevent'
+	end
+	if $SEN = 200:
+		$SEN = 0
+		gt 'mod_public_WC_cabine_jan', 'start'
+	end	
+end	
+
+--- mod_public_WC_cabine_dennich ---------------------------------
+

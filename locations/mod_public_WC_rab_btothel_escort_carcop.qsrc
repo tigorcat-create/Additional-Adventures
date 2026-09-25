@@ -1,0 +1,881 @@
+# mod_public_WC_rab_btothel_escort_carcop
+if $ARGS[0] = 'mecop':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	'after a few minutes walk we come to his car'
+	$loc = 'mod_public_WC_rab_btothel_escort_carcop'
+	$loc_arg = 'mecop'	
+	minut += 5
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'	
+	
+	'I stoped. Policeman asked to check my documents'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/2 doc check ('+rand(1,2)+').jpg"></center>'
+	
+	
+	if rand(1,10) + alko <= 5:
+		'"Everything ok, grajdanka, you can  go" - cop gives me documents back and go to his car'
+		
+		act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+	else
+		'He closed the documents and look at me. In a minute he bent down to me… - "We need to make a alkocheck"'
+		
+		act 'wait':
+			*clr & cla
+			'He took the alkotester and ask me to use it'
+			
+			'"My-my, you are in a trouble, grajdanka." - he show me the test - "it''s <<alko>> when it must be 1 or less"'
+			'"What are we going to do, grajdanka?"'
+			'"Let''s go to my car"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/3 alko check.jpg"></center>'
+			
+			act 'go with him': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexcar'			
+			
+			itemp = alko * 1500
+			if money >= alko * 1500:
+				gs 'willpower', 'crime', 'self'
+				temp = will_cost - (crime / 10)
+				will_cost -= (crime / 10)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					
+					act 'bribe him with <<itemp>> (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/4 bribe.jpg"></center>'
+						'"I don''t want any troubles" - I give the <<itemp>> money to him as a bribe'
+						'"Sorry, it was a mistake. Everything seems ok, you can go" - he take the money and give me my driver''s license'
+						money -= itemp
+						minut += 10
+						gs 'stat'
+						
+						act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'						
+					end
+				else
+					act 'bribe him with <<itemp>> ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+				end
+			else
+				+$OpenInnerThought+'I could bribe him if I have <<itemp>> cash'+$CloseInnerThought
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'sexcar':
+	*clr & cla
+	!! go with him
+	'We sit in his car'
+	'"You know why you are here. You can start"'
+	
+	act 'Suck him':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/5 (1).mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,10), 'sub'
+		gs 'stat'
+		
+		act 'continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/5 (2).mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'sub'
+			gs 'stat'			
+			
+			act 'continue':
+				*clr & cla
+				'He start to fuck me.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/6 ('+rand(1,4)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(5,10), 'sub'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'"I don''t want you to be pregnnant" - he chhanges the hole'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/7.mp4"></video></center>'
+					gs 'arousal', 'anal', rand(2,5), 'sub'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/8 ('+rand(1,2)+').mp4"></video></center>'
+						gs 'arousal', 'anal', rand(5,8), 'sub'
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'He cums'
+							'"Documents seems ok, you can go now" - he give my document back to me'
+							'I go back to the client''s car'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 incar/9 (1).mp4"></video></center>'
+							gs 'arousal', 'anal', rand(5,8), 'sub'
+							gs 'stat'
+							gs 'cum_call','labia', 'cop'
+							gs 'stat'
+
+							gs 'cum_call','anus', 'cop'
+							gs 'stat'
+							gs 'cum_call','butt', 'cop'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+						end
+					end
+				end
+			end
+		end
+	end	
+end
+
+if $ARGS[0] = 'hecop':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_carcop'
+	$loc_arg = 'hecop'	
+	minut += 5
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'	
+	'Policeman asked to check client''s documents'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/2 doc check ('+rand(1,2)+').jpg"></center>'
+
+	'"We need to make a alkocheck"'	
+	act 'wait':
+		*clr & cla
+		'He took the alkotester and ask the client to use it'
+		
+		'"WOoow, it''s a lot."'
+		'"What are we going to do?"'		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/3 alko check.jpg"></center>'
+		
+		act 'wait':
+			*clr & cla
+			if rand (1,3) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/4 bribe.jpg"></center>'
+				'"I don''t want any troubles" - the client gives some money to the cop'
+				'"Sorry, it was a mistake. Everything seems ok, you can go" - he take the money and give the driver''s license back to the client'
+				'"Let''s go, sweety"'
+				minut += 10
+				gs 'stat'
+				
+				act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'car'			
+			else 
+				'"Sweety, I am luck of cash, please solve this, I will give you extra"'
+				'The cop looks at me, like he just notice someone else in the car -"Yes, it could work."'
+				
+				act 'agree':
+					*clr & cla
+					'"Ok, thank you, sweety"'
+					phescortfun += 5
+					phescortfunNEED += 5
+					act 'go with a cop': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexcop2'
+				end
+				
+				
+				act 'You are the only one I want to be with':
+					*clr & cla
+					phescortfun -= 20
+					if phescortfun < 0: phescortfun = 0
+					'"Weeell, right, cool" - he said very stale'
+					'He took the phone from his pocket, call someone and after a short talk give the phone to the cop'
+					'"Yes… yes… ok… I will" - the cop said. He give the phone back to the client'
+					!! revenggewithabum -=wip=-
+					'"Sorry, it was a mistake. Everything seems ok, you can go" - he give the driver''s license back to the client'
+					'The client starts the engine'
+					minut += 10
+					gs 'stat'
+					
+					act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'car'	
+				end
+				
+				if sexcorrupt >= rand(50,80):
+					act 'I can''t resist':
+						cla
+						act 'agree':
+							*clr & cla
+							'"Ok, thank you, sweety"'
+							phescortfun += 5
+							phescortfunNEED += 5
+							act 'go with a cop': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexcop2'
+						end
+					end
+				end
+			end
+		end
+		
+		act 'I can solve this problem':
+			*clr & cla
+			sexcorrupt += 2
+			phescortfun += 10
+			'The cop looks at me, like he just notice someone else in the car -"Yes, it could work."'
+			
+			if rand (1,3) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/4 bribe.jpg"></center>'
+				'"Naah, just takke this" - the client gives some money to the cop'
+				'"Sorry, it was a mistake. Everything seems ok, you can go" - he take the money and give the driver''s license back to the client'
+				'"You are the best. But it''s my turn to fuck you todaY)))"'
+				'He start the engine.'
+				minut += 10
+				gs 'stat'
+				
+				act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'car'			
+			else 
+				'"Ok, thank you, sweety"'
+				
+				act 'go with a cop': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexcop2'
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = 'sexstop':
+	*clr & cla
+	$loc = 'mod_public_WC_rab_btothel_escort_carcop'
+	$loc_arg = 'sexstop'	
+	minut += 5
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	
+	if phtemp = 0: phtemp = rand(1,2)
+	
+	if phtemp = 1:
+		if phsex = 0: phsex = rand(1,3)
+		if phsex = 1:
+			!! hj
+			'"Jerk me off"'
+			'I unzip his fly and start to jerk his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/hj 1.mp4"></video></center>'
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			
+			act 'Continue':
+				*clr & cla
+				'He splash the cum on my hands'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/hj 2.mp4"></video></center>'
+				'I clean a mess a little and we continue our ride'
+				gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				gs 'cum_call','hands',$boy
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+				
+				gs 'arousal', 'end'
+				gs 'stat'				
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				if rand(1,8) + phtestcheat <= 1:
+					cla
+					act 'continue': gt 'mod_public_WC_rob_car', 'hecar'
+				end
+			end
+		elseif phsex = 2:
+			!! bj
+			'"Suck me dry"'
+			'He pulls down his pants and I start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/bj 1.mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			
+			act 'Continue':
+				*clr & cla
+				'He is moaning in pleasure'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/bj 2.mp4"></video></center>'
+				gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub'
+				gs 'stat'
+				
+				act 'Continue':
+					*clr & cla
+					'He splash the cum in my mouth'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/bj 3.jpg"></center>'
+					'I clean a mess a little and we continue our ride'
+					gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+					gs 'cum_call','hands',$boy
+					gs 'stat'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0					
+					gs 'arousal', 'end'
+					gs 'stat'					
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					if rand(1,8) + phtestcheat <= 1:
+						cla
+						act 'continue': gt 'mod_public_WC_rob_car', 'hecar'
+					end
+				end
+			end
+		elseif phsex = 3:
+			!! sex
+			'"I want to fuck you!"'
+			'I undress and spread my legs… I am ready for his cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/sex 1.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			
+			act 'Continue':
+				*clr & cla
+				'He is fucking me nicely'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/sex 2 ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub'
+				gs 'stat'
+				
+				act 'Continue':
+					*clr & cla
+					'He splash the cum on my belly'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/2 sexincar/sex 3.jpg"></center>'
+					'I clean a mess a little and we continue our ride'
+					gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+					gs 'cum_call','stomach',$boy
+					gs 'stat'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0					
+					gs 'arousal', 'end'
+					gs 'stat'					
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					if rand(1,8) + phtestcheat <= 1:
+						cla
+						act 'continue': gt 'mod_public_WC_rob_car', 'hecar'
+					end
+				end
+			end
+		end
+		killvar 'phtemp'
+		killvar 'phsex'
+	else
+		if phsex ! 3: phsex = rand(3,3)		
+		if phsex = 3:
+			!! sex
+			'He exit the car opened my dor and help me to exit the car'
+			'We start kissing'
+			'In a moment he rotates me roughtly and start to fuck me'
+			'I am needed to lean on a car'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/1 1 sex.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			
+			act 'Continue':
+				*clr & cla
+				'He splash the cum in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/1 2 sexcum.jpg"></center>'
+				
+				'We sit back to the car and continue our ride'
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0					
+				gs 'arousal', 'end'
+				gs 'stat'				
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				if rand(1,8) + phtestcheat <= 1:
+					cla
+					act 'continue': gt 'mod_public_WC_rob_car', 'hecar'
+				end
+			end
+		end
+		killvar 'phtemp'
+		killvar 'phsex'
+	end
+end
+
+if $ARGS[0] = 'sexcop2':
+	*clr & cla
+	!! go with a cop	
+	
+	temp = rand(1,3)
+	if temp = 1:
+		gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexcar'
+	else
+		temp = rand(1,3)
+		if temp = 1:
+			!! bj
+			!! client add ~ phescortfun
+			'We hide behind the cop car. And I start to suck him'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/5 bj/5 bj (1).mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,15), 'sub'
+			gs 'stat'
+			
+			if phescortfun + phgorilka >= rand (40,50):
+				'The client come to us'
+				'"Dont worry, I am into this shit" - he unzip his fly annd start to jerk'
+				
+				itemp = 12556
+			end
+			
+			act 'continue':
+				*clr & cla
+				if itemp = 12556:
+					'Cop shoots his cum on my face'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/1 face 2.mp4"></video></center>'
+					gs 'cum_call','hair', 'cop'
+					gs 'stat'
+					gs 'cum_call','face','cop'
+					gs 'stat'
+					gs 'cum_call','mouth','cop'
+					gs 'stat'
+					gs 'cum_call','mouth_swallow','cop'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					'Just after the cop the client cums'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/2 face 2.mp4"></video></center>'
+					gs 'cum_call','hair', $boy
+					gs 'stat'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					killvar 'itemp'
+					act 'clean the clients dick':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/cleandick.mp4"></video></center>'
+						'As I am cleaning the clients dick: "Documents seems ok, you can go now" - he give the cliet''s document back to him'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+						
+						act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				else
+					temp = rand(1,6)					
+					if temp <= 2:
+						'He shoots his cum on my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/onface.mp4"></video></center>'
+						gs 'cum_call','hair', 'cop'
+						gs 'stat'
+						gs 'cum_call','face','cop'
+						gs 'stat'
+						gs 'cum_call','mouth','cop'
+						gs 'stat'
+						gs 'cum_call','mouth_swallow','cop'
+						gs 'stat'
+					elseif temp <= 4:
+						'He loads in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/inmouth.mp4"></video></center>'
+						gs 'cum_call','mouth','cop'
+						gs 'stat'
+						gs 'cum_call','mouth_swallow','cop'
+						gs 'stat'
+					else
+						'He cums on my tits'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/tits.mp4"></video></center>'
+						gs 'cum_call','stomach','cop'
+						gs 'stat'
+						gs 'cum_call','breasts','cop'
+						gs 'stat'
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					'When he ends: "Documents seems ok, you can go now" - he give the cliet''s document back to me'
+					'I go back to the client''s car and give it to him'
+					'"Thank you!"'
+					phescortfun += 5
+					act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'					
+				end
+			end
+		elseif temp = 2:
+			!! sex with a cop
+			'He put me onn his car and start to fuck'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/6 vag/6 ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,15), 'sub'
+			gs 'stat'
+			
+			if phescortfun + phgorilka >= rand (40,50):
+				'The client come to us'
+				'"Dont worry, I am into this shit" - he unzip his fly annd start to jerk'
+				
+				itemp = 12556
+			end
+			
+			act 'continue':
+				*clr & cla
+				if itemp = 12556:
+					'Cop shoots his cum on my face'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/1 face 2.mp4"></video></center>'
+					gs 'cum_call','hair', 'cop'
+					gs 'stat'
+					gs 'cum_call','face','cop'
+					gs 'stat'
+					gs 'cum_call','mouth','cop'
+					gs 'stat'
+					gs 'cum_call','mouth_swallow','cop'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					'Just after the cop the client cums'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/2 face 2.mp4"></video></center>'
+					gs 'cum_call','hair', $boy
+					gs 'stat'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					killvar 'itemp'
+					act 'clean the clients dick':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/cleandick.mp4"></video></center>'
+						'As I am cleaning the clients dick: "Documents seems ok, you can go now" - he give the cliet''s document back to him'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+						
+						act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				else
+					temp = rand(1,6)					
+					if temp <= 2:
+						'He shoots his cum on my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/onface.mp4"></video></center>'
+						gs 'cum_call','hair', 'cop'
+						gs 'stat'
+						gs 'cum_call','face','cop'
+						gs 'stat'
+						gs 'cum_call','mouth','cop'
+						gs 'stat'
+						gs 'cum_call','mouth_swallow','cop'
+						gs 'stat'
+					elseif temp <= 4:
+						'He loads in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/inmouth.mp4"></video></center>'
+						gs 'cum_call','mouth','cop'
+						gs 'stat'
+						gs 'cum_call','mouth_swallow','cop'
+						gs 'stat'
+					else
+						'He cums on my tits'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/tits.mp4"></video></center>'
+						gs 'cum_call','stomach','cop'
+						gs 'stat'
+						gs 'cum_call','breasts','cop'
+						gs 'stat'
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					'When he ends: "Documents seems ok, you can go now" - he give the cliet''s document back to me'
+					'I go back to the client''s car and give it to him'
+					'"Thank you!"'
+					phescortfun += 5
+					act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'					
+				end
+			end
+		elseif temp = 3:
+			!! ass with a cop
+			'He put me on his car and start to fuck'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/6 ass/6 ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'anal', rand(5,15), 'sub'
+			gs 'stat'
+			
+			if phescortfun + phgorilka >= rand (40,50):
+				'The client come to us'
+				'"Dont worry, I am into this shit" - he unzip his fly annd start to jerk'
+				
+				itemp = 12556
+			end
+			
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/6 ass/7 ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'anal', rand(5,15), 'sub'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					if itemp = 12556:
+						'Cop shoots his cum on my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/1 face 2.mp4"></video></center>'
+						gs 'cum_call','hair', 'cop'
+						gs 'stat'
+						gs 'cum_call','face','cop'
+						gs 'stat'
+						gs 'cum_call','mouth','cop'
+						gs 'stat'
+						gs 'cum_call','mouth_swallow','cop'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'						
+						'Just after the cop the client cums'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/2 face 2.mp4"></video></center>'
+						gs 'cum_call','hair', $boy
+						gs 'stat'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','mouth_swallow',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'						
+						killvar 'itemp'
+						act 'clean the clients dick':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/cleandick.mp4"></video></center>'
+							'As I am cleaning the clients dick: "Documents seems ok, you can go now" - he give the cliet''s document back to him'
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+							
+							act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+						end
+					else
+						temp = rand(1,6)					
+						if temp <= 2:
+							'He shoots his cum on my face'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/onface.mp4"></video></center>'
+							gs 'cum_call','hair', 'cop'
+							gs 'stat'
+							gs 'cum_call','face','cop'
+							gs 'stat'
+							gs 'cum_call','mouth','cop'
+							gs 'stat'
+							gs 'cum_call','mouth_swallow','cop'
+							gs 'stat'
+						elseif temp <= 4:
+							'He loads in my mouth'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/inmouth.mp4"></video></center>'
+							gs 'cum_call','mouth','cop'
+							gs 'stat'
+							gs 'cum_call','mouth_swallow','cop'
+							gs 'stat'
+						else
+							'He cums on my tits'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/2 cop/7 cum/tits.mp4"></video></center>'
+							gs 'cum_call','stomach','cop'
+							gs 'stat'
+							gs 'cum_call','breasts','cop'
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						'When he ends: "Documents seems ok, you can go now" - he give the cliet''s document back to me'
+						'I go back to the client''s car and give it to him'
+						'"Thank you!"'
+						phescortfun += 5
+						act 'ride': gt 'mod_public_WC_rab_btothel_escort_place', 'car'					
+					end
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'rope':
+	*clr & cla
+	$loc = 'mod_public_WC_rab_btothel_escort_carcop'
+	$loc_arg = 'rope'	
+	minut += 5
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	'He binds me to the car'
+	
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/0 ('+rand(1,4)+').jpg"></center>'
+	!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/.mp4"></video></center>'
+		
+	
+	act 'wait':
+		*clr & cla
+		
+		temp = rand(1,10)
+		if temp <= 2:
+			!! tits
+			'He start too squeeze and grope my tits'
+			stat['BDSM'] += rand(0,1)
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/1-2 tits_grope.jpg"></center>'
+			gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'bound', 'rough'
+			gs 'stat'
+			killvar 'phtemp'
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sex'			
+		elseif temp <= 7:
+			!! slap
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/1 slap/hit ('+rand(1,4)+').jpg"></center>'
+			'He took a whip from the car'
+			'"AAAaaa" - I screamed as he hits me'
+			stat['BDSM'] += rand(1,1)
+			gs 'pain', rand(2,2), 'tummy', 'spank'
+			temp = rand(1,8)
+			if temp = 1: gs 'pain', rand(0,2), 'back', 'spank'					
+			if temp = 2: gs 'pain', rand(0,2), 'asscheeks', 'spank'
+			if temp = 3: gs 'pain', rand(0,2), 'hips', 'spank'
+			if temp = 4: gs 'pain', rand(0,2), 'legL', 'spank'
+			if temp = 5: gs 'pain', rand(0,2), 'legR', 'spank'
+			if temp = 6: gs 'pain', rand(0,2), 'shoulders', 'spank'
+			if temp = 7: gs 'pain', rand(0,2), 'ribs', 'spank'
+			if temp = 8: gs 'pain', rand(0,2), 'tummy', 'spank'
+			gs 'stat'
+			phescortfun += 5
+			phtemp += 1
+			
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_carcop', 'slap'
+		else
+			!! sex
+			killvar 'phtemp'
+			gt 'mod_public_WC_rab_btothel_escort_carcop', 'sex'			
+		end
+	end
+end
+
+if $ARGS[0] = 'slap':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/1 slap/hit ('+rand(1,4)+').jpg"></center>'
+	'He made another hit'
+	'"AAAaaa" - I screamed!'
+	if rand(1,5) = 1: stat['BDSM'] += rand(1,1)
+	temp = rand(1,8)
+	if temp = 1: gs 'pain', rand(1,2), 'back', 'spank'					
+	if temp = 2: gs 'pain', rand(1,2), 'asscheeks', 'spank'
+	if temp = 3: gs 'pain', rand(1,2), 'hips', 'spank'
+	if temp = 4: gs 'pain', rand(1,2), 'legL', 'spank'
+	if temp = 5: gs 'pain', rand(1,2), 'legR', 'spank'
+	if temp = 6: gs 'pain', rand(1,2), 'shoulders', 'spank'
+	if temp = 7: gs 'pain', rand(1,2), 'ribs', 'spank'
+	if temp = 8: gs 'pain', rand(1,2), 'tummy', 'spank'
+	gs 'stat'
+	phescortfun += 5
+	phtemp += 1
+	
+	act 'wait': gt 'mod_public_WC_rab_btothel_escort_carcop', 'slap'
+	
+	if phtemp >= 4 and phescortfun >= 50:
+		*clr & cla
+		'He undress his pants annd I see his <<npc_dick[$npclastgenerated]>>cm long  erected <<$npc_thdick[$npclastgenerated]>> cock'
+		'He go to put a whip and a pants to the trunk'
+		killvar 'phtemp'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/1 slap/wait.jpg"></center>'
+		act 'wait': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sex'	
+	end
+end
+
+if $ARGS[0] = 'sex':
+	*clr & cla
+	if phtemp = 0: phtemp = rand(1,2)
+	
+	if phtemp = 1:
+		'He loose the knots and I fell down on my knees'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/3 bj/1 ('+rand(1,3)+').jpg"></center>'
+		act 'wait':
+			*clr & cla
+			'He start to fuck my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/3 bj/2 ('+rand(1,3)+').jpg"></center>'
+			gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub', 'bound', 'rough'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/3 bj/2 ('+rand(1,3)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub', 'bound', 'rough'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'He cums on my face'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/4 cum/cum ('+rand(1,2)+').jpg"></center>'
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					'He untied me and give a towel to clean myself'
+					
+					'I clean a mess a little and we continue our ride'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0					
+					killvar 'phtemp'
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end	
+			end			
+		end
+	else
+		'He loose the knots a little and pulls me clother to him. He impales me on his dick'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/2 sex/1.jpg"></center>'
+		act 'continue':
+			*clr & cla
+			'He start to fuck me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/2 sex/2 ('+rand(1,2)+').jpg"></center>'
+			gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'bound', 'rough'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/2 sex/2 ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'bound', 'rough'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'At the end He loose the knots and I fell down on my knees'					
+					'He cums on my face'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/3 stop/4 tied/4 cum/cum ('+rand(1,2)+').jpg"></center>'
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					'He untied me and give a towel to clean myself'
+					
+					'I clean a mess a little and we continue our ride'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0					
+					killvar 'phtemp'
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end	
+			end			
+		end
+	end
+end
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_carcop ---------------------------------
+

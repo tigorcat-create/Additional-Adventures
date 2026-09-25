@@ -1,0 +1,233 @@
+# mod_public_WC_rab_btothel_escort
+if $ARGS[0] = 'start':
+	cla
+	'"Hi, handsome, are you waiting for someone?"'
+	'I can feel his eyes all over my body'
+
+
+	phkudy = rand(1,6)
+	if phclientava < 1 or phclientava > 7: phclientava = rand(1,7)
+	if phclientava = 3: phclientava = rand(4,7)
+	colir = 1
+	'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+
+	act 'continue':
+		gt 'mod_public_WC_rab_btothel_escort', '1'
+	end
+
+	if $phrequest = 'You need to dress up like a schoolgirl':
+		if CloStyle2 = 4 or CloSchool = 1:
+			''
+		else
+			cla
+			'"Sorry girl, I am waiting for someone else"'
+			+$OpenInnerThought+'I forget to dress up properly!'+$CloseInnerThought
+			act 'go away': gt $loc, $loc_arg
+		end
+	elseif $phrequest = 'You will go to the club, dress up properly':
+		phkudy = 2
+		if pcs_makeup > 1 and pcs_sweat < 50 and (PCloSkirt > 2 or PCloPants > 4 or PCloPanties = 1 or ($clothingworntype = 'salacious_dress' or $clothingworntype = 'salacious_outfits')):
+			'You can feel his eyes all over your body'
+		else
+			cla
+			'"Sorry girl, I am waiting for someone else"'
+			+$OpenInnerThought+'I forget to dress up properly!'+$CloseInnerThought
+			act 'go away': gt $loc, $loc_arg
+		end
+	elseif $phrequest = 'Dress up a sluty lingerie':
+		if $pantyworntype = 'none':
+			cla
+			'"Sorry girl, I am waiting for someone else"'
+			+$OpenInnerThought+'I forget to dress up properly!'+$CloseInnerThought
+			act 'go away': gt $loc, $loc_arg
+		else
+			' '
+		end
+	elseif $phrequest = 'No extra requests':
+		' '
+	end
+end
+
+
+if $ARGS[0] = 'smscheck':
+	if rand (1,600) - ryska <= 0 and daystart > escortpause:
+		if rand(1,4) = 1:
+			phescortH = rand(11,23)
+		else
+			phescortH = rand(18,21)
+		end
+
+		killvar 'phrequest'
+
+		itemp = rand(1,6)
+		if itemp = 1:
+			$phrequest = 'You need to dress up like a schoolgirl'
+		elseif itemp = 2:
+			$phrequest = 'You will go to the club, dress up properly'
+			phescortH = rand(20,22)
+		elseif itemp = 3:
+			$phrequest = 'Dress up a sluty lingerie'
+		else
+			$phrequest = 'No extra requests'
+		end
+
+		phescortfun = 0
+		phclientava = rand(1,7)
+		phescorttask = 1
+		phescortD = rand(1,2) + daystart
+		itemp = phescortD - daystart
+
+		if itemp = 1:
+			gs 'telefon', 'add_sms', ' ', 'ORDER FROM the PH. You need to be in St. Petersburg''s Red Light District tommorow at <<phescortH>> o''clock. <<$phrequest>>. Paid time is 4 Hours.'
+		elseif 	itemp = 2:
+			gs 'telefon', 'add_sms', ' ', 'ORDER FROM the PH. You need to be in St. Petersburg''s Red Light District the day after tommorow at <<phescortH>> o''clock. <<$phrequest>>. Paid time is 4 Hours.'
+		end
+		'I have received a new SMS… it''s from the Pleasure House.'
+	else
+		''
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = '1':
+	*clr & cla
+	'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+
+	gs 'npcgeneratec', 0, 'escort client', rand(23,55)
+	gs 'boyStat', $npclastgenerated
+
+	phcardrive = 0
+	phdoroga = 0
+	phhismind = rand(1,70)
+	phescortfunDONE = 0
+	phescortfunNEED = 0
+	phescortfunSexDONE = 0
+	phbuytime = 0
+	phdrug = 0
+	phdrugconsumed = 0
+	phgorilkabottle = 0
+	phwinebottle = 0
+	phhishomevilla = 0
+	if rand(1,4) ! 1: phhishomevilla = 1
+	phprymirochnapaid = 0
+	phgorilka = 0
+	phsleeptime = 0
+	phsleep = 0
+	killvar 'phclientname'
+	phrober = 0
+	killvar 'phrobkill'
+
+
+	phescortmeet = 1
+	if phkudy = 1:
+		!! street -> cinema
+		'"Nice, nice… I need your pleasant company in the cinema."'
+		$phescortzara = 'street'
+		$phescortude = 'cinema'
+
+
+	elseif phkudy = 2 and hour >= 19:
+		!! street -> club
+		'"Nice, nice… I need your pleasant company in the club."'
+		$phescortzara = 'street'
+		$phescortude = 'club'
+
+
+	elseif phkudy = 2 and hour < 19:
+		phkudy = rand(5,6)
+	end
+
+	if phkudy = 3:
+		!! street -> dinner
+		'"Nice, nice… lets go eat smth first."'
+		$phescortzara = 'street'
+		$phescortude = 'dinner'
+
+
+	elseif phkudy = 4:
+		!! street ->
+		'"Nice, nice… lets walk a little."'
+		$phescortzara = 'street'
+		$phescortude = ' '
+
+
+	elseif phkudy = 5:
+		!! street -> hotel
+		!->
+		!!3 elevator
+		!!roof
+		'"Nice, nice… lets go to my hotel."'
+		$phescortzara = 'street'
+		$phescortude = 'hotel'
+
+
+	elseif phkudy = 6:
+		!! car ->
+
+		!!2 yacht
+		!!hotel_or_hisvilla
+		!!plane_to_France
+		!!prymirochna -> !!!dinner/club
+
+		!!cinema
+		!!club
+		!!dinner
+		!!tent-fish-hunt
+		'"Nice, nice… Ok, my car is nearby lets go.."'
+		$phescortzara = 'car'
+		$phescortude = ' '
+
+		phcardrive = 1
+		phkudy = rand(1,5)
+		if phkudy = 1:
+			!! street -> cinema
+			'"I need your pleasant company in the cinema."'
+			$phescortude = 'cinema'
+
+
+		elseif phkudy = 2 and hour >= 19:
+			!! street -> club
+			'"I need your pleasant company in the club."'
+			$phescortude = 'club'
+
+
+		elseif phkudy = 2 and hour < 19:
+			phkudy = rand(5,6)
+		end
+
+		if phkudy = 3:
+			!! street -> dinner
+			'"lets go eat smth first."'
+			$phescortude = 'dinner'
+
+
+		elseif phkudy = 4:
+			!! street ->
+			'"lets drive a little."'
+			$phescortude = ' '
+
+
+		elseif phkudy = 5:
+			!! street -> hotel
+			!->
+			!!3 elevator
+			!!roof
+			'"lets go to my hotel."'
+			$phescortude = 'hotel'
+		end
+	end
+
+	killvar 'pin1'
+	killvar 'pin2'
+	killvar 'pin3'
+
+	act 'Go with him':
+		gt 'mod_public_WC_rab_btothel_escort_place', $phescortzara
+	end
+end
+
+
+
+--- mod_public_WC_rab_btothel_escort ---------------------------------
+

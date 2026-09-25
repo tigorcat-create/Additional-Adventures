@@ -1,0 +1,1604 @@
+# mod_public_WC_rab_PHwork_events_3
+if $ARGS[0] = 'balcony_sex':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'unknown guy', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+
+	'I have undressed and put my leg on him…'
+	'He enters me'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/start_sex.mp4"></video></center>'
+	gs 'arousal', 'vaginal', rand(5,10), 'prostitution'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/sexv ('+rand(1,8)+').mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(5,10), 'prostitution'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'When he was ready to cum, I stands on the knees and take it on the face'
+
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/balcony/cum.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/cumv.mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution'
+			gs 'stat'
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'stand up and continue my tasks': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'balcony_cuni':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'unknown guy', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+
+	'I undress myself, put my leg on a railing'
+	'I feel his toungue…'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/cuniv ('+rand(1,3)+').mp4"></video></center>'
+	gs 'arousal', 'cuni', rand(5,10), 'prostitution'
+	gs 'stat'
+
+
+	act 'continue':
+		*clr & cla
+		$orgasm_or = 'yes'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/cuniv ('+rand(1,3)+').mp4"></video></center>'
+		gs 'arousal', 'cuni', rand(5,10), 'prostitution'
+		gs 'stat'
+
+		if rand(1,3) = 1:
+			'"Favor, for favor girl" - he pulls his pants down'
+			sexcorrupt += 1
+			act 'blow him': gt 'mod_public_WC_rab_PHwork_events_2', 'balcony_bj'
+
+		else
+			act 'stand up and continue my tasks': gt $loc, $loc_arg
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'balcony_tied_joke':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'unknown guy', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	$func('wrap', 'header center b', 'Balcony')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/balcony.jpg"></center>'
+
+
+	'As I walk on the balcone someone put the blindfold on my eyes!'
+	'I see nothing and I feel they tied my cuffings to the balcony railing'
+	minut += 10
+	gs 'stat'
+
+	act 'wait':
+		*clr & cla
+		'I feel… I feel the vibrator on my pussy…'
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/joke.mp4"></video></center>'
+
+		gs 'arousal', 'masturbate', rand(10,10), 'exhibitionism', 'humiliation'
+		gs 'stat'
+		act 'wait': gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_tied_joke_cycl'
+	end
+end
+
+if $ARGS[0] = 'balcony_tied_joke_cycl':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'unknown guy', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/joke.mp4"></video></center>'
+
+	gs 'arousal', 'masturbate', rand(10,10), 'exhibitionism', 'humiliation'
+	gs 'stat'
+
+
+	if rand (1,3) = 1:
+		'I feel warm cum on my belly'
+		'someone cumming on me!'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+		phcumtemp += 1
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+
+	act 'wait': gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_tied_joke_cycl'
+
+	if rand (1,6) = 1:
+		*clr & cla
+
+
+		gs 'arousal', 'masturbate', rand(10,10), 'exhibitionism', 'humiliation'
+		gs 'stat'
+
+		'Toha untied me'
+		'"Someone has a good sense of humor… Go and work, quick!"'
+
+		if phcumtemp > 0: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/cum/allcum.jpg"></center>'
+		killvar 'phcumtemp'
+
+		act 'go': gt $loc, $loc_arg
+	end
+end
+
+
+
+if $ARGS[0] = 'dart':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'the dart player', rand(38,55)
+	gs 'boyStat', $npclastgenerated
+
+	if phwork = 1: 'He unlocks all my locks'
+	if $clothingworntype ! 'nude': 'I undress myself'
+	phhtemp = 0
+
+	'"My, my - nice body))"'
+	'"The first turn is yours"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/0.jpg"></center>'
+
+	gs 'arousal', 'flash', rand(10,10), 'exhibitionism'
+	gs 'stat'
+
+	if pcs_humint >= rand(0,50):
+		act '"There can''t be a darts game without a beer"':
+			*clr & cla
+			humint_exp += 1
+			minut += 10
+			gs 'stat'
+			'"Hah, well girl, take this one, noone drink this"'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/beer.jpg"></center>'
+			act 'drink a beer':
+				gs 'drugs', 'alcohol', 'beer'
+				gs 'stat'
+				gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+			end
+		end
+	end
+
+
+	act 'ready to hit':
+		*clr & cla
+		minut += 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/2 ('+rand(1,2)+').jpg"></center>'
+
+		act 'try to hit':
+			shoot_exp += 2
+			if pcs_shoot >= rand(0,60):
+				*clr & cla
+				phtemp = 1
+				if pcs_shoot >= 60:
+					temp = rand(10,20)
+				else
+					temp = rand(1,10)
+				end
+				'I hit the <<temp>> zone!'
+				'"Yes!"'
+				phhtemp += temp
+				'"Nice shoot girl!"'
+				'He gives me a bill'
+				money += 200
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/w hit.jpg"></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+
+			else
+				cla
+				phtemp = 0
+				temp = rand(1,4)
+				temptemp = rand(1,9)
+				if temp = 1: 'I hited the <<temptemp>> zone'
+				if temp = 2: 'I missed the target at all'
+				if temp = 3: 'I hited the wall, and the dart firmly stuck in it'
+				if temp = 4: 'I hited the target, but the dart fall out on the floor'
+
+				if temp = 1: phhtemp += temptemp
+				killvar 'temptemp'
+				'"Nice. Now it''s my turn"'
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+
+			end
+		end
+
+		act 'try to miss':
+			shoot_exp += 1
+			if rand (1,100) + pcs_shoot >= 40:
+				cla
+				phtemp = 0
+				temp = rand(1,4)
+				temptemp = rand(1,9)
+				if temp = 1: 'I hited the <<temptemp>> zone'
+				if temp = 2: 'I missed the target at all'
+				if temp = 3: 'I hited the wall, and the dart firmly stuck in it'
+				if temp = 4: 'I hited the target, but the dart fall out on the floor'
+
+				if temp = 1: phhtemp += temptemp
+				killvar 'temptemp'
+				'"Nice. Now it''s my turn"'
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+			else
+				*clr & cla
+				phtemp = 1
+				temp = rand(10,20)
+				'I hit the <<temp>> zone!'
+				'"Yes!"'
+				phhtemp += temp
+				'"Nice shoot girl!"'
+				'He gives me a bill'
+				money += 200
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/w hit.jpg"></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'dart_cycl':
+	*clr & cla
+	$func('wrap', 'header center b', 'MY SCORE: <<phhtemp>>')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/1 ('+rand(1,5)+').jpg"></center>'
+	if phtemp = 1:
+		gs 'arousal', 'flash', rand(10,10), 'exhibitionism'
+		gs 'stat'
+
+		if pcs_humint >= rand(0,50):
+			act '"There can''t be a darts game without a beer"':
+				*clr & cla
+				humint_exp += 1
+				minut += 10
+				gs 'stat'
+				'"Hah, well girl, take this one, noone drink this"'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/beer.jpg"></center>'
+				act 'drink a beer':
+					gs 'drugs', 'alcohol', 'beer'
+					gs 'stat'
+					gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+				end
+			end
+		end
+
+		act 'ready to hit':
+			*clr & cla
+			minut += 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/2 ('+rand(1,2)+').jpg"></center>'
+
+			act 'try to hit':
+				shoot_exp += 2
+				if pcs_shoot >= rand(0,60):
+					*clr & cla
+					phtemp = 1
+					if pcs_shoot >= 60:
+						temp = rand(10,20)
+					else
+						temp = rand(1,10)
+					end
+					'I hit the <<temp>> zone!'
+					'"Yes!"'
+					phhtemp += temp
+					'"Nice shoot girl!"'
+					'He gives me a bill'
+					money += 200
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/w hit.jpg"></center>'
+
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+
+				else
+					cla
+					phtemp = 0
+					temp = rand(1,4)
+					temptemp = rand(1,9)
+					if temp = 1: 'I hited the <<temptemp>> zone'
+					if temp = 2: 'I missed the target at all'
+					if temp = 3: 'I hited the wall, and the dart firmly stuck in it'
+					if temp = 4: 'I hited the target, but the dart fall out on the floor'
+
+					if temp = 1: phhtemp += temptemp
+					killvar 'temptemp'
+					'"Nice. Now it''s my turn"'
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+
+				end
+			end
+
+			act 'try to miss':
+				shoot_exp += 1
+				if rand (1,100) + pcs_shoot >= 40:
+					cla
+					phtemp = 0
+					temp = rand(1,4)
+					temptemp = rand(1,9)
+					if temp = 1: 'I hited the <<temptemp>> zone'
+					if temp = 2: 'I missed the target at all'
+					if temp = 3: 'I hited the wall, and the dart firmly stuck in it'
+					if temp = 4: 'I hited the target, but the dart fall out on the floor'
+
+					if temp = 1: phhtemp += temptemp
+					killvar 'temptemp'
+					'"Nice. Now it''s my turn"'
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+				else
+					*clr & cla
+					phtemp = 1
+					temp = rand(10,20)
+					'I hit the <<temp>> zone!'
+					'"Yes!"'
+					phhtemp += temp
+					'"Nice shoot girl!"'
+					'He gives me a bill'
+					money += 200
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/w hit.jpg"></center>'
+
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+				end
+			end
+		end
+
+	else
+		'He goes to the target and put two notes on it'
+		'"that is my wishes zones"'
+		'He is aiming'
+		minut += 2
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/m hit ('+rand(1,3)+').mp4"></video></center>'
+
+		act 'wait':
+			*clr & cla
+			if rand(1,10)> 6:
+				'He hits the paper'
+				phtemp = rand(1,4)
+				if phtemp = 1:
+					'He hited the ass zone'
+					'"Yeeah, now is the wish time"'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/hit ass.mp4"></video></center>'
+				end
+
+				if phtemp = 2:
+					'He hited the mouth zone'
+					'"Yeeah, now is the wish time"'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/hit mouth.mp4"></video></center>'
+				end
+
+				if phtemp = 3:
+					'He hited the pussy zone'
+					'"Yeeah, now is the wish time"'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/hit pussy.mp4"></video></center>'
+				end
+
+				if phtemp = 4:
+					'He hited the tits zone'
+					'"Yeeah, now is the wish time"'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/hit tits.mp4"></video></center>'
+				end
+
+
+				act 'yes, you won!': gt 'mod_public_WC_rab_PHwork_events_3', 'dwonsex'
+			else
+				'He missed the paper'
+				'"Owww, well, now it''s your turn"'
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/miss ass tits.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/miss ass tits.jpg"></center>'
+				end
+
+
+				phtemp = 1
+
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dart_cycl'
+			end
+		end
+	end
+
+	if phhtemp >= 100:
+		*clr & cla
+		$func('wrap', 'header center b', 'MY SCORE: <<phhtemp>>')
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/darts/w hit.jpg"></center>'
+
+		'"Look at my score… it looks like I won"'
+
+		'"Yes, Gorgeous, you won… But it was fun!"'
+
+		act 'Make a sorry blowjob':
+			cla
+			'I come closer to him and go down on my knees'
+			'I grab his groin'
+			'"Fun game, lets make a good end for both of us"'
+			'He is shoked a little but nod'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/naked_sex/0 start.mp4"></video></center>'
+			phtemp = 2
+			phtemptemp = 1234
+
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dwonsex'
+		end
+
+		act 'Make a sorry handjob':
+			cla
+			'I come closer to him and go down on my knees'
+			'I grab his groin'
+			'"Fun game, lets make a good end for both of us"'
+			'He is shoked a little but nod'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/naked_sex/0 start.mp4"></video></center>'
+			phtemp = 5
+			phtemptemp = 1234
+
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'dwonsex'
+		end
+
+		act '"Good game" - go away': gt $loc, $loc_arg
+	end
+end
+
+
+if $ARGS[0] = 'dwonsex':
+	*clr & cla
+	phhtemp = 0
+
+	$PHloc = 'mod_public_WC_rab_PHwork_events_3'
+	$PHloc_arg = 'dwonsex_end'
+
+
+	if phtemptemp ! 1234:
+		'I go down on my knees and grab his groin'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/naked_sex/0 start.mp4"></video></center>'
+	end
+	if phwork = 7: phwhoreshift -= 1
+
+	killvar 'phhtemp'
+
+	if phtemp = 1:
+		!! ass
+		gs 'mod_public_WC_naked sex', 'anal'
+
+	elseif phtemp = 2:
+		!! mouth
+		gs 'mod_public_WC_naked sex', 'bj'
+
+	elseif phtemp = 3:
+		!! pussy
+		gs 'mod_public_WC_naked sex', 'sex'
+
+	elseif phtemp = 4:
+		!! tits
+		gs 'mod_public_WC_naked sex', 'tj'
+
+	elseif phtemp = 5:
+		!! hand
+		gs 'mod_public_WC_naked sex', 'hj'
+
+	end
+end
+
+if $ARGS[0] = 'dwonsex_end':
+	*clr & cla
+
+	if phtemptemp = 1234:
+		'"Wow, this was fun for both of us"'
+		'He take a marker from his pocket and make a sign on me'
+
+		if phwork = 1: 'He wait till I  drees up to lock my working outfit'
+
+		act 'go away': gt $loc, $loc_arg
+	else
+		'"Nice game, well played, sweety!"'
+		if phwork = 1: 'He wait till I  drees up to lock my working outfit'
+		act 'go away': gt $loc, $loc_arg
+	end
+	killvar 'phtemptemp'
+end
+
+
+
+if $ARGS[0] = 'wet':
+	*clr & cla
+	'They bend me and put a termometr in my ass!'
+	'"My God, girl… you are to HOT. We need to cool down you"'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/wet/2.jpg"></center>'
+	act 'continue':
+		*clr & cla
+		'They poured out a lot of beer on me'
+		'"Look at you… you are so wet. Let us help yoou"'
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/wet/3.jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/wet/3v.mp4"></video></center>'
+		end
+		act 'continue':
+			cla
+			'They undress me'
+			minut += 3
+			inhib_exp += rand(0,1)
+
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+
+			'Laughing guys go away'
+
+			act 'continue':
+				*clr & cla
+				wetH = hour + rand(2,4)
+				if wetH >= 24: wetH -= 24
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+				'Toha is looking at me…'
+				'"Don''t worry it''s casual situation"'
+				'"Sit here and wait, while your clothing drying on the radiator"'
+				+$OpenInnerThought+'Naked?!'+$CloseInnerThought
+				if phwork = 1: 'He unlocks all my locks'
+				act 'sit and wait': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'wet_wait':
+	*clr & cla
+	if rand(1,3) = 1: inhib_exp += 1
+	minut += 15
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/sit.jpg"></center>'
+
+	gs 'npcgeneratec', 0, 'Unknown guy from Pleasure House', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+
+	act 'tease visitors':
+		*clr & cla
+		minut += 5
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/tease ('+rand(1,2)+').jpg"></center>'
+		'I sit on the bar and tease bar visitors…'
+		inhib_exp += 1
+
+		act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+		if rand(1,5) = 1:
+			*clr & cla
+			phtemp = rand (1,5)
+			if phtemp = 1: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck your ass? "'
+			if phtemp = 2: 'Some guy comes to me "Hi sweety, you are soo good, can I have some blowjob?"'
+			if phtemp = 3: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck this? "'
+			if phtemp = 4: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck your tits? "'
+			if phtemp = 5: 'Some guy comes to me "Hi sweety, you are soo good, can I eat this? "'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/hi.jpg"></center>'
+
+			act 'agree':
+				*clr & cla
+				if phwork = 7: phwhoreshift -= 1
+				if phtemp = 1:
+					!! ass
+					'He roughtly drills my asshole'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/ass/ass ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'anal', rand(10,15), 'exhibitionism'
+					gs 'stat'
+
+				elseif phtemp = 2:
+					!! bj
+					'I am sucking his <<dick>> cm dick'
+					if rand(1,7) > 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj ('+rand(1,7)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj_b.mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+					gs 'stat'
+				elseif phtemp = 3:
+					!! vag
+					'He is fucking me'
+					if rand(1,7) > 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/sex/sex ('+rand(1,10)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/sex/sex_b.mp4"></video></center>'
+					end
+					gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'
+					gs 'stat'
+
+					if PHcumgirl > 1:
+						'While he is fucking me someone put a glass to my mouth'
+						'I am drinking it'
+						'It''s sperm!'
+						'The girl with empty glasses laughting and run away… It''s milker!'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+
+
+				elseif phtemp = 4:
+					!! tj
+					'I firmly press my tits to help him fuck it'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/tj/tj ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'titjob', rand(10,15), 'exhibitionism'
+					gs 'stat'
+				elseif phtemp = 5:
+					!! cuni
+					'Omg, he is talanted… it''s really good'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cuni ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'cuni', rand(10,15), 'exhibitionism'
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					if phtemp = 1:
+						'HHe filled all my guts with sperm!'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/ass.mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'anus', $npclastgenerated, 0
+
+					elseif phtemp = 2:
+						'He make his load in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth ('+rand(1,6)+').mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						if rand(1,4) = 1:
+							'"Hey slut, show me."'
+							'I show him his sperm in my mouth…'
+							'He spits in my mouth and put a dick back… it''s… it''s humiliating.'
+							willpowermax -= 2
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth_spit.mp4"></video></center>'
+						end
+
+						'He waits till I swallow, than pull his dick out and start to dress up'
+					elseif phtemp = 3:
+						'He cum deep inside me'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/pussy.mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'vagina', $npclastgenerated, 0
+						gs 'cuminsidereact', $boydesc
+
+					elseif phtemp = 4:
+						'My tits make him cum'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/tits_job ('+rand(1,2)+').mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+					elseif phtemp = 5:
+						'Yes… yes… YESS!'
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cuni ('+rand(1,3)+').mp4"></video></center>'
+						gs 'arousal', 'cuni', rand(10,15), 'exhibitionism'
+						gs 'stat'
+						$orgasm_or = 'yes'
+
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					sexcorrupt += 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					phtemp = 0
+					act 'ask about money':
+						cla
+						'"yes, sure, whore, here you go."'
+						money += 50*rand(2,6)
+						gs 'stat'
+						sexcorrupt -= 2
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				end
+			end
+		else
+			'Everybody gives me no more than indifferent look'
+		end
+
+	end
+
+	if mc_inventory['food_wine'] ! 1:
+		act 'buy a bottle of wine (400)':
+			cla
+			'"And where is your money?"'
+			if money >= 400:
+				act '"Look in my clothing"':
+					cla
+					'He goes to the subsoil'
+					minut += 3
+					money -= 400
+					gs 'stat'
+					'In a ferw minutes he come back with a bottle'
+					'"Good - here is tour bottle"'
+					mc_inventory['food_wine'] = 1
+
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+				end
+			else
+				act 'I don''t have any':
+					cla
+					'Don''t spend my time!'
+
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+				end
+			end
+
+			act 'offer a sex for the bottle':
+				cla
+				'"Let''s go to the subsoil." - Toha smiles greedily'
+
+				act 'Go to the utility room':
+					*clr & cla
+					'Going into the utility room, Toha bent me by force and began to fuck'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+
+					guy += 1
+					dick = 18
+					npc_dick[$npclastgenerated] = dick
+
+					stat['vaginal'] += 1
+					gs 'sweat', 'add', 5
+					gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+					gs 'stat'
+					act 'Continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+						'Toha finished on me.'
+						'"It was good, Here is tour bottle." - finally Toha slapped me on the buttocks. '
+						$cumarrnam = 'Toha'
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						mc_inventory['food_wine'] = 1
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				end
+			end
+		end
+	end
+
+	if mc_inventory['food_wine'] = 1:
+		act 'drink a wine':
+			*clr & cla
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+			elseif alkowine = 0:
+				alkowine = 1
+			end
+			gs 'drugs', 'alcohol', 'wine'
+			gs 'stat'
+
+			minut += 10
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/wine_drink ('+rand(1,3)+').jpg"></center>'
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+		end
+
+		act 'advertise my sucking skills with a bottle':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/tease bottle.mp4"></video></center>'
+			'I blowjob the bottle…'
+
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+			if rand(1,10) + stat['bj']/50 >= 5:
+				cla
+				'Some guy comes to me "Hi sweety, you are soo good, can I be your bottle?"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/hi.jpg"></center>'
+
+				act 'blow him':
+					*clr & cla
+					if phwork = 7: phwhoreshift -= 1
+
+					'I unziped his pants and make him feel good'
+					gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+					gs 'stat'
+
+					if rand(1,7) > 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj ('+rand(1,7)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj_b.mp4"></video></center>'
+					end
+
+					act 'continue':
+						*clr & cla
+
+						'He make his load in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth ('+rand(1,6)+').mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						if rand(1,4) = 1:
+							'"Hey slut, show me."'
+							'I show him his sperm in my mouth…'
+							'He spits in my mouth and put a dick back… it''s… it''s humiliating.'
+							willpowermax -= 2
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth_spit.mp4"></video></center>'
+						end
+
+						'He waits till I swallow, than pull his dick out and start to dress up'
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+
+						act 'ask about money':
+							cla
+							'"yes, sure, whore, here you go."'
+							money += 50*rand(2,6)
+							gs 'stat'
+							sexcorrupt -= 1
+							act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+						end
+
+					end
+				end
+
+				if rand(1,5) = 1:
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/tease bottle.mp4"></video></center>'
+					'Some guy sits near me'
+					'"I see you know what to do with a bottle"'
+
+					'"I will pay you 400 if you fuck yourself with this bottle"'
+
+					act 'agree':
+						cla
+						gs 'npcgeneratec', 0, 'bottle', rand(8,15)
+						gs 'boyStat', $npclastgenerated
+						dick = 25
+
+						act 'put a tip of the bottle in…':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/1bottle.jpg"></center>'
+							gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+							gs 'stat'
+							'Somehow it''s not so bad…'
+
+							act 'Put it deeper':
+								*clr & cla
+								gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+								gs 'stat'
+								bottlenot = 0
+								money += 400
+								gs 'stat'
+								'"Hah, nice bimbo, here is your money"'
+								'He put some cash on the table and go away laughing'
+
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/bottle ('+rand(1,3)+').jpg"></center>'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+							end
+						end
+					end
+
+					act 'disagree':
+						cla
+						'He stands up and go away'
+						bottlenot += 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				elseif rand(1,10) = 1:
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/tease bottle.mp4"></video></center>'
+					'Some guy sits near me'
+					'"I see you know what to do with a bottle"'
+
+					'"I will pay you 1000 if you serv a glass of beer to me using your pussy only"'
+
+					act 'how it''s gonna work?':
+						'"You''ll see"'
+					end
+
+					act 'agree':
+						cla
+
+						gs 'npcgeneratec', 0, 'bottle', rand(8,15)
+						gs 'boyStat', $npclastgenerated
+						dick = 35
+						'"Lay down on your back and put your legs up"'
+
+						act 'do it':
+							*clr & cla
+							'He spit few times on my anus and put a bottle in it!'
+							'he has a glass in his hand - "Now, serv me"'
+							if pcs_ass < 7:
+								gs 'pain', rand(3,4), 'asshole', 'pierce'
+								gs 'stat'
+								gs 'pain', rand(3,4), 'asshole', 'stretch'
+								gs 'stat'
+							end
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/1.mp4"></video></center>'
+							gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+							gs 'stat'
+
+							act 'stand on my four':
+								*clr & cla
+								'It''s very hard to move with a bottle in my ass but I handle it'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/2.mp4"></video></center>'
+								gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+								gs 'stat'
+
+								act 'serv him':
+									*clr & cla
+									'"Nice waitrees" - he kissed my cheek.'
+									'"Here is your tips" - he put 1000 on the table'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/3 ('+rand(1,2)+').mp4"></video></center>'
+									gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+									gs 'stat'
+
+
+									act 'put out a bottle and go away':
+										money += 1000
+										gs 'stat'
+										bottlenot = 0
+										gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+									end
+								end
+							end
+						end
+					end
+
+					act 'disagree':
+						cla
+						'He stands up and go away'
+						bottlenot += 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				end
+			else
+				'Everybody gives me no more than indifferent look'
+			end
+
+		end
+	end
+
+	act 'ask a drink from nearby guy':
+		*clr & cla
+		'"Favor for a favor?"'
+		minut += 5
+		gs 'stat'
+
+		act 'disagree':
+			gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+		end
+
+		act 'agree to blow him':
+			cla
+			'He bought me a bottle of wine'
+			mc_inventory['food_wine'] = 1
+			alkowine = 0
+
+			act 'drink and blow him':
+				*clr & cla
+				'I unziped his pants and make him feel good'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/bj_drink.mp4"></video></center>'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0:
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'
+
+				act 'keep blowing':
+					*clr & cla
+
+
+					gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+					gs 'stat'
+
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj ('+rand(1,7)+').mp4"></video></center>'
+
+
+					act 'continue':
+						*clr & cla
+						'He make his load in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth ('+rand(1,6)+').mp4"></video></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						if rand(1,4) = 1:
+							'"Hey slut, show me."'
+							'I show him his sperm in my mouth…'
+							'He spits in my mouth and put a dick back… it''s… it''s humiliating.'
+							willpowermax -= 2
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth_spit.mp4"></video></center>'
+						end
+
+						'He waits till I swallow, than pull his dick out and start to dress up'
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				end
+			end
+
+			act 'blow him':
+				*clr & cla
+
+				'I unziped his pants and make him feel good'
+				gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+				gs 'stat'
+
+				if rand(1,7) > 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj ('+rand(1,7)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj_b.mp4"></video></center>'
+				end
+
+				act 'continue':
+					*clr & cla
+
+					'He make his load in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth ('+rand(1,6)+').mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					if rand(1,4) = 1:
+						'"Hey slut, show me."'
+						'I show him his sperm in my mouth…'
+						'He spits in my mouth and put a dick back… it''s… it''s humiliating.'
+						willpowermax -= 2
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth_spit.mp4"></video></center>'
+					end
+
+					'He waits till I swallow, than pull his dick out and start to dress up'
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+				end
+			end
+		end
+	end
+
+	if rand(1,15) = 1:
+		*clr & cla
+		phtemp = rand (1,5)
+		if phtemp = 1: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck your ass? "'
+		if phtemp = 2: 'Some guy comes to me "Hi sweety, you are soo good, can I have some blowjob?"'
+		if phtemp = 3: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck this? "'
+		if phtemp = 4: 'Some guy comes to me "Hi sweety, you are soo good, can I fuck your tits? "'
+		if phtemp = 5: 'Some guy comes to me "Hi sweety, you are soo good, can I eat this? "'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/hi.jpg"></center>'
+
+		act 'agree':
+			*clr & cla
+			if phwork = 7: phwhoreshift -= 1
+			if phtemp = 1:
+				!! ass
+				'He roughtly drills my asshole'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/ass/ass ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'anal', rand(10,15), 'exhibitionism'
+				gs 'stat'
+
+			elseif phtemp = 2:
+				!! bj
+				'I am sucking his <<dick>> cm dick'
+				if rand(1,7) > 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj ('+rand(1,7)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/bj/bj_b.mp4"></video></center>'
+				end
+				gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+				gs 'stat'
+			elseif phtemp = 3:
+				!! vag
+				'He is fucking me'
+				if rand(1,7) > 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/sex/sex ('+rand(1,10)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/sex/sex_b.mp4"></video></center>'
+				end
+				gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'
+				gs 'stat'
+
+				if PHcumgirl > 1:
+					'While he is fucking me someone put a glass to my mouth'
+					'I am drinking it'
+					'It''s sperm!'
+					'The girl with empty glasses laughting and run away… It''s milker!'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+
+			elseif phtemp = 4:
+				!! tj
+				'I firmly press my tits to help him fuck it'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/tj/tj ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'titjob', rand(10,15), 'exhibitionism'
+				gs 'stat'
+			elseif phtemp = 5:
+				!! cuni
+				'Omg, he is talanted… it''s really good'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cuni ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'cuni', rand(10,15), 'exhibitionism'
+				gs 'stat'
+			end
+
+			act 'continue':
+				*clr & cla
+				if phtemp = 1:
+					'HHe filled all my guts with sperm!'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/ass.mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'anus', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				elseif phtemp = 2:
+					'He make his load in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth ('+rand(1,6)+').mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					if rand(1,4) = 1:
+						'"Hey slut, show me."'
+						'I show him his sperm in my mouth…'
+						'He spits in my mouth and put a dick back… it''s… it''s humiliating.'
+						willpowermax -= 2
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/mouth_spit.mp4"></video></center>'
+					end
+
+					'He waits till I swallow, than pull his dick out and start to dress up'
+				elseif phtemp = 3:
+					'He cum deep inside me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/pussy.mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+				elseif phtemp = 4:
+					'My tits make him cum'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/tits_job ('+rand(1,2)+').mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				elseif phtemp = 5:
+					'Yes… yes… YESS!'
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cuni ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'cuni', rand(10,15), 'exhibitionism'
+					gs 'stat'
+					$orgasm_or = 'yes'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+				sexcorrupt += 1
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+				phtemp = 0
+				act 'ask about money':
+					cla
+					'"yes, sure, whore, here you go."'
+					money += 50*rand(2,6)
+					gs 'stat'
+					sexcorrupt -= 2
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+				end
+			end
+		end
+	elseif rand(1,15) = 2:
+		cla
+		'The guy comes to me while I siting at the bar'
+		'"Me and the boys are boring, cud you serv us?"'
+
+		act 'agree':
+			*clr & cla
+			'He turn me around and start to lick my pussy… till I become full wet'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cuni ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'cuni', rand(5,10), 'exhibitionism'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He put my legs apart and starts fucking me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/1 ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'
+				gs 'stat'
+
+				if PHcumgirl > 1:
+					'While he is fucking me someone put a glass to my mouth'
+					'I am drinking it'
+					'It''s sperm!'
+					'The girl with empty glasses laughting and run away… It''s milker!'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+				act 'help the other guy':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/2.mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(5,10), 'exhibitionism', 'group'
+					gs 'stat'
+					minut -= 5
+					gs 'arousal', 'hj', rand(5,10), 'exhibitionism', 'group'
+					gs 'stat'
+
+
+					act 'continue':
+						*clr & cla
+						'They take turns to fuck me'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/3.mp4"></video></center>'
+						gs 'arousal', 'vaginal', rand(5,10), 'exhibitionism', 'group'
+						gs 'stat'
+						minut -= 5
+						gs 'arousal', 'bj', rand(5,10), 'exhibitionism', 'group'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'they uses my mouth and pussy'
+							'the dicks changes one by one'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/4 ('+rand(1,2)+').mp4"></video></center>'
+							gs 'arousal', 'vaginal', rand(5,10), 'exhibitionism', 'group'
+							gs 'stat'
+							minut -= 5
+							gs 'arousal', 'bj', rand(5,10), 'exhibitionism', 'group'
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								'They put me on the floor and spraying me with cum one by one'
+								gs 'npcgeneratec', 0, 'a random man from Pleasure House bar', rand(18,55)
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/cum (1).mp4"></video></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'cum_call', 'face', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								minut += 3
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'wait':
+									*clr & cla
+									'They put me on the floor and spraying me with cum one by one'
+									gs 'npcgeneratec', 0, 'a random man from Pleasure House bar', rand(18,55)
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/cum (2).mp4"></video></center>'
+									gs 'boyStat', $npclastgenerated
+									gs 'cum_call', 'mouth', $npclastgenerated, 0
+									gs 'cum_call', 'face', $npclastgenerated, 0
+									gs 'cum_call', 'breasts', $npclastgenerated, 0
+									minut += 3
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'wait':
+										*clr & cla
+										'They put me on the floor and spraying me with cum one by one'
+										gs 'npcgeneratec', 0, 'a random man from Pleasure House bar', rand(18,55)
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/cum (3).mp4"></video></center>'
+										gs 'boyStat', $npclastgenerated
+										gs 'cum_call', 'mouth', $npclastgenerated, 0
+										gs 'cum_call', 'face', $npclastgenerated, 0
+										gs 'cum_call', 'breasts', $npclastgenerated, 0
+										minut += 3
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'wait':
+											*clr & cla
+											'The last one cum on me and the start to dress up'
+											gs 'npcgeneratec', 0, 'a random man from Pleasure House bar', rand(18,55)
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/drink_event/cum (4).mp4"></video></center>'
+											gs 'boyStat', $npclastgenerated
+											gs 'cum_call', 'mouth', $npclastgenerated, 0
+											gs 'cum_call', 'face', $npclastgenerated, 0
+											gs 'cum_call', 'breasts', $npclastgenerated, 0
+											minut += 3
+											gs 'stat'
+											sexcorrupt += 1
+											act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+											gs 'arousal', 'end'
+											gs 'stat'
+											act 'ask about money':
+												cla
+												if phwork = 7: phwhoreshift -= 4
+												'"yes, sure, whore, here you go."'
+												money += 50*rand(2,6)*4
+												gs 'stat'
+												sexcorrupt -= 2
+												act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+
+		act 'disagree':
+			cla
+			'He stands up and go away'
+			bottlenot += 1
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+		end
+	elseif rand(1,20) = 3:
+		if rand(1,5) < 4:
+			cla
+
+			'Some guy sits near me'
+
+
+			'"I will pay you 400 if you fuck yourself with a bottle of wine"'
+
+			act 'agree':
+				cla
+				gs 'npcgeneratec', 0, 'bottle', rand(8,15)
+				gs 'boyStat', $npclastgenerated
+				dick = 25
+
+				act 'put a tip of the bottle in…':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/1bottle.jpg"></center>'
+					gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+					gs 'stat'
+					'Somehow it''s not so bad…'
+
+					act 'Put it deeper':
+						*clr & cla
+						gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+						gs 'stat'
+						bottlenot = 0
+						money += 400
+						gs 'stat'
+						'"Hah, nice bimbo, here is your money"'
+						'He put some cash on the table and go away laughing'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/bottle ('+rand(1,3)+').jpg"></center>'
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+					end
+				end
+			end
+
+			act 'disagree':
+				cla
+				'He stands up and go away'
+				bottlenot += 1
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+			end
+		else
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/tease bottle.mp4"></video></center>'
+			'Some guy sits near me'
+
+
+			'"I will pay you 1000 if you serv a glass of beer to me using your pussy only"'
+
+			act 'how it''s gonna work?':
+				'"You''ll see"'
+			end
+
+			act 'agree':
+				cla
+
+				gs 'npcgeneratec', 0, 'bottle', rand(8,15)
+				gs 'boyStat', $npclastgenerated
+				dick = 35
+				'"Lay down on your back and put your legs up"'
+
+				act 'do it':
+					*clr & cla
+					'He spit few times on my anus and put a bottle in it!'
+					'he has a glass in his hand - "Now, serv me"'
+					if pcs_ass < 7:
+						gs 'pain', rand(3,4), 'asshole', 'pierce'
+						gs 'stat'
+						gs 'pain', rand(3,4), 'asshole', 'stretch'
+						gs 'stat'
+					end
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/1.mp4"></video></center>'
+					gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+					gs 'stat'
+
+					act 'stand on my four':
+						*clr & cla
+						'It''s very hard to move with a bottle in my ass but I handle it'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/2.mp4"></video></center>'
+						gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+						gs 'stat'
+
+						act 'serv him':
+							*clr & cla
+							'"Nice waitrees" - he kissed my cheek.'
+							'"Here is your tips" - he put 1000 on the table'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/3 ('+rand(1,2)+').mp4"></video></center>'
+							gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation'
+							gs 'stat'
+
+
+							act 'put out a bottle and go away':
+								money += 1000
+								gs 'stat'
+								bottlenot = 0
+								gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+							end
+						end
+					end
+				end
+			end
+
+			act 'disagree':
+				cla
+				'He stands up and go away'
+				bottlenot += 1
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+			end
+		end
+	elseif rand(1,15) = 4:
+		*clr & cla
+		'"Lazy butt, why you are not working?!"'
+		'"Can I use her for the throw game, Toha?"'
+		'"Yes, go with him, you "Lazy butt" )))"'
+
+		act 'go with guy':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			'We come to the corner of the room'
+			'There is some sort of a scene or pedestal'
+			'Go there and stand on your four'
+			act 'Do it':
+				*clr & cla
+				'He put a buttplug with a tail in my ass'
+				'"Lets play guys"'
+				analPlugIn = 1
+
+				if pcs_ass < 10: gs 'arousal_funcs', 'stretch', 'anal', 5
+				if pcs_ass >= 10 and pcs_ass < 20: gs 'arousal_funcs', 'stretch', 'anal', rand(1, 2)
+				if pcs_ass >= 20 and pcs_ass < 30: gs 'arousal_funcs', 'stretch', 'anal', rand(0, 1)
+
+				act 'wait':
+					*clr & cla
+					'They are throwing a rings on the tail'
+
+					i = rand(3,5)
+
+					if i >= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/1.mp4"></video></center>'
+						inhib_exp += rand(0,1)
+						gs 'arousal', 'flash', rand(5,10), 'exhibitionism', 'humiliation'
+						gs 'stat'
+					end
+
+					if i >= 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/1.mp4"></video></center>'
+						inhib_exp += rand(0,1)
+						gs 'arousal', 'flash', rand(5,10), 'exhibitionism', 'humiliation'
+						gs 'stat'
+					end
+
+					if i >= 3:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/1.mp4"></video></center>'
+						inhib_exp += rand(0,1)
+						gs 'arousal', 'flash', rand(5,10), 'exhibitionism', 'humiliation'
+						gs 'stat'
+					end
+
+					if i >= 4:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/1.mp4"></video></center>'
+						inhib_exp += rand(0,1)
+						gs 'arousal', 'flash', rand(5,10), 'exhibitionism', 'humiliation'
+						gs 'stat'
+					end
+
+					if i >= 5:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/1.mp4"></video></center>'
+						inhib_exp += rand(0,1)
+						gs 'arousal', 'flash', rand(5,10), 'exhibitionism', 'humiliation'
+						gs 'stat'
+					end
+
+
+
+					act 'wait':
+						*clr & cla
+						'In some time, guys cheer up and find a winner'
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/throw/0.mp4"></video></center>'
+
+						act'wait':
+							*clr & cla
+
+							'Suddenly the winner comes from behind and start to fuck me'
+							gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/sex/sex 2.mp4"></video></center>'
+
+							act 'continue':
+								*clr & cla
+								if phwork = 7: phwhoreshift -= 1
+								'He cum deep inside me'
+								'Guys cheers one more time!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/sex_naked/1/cum/pussy.mp4"></video></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								gs 'cuminsidereact', $boydesc
+								gs 'arousal', 'end'
+								gs 'stat'
+								sexcorrupt += 1
+								act 'go back to bar': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+								phtemp = 0
+								act 'ask about money':
+									cla
+									'"yes, sure, whore, here you go."'
+									money += 50*rand(2,6)
+									gs 'stat'
+									sexcorrupt -= 2
+									act 'go back to bar': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	if bottlenot > 0: bottlenot += 1
+	if bottlenot >= rand(0,20):
+		*clr & cla
+		'Suddenly man at the bar turned me upside down and…'
+
+		'..put the bottle of Champagne in my ass.'
+
+		'"Next time think better before say "no"…" - he just go away, while I lying down in the pain'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pour_barjob/0.mp4"></video></center>'
+		gs 'pain', rand(3,4), 'asshole', 'pierce'
+		gs 'stat'
+		gs 'pain', rand(3,4), 'asshole', 'stretch'
+		gs 'stat'
+		bottlenot = 0
+		act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet_wait'
+	end
+
+	if hour >= wetH:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+		'"Your clothing is dried" - Toha said'
+		killvar 'wetH'
+		minut+=3
+		gs 'outfit', 'wear_last_worn'
+		'I dress up'
+		if phwork = 1: 'He locks all my locks'
+		bottlenot = 0
+		act 'Start working': gt $loc, $loc_arg
+	end
+end
+
+
+
+
+
+
+
+!gt $loc, $loc_arg
+!+$OpenInnerThought+'She is so brave or so stupid?'+$CloseInnerThought
+--- mod_public_WC_rab_PHwork_events_3 ---------------------------------
+

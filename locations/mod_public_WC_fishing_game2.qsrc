@@ -1,0 +1,96 @@
+# mod_public_WC_fishing_game2
+if $ARGS[0]='g1_3':
+
+	'<Body background="mod/public_WC/escort/2 place/2 yacht/ocean_cast.jpg">'
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/cast.wav',50
+
+	'<br><<$game1_1>><<$game1_2>><img width=50 src="mod/public_WC/escort/2 place/2 yacht/water2.gif" >'
+	wait 500
+	close'mod/public_WC/sound/cast.wav'
+	gt'mod_public_WC_fishing_game2','fishing'
+end
+
+if $ARGS[0]='fishing':
+	cla
+	clr
+	'I have casted the lure and carefully watch the bobber for signs of nibble.'
+	!! '<Body background="mod/public_WC/escort/2 place/2 yacht/ocean_cast.jpg">'
+
+	minut += rand(10,25)
+	if hour < 12:
+		temp_gr = rand(5,20)
+	elseif hour >= 12 and hour < 18:
+		temp_gr = rand(0,20)
+	else
+		temp_gr = rand(10,20)
+	end
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/2 bikini_fishing(1).jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/2 naked_fishing ('+rand(1,4)+').jpg"></center>'
+	end
+
+	if $loc_arg = 'island':
+		*clr
+		'I have casted the lure and carefully watch the bobber for signs of nibble.'
+	end
+
+
+	if temp_gr > rand(15,19):
+		cla
+		minut += 1
+		gs 'stat'
+		'Suddenly the bobber dives under the water dramatically. <b>I got one!</b>'
+
+		act 'Pull':
+			cla
+			*clr
+			minut += 1
+			temp_gr = rand(0,120)
+			if temp_gr < 50:react_exp += 1
+			gs 'stat'
+
+			if pcs_react > temp_gr:
+				pcs_mood += rand(5,10)
+				minut += 1
+				react_exp += 1
+				ryba += 1
+				gs 'stat'
+
+				rand6 += 1
+				pl'<font color=red size=6><b><i> Fish + 1</i></b></font>'
+
+				'I skillfully strike, pulling the rod up sharply. I feel the rod straining slightly, and after a few moments, <b>I excitedly pull a fish out of the water.</b>'
+
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/3 bikini_catch ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/3 naked_catch (1).jpg"></center>'
+				end
+			else
+				pcs_mood -= rand(5,10)
+				minut += 1
+				gs 'stat'
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/2 bikini_fishing(1).jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/fishing/2 naked_fishing ('+rand(1,4)+').jpg"></center>'
+				end
+				'I strike, but the lack of tension makes the <b>fish escape from the hook</b>.'
+			end
+			act 'continue': gt'mod_public_WC_fishing_game','g1_1'
+		end
+	else
+		'The bobber remains perfectly still, eventually I decide to try a different lure.'
+		act 'Retrieve bait': gt'mod_public_WC_fishing_game','g1_1'
+	end
+end
+
+
+
+
+
+--- mod_public_WC_fishing_game2 ---------------------------------
+

@@ -1,0 +1,523 @@
+# mod_public_WC_rab_work_whore_fun_sex_dop8_start
+if $ARGS[0] = 'start':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'client from Pleasure House', rand(30,65)
+	gs 'boyStat', $npclastgenerated
+	colir = 1
+	'Everybody are partying'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/drinking.jpg"></center>'
+
+	$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop8'
+	$phsexstart_arg = 'start'
+	if ztemp = 232356:
+		'I opened the door and Artur meet me'
+		'"Nice, Serg is happy. You are a skilled one"'
+		'"You can take anything you want. I have payed for 6 hours" - he slaped my ass and go to some other guy'
+		+$OpenInnerThought+'OMG! I am the only woman here'+$CloseInnerThought
+
+
+		phtemp = 0
+		ztemp = 0
+		ztemp = hour + 5
+		zzday = daystart
+		if ztemp >= 24:
+			ztemp -=24
+			zzday += 1
+		end
+
+		$loc = 'mod_public_WC_rab_work_whore_fun_sex_dop8'
+		$loc_arg = 'start'
+		$PHloc = $loc
+		$PHloc_arg = $loc_arg
+
+		$loc = 'mod_public_WC_rab_work_whore_fun_sex_dop8'
+		$menu_loc = 'mod_public_WC_rab_work_whore_fun_sex_dop8'
+		$loc_arg = 'start'
+		$menu_arg = 'start'
+
+		PH_full_pay = 200
+
+		if bcil >= 31 and bcil <= 37:
+			$metka = '4'
+		elseif bcil >= 21 and bcil <= 30:
+			$metka = '3'
+		elseif bcil >= 4 and bcil <= 20:
+			$metka = '2'
+		end
+	end
+	killvar 'zztemp'
+	phtemp += 2
+	if rand(1,3) = 1: phtemp += 3
+	if $clothingworntype = 'nude' and $braworntype = 'none': phtemp += rand(1,2)
+	+$OpenInnerThought+'I have been payed till <<ztemp>> o''clock!'+$CloseInnerThought
+
+	act 'go to the bathroom': minut += 2 & gt 'mod_public_WC_rab_work_chystota_hotel','shower1'
+
+	act 'go to the bar': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'bar'
+
+	act 'go dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'dancing'
+
+	gs 'willpower', 'gangbang', 'self'
+	temp = will_cost - (sexcorrupt / 3)
+	will_cost -= (sexcorrupt / 3)
+	if will_cost <= 0: will_cost = 0
+	if will_cost <= pcs_willpwr:
+		act 'Tease (<<temp>> Willpower)':
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			+$OpenInnerThought+'I think it''s a good idea'+$CloseInnerThought
+
+			gs 'willpower', 'gangbang', 'self'
+			temp = will_cost - (sexcorrupt / 3)
+			will_cost -= (sexcorrupt / 3)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+
+				act 'undress, lie down and prepare for breading':
+					*clr & cla
+					sexcorrupt += rand(1,2)
+					minut += 3
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+
+					'While I was undressing my self, some guys pointed on me'
+					phtemp += 10
+					'As I lie down, they start gathering around me'
+					'I start tease them… "This bich want DICKS" - they start to undress.'
+
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_naked_showoff.mp4"></video></center>'
+					gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'gb'
+				end
+
+			else
+				act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+
+
+			act 'expose my tits':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I flashed my tits for a short time and hide them'
+				'I see sparkles in the guys eyes, who saw me teasing.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_tits.mp4"></video></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+
+				phtemp += rand(1,2)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'event'
+			end
+
+			act 'show my body':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I flashed myself for a short time'
+				'I see sparkles in the guys eyes, who saw me teasing.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_titts_ass.mp4"></video></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+
+				phtemp += rand(2,2)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'event'
+			end
+
+			act 'shake my ass':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I stand on my four and shake my ass'
+				'I know, they like it!'
+
+				if $pantyworntype = 'none':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_ass_nopanties.mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_ass.mp4"></video></center>'
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+
+				phtemp += rand(1,3)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'event'
+			end
+		end
+	else
+		act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+	end
+
+	act 'hanging on the party':
+		cla
+		minut += rand(5,25)
+		gs 'stat'
+
+		'I spent my time chilling and talking with random people'
+		humint_exp += rand(1,3)
+		pcs_mood += rand(1,20)
+
+		if rand(1,2) = 1 and mc_inventory['cigarettes'] > 0:
+			if rand(1,3) = 1: mc_inventory['cigarettes'] += 1
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+
+		if rand(1,2) = 1:
+			gs 'drugs', 'alcohol', 'whiskey'
+			gs 'stat'
+
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+
+		if rand(1,4) > 2:
+			if narkoman = 1 and narkday ! daystart and narkoman = 1:
+				cla
+				+$OpenInnerThought+'I am really need cococaine'+$CloseInnerThought
+			end
+			'I see a guy has some cococaine'
+
+			act 'Do you have some cococaine?':
+				cla
+				if rand(1,4) = 1:
+					'"Yea, I have. But it''s not for charity."'
+					'"I want a blowjob for that!"'
+
+					if ( narkoman = 1 and narkday ! daystart ) or SLomka > 0:
+						act 'yes-yes, agree!':
+							*clr & cla
+							'He eat some pills… and wait for few minutes'
+							'"Wait a minute" - he said'
+							'He rotates and start to do something with his cock, but I can''t see what he is doing'
+							'"Good, Look here"'
+							gs 'arousal', 'voyeur', 3, 'exhibitionism'
+							gs 'stat'
+							'I looked'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/1 start.mp4"></video></center>'
+							act 'Sniff it all':
+								*clr & cla
+								'I sniff the drug, but something left… I need that!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/2 drug.mp4"></video></center>'
+								gs 'arousal', 'voyeur', 3, 'exhibitionism'
+								gs 'stat'
+
+								mc_inventory['mentats'] += 2
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+
+								sexcorrupt += 2
+
+								'I start suck his dick to consume all the drug!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/3 drug_bj.mp4"></video></center>'
+								gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+								gs 'stat'
+
+								act 'keep sucking':
+									*clr & cla
+									PHclientFUNJOBDONE += 30
+									'He hold my head and cuming on my mouth'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/brothel/bar/solotable_request/1/cum/inmouth.mp4"></video></center>'
+									gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'continue':
+										minut += 10
+										gs 'stat'
+										gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+									end
+								end
+							end
+						end
+					else
+						act 'No, thanks':
+							cla
+							'"As you wish)"'
+							act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+						end
+
+						act 'Agree':
+							*clr & cla
+							'He eat some pills… and wait for few minutes'
+							'"Wait a minute" - he said'
+							'He rotates and start to do something with his cock, but I can''t see what he is doing'
+							'"Good, Look here"'
+							gs 'arousal', 'voyeur', 3, 'exhibitionism'
+							gs 'stat'
+							'I looked'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/1 start.mp4"></video></center>'
+
+							act 'consume it':
+								*clr & cla
+								'Unusual situation but it somehow even fun'
+								'I consumed it all'
+
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/2 drug.mp4"></video></center>'
+								gs 'arousal', 'voyeur', 3, 'exhibitionism'
+								gs 'stat'
+
+								mc_inventory['mentats'] += 2
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+
+								act 'continue':
+									minut += 10
+									gs 'stat'
+									gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+								end
+								act 'blow him':
+									cla
+									'I sell a bj for a line of cococaine'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/3 drug_bj.mp4"></video></center>'
+									gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+									gs 'stat'
+
+									act 'keep sucking':
+										*clr & cla
+										PHclientFUNJOBDONE += 30
+										'He hold my head and cuming on my mouth'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/1/cum/inmouth.mp4"></video></center>'
+										gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+										gs 'stat'
+										gs 'cum_call','mouth',$boy
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+									end
+								end
+							end
+						end
+					end
+				else
+					'"No, I have nothing"'
+
+					if rand(1,1) = 1:
+						'He stand up and go away'
+						shtraf += rand(0,2)
+						act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+					end
+				end
+			end
+		end
+		if rand(1,4) > 3:
+			*clr & cla
+			'Some guy grab me - "Don''t be so square"'
+			'He pours a vodka in me'
+			gs 'drugs', 'alcohol', 'vodka'
+			gs 'stat'
+			gs 'drugs', 'alcohol', 'vodka'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/weedanddrink/shedrink.jpg"></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+		elseif rand(1,4) > 2:
+			cla
+			'I speak in a circle of guys and talking with them'
+			'They pass a bong… now is my turn'
+
+			act 'smoke':
+				*clr & cla
+				'I smoked and pass it further'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/weedanddrink/smoke ('+rand(1,2)+').mp4"></video></center>'
+				gs 'drugs', 'joint'
+				mc_inventory['joints'] += 1
+				gs 'stat'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+			end
+
+			act 'pass it further':
+				cla
+				if rand (1,3) = 1:
+					*clr & cla
+					'Some guy grab me - "Don''t be so square"'
+					'He pours a vodka in me'
+					gs 'drugs', 'alcohol', 'vodka'
+					gs 'stat'
+					gs 'drugs', 'alcohol', 'vodka'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/weedanddrink/shedrink.jpg"></center>'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+				else
+					'Noone react'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+				end
+			end
+		end
+	end
+
+
+
+	if mc_inventory['mentats'] > 0 and narkday ! daystart:
+		act 'Do a line of cocaine (0:05)':
+			*clr & cla
+			menu_off = 1
+			minut += 5
+			narkday = daystart
+			gs 'drugs', 'cocaine'
+			'<center><img <<$set_imgh>> src="images/shared/drugs/dur.jpg"></center>'
+			'You snort some cocaine, feeling dizzy for just a moment. After that I feel fantastic, and incredibly horny.'
+			act 'Continue': menu_off = 0 & gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+		end
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			*clr & cla
+			'I decide to kill some time with cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(5,10)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+		end
+	end
+
+	if mc_inventory['food_wine'] = 1:
+		act 'drink a wine from the bottle':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_bottle.mp4"></video></center>'
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+			elseif alkowine = 0:
+				alkowine = 1
+			end
+			gs 'drugs', 'alcohol', 'wine'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+		end
+	end
+
+	act 'just wait (0:10)':
+		minut += 10
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'start'
+	end
+
+	act 'Go away':
+		if hour >= ztemp:
+			ztemp = 0
+		else
+			FUNJOBDONE -= 2000
+			if FUNJOBDONE <= 0: FUNJOBDONE = 0
+			shtraf += 20
+		end
+
+		if $metka = '4':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+		elseif $metka = '3':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		elseif $metka = '2':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+		else
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		end
+	end
+
+	gs 'mod_public_WC_rab_work_whore_fun_sex_dop8', 'event'
+	!! analog to black party (NObedroom) + drugs, drink, dick-cocs
+	!+request
+
+	if alko >= rand(10,12):
+		*clr & cla
+		'I am so wasted. I passed out'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/passedout.jpg"></center>'
+		killvar 'zztemp'
+		act 'continue':
+			PHclientFUNJOBDONE -= 300
+			if PHclientFUNJOBDONE <= 0: PHclientFUNJOBDONE = 0
+			FUNJOBDONE += PH_full_pay * PHclientFUNJOBDONE / 100
+			killvar 'PHclientFUNJOBDONE'
+			shtraf += 5
+
+			if hour < 10:
+				temp = 10 - hour
+				minut += 60 * temp
+				pcs_sleep += 8 * temp
+				pcs_health += 6 * temp
+				gs 'stat'
+			else
+				temp = 24 - hour
+				if temp >= 6:
+					temp = 5
+					minut += 60 * temp
+					pcs_sleep += 8 * temp
+					pcs_health += 6 * temp
+					gs 'stat'
+				else
+					temp = 5
+					minut += 60 * temp
+					pcs_sleep += 8 * temp
+					pcs_health += 6 * temp
+					gs 'stat'
+				end
+			end
+			$func('wrap', 'header center b', 'Toha')
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+			'"Ow you wake up, lasy ass." - Toha says to me'
+			'"The very disappointed client had took you here… and here you are."'
+
+			act 'get up':
+				gt 'mod_public_WC_rab_btothel', 'tables'
+			end
+		end
+	end
+	if hour >= (ztemp + stagtime) and daystart >= zzday:
+		*clr & cla
+
+		'All of the guys are drinking in the close circles or sleeping anywhere'
+		+$OpenInnerThought+'I have nothing to do here'+$CloseInnerThought
+		killvar 'zztemp'
+		act 'Go away':
+			if $metka = '4':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+			elseif $metka = '3':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			elseif $metka = '2':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+			else
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_work_whore_fun_sex_dop8_start ---------------------------------
+

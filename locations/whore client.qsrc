@@ -1,0 +1,91 @@
+# whore client
+'In the Russian Empire and later in Russia,[1][2] snokhachestvo (Russian: снохачество) referred to sexual relations between a pater familias (bolshak) of a Russian peasant household (dvor) and his daughter-in-law (snokha) during the minority or absence of his son.
+
+With a view to attracting additional workers to the household, marriages in rural Russia were frequently contracted when the groom was six or seven years old. During her husband''s minority, the bride often had to tolerate advances of her assertive father-in-law. For example, in the middle of the 19th century in Tambov Governorate, 12–13-year-old boys were often married to 16–17-year-old girls. The boys'' fathers used to arrange such marriages to take advantage of their sons'' lack of experience. Snokhachestvo entailed conflicts in the family and put moral pressure on the mother-in-law, who usually treated her son''s wife as a rival for her own husband''s affections. '
+
+
+
+
+
+
+
+
+		if mc_inventory['equipped_condoms'] > 0:
+			protect = 1
+			act 'Put on a condom, using your mouth':
+				cla
+				clr
+				*clr
+				minut += 5
+				gs 'dina', 'prezik'
+				gs 'stat'
+
+
+
+
+	elseif mc_inventory['equipped_condoms'] + mc_inventory['normal_condoms'] + mc_inventory['sabotaged_condoms'] > 0:
+		'Your <a href="exec:gt ''stol'', ''bc''">condoms</a> are hidden in one of your desk drawers.'
+	end
+
+
+
+
+
+
+
+
+				if mc_inventory['normal_condoms'] > 0:
+
+
+
+
+
+
+
+
+if $ARGS[0] = 'restroom_fuck_condom':
+	temp['condom_use'] = 1
+	cla & *clr
+	'<center><video autoplay loop <<$set_imgh>> src="images/shared/sex/public/restroom/fuck_stand1.mp4"></video></center>'
+	'Once in a stall, the man pushes you up against the wall and roughly fucks your pussy.'
+	gs 'pav_church', 'restroom_fuck_thoughts'
+end
+
+if $ARGS[0] = 'restroom_fuck_thoughts':
+	act'Wait patiently':
+		gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'no_orgasm_msg'
+		cla & *nl
+		if temp['orgasm'] = orgasm:
+			'You press your leg up on the opposing wall and let the man enjoy himself with you. He grunts, roughly shoving his cock into your cunt, and you wait patiently for him to finish.'
+		else
+			'You press your leg up on the opposing wall and let the man enjoy himself with you. He grunts, roughly shoving his cock into your cunt, and you wait patiently for him to finish, even managing to have an orgasm yourself before he does.'
+		end
+		if temp['condom_use'] = 0:
+			gs 'pav_church', 'restroom_fuck_bareback_cum'
+		else
+			gs 'pav_church', 'restroom_fuck_condom_cum'
+		end
+
+
+if $ARGS[0] = 'restroom_fuck_condom_cum':
+	gs 'cum_call', '', 'man at church', 0, 3
+	cla & *clr
+	if condom_break = 0:
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/church/supplycloset.jpg"></center>'
+		'After a few minutes, he groans softly and you feel his cock pulse within the condom inside you. You wait for him to finish before pulling away. The man pulls the rubber off and throws it in the toilet, wiping his shaft and throwing those tissues inside with it. Once finished, he pulls up his pants and departs, leaving you ' + iif($temp['approach_type'] = 'prostitute', 'with <<temp[''prost_money'']>><b>₽</b> in your hand and a well used pussy.', 'alone with nothing but a used pussy.')
+	else
+		'<center><img <<$set_imgh>> src="images/shared/sex/public/restroom/creampie1.jpg"></center>'
+		'After a few minutes, he groans softly and you feel his cock pulse within the condom inside you. You wait for him to finish before pulling away. The man pulls the rubber off and throws it in the toilet, wiping his shaft and throwing those tissues inside with it. He yanks up his pants when you feel something suddenly <i>spurt</i> out of your pussy.'
+		'Your eyes go wide as you exclaim, "Wait, did the condom-"'
+		'Before you can even finish the man departs, leaving you ' + iif($temp['approach_type'] = 'prostitute', 'with <<temp[''prost_money'']>><b>₽</b> in your hand and his cum in your pussy.', 'alone with nothing but his cum in your pussy.')
+	end
+	if $temp['approach_type'] = 'prostitute': money += temp['prost_money']
+	act'Finish':gs 'pav_church', 'restroom_sex_end'
+end
+
+
+gt 'pav_church'
+
+
+--- whore client ---------------------------------
+

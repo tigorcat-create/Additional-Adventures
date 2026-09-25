@@ -1,0 +1,515 @@
+# mod_public_WC_rab_work_TOHA
+if $ARGS[0] = 'Tohanapoi':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_TOHA'
+	$metka = 'Toha'
+	$loc_arg = 'Tohanapoi'
+	$PHloc = $loc
+	$PHloc_arg = $loc_arg
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Toha')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+	if pcs_heels - 75 < 0:
+		temp = rand(pcs_heels,100)
+		if temp <= 75:
+			if 75 - temp >= 60:
+				'I feel like a cow on ice with heels like that,'
+			elseif 75 - temp >= 50:
+				'I feel like a cow on ice with heels like that,'
+			elseif 75 - temp >= 30:
+				'I feel like walking on a tightrope on heels like that,'
+			elseif 75 - temp >= 15:
+				'It''s hard for me to walk, but somehow I keep my balance'
+			elseif 75 - temp >= 0:
+				'I don''t wear such heels confidently'
+			end
+		end
+	end
+	if hour >= 9 and hour < 21 and bglass > 0: 'Take the last order and come to me, your shift is over.'
+	if bglass = 0:
+		'Is the customer satisfied?'
+		act 'Nod "yes"':
+			cla
+			temp = rand(0,3)
+			if bcil ! 0: shtraf += temp
+			temp = rand(0,3)
+			if bcilg ! 0: shtraf += temp
+			'Okay, bring a new order'
+			temp = rand(1,5)
+			if temp = 1: broom = 1
+			if temp = 2: broom = 2
+			if temp = 3: broom = 3
+			if temp = 4: broom = 4
+			if temp = 5: broom = 5
+			temp = rand(1,6)
+			bglass = temp
+			bcil = bglass
+			bcilg = 0
+			if broom = 1: 'Here are the drinks, go to tables, after reading this stand, the guys will understand that it is them'
+			if broom = 2: 'Here are the drinks, go to billiard, after reading this stand, the guys will understand that it is them'
+			if broom = 3: 'Here are the drinks, go to balcony, after reading this stand, the guys will understand that it is them'
+			if broom = 4: 'Here are the drinks, go to office, after reading this stand, the guys will understand that it is them'
+			if broom = 5: 'Here are the drinks, go to dancefloor, after reading this stand, the guys will understand that it is them'
+			bhour = hour
+			bminut = minut
+			temp = rand(1,13)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+			act 'Stare on Toha':
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_TOHA', 'Tohanapoi'
+			end
+			gs 'mod_public_WC_rab_PHwork_events', 'start'
+			act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work', 'tables'
+			act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+			act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+			act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+			act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+		end
+		act 'Nod "No"':
+			cla
+			if bcil > 20:
+				'Of course, he waited <<bcil>> minuts. No wonder.'
+				temp = rand(bcil,100)
+				IF temp >= 70: shtraf += 1
+			end
+			if bcilg > 0:
+				'I''m sure you also broke the glasses on the way.'
+				if bcilg <= 1:
+					temp = rand(1,8)
+				elseif bcilg <= 3:
+					temp = rand(1,6)
+				elseif bcilg <= 5:
+					temp = rand(1,2)
+				end
+				IF temp = 1: shtraf += 1
+				bcilg = 0
+			end
+			if bcil = 0: 'Ok, then let''s deal with it.'
+			'Carry a new order'
+			temp = rand(1,5)
+			if temp = 1: broom = 1
+			if temp = 2: broom = 2
+			if temp = 3: broom = 3
+			if temp = 4: broom = 4
+			if temp = 5: broom = 5
+			bglass = rand(1,6)
+			bcil = bglass
+			bcilg = 0
+			if broom = 1: 'Here are the drinks, go to tables, after reading this stand, the guys will understand that it is them'
+			if broom = 2: 'Here are the drinks, go to billiard, after reading this stand, the guys will understand that it is them'
+			if broom = 3: 'Here are the drinks, go to balcony, after reading this stand, the guys will understand that it is them'
+			if broom = 4: 'Here are the drinks, go to office, after reading this stand, the guys will understand that it is them'
+			if broom = 5: 'Here are the drinks, go to dancefloor, after reading this stand, the guys will understand that it is them'
+			bhour = hour
+			bminut = minut
+			temp = rand(1,13)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+			act 'Stare on Toha':
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_TOHA', 'Tohanapoi'
+			end
+			act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work', 'tables'
+			act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+			act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+			act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+			act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+		end
+		act 'Put your eyes down':
+			'I know that look… You broke the glasses!'
+			'Another clumsiness as much as possible! Wait, I''ll make a replacement now'
+			if bcil - bglass >= rand(1,3):
+				shtraf += rand(0,1)
+			end
+			minut += ( bcil - bglass ) * 3
+			bglass = bcil
+			gs 'stat'
+			'Everything is ready, get out of here!'
+		end
+		if hour >= 9 and hour < 21:
+			cla
+			'Your shift is over, is the last customer satisfied?'
+			act 'Nod "yes"':
+				cla
+				if bcil ! 0: shtraf += rand(0,3)
+				if bcilg ! 0: shtraf += rand(0,3)
+				'Okay, your shift is over, you can go to the room'
+				'Toha quickly freed me from the BDSM gear.'
+				act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+				if shtraf >= 5:
+					act 'Ask if I can make up for my guilt today.':
+						cla
+						act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+						'Of course you can, let''s go to the subsoil. Toha smiles greedily'
+						gs 'willpower', 'prostitution', 'self', 'medium'
+						if will_cost <= pcs_willpwr:
+							act 'Go to the utility room' + $func('willpower', 'get_willcost_string'):
+								*clr & cla
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								'Going into the utility room, Toh bent me by force and began to have'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+
+								guy += 1
+								dick = 18
+								npc_dick[$npclastgenerated] = dick
+
+								stat['vaginal'] += 1
+								gs 'sweat', 'add', 5
+								gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+								gs 'stat'
+								act 'Continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+									'Toha finished on me.'
+									'"It was good, your sins are forgiven." - finally Toha slapped me on the buttocks. '
+									$cumarrnam = 'Toha'
+									spafinloc = 11
+									spafinloc = 15
+									shtraf = 0
+									gs 'cum_manage'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+								end
+							end
+						else
+							act 'Go to the utility room' + $func('willpower', 'get_willcost_string'): $noWillpower
+						end
+					end
+				end
+			end
+			act 'Nod "No"':
+				cla
+				if bcil > 20:
+					'Of course he waited <<bcil>> minutes. No wonder. '
+					temp = rand(bcil,100)
+					IF TEMP >= 70: shtraf += 1
+				end
+				if bcilg > 0:
+					'I''m sure you also broke the glasses on the way.'
+					if bcilg <= 1:
+						temp = rand(1,8)
+					elseif bcilg <= 3:
+						temp = rand(1,6)
+					elseif bcilg <= 5:
+						temp = rand(1,2)
+					end
+					IF temp = 1: shtraf += 1
+					bcilg = 0
+				end
+				if bcil = 0: 'Ok, then let''s deal with it.'
+				'Anyway, your shift is over, you can go to the room'
+				'Toha quickly freed me from the BDSM gear.'
+				act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+				if shtraf >= 5:
+					act 'Ask if I can make up for my guilt today.':
+						cla
+						'Of course you can, let''s go to the utility room. Toha smiles greedily'
+						gs 'willpower', 'prostitution', 'self', 'medium'
+						if will_cost <= pcs_willpwr:
+							act 'Go to the utility room' + $func('willpower', 'get_willcost_string'):
+								*clr & cla
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								'Going into the utility room, Toha bent me by force and began to have'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+
+								guy += 1
+								dick = 18
+								npc_dick[$npclastgenerated] = dick
+
+								stat['vaginal'] += 1
+								gs 'sweat', 'add', 5
+								gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+								gs 'stat'
+								act 'Continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+									'Toha finished on me.'
+									'"It was good, your sins are forgiven." - finally Toha slapped me on the buttocks. '
+									$cumarrnam = 'Toha'
+									spafinloc = 11
+									spafinloc = 15
+									shtraf = 0
+									gs 'cum_manage'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+								end
+							end
+						else
+							act 'Go to the utility room' + $func('willpower', 'get_willcost_string'): $noWillpower
+						end
+					end
+				end
+			end
+		end
+	end
+
+	if PHpin = 2:
+		act 'please remove the pins from my tits': gt 'mod_public_WC_rab_PHwork_events_4', 'unpin'
+	end
+
+	act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work', 'tables'
+	act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+	act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+	act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+	act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+
+	if (rand(1,15) + ryska) >= 20 and shtraf < 10 and rand(1,4) = 1:
+		*clr & cla
+
+		'"There is a table with own waitress request" - Toha said'
+		'"I think you can handle this"'
+		if phwork = 1: '"If you agreed, I will unlock you"'
+
+		act 'Agree.':
+			cla
+			'"Nice"'
+			if phwork = 1: 'He unlocks me'
+			'Now, undress and go serv them. yes-yes, this is a rule. Thhe "own waitress" is always naked'
+			minut += 5
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			$clothingworntype = 'nude'
+			gs 'stat'
+			solotable = 1
+			act 'Undress and go to the table': gt 'mod_public_WC_rab_PHwork_solotable', 'start'
+		end
+	end
+
+	temp = ( hour - bhour ) * 60 + ( minut - bminut )
+	if temp >= 15 and bglass > 0:
+		'You have been placing this order for more than <<temp>> minuts. Why so long?'
+		if bglass ! bcil:
+			'You broke the glasses!'
+			'Another clumsiness as much as possible! Wait, I''ll make a replacement now'
+			if bcil - bglass >= rand(1,3):
+				shtraf += rand(0,1)
+			end
+			minut += ( bcil - bglass ) * 3
+			bglass = bcil
+			gs 'stat'
+			'Everything is ready, get out of here!'
+		end
+	elseif  bglass > 0:
+		if bglass ! bcil:
+			'You broke the glasses!'
+			'Another clumsiness as much as possible! Wait, I''ll make a replacement now'
+			if bcil - bglass >= rand(1,3):
+				shtraf += rand(0,1)
+			end
+			minut += ( bcil - bglass ) * 3
+			bglass = bcil
+			gs 'stat'
+			'Everything is ready, get out of here!'
+		else
+			if broom = 1: 'Another with multiple sclerosis? Forgot where to go? You need to go to the room tables. Come on fast!'
+			if broom = 2: 'Another with multiple sclerosis? Forgot where to go? You need to go to the room billiard. Come on fast!'
+			if broom = 3: 'Another with multiple sclerosis? Forgot where to go? You need to go to the room balcony. Come on fast!'
+			if broom = 4: 'Another with multiple sclerosis? Forgot where to go? You need to go to the room office. Come on fast!'
+			if broom = 5: 'Another with multiple sclerosis? Forgot where to go? You need to go to the room dancefloor. Come on fast!'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'tohachystota':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_toha'
+	$metka = 'Toha'
+	$loc_arg = 'tohachystota'
+	$PHloc = $loc
+	$PHloc_arg = $loc_arg
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Toha')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/toha.jpg"></center>'
+	if bhour >= hour:
+		if bminut > minut:
+			bhour = hour
+			bminut = minut
+			if solotable ! 1:
+				'Why you didn''t come to me at <<bhour>>:<<bminut>>?'
+				'You MUST come to me every 2 hours!'
+				temp = hour - bhour
+				if temp >= 10:
+					shtraf += 6
+				elseif temp >= 8:
+					shtraf += rand(5,6)
+				elseif temp >= 6:
+					shtraf += rand(4,5)
+				elseif temp >= 4:
+					shtraf += rand(2,5)
+				elseif temp >= 2:
+					shtraf += rand(1,3)
+				elseif temp >= 0:
+					shtraf += rand(0,1)
+				end
+			else
+				solotable = 0
+			end
+		end
+	else
+		bhour = hour
+		bminut = minut
+	end
+
+	temp = rand (1,10) + ryska
+	if temp >= 10 and bcil = 0:
+		'There is a note and keys on it'
+		act 'Take the note and the keys':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/key.jpg"></center>'
+			if ryska <= 5:
+				bcil = rand(4,20)
+			elseif ryska <= 20:
+				bcil = rand(4,30)
+			else
+				bcil = rand(4,37)
+			end
+			'IN room <<bcil>>  you need to clean'
+			act 'Continue': gt 'mod_public_WC_rab_work_chystota', 'Toha'
+		end
+	end
+
+	if bcilg ! 0:
+		act 'Tell Toha about the number plate':
+			cla
+			bcil = bcilg
+			bcilg = 0
+			'Oh, yes, good. Here are the keys, clean room <<bcil>>.'
+			'Go, work!'
+			act 'Continue': gt 'mod_public_WC_rab_work_chystota', 'Toha'
+		end
+	end
+
+	if bcil = 0:
+		 act 'Ask Toha about room service job':
+			cla
+			temp = rand (1,10) + ryska
+			if temp >= 10:
+				bcil = rand(4,37)
+				'Oh, yes, it''s good that you asked, because I forgot. Here are the keys, clean room <<bcil>>.'
+				'Go, work!'
+				act 'Continue': gt 'mod_public_WC_rab_work_chystota', 'Toha'
+			else
+				'No, orders did not appear'
+				act 'Continue': gt 'mod_public_WC_rab_work_chystota', 'Toha'
+			end
+		end
+	end
+	if bcil = 1:
+		act 'I have cleaned the room, here are the keys':
+			cla
+			'Okay, Betsy, good.'
+			bcil = 0
+			if shtraf > 0: straf -= 1
+			act 'continue':	gt 'mod_public_WC_rab_work_TOHA', 'tohachystota'
+		end
+	end
+
+	if PHpin = 2:
+		act 'please remove the pins from my tits': gt 'mod_public_WC_rab_PHwork_events_4', 'unpin'
+	end
+
+	if bcil >= 4: act 'Go to the hotel': minut += 4 & gt 'mod_public_WC_rab_work_chystota', 'hotel'
+	act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+	act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+	act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+	act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'office'
+	act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+
+	if ( rand(1,15) + ryska ) >= 20 and shtraf < 10 and rand(1,4) = 1:
+		*clr & cla
+
+		'"There is a table with own waitress request" - Toha said'
+		'"I think you can handle this"'
+		if phwork = 1: '"If you agreed, I will unlock you"'
+
+		act 'Agree.':
+			cla
+			'"Nice"'
+			if phwork = 1: 'He unlocks me'
+			'Now, undress and go serv them. yes-yes, this is a rule. Thhe "own waitress" is always naked'
+			minut += 5
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			$clothingworntype = 'nude'
+			gs 'stat'
+			solotable = 1
+			act 'Undress and go to the table': gt 'mod_public_WC_rab_PHwork_solotable', 'start'
+		end
+	end
+
+
+	if hour >= 9 and hour < 21:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/toha.jpg"></center>'
+		'Betsy, your shift is over, you can go to the room'
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+		if shtraf >= 5:
+			act 'Ask if I can make up for my current guilt at work?':
+				cla
+				'Of course you can, let''s go to the utility room. - Toha smiles greedily '
+				act 'No, thanks.':
+					cla
+					act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+				end
+				gs 'willpower', 'prostitution', 'self', 'medium'
+				if will_cost <= pcs_willpwr:
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						'Going into the utility room, Toha bent me by force and began to have'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						guy += 1
+						dick = 18
+						npc_dick[$npclastgenerated] = dick
+
+						stat['vaginal'] += 1
+						gs 'sweat', 'add', 5
+						gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+						gs 'stat'
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+							'Toha finished on me.'
+							'"It was good, your sins are forgiven." - finally Toha slapped me on the buttocks.'
+							spafinloc = 11
+							gs 'cum_manage'
+							spafinloc = 15
+							gs 'cum_manage'
+							shtraf = 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+						end
+					end
+				else
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			end
+			if shtraf > 10:
+				cla
+				'Betsy, you''ve done so many stupid things that even I can''t cover you.'
+				act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+			end
+		end
+	end
+
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+--- mod_public_WC_rab_work_TOHA ---------------------------------
+

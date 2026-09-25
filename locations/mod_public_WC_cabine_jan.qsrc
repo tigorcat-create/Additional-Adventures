@@ -1,0 +1,161 @@
+# mod_public_WC_cabine_jan
+if $ARGS[0] = 'start':
+	*clr & cla
+	menu_off = 1
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/finish_round.jpg"></center>'
+	if pcs_sleep <= 20:
+		'I''m tired and fall asleep hanging on the door.'
+		wait 500
+		temp = 60 - minut
+		minut += temp
+		if temp > 30:
+			pcs_sleep += 8
+		else
+			pcs_sleep += 4
+		end
+		'I woke up cus someone slaps my face'
+	end
+	gs 'pain', 2, 'cheeks', 'slap'
+	gs 'stat'
+	'-Girl! Girl wake up!!! - voice from guy, who is slaping me'
+	*nl
+	'-She just whore lets throw her out - the other voice'
+	*nl
+	'-I don''t want to do it for free!'
+
+	act'pretend to be asleep':
+		cla
+		'-She inflated with drugs or something…'
+		'-Well, I think you are right.'
+		killvar 'pliashka'
+		ranok = 1
+		'They take me and go somewhere'
+		act 'continue': gt 'mod_public_WC_citybasement_rug', 'endrape'
+	end
+
+	act 'open eyes':
+		cla
+		'Ow, hello there… Do you need some help?'
+		act 'no, pervert':
+			'Okey, just hang some more time'
+			act 'wait, janitor!!! I need help!':
+				gt 'mod_public_WC_cabine_jan', 'sex'
+			end
+			act 'ok':
+				cla
+				if hour = 5: minut += 121
+				if hour = 6: minut += 61
+				pcs_sleep += 15
+				gs 'stat'
+
+				if hour <= 6 or hour >= 23:
+					act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slavenight'
+				else
+					act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slaveday'
+				end
+			end
+		end
+		act 'yes, janitor, please':
+			*clr & cla
+			gt 'mod_public_WC_cabine_jan', 'sex'
+		end
+	end
+end
+
+if $ARGS[0] = 'sex':
+	*clr & cla
+	menu_off = 1
+	gs 'npcgeneratec', 0, 'janitor', rand(10,25)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	'First of all, we are sanitation engineers, we are not janitors!'
+	'Also you are definitely whore in a trouble.'
+	'We will help you if you provide your service to us'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/0.mp4"></video></center>'
+	act 'agree':
+		*clr & cla
+		'They hang me out, and unbind.'
+		'I start to blow a janitor…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/bj_start.mp4"></video></center>'
+		gs 'arousal', 'bj', 10, 'sub', 'unknown'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'I suck his <<dick>> cm dick…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/bj.mp4"></video></center>'
+			gs 'arousal', 'bj', 10, 'sub', 'unknown'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'Ok, girl, now let''s check your pussy…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/vag.mp4"></video></center>'
+				gs 'arousal', 'vaginal', 10, 'sub', 'unknown'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'and your ass too…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/ass_start.mp4"></video></center>'
+					gs 'arousal', 'anal', 10, 'sub', 'unknown'
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						'Nice ass…'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/ass.mp4"></video></center>'
+						gs 'arousal', 'anal', 10, 'sub', 'unknown'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'Come here Serg, join!'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/110 ('+rand(1,2)+').mp4"></video></center>'
+							gs 'arousal', 'anal', 10, 'sub', 'unknown'
+							gs 'arousal', 'vaginal', 10, 'sub', 'unknown'
+							minut -= 10
+							gs 'stat'
+							act 'continue':
+								*clr & cla
+								'They cum all over my face'
+								'"girl, it was good, now you can go"'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/108 morning cleaners to rescue but pay/cum2.mp4"></video></center>'
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+								gs 'cum_call', 'face', $npclastgenerated, 0
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								menu_off = 0
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'exit the toilet':
+									gs 'arousal', 'end'
+									gs 'stat'
+									gt 'pav_commercial'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	act 'no':
+		cla
+		'Goodbye, girl…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/finish_round.jpg"></center>'
+		act 'Goodbye':
+			cla
+			if hour = 5: minut += 121
+			if hour = 6: minut += 61
+			pcs_sleep += 15
+			gs 'stat'
+
+			if hour <= 6 or hour >= 23:
+				act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slavenight'
+			else
+				act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slaveday'
+			end
+		end
+	end
+end
+if npc_loyality >= 70   and npc_loyality  <  1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+--- mod_public_WC_cabine_jan ---------------------------------
+

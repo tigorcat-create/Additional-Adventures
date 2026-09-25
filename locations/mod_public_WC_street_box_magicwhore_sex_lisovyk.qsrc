@@ -1,0 +1,2004 @@
+# mod_public_WC_street_box_magicwhore_sex_lisovyk
+if $ARGS[0] = 'start':
+	*clr & cla
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/1 ('+rand(1,1)+').mp4"></video></center>'
+
+	menu_off = 0
+	$location_type = 'secluded'
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	$loc_arg = 'start'
+	gs 'stat'
+	phcoordY = 0
+	phcoordX = 0
+	rope = rand(100,200)
+	cultistrope = 1
+
+	act 'look around': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+end
+
+
+
+if $ARGS[0] = 'officer':
+	*clr & cla
+	phchoke = 1
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/2 wandering ('+rand(1,2)+').mp4"></video></center>'
+	'I see the Officer, at last I find him!'
+
+	gs 'npcgeneratec', 0, 'LIGHT FORCES OFFICER', rand(25,45)
+	gs 'boyStat', $npclastgenerated
+	npc_dick[$npclastgenerated] = rand(18,28)
+	$cum1 = rand(80,100)
+
+	act 'Sit at him with open mouth':
+		*clr & cla
+		'LIGHT FORCE OFFICER: "Lisovyk!!! Finally!!! I am sorry, I need to use you to refill my endurance"'
+		'He grabs my horns and putt his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/4 start ('+rand(1,1)+').mp4"></video></center>'
+
+
+		temp = 6 + ( stat['bj'] / 10 ) + rand(3,8)
+		$cum1 -= rand(5,temp)
+
+		gs 'arousal', 'bj', rand(5,10)
+		gs 'stat'
+		gs 'mod_public_WC_street_sex', 'man'
+
+
+		act 'continue':
+			phspeed = 3
+			phsex = 102
+			gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+		end
+	end
+end
+
+if $ARGS[0] = '16sex':
+	!*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+	if phsex = 101:
+		if phspeed = 1:
+			'I keep his dick tight between my tits…'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/tj ('+rand(1,1)+').mp4"></video></center>'
+			stat['titjob'] += rand(0,1)
+
+			temp = 7 + ( stat['titjob'] / 10 )  + rand(3,8)
+			$cum1 -= rand(0,temp)
+
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			gs 'arousal', 'titjob', rand(5,10)
+			gs 'stat'
+		elseif phspeed = 2:
+			'He is fucking my tits'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/tj ('+rand(1,1)+').mp4"></video></center>'
+
+			stat['titjob'] += rand(0,1)
+
+			temp = 7 + ( stat['titjob'] / 10 )  + rand(3,8)
+			$cum1 -= rand(0,temp)
+
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			gs 'arousal', 'titjob', rand(5,10)
+			gs 'stat'
+		end
+	elseif phsex = 102:
+		if phspeed = 1:
+			!! START
+			'I put his dick in my mouth'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+			phspeed += 1
+			temp = 1 + ( stat['bj'] / 10 )
+			$cum1 -= rand(5,temp)
+			*nl
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'
+		elseif phspeed = 2:
+			'I am sucking him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+			temp = 6 + ( stat['bj'] / 10 ) + phclientforce * rand(5,10)
+			$cum1 -= rand(5,temp)
+			*nl
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			if stat['bj'] >= 150:
+				act 'Face fuck him':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+				end
+			else
+				act 'Face fuck him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		elseif phspeed = 3:
+			!! ff
+			'I am facefucking him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/4 ('+rand(1,2)+').mp4"></video></center>'
+			temp = 12 + ( stat['bj'] / 10 ) + rand(3,8)
+			$cum1 -= rand(5,temp)
+
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			act 'stop the facefucking':
+				*clr & cla
+				phspeed = 2
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		end
+
+		if phspeed = 2:
+			if stat['bj'] >= 40:
+				act 'lick the cock':
+					!*clr & cla
+					cla
+					'I am licking up and down his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/lick ('+rand(1,1)+').mp4"></video></center>'
+
+					temp = ((stat['hj'] + stat['hj'] + stat['bj'])/ 30 )
+					$cum1 -= rand(0,temp)
+					*nl
+
+
+					gs 'arousal', 'bj', rand(5,10)
+					gs 'stat'
+					gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+
+
+					act 'keep sucking':
+						*clr & cla
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+					end
+				end
+			else
+				act 'lick the top': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		end
+
+		if phspeed = 2:
+			if stat['bj'] >= 40:
+				act 'lick the balls':
+					!*clr & cla
+					cla
+					phclientfunnow += 2
+					otemp = 1
+
+					temp = ( stat['bj'] / 15 )
+					$cum1 -= rand(0,temp)
+					gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+					gs 'arousal', 'bj', rand(5,10)
+					gs 'stat'
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/2 bj/balls ('+rand(1,1)+').mp4"></video></center>'
+
+					act 'keep sucking':
+						*clr & cla
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+					end
+				end
+			elseif stat['bj'] < 40:
+				act 'lick the balls': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		end
+	elseif phsex = 103:
+		if phspeed = 1:
+			!! START
+			phspeed +=1
+			'I am teasing him'
+			*nl
+			'he penetrates my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/3 vag/wait ('+rand(1,1)+').mp4"></video></center>'
+			temp = 5 + ( stat['vaginal'] / 10 ) + phclientforce * rand(5,10)
+			$cum1 -= rand(15,temp)
+			*nl
+			gs 'arousal', 'vaginal', rand(3,5)
+			gs 'stat'
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+		elseif phspeed = 2:
+			temp = 20 + ( stat['vaginal'] / 10 ) + phclientforce * rand(5,10)
+			$cum1 -= rand(15,temp)
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/3 vag/vag behind ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			*nl
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			act 'change position':
+				*clr & cla
+				phspeed = 3
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		elseif phspeed = 3:
+			temp = 20 + ( stat['vaginal'] / 10 ) + phclientforce * rand(5,10)
+			$cum1 -= rand(15,temp)
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/3 vag/vag stand ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			*nl
+			gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+			act 'change position':
+				*clr & cla
+				phspeed = 2
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		end
+	end
+
+	!! gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+	if phsex >= 100:
+		act 'continue':
+			*clr & cla
+			gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+		end
+
+		if phsex ! 101:
+			act 'tits fuck him':
+				*clr & cla
+				phsex = 101
+				phspeed = 1
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		end
+		if phsex ! 102:
+			act 'blow him':
+				*clr & cla
+				phsex = 102
+				phspeed = 1
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		end
+		if phsex ! 103:
+			act 'fuck him':
+				*clr & cla
+				phsex = 103
+				phspeed = 1
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '16sex'
+			end
+		end
+	end
+
+
+
+	if $cum1 < 10:
+		*clr & cla
+		'He pulls out his dick, jerking it and point it on my face '
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/4 cum/cumonface ('+rand(1,1)+').mp4"></video></center>'
+
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		phtemp = 1
+		act 'clean the dick':
+			*clr
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/4 cum/cleandick ('+rand(1,1)+').mp4"></video></center>'
+			if otemp = 1:
+				'OFFICER: "Nice girl"'
+				PH_pay_PHmwrstat += 2
+				minut += 3
+				gs 'stat'
+			end
+			otemp += 1
+		end
+
+		otemp = 1
+		act 'feel the cum taste':
+			*clr
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/4 cum/feeldataste ('+rand(1,1)+').mp4"></video></center>'
+			if otemp = 1:
+				'He is smiling looking at me'
+				PH_pay_PHmwrstat += 2
+				minut += 3
+				gs 'stat'
+			end
+			otemp += 1
+		end
+
+
+		act 'Take him out of the forest':
+			*clr & cla
+			minut += 15
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/2 wandering ('+rand(1,2)+').mp4"></video></center>'
+
+			'As we approched my starting place in the forest, few cultists are waiting the Officer'
+			'Officer slap my ass: "Bye girl, thanks" - and go with cultists'
+			*nl
+			'VOICE FROM NOWHERE: "Task is completed"'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+
+
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'Lisovyk timer':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+
+	if (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		*clr & cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+
+		!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/2 wandering ('+rand(1,2)+').mp4"></video></center>'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+
+		'VOICE FROM NOWHERE: "No time left, our spell are going to end soon, come back!!!"'
+
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		If phchoke = 0:
+			PH_pay_PHmwrstat = 0
+			PH_full_pay = PH_full_pay / 3
+			'VOICE FROM NOWHERE: "You failed…"'
+		end
+
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	end
+end
+
+
+
+if $ARGS[0] = 'runrun':
+	*clr & cla
+	$loc_arg = 'runrun'
+	gs 'stat'
+	phi = 0
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/2 wandering ('+rand(1,2)+').mp4"></video></center>'
+	'Cuz I am Lisovyk, I feel where is North'
+	*nl
+	'<b>I have time till <<phquestH>>:<<phquestM>></b>'
+
+	if zashmorg = 1 and pcs_magik > 0:
+		'My Whore collar produces a beam of light… even if I rotate myself the beam direction is constant.'
+		act 'go in the beam''s direction':
+			minut += rand(30,500)
+			gs 'stat'
+			gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'officer'
+		end
+	end
+
+	if (phoffX - phcoordX) * (phoffX - phcoordX) + (phoffY - phcoordY) * (phoffY - phcoordY) <= 200:
+		If phcoordX > phoffX:
+			'I need to go West'
+		elseIf phcoordX < phoffX:
+			'I need to go East'
+		end
+
+		If phcoordY > phoffY:
+			'I need to go South'
+		elseIf phcoordY < phoffY:
+			'I need to go North'
+		end
+	else
+		'I lost the trail to the Officer'
+	end
+
+
+
+	*nl
+	act 'go North':
+		phcoordY += 1
+		minut += rand(15,15)
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'run2'
+	end
+	act 'go South':
+		phcoordY -= 1
+		minut += rand(15,15)
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'run2'
+	end
+	act 'go West':
+		phcoordX -= 1
+		minut += rand(15,15)
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'run2'
+	end
+	act 'go East':
+		phcoordX += 1
+		minut += rand(15,15)
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'run2'
+	end
+
+
+	if zvit ! 0:
+		'I know redneck''s house on east.'
+	end
+
+	*nl
+	'I know deepest woods on north.'
+	*nl
+	'Some path goes from south to west'
+
+	act 'go anywhere':
+		temp = rand(1,2)
+		if temp = 1:
+			phcoordX += rand(-1,1)
+		else
+			phcoordY += rand(-1,1)
+		end
+
+		minut += rand (15,25)
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'run2'
+	end
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+end
+
+if $ARGS[0] = 'run2':
+	*clr & cla
+	gs 'stat'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/16 Lisovyk/1 start/2 wandering ('+rand(1,2)+').mp4"></video></center>'
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+
+	killvar 'temptemp'
+	temptemp = 40 + phcoordY * 10
+
+	temp = rand(0,100)+ rand(0,pcs_observ)/2
+	if temp <= 20:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/maniakd/unis.mp4"></video></center>'
+		'I set on a ground for a moment to rest, suddenly from nowhere some maniak catch me'
+		if hour <= 5 or hour >= 22:
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak'
+		else
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniakd'
+		end
+	elseif temp <= temptemp:
+		killvar 'temptemp'
+
+
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+	elseif temp <= 50:
+		if hour <= 5 or hour >= 22:
+			'Something grabbed my legs'
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beasthentai'
+		else
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beastd2'
+		end
+	elseif temp <= 80:
+		act 'I wander in the forest': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+	elseif temp <= 100:
+		if nkolo = 0:
+			'I found a mysterious obelisk'
+			if pcs_magik > 0: 'I feel magic in it'
+			nkolo = 1
+		end
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/obelisk.jpg"></center>'
+		'There is a mysterious obelisc'
+
+		act 'I wander in the forest': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+
+		act 'touch the obelisk' :
+			cla
+			'In a blink of eye everything changes around me'
+			act 'look around':
+				phcoordX = rand(-5,5)
+				phcoordY = rand(-5,5)
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+			end
+		end
+	else
+		killvar 'temptemp'
+
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+	end
+
+	if phcoordX = phoffX and phcoordY = phoffY:
+		gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'officer'
+	end
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+end
+
+
+
+if $ARGS[0] = 'maniak':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	gs 'stat'
+	'Man approches me.'
+	'I see something unhuman in his eyes…'
+
+
+	temp = rand (1,2)
+	if temp = 1:
+		'Stranger takes some branch and grins'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick1.mp4"></video></center>'
+		act 'stare terrified':
+			'He use this branch to rub my pussy…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick2.mp4"></video></center>'
+
+			'Sometimes his disguise disappears and I see his real form…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/monster.mp4"></video></center>'
+
+			gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+			gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+			gs 'pain', 5, 'labia', 'burn'
+			gs 'pain', 5, 'breasts', 'slap'
+			gs 'pain', 5, 'nipples', 'slap'
+			gs 'stat'
+			'At last he put the branch aside'
+			act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak2'
+		end
+	else
+		'Stranger grins and starts to put all his focus on my tits…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/tits1.mp4"></video></center>'
+		gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+		gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+		gs 'pain', 5, 'breasts', 'burn'
+		gs 'pain', 5, 'nipples', 'burn'
+		gs 'pain', 5, 'breasts', 'slap'
+		gs 'pain', 5, 'nipples', 'slap'
+		gs 'pain', 5, 'breasts', 'pinch'
+		gs 'pain', 5, 'nipples', 'pinch'
+		gs 'pain', 5, 'breasts', 'pull'
+		gs 'pain', 5, 'nipples', 'twist'
+		gs 'pain', 5, 'nipples', 'pull'
+		gs 'stat'
+
+		'At last he stops'
+		act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak2'
+	end
+end
+
+if $ARGS[0] = 'maniak2':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	gs 'stat'
+
+	if $ztemp = 'cultist' or $ztemp = 'maniak':
+		'Then <<$ztemp>> pulls me down and retied to a tree…'
+	else
+		'Then man pulls me down and retied to a tree…'
+	end
+	*nl
+	minut += 5
+	'He went somewhere but come back in 5 minutes with another branch with a duct-taped dildo! He starts to fuck me with this tool…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_start.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'BDSM', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'vaginal_dildo', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+	gs 'pain', 2, 'labia', 'burn'
+	stat['vaginal'] += 1
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'When he finished to play with my pussy he forced me to suck that dildo.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_bj.mp4"></video></center>'
+		gs 'arousal', 'bj', 5, 'bound', 'beast', 'rough', 'rape'
+		stat['bj'] += 1
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'"Now, you are ready for me…"'
+			*nl
+			'He changes my position, and tied be another way.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_start.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+			stat['vaginal'] += 1
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_2.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,20), 'bound', 'beast', 'rough', 'rape'
+				gs 'stat'
+				if pcs_magik > 0:
+					'Sometimes his disguise disappears and I see his real form…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_monstr_3.mp4"></video></center>'
+				end
+				act 'continue':
+					*clr & cla
+					'He groans and this is stops…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_fin.mp4"></video></center>'
+
+					if rand(1,3) ! 1:
+						gs 'npcgeneratec', 0, 'cultist', 420
+						gs 'boyStat', $npclastgenerated
+					else
+						gs 'npcgeneratec', 0, 'maniak', 42
+						gs 'boyStat', $npclastgenerated
+					end
+
+
+					guy += 1
+					rape += 1
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+
+
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+					if pcs_magik > 0:
+						$ztemp = 'cultist'
+						gs 'cuminsidereact', 'cultist'
+
+					else
+						$ztemp = 'maniak'
+						gs 'cuminsidereact', 'maniak'
+					end
+
+					stat['vaginal'] += 1
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'wait':
+						*clr & cla
+						'<<$ztemp>> silently makes fire and started to do meat.'
+						*nl
+						'then <<$ztemp>> lights some candles and forced me to sit me near the fire'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Eat.mp4"></video></center>'
+						act 'say nothing':
+							cla
+							temp = rand(1,3)
+							if temp <= 2:
+								'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+								killvar 'ztemp'
+								act 'wait' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+							else
+								'"Well, next round!"'
+								act 'Ow, No!' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak2'
+							end
+						end
+						act 'ask to eat':
+							'<<$ztemp>> threw few bones to me.'
+							pcs_health += 5
+							fat += 2
+							pcs_energy += 25
+							if pcs_hydra >= 100:
+								pcs_hydra += 5
+							else
+								pcs_hydra += 10
+							end
+							cumspclnt = 1
+							gs 'cum_cleanup'
+							pcs_breath = 0
+							gs 'food', 'aftermeal'
+							gs 'stat'
+
+							'I enjoy the nicely cooked meat'
+
+							if $ztemp = 'cultist' and $wombthfath ! 'cultist':
+								act 'Ask him What cultist is he?':
+									cla
+									'It''s not your business… Ok, witch, now I am sure. I can give you a deal.'
+									*nl
+									'Do you want to be free? I can do it, but I request a payment, I will not tell what the payment is… Are you agree?'
+									act 'agree':
+										cla
+										'"Perfect"'
+										'He kiss me.. and I feel how his tounge go deeper in my body, it''s hard to breathe, but in a few minuts everything stops.'
+										'Then <<$ztemp>> untied me and we walk to the edge of the forest'
+										pcs_magik += 500
+										ztemp = 0
+										mesec = 0
+										focH = 0
+										EggRH = 0
+										Ovulate = 0
+										UnfertEgg = 0
+										lutH = 0
+										RecovH = 0
+										preg = 1
+										cycle = 5
+										!!Setting implantation date for the due date calculation
+										lastovulation = daystart - 5
+										pregChem = 150
+										$wombthfath = 'cultist'
+										babyembryo += 1
+										if fertegg = 0:
+											nextBaby = arrsize('$ChildFath')
+											Temppolkid = rand(0,1)
+											polkid[nextBaby] = Temppolkid
+											$kidname[nextBaby] = 'unborn'
+											kidage[nextBaby] = 0
+											daykid[nextBaby] = 0
+											monthkid[nextBaby] = 0
+											yearkid[nextBaby] = 0
+											Babyptype[nextBaby] = 0
+											$ChildFath[nextBaby] = 'cultist'
+											$ChildThFath[nextBaby] = 'cultist'
+											hairkid[nextBaby] = rand(0, 3)
+											eyeskid[nextBaby] = rand(0, 3)
+											ChildConType[nextBaby] = 0
+											Babyptype[nextBaby] = 1
+										else
+											gs 'medical_din', 'remove_preg'
+											knowpregloss = 2
+											if FertEgg > 0: FertEgg = 0
+											nextBaby = arrsize('$ChildFath')
+											Temppolkid = rand(0,1)
+											polkid[nextBaby] = Temppolkid
+											$kidname[nextBaby] = 'unborn'
+											kidage[nextBaby] = 0
+											daykid[nextBaby] = 0
+											monthkid[nextBaby] = 0
+											yearkid[nextBaby] = 0
+											Babyptype[nextBaby] = 0
+											$ChildFath[nextBaby] = 'cultist'
+											$ChildThFath[nextBaby] = 'cultist'
+											hairkid[nextBaby] = rand(0, 3)
+											eyeskid[nextBaby] = rand(0, 3)
+											ChildConType[nextBaby] = 0
+											Babyptype[nextBaby] = 1
+										end
+										gs 'arousal_funcs', 'stretch', 'oral', 10
+										stat['swallow'] += 1
+										rape += 1
+										stat['bj'] += 10
+
+										gs 'arousal', 'kiss', 5, 'beast', 'rough', 'rape'
+										gs 'arousal', 'bj', 5, 'beast', 'rough', 'rape'
+										gs 'pain', 8, 'throat', 'burn'
+										gs 'pain', 8, 'throat', 'pierce'
+										gs 'pain', 6, 'throat', 'stretch'
+										gs 'pain', 7, 'throat', 'choke'
+										gs 'pain', 6, 'throat', 'tear'
+										gs 'stat'
+
+
+										act 'continue':
+											gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'start'
+										end
+									end
+									act 'no':
+										cla
+										'Well, unfortunately, for this I can''t force you. Then, good night.'
+										act 'wait':
+											killvar 'ztemp'
+											gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+										end
+									end
+								end
+							end
+
+							act 'Tell him intresting story of your life':
+								cla
+								'Hmm, it looks like you have intresting life. And I think you have money. I can make you free, if you pays me 15000 <b>₽</b>'
+								mood += 5
+								if karta + bankDebtLimit >= 15000:
+									act 'agree to pay':
+										'I have money on my card, is it enought for you?'
+										*nl
+										'Yes, give me your card'
+										act 'Give him card to pay 15000 <b>₽</b> (card)':
+											karta -= 15000
+											gs 'stat'
+											if karta + bankDebtLimit >= 1000: karta -= 1000
+											if karta + bankDebtLimit >= 5000: karta -= 5000
+											gs 'stat'
+											'He untied me and go away'
+											act 'run': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk1', 'runrun'
+										end
+									end
+								end
+								act 'I don''t have money':
+									*clr & cla
+									temp = rand(1,3)
+									if temp <= 2:
+										'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+										ztemp = 0
+										act 'wait' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+									else
+										'"Well, next round!"'
+										act 'Ow, No!' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak2'
+									end
+								end
+							end
+							act 'ask him to make you free':
+								*clr & cla
+								'ha-ha, definitely not!'
+								temp = rand(1,3)
+								if temp <= 2:
+									'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+									ztemp = 0
+									act 'wait' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+								else
+									'"Well, next round!"'
+									act 'Ow, No!' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak2'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'maniakd':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	ztemp = 0
+
+	'Man approches me.'
+	'I see something unhuman in his eyes…'
+
+
+	temp = rand (1,2)
+	if temp = 1:
+		'Stranger takes some branch and grins'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick1.mp4"></video></center>'
+		act 'stare terrified':
+			'He use this branch to rub my pussy…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick2.mp4"></video></center>'
+			if pcs_magik > 0:
+				'Sometimes his disguise disappears and I see his real form…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/monster.mp4"></video></center>'
+			end
+			gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+			gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+			gs 'pain', 5, 'labia', 'burn'
+			gs 'pain', 5, 'breasts', 'slap'
+			gs 'pain', 5, 'nipples', 'slap'
+			gs 'stat'
+			'At last he put the branch aside'
+			act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniakd2'
+		end
+	else
+		'Stranger grins and starts to put all his focus on my tits…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/tits1.mp4"></video></center>'
+		'At last he stops'
+		act 'wait':
+			gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniakd2'
+		end
+
+		gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+		gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+		gs 'pain', 5, 'breasts', 'burn'
+		gs 'pain', 5, 'nipples', 'burn'
+		gs 'pain', 5, 'breasts', 'slap'
+		gs 'pain', 5, 'nipples', 'slap'
+		gs 'pain', 5, 'breasts', 'pinch'
+		gs 'pain', 5, 'nipples', 'pinch'
+		gs 'pain', 5, 'breasts', 'pull'
+		gs 'pain', 5, 'nipples', 'twist'
+		gs 'pain', 5, 'nipples', 'pull'
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = 'maniakd2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	gs 'stat'
+
+	if $ztemp = 'cultist' or $ztemp = 'maniak':
+		'Then <<$ztemp>> pulls me down and retied to a tree…'
+	else
+		'Then man pulls me down and retied to a tree…'
+	end
+	*nl
+	minut += 5
+	'He went somewhere but come back in 5 minutes with another branch with a duct-taped dildo! He starts to fuck me with this tool…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_start.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'BDSM', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'vaginal_dildo', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+	gs 'pain', 2, 'labia', 'burn'
+	stat['vaginal'] += 1
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'When he finished to play with my pussy he forced me to suck that dildo.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_bj.mp4"></video></center>'
+		gs 'arousal', 'bj', 5, 'bound', 'beast', 'rough', 'rape'
+		stat['bj'] += 1
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'"Now, you are ready for me…"'
+			*nl
+			'He changes my position, and tied be another way.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_start.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+			stat['vaginal'] += 1
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_2.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,20), 'bound', 'beast', 'rough', 'rape'
+				gs 'stat'
+				if pcs_magik > 0:
+					'Sometimes his disguise disappears and I see his real form…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_monstr_3.mp4"></video></center>'
+				end
+				act 'continue':
+					*clr & cla
+					'He groans and this is stops…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_fin.mp4"></video></center>'
+
+					if pcs_magik > 0:
+						gs 'npcgeneratec', 0, 'cultist', 420
+						gs 'boyStat', $npclastgenerated
+					else
+						gs 'npcgeneratec', 0, 'maniak', 42
+						gs 'boyStat', $npclastgenerated
+					end
+
+
+					guy += 1
+					rape += 1
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+
+
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+					if rand(1,3) ! 1:
+						$ztemp = 'cultist'
+						gs 'cuminsidereact', 'cultist'
+
+					else
+						$ztemp = 'maniak'
+						gs 'cuminsidereact', 'maniak'
+
+					end
+
+					stat['vaginal'] += 1
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<<ztemp>> wore his pants, slap my ass few times and go away…'
+					act 'wait': ztemp = 0 & gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'beastd':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+
+	ztemp = 0
+	'Monster starts to fuck me as he used to do it, I think I am not a first girl, he has fucked here…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/sex_start.mp4"></video></center>'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 6
+
+	rape += 1
+	stat['vaginal'] += 6
+
+	gs 'pain', 8, 'vaginal', 'stretch'
+	gs 'stat'
+
+	gs 'arousal', 'vaginal', 45, 'rape' , 'beast'
+	gs 'stat'
+
+	$orgasm_or = 'yes'
+	gs 'stat'
+
+	if succubusQW >= 1:
+		act 'Try to use my succubus powers to control some beast''s moves and destroys my ropes':
+			if sucexcess >= 500:
+				sucexcess -= 500
+				gs 'stat'
+				beast = 1
+				'With each move beast damages a rope'
+			else
+				'I am too weak'
+			end
+		end
+	end
+
+	act 'continue pleasure':
+		cla
+		'Beast yells and cums. I feel hot sperm in me. Then beast without any hurry just goes away.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/sex2.mp4"></video></center>'
+
+		gs 'npcgeneratec', 0, 'le beast', 113
+		gs 'boyStat', $npclastgenerated
+
+
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+		gs 'cum_call', 'butt', $npclastgenerated, 0
+		if beast = 1:
+			act 'Beast broke all ropes! Run away' :
+				killvar 'beast'
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beastd2'
+			end
+		end
+		act 'take a breath':
+			killvar 'beast'
+			gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = 'beastd2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	minut += rand (5,15)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/RUNRUN3.mp4"></video></center>'
+	'Beast runs after me! I am not shure if I can run from it!'
+	act 'climb a tree':
+		cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo.mp4"></video></center>'
+		'I tried to climb a tree, but it appears to hard… And I hanging on a branch…'
+		act 'Try to find something with my feet to push myself':
+			*clr & cla
+			'I feel something hard with my feet and try to use it as a support for climbing…'
+			wait 1500
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo_fin.mp4"></video></center>'
+			'I Hear beast''s moaning. Look down… The beast lie on the ground'
+			gs 'arousal', 'footjob', 5, 'beast', 'feet', 'unknown'
+			stat['footjob'] += 1
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'legs', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'run away': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+		end
+	end
+
+
+	act 'continue running':
+		if pcs_agil >= 90 or pcs_run >= 70:
+			cla
+			minut += 15
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			'I ran away!'
+			act 'take a breath' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+		else
+			*clr & cla
+			'Beast caught me and knocked me down! It growls and rub his dick over my tits… It''s beter to help him'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/titjob.mp4"></video></center>'
+			gs 'arousal', 'titjob', 20, 'beast', 'rape', 'rough'
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'hands', $npclastgenerated, 0
+
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			'The beast cums all over my body, and lie down with pleasure on muzzle.'
+			if pcs_sleep <= 20:
+				act 'go to sleep with beast':
+					*clr & cla
+					wait 500
+					temp = rand(45,120)
+					minut += temp
+					if temp > 60:
+						pcs_sleep += 20
+					else
+						pcs_sleep += 8
+					end
+					'I wake up, beast is still sleeping.'
+					act 'run away': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					act 'go to sleep with beast':
+						*clr & cla
+						*nl
+						'…Zzz…'
+						wait 500
+						temp = rand(45,120)
+						minut += temp
+						if temp > 60:
+							pcs_sleep += 20
+						else
+							pcs_sleep += 8
+						end
+
+						*clr & cla
+						'I wake up, because some maniak catchs and  carries me somewhere.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/maniakd/unis.mp4"></video></center>'
+						if hour <= 5 or hour >= 22:
+							act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak'
+						else
+							act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniakd'
+						end
+
+						gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+					end
+				end
+			end
+			act 'run away': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+		end
+	end
+end
+
+if $ARGS[0] = 'beasthentai':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	gs 'stat'
+	ztemp = 0
+	'A lot of squishy tentacles covers my body and fills my ass and pussy!'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/hbeast/hsex.mp4"></video></center>'
+
+
+	mc_inventory['aphrodisiac'] += 1
+	gs 'drugs', 'aphrodisiac'
+	gs 'stat'
+
+	gs 'arousal_funcs', 'stretch', 'vaginal', 10
+	gs 'arousal_funcs', 'stretch', 'anal', 8 + 2
+
+	rape += 1
+	stat['vaginal'] += 6
+	stat['anal'] += 6
+
+
+	mc_inventory['aphrodisiac'] += 1
+	gs 'drugs', 'aphrodisiac'
+	gs 'stat'
+
+	gs 'pain', 6, 'asshole', 'stretch'
+	gs 'pain', 6, 'vaginal', 'stretch'
+	gs 'stat'
+
+
+	gs 'arousal', 'vaginal', 15, 'rape' , 'beast'
+	gs 'arousal', 'anal', 15, 'rape' , 'beast'
+	gs 'stat'
+
+	$orgasm_or = 'yes'
+	gs 'stat'
+
+	if succubusQW >= 1 and sucexcess > 0:
+		'It''s elder beast and it''s very horny'
+		act 'try to consume beast''s powers' :
+			sucexcess -= 1000
+			if sucexcess <= 0:
+				sucexcess = 0
+				gs 'stat'
+				'I am concentrate all my powers, but beast is like a well withiut bottom. I can''t suck all it''s powers. I need to give something back… and in that moment beast suck all my powers!'
+				$orgasm_or = 'yes'
+				pcs_magik -= 5000
+				if pcs_magik <= 0: pcs_magik = 0
+				gs 'stat'
+
+			else
+				beast = 1
+				gs 'stat'
+				'I drained all beast''s powers. Now I control it'
+				act 'Order: carry me to the officer!':
+					$orgasm_or = 'yes'
+					killvar 'beast'
+					minut += rand(30,300)
+					gs 'stat'
+					gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'officer'
+				end
+			end
+		end
+	end
+	act 'continue pleasure':
+		cla
+		'Thing starts to deepthroats me!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/hbeast/hbj.mp4"></video></center>'
+		0
+		stat['bj'] += 6
+		gs 'arousal', 'bj', 10, 'rape' , 'beast'
+		gs 'pain', 8, 'throat', 'choke'
+		$orgasm_or = 'yes'
+		gs 'stat'
+
+		'In short time beast shudders and I take cum in all my holes and all over my body. Like a bath…'
+
+		gs 'npcgeneratec', 0, 'elder beast', 478
+		gs 'boyStat', $npclastgenerated
+
+		stat['swallow'] += 6
+		facial += 6
+
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+		gs 'cum_call', 'labia', $npclastgenerated, 0
+
+		gs 'cum_call', 'anus', $npclastgenerated, 0
+
+		gs 'cum_call', 'butt', $npclastgenerated, 0
+
+		gs 'cum_call', 'back', $npclastgenerated, 0
+
+		gs 'cum_call', 'legs', $npclastgenerated, 0
+
+		gs 'cum_call', 'arms', $npclastgenerated, 0
+
+		gs 'cum_call', 'face', $npclastgenerated, 0
+
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+		gs 'cum_call', 'hands', $npclastgenerated, 0
+
+		gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+		gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+
+
+		if beast = 1:
+			'I can control this beast'
+			act 'Order: carry me to the officer!':
+				$orgasm_or = 'yes'
+				killvar 'beast'
+				minut += rand(30,300)
+				gs 'stat'
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'officer'
+			end
+		end
+
+		act 'take a breath' :
+			killvar 'beast'
+			gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','waitnight'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+end
+
+
+
+
+
+
+if $ARGS[0] = 'waitnight':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+	if rope <= 0: rope = rand(100,200)
+	wait 1000
+	minut += rand(10,30)
+	*nl
+	'…'
+	if hour >= 3: 'Down soon!' & mood += 5
+	if hour >= 3 and ztemp > 0: 'And I hope I''ll survive!'
+
+	gs 'pain', 2, 'legL', 'stretch'
+	gs 'pain', 2, 'legR', 'stretch'
+	gs 'pain', 2, 'armL', 'stretch'
+	gs 'pain', 2, 'armR', 'stretch'
+	gs 'pain', 2, 'back', 'labor'
+	gs 'pain', 2, 'toes', 'cramp'
+	gs 'stat'
+
+	if ztemp = 0: phi = 25
+	if ztemp = 1: phi = 10
+	if ztemp = 2: phi = 0
+
+	temp = rand(1,25) - phi
+	if hour <= 4: temp += hour
+
+	if temp >= 23:
+		ztemp = 0
+		if pcs_magik > 0 and temp >= 19 and WCzoo = 1:
+			*clr & cla
+			temp = rand(1,2)
+			if temp = 1:
+				'Some shadow bigger than man with animal noise comes to me. Shadow becomes bigger with each step, I see a monster!'
+				act 'freez in terror': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beast'
+			else
+				'Something slippery and sticky toches my leg…'
+				act 'freez in terror': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beasthentai'
+			end
+		else
+			*clr & cla
+			'I see some man sneaks up'
+			act 'wait in silence':
+				ztemp = 0
+				act 'continue':
+					if rand(1,3) = 1:
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak'
+					else
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+					end
+				end
+			end
+			act 'Screem for help!':
+				ztemp += 1
+				gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'maniak'
+			end
+		end
+
+	elseif temp >= 18:
+		cla
+		ztemp = 0
+		'Some man approches me with crazy smile.'
+		act 'Look at him with terror': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'bdsmn'
+	elseif temp >= 14:
+		cla
+		ztemp = 0
+		'I hear some steps, I can''t see but I am sure someone stands behind me…'
+		act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'sexbjn'
+	else
+		cla
+		ztemp += 1
+		act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+
+		act 'Try to break the ropes':
+			if pcs_stren >= 90:
+				*clr & cla
+				'I hear the rope crackle, but the rope does not lend itself.'
+				rope -= pcs_stren * 8 / 10 + 2
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			elseif pcs_stren >= 50:
+				*clr & cla
+				'I hear the rope crackle, but the rope does not lend itself.'
+				rope -= pcs_stren * 3 / 10 + 2
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			else
+				*clr & cla
+				'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+				rope -= 15
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			end
+		end
+		act 'Try to get out of the ropes':
+			if pcs_agil >= 80:
+				*clr & cla
+				'I move my hands, looking for a way to slip out of the shackles.'
+				rope -= pcs_agil * 8 / 10 + 5
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			elseif pcs_agil >= 50 and pcs_agil < 80:
+				*clr & cla
+				'I move my hands, looking for a way to slip out of the shackles.'
+				rope -= pcs_agil * 3 / 10 + 5
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			else
+				*clr & cla
+				'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+				rope -= 15
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'waitnight'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			end
+		end
+	end
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+end
+
+if $ARGS[0] = 'sexbjn':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	gs 'stat'
+	temp = rand (1,2)
+	if temp = 1:
+		'Guy bend me and starts to fuck me from behinde'
+		temp = rand(1,2)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/sex<<temp>>.mp4"></video></center>'
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(35,60)
+		gs 'boyStat', $npclastgenerated
+		stat['vaginal'] += 1
+
+		guy += 1
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		rape += 1
+		gs 'arousal', 'vaginal', rand(5,15)
+		gs 'stat'
+
+		act 'ask to untied me':
+			cla
+			temp = rand(1,20)
+			if temp = 1: 'If you think it will help you'
+			'Ha-ha-ha, man laughs'
+			'Stranger groans and I feel warm sperm on my body'
+			gs 'sweat', 'add', 5
+			cumarrkno =  0
+			spafinloc = 4
+			gs 'cum_call', 'butt', 'a random man'
+			gs 'stat'
+
+			cumarrkno =  0
+			spafinloc = 8
+			gs 'cum_call', 'back', 'a random man'
+			gs 'stat'
+
+			if temp = 1:
+				act 'remind stranger to untied you.': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'take a breath' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','waitnight'
+		end
+	else
+		'Some man comes in front of me, he grins and pull his pant down. "You know, what to do."'
+		act 'ask to untied me':
+			'He slaps me. Only I make demands right now!'
+			minut += 2
+			gs 'pain', 2, 'cheeks', 'slap'
+			gs 'stat'
+		end
+		act 'start to suck his dick':
+			cla
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bj.mp4"></video></center>'
+			gs 'npcgeneratec', 0, 'Some man', rand(19,40)
+			gs 'boyStat', $npclastgenerated
+
+
+			stat['bj'] += 2
+			gs 'arousal', 'bj', rand(10,25), 'sub', 'humiliation', 'rough', 'rape'
+			gs 'stat'
+
+			act 'Continue sucking':
+				cla
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bj_fin.mp4"></video></center>'
+				'Man cums in my mouth'
+				stat['swallow'] += 1
+				spafinloc = 12
+				sparrvol = 20
+				cumarrcpt = 20
+				gs 'sweat', 'add', 2
+				gs 'cum_call', 'mouth', 'Some man'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'take a breath' :
+					temp = rand(1,20)
+					if temp >= 19:
+						*clr & cla
+						'He forgot to tie back my arms.'
+						act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','waitnight'
+						act 'untied my legs and run away':
+							gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+						end
+					else
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','waitnight'
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'kara7den':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+
+	if rope <= 0: rope = rand(100,200)
+
+	minut += rand(10,30)
+	gs 'stat'
+	temp = rand(1,10)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tied<<temp>>.jpg"></center>'
+
+	gs 'pain', 2, 'legL', 'stretch'
+	gs 'pain', 2, 'legR', 'stretch'
+	gs 'pain', 2, 'armL', 'stretch'
+	gs 'pain', 2, 'armR', 'stretch'
+	gs 'pain', 2, 'back', 'labor'
+	gs 'pain', 2, 'toes', 'cramp'
+	gs 'stat'
+
+	if ztemp = 0: phi = 50
+	if ztemp <= 20: phi = 60
+	if ztemp > 20: phi = 0
+
+	temp = rand (1,50) + ztemp - phi
+	if temp > 50:
+		ztemp = 0
+		cla
+		if Enable_nogameover = 0:
+			'Some disgusting guys comes to me with unhuman sneer'
+			act 'Scream!!!':
+				minut += 1
+				gs 'stat'
+				over = 12
+				gt 'gameover'
+			end
+		else
+			'I see 2 men, and they also see me. They changed their way and started to go in my direction.'
+			act 'try to be calm': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '2sex'
+		end
+	elseif temp >= 40:
+		ztemp = 0
+		if pcs_magik > 0 and WCzoo = 1:
+			cla
+
+			'Some unbelievable beast saw me, and starts to approach me with horrible monstrosity noise'
+			act 'freez in terror': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'beastd'
+		else
+			*clr & cla
+
+			'I see 2 men with a dog, and they also see me. They changed their way and started to go in my direction.'
+			act 'try to be calm': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '2sex'
+		end
+
+	elseif temp >= 30:
+		ztemp = 0
+		cla
+		'Some guy comes from behind and slaps my ass'
+		gs 'pain', 3, 'asscheeks', 'slap'
+		gs 'stat'
+		act 'look at him angry eyes': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'bdsm'
+
+	elseif temp >= 15:
+		ztemp = 0
+		*clr & cla
+		'Some man with happy eyes comes to me!'
+		temp = rand(1,3)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/start<<temp>>.jpg"></center>'
+		act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'bjsex'
+
+	else
+		cla
+		'Gladly nothing happened, only body hurts because of ropes.'
+		if temp <= 0: temp = rand(0,14)
+		ztemp += temp
+		act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+
+		act 'Try to break the ropes':
+			if pcs_stren >= 90:
+				*clr & cla
+				'I hear the rope crackle, but the rope does not lend itself.'
+				rope -= pcs_stren * 8 / 10 + 2
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			elseif pcs_stren >= 50:
+				*clr & cla
+				'I hear the rope crackle, but the rope does not lend itself.'
+				rope -= pcs_stren * 3 / 10 + 2
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			else
+				*clr & cla
+				'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+				rope -= 15
+				gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			end
+		end
+		act 'Try to get out of the ropes':
+			if pcs_agil >= 80:
+				*clr & cla
+				'I move my hands, looking for a way to slip out of the shackles.'
+				rope -= pcs_agil * 8 / 10 + 5
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			elseif pcs_agil >= 50 and pcs_agil < 80:
+				*clr & cla
+				'I move my hands, looking for a way to slip out of the shackles.'
+				rope -= pcs_agil * 3 / 10 + 5
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			else
+				*clr & cla
+				'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+				rope -= 15
+				gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+				if rope > 0:
+					act 'rest a bit': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'kara7den'
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					act 'look around':
+						gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					end
+				end
+			end
+		end
+	end
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'Lisovyk timer'
+end
+
+
+
+if $ARGS[0] = '2sex':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	'"Hi beauty, It has something horrible happened with you. We want to help… but, we ask for a little favor, you know, for fun!.."'
+	act 'agree':
+		cla
+		'Let''s help this young Lady'
+		act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '2sex2'
+	end
+	act 'don''t agree':
+		cla
+		'Even so… As jentleman I can''t go away when girl needs help… Let''s help this young Lady'
+		act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', '2sex2'
+	end
+end
+
+if $ARGS[0] = '2sex2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	'Guys untied me and starts to spit roasts'
+	temp = rand(1,3)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex2den/2sex<<temp>>.mp4"></video></center>'
+	gs 'arousal', 'vaginal', 15, 'sub', 'group', 'rape'
+	gs 'arousal', 'bj', 15, 'sub', 'group', 'rape'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+	stat['bj'] += 1
+	stat['vaginal'] += 1
+	gs 'sweat', 'add', 20
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'each guy cums on my face, then wipe they dicks with my hair…'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex2den/2sex<<temp>>.mp4"></video></center>'
+		minut += 5
+		rape += 1
+		guy += 2
+
+		facial += 2
+		gs 'stat'
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'legs', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(1,20)
+			if temp = 2:
+				'Happy guys goes away…'
+				act 'Run!': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+				act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+			elseif temp <= 17:
+				'Guys laugh and tied me back. I try to resist, but they are too strong'
+				act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+			else
+				if WCzoo >= 1:
+					'It was fun, but Bobik whant to have fun too…'
+					*nl
+					'They forced me to fuck the dog…'
+					gs 'arousal', 'vaginal', 15, 'beast', 'sub', 'rape'
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/pes.jpg"></center>'
+
+					gs 'npcgeneratec', 0, 'Bobik', rand(18,45)
+					gs 'boyStat', $npclastgenerated
+					spafinloc = 0
+					cumnostd = 1
+					cumarrppt = 0
+					gs 'cum_manage'
+					mood -= 20
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'Guys laugh, I am cries… they go away'
+					act 'run away!': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+					act 'continue crying' : mood += 10 & gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+				else
+					'Guys laugh and tied me back. I try to resist, but they are too strong'
+					act 'wait' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bdsm':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	'Stranger starts to squeeze and pinch my tits… pain!..'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound'
+	gs 'arousal', 'BDSM', rand(10,15), 'bound'
+	gs 'pain', 2, 'nipples', 'pull'
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'…this guy takes pins from his pockets and started to use them…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits2.mp4"></video></center>'
+		gs 'arousal', 'foreplay', 5, 'bound'
+		gs 'pain', 3, 'breasts', 'pinch'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'…pin after pin… pain after pain…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits3.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 10, 'bound'
+			gs 'pain', 3, 'breasts', 'pinch'
+			gs 'pain', 3, 'breasts', 'pinch'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'…and even more pins…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits4.mp4"></video></center>'
+				gs 'arousal', 'foreplay', 30, 'bound'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'stat'
+				'At last he used all his pins, look at me for few moments… and take all his pins and go away…'
+				act 'try to relax':	gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bjsex':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_lisovyk'
+	temp = rand (1,2)
+	if temp = 1:
+		'Guy opened my jaw. And forced me to blow him.'
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,5)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/bv<<temp>>.mp4"></video></center>'
+		else
+			temp = rand(1,5)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/b<<temp>>.jpg"></center>'
+		end
+		gs 'npcgeneratec', 0, 'Some man', rand(19,40)
+		gs 'boyStat', $npclastgenerated
+
+
+		stat['bj'] += 2
+		gs 'arousal', 'bj', rand(10,25), 'sub', 'humiliation', 'rough', 'rape'
+		gs 'stat'
+
+
+		act 'Continue to suck':
+			*clr & cla
+			'Soon guy groans and cums in my mouth'
+			temp = rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/bj_fin<<temp>>.mp4"></video></center>'
+			stat['swallow'] += 1
+			spafinloc = 12
+			sparrvol = 20
+			cumarrcpt = 20
+			gs 'sweat', 'add', 2
+			gs 'cum_call', 'mouth', 'Some man'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				temp = rand(1,20)
+				if temp >= 19:
+					*clr & cla
+					'Guy forgot to tie back my arms.'
+					act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+					act 'untied my lags and run away': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+				else
+					gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+				end
+			end
+		end
+	else
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(35,60)
+		gs 'boyStat', $npclastgenerated
+
+
+		'Guy starts to fuck me'
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,9)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/sex<<temp>>.mp4"></video></center>'
+		else
+			temp = rand(1,4)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/sexp<<temp>>.jpg"></center>'
+		end
+
+
+
+
+		stat['vaginal'] += 1
+
+		guy += 1
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		rape += 1
+		gs 'arousal', 'vaginal', rand(5,15)
+		gs 'stat'
+
+		act 'ask to untied me':
+			cla
+			temp = rand(1,15)
+			if temp = 1: 'If you think it will help you'
+			'Ha-ha-ha, man laughs'
+			'Stranger groans and I feel warm sperm on my body'
+			gs 'sweat', 'add', 5
+			cumarrkno =  0
+			spafinloc = 4
+			gs 'cum_call', 'butt', 'a random man'
+			gs 'stat'
+
+			cumarrkno =  0
+			spafinloc = 8
+			gs 'cum_call', 'back', 'a random man'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			if temp = 1:
+				act 'remind sranger to untied you.': gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk', 'runrun'
+			end
+
+			act 'take a breath' : gt 'mod_public_WC_street_box_magicwhore_sex_lisovyk','kara7den'
+		end
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_sex_lisovyk ---------------------------------
+

@@ -1,0 +1,208 @@
+# підказка2
+					gs 'stat'
+					gs 'npcgeneratec', 0, 'Customer', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					$boy[0] = $boy
+					gs 'npcgeneratec', 0, 'Customer', rand(18,40)
+					$boy[1] = $npclastgenerated
+
+
+
+
+	if hour <= 6 or hour >= 23:
+		act 'Continue': gt 'mod_public_WC_cabine', 'slavenight'
+	else
+		act 'Continue': gt 'mod_public_WC_cabine', 'slaveday'
+	end
+
+
+gs 'boyStat', 'A220'
+
+
+gs 'arousal', 'end'
+gs 'stat'
+
+
+!{$ARGS[0] is for the location and should be set for all but vaginal:
+'labia' - 'pantyfront' - 'anus' - 'butt' - 'pantyrear' - 'clothesgroin' - 'clothes' - 'back' - 'legs'
+'arms' - 'face' - 'mouth' - 'hands' - 'stomach' - 'breasts' - 'hair' - 'internalcondom'
+$ARGS[1] is for the name of the sexual partner
+ARGS[2] is a for knowing the partner. Defaults to 0. If this is not set to 1 the status window message will mention "some guy" instead of his name.
+	0 - unknown sex partner (his name may be known, but she newer saw him before, and likely won't ever again, or she won't remeber it)
+	1 - sex partner is known for MC (classmate, neighbor, someone she new beforehand)
+	2 - MC is unaware of the act (like unconscious sex)
+ARGS[3] is contraception, if left blank it will use the default, if you want to force a particular type:
+	1 - he thought you were on the pill but you weren't.
+	2 - you are on the Pill
+	3 - Condom. Condoms can still fail vy the code.
+	4 - the Condom Broke. This is mostly used to check if cum manage resulted in a broken condom.
+	5 - the Condom Slipped off. Like 4, this is mostly to check if the contraception of 3 had a failure. But both 4 and 5 can be specified if you want to write an event where it fails no matter what.
+	6 - the condom was Sabotaged but the main character shouldn't know that
+	7 - the Condom was Sabotaged by the main character.
+ARGS[4] is for changing the potency, -1 for unable to impregnate, default is 10,000
+ARGS[5] is volume, default is 40 (4ml)
+For a simple call you only need the first 3, ie:
+gs 'cum_call', 'anus', 'Kolka', 1 - for a known partner
+gs 'cum_call', 'anus' - for an unknown partner named "unknown", or
+gs 'cum_call', 'anus', 'plumber' - for an unknown partner named "plumber"}
+
+gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'beast'
+gs 'stat'
+gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+minut -= 10
+gs 'stat'
+minut -= 10
+gs 'arousal', 'foreplay', rand(5,15), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+gs 'stat'
+gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution', 'sub'
+minut -= 15
+gs 'stat'
+
+
+!!{For checking arousal and when applicable triggering orgasms.
+$ARGS[0] the action causing arousal can be when receiving any of the following:
+'masturbate' - self stimulation
+'porn' - viewing pornographic material
+'voyeur_sex' - watching people have sex
+'voyeur' - observing erotic acts or nudity
+'trib' - rubbing pussy against another pussy
+'massage' - rubbing your body, back, feet, etc. with their hands/arms
+'cuni' - stimulation of your pussy by someones toungue
+'rimming' - stimulation of your anus by someones toungue
+'vaginal' 'vaginal_finger' 'vaginal_fist' 'vaginal_dildo' 'vaginal_strap' 'vaginal_vibe' - stimulation of your vagina with a penis and various others
+'anal' 'anal_finger' 'anal_fist' 'anal_dildo' 'anal_strap' 'anal_vibe' - stimulation of your anus with a penis and various others
+'kiss' - snogging, tonsil tennis, lip locking, etc.
+'BDSM' - receiving candle wax, flogging, leash play, bondage etc
+'pee' - being peed upon
+also when giving any of the following:
+'flashlite' - flashing underwear
+'flash' - flashing naked breasts/arse/vagina
+'massage_give' - rubbing their body, back, feet, etc. with your hands/arms
+'cuni_give' - stimulating someones pussy with your toungue
+'rimming_give' - stimulating someones anus with your toungue
+'vaginal_finger_give' 'vaginal_fist_give' 'vaginal_dildo_give' 'vaginal_strap_give' 'vaginal_vibe_give' - stimulating someones vagina in various ways
+'anal_finger_give' 'anal_fist_give' 'anal_dildo_give' 'anal_vibe_give' 'anal_strap_give' - stimulating someones anus in various ways
+'hj' - jerking a guy off with your hand
+'bj' - sucking a guy off
+'titjob' - using boobs to jerk off a guy
+'footjob' - using feet to jerk off a guy
+'BDSM_give' - giving candle wax, flogging, leash play, bondage etc
+'pee_give' - peeing on somone
+finally
+'foreplay' - receiving other stuff
+'foreplay_give' - giving other stuff
+All acts are from Sveta''s perspective and in cases of both giving and receiving, receiving should be used.
+ARGS[1] for time taken in minutes - it is use partly for arousal calculation and partly for moving time ahead. If you want to calculate just the arousal and do not move time (simultaneous stimulation), use negative value.
+$ARGS[2] can be used for passing the name of boys dick variable .. 'dick' is default, which belong to $boy, else can be passed 'dick1' .. 'dick4' or 'dick[i]' along the boys parameters activation
+$ARGS[2] - [8] Are optional but can be upto 7 fetishes involved in the act and can be any of the following:
+'maso' 'bound' 'beast' 'exhibitionism' 'rough' 'prostitution' 'dom' 'sub' 'incest' 'feet' 'lesbian' 'group' 'gangbang' 'humiliation' 'deepthroat' 'unknown' 'gloryhole' 'rape' 'futa'
+Format to use: gs 'arousal', 'act', 'duration', 'fetish', 'fetish', 'fetish', 'fetish', 'fetish', 'fetish', 'fetish'
+eg: gs 'arousal', 'trib', 10, 'bound', 'sub'
+In this case lesbianism is automatically added, much as feet would be applied to 'footjob'
+Lubrication - if one of the arguments $ARGS[2] - [8] is set to 'lube', it supposes that it is used some kind of lubricant - preferably from PCs supply of lube.
+Unaware - if one of the arguments $ARGS[2] - [8] is set to 'unaware', Sveta is not aware of this Sexact. Sveta will never know she had Sex!
+The lubrication is binded with anal or vaginal action. I think that the best combo is with 'anal_finger' and 'vaginal_finger'
+Only call one at a time, if more required, use multiple calls
+You can override the orgasm to force or prevent, to do so use:
+$orgasm_or = 'yes' to force orgasm, it will reset in orgasm call so if you want to force it again, you have to enter it again
+*$orgasm_or = 'custom' to force orgasm and use custom text set as $orgasm_txt - *you can just add the text and call with 'yes' this is old method
+$orgasm_or = 'no' to prevent orgasm, it will remain in place until manually changed, or if end is called.
+$orgasm_txt is used to add custom text that will be called if Sveta orgasms in the next arousal call. It will remain until cleared or orgasm so you must clear it if not forcing orgasm and don''t want it to be used on next orgasm.
+}
+
+temp_anal = 0
+temp_unaware = 0
+!!orgasms restricted to direct stimulation using this flag
+orgasm_flag = 0
+
+
+
+! {This file expects npctempgsex which is the desired sex of the NPC to be generated, $npctempgn[0], which is the used name of the generated NPC. Rapist or Red Headed Stranger, for example. And npctempgage, which is the approximate age of the NPC in years. Everything is then randomly generated, and you are expected to fix the generated NPC yourself with any special items you need from it after it completes running. So sex, what you call them until they introduce themselves, and age.}
+!! {A example to use this would be gs 'npcgeneratec', 0, 'stranger', rand(18,45) which would generate a male with a used name of stranger between 18 and 45.}
+
+
+!!For setting the $boy, dick and $dick_girth with a single call for a npc
+!!Use with a gosub and match the ARGS[0] with the correct char
+!!A generated NPC would be gs 'boyStat', $npclastcalled
+!!Other NPCs may be called either by number if they are a static NPC, or by letter and number otherwise.
+!!eg. "gs 'boyStat', 'A56'" would call for Roma. Likewise, "gs 'boyStat', 'A56'" also calls for Roma.
+!! A second argument calls for multiple partners. They are output as stats1, stats2, stats3, and stats4, for a total of 5 stats.
+
+
+
+gs 'npcgeneratec', 0, 'rapist', rand(21,55)
+gs 'boyStat', $npclastgenerated
+
+					*clr & cla
+					gs 'cum_call','mouth', 'black guy'
+					gs 'boyStat', 'A217'
+					gs 'cum_call','face',$boy, 1
+					guy += 2
+					slutty += 1
+					pav_prostitute += 1
+
+
+gs 'pain', rand(1,2), 'hair', 'pull'
+gs 'pain', rand(3,4), 'neck', 'burn'
+
+!For checking pain and when applicable triggering arousal.
+!ARGS[0] magnitude of pain inflicted 1 is very light, 9 is the maximum value in the given way of causing pain
+!$ARGS[1] should equal the body part being hurt from any of the following:
+!BobyPart 'head', 'hair', 'ears', 'eyebrows', 'eyes', 'cheeks', 'nose', 'mouth', 'lips', 'tongue', 'throat', 'neck', 'back',
+!'asscheeks', 'asshole', 'hips', 'thighs', 'legL', 'legR', 'feet', 'toes', 'shoulders', 'armL', 'armR', 'handL', 'handR',
+!'fingers', 'chest', 'breasts', 'nipples', 'ribs', 'tummy', 'pubic', 'vaginal', 'labia', 'clitoris', 'urethra', 'cervix',
+!'wrists', 'ankles'
+!$ARGS[2] The action the participant has performed on Sveta (some of these can cause arousal if Sveta is into pain)
+!Acts: 'pierce', 'slap', 'spank', 'pinch', 'bite', 'burn', 'freeze', 'hit', 'kick', 'Slam', 'shock', 'bind', 'stretch'
+!'tear', 'break', 'twist', 'ache', 'cramp', 'labor', 'choke', 'fall', 'pull'
+!Format to use: gs 'pain', n, 'BobyPart', 'Act'
+!For pain to multiple body parts, use multiple calls
+
+gs 'pain', rand(2,3), 'clitoris', 'pull'
+gs 'stat'
+gs 'pain', rand(1,3), 'head', 'hit'
+gs 'stat'
+gs 'pain', rand(3,4), 'cervix', 'pierce'
+gs 'stat'
+gs 'pain', rand(1,2), 'cheeks', 'slap'
+gs 'stat'
+gs 'pain', rand(1,2), 'asscheeks', 'fall'
+gs 'stat'
+gs 'pain', rand(3,5), 'tummy', 'hit'
+gs 'stat'
+gs 'pain', rand(3,5), 'neck', 'burn'
+gs 'stat'
+gs 'pain', rand(3,5), 'vaginal', 'burn'
+gs 'stat'
+gs 'pain', rand(3,5), 'cheeks', 'slap'
+gs 'stat'
+
+gs 'pain', rand(3,5), 'armR', 'burn'
+gs 'stat'
+
+
+mc_inventory['mentats'] += 1
+gs 'drugs', 'cocaine'
+gs 'stat'
+
+!!												DRUGS
+
+!! How to use:
+!! Smoking: gs 'drugs', 'smoke' (if it isn''t svetas cigarette, you have to add siga += 1)
+!! Joint/Weed: gs 'drugs', 'joint' (if it isn''t svetas joint, you have to add joint += 1)
+!! Heroin: gs 'drugs', 'heroin'
+!! Cocaine: gs 'drugs', 'cocaine' (if it isn''t svetas cocaine, you have to add dur += 1)
+!! Amphetamine: gs 'drugs', 'amphetamine' (if it isn''t svetas amphetamine, you have to add amphetamine += 1)
+!! Neurobooster: gs 'drugs', 'mentats' (if it isn''t svetas mentats, you have to add mc_inventory['mentats'] += 1)
+!! Aphrodisiac: gs 'drugs', 'aphrodisiac' (if it isn''t svetas aphrodisiac, you have to add mc_inventory['aphrodisiac'] += 1)
+
+!! Alcohol: gs 'drugs', 'alcohol', 'type', count
+!! Types: beer, champagne, moonshine, rum, scotch, vodka, wine, whiskey
+!! Count: Number of drinks of the chosen type sveta drinks (if the number is 1, you don''t have add the count, but it isn''t a problem if you do)
+!! Example 1: sveta drinks vodka gs 'drugs', 'alcohol', 'vodka' (or gs 'drugs', 'alcohol', 'vodka', 1)
+!! Example 2: sveta drinks 2 beer gs 'drugs', 'alcohol', 'beer', 2
+
+
+
+--- підказка2 ---------------------------------
+

@@ -1,0 +1,275 @@
+# mod_public_WC_rab_btothel_escort_villa_music
+if $ARGS[0] = 'piano':
+	$loc = 'mod_public_WC_rab_btothel_escort_villa_music'
+	$loc_arg = 'piano'
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+
+	minut += 5
+	instrmusic_exp += 1
+	gs 'stat'
+	'I am playing..'
+
+	instrmusic_exp += rand(0,3)
+	pcs_mood += 5
+	minut += rand(15,35)
+
+	if  pcs_instrmusic >= 100:
+		'Music fascinated me and took me to another world, music conveyed harmony to everyone around'
+		pcs_mood += 10
+		phescortfun += 10
+	elseif pcs_instrmusic >= 70:
+		'Music comforted my hearing and pleasantly pleased my soul'
+		pcs_mood += 5
+		phescortfun += rand(5,10)
+	elseif pcs_instrmusic >= 40:
+		'The music is quite entertaining'
+		phescortfun += rand(2,5)
+	elseif pcs_instrmusic >= 20:
+		'I can call it music'
+		phescortfun += 1
+	else
+		'The cacophony of sounds is cheered me up a little bit.'
+		pcs_mood -= 3
+	end
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/1/piano.jpg"></center>'
+	gs 'stat'
+	act 'Stop playing': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+
+	if phescortfun >= rand(40,60) and rand(1,3) = 1:
+		cla
+		'During my play, I found client'' dick'
+		'"Good, now we are going to fuck". Without any asking the client bend me and starts to fuck'
+		temp = rand(1,2)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/8/dick<<temp>>.jpg"></center>'
+
+		temp= rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/need_help/f<<temp>>.mp4"></video></center>'
+		stat['vaginal'] += 1
+		gs 'arousal', 'vaginal', rand(5,15)
+		gs 'stat'
+		act 'Continue':
+			*clr & cla
+			temp = rand(1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+			'The client doesn''t fuck me, but jumps on my cunt and ends up in me'
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			spafinloc = 0
+			cumnostd = 1
+			cumarrkno = 1
+			cumarrdel = 0
+			sparrvol = 120
+			cumarrcpt = 120
+
+			gs 'cuminsidereact', $boy
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			phescortfunDONE = 1
+			phescortfunSexDONE += 1
+			phescortfun -= 50
+			if phescortfun <= 0: phescortfun = 0
+
+			act 'Freshen up' : gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+		end
+	elseif phescortfun >= rand(40,60) and rand(1,3) = 1:
+		cla
+		'"Let''s make it even more entertaining!"'
+		temp= rand(1,6)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/need_help/c<<temp>>.mp4"></video></center>'
+		act 'continue playing':
+			cla
+			instrmusic_exp += rand(0,3)
+			pcs_mood += 5
+			minut += rand(15,35)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/8/b10.mp4"></video></center>'
+			if  pcs_instrmusic >= 100:
+				'Music fascinated me and took me to another world, music conveyed harmony to everyone around'
+				pcs_mood += 10
+			elseif pcs_instrmusic >= 70:
+				'Music comforted my hearing and pleasantly pleased my soul'
+				pcs_mood += 5
+			elseif pcs_instrmusic >= 40:
+				'The music is quite entertaining'
+			elseif pcs_instrmusic >= 20:
+				'I can call it music'
+			else
+				'The cacophony of sounds is cheered me up a little bit.'
+				pcs_mood -= 3
+			end
+			gs 'stat'
+
+			stat['bj'] += 2
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation', 'rough', 'deepthroat'
+			gs 'stat'
+
+			act 'Client is going to cum':
+				*clr & cla
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+				'He cums in my throat'
+				stat['swallow'] += 1
+				spafinloc = 12
+
+				gs 'sweat', 'add', 5
+
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+
+				act 'Freshen up' : gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+			end
+		end
+		act 'start sucking':
+			cla
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/8/b<<temp>>.mp4"></video></center>'
+
+			stat['bj'] += 2
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation', 'rough', 'deepthroat'
+			gs 'stat'
+
+			act 'Client is going to cum':
+				*clr & cla
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+				'He cums in my throat'
+				stat['swallow'] += 1
+				spafinloc = 12
+
+				gs 'sweat', 'add', 5
+
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+
+				act 'Freshen up' : gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'guitar':
+	$loc = 'mod_public_WC_rab_btothel_escort_villa_music'
+	$loc_arg = 'piano'
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/music/1 guitar ('+rand(1,3)+').mp4"></video></center>'
+	if instrmusic_lvl < 20:
+		gs 'exp_gain', 'instrmusic', rand(0,1)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += 1
+		gs 'pain', 1, 'fingers', 'ache'
+		gs 'stat'
+		'I gently brush my fingers over the strings. The feeling of the coarse strings against them is exhilarating. I come up with a song I want to try to play and start to work my magic…'
+		'Unfortunately, playing the guitar is a lot harder than it looks.'
+		'The client is asking me to stop'
+	elseif instrmusic_lvl < 40:
+		gs 'exp_gain', 'instrmusic', rand(0,2)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += 1
+		'I gently brush my fingers over the strings and slowly start picking at them. I begin to play a song I have recently started learning. Unfortunately, I still have a lot to learn. It takes me several minutes to hit the right notes and several more to play even a tiny bit of the song without making a mistake.'
+		'The client is listen me a bit, but shortly after ask me to stop'
+	elseif instrmusic_lvl < 60:
+		gs 'exp_gain', 'instrmusic', rand(0,3)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += rand(5,7)
+		'I gently brush my fingers over the strings and slowly start picking at them. I begin to play a song I have recently started learning. I keep making small mistakes here and there, but I am slowly but steadily getting the piece down.'
+		'The client listen me and enjoy it'
+	else
+		gs 'exp_gain', 'instrmusic', rand(1,5)
+		pcs_mood += 5
+		minut += 20
+		'I pick up the guitar, run my hand along the neck and play a few chords, then flick my hair back and start to play the latest song I''ve learned before switching to another piece. My fingers dance gracefully over the strings, and I just having fun with a guitar, playing songs.'
+		'The client listen me and enjoy it'
+		phescortfun += rand(6,10)
+	end
+
+	act 'Stop playing': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+end
+
+
+
+if $ARGS[0] = 'violoncello':
+	$loc = 'mod_public_WC_rab_btothel_escort_villa_music'
+	$loc_arg = 'piano'
+	gs 'stat'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+
+
+	if $clothingworntype ! 'nude':
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/music/1 violoncello.mp4"></video></center>'
+	else
+		phescortfun += 2
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/stag/request/music/2 violoncello.mp4"></video></center>'
+	end
+
+	if instrmusic_lvl < 20:
+		gs 'exp_gain', 'instrmusic', rand(0,1)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += 1
+		gs 'pain', 1, 'fingers', 'ache'
+		gs 'stat'
+		'I gently brush my fingers over the strings. The feeling of the coarse strings against them is exhilarating. I come up with a song I want to try to play and start to work my magic…'
+		'Unfortunately, playing the violoncello is a lot harder than it looks.'
+		'The client is asking me to stop'
+	elseif instrmusic_lvl < 40:
+		gs 'exp_gain', 'instrmusic', rand(0,2)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += 1
+		'I gently brush my fingers over the strings and slowly start picking at them. I begin to play a song I have recently started learning. Unfortunately, I still have a lot to learn. It takes me several minutes to hit the right notes and several more to play even a tiny bit of the song without making a mistake.'
+		'The client is listening me a bit, but shortly after ask me to stop'
+	elseif instrmusic_lvl < 60:
+		gs 'exp_gain', 'instrmusic', rand(0,3)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += rand(5,7)
+		'I gently brush my fingers over the strings and slowly start picking at them. I begin to play a song I have recently started learning. I keep making small mistakes here and there, but I am slowly but steadily getting the piece down.'
+		'The client listen me and enjoy it'
+	else
+		gs 'exp_gain', 'instrmusic', rand(1,5)
+		pcs_mood += 5
+		minut += 20
+		phescortfun += rand(6,10)
+		'I pick up the violoncello I flick my hair back and start to play the latest song I''ve learned before switching to another piece. My fingers dance gracefully over the strings, and I just having fun with a violoncello, playing songs.'
+		'The client listen me and enjoy it'
+	end
+
+	act 'Stop playing': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+end
+
+
+
+
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_villa_music ---------------------------------
+

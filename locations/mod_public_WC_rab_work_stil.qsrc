@@ -1,0 +1,259 @@
+# mod_public_WC_rab_work_stil
+if $ARGS[0] = 'start':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_stil'
+	$metka = 'start'
+	gs 'stat'
+	*clr & cla
+	bglass = 0
+	bcilg = 0
+	bcil = 0
+	bhour = 0
+
+	if vladajob13 = 0 or vladajob13 = 0 or vladajob14 = 0:
+		'Toha met me and took me into the room.'
+		vladajob14 = 0
+	end
+	if vladajob13 = 1 and vladajob13 = 1 and vladajob14 = 1:
+		vladajob14 = 0
+		'Hi, Yana said you''re new to Betsy. I''m Anton or Toha. Today you will be the decoration of the table. You must lie down and not move, despite the actions of guests. At 9 o''clock your shift must end, I will come and pick you up. '
+	end
+	act 'Follow Toha':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/foodtray'+rand(1,4)+'.jpg"></center>'
+		'Toha brought me into the hall, I lay naked on the table and the waiters quickly began to put food on me.'
+		minut += 60
+		gs 'flash', 'exhibitionism', 3
+		gs 'stat'
+		act 'Continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'stil':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_stil'
+	$metka = 'stil'
+	gs 'stat'
+	*clr & cla
+	'After a while, the guests began to gather, sit down at the table and have fun at the usual pace.'
+	temp = rand(1,4)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/party (<<temp>>).jpg"></center>'
+	gs 'arousal', 'flash', 1, 'sub', 'exhibitionism'
+	gs 'flash', 'exhibitionism', rand(0,1)
+	gs 'stat'
+
+	dick = rand(14,30)
+	npc_dick[$npclastgenerated] = dick
+
+
+	if bcil > 6 and ryska <= 5 and bglass = 0:
+		'One of the guests draws a symbol on me'
+		ryska += 1
+		bglass = 1
+	end
+	bhour = hour + 2
+	if bhour >= 24:
+		bhour -= 24
+	else
+		bhour = 0
+	end
+
+	if hour >= bhour:
+		'Because of the awkward posture the body hurts'
+		gs 'pain', rand(0,1), 'back', 'labor'
+		gs 'pain', rand(0,1), 'hips', 'labor'
+		gs 'pain', rand(0,1), 'thighs', 'labor'
+		gs 'pain', rand(0,1), 'legL', 'labor'
+		gs 'pain', rand(0,1), 'legR', 'labor'
+		gs 'pain', rand(0,1), 'shoulders', 'labor'
+		gs 'pain', rand(0,1), 'armL', 'labor'
+		gs 'pain', rand(0,1), 'armr', 'labor'
+		gs 'pain', rand(0,1), 'chest', 'labor'
+		gs 'stat'
+	end
+	minut += rand(35,60)
+	gs 'stat'
+
+	temp = rand(1,13) + bcilg
+	if temp <= 5:
+		'Guests eat and have fun'
+		if hour >= hour:
+			act 'Move a little to break the muscles':
+				cla
+				bhour = hour
+				shtraf += rand(0,2)
+				minut += 2
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+			end
+		end
+		act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+	elseif temp <= 11:
+		'Oh! one of the guests pinched my nipple with sticks'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/pinch.jpg"></center>'
+		gs 'pain', rand(4,9), 'nipples', 'pinch'
+		gs 'stat'
+		if hour >= bhour:
+			act 'Move a little to break the muscles':
+				cla
+				bhour = hour
+				shtraf += rand(0,2)
+				minut += 2
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+			end
+		end
+		act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+	else
+		gs 'npcgeneratec', 0
+		gs 'stat'
+
+		'One guest stand up and put his <<dick>> cm dick in my mouth'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/bjstart.mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,15), 'sub', 'exhibitionism'
+		gs 'stat'
+		act 'wait':
+			*clr & cla
+			bcilg += rand(0,1)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/artem/2/b (1).mp4"></video></center>'
+			minut += rand(5,25)
+			spafinloc = 12
+			stat['swallow'] += 1
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			'Guest finishes'
+			temp = rand(1,2)
+			bcilg += rand(0,1)
+			if temp = 1: bcil += 1
+			act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+		end
+		gs 'willpower', 'bj', 'resist'
+		if will_cost <= pcs_willpwr:
+			act 'put my face away' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'resist'
+				gs 'stat'
+				temp = rand(1,12) + bcilg*2
+				if temp < 11:
+					'The guest casts an evil glance at you, but stops his harassment'
+					shtraf += rand(1,2)
+				else
+					'The guest slaps me in the face with all his might. Nobody paid attention to it. '
+					shtraf += 1
+					gs 'pain', 8, 'cheeks', 'slap'
+					gs 'stat'
+				end
+				act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+			end
+		else
+			act 'put my face away' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+		if bcilg >= 4:
+			*clr & cla
+			'One guest stand up and put his <<dick>> cm dick in my mouth'
+			'Another guest put my hand on his dick'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/bjstart.mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'exhibitionism'
+			gs 'stat'
+			act 'ignore second dick':
+				*clr & cla
+				shtraf += 1
+				act 'wait':
+					*clr & cla
+					bcilg += rand(0,1)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/artem/2/b (1).mp4"></video></center>'
+					minut += rand(5,25)
+					spafinloc = 12
+					stat['swallow'] += 1
+					gs 'cum_manage'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'Guest finishes'
+					temp = rand(1,2)
+					bcilg += rand(0,1)
+					if temp = 1: bcil += 1
+					act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+				end
+				gs 'willpower', 'bj', 'resist'
+				if will_cost <= pcs_willpwr:
+					act 'put my face away' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'resist'
+						gs 'stat'
+						temp = rand(1,12) + bcilg*2
+						if temp < 11:
+							'The guest casts an evil glance at you, but stops his harassment'
+							shtraf += rand(1,2)
+						else
+							'The guest slaps me in the face with all his might. Nobody paid attention to it. '
+							shtraf += 1
+							gs 'pain', 8, 'cheeks', 'slap'
+							gs 'stat'
+						end
+						act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+					end
+				else
+					act 'put my face away' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			end
+
+			act 'pleased two dicks':
+				*clr & cla
+				gs 'arousal', 'hj', rand(5,15), 'sub', 'exhibitionism'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/start2dics.mp4"></video></center>'
+				act 'Continue':
+					*clr & cla
+					'One guy put out his dick and go around mee.'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/start 2 sex.mp4"></video></center>'
+
+
+					guy += 1
+					stat['vaginal'] += 1
+					gs 'arousal', 'vaginal', rand(5,15), 'bound', 'sub', 'gloryhole'
+					gs 'stat'
+					gs 'stat'
+					act 'Continue':
+						*clr & cla
+						temp = rand(1,2)
+						'Guys fuck me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/stil/sex<<temp>>.mp4"></video></center>'
+						'Soon guys started to cum in me'
+						bcil += 2
+						bcilg += rand(0,1)
+						spafinloc = 0
+						gs 'cum_manage'
+						spafinloc = 12
+						gs 'cum_manage'
+						stat['swallow'] += 1
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_stil', 'stil'
+					end
+				end
+			end
+		end
+	end
+
+	if hour >= 9 and hour < 21:
+		temp = rand(1,4)
+		if temp = 4:
+			*clr & cla
+			'The last guest has finally come out and I can relax my muscles.'
+			minut += 15
+			gs 'stat'
+			'Soon Toha came, helped to get up and led me to the room'
+			act 'Continue': gt 'mod_public_WC_rab_work', 'room'
+		end
+	end
+end
+
+--- mod_public_WC_rab_work_stil ---------------------------------
+

@@ -1,0 +1,974 @@
+# mod_public_WC_rob_car
+if $ARGS[0] = 'carrob':
+	*clr & cla
+	!! event start
+
+	'<center><b><<$car>></b></center>'
+	'<center><img <<$set_imgh>> src="images/pc/items/accessories/car/salon<<car>>.jpg"></center>'
+
+	'As I sat down in the car I see a guy holding me at gunpoint…'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/0.jpg"></center>'
+
+	act 'rise my hands':
+		!! rape
+		gt 'mod_public_WC_rob_car', 'rape'
+	end
+
+	act 'start the car':
+		cla
+
+		'He made a warning shot in my car windshield'
+		'"Rise your hands, I am not jocking!!!" - he said, and there is no joke in his voice'
+		car['current_condition'] -= rand(20, 50)
+
+		act 'rise my hands':
+			!! rape
+			gt 'mod_public_WC_rob_car', 'rape'
+		end
+
+		if gun > 0 and ammo > 0:
+			act 'try to shoot him first':
+				cla
+				temp=rand(1,2)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+				ammo -= 1
+				shoot_exp += rand(1,3)
+				if pcs_shoot >= rand(90,120):
+					'I hit him!'
+					temp = rand(1,10)
+					if temp <= 9:
+						'He scream and fall on the ground.'
+						pcs_mood -= 5
+						'He is bleading'
+
+						act 'Take his wallet and call an ambulance':
+							crime += 2
+							temp = rand(0,21)
+							if temp <= 6:
+								money += rand(0,100)
+								'This bastard wasn''t going to pay me, there are almost no money'
+							elseif temp <= 20:
+								money += rand(750,2500)
+								'Nice.'
+							else
+								money += rand(3000,7000)
+								'Woow, it''s a lot of money'
+							end
+							killvar 'ecrime'
+							dynamic $enddrive
+						end
+
+						act 'run away':
+							crime += 1
+							minut += 15
+							killvar 'ecrime'
+							dynamic $enddrive
+						end
+						act 'drive away':
+							crime += 1
+							minut += 15
+							killvar 'ecrime'
+							gt 'carF', 'salon'
+						end
+
+						act 'run away and call ambulance':
+							crime += 2
+							minut += 15
+							killvar 'ecrime'
+							dynamic $enddrive
+						end
+						gs 'willpower', 'crime', 'self', 'medium'
+						if will_cost <= pcs_willpwr:
+							act 'Finish him' + $func('willpower', 'get_willcost_string'):
+								*clr & cla
+								temp=rand(1,2)
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								killed +=1
+								ammo -= 1
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								shoot_exp += 1
+								'He even make no sound. The dead body fell on the ground'
+								crime += 5
+								'I take all his money and leave'
+								temp = rand(0,11)
+								if temp <= 3:
+									money += rand(0,100)
+									'This bastard wasn''t going to pay me, there are almost no money'
+								elseif temp <= 10:
+									money += rand(750,2500)
+									'Nice.'
+								else
+									money += rand(3000,7000)
+									'Woow, it''s a lot of money'
+								end
+								killvar 'ecrime'
+								act 'go away': dynamic $enddrive
+								act 'drive away':
+									crime += 1
+									minut += 15
+									killvar 'ecrime'
+									gt 'carF', 'salon'
+								end
+							end
+						else
+							act 'Finish him' + $func('willpower', 'get_willcost_string'): $noWillpower
+						end
+					else
+						'He stoped and fall on the ground in scilense.'
+						temp=rand(1,2)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+						killed +=1
+						willpowermax += 5
+						pcs_mood -= 40
+						pcs_mood += killed
+						shoot_exp += 1
+						crime += 5
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+						killvar 'ecrime'
+						act 'run away': dynamic $enddrive
+						act 'drive away':
+							crime += 1
+							minut += 15
+							killvar 'ecrime'
+							gt 'carF', 'salon'
+						end
+						act 'take the wallet and run away':
+							'I take all his money and leave'
+							temp = rand(0,21)
+							if temp <= 6:
+								money += rand(0,100)
+								'This bastard wasn''t going to pay me, there are almost no money'
+							elseif temp <= 20:
+								money += rand(750,2500)
+								'Nice.'
+							else
+								money += rand(3000,7000)
+								'Woow, it''s a lot of money'
+							end
+							dynamic $enddrive
+						end
+					end
+				else
+					cla
+					'I have not enought time to aim and missed him. He open the door and hit me… hard, because of pain I dropped the gun.'
+					'he pushed me from the car to the ground'
+					gs 'pain', 10, 'head', 'kick'
+					gs 'pain', 10, 'lips', 'kick'
+					gs 'pain', 10, 'nose', 'kick'
+					gs 'pain', 10, 'armR', 'kick'
+					gs 'pain', 10, 'tummy', 'kick'
+					gs 'stat'
+					gun = 0
+					killvar 'ecrime'
+					act 'try not to lose consciousness':
+						gt 'mod_public_WC_rob_car', 'rape2'
+					end
+				end
+			end
+		end
+	end
+
+	if gun > 0 and ammo > 0:
+		act 'try to shoot him first':
+			cla
+			temp=rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+			ammo -= 1
+			shoot_exp += rand(1,3)
+			if pcs_shoot >= rand(70,120):
+				'I hit him!'
+				temp = rand(1,10)
+				if temp <= 9:
+					'He scream and fall on the ground.'
+					pcs_mood -= 5
+					'He is bleading'
+
+					act 'Take his wallet and call an ambulance':
+						crime += 2
+						temp = rand(0,21)
+						if temp <= 6:
+							money += rand(0,100)
+							'This bastard wasn''t going to pay me, there are almost no money'
+						elseif temp <= 20:
+							money += rand(750,2500)
+							'Nice.'
+						else
+							money += rand(3000,7000)
+							'Woow, it''s a lot of money'
+						end
+						killvar 'ecrime'
+						dynamic $enddrive
+					end
+
+					act 'run away':
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						dynamic $enddrive
+					end
+					act 'drive away':
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						gt 'carF', 'salon'
+					end
+
+					act 'run away and call ambulance':
+						crime += 2
+						minut += 15
+						killvar 'ecrime'
+						dynamic $enddrive
+					end
+					gs 'willpower', 'crime', 'self', 'medium'
+					if will_cost <= pcs_willpwr:
+						act 'Finish him' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+							temp=rand(1,2)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							killed +=1
+							ammo -= 1
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							shoot_exp += 1
+							'He even make no sound. The dead body fell on the ground'
+							crime += 5
+							'I take all his money and leave'
+							temp = rand(0,11)
+							if temp <= 3:
+								money += rand(0,100)
+								'This bastard wasn''t going to pay me, there are almost no money'
+							elseif temp <= 10:
+								money += rand(750,2500)
+								'Nice.'
+							else
+								money += rand(3000,7000)
+								'Woow, it''s a lot of money'
+							end
+							killvar 'ecrime'
+							act 'go away': dynamic $enddrive
+							act 'drive away':
+								crime += 1
+								minut += 15
+								killvar 'ecrime'
+								gt 'carF', 'salon'
+							end
+						end
+					else
+						act 'Finish him' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+				else
+					'He stoped and fall on the ground in scilense.'
+					temp=rand(1,2)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+					killed +=1
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					shoot_exp += 1
+					crime += 5
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					killvar 'ecrime'
+					act 'run away': dynamic $enddrive
+					act 'drive away':
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						gt 'carF', 'salon'
+					end
+					act 'take the wallet and run away':
+						'I take all his money and leave'
+						temp = rand(0,21)
+						if temp <= 6:
+							money += rand(0,100)
+							'This bastard wasn''t going to pay me, there are almost no money'
+						elseif temp <= 20:
+							money += rand(750,2500)
+							'Nice.'
+						else
+							money += rand(3000,7000)
+							'Woow, it''s a lot of money'
+						end
+						dynamic $enddrive
+					end
+				end
+			else
+				cla
+				'I have not enought time to aim and missed him. He open the door and hit me… hard, because of pain I dropped the gun.'
+				'he pushed me from the car to the ground'
+				gs 'pain', 10, 'head', 'kick'
+				gs 'pain', 10, 'lips', 'kick'
+				gs 'pain', 10, 'nose', 'kick'
+				gs 'pain', 10, 'armR', 'kick'
+				gs 'pain', 10, 'tummy', 'kick'
+				gs 'stat'
+				gun = 0
+				killvar 'ecrime'
+				act 'try not to lose consciousness':
+					gt 'mod_public_WC_rob_car', 'rape2'
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rape':
+	!! 'rise my hands'
+	*clr & cla
+	'<center><b><<$car>></b></center>'
+	'<center><img <<$set_imgh>> src="images/pc/items/accessories/car/salon<<car>>.jpg"></center>'
+
+	'"Get out" - he commands'
+	act 'get out': gt 'mod_public_WC_rob_car', 'rape2'
+
+end
+
+if $ARGS[0] = 'rape2':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/0 1.jpg"></center>'
+	'He aimed the gun on me - "Keep your hands up!"'
+	'He is looking at me, searching smth'
+	'"OK, now undress yourself"'
+
+
+	act 'Undress myself':
+		*clr & cla
+		minut += 5
+		gs 'clothing', 'strip'
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/0 2.jpg"></center>'
+
+		act 'continue':
+			*clr & cla
+			'He take a rope from my car and tied me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/1.jpg"></center>'
+			gs 'npcgeneratec', 0, 'rober', rand(18,40)
+			gs 'boyStat', $npclastgenerated
+			$boy[0] = $boy
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He put his gun to my head "Blow me"'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/2/2 v.mp4"></video></center>'
+
+				act 'blow him':
+					*clr & cla
+					'I am sucking his dick'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/3.jpg"></center>'
+					gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub', 'rape'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He rotates me and start to fuck'
+						if rand(1,2) = 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/2/4 v.mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/4.jpg"></center>'
+						end
+
+						gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'rape'
+						gs 'stat'
+
+
+						gs 'willpower', 'misc', 'self', 'easy'
+						if will_cost <= pcs_willpwr:
+							act 'Please don''t cum in me' + $func('willpower', 'get_willcost_string'):
+								cla
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								temp = rand(1,10)
+								if temp <= 7:
+									'"Shut up bitch" he sad, but with groan took out his dick and cum outside. He slaps my ass few times.'
+									temp = rand(1,2)
+									if temp = 1:
+										gs 'cum_call', 'back', 'rober'
+									else
+										gs 'cum_call', 'legs', 'rober'
+									end
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+								else
+									'"Shut up bitch" he sad, and punch me'
+									'OMG, he cumed inside!'
+									gs 'pain', 1, 'asscheeks', 'slap'
+									gs 'cum_call', 'vaginal', 'rober'
+									gs 'cuminsidereact', 'rober'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+								end
+								act 'continue': gt 'mod_public_WC_rob_car', 'rape3'
+							end
+						else
+							act 'Please don''t cum in me' + $func('willpower', 'get_willcost_string'): $noWillpower
+						end
+						act 'be silent':
+							cla
+							temp = rand(1,3)
+							if temp = 1:
+								'He groan and, thanks God, took out his dick to cum outside. He slaps my ass few times.'
+								temp = rand(1,2)
+								if temp = 1:
+									gs 'cum_call', 'back', 'rober'
+								else
+									gs 'cum_call', 'legs', 'rober'
+								end
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								'OMG, he cumed inside!'
+								gs 'cum_call', 'vaginal', 'rober'
+								gs 'cuminsidereact', 'rober'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							act 'continue': gt 'mod_public_WC_rob_car', 'rape3'
+						end
+					end
+				end
+			end
+		end
+	end
+
+	if rand(1,3) = 1:
+		*clr & cla
+		'He forced me to sit in the back place'
+		'He put some rug in my mouth'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/1.jpg"></center>'
+		wait 1500
+		'He taped it'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/2.jpg"></center>'
+		minut += 5
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He pushed me from the car'
+
+			if rand(1,3) ! 1 and $clothingworntype ! 'nude':
+				'"Show me this"'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/3.mp4"></video></center>'
+				gs 'clothing', 'strip'
+				gs 'stat'
+			end
+
+			'Then he pushed me to the trunk'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4 ('+rand(1,2)+').jpg"></center>'
+			else
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n.jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n_v.mp4"></video></center>'
+				end
+			end
+
+			act 'wait': gt 'mod_public_WC_rob_car', 'car'
+		end
+	end
+end
+
+if $ARGS[0] = 'rape3':
+	*clr & cla
+	!! he cumed in me and thinking what to do
+	'He pushed me from the car'
+
+	if rand(1,3) ! 1 and $clothingworntype ! 'nude':
+		'"Show me this"'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/3.mp4"></video></center>'
+		gs 'clothing', 'strip'
+		gs 'stat'
+	end
+
+	'Then he pushed me to the trunk'
+	if $clothingworntype ! 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4 ('+rand(1,2)+').jpg"></center>'
+	else
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n.jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n_v.mp4"></video></center>'
+		end
+	end
+
+	act 'wait': gt 'mod_public_WC_rob_car', 'car'
+end
+
+if $ARGS[0] = 'car':
+	*clr & cla
+	'"Think why you are here." - he said'
+	'He closed the trunk and the car moves somewhere…'
+	!! choose the event result
+
+	temp = rand(1,100) - phroberkilled * 20
+
+	!! if temp <= 20:
+		!-=wip=-
+		!yacht
+		!бомжі
+
+	if temp <= 30:
+		!! sauna
+		wait 1000
+		minut += rand(40,240)
+		money = 0
+		gs 'stat'
+		workDolg += rand(20,40)*1000
+		*nl
+		'I am at the sauna. The brutes drag me into a room and start to explain. "You''re going to live here and work until you have cleared your debt. Got it? Try to contact the authorities or escape, we''ll put a bullet in your head and bury you in the woods, understand?"'
+		'I become frightened as they''re convincing, so I just nod.'
+		act 'Look around': gt 'city_sauna', 'saunaroom'
+	elseif temp <= 100:
+		!! carwork
+		wait 1000
+		minut += rand(40,240)
+		money = 0
+		gs 'stat'
+		'You don''t have to be a genius to understand: he will rape me further, and maybe others will. I can''t do anything right now, or can I? ..'
+		*nl
+		'……Ai! My thoughts were interrupted by the feeling of a stab in the arm'
+		mood -= 30
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/5carsoldevent/wait.jpg"></center>'
+		gs 'drugs', 'aphrodisiac'
+		gs 'drugs', 'heroin'
+		mc_inventory['amphetamine'] += 1
+		mc_inventory['aphrodisiac'] += 1
+		gs 'stat'
+		act 'Continue':
+			*clr & cla
+			'Listen to me, Whore, now you have a little work to do, nothing new for you. If you obey everything will end well.'
+			act 'Nod to Yes':
+				willpowermax -= rand(1,2)
+				gt 'mod_public_WC_cabine_carwork', 'start'
+			end
+			if addictive_trait_lvl >= 1:
+				'From the injection, obviously I feel a surge of drugs'
+			end
+			act 'Try to push him away with all his might':
+				if pcs_stren * addictive_trait_lvl > 80:
+					*clr & cla
+					'I pushed him hard. He hit his head hard on the car. Under the influence of something, I quickly found the knife in his pocket and cut my ropes. I jumped out of the car without thinking I ran into the woods'
+					act 'I''m running away': gt 'gad_forest', 'forest_center'
+				else
+					*clr & cla
+					'I feel like everything is floating, I can''t muster myself. I hear "That''s good."'
+					act 'Continue': gt 'mod_public_WC_cabine_carwork', 'start'
+				end
+			end
+		end
+	end
+	killvar 'phroberkilled'
+end
+
+
+
+if $ARGS[0] = 'hecar':
+	*clr & cla
+	! 'I clean a mess a little and we continue our ride'
+	! act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+
+	'As we sat down in the car I see a guy holding the client at gunpoint…'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/0.jpg"></center>'
+
+	act 'rise my hands':
+		!! rape
+		gt 'mod_public_WC_rob_car', 'sextwo'
+	end
+
+	if gun > 0 and ammo > 0:
+		act 'try to shoot him first':
+			cla
+			temp=rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+			ammo -= 1
+			shoot_exp += rand(1,3)
+			if pcs_shoot >= rand(70,120):
+				'I hit him!'
+				temp = rand(1,10)
+				if temp <= 9:
+					'He scream and fall on the ground.'
+					pcs_mood -= 5
+					'He is bleading'
+
+					'"Holy shit!!! you are my protector" - the client laughts'
+					'"You will defenitelly have a tips"'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 2
+					phescortfun += 20
+
+					act 'continue':
+						cla
+						'we continue our ride'
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				else
+					'He stoped and fall on the ground in scilense.'
+					temp=rand(1,2)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+					killed +=1
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					shoot_exp += 1
+					crime += 5
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					killvar 'ecrime'
+
+
+					'"Holy shit!!! you are my protector" - the client laughts'
+					'"You will defenitelly have a tips"'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 2
+					phescortfun += 20
+
+					act 'continue':
+						cla
+						'we continue our ride'
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				end
+			else
+				if rand(1,4) = 1:
+					cla
+					'As the rober aproaches, the client shoot him dead'
+					killvar 'ecrime'
+
+					if phcardrive = 2:
+						!! me drive
+						'"Go, go go! honey!!!"'
+						'I put the acceleration max!'
+						minut += 15
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					else
+						'He start the engine and drive fast!'
+						minut += 15
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				else
+					cla
+					'I have not enought time to aim and missed him. He open the door and hit me… hard, because of pain I dropped the gun.'
+					'he pushed me from the car to the ground'
+					gs 'pain', 10, 'head', 'kick'
+					gs 'pain', 10, 'lips', 'kick'
+					gs 'pain', 10, 'nose', 'kick'
+					gs 'pain', 10, 'armR', 'kick'
+					gs 'pain', 10, 'tummy', 'kick'
+					gs 'stat'
+					gun = 0
+					killvar 'ecrime'
+					act 'try not to lose consciousness':
+						phtemp = 12348
+						gt 'mod_public_WC_rob_car', 'sextwo'
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'sextwo':
+	*clr & cla
+	!! 'rise my hands'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/0.jpg"></center>'
+	'The rober knocked the window near me and show me to put the window down'
+	'I did it and he pulls his pants down - "Suck it, bitch"'
+	'I can''t see how avoid the situation'
+
+	act 'blow him':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/1/1.jpg"></center>'
+		gs 'arousal', 'bj', rand(5,7), 'sub', 'rape'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He rotates me and start to fuck'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/1/2.jpg"></center>'
+			gs 'arousal', 'vaginal', rand(5,7), 'sub', 'rape'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He opened the door and grab me out of the car'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/1/3 ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,7), 'sub', 'rape'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'He keep drilling me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/1/4.jpg"></center>'
+					gs 'arousal', 'vaginal', rand(5,7), 'sub', 'rape'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'Finally he loads his hot sperm on me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/1/5.jpg"></center>'
+
+						gs 'npcgeneratec', 0, 'rober', rand(18,40)
+						gs 'boyStat', $npclastgenerated
+						$boy[0] = $boy
+						gs 'stat'
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						if stat['bj'] >= 100 or rand(1,5) = 1:
+							'He dress up and just go away… WTF it was?'
+							'I stares on client in a silence, and he stares on me for a few minutes'
+							minut += 5
+							gs 'stat'
+							'"Well, lets keep going" - he said'
+
+							if phcardrive = 2:
+								!! me drive
+								'I sit to the car and we continue our ride'
+								minut += 15
+								act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+							else
+								'He start the engine and we continue our ride'
+								minut += 15
+								act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+							end
+						else
+							act 'continue': gt 'mod_public_WC_rob_car', 'rape4'
+						end
+					end
+				end
+			end
+		end
+	end
+
+	if phtemp = 12348:
+		*clr & cla
+		killvar 'phtemp'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/0.jpg"></center>'
+		!! 'he pushed me from the car to the ground'
+		!! act 'try not to lose consciousness':
+
+		'He is robing the client as I am lying down on the ground.'
+
+		gs 'willpower', 'misc', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Stand up and Kick the rober in the balls (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				'I force myself t ostand up'
+				'As I stand on my feet, I put all my anger in that kick'
+
+				'He scream and fall on the ground.'
+
+				'"Holy shit!!! you are my protector" - the client laughts'
+				'"You will defenitelly have a tips"'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 2
+				phescortfun += 20
+
+				act 'continue':
+					cla
+					'we continue our ride'
+					minut += 15
+					gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			end
+		else
+			act 'Stand up and Kick the rober in the balls ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+		end
+
+
+		act 'wait':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/0 1.jpg"></center>'
+			'He aimed the gun on me - "Keep your hands up!"'
+			'He is looking at me, searching smth'
+			'"OK, now undress yourself"'
+
+
+			act 'Undress myself':
+				*clr & cla
+				minut += 5
+				gs 'clothing', 'strip'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/0 2.jpg"></center>'
+
+				act 'continue':
+					*clr & cla
+					'He take a rope from my car and tied me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/1.jpg"></center>'
+					gs 'npcgeneratec', 0, 'rober', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					$boy[0] = $boy
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He put his gun to my head "Blow me"'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/2/2 v.mp4"></video></center>'
+
+						act 'blow him':
+							*clr & cla
+							'I am sucking his dick'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/3.jpg"></center>'
+							gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub', 'rape'
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								'He rotates me and start to fuck'
+								if rand(1,2) = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/2/4 v.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/2/4.jpg"></center>'
+								end
+
+								gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'rape'
+								gs 'stat'
+
+
+								gs 'willpower', 'misc', 'self', 'easy'
+								if will_cost <= pcs_willpwr:
+									act 'Please don''t cum in me' + $func('willpower', 'get_willcost_string'):
+										cla
+										gs 'willpower', 'pay', 'self'
+										gs 'stat'
+										temp = rand(1,10)
+										if temp <= 7:
+											'"Shut up bitch" he sad, but with groan took out his dick and cum outside. He slaps my ass few times.'
+											temp = rand(1,2)
+											if temp = 1:
+												gs 'cum_call', 'back', 'rober'
+											else
+												gs 'cum_call', 'legs', 'rober'
+											end
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+										else
+											'"Shut up bitch" he sad, and punch me'
+											'OMG, he cumed inside!'
+											gs 'pain', 1, 'asscheeks', 'slap'
+											gs 'cum_call', 'vaginal', 'rober'
+											gs 'cuminsidereact', 'rober'
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+										end
+										act 'continue': gt 'mod_public_WC_rob_car', 'rape4'
+									end
+								else
+									act 'Please don''t cum in me' + $func('willpower', 'get_willcost_string'): $noWillpower
+								end
+								act 'be silent':
+									cla
+									temp = rand(1,3)
+									if temp = 1:
+										'He groan and, thanks God, took out his dick to cum outside. He slaps my ass few times.'
+										temp = rand(1,2)
+										if temp = 1:
+											gs 'cum_call', 'back', 'rober'
+										else
+											gs 'cum_call', 'legs', 'rober'
+										end
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+									else
+										'OMG, he cumed inside!'
+										gs 'cum_call', 'vaginal', 'rober'
+										gs 'cuminsidereact', 'rober'
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+									end
+									act 'continue': gt 'mod_public_WC_rob_car', 'rape4'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rape4':
+	*clr & cla
+	'He forced the client from the car'
+
+	'Then he pushed me to the trunk'
+	if $clothingworntype ! 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4 ('+rand(1,2)+').jpg"></center>'
+	else
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n.jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n_v.mp4"></video></center>'
+		end
+	end
+
+	act 'wait': gt 'mod_public_WC_rob_car', 'car'
+
+	if daystart = phescortD:
+		phendescort = 0
+		if hour - phescortH > 5 + phbuytime:
+			phendescort = 1
+		end
+	elseif daystart > phescortD:
+		temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		if temp >= 24:
+			phendescort = 2
+		elseif temp > 5 + phbuytime:
+			phendescort = 1
+		end
+	end
+
+	phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+	temp = phmoneypaid * 100
+	phmoneypaid = temp
+	phmoneypaidH = rand(11,17)
+	phmoneypaidD = daystart + rand(1,2)
+	phescortfun = 0
+	killvar 'phclientava'
+	phescorttask = 0
+	killvar 'phescortD'
+	killvar 'phescortH'
+	killvar 'phmyfood'
+	killvar 'phfoodhere'
+	killvar 'acil'
+	+$OpenInnerThought+'I hope the client will pay to my bank account'+$CloseInnerThought
+end
+
+
+--- mod_public_WC_rob_car ---------------------------------
+

@@ -1,0 +1,710 @@
+# mod_public_WC_rab_gun
+if $ARGS[0] = 'start':
+	'I can use this for defence in fights, practice in shooting or try to rob someone.'
+	*nl
+	'I have killed:'
+	if Tolik = 2: 'Tolik,'
+	if Artem = 2: 'Artem,'
+	if Vania = 2: 'Vania,'
+	'<<killed>> other people'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+	if ammo = 0:
+		'I have no bullets'
+	elseif ammo = 1:
+		'I have <<ammo>> bullet'
+	else
+		'I have <<ammo>> bullets'
+	end
+
+	if ammo > 0:
+		act 'start shoot practice':
+			If ($loc = 'meadow' and MiraLoc ! 2) or ($loc = 'gad_forest' and $loc_arg ! 'forest_edge'):
+				*clr & cla
+				minut += rand (5,15)
+				ammo -= 1
+				shoot_exp += rand(1,2)
+				gs 'stat'
+				'I put some targets with bottles and atc, and start shooting.'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/target.mp4"></video></center>'
+				act 'continue':  gt $loc, $loc_arg
+			else
+				'I need to be somewere in quite place without people'
+			end
+		end
+	end
+	if $location_type = 'secluded':
+		act 'throw out the gun!':
+			gun = 0
+			gt $loc, $loc_arg
+		end
+	end
+
+	act 'Find target, Seduce him and rob':
+		if hour >= 21 or hour < 6:
+			if $loc = 'road':
+				cla
+				act 'try to sell yourself':	gt 'mod_public_WC_rab_gun_rob','start'
+			elseif $loc = 'city_center' or $loc = 'city_residential' or $loc = 'pav_residential':
+				cla
+				act 'find someone to seduce': gt 'mod_public_WC_rab_gun_rob','start'
+			else
+				'This is not a proper place.'
+			end
+		else
+			'I need night to do this.'
+		end
+	end
+
+
+	if Vania = 1 or Vania = 3 and ammo > 0:
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'shoot in Vania' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+				ammo -= 1
+				shoot_exp += 1
+				pcs_mood -= 50
+				Vania = 2
+				'I killed Vania'
+				gs 'stat'
+				If Artem = 1 and Tolik = 1:
+					*clr & cla
+					'I make few more shoots to defend myself'
+					'maybe I even killed someone but the other smash my head and I lost consciousness'
+					act 'continue':
+						over = 1
+						gt 'gameover'
+					end
+				elseIf Artem = 1 or Tolik = 1:
+					If Artem = 1:
+						'Artem freez for few seconds and then started to run to me'
+					elseIf Tolik = 1:
+						'Tolik freez for few seconds and then started to run to me'
+					end
+					act 'shoot to survive!!!':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+						If ammo > 0:
+							shoot_exp += 1
+							ammo -= 1
+							If Tolik = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Tolik'
+									pcs_mood -= 50
+									Tolik = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							elseIf Artem = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Artem'
+									pcs_mood -= 50
+									Artem = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							end
+						else
+							*clr & cla
+							'I have no ammo'
+							'He hits me and I lost consciousness'
+							act 'continue':
+								over = 1
+								gt 'gameover'
+							end
+						end
+					end
+				else
+					act 'Kill all other, otherway they will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+				end
+			end
+		else
+			act 'shoot in Vania' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+	if Artem = 1 or Artem = 3 and ammo > 0:
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'shoot in Artem' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+				ammo -= 1
+				shoot_exp += 1
+				pcs_mood -= 50
+				Artem = 2
+				'I killed Artem'
+				gs 'stat'
+				If Vania = 1 and Tolik = 1:
+					*clr & cla
+					'I make few more shoots to defend myself'
+					'maybe I even killed someone but the other smash my head and I lost consciousness'
+					act 'continue':
+						over = 1
+						gt 'gameover'
+					end
+				elseIf Vania = 1 or Tolik = 1:
+					If Vania = 1:
+						'Vania freez for few seconds and then started to run to me'
+					elseIf Tolik = 1:
+						'Tolik freez for few seconds and then started to run to me'
+					end
+					act 'shoot to survive!!!':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+						If ammo > 0:
+							shoot_exp += 1
+							ammo -= 1
+							If Tolik = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Tolik'
+									pcs_mood -= 50
+									Tolik = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							elseIf Vania = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Vania'
+									pcs_mood -= 50
+									Vania = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							end
+						else
+							*clr & cla
+							'I have no ammo'
+							'He hits me and I lost consciousness'
+							act 'continue':
+								over = 1
+								gt 'gameover'
+							end
+						end
+					end
+				else
+					act 'Kill all other, otherway they will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+				end
+			end
+		else
+			act 'shoot in Artem' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+	If Tolik = 1 or Tolik = 3 and ammo > 0:
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'shoot in Tolik' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+				ammo -= 1
+				shoot_exp += 1
+				pcs_mood -= 50
+				Tolik = 2
+				'I killed Tolik'
+				gs 'stat'
+				If Vania = 1 and Artem = 1:
+					*clr & cla
+					'I make few more shoots to defend myself'
+					'maybe I even killed someone but the other smash my head and I lost consciousness'
+					act 'continue':
+						over = 1
+						gt 'gameover'
+					end
+				elseIf Vania = 1 or Artem = 1:
+					If Vania = 1:
+						'Vania freez for few seconds and then started to run to me'
+					elseIf Artem = 1:
+						'Artem freez for few seconds and then started to run to me'
+					end
+					act 'shoot to survive!!!':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+						If ammo > 0:
+							shoot_exp += 1
+							ammo -= 1
+							If Artem = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Artem'
+									pcs_mood -= 50 + Alove
+									Artem = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							elseIf Vania = 1:
+								if pcs_shoot >= rand(10,50):
+									'I killed Vania'
+									pcs_mood -= 50
+									Vania = 2
+									gs 'stat'
+									act 'Kill  the last one, otherway he will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+								else
+									'I missed'
+									'He hits me and I lost consciousness'
+									act 'continue':
+										over = 1
+										gt 'gameover'
+									end
+								end
+							end
+						else
+							*clr & cla
+							'I have no ammo'
+							'He hits me and I lost consciousness'
+							act 'continue':
+								over = 1
+								gt 'gameover'
+							end
+						end
+					end
+				else
+					act 'Kill all other, otherway they will kill me': gt 'mod_public_WC_rab_gun', 'killall'
+				end
+			end
+		else
+			act 'shoot in Tolik' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+	act 'go back': gt $loc, $loc_arg
+end
+
+
+if $ARGS[0] = 'run':
+	gt 'mod_public_WC_rab_gun_run', 'run'
+end
+
+if $ARGS[0] = 'damage':
+	if ktemp = 105:
+		'I hear Vania voice full of pain…'
+		temp = rand(2,8)
+		Vania = temp
+		if Vania = 2: '…and scilens'
+		killvar 'ktemp'
+	elseif hour >= 7 and hour <= 20:
+		'I hear Artem voice full of pain…'
+		temp = rand(2,8)
+		Artem = temp
+		if Artem = 2: '…and scilens'
+	else
+		'I hear Vania voice full of pain…'
+		temp = rand(2,8)
+		Vania = temp
+		if Vania = 2: '…and scilens'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'kill':
+	If Vania > 2:
+		'It looks like Vania will survive'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Kill Vania' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				if ammo > 0:
+					ammo -= 1
+					shoot_exp += 1
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					pcs_mood -= 50
+					willpowermax += 5
+					Vania = 2
+					'I have killed him'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					act 'continue': gt 'mod_public_WC_rab_gun', 'kill'
+				else
+					'I have no ammo'
+					act 'Smash his head with rock':
+						*clr & cla
+						pcs_mood -= 50
+						willpowermax += 5
+						Vania = 2
+						'I have killed him'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+						act 'continue': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+				end
+			end
+		else
+			act 'Kill Vania' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+		act 'Run away':
+			minut += rand (10, 40)
+			brak += 70
+			vtecha = 1
+			if Vania ! 2: Vania = 0
+			If Artem ! 2: Artem = 0
+			Tolik = 0
+			gt 'gad_forest_lost', 'forest_center'
+		end
+	elseIf Artem > 2:
+		'It looks like Artem will survive'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Artem/Artem.jpg"></center>'
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Kill Artem' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				if ammo > 0:
+					ammo -= 1
+					shoot_exp += 1
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					pcs_mood -= 50
+					willpowermax += 5
+					Vania = 2
+					'I have killed him'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					act 'continue': gt 'mod_public_WC_rab_gun', 'kill'
+				else
+					'I have no ammo'
+					act 'Smash his head with rock':
+						*clr & cla
+						pcs_mood -= 50
+						willpowermax += 5
+						Vania = 2
+						'I have killed him'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+						act 'continue': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+				end
+			end
+		else
+			act 'Kill Artem' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+		act 'Run away':
+			minut += rand (10, 40)
+			brak += 70
+			vtecha = 1
+			if Vania ! 2: Vania = 0
+			If Artem ! 2: Artem = 0
+			Tolik = 0
+			gt 'gad_forest_lost', 'forest_center'
+		end
+	end
+	If Vania = 2 or Artem = 2:
+		act 'Run away':
+			minut += rand (10, 40)
+			brak += 70
+			vtecha = 1
+			if Vania ! 2: Vania = 0
+			If Artem ! 2: Artem = 0
+			Tolik = 0
+			gt 'gad_forest_lost', 'forest_center'
+		end
+		act 'throw the gun and run away':
+			gun = 0
+			crime -= 100
+			if crime <= 0: crime = 0
+			minut += rand (10, 40)
+			brak += 70
+			vtecha = 1
+			if Vania ! 2: Vania = 0
+			If Artem ! 2: Artem = 0
+			Tolik = 0
+			gt 'gad_forest_lost', 'forest_center'
+		end
+		act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+	end
+end
+
+if $ARGS[0] = 'killall':
+	$location_type = 'secluded'
+	$loc = 'mod_public_WC_rab_gun'
+	$metka = 'killall'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'The yard where I''m being held')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/dim.jpg"></center>'
+	'I went out to the yard. I need to survive… I need to kill…'
+	if ammo = 0: 'I need ammo, I must found the ammo in the Warehouse.'
+	If ammo <= 6: 'I need more ammo, I can found the ammo in the Warehouse.'
+
+	act 'continue': gt 'mod_public_WC_rab_DVIR','dvir'
+end
+
+
+if $ARGS[0] = 'fightshoot':
+	shoot_exp += 1
+	ammo -= 1
+	if ztemp = 0:
+		if opp_wrstlng <= rand(20,40):
+			killvar 'ActionMade'
+			killvar 'TargetNumber'
+			killvar 'TargetType'
+			killvar 'AttackerType'
+			killvar 'AttackerNumber'
+			inFight = 0
+			xgt 'ender', 'win'
+			gt $loc, $loc_arg
+			exit
+		else
+			'Enemy doesn''t skare at all'
+		end
+	elseif pcs_shoot - opp_agil - ztemp >= 20:
+		if ztemp = 10:
+			killvar 'ActionMade'
+			killvar 'TargetNumber'
+			killvar 'TargetType'
+			killvar 'AttackerType'
+			killvar 'AttackerNumber'
+			inFight = 0
+			'I hit him'
+			xgt 'ender', 'win'
+			gt $loc, $loc_arg
+			exit
+		end
+		if ztemp = 30:
+			killvar 'ActionMade'
+			killvar 'TargetNumber'
+			killvar 'TargetType'
+			killvar 'AttackerType'
+			killvar 'AttackerNumber'
+			inFight = 0
+			'I have killed him!'
+			pcs_mood -= 10
+			willpowermax += 5
+			killed += 1
+			crime += 3
+			xgt 'ender', 'win'
+			gt $loc, $loc_arg
+			exit
+		end
+	else
+		'I missed.'
+	end
+end
+
+
+if $ARGS[0] = 'tolik':
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+	minut += rand(3,45)
+	If Tolik = 1 and ammo > 0:
+		act 'shoot in Tolik':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+			If (Tolik = 1 and Artem = 1) or (Tolik = 1 and Vania = 1):
+				*clr & cla
+				'I make few more shoots to defend myself'
+				'maybe I even killed someone but the other smash my head and I lost consciousness'
+				act 'continue':
+					over = 1
+					gt 'gameover'
+				end
+			elseIf Tolik = 1:
+				if pcs_shoot >= rand(10,50):
+					'I killed Tolik'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					pcs_mood -= 30
+					willpowermax += 5
+					Tolik = 2
+					gs 'stat'
+					act 'Kill  the last one, otherway he will kill me':
+						ttemp = 1
+						gt $loc, $loc_arg
+					end
+					if Vania = 2 and Tolik = 2 and Artem = 2:
+						*clr & cla
+						ttemp = 1
+						'The end. I have killed all of them… I am free!!!'
+						act 'look around': gt $loc, $loc_arg
+					end
+				else
+					*clr & cla
+					'I missed'
+					act 'Oh, NO! I MISED! good buy life…':
+						*clr & cla
+						'Tolik killed me'
+						over = 1
+						gt 'gameover'
+					end
+				end
+			end
+		end
+	else
+		act 'Oh, NO! I have no ammo, good buy life…':
+			*clr & cla
+			'Tolik killed me'
+			over = 1
+			gt 'gameover'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'artem':
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+	minut += rand(3,45)
+	If Artem = 1 and ammo > 0:
+		act 'shoot in Artem':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+			If (Tolik = 1 and Artem = 1) or (Artem = 1 and Vania = 1):
+				*clr & cla
+				'I make few more shoots to defend myself'
+				'maybe I even killed someone but the other smash my head and I lost consciousness'
+				act 'continue':
+					over = 1
+					gt 'gameover'
+				end
+			elseIf Artem = 1:
+				if pcs_shoot >= rand(10,50):
+					'I killed Artem'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					pcs_mood -= 30
+					willpowermax += 5
+					Artem = 2
+					gs 'stat'
+					act 'Kill  the last one, otherway he will kill me':
+						ttemp = 1
+						gt $loc, $loc_arg
+					end
+					if Vania = 2 and Tolik = 2 and Artem = 2:
+						*clr & cla
+						ttemp = 1
+						'The end. I have killed all of them… I am free!!!'
+						act 'look around': gt $loc, $loc_arg
+					end
+				else
+					*clr & cla
+					'I missed'
+					act 'Oh, NO! I MISED! good buy life…':
+						*clr & cla
+						'Artem killed me'
+						over = 1
+						gt 'gameover'
+					end
+				end
+			end
+		end
+	else
+		act 'Oh, NO! I have no ammo, good buy life…':
+			*clr & cla
+			'Artem killed me'
+			over = 1
+			gt 'gameover'
+		end
+	end
+end
+
+if $ARGS[0] = 'vania':
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+	minut += rand(3,45)
+	If Vania = 1 and ammo > 0:
+		act 'shoot in Vania':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+			If (Tolik = 1 and Vania = 1) or (Artem = 1 and Vania = 1):
+				*clr & cla
+				'I make few more shoots to defend myself'
+				'maybe I even killed someone but the other smash my head and I lost consciousness'
+				act 'continue':
+					over = 1
+					gt 'gameover'
+				end
+			elseIf Vania = 1:
+				if pcs_shoot >= rand(10,50):
+					'I killed Vania'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					pcs_mood -= 30
+					willpowermax += 5
+					Vania = 2
+					gs 'stat'
+					act 'Kill  the last one, otherway he will kill me':
+						ttemp = 1
+						gt $loc, $loc_arg
+					end
+					if Vania = 2 and Tolik = 2 and Artem = 2:
+						*clr & cla
+						ttemp = 1
+						'The end. I have killed all of them… I am free!!!'
+						act 'look around': gt $loc, $loc_arg
+					end
+				else
+					*clr & cla
+					'I missed'
+					act 'Oh, NO! I MISED! good buy life…':
+						*clr & cla
+						'Vania killed me'
+						over = 1
+						gt 'gameover'
+					end
+				end
+			end
+		end
+	else
+		act 'Oh, NO! I have no ammo, good buy life…':
+			*clr & cla
+			'Vania killed me'
+			over = 1
+			gt 'gameover'
+		end
+	end
+end
+
+if $ARGS[0] = 'lastfight':
+	ttemp = 2762940
+	cla
+	If Tolik = 1:
+		'You Bitch, STOP!'
+		'Tolik run to me and try to hit me with a knife!'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/nij.jpg"></center>'
+		act 'aim at Tolik': gt 'mod_public_WC_rab_gun', 'tolik'
+	end
+	If Artem = 1:
+		'You Bitch, STOP!'
+		'Artem run to me and try to hit me! '
+		act 'aim at Artem': gt 'mod_public_WC_rab_gun', 'artem'
+	end
+	If Vania = 1:
+		'You Bitch, STOP!'
+		'Vania run to me and try to kill me with a knife! '
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/nij.jpg"></center>'
+		act 'aim at Vania': gt 'mod_public_WC_rab_gun', 'vania'
+	end
+end
+
+--- mod_public_WC_rab_gun ---------------------------------
+

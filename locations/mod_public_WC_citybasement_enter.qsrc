@@ -1,0 +1,512 @@
+# mod_public_WC_citybasement_enter
+if $ARGS[0] = 'vhid0':
+	*clr & cla	
+	$loc = 'vhid0'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0
+	atemp = 1
+	trahobomj = 0	
+	if ztemp = 1:
+		$location_type = 'secluded'
+		$func('wrap', 'header center b', 'City center basement entrence')
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/1centr.jpg"></center>'
+		if vhid1 = 1 or vhid1 = 100:
+			''
+		elseif vhid1 = 0:
+			vhid1 = 2
+			'A basement?'
+		elseif vhid1 >= 2 and vhid1 < 10:
+			vhid1 += 1
+			if vhid1 = 10: vhid1 = 1
+			'I know where I am'
+		end
+		act 'go in basement with bums':
+			ubomj2 = 2
+			temp = rand(1,4)
+			bumfriend += rand(0,1)
+			if temp = 1:
+				pr = 101
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '101'
+				
+			elseif temp = 2:
+				pr = 111
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '111'
+				
+			elseif temp = 3:
+				pr = 121
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '121'
+				
+			elseif temp = 4:
+				pr = 133
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '133'
+				
+			end	
+			ztemp = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end		
+	end
+
+	if ztemp = 2:
+		$location_type = 'secluded'
+		$func('wrap', 'header center b', 'Industrial district basement entrence')
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/2indastrial.jpg"></center>'
+		if vhid2 = 1 or vhid2 = 100:
+			''
+		elseif vhid2 = 0:
+			vhid2 = 2
+			'A basement?'
+		elseif vhid2 >= 2 and vhid2 < 10:
+			vhid2 += 1
+			if vhid2 = 10: vhid2 = 1
+			'I know where I am'
+		end
+		act 'go in basement with bums':
+			ubomj2 = 2
+			temp = rand(1,4)
+			if temp = 1:
+				pr = 101
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '101'
+				
+			elseif temp = 2:
+				pr = 111
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '111'
+				
+			elseif temp = 3:
+				pr = 121
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '121'
+				
+			elseif temp = 4:
+				pr = 133
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '133'
+				
+			end	
+			ztemp = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end		
+	end
+
+	if ztemp = 3:
+		$location_type = 'secluded'
+		$func('wrap', 'header center b', 'Redlight district basement entrence')
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/3redlihtari.jpg"></center>'	
+		if vhid3 = 1 or vhid3 = 100:
+			''
+		elseif vhid1 = 0:
+			vhid3 = 2
+			'A basement?'
+		elseif vhid3 >= 2 and vhid3 < 10:
+			vhid3 += 1
+			if vhid3 = 10: vhid3 = 1
+			'I know where I am'
+		end
+		act 'go in basement with bums':
+			ubomj2 = 2
+			temp = rand(1,4)
+			if temp = 1:
+				pr = 101
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '101'
+				
+			elseif temp = 2:
+				pr = 111
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '111'
+				
+			elseif temp = 3:
+				pr = 121
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '121'
+				
+			elseif temp = 4:
+				pr = 133
+				$loc_arg = '133'
+				
+			end	
+			ztemp = 1
+			$loc = 'mod_public_WC_citybasement'
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end		
+	end
+
+	if ztemp = 4:
+		$location_type = 'secluded'
+		$func('wrap', 'header center b', 'resdental basement entrence')
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/4residental.jpg"></center>'	
+		if vhid4 = 1 or vhid4 = 100:
+			''
+		elseif vhid1 = 0:
+			vhid4 = 2
+			'A basement?'
+		elseif vhid4 >= 2 and vhid4 < 10:
+			vhid4 += 1
+			if vhid4 = 10: vhid4 = 1
+			'I know where I am'
+		end
+		act 'go in basement with bums':
+			ubomj2 = 2
+			temp = rand(1,4)
+			if temp = 1:
+				pr = 101
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '101'
+				
+			elseif temp = 2:
+				pr = 111
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '111'
+				
+			elseif temp = 3:
+				pr = 121
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '121'
+				
+			elseif temp = 4:
+				pr = 133
+				$loc = 'mod_public_WC_citybasement'
+				$loc_arg = '133'
+				
+			end	
+			ztemp = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end		
+	end
+
+	if ztemp = 5:
+		$location_type = 'secluded'
+		$func('wrap', 'header center b', 'Undercity tunnels entrence')
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/5park.jpg"></center>'	
+		if vhid5 = 1 or vhid5 = 100:
+			''
+		elseif vhid5 = 0:
+			vhid5 = 2
+			'A tunnel?'
+		elseif vhid1 >= 2 and vhid1 < 10:
+			vhid5 += 1
+			if vhid5 = 10: vhid5 = 1
+			'I know where I am'
+		end
+		act 'go into the tunnel with bums':
+			ubomj2 = 2
+			temp = rand(1,4)
+			$loc = 'mod_public_WC_citybasement'
+			if temp = 1:
+				pr = 101
+				$loc_arg = '101'
+				
+			elseif temp = 2:
+				pr = 111
+				$loc_arg = '111'
+				
+			elseif temp = 3:
+				pr = 121
+				$loc_arg = '121'
+				
+			elseif temp = 4:
+				pr = 133
+				$loc_arg = '133'
+				
+			end	
+			ztemp = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end		
+	end
+end
+
+
+
+
+
+
+if $ARGS[0] = 'vhid1':
+	*clr & cla
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0
+	$loc = 'vhid1'
+	$loc = 'mod_public_WC_citybasement'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	trahobomj = 0
+	minut += rand(5,7)
+	$location_type = 'secluded'
+	gs 'stat'
+	$func('wrap', 'header center b', 'City center basement entrence')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/1centr.jpg"></center>'
+	if vhid1 ! 100:
+		pr = 1201
+		'The door is closed'
+		act 'go away': gt 'city_center'
+		act 'I''ll try to break the lock ':
+			cla
+			if mc_inventory['kirbygrips'] <=0:
+				cla
+				'I need some clips to do that'
+				act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+				act 'go away': gt 'city_center'
+			else
+				'I''ll try to do it with my clip'
+				hpingrip -= 1
+				mc_inventory['kirbygrips']-=1
+			
+				minut += rand(1, 30)
+				pcs_hndiwrk += rand(0,1)
+				gs 'stat'
+				wait 800
+				if pcs_hndiwrk >= rand(10,100):
+					*clr & cla
+					vhid1 = 100
+					'Yes! I Did it!'
+					pcs_mood += rand(10,30)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (1).jpg"></center>'
+					act 'enter the basement': urape += -50 & ubomj += 15 & ubomj2 =120 & gt 'mod_public_WC_citybasement', '120'
+					act 'go away': gt 'city_center'
+				else
+					'I am failed'
+					act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+					act 'go away': gt 'city_center'
+				end
+			end
+		end		
+	elseif vhid1 = 100:
+		pr = 1201
+		act 'go away': gt 'city_center'
+		act 'open the door': 
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (1).jpg"></center>'			
+			act 'enter the basement': urape += -50 & ubomj += 15 & ubomj2 =120 & gt 'mod_public_WC_citybasement', '120'
+			act 'go away': gt 'city_center'
+		end		
+	end
+end
+
+if npc_loyality >=  70  and npc_loyality < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'vhid2':
+	*clr & cla
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0	
+	$loc = 'vhid2'
+	$loc = 'mod_public_WC_citybasement'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	trahobomj = 0
+	minut += rand(5,7)
+	gs 'stat'
+	$location_type = 'secluded'
+	$func('wrap', 'header center b', 'Industrial district basement entrence')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/2indastrial.jpg"></center>'
+	if vhid2 ! 100:
+		pr = 1231
+		'The door is closed'
+		act 'go away': gt 'city_center'
+		act 'I''ll try to break the lock ':
+			cla
+			if mc_inventory['kirbygrips'] <=0:
+				cla
+				'I need some clips to do that'
+				act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid2'
+				act 'go away': gt 'city_industrial'
+			else
+				'I''ll try to do it with my clip'
+				hpingrip -= 1
+				mc_inventory['kirbygrips']-=1
+			
+				minut += rand(1, 30)
+				pcs_hndiwrk += rand(0,1)
+				gs 'stat'
+				wait 800
+				if pcs_hndiwrk >= rand(0,80):
+					*clr & cla
+					vhid2 = 100
+					'Yes! I Did it!'
+					pcs_mood += rand(10,30)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (2).jpg"></center>'
+					act 'enter the basement': urape += 35 & ubomj += 45 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '123						'
+					act 'go away': gt 'city_industrial'
+				else
+					'I am failed'
+					act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid2'
+					act 'go away': gt 'city_industrial'
+				end
+			end
+		end		
+	elseif vhid2 = 100:
+		pr = 1231
+		act 'go away': gt 'city_industrial'
+		act 'open the door': 
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (2).jpg"></center>'			
+			act 'enter the basement': urape += 35 & ubomj += 45 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '123'
+			act 'go away': gt 'city_industrial'
+		end		
+	end
+end
+
+if $ARGS[0] = 'vhid3':
+	*clr & cla
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0
+	$loc = 'vhid3'
+	$loc = 'mod_public_WC_citybasement'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	trahobomj = 0
+	minut += rand(5,7)
+	gs 'stat'
+	pr = 134
+	$location_type = 'secluded'
+	$func('wrap', 'header center b', 'Redlight district basement entrence')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/3redlihtari.jpg"></center>'
+	if vhid3 ! 100:
+		'The door is closed'
+		act 'go away': gt 'city_redlight', 'start'
+		act 'I''ll try to break the lock ':
+			cla
+			if mc_inventory['kirbygrips'] <=0:
+				cla
+				'I need some clips to do that'
+				act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+				act 'go away': gt 'city_redlight', 'start'
+			else
+				'I''ll try to do it with my clip'
+				hpingrip -= 1
+				mc_inventory['kirbygrips']-=1
+			
+				minut += rand(1, 30)
+				pcs_hndiwrk += rand(0,1)
+				gs 'stat'
+				wait 800
+				if pcs_hndiwrk >= rand(10,100):
+					*clr & cla
+					vhid3 = 100
+					'Yes! I Did it!'
+					pcs_mood += rand(10,30)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (1).jpg"></center>'
+					act 'enter the basement': urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '134'
+					act 'go away': gt 'city_redlight', 'start'
+				else
+					'I am failed'
+					act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+					act 'go away': gt 'city_redlight', 'start'
+				end
+			end
+		end		
+	elseif vhid3 = 100:
+		act 'go away': gt 'city_redlight', 'start'
+		act 'open the door': 
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (1).jpg"></center>'			
+			act 'enter the basement': urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '134'
+			act 'go away': gt 'city_redlight', 'start'
+		end		
+	end
+end
+
+if $ARGS[0] = 'vhid4':
+	*clr & cla
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0	
+	$loc = 'vhid4'
+	$loc = 'mod_public_WC_citybasement'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	trahobomj = 0
+	minut += rand(5,7)
+	gs 'stat'
+	pr = 101
+	$location_type = 'secluded'
+	$func('wrap', 'header center b', 'residential basement entrance')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/4residental.jpg"></center>'
+	if vhid4 ! 100:
+		'The door is closed'
+		act 'go away': gt 'city_residential'
+		act 'I''ll try to break the lock ':
+			cla
+			if mc_inventory['kirbygrips'] <=0:
+				cla
+				'I need some clips to do that'
+				act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+				act 'go away': gt 'city_residential'
+			else
+				'I''ll try to do it with my clip'
+				hpingrip -= 1
+				mc_inventory['kirbygrips']-=1
+			
+				minut += rand(1, 30)
+				pcs_hndiwrk += rand(0,1)
+				gs 'stat'
+				wait 800
+				if pcs_hndiwrk >= rand(10,100):
+					*clr & cla
+					vhid1 = 100
+					'Yes! I Did it!'
+					pcs_mood += rand(10,30)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (2).jpg"></center>'
+					act 'enter the basement': urape += -50 & ubomj += 15 & ubomj2 =120 & gt 'mod_public_WC_citybasement', '101'
+					act 'go away': gt 'city_residential'
+				else
+					'I am failed'
+					act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+					act 'go away': gt 'city_residential'
+				end
+			end
+		end		
+	elseif vhid4 = 100:
+		act 'go away': gt 'city_residential'
+		act 'open the door': 
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/shody (2).jpg"></center>'			
+			act 'enter the basement': urape += -50 & ubomj += 15 & ubomj2 =120 & gt 'mod_public_WC_citybasement', '101'
+			act 'go away': gt 'city_residential'
+		end		
+	end
+end
+
+if $ARGS[0] = 'vhid5':
+	*clr & cla
+	urape = 0
+	ubomj = 0
+	ubomj2 = 0	
+	$loc = 'vhid5'
+	$loc = 'mod_public_WC_citybasement'
+	$loc_arg = $ARGS[0]
+	bumevent = 0
+	trahobomj = 0
+	minut += rand(5,7)
+	pr = 109
+	gs 'stat'
+	$location_type = 'secluded'
+	$func('wrap', 'header center b', 'Undercity tunnels entrence')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/5park.jpg"></center>'
+
+	act 'go away': gt 'city_park', 'start'
+	act 'enter the tunnel': 
+		minut += 5
+		gs 'sweat', 'add', rand(0,30)
+		gs 'stat'
+		urape += 33 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '109'
+	end
+end
+
+
+
+--- mod_public_WC_citybasement_enter ---------------------------------
+

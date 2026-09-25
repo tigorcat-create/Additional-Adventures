@@ -1,0 +1,181 @@
+# mod_public_WC_rab_Tolik
+if $ARGS[0] = 'start':
+	if week <= 5 and Tolik ! 2:
+		Tolik = 0 
+
+
+		if hour = 6 and $metka = 'dvir':
+			*nl
+			'Tolik makes sports in the yard'
+			Tolik = 1
+		end
+		if hour = 7 and $metka = 'dvir':
+			*nl
+			'Tolik with Artem having breakfast at the table'
+			Tolik = 1
+		end
+
+		if hour = 20 and $metka = 'dvir':
+			*nl
+			'All rednecks have a supper'
+			Tolik = 1
+		end
+
+		if hour = 21 and $metka = 'vhid':
+			*nl
+			'Tolik sitting on a chair waiting for me, next to him stands Artem.'
+			Tolik = 1
+		end
+	
+		if (hour >= 0 and hour < 6) or hour >= 23:
+			if $metka = 'spat1': 
+				*nl
+				'Tolic sleeps'
+				Tolik = 3
+			end
+		end
+	end 
+	if week = 6 and Tolik ! 2:
+		Tolik = 0
+
+		if hour = 6 and $metka = 'dvir':
+			*nl
+			'Tolik makes sports in the yard'
+			Tolik = 1
+		end
+		if hour = 7 and $metka = 'dvir':
+			*nl
+			'Tolik with Artem having breakfast at the table'
+			Tolik = 1
+		end
+
+		if hour = 20 and $metka = 'dvir':
+			*nl
+			'All rednecks have a supper'
+			Tolik = 1
+		end
+
+		if hour = 21 and $metka = 'vhid':
+			*nl
+			'Tolik sitting on a chair waiting for me, next to him stands Artem.'
+			Tolik = 1
+		end
+	
+		if hour >= 23:
+			if $metka = 'spat1': 
+				*nl
+				'Tolic sleeps'
+				Tolik = 3
+			end
+		end
+
+		if hour >= 0 and hour < 6:
+			if $metka = 'spat1': 
+				*nl
+				'Tolic sleeps'
+				Tolik = 3
+			end
+		end
+	
+		if hour >= 14 and hour <= 15:
+			if $metka = 'spat1': 
+				*nl
+				'All the rednecks turned to me. What do you forget here? (Tolik asks), go away!'
+				brak += 1
+				Tolik = 1
+			end
+		end
+
+		if hour >= 16 and hour <= 19:
+			if $metka = 'dvir': 
+				*nl
+				'All rednecks hard drinking at the table in the yard.'
+				Tolik = 1
+			end
+		end
+
+		if hour = 13:
+			if $metka = 'dvir': 
+				*nl
+				'Tolic has a dinner with everybody'
+				Tolik = 1
+			end
+		end
+	end
+	
+	if week = 7 and Tolik ! 2:
+		Tolik = 0
+
+		if hour = 6 and $metka = 'dvir':
+			*nl
+			'Tolik makes sports in the yard'
+			Tolik = 1
+		end
+		if hour = 7 and $metka = 'dvir':
+			*nl
+			'Tolik with Artem having breakfast at the table'
+			Tolik = 1
+		end
+
+		if hour = 20 and $metka = 'dvir':
+			*nl
+			'All rednecks have a supper'
+			Tolik = 1
+		end
+
+		if hour = 21 and $metka = 'vhid':
+			*nl
+			'Tolik sitting on a chair waiting for me, next to him stands Artem.'
+			Tolik = 1
+		end
+	
+		if (hour >= 0 and hour < 6) or hour >= 23:
+			if $metka = 'spat1': 
+				*nl
+				'Tolic sleeps'
+				Tolik = 3
+			end
+		end
+
+		if hour = 13:
+			if $metka = 'dvir': 
+				*nl
+				'Tolik has a dinner with everybody'
+				Tolik = 1
+			end
+		end
+
+		if hour >= 8 and hour <= 10:
+			if $metka = 'vhid': 
+				*nl
+				'Tolic is reading'
+				Tolik = 1
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'tolik_setup':
+	npctemp = 443
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Anatoliy'
+	$npc_nickname['A<<npctemp>>'] = 'Tolik'
+	$npc_lastname['A<<npctemp>>'] = ' '
+	$npc_usedname['A<<npctemp>>'] = 'Tolik'
+	$npc_notes['A<<npctemp>>'] = 'Arrogant local leader'
+	npc_intel['A<<npctemp>>'] = 100		
+	npc_dob['A<<npctemp>>'] = 443
+	npc_spermpot['A<<npctemp>>'] = 50000	
+	npc_sexskill['A<<npctemp>>'] = 3	
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0	
+	$npc_thdick['A<<npctemp>>'] = 'massive'	
+	npc_dick['A<<npctemp>>'] = 25
+	npc_sexskill['A<<npctemp>>'] = 3	
+	npc_intel['A<<npctemp>>'] = 100		
+end
+--- mod_public_WC_rab_Tolik ---------------------------------
+

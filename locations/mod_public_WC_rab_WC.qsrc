@@ -1,0 +1,2901 @@
+# mod_public_WC_rab_WC
+if $ARGS[0] = 'start':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Unknown guy from Pleasure House', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+
+	$location_type = 'bathroom'
+	$locclass = 'restroom'
+
+	$metka = 'wcr'
+	$loc = 'mod_public_WC_rab_WC'
+	$loc_arg = 'start'
+
+	$menu_loc = 'mod_public_WC_rab_WC'
+	$menu_arg = 'start'
+
+	menu_off = 0
+
+	$locM = 'mod_public_WC_rab_WC'
+	$locM_arg = 'start'
+
+	$func('wrap', 'header center b', 'WC')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/wc.jpg"></center>'
+
+	act 'Look in the mirror': gt 'mirror', 'start'
+	if pcs_hairbsh = 0: act 'Brush your hair': gt 'mirror', 'brush'
+
+	dynamic $tampon
+	dynamic $quickwash
+	dynamic $basin
+	dynamic $publicpan
+
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			cla
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			act 'continue': gt 'mod_public_WC_rab_WC', 'start'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			cla
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put your clothes back on.'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_WC', 'start'
+		end
+	end
+
+	act 'Leave':
+		killvar 'ktemp'
+		gt $PHwcloc, $PHwcloc_arg
+	end
+
+
+	if phwork = 7:
+		act 'enter the glory hole cabine':
+			colir = 0
+			colir2 = 0
+			odianadveriah = 0
+			gandon = 0
+			ghnow = 0
+			gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+	end
+
+	if rand (1,15) = 1 and ktemp ! 501:
+		cla
+		'There is a guy in here!'
+		'"Well-well, what do we got here)))" - he look at me from the bottom to the top. "Yup, bend over, I want to fuck you!"'
+
+		if sexcorrupt <= rand(30,50):
+			act 'ask about money':
+				cla
+				'"yes, sure, here you go."'
+				money += 50*rand(2,6)
+				gs 'stat'
+				sexcorrupt -= 1
+				phtemp = 1
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wc'
+			end
+		end
+
+		act 'agree':
+			cla
+			'"nice!"'
+			act 'bend over': gt 'mod_public_WC_PH_blackcat_daily', 'wc'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'mod_public_WC_cabine_WORK':
+	*clr & cla
+	minut +=5
+
+	temp = rand(1,3)
+	if temp = 1:
+		colir = 2
+	else
+		colir = 1
+	end
+	dick = rand(14,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+	$func('wrap', 'header center b', 'Toilet cabine')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/gh/sitting.jpg"></center>'
+
+
+
+	if pcs_horny >=40:
+		gs 'willpower', 'mast', 'self'
+		if will_cost <= pcs_willpwr:
+			act 'Caress Yourself' + $func('willpower', 'get_willcost_string'):
+				if pcs_inhib < 40:inhib_exp += rand(1,3)
+				*clr & cla
+				gs 'willpower', 'mast', 'self'
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				picrand = rand(1,2)
+				if picrand = 1:
+					*clr & cla
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/caress1.mp4"></video></center>'
+					'Feeling a bit turned on, you close the door to the stall and you behind to reach down your underwear and start rubbing your clit.'
+					gs 'arousal', 'masturbate', 4
+					gs 'stat'
+					act 'Continue': gs 'mod_public_WC_rab_WC', 'contmast'
+				else
+					*clr & cla
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="images/shared/sex/mast/mastr.jpg"></center>'
+					'Feeling a bit turned on, you close the door to the stall and you sit down exposing your pussy and begin to run your clit.'
+					gs 'arousal', 'masturbate', 4
+					gs 'stat'
+					act 'Continue': gs 'mod_public_WC_rab_WC', 'contmast'
+				end
+			end
+		else
+			act 'Caress Yourself' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+	act 'Look at the Hole': gt 'mod_public_WC_rab_WC', 'hole'
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+			if ghnow < 5:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait.jpg"></center>'
+				minut += 5
+				gs 'drugs','smoke'
+				gs 'stat'
+				'You decide to kill some time with cigarette.'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait_q.mp4"></video></center>'
+				minut += 5
+				gs 'drugs','smoke'
+				gs 'stat'
+				'You decide to kill some time with cigarette.'
+			end
+		end
+	end
+	act 'Get Up': gt 'mod_public_WC_rab_WC', 'start'
+	if ghnow >= 5:
+		$func('wrap', 'neg', 'You hear loud sounds and quarrels.')
+		act 'Look what''s going on':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/Line.mp4"></video></center>'
+		end
+ 	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'contmast':
+	*clr & cla
+	pcs_mood += 5
+	menu_off = 1
+	if picrand = 1:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/caress1.mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="images/shared/sex/mast/mastr.jpg"></center>'
+	end
+	if pcs_horny <= 60:
+		'I am starting to feel warm and I insert my finger in my pussy.'
+	else
+		'I am starting to feel warm and I insert my finger in my pussy. I keep fingering my pussy and before long I am breathing heavily and start to moan.'
+	end
+	gs 'arousal', 'masturbate', 5
+	gs 'stat'
+	if pcs_horny >= 90:
+		act 'Climax':
+			*clr & cla
+			pcs_mood += 15
+			if pcs_inhib < 40: inhib_exp += rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/orgasm.mp4"></video></center>'
+			$orgasm_or = 'custom'
+			$orgasm_txt = 'As my pussy gets wet I pulls my panties down and slip my fingers inside of myself. I start finger fucking myself, with in a few minutes a powerful orgasm rocks my body. Leaving me gasping and trembling as I recover.'
+			gs 'arousal', 'masturbate', 2
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Leave cabine':gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+	else
+		act 'Continue': gt 'mod_public_WC_rab_WC', 'contmast'
+	end
+	gs 'willpower', 'mast', 'self'
+	if will_cost <= pcs_willpwr:
+		act 'Stop' + $func('willpower', 'get_willcost_string'):
+			cla
+			minut += 1
+			gs 'willpower', 'mast', 'self'
+			gs 'willpower', 'pay', 'self'
+			gs 'arousal', 'end'
+			gs 'stat'
+			'I decide that I shouldn''t continue and stop myself from finishing.'
+			act 'Leave Stall':gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+	else
+		act 'Stop' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+end
+
+if $ARGS[0] = 'hole':
+	*clr & cla
+	menu_off = 0
+
+	temp = rand(1,3)
+	if temp = 1:
+		colir = 2
+	else
+		colir = 1
+	end
+	jerk = 0
+
+	gs 'npcgeneratec', 0, 'unknown guy from PH toilet', rand(18,40)
+	if npc_dick[$npclastgenerated] < 6: npc_dick[$npclastgenerated] = 6
+	gs 'boyStat', $npclastgenerated
+	minut +=5
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/wait/lookinthehole.mp4"></video></center>'
+	if ztemp = 2:
+		*clr
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_puss.jpg"></center>'
+	end
+	wait 700
+	if hour < 10 or hour >= 21:
+		temp = 0
+	else
+		temp = 100
+	end
+	!! if stat['gloryhole'] = 0:
+		!! 'I have never been in the glory hole'
+		!! 'I don''t know what to do!'
+		!! act 'Leave Stall':gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+	!! else
+	if rand(1, 10) >= 7 - ghnow - ztemp + temp:
+		*clr & cla
+		gs 'stat'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_face_<<temp>>.mp4"></video></center>'
+		if ztemp = 2:
+			*clr
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_puss.jpg"></center>'
+			ztemp = 0
+		end
+		'I shows everyone, I am ready to work.'
+
+		act 'Go away':
+			cla
+			'I don''t want to work here'
+			act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+		gs 'willpower', 'bj', 'self'
+		temp = will_cost - (sexcorrupt  / 5)
+		will_cost -= (sexcorrupt  / 5)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			act 'Start to Work' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				sexcorrupt += rand(0,1)
+				$dodatkovi = rand(1,5) * 50
+				$GROSHI = 250 + $dodatkovi
+				money += $GROSHI
+				minut += 10 + (3 * $dodatkovi / 50)
+
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				if stat['gloryhole'] = 0:
+					if colir = 1:
+						'Someones dick stick to your mouth push your head away.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/start.mp4"></video></center>'
+					else
+						'Someones black dick stick to your mouth push your head away.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/startv (2).mp4"></video></center>'
+					end
+
+
+					'The man slips few <b>₽</b> banknotes into the hole near your head.'
+					act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+				elseif gloryhole > 0:
+					dick = rand (10,40)
+					npc_dick[$npclastgenerated] = dick
+					if colir = 1:
+						'White <<dick>> cm dick comes through the hole'
+						if 25 >= rand(1,100):
+							'It wears condom'
+							gandon = 1
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/dick_con.jpg"></center>'
+						else
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/startv.mp4"></video></center>'
+						end
+					else
+						'Black <<dick>> cm dick comes through the hole'
+						if 15 >= rand(1,100):
+							'It wears condom'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/startv.mp4"></video></center>'
+							gandon = 1
+						else
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/startv ('+rand(1,7)+').mp4"></video></center>'
+						end
+					end
+					'The man slips few <b>₽</b> banknotes into the hole.'
+					act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+					act 'Give a hand job': gt 'mod_public_WC_rab_WC', 'hj'
+					act 'Give a foot job': gt 'mod_public_WC_rab_WC', 'lj'
+				end
+			end
+		else
+			act 'Start to Work' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	else
+		*clr & cla
+		gs 'stat'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_face_<<temp>>.mp4"></video></center>'
+		'The mouth begins to get tired, but nobody came. Am I do everything right?'
+		if ztemp = 2:
+			*clr
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_puss.jpg"></center>'
+			'No one want to buy, Really? Am I doing everything right?'
+			ztemp = 0
+		end
+
+		act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		act 'Wait':
+			*clr & cla
+			'You decide stay and wait for someone to come.'
+			act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+		end
+		if gloryhole >= 50:
+			act 'Try to sell my pussy':
+				ztemp = 2
+				gt 'mod_public_WC_rab_WC', 'hole'
+			end
+		end
+		if mc_inventory['cigarettes'] > 0:
+			act 'Smoke':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait.jpg"></center>'
+				minut += 5
+				gs 'drugs','smoke'
+				gs 'stat'
+				'You decide to kill some time with cigarette.'
+				act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+				if gloryhole >= 50:
+					act 'Try to sell my pussy':
+						ztemp = 2
+						gt 'mod_public_WC_rab_WC', 'hole'
+					end
+				end
+			end
+		end
+		if ghnow < 4:
+			act 'Have a look through the hole':
+				*clr & cla
+				if hour < 10 or hour >= 21:
+					temp = 0
+				else
+					temp = 100
+				end
+				if rand(1, 10) >= 7 - (ghnow * 2) - ztemp + temp:
+
+					gs 'npcgeneratec', 0, 'unknown guy from PH toilet', rand(25,40)
+					gs 'boyStat', $npclastgenerated
+					$boy[0] = $boy
+					if rand(1,2) = 1:
+						colir = 1
+					else
+						colir = 2
+					end
+
+					'While looking through the hole, I see some juicy dick'
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/ask.jpg"></center>'
+					gs 'arousal', 'voyeur', 5
+					gs 'stat'
+
+					gs 'willpower', 'bj', 'self'
+					temp = will_cost - sexcorrupt / 5 / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'ask the guy to suck his dick' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+
+							gs 'willpower', 'pay', 'self'
+
+							'The guy stand in shock a little'
+							if rand(1, 10) >= 5 - (ghnow * 2):
+								'but after few moment I here "Shure why not"'
+								'I see his dick comes through the hole'
+								if colir = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick1.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick2.jpg"></center>'
+								end
+
+								act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+								act 'Give a hand job': gt 'mod_public_WC_rab_WC', 'hj'
+								act 'Give a foot job': gt 'mod_public_WC_rab_WC', 'lj'
+							else
+								'The guy said "Nope", and went out obviously quicker than he needed to.'
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+					else
+						act 'ask the guy to suck his dick' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+
+					gs 'willpower', 'bj', 'self'
+
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'offer my service to the guy' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+
+							gs 'willpower', 'pay', 'self'
+
+							'The guy stood in shock a little'
+							if rand(1, 10) >= 6 - (ghnow * 2):
+								'but after few moment I here "Sounds like a good idea"'
+								'few banknotes slip through the hole'
+								'I see his dick comes through the hole'
+
+
+								$dodatkovi = rand(1,5) * 50
+								$GROSHI = 150 + $dodatkovi
+								money += $GROSHI
+								minut += 10 + (3 * $dodatkovi / 50)
+
+								gs 'stat'
+
+
+
+								if colir = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick1.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick2.jpg"></center>'
+								end
+
+								act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+								act 'Give a hand job': gt 'mod_public_WC_rab_WC', 'hj'
+								act 'Give a foot job': gt 'mod_public_WC_rab_WC', 'lj'
+							else
+								'The guy said "Nope", and went out obviously quicker then must to.'
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+					else
+						act 'offer my service to the guy' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+				else
+					*clr & cla
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghseenomen.jpg"></center>'
+					'Looking through the hole, I can see a row of urinals. There are no men currently here.'
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'virgin':
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghvirgin1.mp4"></video></center>'
+	'You tentatively reach out and gently touch the dick, half afraid to, but also half wanting to.'
+
+	act 'Grab it':
+		*clr & cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghfeeling.mp4"></video></center>'
+		'Biting your lip and deciding you want to feel it some more, you reach over again and grab it. You caress it with your hand, it is harder than you expected and warm to the touch, it almost feels like it is throbbing in your hand. Unexplained feelings of excitement run through your body. You hear through the wall the guy saying, "Stop playing with it and stroke it." "Huh?" You reply, not knowing why he wants you to stroke it. He replies, "Really, you don''t know? Just grab it with your hand and slide it up and down."'
+		gs 'arousal', 'foreplay', 5, 'unknown'
+		gs 'stat'
+
+		act 'Slide your hand on his penis':
+			*clr & cla
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghstroke1.mp4"></video></center>'
+			'You decide to gently slide your hand on his dick. You feel his hard penis throb as you continue to slide your hand up and down. To your surprise you are really enjoying stroking the dick, your pussy starts to itch from the experience. As you get more turned on, you grab it with both hands and stroke it.'
+			gs 'arousal', 'hj', 5, 'unknown'
+			gs 'stat'
+			act 'Continue Stroking':
+				*clr & cla
+				minut +=5
+				gs 'arousal', 'end'
+				gs 'cum_call', 'hands', 'an unknown guy from the gloryhole'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghmastcum.mp4"></video></center>'
+				'Without any warning, hot white liquid spurts out the tip of his penis. You look at your hands, watching the sperm run down the back of your hand and down onto your arm. The man panting says, "That was," he takes another breath, "That was great."'
+				'You decide to lick a bit of the white liquid off your hand curiously wanting to know what it tastes like. It''s slimy and tastes tart.'
+				act 'Continue': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'blowjob':
+	*clr & cla
+	if temp ! 3004:
+		guy += 1
+		ghnow += 1
+		stat['gloryhole'] += 1
+	end
+
+	if gandon = 1 and temp ! 3004:
+		act 'remove condom':
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			gandon = 0
+
+			temp = rand(1,20)
+			if temp <= 10:
+				'"Ni-i-ice"… few more banknotes slip through the hole.'
+				money += rand(1,8) * 25
+				act 'continue': gt 'mod_public_WC_rab_WC', 'blowjob'
+
+			elseif temp = 20:
+				'The guy said WTF bitch!!!'
+				if rand(1,2) = 1:
+					'He quickly remove his cock and angrily go away.'
+					ghnow -= rand(0,2)
+					if ghnow < 0: ghnow = 0
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+
+				else
+					'Hey cunt! I swear if you don''t dress a condom back you will have problems!!!'
+					if prezik > 0:
+						act 'use my condom':
+							*clr & cla
+							prezik -= 1
+							gandon = 1
+							minut += 5
+							gs 'stat'
+							'Ok, girl. Now go on.'
+							act 'continue':
+								temp = 3004
+								gt 'mod_public_WC_rab_WC', 'blowjob'
+							end
+						end
+					end
+
+					act 'I have no condoms':
+						*clr & cla
+						'Then give my money back and 300 over for destroyed condom'
+
+						if money >= $GROSHI + 300 :
+							act 'Give the money back':
+								money -= $GROSHI + 300
+								gs 'stat'
+								'Buy bitch, we even'
+								'The jerk go away'
+
+								ghnow -= rand(0,2)
+								if ghnow < 0: ghnow = 0
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+
+						act 'I have no money yet':
+							*clr & cla
+							stat['pcs_persuas'] += rand(0,2)
+							gs 'stat'
+
+
+							'"Shit girl, you have pissed me off!"'
+							'"Fuck you! Bitch!!!"'
+							'The jerk go away'
+							shtraf += 3
+
+
+							ghnow -= rand(0,2)
+							if ghnow < 0: ghnow = 0
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+						end
+					end
+				end
+			else
+				act 'continue':
+					temp = 3004
+					gt 'mod_public_WC_rab_WC', 'blowjob'
+				end
+			end
+		end
+	end
+
+	if gandon = 0:
+		if colir = 1:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+			end
+		elseif colir = 2:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+			end
+		end
+	else
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+		end
+	end
+
+	'I wrap my lips around his dick and take his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth and start to suck it, I suck the cock enthusiastically.'
+	gs 'arousal', 'bj', 5, 'unknown', 'sub'
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Undress':gt 'mod_public_WC_rab_WC', 'ghsex'
+	else
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Use my other holes':gt 'mod_public_WC_rab_WC', 'ghsex'
+	end
+
+	if ghnow >= 4 and gandon = 0:
+		ztemp = 3
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D_bj.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+		end
+		'You see a new dick comes from the another hole, which you didn''t notice before.'
+		temp = 100
+		act 'Grab 2nd Dick':gt 'mod_public_WC_rab_WC', '2D'
+ 	end
+
+ 	act 'make a selfie':
+		if colir = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/selfie/b2.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/selfie/ch.jpg"></center>'
+		end
+		minut += 3
+		gs 'stat'
+
+
+
+		gs 'willpower', 'exhib', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'make a stories on ВКонтакте' + $func('willpower', 'get_willcost_string'):
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				minut += 5
+				if ghnow >= 5:
+					ghnow -= 2
+				else
+					ghnow += 3
+				end
+				fame['pav_prostitute'] += 4
+				slutty += 2
+				pav_media += rand(0,1)
+				gs 'exp_gain', 'inhib', rand(1,2)
+				gs 'flash', 'exhibitionism', 2
+				gs 'stat'
+				if stat['boyfriends_current'] > 0:
+					if rand(0,100) >= 80:
+						'I received a massage from my boyfriend… We broke up.'
+						gs 'lover', 'remove', lover_number
+						slutty += 2
+						gs 'stat'
+					end
+				end
+
+			end
+		else
+			act 'make a stories on ВКонтакте' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+
+
+		if stat['boyfriends_current'] > 0:
+			gs 'willpower', 'exhib', 'self', 'hard'
+			if will_cost <= pcs_willpwr:
+
+				act 'send it to my boyfriend (break up)' + $func('willpower', 'get_willcost_string'):
+
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					gs 'lover', 'remove', lover_number
+					willpowermax += rand(1,2)
+					slutty += 2
+					gs 'stat'
+				end
+
+			else
+				act 'send it to my boyfriend (break up)' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+		end
+ 	end
+
+	act 'Continue to Suck':
+		*clr & cla
+
+		if gandon = 0:
+			if colir = 1:
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+				end
+			end
+		else
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+			end
+		end
+		'I suck on his dick, bobbing my head, sometimes using my hands to stroke his shaft at the same time, other times my hands massage his balls. Before to long I hear the guy moan in pleasure, "I''m cuming."'
+		gs 'arousal', 'bj', 5, 'unknown', 'sub'
+		gs 'stat'
+		act 'Swallow':
+			*clr & cla
+			stat['swallow'] += 1
+			gs 'cum_call', 'mouth', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'end'
+			gs 'stat'
+			phwhoreshift -= 1
+
+
+			if colir = 1:
+				temp = rand(1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjcv ('+rand(1,20)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjc ('+rand(1,20)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,3)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjcv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjc ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+
+			'Despite what he says I keep sucking his dick, I am looking forward to him filling my mouth up with his tasty sperm. Moments later hot spurts of cum fill my mouth, I savor the taste of it in my mouth, before I swallow it all down.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'point on my face':
+			*clr & cla
+			facial += 1
+
+			gs 'cum_call', 'face', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'end'
+			gs 'stat'
+			phwhoreshift -= 1
+
+			if colir = 1:
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycec ('+rand(1,12)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycec ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+
+			'I feel his sperm rapidly moving in his dick, I pull my mouth off his dick, shortly later, hot spurts of cum start flying and covering my face.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'point on my body':
+			*clr & cla
+			facial += 1
+
+			gs 'cum_call', 'stomach', 'an unknown guy from the gloryhole'
+			gs 'stat'
+			gs 'cum_call', 'breasts', 'an unknown guy from the gloryhole'
+			gs 'stat'
+			phwhoreshift -= 1
+
+			if $clothingworntype ! 'nude':
+				gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+				gs 'stat'
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+
+
+			if colir = 1:
+				temp = rand(1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/tilo/tilocv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/tilo/tiloc ('+rand(1,3)+').jpg"></center>'
+				end
+			else
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/tilo/tilo ('+rand(1,3)+').jpg"></center>'
+
+			end
+
+
+			'I feel his sperm rapidly moving in his dick, I pull my mouth off his dick, shortly later, hot spurts of cum start flying and showering me.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		if gandon = 1:
+			*clr & cla
+			if gandon = 0:
+				if colir = 1:
+					temp = rand(1,5)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+					end
+				else
+					temp = rand(1,5)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+					end
+				end
+			else
+				if colir = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+				end
+			end
+			'I suck on his dick, bobbing my head, sometimes using my hands to stroke his shaft at the same time, other times my hands massage his balls. Before to long I hear the guy moan in pleasure, "I''m cuming."'
+			act 'Make him cum':
+				*clr & cla
+				phwhoreshift -= 1
+				if colir = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/cum/bj.jpg"></center>'
+				else
+					if rand (1,2) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/cum/bj1.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/cum/bjv1.mp4"></video></center>'
+					end
+				end
+
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				'I feel he is on the edge. And a moment later the condom starts to fill up'
+
+				if trt_cumeater = 1:
+					cla
+					act 'I didn''t want to waste it':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 9:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 10:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+
+					end
+				else
+					act 'Get up':
+						gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					end
+
+					act 'Drink cum from condom':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 5:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 6:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'hj':
+	*clr & cla
+	if temp ! 3004:
+		guy += 1
+		ghnow += 1
+		if ghnow <= 2: stat['gloryhole'] += 1
+	end
+	stat['hj'] += 1
+
+	if gandon = 1 and temp ! 3004:
+		act 'remove condom':
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			gandon = 0
+
+			temp = rand(1,20)
+			if temp <= 10:
+				'"Ni-i-ice"… few more banknotes slip through the hole.'
+				money += rand(1,8) * 25
+				act 'continue': gt 'mod_public_WC_rab_WC', 'hj'
+
+			elseif temp = 20:
+				'The guy said WTF bitch!!!'
+				if rand(1,2) = 1:
+					'He quickly remove his cock and angrily go away.'
+					ghnow -= rand(0,2)
+					if ghnow < 0: ghnow = 0
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+
+				else
+					'Hey cunt! I swear if you don''t dress a condom back you will have problems!!!'
+					if prezik > 0:
+						act 'use my condom':
+							*clr & cla
+							prezik -= 1
+							gandon = 1
+							minut += 5
+							gs 'stat'
+							'Ok, girl. Now go on.'
+							act 'continue':
+								temp = 3004
+								gt 'mod_public_WC_rab_WC', 'hj'
+							end
+						end
+					end
+
+					act 'I have no condoms':
+						*clr & cla
+						'Then give my money back and 300 over for destroyed condom'
+
+						if money >= $GROSHI + 300 :
+							act 'Give the money back':
+								money -= $GROSHI + 300
+								gs 'stat'
+								'Buy bitch, we even'
+								'The jerk go away'
+
+								ghnow -= rand(0,2)
+								if ghnow < 0: ghnow = 0
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+
+						act 'I have no money yet':
+							*clr & cla
+							stat['pcs_persuas'] += rand(0,2)
+							gs 'stat'
+
+
+							'Shit girl, you have pissed me off!'
+							'Fuck you! Bitch!!!'
+							'The jerk go away'
+
+							shtraf += 3
+							ghnow -= rand(0,2)
+							if ghnow < 0: ghnow = 0
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+
+						end
+					end
+				end
+			else
+				act 'continue':
+					temp = 3004
+					gt 'mod_public_WC_rab_WC', 'hj'
+				end
+			end
+		end
+	end
+
+
+	if gandon = 0:
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+			end
+		end
+	else
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'
+		end
+	end
+
+	'I wrap my hands around his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to jerk it enthusiastically.'
+	gs 'arousal', 'hj', 5, 'unknown', 'sub'
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Undress':gt 'mod_public_WC_rab_WC', 'ghsex'
+	else
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Use my other holes':gt 'mod_public_WC_rab_WC', 'ghsex'
+	end
+
+	if ghnow >= 4 and gandon = 0:
+		ztemp = 2
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+
+		'You see a new dick comes from the another hole, which you didn''t notice before.'
+		temp = 200
+		act 'Grab 2nd Dick':gt 'mod_public_WC_rab_WC', '2D'
+ 	end
+
+
+	act 'Blow Him':
+		money += 25*rand(0,4)
+		gt 'mod_public_WC_rab_WC', 'blowjob'
+	end
+
+	if jerk ! 1:
+		act 'Give a foot job':
+			money += 25*rand(0,4)
+			jerk = 1
+			gt 'mod_public_WC_rab_WC', 'lj'
+		end
+	end
+
+  	act 'make a selfie':
+		if colir = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/selfie/b2.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/selfie/ch.jpg"></center>'
+		end
+		minut += 3
+		gs 'stat'
+
+		gs 'willpower', 'exhib', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'make a stories on ВКонтакте' + $func('willpower', 'get_willcost_string'):
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				minut += 5
+				if ghnow >= 5:
+					ghnow -= 2
+				else
+					ghnow += 3
+				end
+				fame['pav_prostitute'] += 4
+				slutty += 2
+				pav_media += rand(0,1)
+				gs 'exp_gain', 'inhib', rand(1,2)
+				gs 'flash', 'exhibitionism', 2
+				gs 'stat'
+				if stat['boyfriends_current'] > 0:
+					if rand(0,100) >= 80:
+						'I received a massage from my boyfriend… We broke up.'
+						gs 'lover', 'remove', lover_number
+						slutty += 2
+						gs 'stat'
+					end
+				end
+
+			end
+		else
+			act 'make a stories on ВКонтакте' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+
+		if stat['boyfriends_current'] > 0:
+			gs 'willpower', 'exhib', 'self', 'hard'
+			if will_cost <= pcs_willpwr:
+
+				act 'send it to my boyfriend (break up)' + $func('willpower', 'get_willcost_string'):
+
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					gs 'lover', 'remove', lover_number
+					willpowermax += rand(1,2)
+					slutty += 2
+					gs 'stat'
+				end
+
+			else
+				act 'send it to my boyfriend (break up)' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+		end
+ 	end
+
+	act 'Continue to jerk':
+		*clr & cla
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+			end
+		end
+
+		'I jerk his dick sometimes using hands massage his balls. Before to long I hear the guy moan in pleasure, "I''m cuming."'
+		gs 'arousal', 'hj', 5, 'unknown', 'sub'
+		gs 'stat'
+
+
+		act 'point on my face':
+			*clr & cla
+			facial += 1
+			phwhoreshift -= 1
+
+			gs 'cum_call', 'face', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			if colir = 1:
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycec ('+rand(1,12)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycec ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+
+			'I feel his sperm rapidly moving in his dick, I pull my mouth off his dick, shortly later, hot spurts of cum start flying and covering my face.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'point on my body':
+			*clr & cla
+			facial += 1
+			phwhoreshift -= 1
+
+
+			gs 'cum_call', 'stomach', 'an unknown guy from the gloryhole'
+			gs 'stat'
+			gs 'cum_call', 'breasts', 'an unknown guy from the gloryhole'
+			gs 'stat'
+
+			if $clothingworntype ! 'nude':
+				gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+				gs 'stat'
+			end
+
+
+
+			if colir = 1:
+				temp = rand(1, 7)
+				if temp <= 3:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/hj/hjcv ('+rand(1,4)+').mp4"></video></center>'
+				elseif temp = 4:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/tilo/tilocv (3).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/tilo/tiloc ('+rand(1,3)+').jpg"></center>'
+				end
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/tilo/tilo ('+rand(1,3)+').jpg"></center>'
+			end
+
+
+			'My hands feel his sperm rapidly moving in his dick, I point it on me, shortly later, hot spurts of cum start flying and showering me.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		if gandon = 1:
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'
+			end
+			'I feel he is on the edge.'
+
+			act 'continue to jerk':
+				*clr & cla
+				if colir = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/cum/hj ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/cum/anal1.jpg"></center>'
+				end
+
+
+
+				gs 'arousal', 'end'
+				gs 'stat'
+
+
+				'I see how his cum fill up his condom'
+				phwhoreshift -= 1
+
+				if trt_cumeater = 1:
+					cla
+					act 'I didn''t want to waste it':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 9:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 10:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+
+					end
+				else
+					act 'Get up':
+						gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					end
+
+					act 'Drink cum from condom':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 5:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 6:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+					end
+				end
+			end
+
+			act 'Quickly remove the condom':
+				*clr & cla
+
+				facial += 1
+
+				gs 'cum_call', 'face', 'an unknown guy from the gloryhole'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				gs 'cum_call', 'stomach', 'an unknown guy from the gloryhole'
+				gs 'stat'
+				gs 'cum_call', 'breasts', 'an unknown guy from the gloryhole'
+				gs 'stat'
+
+				if $clothingworntype ! 'nude':
+					gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+					gs 'stat'
+				end
+
+
+				if colir = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/tilo/tiloc ('+rand(1,2)+').jpg"></center>'
+
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/tilo/tilo (2).jpg"></center>'
+				end
+
+				'Quickly removes his condom I start to showering in his cum'
+
+				if rand(1,10) >= 9:
+					money += 100
+					gs 'stat'
+					'Another 100 banknot falls from the hole.'
+				end
+
+				act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'lj':
+	*clr & cla
+	guy += 1
+	if ghnow <= 2: ghnow += 1
+	stat['gloryhole'] += 1
+	stat['footjob'] += 1
+
+	if gandon = 1:
+		act 'remove condom':
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			gandon = 0
+			act 'continue': gt 'mod_public_WC_rab_WC', 'blowjob'
+		end
+	end
+
+	if colir = 1:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/lj/ljv1.mp4"></video></center>'
+	else
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/lj/ljv1.mp4"></video></center>'
+	end
+
+	'I put his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock between my legs and starts to gently rub it.'
+	gs 'arousal', 'footjob', 5, 'unknown', 'sub'
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Undress':gt 'mod_public_WC_rab_WC', 'ghsex'
+	else
+		if stat['vaginal'] > 0 or stat['anal'] > 0:act 'Use my other holes':gt 'mod_public_WC_rab_WC', 'ghsex'
+	end
+
+	if ghnow >= 4 and gandon = 0:
+		ztemp = 1
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+
+		'You see a new dick comes from the another hole, which you didn''t notice before.'
+		temp = 300
+		act 'Grab 2nd Dick':gt 'mod_public_WC_rab_WC', '2D'
+ 	end
+
+
+	act 'Blow Him':
+		money += 25*rand(0,4)
+		gt 'mod_public_WC_rab_WC', 'blowjob'
+	end
+
+	if jerk ! 1:
+		act 'Give a hand job':
+			money += 25*rand(0,4)
+			jerk = 1
+			gt 'mod_public_WC_rab_WC', 'hj'
+		end
+	end
+
+
+	act 'Continue to masturbate':
+		*clr & cla
+
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/lj/ljv1.mp4"></video></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/lj/ljv1.mp4"></video></center>'
+		end
+
+		if gandon = 1:
+			gandon = 0
+			'I  moving my legs up and down on his penis. In few minutes he rip off his condom.'
+			'I musturbates him for some time… I hear the guy moan in pleasure, "I''m cuming."'
+		else
+			'I  moving my legs up and down on his penis. I hear the guy moan in pleasure, "I''m cuming."'
+		end
+
+		gs 'arousal', 'footjob', 5, 'unknown', 'sub'
+		gs 'stat'
+
+
+		act 'he cums':
+			*clr & cla
+			phwhoreshift -= 1
+
+
+
+
+			gs 'cum_call', 'stomach', 'an unknown guy from the gloryhole'
+			gs 'stat'
+			gs 'cum_call', 'breasts', 'an unknown guy from the gloryhole'
+			gs 'stat'
+			gs 'cum_call', 'legs', 'an unknown guy from the gloryhole'
+			gs 'stat'
+
+			if $clothingworntype ! 'nude':
+				gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+				gs 'stat'
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+
+
+			if colir = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/cumtilo/ct ('+rand(1,4)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/cumtilo/ct ('+rand(1,4)+').jpg"></center>'
+			end
+
+
+			'He is sprinking cum all over me.'
+			act 'Get up': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+	end
+end
+
+if $ARGS[0] = 'ghsex':
+	*clr & cla
+	money += 25*rand(0,7)
+	gs 'stat'
+	$func('wrap', 'header center b', 'Empty Stall')
+
+	if $clothingworntype = 'nude':
+		'I badly want to fuck him.'
+		if colir = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick1.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick2.jpg"></center>'
+		end
+	else
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghundress.mp4"></video></center>'
+		'I let go of him and quickly undress, I badly want to fuck him.'
+		if rand (1,15) <= 1 and ghnow >= 4:
+			'While I am undressing hands from holes start to rub me.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/hands from holes.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 5, 'unknown', 'sub'
+			gs 'stat'
+
+
+			if ghnow >= 4 and gandon = 0:
+				ztemp = 1
+				temp = 100
+				act '"I want your dics together!"':gt 'mod_public_WC_rab_WC', '2D'
+			end
+
+
+		end
+	end
+	gs 'stat'
+
+	if stat['anal'] > 0: act 'Ass':gt 'mod_public_WC_rab_WC', 'anal'
+	if stat['vaginal'] > 0: act 'Pussy':gt 'mod_public_WC_rab_WC', 'pussy2'
+end
+
+if $ARGS[0] = 'anal':
+	*clr & cla
+	if temp ! 3004:
+		ghnow += 1
+	end
+
+	if gandon = 1 and temp ! 3004:
+		act 'remove condom':
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			gandon = 0
+
+			temp = rand(1,20)
+			if temp <= 10:
+				'"Ni-i-ice"… few more banknotes slip through the hole.'
+				money += rand(1,8) * 25
+				act 'continue': gt 'mod_public_WC_rab_WC', 'anal'
+
+			elseif temp = 20:
+				'The guy said WTF bitch!!!'
+				if rand(1,2) = 1:
+					'He quickly remove his cock and angrily go away.'
+					ghnow -= rand(0,2)
+					if ghnow < 0: ghnow = 0
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+
+				else
+					'Hey cunt! I swear if you don''t dress a condom back you will have problems!!!'
+					if prezik > 0:
+						act 'use my condom':
+							*clr & cla
+							prezik -= 1
+							gandon = 1
+							minut += 5
+							gs 'stat'
+							'Ok, girl. Now go on.'
+							act 'continue':
+								temp = 3004
+								gt 'mod_public_WC_rab_WC', 'anal'
+							end
+						end
+					end
+
+					act 'I have no condoms':
+						*clr & cla
+						'Then give my money back and 300 over for destroyed condom'
+
+
+						if money >= $GROSHI + 300 :
+							act 'Give the money back':
+								money -= $GROSHI + 300
+								gs 'stat'
+								'Buy bitch, we even'
+								'The jerk go away'
+
+								ghnow -= rand(0,2)
+								if ghnow < 0: ghnow = 0
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+
+						act 'I have no money yet':
+							*clr & cla
+							stat['pcs_persuas'] += rand(0,2)
+							gs 'stat'
+							'Shit girl, you have pissed me off!'
+							'Fuck you! Bitch!!!'
+							'The jerk go away'
+							shtraf += 3
+
+							ghnow -= rand(0,2)
+							if ghnow < 0: ghnow = 0
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+						end
+					end
+				end
+			else
+				act 'continue':
+					temp = 3004
+					gt 'mod_public_WC_rab_WC', 'anal'
+				end
+			end
+		end
+	end
+
+	if gandon = 0:
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/anal/analv.mp4"></video></center>'
+		else
+			if rand(1,3) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/anal'+rand(1,2)+'.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/analv ('+rand(1,6)+').mp4"></video></center>'
+			end
+		end
+	else
+		if colir = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/anal.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/anal.jpg"></center>'
+		end
+	end
+
+	if ghnow >= 4 and gandon = 0:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D_anal.mp4"></video></center>'
+		'You see a new dick comes from the another hole, which you didn''t notice before.'
+		temp = 200
+		ztep = 4
+		act 'Grab 2nd Dick':gt 'mod_public_WC_rab_WC', '2D_vag'
+ 	end
+
+
+
+	'You rub your wet pussy and get your fingers nice and wet and then rub it on your asshole, you do the same to his dick, then you guide his <<npc_dick[$npclastgenerated]>>cm <<$npc_thdick[$npclastgenerated]>> cock into your ass. You feel his dick enter your tight ass, feelings of pain and pleasure rush through you.'
+	gs 'arousal', 'masturbate', 5, 'unknown', 'sub'
+	gs 'arousal', 'anal', 5, 'unknown', 'sub'
+	minut -= 5
+	gs 'stat'
+ 	act 'Keep Going':
+		*clr & cla
+		gs 'stat'
+		if gandon = 0:
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/anal/analv.mp4"></video></center>'
+			else
+				if rand(1,3) <= 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/anal'+rand(1,2)+'.jpg"></center>'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/analv ('+rand(1,6)+').mp4"></video></center>'
+				end
+			end
+		else
+			if colir = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/anal.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/anal.jpg"></center>'
+			end
+		end
+
+		if pcs_ass < 10:
+			'The pain doesn''t fade and instead it starts to hurt worse after a while and the pleasure starts to fade. You fuck his dick with your ass, at first taking him deeper and deeper, as you get faster and faster. As the pleasure fades and the pain gets worse you slow down and don''t take him as deep. you start to rub your clit to help with the sensation of pleasure. You consider stopping as the pain gets worse, but you can tell by the throbbing of his dick and ragged breathing he is about to cum and decided to keep it up so he can finish.'
+		elseif pcs_ass < 20:
+			'The pain fades slowly and soon all you feel pleasure. You fuck his dick with your ass, taking him deeper and deeper, as you get faster and faster, you start to rub your clit as you feel yourself getting close to climax. You can tell by the throbbing of his dick and ragged breathing he is about to cum.'
+		else
+			'The pain fades quickly and soon all you feel pleasure. You fuck his dick with your ass, taking him deeper and deeper, as you get faster and faster, you start to rub your clit as you feel yourself getting close to climax. You can tell by the throbbing of his dick and ragged breathing he is about to cum.'
+		end
+		gs 'arousal', 'anal', 5, 'unknown', 'sub'
+		gs 'stat'
+
+		act 'Let him cum in your ass':
+			*clr & cla
+			phwhoreshift -= 1
+			gs 'cum_call', 'anus', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'anal', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/krem_anal/analcv.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/krem_anal/analcv ('+rand(1,3)+').mp4"></video></center>'
+			end
+
+			'You feel his dick throb as he shoots his load of sperm deep in your ass, filling it up. When you pull your ass off his dick, you feel the hot sperm spilling out of your gaping asshole.'
+
+			act 'Get up': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'Let him cum all over your ass':
+			*clr & cla
+			phwhoreshift -= 1
+
+			gs 'cum_call', 'butt', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'anal', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			if rand (1,13) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghcumonass.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/asscum/asscum ('+rand(1,12)+').jpg"></center>'
+			end
+
+
+			'You pull your ass away, feeling his cock slip out of your asshole, just as you feel hot splashing of cum landing on your butt, coating your cheeks and running down the crack of your ass.'
+
+			act 'Get up': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'Turn around, kneel and let him cum in your mouth':
+			*clr & cla
+			stat['swallow'] += 1
+			phwhoreshift -= 1
+			gs 'cum_call', 'mouth', 'an unknown guy from the gloryhole'
+
+
+			if colir = 1:
+				temp = rand(1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjcv ('+rand(1,20)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjc ('+rand(1,20)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,3)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjcv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjc ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+			'Once down on your knees you take his dick into your mouth and start sucking him, tasting your own ass on his dick. But you are looking forward to him filling your mouth up with his tasty sperm. Moments later hot spurts of cum fill your mouth, you savor the taste of it in your mouth, before you swallow it all down.'
+			gs 'arousal', 'bj', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'Get up': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		act 'Turn around, kneel and let him cum on your face':
+			*clr & cla
+			phwhoreshift -= 1
+
+			facial += 1
+			gs 'cum_call', 'face', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'hj', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			if colir = 1:
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycec ('+rand(1,12)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycec ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+			'You put your face near his dick and start jerking him off, shortly later, hot spurts of cum start flying and covering your face.'
+
+			act 'Get up': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+		if gandon = 1:
+			*clr & cla
+
+
+			if gandon = 0:
+				if colir = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/anal/analv.mp4"></video></center>'
+				else
+					if rand(1,3) <= 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/anal'+rand(1,2)+'.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gh/ch/anal/analv ('+rand(1,6)+').mp4"></video></center>'
+					end
+				end
+			else
+				if colir = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/anal.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/anal.jpg"></center>'
+				end
+			end
+
+			if pcs_ass < 10:
+				'The pain doesn''t fade and instead it starts to hurt worse after a while and the pleasure starts to fade. You fuck his dick with your ass, at first taking him deeper and deeper, as you get faster and faster. As the pleasure fades and the pain gets worse you slow down and don''t take him as deep. you start to rub your clit to help with the sensation of pleasure. You consider stopping as the pain gets worse, but you can tell by the throbbing of his dick and ragged breathing he is about to cum and decided to keep it up so he can finish.'
+			elseif pcs_ass < 20:
+				'The pain fades slowly and soon all you feel pleasure. You fuck his dick with your ass, taking him deeper and deeper, as you get faster and faster, you start to rub your clit as you feel yourself getting close to climax. You can tell by the throbbing of his dick and ragged breathing he is about to cum.'
+			else
+				'The pain fades quickly and soon all you feel pleasure. You fuck his dick with your ass, taking him deeper and deeper, as you get faster and faster, you start to rub your clit as you feel yourself getting close to climax. You can tell by the throbbing of his dick and ragged breathing he is about to cum.'
+			end
+
+			act 'make him cum':
+				*clr & cla
+				phwhoreshift -= 1
+				if colir = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/cum/anal ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/cum/anal1.jpg"></center>'
+				end
+				'I feel warm cum fills up his condom in my ass.'
+
+				if trt_cumeater = 1:
+					cla
+					act 'I didn''t want to waste it':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 9:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 10:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+
+					end
+				else
+					act 'Get up':
+						gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					end
+
+					act 'Drink cum from condom':
+						*clr & cla
+						stat['swallow'] += 1
+						minut += rand (5,15)
+
+						'I lick all the cum from condom…'
+
+						if rand (1,10) >= 5:
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+								gs 'stat'
+								'…some drops fell on my cloth…'
+							end
+						end
+
+						gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+
+						if rand (1,10) >= 6:
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							'…some drops fell on my hair…'
+						end
+
+						if rand(1,3) >= 2:
+							'"Wow, girl, you are rock!"'
+							temp = rand(0,4)
+							money += temp * 25
+							if temp > 0: 'some extra money comes from the hole!'
+							gs 'stat'
+						end
+
+
+						act 'Get up':
+							gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						if rand (1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'pussy':
+
+	if gandon = 1:
+		protect = 1
+		sexcontra = 3
+	elseif prezik > 0:
+		dynamic $prezik
+		protect = 1
+		if preziktype = 2:
+			sexcontra = 7
+			gandon = 1
+			'I take one of my sabotaged condoms and put it on the stranger.'
+		else
+			sexcontra = 3
+			gandon = 1
+			'I take a condom and put it on the stranger''s dick.'
+		end
+	else
+		sexcontra = 0
+		gandon = 0
+	end
+end
+
+if $ARGS[0] = 'pussy2':
+	*clr & cla
+
+	if temp ! 3004:
+		ghnow += 1
+	end
+
+	if gandon = 1:
+		protect = 1
+	elseif prezik > 0:
+		dynamic $prezik
+		protect = 1
+	end
+
+	gs 'stat'
+
+
+	if gandon = 1 and temp ! 3004:
+		act 'remove condom':
+			*clr & cla
+			if colir = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			gandon = 0
+
+			temp = rand(1,20)
+			if temp <= 10:
+				'"Ni-i-ice"… few more banknotes slip through the hole.'
+				money += rand(1,8) * 25
+				act 'continue': gt 'mod_public_WC_rab_WC', 'pussy2'
+
+			elseif temp = 20:
+				'The guy said WTF bitch!!!'
+				if rand(1,2) = 1:
+					'He quickly remove his cock and angrily go away.'
+					shtraf +=3
+					ghnow -= rand(0,2)
+					if ghnow < 0: ghnow = 0
+
+					act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					act 'Wait':
+						*clr & cla
+						'You decide stay and wait for someone to come.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+					end
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_rab_WC', 'hole'
+						end
+					end
+
+				else
+					'Hey cunt! I swear if you don''t dress a condom back you will have problems!!!'
+					if prezik > 0:
+						act 'use my condom':
+							*clr & cla
+							prezik -= 1
+							gandon = 1
+							minut += 5
+							gs 'stat'
+							'Ok, girl. Now go on.'
+							act 'continue':
+								temp = 3004
+								gt 'mod_public_WC_rab_WC', 'pussy2'
+							end
+						end
+					end
+
+					act 'I have no condoms':
+						*clr & cla
+						'Then give my money back and 300 over for destroyed condom'
+
+						if money >= $GROSHI + 300 :
+							act 'Give the money back':
+								money -= $GROSHI + 300
+								gs 'stat'
+								'Buy bitch, we even'
+								'The jerk go away'
+
+								ghnow -= rand(0,2)
+								if ghnow < 0: ghnow = 0
+
+								act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+								act 'Wait':
+									*clr & cla
+									'You decide stay and wait for someone to come.'
+									act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+								end
+								if gloryhole >= 50:
+									act 'Try to sell my pussy':
+										ztemp = 2
+										gt 'mod_public_WC_rab_WC', 'hole'
+									end
+								end
+							end
+						end
+
+						act 'I have no money yet':
+							*clr & cla
+							stat['pcs_persuas'] += rand(0,2)
+							gs 'stat'
+
+
+							'Shit girl, you have pissed me off!'
+							'Fuck you! Bitch!!!'
+							'The jerk go away'
+							phwhoreshift -= 1
+
+
+							ghnow -= rand(0,2)
+							if ghnow < 0: ghnow = 0
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+						end
+					end
+				end
+			else
+				act 'continue':
+					temp = 3004
+					gt 'mod_public_WC_rab_WC', 'pussy2'
+				end
+			end
+		end
+	end
+
+
+
+
+	if gandon = 0:
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+			end
+		end
+	else
+		if colir = 1:
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+			end
+		else
+			if rand(1,7) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+			end
+		end
+	end
+
+
+	gs 'mod_public_WC_rab_WC', 'pussy'
+
+
+
+	if ghnow >= 4 and gandon = 0:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D_anal.mp4"></video></center>'
+		'You see a new dick comes from the another hole, which you didn''t notice before.'
+		temp = 200
+		ztemp = 5
+		act 'Grab 2nd Dick': gt 'mod_public_WC_rab_WC', '2D_vag'
+ 	end
+
+
+
+
+
+	'You turn around and back up to the hole, you use one hand to guide his dick into your pussy. The <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock slides easily into your wet pussy, causing you to moan in pleasure as you move your hips back and forth. You start humping his dick with fast movements, taking the full length of him balls deep into you, which causes him to moan loudly.'
+	gs 'arousal', 'vaginal', 10, 'unknown', 'sub'
+	gs 'stat'
+	if protect ! 1:
+		act 'Allow him to cum inside':
+			*clr & cla
+			gs 'cum_call', 'vaginal', 'an unknown guy from the gloryhole'
+			phwhoreshift -= 1
+
+
+			if gandon = 0:
+				if colir = 1:
+					if rand(1,7) <= 5:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/krem/kremv ('+rand(1,5)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/krem/krem ('+rand(1,2)+').jpg"></center>'
+					end
+				else
+					if rand(1,6) <= 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/krem/krem.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/krem/kremv ('+rand(1,5)+').mp4"></video></center>'
+					end
+				end
+			end
+
+
+
+			'Instead of pulling away, you moan "Inside me, please," and push yourself hard against the opening in the wall. You feel his hot sperm fill your pussy in spurt after spurt. When you finally pull yourself off him, you can feel the sperm leaking out of your pussy.'
+			gs 'cuminsidereact', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'vaginal', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'Get dressed': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+
+
+		act 'Quickly turn around and get on your knees':
+			*clr & cla
+			phwhoreshift -= 1
+
+			gs 'stat'
+			act 'Let him cum in your mouth':
+				*clr & cla
+				stat['swallow'] += 1
+				gs 'cum_call', 'mouth', 'an unknown guy from the gloryhole'
+				temp = rand(1,11)
+
+
+				if colir = 1:
+					temp = rand(1,2)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjcv ('+rand(1,20)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/bj/bjc ('+rand(1,20)+').jpg"></center>'
+					end
+				else
+					temp = rand(1,3)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjcv ('+rand(1,3)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/bj/bjc ('+rand(1,14)+').jpg"></center>'
+					end
+				end
+
+
+
+				'Once down on your knees you take his dick into your mouth and start sucking him. You are looking forward to him filling your mouth up with his tasty sperm. Moments later hot spurts of cum fill your mouth, you savor the taste of it in your mouth, before you swallow it all down.'
+				gs 'arousal', 'bj', 10, 'unknown', 'sub'
+				minut -= 9
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Get dressed': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+			end
+		end
+
+
+		act 'Let him cum on your face':
+			*clr & cla
+			phwhoreshift -= 1
+			gs 'willpower', 'swallow', 'resist'
+			gs 'willpower', 'pay', 'resist'
+			facial += 1
+			gs 'cum_call', 'face', 'an unknown guy from the gloryhole'
+			gs 'arousal', 'hj', 10, 'unknown', 'sub'
+			minut -= 9
+			gs 'arousal', 'end'
+			gs 'stat'
+			temp = rand(1,2)
+
+
+			if colir = 1:
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/cum/nalyce/lycec ('+rand(1,12)+').jpg"></center>'
+				end
+			else
+				temp = rand(1,5)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycecv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/cum/nalyce/lycec ('+rand(1,14)+').jpg"></center>'
+				end
+			end
+
+
+			'You put your face near his dick and start jerking him off, shortly later, hot spurts of cum start flying and covering your face.'
+
+			act 'Get dressed': gt'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+		end
+
+
+
+
+
+
+	else
+		act 'Let him cum':
+			if sexcontra = 4:
+				'You pull off of <<$boydesc>> and look at his dick and think, "Oh shit! The condom burst."'
+				gandon = 0
+			elseif sexcontra = 5:
+				'You pull off of <<$boydesc>> and look at his dick and think, "Oh shit! The condom is missing!"'
+				gandon = 0
+			else
+				'<<$boydesc>> groaned and you realized that he came in the condom.'
+				gandon = 1
+			end
+			sexcontra = 0
+			protect = 0
+			phwhoreshift -= 1
+
+
+			if gandon = 0:
+				if colir = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+				else
+					if rand(1,4) <= 2:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag (5'+rand(1,5)+').jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+					end
+				end
+			else
+				if colir = 1:
+					if rand(1,4) <= 2:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+					end
+				else
+					if rand(1,7) <= 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+					end
+				end
+			end
+
+
+
+			if trt_cumeater = 1:
+				cla
+				act 'I didn''t want to waste it':
+					*clr & cla
+					stat['swallow'] += 1
+					minut += rand (5,15)
+
+					'I lick all the cum from condom…'
+
+					if rand (1,10) >= 9:
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+							gs 'stat'
+							'…some drops fell on my cloth…'
+						end
+					end
+
+					gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+
+					if rand (1,10) >= 10:
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						'…some drops fell on my hair…'
+					end
+
+					if rand(1,3) >= 2:
+						'"Wow, girl, you are rock!"'
+						temp = rand(0,4)
+						money += temp * 25
+						if temp > 0: 'some extra money comes from the hole!'
+						gs 'stat'
+
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Get up':
+						gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					end
+
+					if rand (1,2) = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+					end
+
+				end
+			else
+				act 'Get up':
+					gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+				end
+
+				act 'Drink cum from condom':
+					*clr & cla
+					stat['swallow'] += 1
+					minut += rand (5,15)
+
+					'I lick all the cum from condom…'
+
+					if rand (1,10) >= 5:
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'clothes', 'an unknown guy from the gloryhole'
+							gs 'stat'
+							'…some drops fell on my cloth…'
+						end
+					end
+
+					gs 'cum_call', 'face', $npclastgenerated, 0
+
+
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+
+					if rand (1,10) >= 6:
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						'…some drops fell on my hair…'
+					end
+
+					if rand(1,3) >= 2:
+						'"Wow, girl, you are rock!"'
+						temp = rand(0,4)
+						money += temp * 25
+						if temp > 0: 'some extra money comes from the hole!'
+						gs 'stat'
+					end
+
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Get up':
+						gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+					end
+
+					if rand (1,2) = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drinkv ('+rand(1,3)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/con_drink/con_drink ('+rand(1,10)+').jpg"></center>'
+					end
+				end
+			end
+		end
+ 	end
+end
+
+
+
+if $ARGS[0] = '2D':
+	*clr & cla
+	guy += 1
+	ghnow += rand(0,1)
+	stat['gloryhole'] += 1
+	colir2 = rand(1,2)
+
+	if $clothingworntype = 'nude':
+		act 'undress':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghundress.mp4"></video></center>'
+			'I quickly undress, I badly want to fuck.'
+			if rand (1,2) <= 1:
+				'While I am undressing hands from holes start to rub me.'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/hands from holes.mp4"></video></center>'
+				gs 'arousal', 'foreplay', 5, 'unknown', 'sub'
+				gs 'stat'
+			end
+			act 'Continue': gt 'mod_public_WC_rab_WC', '2D'
+		end
+	end
+
+
+
+
+	if ztemp = 3:
+		'Continuing to suck <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock I think what to do with the newly arrived member'
+
+
+		if colir = 1:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+			end
+		elseif colir = 2:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+			end
+		end
+
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D_bj.jpg"></center>'
+		gs 'arousal', 'bj', 5, 'unknown', 'sub'
+
+
+	elseif ztemp = 2:
+		'Continuing to jerk <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock I think what to do with the newly arrived member'
+
+
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+			end
+		end
+
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+		gs 'arousal', 'hj', 5, 'unknown', 'sub'
+
+	elseif ztemp = 1:
+		'Continuing to masturbate <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock I think what to do with the newly arrived member'
+
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/lj/ljv1.mp4"></video></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/lj/ljv1.mp4"></video></center>'
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+		gs 'arousal', 'footjob', 5, 'unknown', 'sub'
+
+	end
+	gs 'stat'
+
+
+
+	act 'Suck two dicks':
+		*clr & cla
+		$dodatkovo = rand(1,5) * 50
+		$GROSH = 250 + $dodatkovo
+		money += $GROSH
+		minut += 10 + (3 * $dodatkovo / 50)
+		gs 'stat'
+		$cum1 = rand(5,9) * 10
+		$cum2 = rand(8,12) * 10
+		gs 'stat'
+
+		gt 'mod_public_WC_rab_WC_cabine_d2', 'suck'
+	end
+
+	if ztemp ! 3:
+		act 'Jerk two dicks':
+			*clr & cla
+			$dodatkovo = rand(1,5) * 50
+			$GROSH = 250 + $dodatkovo
+			money += $GROSH
+			minut += 10 + (3 * $dodatkovo / 50)
+			gs 'stat'
+			$cum1 = rand(5,9) * 10
+			$cum2 = rand(8,12) * 10
+			gs 'stat'
+
+			gt 'mod_public_WC_rab_WC_cabine_d2', 'jerk'
+		end
+	end
+
+
+	act 'spit roasted':
+		*clr & cla
+		$dodatkovo = rand(1,5) * 50
+		$GROSH = 250 + $dodatkovo
+		money += $GROSH
+		minut += 10 + (3 * $dodatkovo / 50)
+		gs 'stat'
+		$cum1 = rand(5,9) * 10
+		$cum2 = rand(8,12) * 10
+		gs 'stat'
+
+		gt 'mod_public_WC_rab_WC_cabine_d2', 'spitroasted'
+
+	end
+end
+
+if $ARGS[0] = '2D_vag':
+	*clr & cla
+	guy += 1
+	ghnow += rand(0,1)
+	stat['gloryhole'] += 1
+	colir2 = rand(1,2)
+
+	if ztemp = 5:
+		'Continuing to fuck <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock I think what to do with the newly arrived member'
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+			end
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D.jpg"></center>'
+		gs 'arousal', 'vaginal', 10, 'unknown', 'sub'
+	end
+
+	if ztemp = 4:
+		'While <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock drills my ass I think what to do with the newly arrived member'
+		if colir = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/b/anal/analv.mp4"></video></center>'
+		else
+			if rand(1,3) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/anal'+rand(1,2)+'.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/ch/anal/analv ('+rand(1,6)+').mp4"></video></center>'
+			end
+		end
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/d2/show/2D_anal.mp4"></video></center>'
+		gs 'arousal', 'anal', 10, 'unknown', 'sub'
+	end
+
+
+	gs 'stat'
+
+
+
+	act 'Suck two dicks':
+		*clr & cla
+		$dodatkovo = rand(1,4) * 40
+		$GROSH = 250 + $dodatkovo
+		money += $GROSH
+		minut += 10 + (3 * $dodatkovo / 50)
+		gs 'stat'
+		$cum1 = rand(5,9) * 10
+		$cum2 = rand(8,12) * 10
+		gs 'stat'
+
+		gt 'mod_public_WC_rab_WC_cabine_d2', 'suck'
+	end
+
+	if ztemp ! 3:
+		act 'Jerk two dicks':
+			*clr & cla
+			$dodatkovo = rand(1,4) * 30
+			$GROSH = 250 + $dodatkovo
+			money += $GROSH
+			minut += 10 + (3 * $dodatkovo / 50)
+			gs 'stat'
+			$cum1 = rand(5,9) * 10
+			$cum2 = rand(8,12) * 10
+			gs 'stat'
+
+			gt 'mod_public_WC_rab_WC_cabine_d2', 'jerk'
+		end
+	end
+
+
+	act 'spit roasted':
+		*clr & cla
+		$dodatkovo = rand(1,5) * 50
+		$GROSH = 250 + $dodatkovo
+		money += $GROSH
+		minut += 10 + (3 * $dodatkovo / 50)
+		gs 'stat'
+		$cum1 = rand(5,9) * 10
+		$cum2 = rand(8,12) * 10
+		gs 'stat'
+
+		gt 'mod_public_WC_rab_WC_cabine_d2', 'spitroasted'
+
+	end
+end
+--- mod_public_WC_rab_WC ---------------------------------
+

@@ -1,0 +1,1328 @@
+# mod_public_WC_street
+if $ARGS[0] = 'start':
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street'
+	$loc_arg = 'start'
+	$menu_arg = 'start'
+	$loc = 'mod_public_WC_street'
+	menu_off = 0
+	$location_type = 'public_outdoors'
+	CLOSE ALL
+
+	killvar 'carclient'
+	killvar 'phwalk'
+	killvar 'phspeed'
+	PH_area_moneybonus = rand(100,100)
+
+	'<center><h2>Snokhachestvo street</h2></center>'
+	if month >= 11 or month <= 3:
+		if hour >= 8 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/lito.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/lito.jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/zyma.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/zyma.jpg"></center>'
+		end
+	end
+
+	if rand(1,3) = 1:
+		'casual "shoping" pictures'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/1 street/smitnyk.mp4"></video></center>'
+	end
+
+	act 'Walk to the Residential area (0:15)':minut += 2 & gt 'pav_residential'
+	act 'Walk to the Commercial area (0:15)':minut += 5 & gt 'pav_commercial'
+	act 'Walk to the Industrial region (0:15)':minut += 5 & gt 'pav_industrial'
+	act 'Walk to the Market (0:15)':minut += 15 & gt 'pav_market'
+	act 'Walk to the train station (0:15)':minut += 15 & gt 'pav_train_hall'
+
+	act 'Wait (0:15)':minut += 15 & gt 'mod_public_WC_street', 'start'
+
+	!! '-=wip=-' other actions
+
+	'I see an advertisement pasted on a pole: "RENT: Snokhachestvo street, 3a, room 1"'
+	act 'Go to the Snokhachestvo street, 3a':
+		minut += 5
+		gs 'stat'
+		gt 'mod_public_WC_street_2', 'start'
+	end
+
+	If phBOXsnoh > 0:
+		'there is my box'
+		gs 'mod_public_WC_street_box_info', 'boxid'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+		act 'enter my box': gt 'mod_public_WC_street_box', 'start'
+	end
+
+	gs 'mod_public_WC_street', 'actprostitute'
+
+	gs 'stat'
+end
+
+
+
+if $ARGS[0] = 'prostitutesearch':
+	cla
+	killvar 'phwindevent'
+	killvar 'phthrowup'
+	killvar 'phrimmedmouth'
+	killvar 'hemasturbme'
+	killvar 'phnokiss'
+	killvar 'phpose'
+	killvar 'phmasturb_he'
+	killvar 'phpose'
+	killvar 'phpose2'
+	killvar 'stdtrigger'
+	phclientfunnow = 100
+	otemp = 0
+	phclient_mood = 0
+	if phdrugged > 1: phdrugged = 0
+	phcopevent = 0
+
+	menu_off = 0
+	killvar 'phdtape'
+
+
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			cla
+
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+
+			if month >= 11 or month <= 3:
+				if rand(1,2) <= 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/undress ('+rand(1,1)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/undress ('+rand(1,1)+').jpg"></center>'
+				end
+			else
+				' '
+			end
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			cla
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put your clothes back on.'
+			gs 'stat'
+			gs 'mod_public_WC_street', 'prostitutesearch'
+
+		end
+	end
+
+	act 'walk':
+		*clr & cla
+		killvar 'phtemp1'
+		killvar 'phtemp2'
+		killvar 'phtemp3'
+		killvar 'phsex'
+		killvar 'phclientwantprice1'
+		killvar 'phclientwantprice2'
+		killvar 'phclientwantprice3'
+		if month >= 11 or month <= 3:
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/walk_bikini ('+rand(1,2)+').jpg"></center>'
+			else
+				if rand(1,5) <= 3:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/walk_naked ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/walk_naked ('+rand(1,2)+').jpg"></center>'
+				end
+			end
+		else
+			if $clothingworntype ! 'nude':
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/walk_bikini (1).mp4"></video></center>'
+
+				if PCloSkirt > 2 and $pantyworntype = 'none' and rand(1,10) = 1:
+					phwindevent = 224
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/walk_bikini_wind_event.mp4"></video></center>'
+					'A strong windy breeze blows down the street which causes my skirt to blow up entirely, exposing all of my crotch to the people around.'
+					if trait_vars['exhibitionist'] = 1:
+						gs 'arousal', 'flash', -5
+						gs 'arousal', 'end'
+						pcs_mood += 10
+						'I look around and notice a guy staring at me. I am sure he''ve seen everything.'
+					elseif trait_vars['exhibitionist'] > 1:
+						pcs_mood -= 2
+						'I look around and notice a guy staring at me. I am sure he''ve seen everything.'
+					else
+						pcs_mood -= 10
+						'I look around and notice a guy staring at me. I am sure he''ve seen everything.'
+					end
+					gs 'stat'
+				end
+			else
+				if rand(1,2) <= 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/walk_naked ('+rand(1,1)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/walk_naked ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		end
+
+		phwalk = 1
+		minut += rand(5,30)
+		gs 'stat'
+		gs 'mod_public_WC_street', 'prostitute'
+	end
+
+	act 'wait':
+		*clr & cla
+		killvar 'phtemp1'
+		killvar 'phtemp2'
+		killvar 'phtemp3'
+		killvar 'phsex'
+		killvar 'phclientwantprice1'
+		killvar 'phclientwantprice2'
+		killvar 'phclientwantprice3'
+		!! '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walk (<<temp>>).mp4"></video></center>'
+		if month >= 11 or month <= 3:
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/wait_bikini ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/wait_naked ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/wait_bikini ('+rand(1,3)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/wait_naked ('+rand(1,1)+').jpg"></center>'
+			end
+		end
+
+		phwalk = 2
+		minut += rand(17,18)
+		gs 'stat'
+		gs 'mod_public_WC_street', 'prostitute'
+	end
+
+	if phassonly = 0:
+		act 'tape my vagina':
+			cla
+			phassonly = 1
+			+$OpenInnerThought+'Now noone will fuck my pussy'+$CloseInnerThought
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/assonly ('+rand(1,1)+').jpg"></center>'
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+	end
+
+	if phassonly >= 1:
+		act 'untape my vagina':
+			cla
+			phassonly = 0
+			!+$OpenInnerThought+'Now noone will fuck my pussy'+$CloseInnerThought
+			!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/assonly ('+rand(1,1)+').jpg"></center>'
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+	end
+
+	if (mc_inventory['mentats'] > 0 or mc_inventory['amphetamine'] > 0) and phdrugged = 0:
+		act 'put the drug on the tongue to drugged the client':
+			cla
+			phdrugged = 1
+			if mc_inventory['mentats'] > 0:
+				mc_inventory['mentats'] -= 1
+			else
+				mc_inventory['amphetamine'] -= 1
+			end
+
+			'I am using bigger pills, than it is needed for the regular person'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/event/drugs_pill ('+rand(1,1)+').mp4"></video></center>'
+
+			cla
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+	elseif (mc_inventory['mentats'] < 1 and mc_inventory['amphetamine'] < 1):
+		'I have no drugs to drugged the clients'
+	end
+end
+
+
+
+if $ARGS[0] = 'prostitute':
+	!*clr & cla
+	carclient = 0
+	ztemp = 0
+	phclient_mood = 0
+
+	if $clothingworntype ! 'nude':
+		temptemp = fame['pav_prostitute'] / 40
+	else
+		temptemp = (fame['pav_prostitute'] / 40) + rand(0,1)
+	end
+
+	if phraperape > 100: phraperape = 0
+	!! if phcopcop > 100: phcopcop = 0
+
+	if phwalk = 1:
+		phraperape += rand(0,1)
+		phcopcop += rand(0,1)
+	else
+		phraperape += rand(0,2)
+		phcopcop += rand(0,2)
+	end
+
+	if daystart - phbumsexthisweek >= 10 and rand(1,100) <= 10:
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/1 client_bum/1.jpg"></center>'
+		'The bum comes to me: "I am Vladimir, in case you are not remember me"'
+		'VLADIMIR: "I don''t have cash, but I am walking around and knowing smth:'
+		'VLADIMIR: "Serve me, please"'
+
+		act 'Why?':
+			'VLADIMIR: "Okey, you are not the smart one. I will help you with cops. To avoid them. You really need this."'
+		end
+
+		act 'okey':
+			*clr & cla
+			gt 'mod_public_WC_street_events2', '1cient_bum'
+		end
+
+		act 'No':
+			cla
+			'He just go away'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/1 client_bum/3.jpg"></center>'
+
+			if phwalk = 1:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			elseif phwalk = 2:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			end
+
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+
+	elseif phcopcop >= 30 and daystart - phbumsexthisweek <= 14:
+		'The Vladimir bum comes to me'
+		'Vladimir: "There are cops, don''t go there"'
+		phcopcop -= rand(10,15)
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/1 client_bum/1.jpg"></center>'
+		'ME: "Okey, thank you!"'
+		+$OpenInnerThought+'I think he helps just because I served him'+$CloseInnerThought
+
+		if phwalk = 1:
+			if mc_inventory['cigarettes'] > 0:
+				act 'smoke':
+					!! cla
+					minut += 10
+					pcs_mood += rand(1,3)
+					gs 'drugs','smoke'
+					gs 'stat'
+					'I decide to kill some time with cigarette.'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/SMOKE ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		elseif phwalk = 2:
+			if mc_inventory['cigarettes'] > 0:
+				act 'smoke':
+					!! cla
+					minut += 10
+					pcs_mood += rand(1,3)
+					gs 'drugs','smoke'
+					gs 'stat'
+					'I decide to kill some time with cigarette.'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/SMOKE ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		end
+
+		gs 'mod_public_WC_street', 'prostitutesearch'
+
+	elseif (rand (50,100) - fame['pav_prostitute'] <= 0) and (rand(20,50) - phcopcop <= 0):
+		*clr & cla
+		phcopcop = 0
+		gt 'mod_public_WC_street_events', 'cop2'
+	elseif rand (1,40) - phraperape <= 0:
+		*clr & cla
+		phraperape = 0
+		gt 'mod_public_WC_street_events', 'rape'
+	elseif (pcs_apprnc + temptemp*5 >= rand(80,150)) and (hour >= (22 - temptemp) or hour < (5 + temptemp)) and rand(1,10) <= 4:
+		cla
+		bcil = 0
+		phwindevent = 0
+		phraperape = 0
+		temp = phcopcop*80/100
+		phcopcop = temp
+
+		inhib_exp += rand(3,6)
+		gs 'stat'
+
+		if rand(1,3) = 1 and $loc ! 'mod_public_WC_street':
+			'Some car stoped near me, and ask:"What do you offer?"'
+
+			carclient = 1
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+			end
+			if rand(1,5) = 1: gt 'mod_public_WC_street_events', 'car2'
+		else
+			'Some guy came to me, and ask: "What do you offer?"'
+
+			if month >= 11 or month <= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+			end
+
+
+			if mc_inventory['cigarettes'] > 0:
+				act 'smoke':
+					!! cla
+					minut += 10
+					pcs_mood += rand(1,3)
+					gs 'drugs','smoke'
+					gs 'stat'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/Smoke ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		end
+
+		temp = rand(1,3)
+		ztemp = rand(1,3)
+		ytemp = rand(1,10)
+		phtemp1 = temp
+		phtemp2 = ztemp
+		phtemp3 = ytemp
+		if $loc = 'mod_public_WC_street' and $loc_arg = 'start':
+			ytemp = rand(1,8)
+		end
+
+		'The guy looks like…'
+		*nl
+		if ytemp <= 6:
+			ytemp = 1
+			'poor'
+			phclientwantprice_pricekoef = rand(1,2)
+		elseif ytemp <= 9:
+			'casual dressed'
+			ytemp = 2
+			phclientwantprice_pricekoef = rand(1,3)
+		else
+			'fancy'
+			ytemp = 3
+			phclientwantprice_pricekoef = rand(2,3)
+		end
+
+
+		if temp = 1:
+			'stuffy'
+			bcil += rand(0,40)
+		elseif temp = 2:
+			'average'
+			bcil += rand(40,60)
+		else
+			'brutal'
+			bcil += rand(60,100)
+		end
+
+		if ztep = 1:
+			'weak man'
+			bcil -= rand(0,30)
+		elseif ztemp = 2:
+			'man'
+			bcil += rand(0,20)
+		else
+			'strong man'
+			bcil += rand(20,50)
+		end
+		if bcil <= 0: bcil = 10
+		ztemp = 0
+		if rand(1,5) = 1: fame['pav_prostitute'] += 1
+
+		phclient_mood = rand(0,10)
+		if rand (1,100) + pcs_humint >= 100:
+			if phclient_mood <= 2:
+				'His mood is obviously terrible'
+			elseif phclient_mood <= 3:
+				'His is not in a good mood'
+			elseif phclient_mood <= 7:
+				'I can''t understand his mood'
+			else
+				'He seems happy'
+			end
+		else
+			'I can''t understand his mood'
+		end
+
+		if $clothingworntype ! 'nude':
+			act 'Show him my tits':
+				phshowthem = 1
+
+				gt 'mod_public_WC_street', 'prostitute2'
+			end
+
+			act 'Show him my ass':
+				phshowthem = 2
+				gt 'mod_public_WC_street', 'prostitute2'
+			end
+
+			act 'Show him my pussy':
+				phshowthem = 3
+
+				gt 'mod_public_WC_street', 'prostitute2'
+			end
+
+			act 'Show him all I have':
+				phshowthem = 4
+
+				gt 'mod_public_WC_street', 'prostitute2'
+			end
+		else
+			' '
+		end
+
+		act 'You want some?':
+			*clr & cla
+			minut += rand(1,5)
+
+			'…'
+			phshowthem = 100
+			gt 'mod_public_WC_street', 'prostitute2'
+		end
+
+		act 'go away': gt $loc, $loc_arg
+	else
+		cla
+		'Noone intrested in me.'
+
+		if phwalk = 1:
+			if mc_inventory['cigarettes'] > 0:
+				act 'smoke':
+					!! cla
+					minut += 10
+					pcs_mood += rand(1,3)
+					gs 'drugs','smoke'
+					gs 'stat'
+					'I decide to kill some time with cigarette.'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/SMOKE ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		elseif phwalk = 2:
+			if mc_inventory['cigarettes'] > 0:
+				act 'smoke':
+					!! cla
+					minut += 10
+					pcs_mood += rand(1,3)
+					gs 'drugs','smoke'
+					gs 'stat'
+					'I decide to kill some time with cigarette.'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/SMOKE ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		end
+
+		temptemp = fame['pav_prostitute'] / 40
+		if (hour >= (22 - temptemp) or hour < (5 + temptemp)):
+			' '
+			*nl
+		else
+			'I need to try at night time'
+			*nl
+		end
+
+
+		if rand(1,5) = 1: fame['pav_prostitute'] += 1
+		inhib_exp += rand(1,2)
+		gs 'stat'
+
+		temptemp = fame['pav_prostitute'] / 40
+		if (rand(1,4) = 1 and (hour >= (22 - temptemp) or hour < (5 + temptemp))) OR (phwindevent = 224):
+			if rand(1,5) = 1: carclient = 1
+			if carclient = 1:
+				'The car stops a bit far, but I see the guy in the car stares at me'
+			else
+				'Ow, some guy stares at me'
+			end
+
+			if phwindevent = 224:
+				*clr & cla
+				carclient = 0
+				killvar 'phwindevent'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/walk_bikini_wind_event.mp4"></video></center>'
+				'A strong windy breeze blows down the street which causes my skirt to blow up entirely, exposing all of my crotch to the people around.'
+				'I look around and notice a gun staring at me. I am sure he''ve seen everything.'
+			end
+
+			temp = rand(1,3)
+			ztemp = rand(1,3)
+			ytemp = rand(1,10)
+			phtemp1 = temp
+			phtemp2 = ztemp
+			phtemp3 = ytemp
+			if $loc = 'mod_public_WC_street' and $loc_arg = 'start':
+				ytemp = rand(1,8)
+			end
+
+			'The guy looks like…'
+			*nl
+			if ytemp <= 6:
+				ytemp = 1
+				'poor'
+				phclientwantprice_pricekoef = rand(1,2)
+			elseif ytemp <= 9:
+				'casual dressed'
+				phclientwantprice_pricekoef = rand(1,3)
+				ytemp = 2
+			else
+				'fancy'
+				phclientwantprice_pricekoef = rand(2,3)
+				ytemp = 3
+			end
+
+
+			if temp = 1:
+				'stuffy'
+				bcil += rand(0,40)
+			elseif temp = 2:
+				'average'
+				bcil += rand(40,60)
+			else
+				'brutal'
+				bcil += rand(60,100)
+			end
+
+			if ztep = 1:
+				'weak man'
+				bcil -= rand(0,30)
+			elseif ztemp = 2:
+				'man'
+				bcil += rand(0,20)
+			else
+				'strong man'
+				bcil += rand(20,50)
+			end
+			if bcil <= 0: bcil = 10
+			ztemp = 0
+
+			phclient_mood = rand(0,10)
+			if rand (1,100) + pcs_humint >= 100:
+				if phclient_mood <= 2:
+					'His mood is obviously terrible'
+				elseif phclient_mood <= 3:
+					'His is not in a good mood'
+				elseif phclient_mood <= 7:
+					'I can''t understand his mood'
+				else
+					'He seems happy'
+				end
+			else
+				'I can''t understand his mood'
+			end
+
+			if $clothingworntype ! 'nude':
+				act 'tease him':
+					cla
+					act 'Show him my tits':
+						*clr & cla
+						otemp = 1
+						if carclient = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_tits ('+rand(1,1)+').jpg"></center>'
+						elseif phwalk = 1:
+							!! walk
+							if month >= 11 or month <= 3:
+								if rand(1,5) <= 4:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_tits ('+rand(1,4)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_tits ('+rand(1,1)+').jpg"></center>'
+								end
+							else
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_tits ('+rand(1,1)+').mp4"></video></center>'
+							end
+						else
+							!! wait
+							if month >= 11 or month <= 3:
+								if rand(1,2) <= 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').jpg"></center>'
+								end
+							else
+								if rand(1,4) <= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_tits ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_tits ('+rand(1,2)+').jpg"></center>'
+								end
+							end
+						end
+
+						gs 'mod_public_WC_street', 'tease'
+					end
+
+					act 'Show him my ass':
+						*clr & cla
+						otemp = 2
+						if carclient = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_ass ('+rand(1,1)+').jpg"></center>'
+						elseif phwalk = 1:
+							!! walk
+							if month >= 11 or month <= 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_ass ('+rand(1,3)+').jpg"></center>'
+							else
+								if rand(1,5) <= 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_ass ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_ass ('+rand(1,4)+').jpg"></center>'
+								end
+							end
+						else
+							!! wait
+							if month >= 11 or month <= 3:
+								if rand(1,6) <= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_ass ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_ass ('+rand(1,4)+').jpg"></center>'
+								end
+							else
+								if rand(1,4) <= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_ass ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_ass ('+rand(1,2)+').jpg"></center>'
+								end
+							end
+						end
+
+
+						gs 'mod_public_WC_street', 'tease'
+					end
+
+					act 'Show him my pussy':
+						*clr & cla
+						otemp = 3
+						if carclient = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_all ('+rand(1,1)+').jpg"></center>'
+						elseif phwalk = 1:
+							!! walk
+							if month >= 11 or month <= 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_pussy ('+rand(1,1)+').jpg"></center>'
+							else
+								if rand(1,3) <= 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_pussy ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_pussy ('+rand(1,2)+').jpg"></center>'
+								end
+							end
+						else
+							!! wait
+							if month >= 11 or month <= 3:
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_pussy ('+rand(1,1)+').jpg"></center>'
+							else
+								if rand(1,3) <= 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_pussy ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_pussy ('+rand(1,2)+').jpg"></center>'
+								end
+							end
+						end
+
+
+						gs 'mod_public_WC_street', 'tease'
+					end
+
+					act 'Show him all I have':
+						*clr & cla
+						otemp = 4
+						if carclient = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_all ('+rand(1,1)+').jpg"></center>'
+						elseif phwalk = 1:
+							!! walk
+							if month >= 11 or month <= 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_all ('+rand(1,6)+').jpg"></center>'
+							else
+								if rand(1,2) <= 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_all ('+rand(1,1)+').jpg"></center>'
+								end
+							end
+						else
+							!! wait
+							if month >= 11 or month <= 3:
+								if rand(1,5) <= 4:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').jpg"></center>'
+								end
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_all ('+rand(1,2)+').jpg"></center>'
+							end
+						end
+
+
+						gs 'mod_public_WC_street', 'tease'
+					end
+				end
+			else
+				'I need more clothes to tease him'
+			end
+
+			act 'talk to him':
+				*clr & cla
+
+				otemp = 0
+				if carclient = 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+					end
+					'ME: "Honey, want some fun?"'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/meask/meask ('+rand(1,3)+').jpg"></center>'
+					'ME: "Honey, want some fun?"'
+				end
+
+				humint_exp += 1
+				minut += rand(1,5)
+				temptemp = fame['pav_prostitute'] / 4
+				if temptemp >= 50: temptemp = 50
+				if pcs_humint >= (rand(0,100) - temptemp):
+					!! he agree
+					humint_exp += 3
+					'HE: "Can I try?" - he points on my tits'
+					phshowthem = 1
+
+					act 'Yes, you can': gt 'mod_public_WC_street', 'ad'
+					act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+					act 'go away': gt $loc, $loc_arg
+
+					if mc_inventory['cigarettes'] > 0:
+						act 'smoke':
+							cla
+							minut += 10
+							pcs_mood += rand(1,3)
+							gs 'drugs','smoke'
+							gs 'stat'
+
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/meask/smoke ('+rand(1,2)+').jpg"></center>'
+						end
+					end
+				else
+					!! he is not
+					'He just say "NO", as I aproached him.'
+					'He rush away from me'
+
+					if carclient ! 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEwalkaway ('+rand(1,1)+').jpg"></center>'
+					end
+
+					carclient = 0
+
+					act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+					act 'go away': gt $loc, $loc_arg
+				end
+			end
+
+			act 'ignore the guy':
+				cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/MEwalkaway ('+rand(1,1)+').jpg"></center>'
+				gs 'mod_public_WC_street', 'prostitutesearch'
+				act 'Stop trying':  gt $loc, $loc_arg
+			end
+		elseif rand(1,15) = 1 and $loc ! 'mod_public_WC_street':
+			'The car stops a bit far, but I see the guy in the car stares at me…'
+			'He is not just stares… he is jerking on me!!!'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 car/events/instant start/0 saw_car_jerker ('+rand(1,1)+').mp4"></video></center>'
+
+			act 'come closer': gt 'mod_public_WC_street_events2', 'car_instant start'
+
+			gs 'mod_public_WC_street', 'prostitutesearch'
+
+			if phwalk = 1:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			elseif phwalk = 2:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			end
+
+			act 'Stop trying':  gt $loc, $loc_arg
+
+			act 'come closer to the jerker': gt 'mod_public_WC_street_events2', 'car_instant start'
+		else
+			gs 'mod_public_WC_street', 'prostitutesearch'
+
+			if phwalk = 1:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			elseif phwalk = 2:
+				if mc_inventory['cigarettes'] > 0:
+					act 'smoke':
+						!! cla
+						minut += 10
+						pcs_mood += rand(1,3)
+						gs 'drugs','smoke'
+						gs 'stat'
+						'I decide to kill some time with cigarette.'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/SMOKE ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			end
+
+			act 'Stop trying':  gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'tease':
+	cla
+	phclientfunnow += rand(1,10)
+	phshowthem = 5969
+
+	minut += rand(5,5)
+	temp = rand(1,2)
+	if rand(1,3) = 1: fame['pav_prostitute'] += 1
+	inhib_exp += rand(1,1)
+	gs 'stat'
+
+	if ( pcs_apprnc + 60 ) >= rand(150,230) OR rand(1,4) = 1:
+		!! he agree
+
+		'He approached me and ask: "Looks nice, can I check?"'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+
+		act 'Yes, you can': gt 'mod_public_WC_street', 'prostitute2'
+		act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+		act 'go away': gt $loc, $loc_arg
+	else
+		!! he is not
+		'He hides his eyes and walk away'
+
+		if carclient ! 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEwalkaway ('+rand(1,1)+').jpg"></center>'
+		end
+		carclient = 0
+
+		act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+		act 'go away': gt $loc, $loc_arg
+	end
+
+end
+
+
+
+if $ARGS[0] = 'prostitute2':
+	minut += rand(1,5)
+	gs 'stat'
+
+	if phshowthem ! 5969:
+		*clr & cla
+		!! showmyoffer client
+		if rand(1,3) = 1 and $loc ! 'mod_public_WC_street':
+			'Some car stoped near me, and ask:"What do you offer?"'
+			carclient = 1
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			'Some guy came to me, and ask: "What do you offer?"'
+
+			if month >= 11 or month <= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+			end
+		end
+
+
+
+		if phshowthem = 1:
+			if carclient = 1:
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_tits ('+rand(1,1)+').jpg"></center>'
+			elseif phwalk = 1:
+				!! walk
+				if month >= 11 or month <= 3:
+					if rand(1,5) <= 4:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_tits ('+rand(1,4)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_tits ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_tits ('+rand(1,1)+').mp4"></video></center>'
+				end
+			else
+				!! wait
+				if month >= 11 or month <= 3:
+					if rand(1,2) <= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					if rand(1,4) <= 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_tits ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_tits ('+rand(1,2)+').jpg"></center>'
+					end
+				end
+			end
+
+			phclientfunnow += 20
+
+		elseif phshowthem = 2:
+			if carclient = 1:
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_ass ('+rand(1,1)+').jpg"></center>'
+			elseif phwalk = 1:
+				!! walk
+				if month >= 11 or month <= 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_ass ('+rand(1,3)+').jpg"></center>'
+				else
+					if rand(1,5) <= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_ass ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_ass ('+rand(1,4)+').jpg"></center>'
+					end
+				end
+			else
+				!! wait
+				if month >= 11 or month <= 3:
+					if rand(1,6) <= 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_ass ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_ass ('+rand(1,4)+').jpg"></center>'
+					end
+				else
+					if rand(1,4) <= 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_ass ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_ass ('+rand(1,2)+').jpg"></center>'
+					end
+				end
+			end
+
+			phclientfunnow += 20
+
+		elseif phshowthem = 3:
+			if carclient = 1:
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_all ('+rand(1,1)+').jpg"></center>'
+			elseif phwalk = 1:
+				!! walk
+				if month >= 11 or month <= 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_pussy ('+rand(1,1)+').jpg"></center>'
+				else
+					if rand(1,3) <= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_pussy ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_pussy ('+rand(1,2)+').jpg"></center>'
+					end
+				end
+			else
+				!! wait
+				if month >= 11 or month <= 3:
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_pussy ('+rand(1,1)+').jpg"></center>'
+				else
+					if rand(1,3) <= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_pussy ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_pussy ('+rand(1,2)+').jpg"></center>'
+					end
+				end
+			end
+
+			phclientfunnow += rand(20,25)
+		elseif phshowthem = 4:
+			if carclient = 1:
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/client_ad_grope/tease_show_all ('+rand(1,1)+').jpg"></center>'
+			elseif phwalk = 1:
+				!! walk
+				if month >= 11 or month <= 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/walk/tease/show_all ('+rand(1,6)+').jpg"></center>'
+				else
+					if rand(1,2) <= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/walk/tease/show_all ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			else
+				!! wait
+				if month >= 11 or month <= 3:
+					if rand(1,5) <= 4:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/wait/tease/show_all ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/tease/show_all ('+rand(1,2)+').jpg"></center>'
+				end
+			end
+
+			phclientfunnow += 30
+
+		end
+	else
+		cla
+		!! teased client
+		!! client want to check
+
+		if otemp = 0: phshowthem = 100
+		if otemp = 1: phshowthem = otemp
+		if otemp = 2: phshowthem = otemp
+		if otemp = 3: phshowthem = otemp
+		if otemp = 4: phshowthem = otemp
+		otemp = 0
+	end
+
+
+	if phshowthem >= 100:
+		!! naked or not teased
+		'…'
+		'HE: "I need to try you"'
+		'ME: "Okey."'
+
+		act 'kiss him':
+			phshowthem = 101
+			gs 'arousal', 'kiss', 1, 'prostitution', 'sub'
+			gs 'stat'
+			gt 'mod_public_WC_street', 'ad'
+		end
+
+		if carclient ! 1:
+			act 'stroke his bulge':
+				phshowthem = 103
+				gt 'mod_public_WC_street', 'ad'
+			end
+		end
+
+		if $clothingworntype ! 'nude':
+			act 'show him tits':
+				phshowthem = 102
+				gt 'mod_public_WC_street', 'ad'
+			end
+		end
+
+	else
+		'"Well, well, girl"'
+		inhib_exp += rand(1,2)
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_street', 'ad'
+	end
+end
+
+if $ARGS[0] = 'ad':
+	*clr & cla
+	if phshowthem = 1:
+		'He gropes my tits'
+		if carclient = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/1 tits/car_tits_grope ('+rand(1,1)+').mp4"></video></center>'
+
+		elseif month >= 11 or month <= 3:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/1 tits/tits_grope ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/1 tits/tits_grope ('+rand(1,2)+').mp4"></video></center>'
+
+		end
+		phclientfunnow += 10
+		gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub'
+		gs 'stat'
+	elseif phshowthem = 2:
+		!! if carclient = 1:
+
+
+
+		if month >= 11 or month <= 3:
+			'He gropes my ass'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_ad_grope/grope ('+rand(1,1)+').jpg"></center>'
+		else
+			'He slaps my ass'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/event/slapmyass.mp4"></video></center>'
+		end
+		phclientfunnow += 10
+		gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub'
+		gs 'stat'
+	elseif phshowthem = 3:
+		!! if carclient = 1:
+
+		'He stimulates my pussy'
+		if month >= 11 or month <= 3:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/3 pussy/pussy ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/3 pussy/pussy ('+rand(1,2)+').mp4"></video></center>'
+		end
+		phclientfunnow += 11
+		gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub'
+		gs 'stat'
+	elseif phshowthem = 4:
+		!! if carclient = 1:
+
+
+		if month >= 11 or month <= 3:
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/4 all/pussy_play ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/grope/4 all/pussy_play ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/4 all/pussy_play ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/grope/4 all/pussy_play ('+rand(1,2)+').jpg"></center>'
+			end
+		end
+		phclientfunnow += 13
+		gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub'
+		gs 'stat'
+	elseif phshowthem >= 100:
+		''
+		if phshowthem = 101:
+			!! kiss
+			'I kiss him'
+
+			if month >= 11 or month <= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_ad_grope/kiss_bikini ('+rand(1,2)+').jpg"></center>'
+			else
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/client_ad_grope/kiss_bikini.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/client_ad_grope/kiss_naked.jpg"></center>'
+				end
+			end
+			phclientfunnow += 5
+			gs 'arousal', 'kiss', rand(1,2), 'prostitution', 'sub'
+			gs 'stat'
+
+			!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/kiss ('+rand(1,1)+').jpg"></center>'
+			if phdrugged >= 1:
+				'I put the pill in his mouth, it looks like he swallows it'
+				phdrugged = 1000
+			end
+
+
+		elseif phshowthem = 102:
+			!! showtits
+			'I show him my tits'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/client_ad_grope/showtits ('+rand(1,2)+').jpg"></center>'
+			phclientfunnow += 10
+
+		elseif phshowthem = 103:
+			!! strokebulge
+			'I start to stroke a bulge in his pants'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/client_ad_grope/bulgeINpants ('+rand(1,2)+').jpg"></center>'
+			temp = stat['hj']/10
+			phclientfunnow += temp
+		end
+	end
+
+	killvar 'phshowthem'
+	act 'continue': gs 'mod_public_WC_street_sex', 'start'
+end
+
+
+
+if $ARGS[0] = 'actprostitute':
+	temptemp = fame['pav_prostitute'] / 40
+	if hour >= (22 - temptemp) or hour < (5 + temptemp):
+		act '[WORK] Prostitute':
+			if PH_area_moneybonus <= 0: PH_area_moneybonus = 100
+			phassonly = 0
+			phdrugged = 0
+			gs 'mod_public_WC_street', 'prostitutesearch'
+		end
+	else
+		act '[WORK] Prostitute':
+			'It is to early to prostitute'
+			act 'Stop trying prostitute': gt $loc, $loc_arg
+		end
+	end
+	if $curloc = 'pav_park':
+		if WCzoo > 0:
+			!! act '[WORK] Zoo prostitute':
+				!! '-=wip=-'
+				!! send an SMS to the Pavlovsk Zoo comunity about my service starts now
+				!! X clients wote me, wait for them
+
+
+			!! end
+		end
+	end
+	!! gs 'mod_public_WC_street', 'actprostitute'
+end
+
+
+
+
+
+--- mod_public_WC_street ---------------------------------
+

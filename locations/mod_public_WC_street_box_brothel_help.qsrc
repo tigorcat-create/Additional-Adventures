@@ -1,0 +1,577 @@
+# mod_public_WC_street_box_brothel_help
+if $ARGS[0] = 'start': 
+	*clr & cla
+	minut += 5
+	gs 'stat'
+	
+	i = ztemp
+	'I entered the <<$phgirlname[i]>>''s room.'
+	'client face still is not impressed. He looked at me as I entered the room'
+	'ME: "It is our new girl, and I just want to help her a bit and make everything better for you" - I am explaining while expose my tits'
+	'CLIENT: "I want better."'
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/enter ('+rand(1,1)+').mp4"></video></center>'
+
+	act 'look at <<$phgirlname[i]>>':
+		cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/girlslist/<<temp_girltype[i]>>/pic/naked/naked ('+rand(1,5)+').jpg"></center>'
+		
+		temp = 0
+		if phsex = 1 or phsex = 101:
+			if phgirlstatHJ[i] <= 25:
+				temp = 15768			
+			else
+				if phgirlstatHJ[i] >= 50:
+					temp = 1576
+				else
+					temp = 15768
+				end
+			end
+		elseif phsex = 2 or phsex = 102:
+			if phgirlstatBJ[i] <= 25:
+				temp = 15768	
+			else
+				if phgirlstatBJ[i] >= 45:
+					temp = 1576
+				else
+					temp = 15768
+				end
+			end
+		elseif phsex = 3 or phsex = 103:
+			if phgirlstatVAG[i] <= 25:
+				temp = 15768	
+			else
+				if phgirlstatVAG[i] >= 37:
+					temp = 1576
+				else
+					temp = 15768
+				end
+			end
+		elseif phsex = 4 or phsex = 104:
+			if phgirlstatASS[i] <= 25:
+				temp = 15768		
+			else
+				if phgirlstatASS[i] >= 45:
+					temp = 1576
+				else
+					temp = 15768
+				end
+			end
+		end
+		
+		if temp = 1576:
+			'<<$phgirlname[i]>>: I don''t need your help - please leave'
+			
+			act 'leave':
+				cla
+				phjoy[i] += 5
+				otemp += 1
+				if rand(1,4) = 1: ph_brothelfame += 1
+				gt 'mod_public_WC_street_box_brothel_start', 'start'
+			end
+			
+			act 'You must listen me, girl':
+				*clr & cla
+				phjoy[i] += 15
+				'I grab this bitch and wisper her: "You must listen me, if you want to keep this job, esspecially in front of an client"'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/listen me ('+rand(1,1)+').jpg"></center>'				
+				
+				'She was not prepared for such reaction, she quickly change her behaviour'
+				'<<$phgirlname[i]>>: Yes, mam. I need your guide'			
+				gs 'mod_public_WC_street_box_brothel_help', 'helpactions'				
+			end
+		elseif temp = 15768:
+			'<<$phgirlname[i]>>: Yes, mam. I need your guide'			
+			gs 'mod_public_WC_street_box_brothel_help', 'helpactions'
+		end
+	end
+end
+
+if $ARGS[0] = 'helpactions':	
+	i = ztemp
+	
+	if phsex = 1 or phsex = 101:		
+		if stat['hj'] >= 50:
+			act 'command her':
+				*clr & cla
+				phjoy[i] += 5
+				phgirlstatHJ[i] += rand(1,2)
+				!! Icommand
+				'I sit close by and instruct her what to do'
+				'I am loocking at client seductevly, time to time flash my tits or lick my lips, etc'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/1 hj/Icommand.mp4"></video></center>'
+				
+				gs 'arousal', 'voyeur_sex', rand(10,25), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				
+				'Client is ready to cum'
+				act 'wait':
+					*clr & cla
+					phjoy[i] += 10
+					phwhores_day[i] = day
+					phwhores_hour[i] = hour
+					
+					maxrand = 0
+					if girltype[i] = 1:
+						maxrand = 1
+					elseif girltype[i] = 2:
+						maxrand = 2
+					elseif girltype[i] = 3:
+						maxrand = 3
+					elseif girltype[i] = 4:
+						maxrand = 5
+					elseif girltype[i] = 5:
+						maxrand = 9
+					elseif girltype[i] = 6:
+						maxrand = 5
+					elseif girltype[i] = 7:
+						maxrand = 2
+					elseif girltype[i] = 8:
+						maxrand = 9
+					elseif girltype[i] = 9:
+						maxrand = 3
+					elseif girltype[i] = 10:
+						maxrand = 1
+					elseif girltype[i] = 101:
+						maxrand = 2
+					end							
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/5 cum/1 ('+rand(1,maxrand)+').mp4"></video></center>'
+					
+					
+					act 'Leave':
+						cla
+						otemp += 1
+						if rand(1,5) ! 1: ph_brothelfame += 1
+						gt 'mod_public_WC_street_box_brothel_start', 'start'
+					end
+				end
+			end
+		end
+		
+		if stat['titjob'] >= 10 and phgirlstatHJ[i] >= 15:
+			act 'grab her tits end finish everything together':
+				cla
+				phjoy[i] += 5
+				!! helpwithtitjob
+				phgirlstatHJ[i] += rand(1,2)
+				
+				gs 'arousal', 'voyeur_sex', rand(10,25), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				
+				
+				'Client is ready to cum'
+				act 'Grab the dick and aim on <<$phgirlname[i]>>':
+					*clr & cla
+					phjoy[i] += 10
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_hj ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+					gs 'stat'
+					i = ztemp
+					phwhores_day[i] = day
+					phwhores_hour[i] = hour
+					
+					act 'Leave them ':
+						cla
+						otemp += 1
+						if rand(1,5) ! 1: ph_brothelfame += 1
+						gt 'mod_public_WC_street_box_brothel_start', 'start'
+					end
+				end
+			end
+		end
+		
+		act 'Ok, she will fuck you for a price of hand job':
+			cla
+			!! switchtofuck
+			phgirlstatHJ[i] += rand(0,1)
+			*clr & cla
+			'CLIENT: Nice.'
+			'<<$phgirlname[i]>> looks at me with clear disappointment, but say nothing'
+			'I start jerking his cock while she is preparing herself for fucking'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/1 hj/switchtofuck.mp4"></video></center>'
+			i = ztemp
+			phserv[i] = 103
+			phjoy[i] += 20
+			
+			
+			act 'wait':
+				*clr & cla
+				'client penetrates <<$phgirlname[i]>>'
+				
+				gs 'arousal', 'voyeur_sex', rand(3,8), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phjoy[i] += 3
+				phsex = 103
+				
+				maxrand = 0
+				if girltype[i] = 1:
+					maxrand = 10
+				elseif girltype[i] = 2:
+					maxrand = 10
+				elseif girltype[i] = 3:
+					maxrand = 8
+				elseif girltype[i] = 4:
+					maxrand = 10
+				elseif girltype[i] = 5:
+					maxrand = 10
+				elseif girltype[i] = 6:
+					maxrand = 5
+				elseif girltype[i] = 7:
+					maxrand = 10
+				elseif girltype[i] = 8:
+					maxrand = 13
+				elseif girltype[i] = 9:
+					maxrand = 12
+				elseif girltype[i] = 10:
+					maxrand = 13
+				elseif girltype[i] = 101:
+					maxrand = 13
+				end
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/vag/vag ('+rand(1,maxrand)+').mp4"></video></center>'
+				
+				if phgirlstatVAG[i] <= 25:
+					'<<$phgirlname[i]>> obviously does not know what she is doing. The client is not happy at all, again!'					
+					gs 'mod_public_WC_street_box_brothel_help', 'helpactions'					
+				else					
+					'Client is trully enjoing'					
+				end
+			end
+			
+			act 'Leave them ':
+				cla
+				otemp += 1
+				if rand(1,4) ! 1: ph_brothelfame += 1
+				gt 'mod_public_WC_street_box_brothel_start', 'start'
+			end
+		end
+	elseif phsex = 2 or phsex = 102:
+		
+		act 'Force her to suck deeper':
+			!! pushherdeep
+			*clr & cla
+			phjoy[i] += 10
+			'I am helping her to suck better'
+			gs 'arousal', 'voyeur_sex', rand(5,12), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			phgirlstatBJ[i] += 1
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/2 bj/pushherdeep ('+rand(1,16)+').mp4"></video></center>'
+			
+			act 'keep her suck':
+				!! pushherdeep
+				*clr & cla
+				
+				!! 'I am helping her to suck better'
+				gs 'arousal', 'voyeur_sex', rand(5,12), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phgirlstatBJ[i] += 1
+				phjoy[i] += 5
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/2 bj/pushherdeep ('+rand(1,16)+').mp4"></video></center>'
+				
+				
+				'Client is ready to cum'
+				act 'Grab the dick and aim on <<$phgirlname[i]>>':
+					*clr & cla
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+					gs 'stat'
+					i = ztemp
+					phwhores_day[i] = day
+					phwhores_hour[i] = hour
+					phjoy[i] += 10
+					
+					act 'Leave them ':
+						cla
+						otemp += 1
+						if rand(1,5) ! 1: ph_brothelfame += 1
+						gt 'mod_public_WC_street_box_brothel_start', 'start'
+					end
+				end
+				
+				act 'jerk dick to the end to <<$phgirlname[i]>> mouth':
+					*clr & cla
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkinher_bj ('+rand(1,1)+').mp4"></video></center>'
+					gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+					gs 'stat'
+					i = ztemp
+					phwhores_day[i] = day
+					phwhores_hour[i] = hour
+					phjoy[i] += 10
+					
+					act 'Leave them ':
+						cla
+						otemp += 1
+						if rand(1,5) ! 1: ph_brothelfame += 1
+						gt 'mod_public_WC_street_box_brothel_start', 'start'
+					end
+				end	
+			end
+		end
+		
+		act 'start kissing end teasing client':
+			*clr & cla
+			!! tease him as excuse (1)
+			'I am kissing him and touch seductevilly, keep his blood hot'
+			'he is groping me.'
+			'all this while <<$phgirlname[i]>> suck his dick'
+			
+			gs 'arousal', 'kiss', rand(10,25), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			phjoy[i] += 15
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/2 bj/tease him as excuse (1).mp4"></video></center>'
+			
+			
+			'Client is ready to cum'
+			act 'Grab the dick and aim on <<$phgirlname[i]>>':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them ':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+			
+			act 'jerk dick to the end to <<$phgirlname[i]>> mouth':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkinher_bj ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them ':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end			
+		end
+		
+	elseif phsex = 3 or phsex = 103:
+		
+		
+		act 'start kissing end teasing client':
+			*clr & cla
+			!! kiss client as excuse while she licks me
+			'I am kissing him and touch seductevilly, keep his blood hot'
+			'I push <<$phgirlname[i]>>''s face to my pussy'
+			'ME: "Lick it as excuse!" - client likes this'
+			!! 'all this while <<$phgirlname[i]>> suck his dick'
+			
+			gs 'arousal', 'kiss', rand(1,15), 'prostitution', 'sub'
+			gs 'stat'
+			gs 'arousal', 'cuni', rand(10,10), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			phjoy[i] += 15
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/3 vag/kiss client as excuse (1).mp4"></video></center>'
+			
+			
+			'Client is ready to cum'
+			act 'wait':
+				cla				
+				!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+				i = ztemp
+				'Client creampied <<$phgirlname[i]>>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+			
+			act 'Grab the dick and aim on <<$phgirlname[i]>>':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+		end		
+		
+		act 'Force her to fuck deeper':
+			!! pushherondick (3)
+			*clr & cla
+			
+			'I am helping her to please the client'
+			gs 'arousal', 'voyeur_sex', rand(10,25), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			phgirlstatVAG[i] += 1
+			phjoy[i] += 10
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/3 vag/pushherondick ('+rand(1,3)+').mp4"></video></center>'
+			
+			'Client is ready to cum'
+			act 'keep pushing':
+				cla				
+				!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+				i = ztemp
+				'Client creampied <<$phgirlname[i]>>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+			
+			act 'Grab the dick and aim on <<$phgirlname[i]>>':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_vagass ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+		end
+	elseif phsex = 4 or phsex = 104:		
+		act 'Force her to fuck deeper':
+			!!pushherass
+			*clr & cla
+			
+			'I am helping her to please the client'
+			gs 'arousal', 'voyeur_sex', rand(10,25), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			phgirlstatASS[i] += 1
+			phjoy[i] += 5
+			
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/4 ass/pushherass ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/4 ass/pushherass ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			'Client is ready to cum'
+			act 'keep pushing':
+				cla				
+				!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_bj ('+rand(1,2)+').mp4"></video></center>'
+				i = ztemp
+				phjoy[i] += 10
+				'Client creampied <<$phgirlname[i]>>''s asshole'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+			
+			act 'Grab the dick and aim on <<$phgirlname[i]>>':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/5 cum/jerkonherface_vagass ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				i = ztemp
+				phwhores_day[i] = day
+				phwhores_hour[i] = hour
+				phjoy[i] += 10
+				
+				act 'Leave them':
+					cla
+					otemp += 1
+					if rand(1,5) ! 1: ph_brothelfame += 1
+					gt 'mod_public_WC_street_box_brothel_start', 'start'
+				end
+			end
+		end
+	end
+	
+	
+	act 'leave':
+		cla
+		otemp += 1
+		if rand(1,4) ! 1: ph_brothelfame -= 1
+		gt 'mod_public_WC_street_box_brothel_start', 'start'
+	end
+end
+
+
+
+
+
+!ztemp - girl id
+!phsex - sex type
+!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/enter ('+rand(1,1)+').mp4"></video></center>'
+!'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/helphercuzintern/listen me ('+rand(1,1)+').jpg"></center>'
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_brothel_help ---------------------------------
+

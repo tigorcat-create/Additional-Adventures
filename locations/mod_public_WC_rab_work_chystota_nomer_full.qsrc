@@ -1,0 +1,673 @@
+# mod_public_WC_rab_work_chystota_nomer_full
+if $ARGS[0] = 'nomer_full':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota_hotel'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', '"Room <<bcil>>"')
+	if $metka = '4': 
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+	elseif $metka = '3': 
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+	elseif $metka = '2': 
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'	
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+	end
+	if phroomfull = 1:
+		'Some guy in the room'
+	else
+		'The black guy in the room'
+	end
+	if hehorny = 1: 'I see a bulging in his pants'
+	if hehorny = 0: 'He is cold to me'
+	
+	*nl
+	'Next to the door, you can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the <a href="exec:gt ''mod_public_WC_rab_work_chystota_hotel'',''shower1''">bathroom</a> is to the right.'
+	$loc = 'mod_public_WC_rab_work_chystota_nomer_full'
+	$menu_loc = 'mod_public_WC_rab_work_chystota_nomer_full'
+	$loc_arg = 'nomer_full'
+	$menu_arg = 'nomer_full'
+	$locM = 'mod_public_WC_rab_work_chystota_nomer_full'
+	$locM_arg = 'nomer_full'
+	
+	
+	if phcleanpidloga = 2:	
+		'The floor is dusty'
+		act 'Vacuum the room':
+			*clr & cla
+			cleaning_exp += 3
+			gs 'stat'
+			minut += 15
+			gs 'stat'
+			
+			'I am vacuuming the floor'
+			if rand(1,10) <=7:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/pylsos/pylsos ('+rand(1,7)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/pylsos/pylsosv'+rand(1,3)+'.mp4"></video></center>'
+			end
+			
+			
+			act 'tease him':
+				*clr & cla
+				minut += 7
+				gs 'stat'
+				if rand (1,4) <= 2:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/pylsos/pylsosv_tease'+rand(1,2)+'.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/pylsos/pylsos_tease ('+rand(1,2)+').jpg"></center>'
+				end		
+				
+				if hehorny = 1:
+					
+					'He stares at me'
+					'I laught a little and go back to work'
+					phhisarounsed += rand(3,5)
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				elseif hehorny = 0:
+					
+					'He stares at me'
+					'"I don''t need this now. Please don''t distract me!"'
+					phhisarounsed -= rand(10,15)
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				end
+				
+				if phhisarounsed >= rand(70,100):
+					cla
+					'"wooow, girl… nice look"'
+					'"Can I have some?"'
+					hehorny = 1
+					
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							
+							act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+						end
+					end
+					
+					act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					
+					act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+			end
+			
+			act 'end the cleaning':
+				*clr & cla
+				phcleanpidloga -= 1
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			end			
+		end
+	elseif phcleanpidloga = 1:
+		'The floor is dirty'
+		act 'mop the floor':
+			*clr & cla
+			cleaning_exp += 3
+			minut += 15
+			gs 'stat'
+			'I am mopping the floor'
+			if rand(1,8) <=7:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/mop/mop ('+rand(1,7)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/mop/mopv.mp4"></video></center>'
+			end
+			
+			act 'Dancing with a mop':
+				*clr & cla
+				'Small dance cheared me up a bit'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/maidmopdance.mp4"></video></center>'
+				phhisarounsed += rand(1,3)
+				pcs_mood += rand(5,10)
+				minut += 10
+				pcs_dancero += rand(0,1)
+				gs 'stat'
+				act 'end the cleaning':
+					*clr & cla
+					phcleanpidloga -= 1
+					minut += 3
+					gs 'stat'
+					gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				end
+			end
+			
+			act 'tease him':
+				*clr & cla
+				minut += 7
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/mop/mop_tease ('+rand(1,6)+').jpg"></center>'
+				
+				if hehorny = 1:
+					
+					'He stares at me'
+					'I laught a little and go back to work'
+					phhisarounsed += rand(3,5)
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				elseif hehorny = 0:
+					
+					'He stares at me'
+					'"I don''t need this now. Please don''t distract me!"'
+					phhisarounsed -= rand(10,15)
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				end
+				
+				if phhisarounsed >= rand(70,100):
+					cla
+					'"wooow, girl… nice look"'
+					'"Can I have some?"'
+					hehorny = 1
+					
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							
+							act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+						end
+					end
+					
+					act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					
+					act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+			end
+			
+			
+			
+			act 'end the cleaning':
+				*clr & cla
+				phcleanpidloga -= 1
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			end	
+		end
+		
+		act 'wash the floor':
+			*clr & cla
+			cleaning_exp += 5
+			minut += 15
+			gs 'stat'
+			'I am washing the floor'
+			if rand(1,8) <=7:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/floor/floor ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/floor/floorv ('+rand(1,2)+').mp4"></video></center>'
+			end
+			
+			act 'tease him':
+				*clr & cla
+				minut += 7
+				gs 'stat'
+				if rand (1,8) <= 2:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/pylsos/floorv_tease ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/floor/floor_tease ('+rand(1,6)+').jpg"></center>'
+				end		
+				
+				if hehorny = 1:
+					
+					'He stares at me'
+					'I laught a little and go back to work'
+					phhisarounsed += rand(3,5)
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				elseif hehorny = 0:
+					
+					'He stares at me'
+					'"I don''t need this now. Please don''t distract me!"'
+					phhisarounsed -= rand(10,15)
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				end
+				
+				if phhisarounsed >= rand(70,100):
+					cla
+					'"wooow, girl… nice look"'
+					'"Can I have some?"'
+					hehorny = 1
+					
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							
+							act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+						end
+					end
+					
+					act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					
+					act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+			end
+			
+			act 'end the cleaning':
+				*clr & cla
+				phcleanpidloga -= 1
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			end	
+		end
+		
+	else
+		'The floor is clean'
+	end
+	
+	if phcleanpyl = 1:
+		'There are a lot of dust'
+		act 'wipe the dust':
+			*clr & cla
+			cleaning_exp += 1
+			minut += 15
+			gs 'stat'
+			'I am washing the floor'
+			if rand(1,8) <=7:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/pyl/pyl ('+rand(1,10)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/pyl/pylv ('+rand(1,6)+').mp4"></video></center>'
+			end
+			
+			act 'tease him':
+				*clr & cla
+				minut += 7
+				gs 'stat'
+				if rand (1,19) <= 8:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/pyl/pylv_tease ('+rand(1,8)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/pyl/pyl_tease ('+rand(1,11)+').jpg"></center>'
+				end		
+				
+				if hehorny = 1:
+					
+					'He stares at me'
+					'I laught a little and go back to work'
+					phhisarounsed += rand(3,5)
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				elseif hehorny = 0:
+					
+					'He stares at me'
+					'"I don''t need this now. Please don''t distract me!"'
+					phhisarounsed -= rand(10,15)
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				end
+				
+				if phhisarounsed >= rand(70,100):
+					cla
+					'"wooow, girl… nice look"'
+					'"Can I have some?"'
+					hehorny = 1
+					
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							
+							act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+						end
+					end
+					
+					act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					
+					act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+			end
+			
+			act 'end the cleaning':
+				*clr & cla
+				phcleanpyl -= 1
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			end	
+		end		
+	else
+		'There are no dust on the furniture'
+	end
+	
+	if phcleantable = 1:
+		'There is a stains on the table'
+		act 'Clean the table':
+			*clr & cla
+			cleaning_exp += 1
+			minut += 15
+			gs 'stat'
+			'I am cleaning the table'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/clean/table/tablev.mp4"></video></center>'
+			
+			act 'tease him':
+				*clr & cla
+				minut += 7
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/table/tablev.mp4"></video></center>'
+				
+				if hehorny = 1:
+					
+					'He stares at me'
+					'I laught a little and go back to work'
+					phhisarounsed += rand(3,5)
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+				elseif hehorny = 0:
+					
+					'He stares at me'
+					'"I don''t need this now. Please don''t distract me!"'
+					phhisarounsed -= rand(10,15)
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				end
+				
+				if phhisarounsed >= rand(70,100):
+					cla
+					'"wooow, girl… nice look"'
+					'"Can I have some?"'
+					hehorny = 1
+					
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							
+							act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+						end
+					end
+					
+					act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					
+					act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+			end
+			
+			
+			if rand (1,5) = 1:
+				observ_exp += 3
+				minut += 4
+				phcleantable -= 1
+				gs 'stat'
+				'In the sofa near the table I found a dildo'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/0 play_myself/dildo/find.jpg"></center>'
+
+			
+			
+				if dildo = 0:
+					act 'take the dildo, end the cleaning':
+						phcleantable -= 1
+						dildo = 1
+						gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+					end
+				end
+			end
+			
+			act 'end the cleaning':
+				*clr & cla
+				phcleantable -= 1
+				minut += 3
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			end	
+		end
+	else
+		'The table is clean'
+	end
+	
+	act 'tease':
+		cla
+		act 'tease him':
+			*clr & cla
+			minut += 7
+			gs 'stat'
+			if rand (1,13) <= 8:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/0 tease/showv ('+rand(1,8)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/0 tease/show ('+rand(1,5)+').jpg"></center>'
+			end		
+			
+			if hehorny = 1:
+				
+				'He stares at me'
+				'I laught a little and go to work'
+				phhisarounsed += rand(3,5)
+				
+				act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'				
+			elseif hehorny = 0:
+				
+				'He stares at me'
+				'"I don''t need this now. Please don''t distract me!"'
+				phhisarounsed -= rand(10,15)
+				act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+			end
+			
+			if phhisarounsed >= rand(70,100):
+				cla
+				'"wooow, girl… nice look"'
+				'"Can I have some?"'
+				hehorny = 1
+				
+				if sexcorrupt <= rand(30,50):
+					act 'ask about money':
+						cla
+						'"yes, sure, But you will get it only after."'
+						otemp = 1
+						gs 'stat'
+						
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+				
+				act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				
+				act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+				if sexcorrupt >= rand(50,70):
+					cla
+					+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+				end
+			end
+		end
+		
+		act 'make an "accident" expose':
+			*clr & cla
+			minut += 7
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/0 tease/woopsv ('+rand(1,3)+').mp4"></video></center>'
+				
+			phhisarounsed += rand(3,6)			
+			if hehorny = 1:	
+				'He stares at me'
+			else
+				'He trying NOT to look, but he still looking'
+				if phhisarounsed >= rand(50,70): hehorny = 1
+			end
+			'I pretended not to see his reaction'
+			act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+			
+			if phhisarounsed >= rand(70,100):
+				cla
+				'"wooow, girl… nice look"'
+				'"Can I have some?"'
+				hehorny = 1
+				
+				if sexcorrupt <= rand(30,50):
+					act 'ask about money':
+						cla
+						'"yes, sure, But you will get it only after."'
+						otemp = 1
+						gs 'stat'
+						
+						act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+					end
+				end
+				
+				act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+				
+				act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+				if sexcorrupt >= rand(50,70):
+					cla
+					+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+				end
+			end
+		end
+	end
+
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			*clr
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/dress.jpg"></center>'	
+		end
+	end	
+	if mc_inventory['cigarettes'] > 0:
+		act 'Smoking':
+			minut += rand(3,5)
+			gs 'drugs', 'smoke'
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/smoke.mp4"></video></center>'
+		end
+	end	
+
+	act 'Go away':
+		if phcleantable = 0 and phcleanpyl = 0 and phcleanpidloga = 0:
+			bcil = 1
+			bcilg = 0
+		else
+			''
+		end 
+		if $metka = '4': 
+			gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+		elseif $metka = '3': 
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		elseif $metka = '2': 
+			gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+		else
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		end	
+	end		
+	
+	if phhisarounsed >= rand(50,100):
+		cla		
+		'"Do you want some fun, girl?"'
+		hehorny = 1
+		
+		if sexcorrupt <= rand(30,50):
+			act 'ask about money':
+				cla
+				'"yes, sure, But you will get it only after."'
+				otemp = 1
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+			end
+		end
+		
+		act 'sorry, to much work':
+			phhisarounsed -= 20
+			gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+		end
+		
+		act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+		if sexcorrupt >= rand(50,70):
+			cla
+			+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+			act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+		end
+	end
+	
+	if $clothingworntype = 'nude':
+		'"wooow, girl… nice look"'
+		
+		if rand(1,5) = 1:
+			'"Can I have some?"'
+			hehorny = 1
+			
+			if sexcorrupt <= rand(30,50):
+				act 'ask about money':
+					cla
+					'"yes, sure, But you will get it only after."'
+					otemp = 1
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+				end
+			end
+			
+			act 'sorry, to much work': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+			
+			act 'Yes, you can': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+			if sexcorrupt >= rand(50,70):
+				cla
+				+$OpenInnerThought+'I can''t resist, I want!'+$CloseInnerThought
+				act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'sex'
+			end
+		else
+			'"But you better dressup"'
+			hehorny = 0
+			act 'Get dressed':
+				cla
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'I put my clothes back on.'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/dress.jpg"></center>'
+				
+				'"Thank you, I need to work, and your naked budy will distract me"'
+				act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
+			end
+		end
+	end	
+	
+	if rand(1,100) >= 95:
+		*clr & cla
+		'I hear someone closed the door'
+		'I go to see who is that'
+		phroomfull = 0
+		
+		'The room is empty.'
+		act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_empty'
+	end
+end
+--- mod_public_WC_rab_work_chystota_nomer_full ---------------------------------
+

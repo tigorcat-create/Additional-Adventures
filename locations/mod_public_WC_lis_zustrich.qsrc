@@ -1,0 +1,334 @@
+# mod_public_WC_lis_zustrich
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	ttemp = rand(2,5)
+	if pcs_prcptn >= rand(40,60):
+		act 'Trying to discern':
+			ttemp -= 1
+			if ttemp <= 0:
+				cla
+				'These men came up and immediately broke me, without saying a word'
+				act 'Continue': gt 'mod_public_WC_lis_zustrich', 'spiymaly'
+			end
+			'I notice that these are not hunters or mushroom seekers, but who is it?.'
+			if pcs_observ >= rand(25,80) + ttemp * 5:
+				'They are ragged, their looks literally annoy me, it smells like great danger. It''s beter to run!'
+			else
+				'I try to stare at these people as they approach me. But, probably, I am not aware enough to understand who it is.'
+			end
+		end
+		act 'Run away!':
+			if pcs_run >= rand(40,70) or pcs_agil >= rand(60,100):
+				cla
+				*clr
+				lostrand = rand(0,100)
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run.jpg"></center>'
+				'You don''t hesitate and start running.'
+				act 'Keep running':
+					if goforest > lostrand:
+						cla
+						*clr
+						minut += 25
+						gs 'sweat', 'add', 20
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run_end1.jpg"></center>'
+						'You''ve been running on the road, afraid to look back. The exhaustion made you stop, after a quick look around you realize that no one is behind you, chasing you and you are already at the swamp.'
+						act 'Continue':gt 'gad_swamp'
+					else
+						cla
+						*clr
+						minut += 25
+						gs 'sweat', 'add', 20
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run_end2.jpg"></center>'
+						'You''ve been running for a while, too afraid to even to look behind you. In the end the exhaustion made you stop, after a quick look around you realize that no one is behind you, chasing you, but now you have no idea where you are.'
+						act 'You are lost!':
+							gt 'gad_forest_lost', 'forest_center'
+						end
+					end
+				end
+			else
+				cla
+				'These men came up and immediately broke me, without saying a word'
+				act 'Continue': gt 'mod_public_WC_lis_zustrich', 'spiymaly'
+			end
+		end
+	end
+	'With the approach of these hunters, it becomes clear to me that they are unfamiliar to me.'
+	act 'Hi guys, where are you from? I didn''t see you here before.':
+		cla
+		if $clothingworntype ! 'nude':
+			'Looks like you got lost, come with us we will get you out of the woods.'
+			act 'No, I know where I am':
+				cla
+				if pav_sexind >= 100 or fame['pav_slut'] >= 100 or city_sexind >= 150 or city_slut >= 150 or oldtown_sexind >= 100 or oldtown_slut >= 100 or village_sexind >= 70 or village_slut >= 70:
+					'These men came up and immediately broke me, without saying a word'
+					act 'Continue': gt 'mod_public_WC_lis_zustrich', 'spiymaly'
+				else
+					'Ok, girl, good luck!'
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+			act 'Yes, thank you, lets go!':
+				cla
+				if pav_sexind >= 100 or fame['pav_slut'] >= 100 or city_sexind >= 150 or city_slut >= 150 or oldtown_sexind >= 100 or oldtown_slut >= 100 or village_sexind >= 70 or village_slut >= 70:
+					temp = 123456
+					gt 'mod_public_WC_rab', 'lis_start'
+				else
+					temp = 123456
+					gt 'mod_public_WC_rab', 'lis_start'
+				end
+			end
+		else
+			inhib_exp += rand(1,3)
+			act 'Run and get dressed':
+				if pcs_run >= rand(40,70) or pcs_agil >= rand(60,100):
+					cla
+					*clr
+					pcs_horny += 10
+					minut += 5
+					gs 'clothing', 'swamp_clothes', 0
+					gs 'underwear', 'wear'
+					gs 'clothing', 'recover_lost_clothes', 'forest_edge', 1
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/swampbackwaternude1.jpg"></center>'
+					'You yelp in surprise and you rush to where you left your clothes. Dressed and calm you decide to go on.'
+					act 'Continue':gt 'gad_forest','forest_outskirts'
+				else
+					cla
+					'These men caught up and broke me. "Hi, whore. We''ll save you from your horrible life. Now, you''ll live like in a heaven."'
+					act 'Continue': gt 'mod_public_WC_lis_zustrich', 'spiymaly'
+				end
+			end
+		end
+	end
+
+	if lis_Weekout >= 1:
+		*clr & cla
+		'With the approach of these hunters, it becomes clear to me that they are my Rednecks'
+		'"Hello Betsi, Do you want go home?"'
+		act 'Yes, lets go':
+			minut += rand (15,40)
+			gs 'stat'
+			gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+		act 'I need to be with my parents a little more':
+			cla
+			'"Well, ok Betsi, see you soon"'
+			act 'Continue': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'spiymaly':
+	CLOSE ALL
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	'I was caught and hacked by these rednecks'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/zviazaty.mp4"></video></center>'
+	'I was tied up'
+	act 'Do nothing':
+		cla
+		'I do not know where they carry me'
+		minut += rand(15, 70)
+		act 'Continue': gt 'mod_public_WC_rab', 'lis_start'
+	end
+	act 'Screem!':
+		cla
+		'One redneck hit me in the stomach. I find it hard to breathe… Said "Be silent, blyad''"'
+		gs 'pain', rand(2,4), 'chest', 'hit'
+		gs 'pain', rand(2,4), 'tummy', 'hit'
+		gs 'stat'
+		act 'Do nothing':
+			cla
+			'I do not know where they carry me'
+			minut += rand(15, 70)
+			act 'Continue': gt 'mod_public_WC_rab', 'lis_start'
+		end
+		gs 'willpower', 'misc', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Screem!' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'One redneck hit me in the stomach. I find it hard to breathe… Said "I said keep quiet! blyad''"'
+				gs 'pain', rand(2,4), 'chest', 'hit'
+				gs 'pain', rand(2,4), 'tummy', 'hit'
+				gs 'stat'
+				'This bitch is too noisy!'
+				act 'Do nothing':
+					cla
+					'I do not know where they carry me'
+					minut += rand(15, 70)
+					act 'Continue': gt 'mod_public_WC_rab', 'lis_start'
+				end
+				gs 'willpower', 'misc', 'self', 'hard'
+				if will_cost <= pcs_willpwr:
+					act 'Screem! Screem! Screem!' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						'One redneck punched me in the face, the world shuddered, I began to fall asleep, I hear the phrase of one of the thieves… "We will not get it so…"'
+						gs 'pain', rand(3,5), 'head', 'hit'
+						gs 'stat'
+						if pcs_vital >= rand(50,80) or pcs_sprt >= rand(30,50) or pcs_willpwr >= 100:
+							'…, we have to leave this creed here"'
+							'I was conscious and started screaming again.'
+							'I was thrown to the ground.'
+							gs 'pain', rand(3,5), 'back', 'fall'
+							gs 'stat'
+							act 'Continue': gt 'mod_public_WC_lis_zustrich', 'sex'
+						else
+							'… I lost consciousness and plunged into sleep.'
+							temp = rand(15,70)
+							minut += temp
+							if temp > 60:
+								pcs_sleep += 15
+							else
+								pcs_sleep += 8
+							end
+							act 'Continue': gt 'mod_public_WC_rab', 'lis_start'
+						end
+					end
+				else
+					act 'Screem! Screem! Screem!' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			end
+		else
+			act 'Screem!' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+end
+
+if   npc_loyality >= 70   and   npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'sex':
+	CLOSE ALL
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	'Guys starts to fuck me.'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Kynuly_na_zemly.mp4"></video></center>'
+	act 'Continue':
+		*clr & cla
+		'Rapists change position'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Kynuly_na_zemly_2.mp4"></video></center>'
+		act 'Continue':
+			*clr & cla
+			gs 'npcgeneratec', 0, 'redneck', rand(25,55)
+			gs 'boyStat', $npclastcalled
+			'Finally the end!'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Kynuly_na_zemly_3.mp4"></video></center>'
+			rape += 1
+
+			guy += 3
+			gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,3)
+			gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+			gs 'arousal_funcs', 'stretch', 'anal', rand(0,2)
+			stat['swallow'] += rand(0,1)
+			facial += rand(0,1)
+			gs 'sweat', 'add', 20
+			gs 'cum_call', 'face'
+			gs 'cum_call', 'clothes'
+			gs 'cum_call', 'stomach'
+			gs 'cum_call', 'breasts'
+			gs 'cum_call', 'hair'
+			gs 'cum_call', 'labia'
+			gs 'cum_call', 'butt'
+			gs 'cum_call', 'anus'
+			cumarrcpt = 100
+			gs 'cum_call', 'vaginal', 'redneck'
+			gs 'cuminsidereact', 'redneck'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Look around': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'vtecha':
+	CLOSE ALL
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	ttemp = 0
+	zvit = week
+	if pcs_prcptn >= rand(40,60):
+		'From a distance, I noticed this three crazy rednrcks: Artem, Anatoly and Vania.'
+		ttemp = rand(10,20)
+		act 'Continue': gt 'mod_public_WC_lis_zustrich', 'vtecha2'
+	else
+		gt 'mod_public_WC_lis_zustrich', 'vtecha2'
+	end
+end
+
+if $ARGS[0] = 'vtecha2':
+	CLOSE ALL
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	if ttemp = 0: 'I did not notice the approach of Artem, Anatoly and Vania'
+	act 'Surrender':
+		cla
+		'They broke me and brought me to their home.'
+		'Hi there! What people!'
+		temp = money
+		money -= temp
+		vtecha = 2
+		brak += 10
+		act 'Continue': gt 'mod_public_WC_rab_DVIR', 'dvir'
+	end
+	act 'Run away!':
+		cla
+		if pcs_run > + ttemp = rand(50,90) or pcs_agil >= rand(70,120):
+			cla
+			*clr
+			lostrand = rand(0,100)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run.jpg"></center>'
+			'You don''t hesitate and start running.'
+			act 'Keep running':
+				if goforest > lostrand:
+					cla
+					*clr
+					minut += 25
+					gs 'sweat', 'add', 20
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run_end1.jpg"></center>'
+					'You''ve been running on the road, afraid to look back. The exhaustion made you stop, after a quick look around you realize that no one is behind you, chasing you and you are already at the swamp.'
+					act 'Continue':gt 'gad_swamp'
+				else
+					cla
+					*clr
+					minut += 25
+					gs 'sweat', 'add', 20
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/run_end2.jpg"></center>'
+					'You''ve been running for a while, too afraid to even to look behind you. In the end the exhaustion made you stop, after a quick look around you realize that no one is behind you, chasing you, but now you have no idea where you are.'
+					act 'You are lost!':
+						gt 'gad_forest_lost', 'forest_center'
+					end
+				end
+			end
+		else
+			cla
+			'They caught up and broke me'
+			'Hi there! What people!'
+			vtecha = 2
+			brak += 10
+			temp = money
+			money -= temp
+			act 'Continue': gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+	end
+end
+
+--- mod_public_WC_lis_zustrich ---------------------------------
+

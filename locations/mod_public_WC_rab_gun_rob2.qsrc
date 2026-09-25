@@ -1,0 +1,337 @@
+# mod_public_WC_rab_gun_rob2
+if $ARGS[0] = 'hit':
+	cla
+	if bcil < pcs_stren:
+		'I hit him hard, he tried to defend but without success.'
+		persuas_exp += rand(1,2)
+		'His face bleading…'
+		'"Ok, ok… take the money and go…"'
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr and ammo > 0:
+			act 'shoot' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				temp=rand(1,2)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				killed +=1
+				ammo -= 1
+				willpowermax += 5
+				pcs_mood -= 40
+				pcs_mood += killed
+				shoot_exp += 1
+				'He even make no sound. The dead body fell on the ground'
+				crime += 5
+				'I take all his money and leave'
+				temp = rand(0,11)
+				if temp <= 3:
+					money += rand(0,100)
+					'This bastard wasn''t going to pay me, there are almost no money'
+				elseif temp <= 10:
+					money += rand(750,2500)
+					'Nice.'
+				else
+					money += rand(3000,7000)
+					'Woow, it''s a lot of money'
+				end
+				gs 'stat'
+				act 'go away': gt $loc, $loc_arg
+			end
+		else
+			act 'shoot' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+		act 'take a wallet and leave':
+			temp = rand(0,21)
+			if temp <= 6:
+				money += rand(0,100)
+				'This bastard wasn''t going to pay me, there are almost no money'
+			elseif temp <= 20:
+				money += rand(750,2500)
+				'Nice.'
+			else
+				money += rand(3000,7000)
+				'Woow, it''s a lot of money'
+			end
+			gt $loc, $loc_arg
+		end
+	else
+		cla
+		'He avoid my hit and knocked the gun out of my hands'
+		gun = 0
+		gs 'pain', 9, 'armR', 'kick'
+		gs 'stat'
+		act 'run to the gun': gt 'mod_public_WC_rab_gun_rob', 'runtogun'
+		act 'run away': gt 'mod_public_WC_rab_gun_rob', 'runaway'
+		act 'fight with him': gt 'mod_public_WC_rab_gun_rob', 'fight'
+		act 'surrender': gt 'mod_public_WC_rab_gun_rob', 'surrender'
+	end
+end
+
+
+if $ARGS[0] = 'surrender':
+	cla
+	'I just give up'
+	'he kick me few times'
+	gs 'pain', 5, 'head', 'kick'
+	gs 'pain', 3, 'lips', 'kick'
+	gs 'pain', 3, 'nose', 'kick'
+	gs 'pain', 5, 'tummy', 'kick'
+	gs 'stat'
+	'He undress me and take all my money.'
+	gs 'clothing', 'strip'
+	gs 'underwear', 'remove'
+	gs 'stat'
+	$clothingworntype = 'nude'
+	inhib_exp += rand(1,2)
+	money = 0
+	temp = rand(1,20)
+	if temp <= 4:
+		minut += rand(25,70)
+		'He kicks me few more times and go away.'
+		gs 'pain', rand(5,10), 'head', 'kick'
+		gs 'pain', rand(5,10), 'eyebrows', 'kick'
+		gs 'pain', rand(5,10), 'neck', 'kick'
+		gs 'pain', rand(5,10), 'back', 'kick'
+		gs 'pain', rand(5,10), 'thighs', 'kick'
+		gs 'pain', rand(5,10), 'tummy', 'kick'
+		gs 'pain', rand(5,10), 'ribs', 'kick'
+		gs 'pain', rand(5,10), 'chest', 'kick'
+		gs 'pain', rand(5,10), 'wrists', 'kick'
+		gs 'stat'
+		act 'Stand up':  gt $loc, $loc_arg
+	elseif temp <= 15:
+		gt 'mod_public_WC_rab_gun_rob', 'rape'
+	else
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/video/90/4rapeevent/vkrav.mp4"></video></center>'
+		'he tied me and puts bag on my head. and put me in a truck'
+		workDolg += pcs_apprnc * 100
+		minut += rand(30, 70)
+		'After some time he carried me to somewhere. Someone untied me'
+		act 'Look around': gt 'city_sauna', 'saunaroom'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'fight':
+	*clr & cla
+	gun = 3
+	gs 'stat'
+	gs 'fight','initFight'
+
+	gs 'fight_npcdata', 'rapist'
+
+	gt 'fight', 'start'
+end
+
+
+if $ARGS[0] = 'runaway':
+	*clr & cla
+	menu_off = 0
+	agil_exp += rand(0, 2)
+	gs 'sweat', 'add', 30
+	run_exp += rand(0, 2)
+	fat -= rand(2, 7)
+	gs 'stat'
+	'I run with all my force!'
+	minut += 5
+	gs 'stat'
+	temp = rand(1,11)
+	if temp <= 2 and ammo > 0 or ecrime = 1:
+		ammo -= 1
+		killvar 'ecrime'
+		'I hear a shoot'
+		temp = rand(1,100)
+		if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2 :
+			'I feel sharp pain'
+			gs 'pain', 10, 'shoulders', 'pierce'
+			gs 'stat'
+			act 'is it bad?':
+				cla
+				pcs_health -= rand(350,1000)
+				gs 'stat'
+				act 'Keep running':
+					*clr & cla
+					if ammo > 0:
+						ammo -= 1
+						'I hear a shoot'
+						temp = rand(1,100)
+						if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2 :
+							'I feel sharp pain'
+							gs 'pain', 10, 'shoulders', 'pierce'
+							gs 'stat'
+							act 'is it bad?':
+								cla
+								pcs_health -= rand(350,1000)
+								gs 'stat'
+								act 'Keep running': gt $loc, $loc_arg
+							end
+						else
+							'He missed'
+							act 'Keep running': gt $loc, $loc_arg
+						end
+					else
+						'there are no more shoots, I run away!'
+						act 'Look around': gt $loc, $loc_arg
+					end
+				end
+			end
+		else
+			'He missed'
+			act 'Keep running':
+				*clr & cla
+				if ammo > 0:
+					ammo -= 1
+					'I hear a shoot'
+					temp = rand(1,100)
+					if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2 :
+						'I feel sharp pain'
+						gs 'pain', 10, 'shoulders', 'pierce'
+						gs 'stat'
+						act 'is it bad?':
+							cla
+							pcs_health -= rand(350,1000)
+							gs 'stat'
+							act 'Keep running': gt $loc, $loc_arg
+						end
+					else
+						'He missed'
+						act 'Keep running': gt $loc, $loc_arg
+					end
+				else
+					'there are no more shoots, I run away!'
+					act 'Look around': gt $loc, $loc_arg
+				end
+			end
+		end
+	elseif temp <= 6:
+		'I hear laught, he is not persuating me.'
+		 act 'Keep running': gt $loc, $loc_arg
+	elseif temp > 6:
+		'He is persuating me'
+		if rand(1,100) + bcil/10 >= pcs_run*2 or rand(1,100) + bcil/10 >= pcs_agil:
+			'Oh no! I am to slow, he cach me and pushes to the ground'
+			act 'continue': gt 'mod_public_WC_rab_gun_rob', 'rape'
+		else
+			'But i am faster!'
+			'He did not manage to catch up with me'
+			act 'Look around': gt $loc, $loc_arg
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'runtogun':
+	cla
+	'I ran with all my speed to the gun!'
+	if rand(1,100) + bcil/10 >= pcs_run*2 or rand(1,100) + bcil/10 >= pcs_agil:
+		'He is faster then me'
+		'He keeps aiming me'
+		act 'continue': gt 'mod_public_WC_rab_gun_rob', 'surrender'
+	else
+		'I was first. Now, my gun aimed on him…'
+		gun = 1
+		temp = rand(1,4)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab//r_events/11/gun aim<<temp>>.mp4"></video></center>'
+		act 'aim at him and run away':
+			minut += 15
+			gs 'stat'
+			gt $loc, $loc_arg
+		end
+		gs 'willpower', 'crime', 'self', 'medium'
+		if will_cost <= pcs_willpwr and ammo > 0:
+			act 'shoot' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				temp=rand(1,2)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				killed +=1
+				ammo -= 1
+				willpowermax += 5
+				pcs_mood -= 40
+				pcs_mood += killed
+				shoot_exp += 1
+				'He even make no sound. The dead body fell on the ground'
+				crime += 5
+				'I take all his money and leave'
+				temp = rand(0,11)
+				if temp <= 3:
+					money += rand(0,100)
+					'This bastard wasn''t going to pay me, there are almost no money'
+				elseif temp <= 10:
+					money += rand(750,2500)
+					'Nice.'
+				else
+					money += rand(3000,7000)
+					'Woow, it''s a lot of money'
+				end
+				act 'go away': gt $loc, $loc_arg
+			end
+		else
+			act 'shoot' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rape':
+	*clr & cla
+	crime -= 2
+	if crime < 0: crime = 0
+	'He take the gun and command: "Suck it!"'
+	act 'Suck the gun':
+		*clr & cla
+		temp = rand (1,2)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunbj<<temp>>.mp4"></video></center>'
+		gs 'arousal_funcs', 'stretch', 'oral', rand(0,1)
+		rape += 1
+		guy += 1
+		stat['bj'] += 1
+		minut += rand (5,10)
+		gs 'stat'
+		'Nice… now show me your ass'
+		act 'Show my ass':
+			*clr & cla
+			'He starts to fuck my ass with a gun'
+			'It''s to much pAiN!!! I want it''s stop!'
+			minut += rand(5,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunass.mp4"></video></center>'
+			gs 'pain', 10, 'asshole', 'break'
+			gs 'arousal_funcs', 'stretch', 'anal', 3
+			stat['anal'] += 3
+			stat['anal_strap'] += 3
+			gs 'stat'
+			'get ready future mom!'
+			act 'continue':
+				*clr & cla
+
+				stat['vaginal'] += 1
+				gs 'sweat', 'add', 15
+				gs 'arousal', 'vaginal', 10, 'prostitution'
+				'He starts to fuck me balls deep!'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/1/Tolik9.mp4"></video></center>'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'He cums. And go away with my gun'
+					temp = rand(1,10)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/Tolik<<temp>>.mp4"></video></center>'
+					spafinloc = 0
+					gs 'cum_manage'
+					gun = 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Stand up':  gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+--- mod_public_WC_rab_gun_rob2 ---------------------------------
+

@@ -1,0 +1,1969 @@
+# mod_public_WC_rab_PHwork_events
+if $ARGS[0] = 'start':
+	
+	if $metka = 'tables':	
+		$PH_loc = $loc
+		$PHloc_arg = $loc_arg
+		minut += 5
+		gs 'stat'
+		act 'go to WC': gt 'mod_public_WC_rab_WC', 'start'		
+	end
+	
+	$PHwcloc = $loc
+	$PHwcloc_arg = $loc_arg
+	
+	if $metka = 'billiard' and phwork ! 1 and phbilliardday ! daystart: 
+		pooltemptemp = rand (0,10)
+		
+		if pooltemptemp <= 3: 
+			pooltemptemp = 0
+			'There is noone in the room'
+		elseif pooltemptemp > 3 and pooltemptemp <= 6:
+			pooltemptemp = rand(1,2)
+			if pooltemptemp = 1: 
+				'There is a man playing pool'
+				phttemp = 1
+			elseif pooltemptemp = 2: 
+				'There is a woman playing pool'
+				phttemp = 2
+			end
+			pooltemptemp = 1
+		else
+			pooltemptemp = rand (2,8)
+			phttemp = 0
+			'There is <<pooltemptemp>> people in the room'
+		end 
+		phbilliardday = daystart
+		
+		act 'play pool': gt 'mod_public_WC_rab_PHwork_events_7', 'play'
+		
+		if pooltemptemp > 0:
+			if pooltemptemp = 1:
+				if phttemp = 1:
+					act 'talk to him': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+				else
+					act 'talk to her': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+				end
+			else
+				act 'talk to the company': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+			end
+		end
+		
+	elseif $metka = 'billiard' and phwork ! 1:
+		'There is <<pooltemptemp>> people in the room'
+		
+		act 'play pool': gt 'mod_public_WC_rab_PHwork_events_7', 'play'
+		
+		if pooltemptemp > 0:
+			if pooltemptemp = 1:
+				if phttemp = 1:
+					act 'talk to him': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+				else
+					act 'talk to her': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+				end
+			else
+				act 'talk to the company': gt 'mod_public_WC_rab_PHwork_events_7', 'talk'
+			end
+		end
+	end
+	
+	if $metka = 'dancefloor' and phwork ! 1:
+		
+		act 'Go dance': gt 'mod_public_WC_rab_PHwork_events_5', 'dance'
+		
+		act 'Tease a guy in a crowd': gt 'mod_public_WC_rab_PHwork_events_5', 'tease'
+		
+		act 'Go dance on the stage': gt 'mod_public_WC_rab_PHwork_events_5', 'scene'
+	end
+	
+	if $metka = 'office':
+		'Some office plancton are working here'
+		
+		if rand (1,10) >= 4 and daystart ! phbossday: 
+			phboss = 1
+			phbossday = daystart
+		elseif daystart ! phbossday:
+			phboss = 0
+			bossnow = 0
+			phbossday = daystart
+		end
+		
+		if phboss = 1:
+			'The teamlead is in the office, in his room'
+		end
+		
+		if phwork ! 1:
+			act 'grab worker''s groin':
+				gt 'mod_public_WC_rab_PHwork_events_6', 'grab'
+			end
+			
+			if phboss = 1:
+				
+				act 'sneak in the lead room': 
+					*clr & cla
+					
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/leadroom.jpg"></center>'
+					if pcs_agil >= rand(60,85):
+						'He does not noticed me'
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/lead.jpg"></center>'
+						
+						act 'go under the table and suck him':
+							*clr & cla
+							gs 'npcgeneratec', 0, 'teamlead', rand(18,25)
+							gs 'boyStat', $npclastgenerated
+							PH_office_lead += 1
+							
+							'He just freeze in a shock'
+							gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+							
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/0.mp4"></video></center>'
+							
+							act 'keep sucking':
+								*clr & cla
+								
+								'He didn''t  move and just moaning time to time'
+								gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+								
+								gs 'stat'
+								
+								if rand(1,12) <= 7:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,7)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,4)+').jpg"></center>'
+								end
+								act 'keep sucking':
+									*clr & cla									
+									
+									gs 'arousal', 'bj', rand(10,15), 'exhibitionism'									
+									gs 'stat'
+									
+									if rand(1,2) <= 7:
+										'He cum inside my mouth.'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+										gs 'cum_call','mouth',$boy
+										gs 'stat'
+									else
+										'He loads my face with cum.'
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (1).jpg"></center>'
+										gs 'cum_call','face',$boy
+										gs 'stat'
+									end
+									gs 'arousal', 'end'
+									gs 'stat'
+									act '"bye-bye honey" and go away':
+										gt $loc, $loc_arg
+									end									
+								end
+								
+								act 'use my pussy':
+									*clr & cla
+									
+									'I put his hard dick in my wet pussy'
+									gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/undertable_surprise/sex.mp4"></video></center>'
+									
+									if prezik >= 1:
+										act 'put a condom on his dick':
+											'I put a condom in his dick and continue fuck him'
+											prezik -= 1
+											minut += 3
+											gs 'stat'
+											ph_office_prezik = 1
+										end										
+									end
+									
+									act 'continue':
+										*clr & cla									
+										
+										gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+										gs 'stat'
+										
+										if ph_office_prezik ! 1:
+											'He cum inside me.'
+											gs 'cuminsidereact', $boydesc
+											PH_office_lead += 1
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/cum/vag (2).mp4"></video></center>'
+											gs 'cum_call','',$boy
+											gs 'stat'
+										elseif ph_office_prezik = 1:
+											killvar 'ph_office_prezik'
+											'I feel how his dick becomes hotter and hotter… as he ready to cum I rotate'
+											'He cums inside my mouth.'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+											gs 'cum_call','mouth',$boy
+											gs 'stat'
+										end
+										gs 'arousal', 'end'
+										gs 'stat'
+										act '"bye-bye honey" and go away':
+											gt $loc, $loc_arg
+										end									
+									end
+								end
+							end
+						end
+						
+						if PH_office_lead >= 50:
+							act 'ask for a office job':
+								'-=wip=-'
+							end
+						end
+						
+						
+						act 'say hello':
+							*clr & cla
+							'"OMG!!! You scared me!"'
+							'"What are you doing here?!"'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/lead.jpg"></center>'
+							
+							if PH_office_lead >= 1:								
+								if rand(1,3) ! 1:
+									'"Not now, please go"'
+									
+									act 'tese him':
+										*clr & cla
+										
+										if rand(1,2) = 1:
+											'I start to manage staff on his desk… do it the way he clearly see my pussy'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease 1.mp4"></video></center>'
+										else
+											'I lie down on his desk… and show my wet pussy'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease_pussy '+rand(1,2)+'.mp4"></video></center>'
+										end
+										persuas_exp += 1
+										gs 'arousal', 'flash', rand(2,4), 'exhibitionism'
+										gs 'stat'
+										
+										if rand(1,10) >= 8:
+											PH_office_lead += 1
+											
+											phtemp = rand(1,7)
+											if phtemp = 5: phtemp = rand(1,4)
+											bossnow = 1
+											'"Ok, you won))"'
+											act 'continue': gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+										else
+											'"Not now, My deadlines are burning!.. Please, go away!"'
+											
+										end
+										pcs_mood -= 20
+										gs 'stat'
+										
+										
+										act 'go away': gt $loc, $loc_arg
+									end
+									
+									act 'go under the table and suck him':
+										*clr & cla
+										gs 'npcgeneratec', 0, 'teamlead', rand(18,25)
+										gs 'boyStat', $npclastgenerated
+										PH_office_lead += 1
+										
+										'He just freeze in a shock'
+										gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+										
+										gs 'stat'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/0.mp4"></video></center>'
+										
+										act 'keep sucking':
+											*clr & cla
+											
+											'He didn''t  move and just moaning time to time'
+											gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+											
+											gs 'stat'
+											
+											if rand(1,12) <= 7:
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,7)+').mp4"></video></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,4)+').jpg"></center>'
+											end
+											act 'keep sucking':
+												*clr & cla									
+												
+												gs 'arousal', 'bj', rand(10,15), 'exhibitionism'									
+												gs 'stat'
+												
+												if rand(1,2) <= 7:
+													'He cum inside my mouth.'
+													'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+													gs 'cum_call','mouth',$boy
+													gs 'stat'
+												else
+													'He loads my face with cum.'
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (1).jpg"></center>'
+													gs 'cum_call','face',$boy
+													gs 'stat'
+												end
+												gs 'arousal', 'end'
+												gs 'stat'
+												act '"bye-bye honey" and go away':
+													gt $loc, $loc_arg
+												end									
+											end
+											
+											act 'use my pussy':
+												*clr & cla
+												
+												'I put his hard dick in my wet pussy'
+												gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+												gs 'stat'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/undertable_surprise/sex.mp4"></video></center>'
+												
+												if prezik >= 1:
+													act 'put a condom on his dick':
+														'I put a condom in his dick and continue fuck him'
+														prezik -= 1
+														minut += 3
+														gs 'stat'
+														ph_office_prezik = 1
+													end										
+												end
+												
+												act 'continue':
+													*clr & cla									
+													
+													gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+													gs 'stat'
+													
+													if ph_office_prezik ! 1:
+														'He cum inside me.'
+														gs 'cuminsidereact', $boydesc
+														PH_office_lead += 1
+														'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/cum/vag (2).mp4"></video></center>'
+														gs 'cum_call','',$boy
+														gs 'stat'
+													elseif ph_office_prezik = 1:
+														killvar 'ph_office_prezik'
+														'I feel how his dick becomes hotter and hotter… as he ready to cum I rotate'
+														'He cums inside my mouth.'
+														'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+														gs 'cum_call','mouth',$boy
+														gs 'stat'
+													end
+													gs 'arousal', 'end'
+													gs 'stat'
+													act '"bye-bye honey" and go away':
+														gt $loc, $loc_arg
+													end									
+												end
+											end
+										end
+									end
+									
+									act 'go away': gt $loc, $loc_arg
+								else
+									'"Good you are here. I want some fun!"'
+									
+									act 'agree':
+										cla
+										PH_office_lead += 1
+										
+										phtemp = rand(1,7)
+										if phtemp = 5: phtemp = rand(1,4)
+										bossnow = 1
+										
+										gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+									end
+									
+									act 'Run away':
+										gt $loc, $loc_arg
+									end
+								end
+							else							
+								act 'offer myself to the Teamleader':
+									cla
+									'he asks me to undress my panties'
+									'so rude, but I did it'
+									'He start to slap me hard'
+									'"don''t distract me from work, slut!"'
+									
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/slap '+rand(1,2)+'.mp4"></video></center>'
+									minut += 15
+									gs 'pain', rand(3,4), 'asscheeks', 'slap'
+									gs 'stat'
+									
+									'as he stop slapping, I am run away'
+									act 'Run away':
+										gt $loc, $loc_arg
+									end
+								end
+								
+								act 'Go away':
+									gt $loc, $loc_arg
+								end							
+							end
+						end
+						
+						act 'go away': gt $loc, $loc_arg
+					else
+						'He noticed me'
+						'"What are you doing here?!"'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/lead.jpg"></center>'
+						
+						if PH_office_lead >= 1:							
+							if rand(1,3) ! 1:
+								'"Not now, please go"'
+								
+								if PH_office_lead >= 50:
+									act 'ask for a office job':
+										'-=wip=-'
+									end
+								end
+								
+								act 'tese him':
+									*clr & cla
+									
+									if rand(1,2) = 1:
+										'I start to manage staff on his desk… do it the way he clearly see my pussy'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease 1.mp4"></video></center>'
+									else
+										'I lie down on his desk… and show my wet pussy'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease_pussy '+rand(1,2)+'.mp4"></video></center>'
+									end
+									persuas_exp += 1
+									gs 'arousal', 'flash', rand(2,4), 'exhibitionism'
+									gs 'stat'
+									
+									if rand(1,10) >= 8:
+										PH_office_lead += 1
+										
+										phtemp = rand(1,7)
+										if phtemp = 5: phtemp = rand(1,4)
+										bossnow = 1
+										
+										'"Ok, you won))"'
+										act 'continue': gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+									else
+										'"Not now, My deadlines are burning!.. Please, go away!"'
+										
+									end
+									pcs_mood -= 20
+									gs 'stat'
+									
+									
+									act 'go away': gt $loc, $loc_arg
+								end
+								
+								act 'go under the table and suck him':
+									*clr & cla
+									gs 'npcgeneratec', 0, 'teamlead', rand(18,25)
+									gs 'boyStat', $npclastgenerated
+									PH_office_lead += 1
+									
+									'He just freeze in a shock'
+									gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+									
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/0.mp4"></video></center>'
+									
+									act 'keep sucking':
+										*clr & cla
+										
+										'He didn''t  move and just moaning time to time'
+										gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+										
+										gs 'stat'
+										
+										if rand(1,12) <= 7:
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,7)+').mp4"></video></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/1 bj ('+rand(1,4)+').jpg"></center>'
+										end
+										act 'keep sucking':
+											*clr & cla									
+											
+											gs 'arousal', 'bj', rand(10,15), 'exhibitionism'									
+											gs 'stat'
+											
+											if rand(1,2) <= 7:
+												'He cum inside my mouth.'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+												gs 'cum_call','mouth',$boy
+												gs 'stat'
+											else
+												'He loads my face with cum.'
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (1).jpg"></center>'
+												gs 'cum_call','face',$boy
+												gs 'stat'
+											end
+											gs 'arousal', 'end'
+											gs 'stat'
+											act '"bye-bye honey" and go away':
+												gt $loc, $loc_arg
+											end									
+										end
+										
+										act 'use my pussy':
+											*clr & cla
+											
+											'I put his hard dick in my wet pussy'
+											gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+											gs 'stat'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/undertable_surprise/sex.mp4"></video></center>'
+											
+											if prezik >= 1:
+												act 'put a condom on his dick':
+													'I put a condom in his dick and continue fuck him'
+													prezik -= 1
+													minut += 3
+													gs 'stat'
+													ph_office_prezik = 1
+												end										
+											end
+											
+											act 'continue':
+												*clr & cla									
+												
+												gs 'arousal', 'vaginal', rand(10,15), 'exhibitionism'									
+												gs 'stat'
+												
+												if ph_office_prezik ! 1:
+													'He cum inside me.'
+													gs 'cuminsidereact', $boydesc
+													PH_office_lead += 1
+													'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/cum/vag (2).mp4"></video></center>'
+													gs 'cum_call','',$boy
+													gs 'stat'
+												elseif ph_office_prezik = 1:
+													killvar 'ph_office_prezik'
+													'I feel how his dick becomes hotter and hotter… as he ready to cum I rotate'
+													'He cums inside my mouth.'
+													'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/continue working/2 cum (2).mp4"></video></center>'
+													gs 'cum_call','mouth',$boy
+													gs 'stat'
+												end
+												gs 'arousal', 'end'
+												gs 'stat'
+												act '"bye-bye honey" and go away':
+													gt $loc, $loc_arg
+												end									
+											end
+										end
+									end
+								end
+								
+								act 'go away': gt $loc, $loc_arg
+							else
+								'"Good you are here. I want some fun!"'
+								
+								act 'agree':
+									cla
+									PH_office_lead += 1
+									
+									phtemp = rand(1,7)
+									if phtemp = 5: phtemp = rand(1,4)
+									bossnow = 1
+									
+									gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+								end
+								
+								act 'Run away':
+									gt $loc, $loc_arg
+								end
+							end
+						else							
+							act 'offer myself to the Teamleader':
+								cla
+								'he asks me to undress my panties'
+								'so rude, but I did it'
+								'He start to slap me hard'
+								'"don''t distract me from work, slut!"'
+								
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/slap '+rand(1,2)+'.mp4"></video></center>'
+								minut += 15
+								gs 'pain', rand(3,4), 'asscheeks', 'slap'
+								gs 'stat'
+								
+								'as he stop slapping, I am run away'
+								act 'Run away':
+									gt $loc, $loc_arg
+								end
+							end
+							
+							act 'Go away':
+								gt $loc, $loc_arg
+							end							
+						end
+					end
+				end
+			else
+				act 'enter the lead room':
+					*clr & cla
+					
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/leadroom.jpg"></center>'
+					
+					act 'hide under the table and wait the lead':						
+						phi = 1
+						gt 'mod_public_WC_rab_PHwork_events_6', 'hide'
+					end
+					
+					!! wait lead and using pussy
+					act 'Go away':
+						gt $loc, $loc_arg
+					end
+				end
+			end
+			
+			act 'tese a worker':
+				*clr & cla
+				
+				if rand(1,2) = 1:
+					'I start to manage staff on a worker desk… do it the way he clearly see my pussy'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease 1.mp4"></video></center>'
+				else
+					'I lie down on his desk… and show my wet pussy'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tease_pussy '+rand(1,2)+'.mp4"></video></center>'
+				end
+				persuas_exp += 1
+				gs 'arousal', 'flash', rand(2,4), 'exhibitionism'
+				gs 'stat'
+				
+				if rand(1,10) >= 7:
+					bossnow = 0
+					'A worker comes to me with big bulb in his pants'
+					'"Baby, I want you!"'
+					if sexcorrupt <= rand(30,50):
+						act 'ask about money':
+							cla
+							'"yes, sure, But you will get it only after."'
+							otemp = 1
+							gs 'stat'
+							sexcorrupt -= 2				
+							act 'continue': gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+						end
+					end
+					
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+					if sexcorrupt >= rand(50,70):
+						cla
+						'I can''t resist, I want him too!'
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_6', 'sex'
+					end
+				else
+					'"Noone intresting in me'
+					
+				end
+				pcs_mood -= 20
+				gs 'stat'
+				
+				act 'go away': gt $loc, $loc_arg
+			end
+		elseif phwork = 1:
+			
+			!! tied sex chance: tied to the chair add note and go cycle
+			if rand(1,5) = 1:
+				*clr
+				'Some worker decide to use my situation'
+				
+				if rand(1,3) = 1:
+					cla
+					'He tied me to a desk'					
+					'"Nice tits you have"'
+					'"We need one more addition to your costume"'					
+					'He grab my nipple and fix a pin on it'
+					
+					minut += rand(5,10)
+					stat['BDSM'] += rand(0,1)
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+						gs 'pain', rand(1,2), 'nipples', 'pinch'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'	
+						
+						'"Ow, I see you know this feeling"'
+						gs 'pain', rand(0,1), 'nipples', 'pinch'			
+						gs 'stat'
+					elseif stat['BDSM'] <= 10:
+						'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+						gs 'pain', rand(2,4), 'nipples', 'pinch'
+						gs 'stat'
+					end
+					
+					
+					'He grab my other nipple and fix a second pin on it'
+					
+					minut += rand(5,10)
+					stat['BDSM'] += rand(0,1)
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+						gs 'pain', rand(1,2), 'nipples', 'pinch'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'	
+						
+						'"Now it''s great, isn''t it?"'
+						gs 'pain', rand(0,1), 'nipples', 'pinch'			
+						gs 'stat'
+					elseif stat['BDSM'] <= 10:
+						'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+						gs 'pain', rand(2,4), 'nipples', 'pinch'
+						gs 'stat'
+					end
+					
+					'"And the last part"'
+					
+					'He  fix a vibrator on my clitor'
+					gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+					gs 'npcgeneratec', 0, 'Pleasure House office worker', rand(18,25)
+					gs 'boyStat', $npclastgenerated
+					
+					act 'wait':
+						*clr & cla
+						'He goes away'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+						i = 1
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits, laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						if i <= 9:
+							i += 1
+							gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+							gs 'stat'
+							
+							
+							if rand(1,3) = 1:
+								'some worker grope my tits or laught and go away'
+								gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+								gs 'stat'
+							end
+						end
+						
+						'Someone off the vibrator'
+						if phboss = 1 and rand(1,3) = 1:
+							'Ow, it''s a teamlead'
+							'He untied me and remove vibrator and pins'
+							if PH_office_lead < 1:
+								PH_office_lead += 1
+								'"Honey, you need to have more clothing to be here"'
+							end
+							PH_office_lead += rand(0,1)
+							
+							act '"thank you" and go away': gt $loc, $loc_arg
+						else
+							'Some worker just decide to help me'
+							'He untied me from the desk and take off the pins'
+							act 'Go away': gt $loc, $loc_arg
+						end
+					end
+				else
+					if rand(1,2) = 1:
+						cla
+						'He pushed my face to his erected dick.'
+						'I am sucking him'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/bj.jpg"></center>'
+						
+						gs 'arousal', 'bj', 15, 'exhibitionism'
+						gs 'stat'
+						
+						act 'keep sucking':
+							*clr & cla
+							'He cumed deep in my throat'
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/bj.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism'
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							temp = rand (1,7)
+							if temp <= 2:								
+								'He pushed me on the chair and tied to it'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_chair/0.mp4"></video></center>'
+								
+								act 'continue':
+									*clr & cla
+									'He tied me all to the chair'
+									'He put a note to other workers'
+									'"Freeeeeeuuuse!" he screams…'
+									'…And just go away, left me like this in the middle of the office'
+									minut += 10
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_chair/1.mp4"></video></center>'
+									act 'wait': gt 'mod_public_WC_rab_PHwork_events_6', 'tied chair'
+								end								
+							elseif temp <= 4:
+								cla
+								'He tied me to a desk'					
+								'"Nice tits you have"'
+								'"We need one more addition to your costume"'					
+								'He grab my nipple and fix a pin on it'
+								
+								minut += rand(5,10)
+								stat['BDSM'] += rand(0,1)
+								if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+									'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+									gs 'pain', rand(1,2), 'nipples', 'pinch'
+									gs 'stat'
+								elseif stat['BDSM'] > 25:
+									'<i>Yeeees, it feels great!</i>'	
+									
+									'"Ow, I see you know this feeling"'
+									gs 'pain', rand(0,1), 'nipples', 'pinch'			
+									gs 'stat'
+								elseif stat['BDSM'] <= 10:
+									'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+									gs 'pain', rand(2,4), 'nipples', 'pinch'
+									gs 'stat'
+								end
+								
+								
+								'He grab my other nipple and fix a second pin on it'
+								
+								minut += rand(5,10)
+								stat['BDSM'] += rand(0,1)
+								if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+									'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+									gs 'pain', rand(1,2), 'nipples', 'pinch'
+									gs 'stat'
+								elseif stat['BDSM'] > 25:
+									'<i>Yeeees, it feels great!</i>'	
+									
+									'"Now it''s great, isn''t it?"'
+									gs 'pain', rand(0,1), 'nipples', 'pinch'			
+									gs 'stat'
+								elseif stat['BDSM'] <= 10:
+									'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+									gs 'pain', rand(2,4), 'nipples', 'pinch'
+									gs 'stat'
+								end
+								
+								'"And the last part"'
+								
+								'He  fix a vibrator on my clitor'
+								gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+								gs 'stat'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+								gs 'npcgeneratec', 0, 'Pleasure House office worker', rand(18,25)
+								gs 'boyStat', $npclastgenerated
+								
+								act 'wait':
+									*clr & cla
+									'He goes away'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+									i = 1
+									
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits, laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									'Someone off the vibrator'
+									if phboss = 1 and rand(1,3) = 1:
+										'Ow, it''s a teamlead'
+										'He untied me and remove vibrator and pins'
+										if PH_office_lead < 1:
+											PH_office_lead += 1
+											'"Honey, you need to have more clothing to be here"'
+										end
+										PH_office_lead += rand(0,1)
+										
+										act '"thank you" and go away': gt $loc, $loc_arg
+									else
+										'Some worker just decide to help me'
+										'He untied me from the desk and take off the pins'
+										act 'Go away': gt $loc, $loc_arg
+									end
+								end
+							else
+								'He zip his fly and cusually go away'
+								act 'Go away': gt $loc, $loc_arg
+							end							
+						end
+					else
+						cla
+						'He pushed me on the table and start to fuck me!'						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/sex ('+rand(1,2)+').mp4"></video></center>'					
+						gs 'arousal', 'vaginal', 15, 'exhibitionism'
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'He shot his sperm inside me'
+							gs 'cuminsidereact', $boydesc
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/sex/cum/vag ('+rand(1,2)+').mp4"></video></center>'
+							gs 'cum_call','',$boy
+							gs 'stat'
+							gs 'arousal', 'vaginal', 15, 'exhibitionism'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							
+							temp = rand (1,7)
+							if temp <= 2:								
+								'He threw me on the chair and tied to it'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_chair/0.mp4"></video></center>'
+								
+								act 'continue':
+									'He tied me all to the chair'
+									'He put a note to other workers'
+									'"Freeeeeeuuuse!" he screams…'
+									'…And just go away, left me like this in the middle of the office'
+									minut += 10
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_chair/1.mp4"></video></center>'
+									act 'wait': gt 'mod_public_WC_rab_PHwork_events_6', 'tied chair'
+								end								
+							elseif temp <= 4:
+								'He tied me to a desk'					
+								'"Nice tits you have"'
+								'"We need one more addition to your costume"'					
+								'He grab my nipple and fix a pin on it'
+								
+								minut += rand(5,10)
+								stat['BDSM'] += rand(0,1)
+								if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+									'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+									gs 'pain', rand(1,2), 'nipples', 'pinch'
+									gs 'stat'
+								elseif stat['BDSM'] > 25:
+									'<i>Yeeees, it feels great!</i>'	
+									
+									'"Ow, I see you know this feeling"'
+									gs 'pain', rand(0,1), 'nipples', 'pinch'			
+									gs 'stat'
+								elseif stat['BDSM'] <= 10:
+									'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+									gs 'pain', rand(2,4), 'nipples', 'pinch'
+									gs 'stat'
+								end
+								
+								
+								'He grab my other nipple and fix a second pin on it'
+								
+								minut += rand(5,10)
+								stat['BDSM'] += rand(0,1)
+								if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+									'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'			
+									gs 'pain', rand(1,2), 'nipples', 'pinch'
+									gs 'stat'
+								elseif stat['BDSM'] > 25:
+									'<i>Yeeees, it feels great!</i>'	
+									
+									'"Now it''s great, isn''t it?"'
+									gs 'pain', rand(0,1), 'nipples', 'pinch'			
+									gs 'stat'
+								elseif stat['BDSM'] <= 10:
+									'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+									gs 'pain', rand(2,4), 'nipples', 'pinch'
+									gs 'stat'
+								end
+								
+								'"And the last part"'
+								
+								'He  fix a vibrator on my clitor'
+								gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+								gs 'stat'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+								gs 'npcgeneratec', 0, 'Pleasure House office worker', rand(18,25)
+								gs 'boyStat', $npclastgenerated
+								
+								act 'wait':
+									*clr & cla
+									'He goes away'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/office/tied_sex/office_whore.mp4"></video></center>'
+									i = 1
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									if i <= 9:
+										i += 1
+										gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation'
+										gs 'stat'
+										
+										
+										if rand(1,3) = 1:
+											'some worker grope my tits or laught and go away'
+											gs 'arousal', 'foreplay', 5, 'exhibitionism', 'humiliation'
+											gs 'stat'
+										end
+									end
+									
+									'Someone off the vibrator'
+									if phboss = 1 and rand(1,3) = 1:
+										'Ow, it''s a teamlead'
+										'He untied me and remove vibrator and pins'
+										if PH_office_lead < 1:
+											PH_office_lead += 1
+											'"Honey, you need to have more clothing to be here"'
+										end
+										PH_office_lead += rand(0,1)
+										
+										act '"thank you" and go away': gt $loc, $loc_arg
+									else
+										'Some worker just decide to help me'
+										'He untied me from the desk and take off the pins'
+										act 'Go away': gt $loc, $loc_arg
+									end
+								end
+							else
+								'He zip his fly and cusually go away'
+								act 'Go away': gt $loc, $loc_arg
+							end							
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	
+	
+	if $metka ! 'office' and $metka ! 'balcony' and rand(1,8) = 1 and $clothingworntype ! 'nude':		
+		'some guy cached me and exposed my tits! - what a jerk'
+		if phwork = 1:
+			'Shit, I can''t put it back'
+		else
+			''
+		end
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/4 tits free/grope.mp4"></video></center>'
+	end
+	
+	
+	if rand(1,20) = 1 and phwork ! 1 and ( $metka = 'dancefloor' or $metka = 'tables' ):
+		'See some girl at a table is trying to have my attention… she is waving to me'
+		+$OpenInnerThought+'I could pretend I don''t see her!'+$CloseInnerThought
+		
+		act 'Go to the waving girl':
+			cla
+			minut += 5
+			
+			if rand (1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/1dolar.jpg"></center>'
+				money_temp = rand(3,5) * 200
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/1groshi.jpg"></center>'
+				money_temp = rand(1,3) * 100
+			end
+			
+			'"Hi, I has a silly question…"'
+			'"I want other girl drink my boyfriend''s sperm…" "and tell me is it good" - she adds in a momment much lover voice, only I can hear'
+			'"Don''t worry, I will pay you <<money_temp>> for the help!"'
+			
+			act 'agree':
+				sexcorrupt += 1
+				gt 'mod_public_WC_rab_PHwork_events_2','2 cum_glass'
+			end
+			
+			act 'no way': gt $loc, $loc_arg
+		end
+	elseif rand(1,20) = 1:
+		'Some guy stops me'
+		'"sooo nice heels, would you use them to make me cum?"'
+		
+		act '"okey" - go with him':
+			cla
+			sexcorrupt += 1
+			gt 'mod_public_WC_rab_PHwork_events_2', '3 heel job'
+		end
+		
+		act 'ask for monney':
+			cla
+			'"Hope, it helps"'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/money.mp4"></video></center>'
+			money_temp = rand(1,4)*100
+			money += money_temp
+			'He put <<money_temp>> money'
+			killvar 'money_temp'
+			act 'go with him': gt 'mod_public_WC_rab_PHwork_events_2', '3 heel job'
+		end
+		
+		act 'just go away': gt $loc, $loc_arg		
+	elseif ( phwork = 1 and rand (1,30) = 1 ) or ( phwork = 3 and rand(1,30) = 1 ):
+		if phwork = 1:
+			'I see a guy cumed on a table '
+			'"Clean the table, bitch!"'			
+		else
+			'I see a guy cumed on a table '
+			'"Clean this, bitch!"'			
+		end
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/5 clean_table/1.jpg"></center>'
+		
+		act 'Go to the table': gt 'mod_public_WC_rab_PHwork_events_2', '5 clean_table'		
+	elseif rand(1,15) = 1 and ( $metka = 'dancefloor' or $metka = 'tables' ):
+		if PHcumgirl <= 10:
+			'I see The girl under the sofa, milking a guy through the hole in the sofa… '
+			+$OpenInnerThought+'Is it supposed to be like that?'+$CloseInnerThought
+			act 'keep looking the milker': gt 'mod_public_WC_rab_PHwork_events_2', '7 cum_girl'
+		elseif PHcumgirl > 10 and PHcumgirl < 100:
+			PHtemp = 27629940
+		end
+	end
+	
+	If PHcumgirl > 100 and rand (1,20) = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/7 cum_girl/Girl_3shots/0.jpg"></center>'
+		'The milker comes to me…'		
+		'Need your help, can you?'
+		act 'I am sorry I can''t right now':
+			cla
+			'Shit, then lets talk later'
+			act 'go away': gt $loc, $loc_arg
+		end
+		
+		act 'Yes, I would like to': gt 'mod_public_WC_rab_PHwork_events_2', 'me_start'		
+	end
+	
+	
+	if rand (1,10) = 1 and dgirl < 1:
+		'I see a guy gropes a drunk girl'
+		dgirl = 1
+		gs 'arousal', 'porn', rand(5,5), 'prostitution'
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/1/1.jpg"></center>'
+		act 'keep look on the drunk girl': gt 'mod_public_WC_rab_PHwork_events_2', '6 drunk_girl 1'
+	elseif rand (1,10) = 1 and dgirl < 1:
+		'I see two guys drinking with pretty drunk girl'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/2/1.jpg"></center>'
+		dgirl = 1
+		gs 'arousal', 'porn', rand(5,5), 'prostitution'
+		gs 'stat'
+		act 'keep look on the drunk girl': gt 'mod_public_WC_rab_PHwork_events_2', '6 drunk_girl 2'	
+	end
+	
+	if ($metka = 'tables' or $metka = 'billiard' ) and rand(1,7) = 1:
+		temp = rand (1,6)
+		if temp = 1:
+			'I see a girl blowing some guy… she just don''t care about everybody'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/bj.jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'			
+		elseif temp = 2:
+			'I see a couple touching each other'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/couple ('+rand(1,3)+').jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'
+		elseif temp = 3:
+			'I see a guy licking some hot chick pussy'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/cuni.jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'
+		elseif temp = 4:
+			'I see a a naked girl just drinking aalone… she pretends to see noone'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/drinking_naked.jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'
+		elseif temp = 5:
+			'I see a naked drunk girl dancing!'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/drunk_naked.jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'
+		else
+			'I see a a naked girl casually talking with guy, who eat her with his eyes…'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/naked_talk ('+rand(1,2)+').jpg"></center>'
+			gs 'arousal', 'porn', rand(5,5), 'prostitution'
+			gs 'stat'
+		end
+	end
+	
+	
+	if dgirl > 1 and rand(1,4) = 1:
+		if rand(1,2) = 1:
+			'I see the guy cumming on the passed out girl'
+			gs 'arousal', 'porn', rand(2,2)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/pass out/0 cumon face ('+rand(1,2)+').jpg"></center>'
+			if rand(1,3) = 1: dgirl = 0
+		else
+			'I see the guy want to use unconscious girl.'
+			gs 'arousal', 'porn', rand(2,2)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/pass out/1 sleeping_sex.jpg"></center>'
+			if rand(1,3) = 1: dgirl = 0
+			act 'keep watching': gt 'mod_public_WC_rab_PHwork_events_2', '6 drunk_girl 3w'	
+			act 'try to stop him': gt 'mod_public_WC_rab_PHwork_events_2', '6 drunk_girl 3s'	
+		end		
+	elseif dgirl > 1:
+		act 'Check the drunk girl':
+			*clr & cla
+			'She absolutle wasted'
+			
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/pass out/4 cumed_face.jpg"></center>'
+			
+			act 'try to wake up her':
+				*clr & cla
+				+$OpenInnerThought+'I am afraid, I can do nothing'+$CloseInnerThought
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/6 drunk_girl/pass out/5 check.jpg"></center>'
+				act 'go away': gt $loc, $loc_arg
+			end
+			
+			act 'go away': gt $loc, $loc_arg
+		end
+	end
+	
+	
+	if ($metka = 'tables' and rand(1,20) = 1) or ($metka = 'tables' and $clothingworntype = 'nude' and rand(1,5) = 1):
+		'The guy with a dart stops me'
+		'"Hey girl… lets play sexdarts!"'
+		
+		act 'Agree to play': gt 'mod_public_WC_rab_PHwork_events_3', 'dart'
+		
+		act 'What is that?':
+			minut += 5
+			gs 'stat'
+			
+			'"Only naked girls allowed to play"'
+			if phwork = 1: '"That is why I''ll unlock all your hmm… clothes"'
+			'"If you hit a 10+ points, you will have extra turn"'
+			'"And, also I will pay for your each 10+ points hit."'			
+			'"If you collect 100+ points earlier than I hit the wish zone, you win!"'
+			'"If I hit the wish zone, you will do my wish"'			
+			'"That simple"'
+		end
+		
+		act 'I am sorry I can''t right now':
+			cla
+			'"well… okey than"'
+			shtraf += rand(0,1)
+			act 'go away': gt $loc, $loc_arg
+		end
+		
+	elseif $metka = 'tables' and rand(1,20) = 1:
+		cla
+		'Few guy grab me'
+		'"Girl you are so hot we need to check your temperature"'
+		if $pantyworntype ! 'none':
+			'the undrees my panties'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/wet/wet/1.mp4"></video></center>'
+			minut += 3
+			inhib_exp += rand(0,1)
+			
+			gs 'panties', 'remove'
+			gs 'stat'
+		end
+		
+		act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'wet'
+		
+	end
+	
+	if $metka = 'Toha' and ( rand(1,15) + ryska) >= 20 and shtraf < 10 and rand(1,4) = 1:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+		'"There is a table with own waitress request" - Toha said'
+		'"I think you can handle this"'
+		if phwork = 1: '"If you agreed, I will unlock you"'
+		
+		act 'Agree.':
+			cla
+			'"Nice"'
+			if phwork = 1: 'He unlocks me'
+			'Now, undress and go serv them. yes-yes, this is a rule. Thhe "own waitress" is always naked'
+			minut += 5
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			$clothingworntype = 'nude'
+			gs 'stat'
+			solotable = 1
+			act 'Undress and go to the table': gt 'mod_public_WC_rab_PHwork_solotable', 'start'			
+		end		
+	end
+	
+	if $metka = 'Toha' and PHpin = 2:
+		act 'please remove the pins from my tits': gt 'mod_public_WC_rab_PHwork_events_4', 'unpin'		
+	end
+	
+	if phwork = 1:
+		!! bar
+		
+		temp = rand (1,130)
+		if temp <= 20:
+			if temp <= 3:
+				'Some guy grope my tits on my way'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/tied/start/grope_tits.jpg"></center>'
+				gs 'arousal', 'flash', 3, 'exhibitionism'
+				gs 'stat'
+				gs 'arousal', 'foreplay', 3, 'exhibitionism'
+				minut -= 3
+				gs 'stat'
+			elseif temp <= 5:
+				'Some guy stops me and grope my pussy for a moment'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/tied/start/grope_pussy.jpg"></center>'
+				gs 'arousal', 'flash', 3, 'exhibitionism'
+				gs 'stat'
+				gs 'arousal', 'foreplay', 3, 'exhibitionism'
+				minut -= 3
+				gs 'stat'
+			elseif temp <= 7:
+				'Few guys grab my hands… while the other put a vibrator on my pussy'
+				'They hold me like that till I come'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/bar/tied/start/toy ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'masturbate', rand(10,20), 'exhibitionism', 'humiliation'
+				$orgasm_or = 'yes'
+				gs 'stat'
+				'They just released me and go away'
+			end
+		elseif temp > 20 and temp <= 27:
+			*clr & cla
+			gt 'mod_public_WC_rab_PHwork_events_4', 'circled'
+		end
+		
+		if ( film > rand(2,35) and rand(1,10) = 1 ) or ( camwhore = 1 and rand(1,10) = 1 ):
+			
+			if $metka = 'tables' or $metka = 'office':
+				'"Girl, I know, you!"'
+				'"I saw you on internet! I am big fan!"'
+				'He shows a tablet is playing video with me.'
+				
+				'"I don''t want to be rude but I soooo want a handjob from you"'
+				phtemp = camwhore * rand(1,10) * 200
+				temp = film * rand(1,10) * 100
+				if temp > phtemp: phtemp = temp
+				'"Just, don''t say "no"! I will pay you! I will pay you a <<phtemp>>!"'
+				
+				act 'agree':
+					gt 'mod_public_WC_rab_PHwork_events_2', 'fansonly_hj'
+				end
+				
+				act 'sorry, I have no time for that':
+					gt $loc, $loc_arg
+				end
+			else
+				''
+			end
+		end
+		
+		if $metka = 'balcony' and rand(1,10) = 1:
+			*clr & cla
+			gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_tied_joke'
+		end
+		
+		if rand (1,20) = 1 and PHpin ! 2:
+			*clr & cla
+			'A guy grab me from behind and tore up my shirt in a momemt'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pin/start/0.mp4"></video></center>'
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			inhib_exp += 1
+			
+			act 'continue': gt 'mod_public_WC_rab_PHwork_events_4', 'pin'
+		end
+		
+		if $metka = 'billiard' and rand(1,25) = 1:
+			*clr & cla
+			
+			!! tied gang bang
+			gt 'mod_public_WC_rab_PHwork_events_7', 'gb'			
+		end
+		
+		
+	elseif phwork = 2:
+		!! stil
+		
+	elseif phwork = 3:
+		!! clean
+		
+		if $metka = 'balcony':
+			act 'do some twerk':
+				danc_exp += rand(1,2)
+				minut += 15
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/balcony/twerk.mp4"></video></center>'
+				if pcs_danc >= rand(30,70):
+					'I see a guy stare at me, and his groin pumps'
+					act 'offer a blowjob':
+						cla
+						'"yes, i definitely would like some))"'
+						
+						act 'ask about money':
+							cla
+							otemp = 1
+							temp = rand(3,7)*100
+							money += temp
+							gs 'stat'
+							'"Yes, sure" - he gives <<temp>> to me'
+							act 'blow him':
+								cla
+								otemp = 0
+								gt 'mod_public_WC_rab_PHwork_events_2', 'balcony_bj'
+							end	
+						end
+						
+						act 'blow him':
+							cla
+							otemp = 0
+							sexcorrupt += 1
+							gt 'mod_public_WC_rab_PHwork_events_2', 'balcony_bj'
+						end						
+					end
+					
+					act 'offer a sex':
+						cla
+						'"yes, i definitely would enjoy it"'
+						act 'ask about money':
+							cla
+							otemp = 1
+							temp = rand(5,9)*100
+							money += temp
+							gs 'stat'
+							'"Yes, sure" - he gives <<temp>> to me'
+							act 'blow him':
+								cla
+								otemp = 0
+								gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_sex'
+							end	
+						end
+						
+						act 'fuck him':
+							cla
+							otemp = 0
+							sexcorrupt += 1
+							gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_sex'
+						end						
+					end					
+					
+					act '"Do you want to eat me?"':
+						cla
+						
+						if rand(1,5) >= 4:
+							'Yes, sure!'
+							
+							act 'continue': gt 'mod_public_WC_rab_PHwork_events_3', 'balcony_cuni'
+						else							
+							'"No, I really want a blow job!"'
+							
+							act 'ask about money':
+								cla
+								otemp = 1
+								temp = rand(3,7)*100
+								money += temp
+								gs 'stat'
+								'"Yes, sure" - he gives <<temp>> to me'
+								act 'blow him':
+									cla
+									otemp = 0
+									gt 'mod_public_WC_rab_PHwork_events_2', 'balcony_bj'
+								end	
+							end
+							
+							act 'blow him':
+								cla
+								otemp = 0
+								sexcorrupt += 1
+								gt 'mod_public_WC_rab_PHwork_events_2', 'balcony_bj'
+							end
+						end
+					end					
+				else
+					'everyone are ignoring me'
+					shtraf += rand(0,1)
+				end
+			end
+		end
+		
+		if (film > rand(2,35) and rand(1,10) = 1) or (camwhore = 1 and rand(1,10) = 1):			
+			if $metka = 'tables' or $metka = 'office':
+				'"Girl, I know, you!"'
+				'"I saw you on internet! I am big fan!"'
+				'He shows a tablet is playing video with me.'
+				
+				'"I don''t want to be rude but I soooo want a handjob from you"'
+				phtemp = camwhore * rand(1,10) * 200
+				temp = film * rand(1,10) * 100
+				if temp > phtemp: phtemp = temp
+				'"Just, don''t say "no"! I will pay you! I will pay you a <<phtemp>>!"'
+				
+				act 'agree':
+					gt 'mod_public_WC_rab_PHwork_events_2', 'fansonly_hj'
+				end
+				
+				act 'sorry, I have no time for that':
+					gt $loc, $loc_arg
+				end
+			else
+				''
+			end
+		end		
+	elseif phwork = 4:
+		!! blowbox
+		
+	elseif phwork = 5:
+		!! zoo
+		
+	elseif phwork = 6:
+		!! black_cat
+		
+	elseif PHpin = 2:
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			''
+		elseif stat['BDSM'] <= 10:
+			gs 'pain', rand(0,2), 'nipples', 'pinch'
+			gs 'stat'
+		end
+		
+		if rand (1,10) = 1:
+			*clr & cla
+			'Some guy grab my nipples link and pull me somewhere'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pin/pull.mp4"></video></center>'
+			minut += 3
+			if rand(1,3) = 1: stat['BDSM'] += 1
+			
+			if stat['BDSM'] <= 25 and stat['BDSM'] > 10:			
+				gs 'pain', rand(0,1), 'nipples', 'pinch'
+				gs 'stat'
+			elseif stat['BDSM'] > 25:
+				''
+			elseif stat['BDSM'] <= 10:
+				gs 'pain', rand(0,2), 'nipples', 'pinch'
+				gs 'stat'
+			end
+			
+			act 'go with him':
+				minut += 5
+				gs 'stat'
+				gt 'mod_public_WC_rab_PHwork_events_4', 'pin_sex'
+			end
+			
+			gs 'willpower', 'humiliation', 'resist'
+			temp = will_cost + (sexcorrupt / 3)
+			will_cost += (sexcorrupt / 3)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				
+				act 'resist (<<temp>> Willpower)':
+					*clr & cla
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					
+					'He pulls few more times and than just drop the link'
+					shtraf += 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/pin/no.mp4"></video></center>'
+					
+					
+					minut += rand(5,10)
+					stat['BDSM'] += rand(0,1)
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						gs 'pain', rand(1,2), 'nipples', 'pinch'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						gs 'pain', rand(0,1), 'nipples', 'pinch'			
+						gs 'stat'
+					elseif stat['BDSM'] <= 10:
+						gs 'pain', rand(2,4), 'nipples', 'pinch'
+						gs 'stat'
+					end
+					
+					act 'go away': gt $loc, $loc_arg
+					
+					if shtraf >= rand(5,10):
+						cla
+						'In a few moment bouncer comes to me'
+						'"To much complaints on you… know your place"'
+						'He took me like a straw and carry me somwhere'
+						shtraf -= 5
+						act 'wait': gt 'mod_public_WC_rab_PHwork_events_4', 'wall_start'
+					end
+				end
+			elseif will_cost <= pcs_willpwr:
+				act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+			else
+				act 'resist ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+			
+			
+		end
+	end	
+	
+	if PHtemp = 27629940 and phwork ! 1:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/7 cum_girl/Girl_3shots/0.jpg"></center>'
+		'The milker comes to me…'
+		'"Ok, girl… you are stubborn and I like it"'
+		'"I will ask  you… Do you want to earn good money?"'
+		act 'I am sorry I can''t right now':
+			cla
+			'Ok, then lets talk later'
+			act 'go away': gt $loc, $loc_arg
+		end
+		
+		act 'Yes, I would like to': gt 'mod_public_WC_rab_PHwork_events_2', 'Girl_3shots'		
+	end
+	if shtraf >= rand(10,15):
+		*clr & cla
+		'In a few moment bouncer comes to me'
+		'"To much complaints on you… know your place"'
+		'He took me like a straw and carry me somewhere'
+		shtraf -= 5
+		act 'wait': gt 'mod_public_WC_rab_PHwork_events_4', 'wall_start'
+	elseif $metka = 'tables' and rand (1,30) = 1:
+		*clr & cla
+		'Someone grab me and threw to the floor'
+		gs 'pain', rand(0,2), 'back', 'fall'
+		gs 'stat'		
+		
+		act 'continue': gt 'mod_public_WC_rab_PHwork_events_4', 'table_tide'
+	end 
+end
+
+!tables
+!billiard
+!balcony
+!office
+!dancefloor
+--- mod_public_WC_rab_PHwork_events ---------------------------------
+

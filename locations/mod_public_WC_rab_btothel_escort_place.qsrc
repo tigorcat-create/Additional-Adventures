@@ -1,0 +1,3686 @@
+# mod_public_WC_rab_btothel_escort_place
+if $ARGS[0] = 'street':
+	*clr & cla
+	killvar 'phroberkilled'
+
+	if phsleep > 0:
+		if rand (1,3) + phsleep > 3:
+			$phescortzara = 'car'
+			$phescortude = 'boat'
+			phcardrive = 1
+			phdoroga = 0
+			gt 'mod_public_WC_rab_btothel_escort_fly', 'start'
+		end
+	end
+
+
+	if $phescortzara = 'car':
+		killvar 'phdrug'
+		gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+	end
+	if phcardrive >= 1 and phdoroga = 0:
+		killvar 'phdrug'
+		killvar 'phsitback'
+		'"My car is not far."'
+	end
+
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'street'
+
+	if rand(1,3) ! 3: phdoroga += 1
+	minut += 10
+	gs 'stat'
+
+	if month >= 11 or month <= 3:
+		!! zyma
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+		else
+
+		end
+		if hour <= 8 or hour >= 18:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	else
+		!! lito
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+		else
+
+		end
+		if hour <= 5 or hour >= 22:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	end
+
+
+	if $phchas = 'nich' and $clothingworntype = 'nude':
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+		gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+		minut -= 10
+		gs 'stat'
+	elseif $phchas = 'den' and $clothingworntype = 'nude':
+		temp = rand(1,3)
+		if temp = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+		elseif temp = 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+		end
+		gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+		minut -= 10
+		gs 'stat'
+	end
+
+	act 'keep walking and talk with him':
+		cla
+		if pcs_humint + pcs_intel/5 >= phhismind:
+			phescortfun += rand(2,4)
+			'We have a great conversation.'
+		else
+			if rand(1,3) = 1: phescortfun -= rand(1,2)
+			'I can''t find a topic to talk with him'
+			'It seems he frustrated a little.'
+		end
+		gs 'exp_gain', 'humint', rand(3,5)
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+	end
+
+	act 'try to kiss':
+		*clr & cla
+		'I have outrun him a bit and start leaning to his face trying to kiss him'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/kiss.mp4"></video></center>'
+		minut += 2
+		gs 'stat'
+
+		if rand(0,100) + phescortfun >= 40:
+			if $phchas = 'nich':
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+
+			else
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'
+
+			end
+			gs 'stat'
+			'We are kissing passionately'
+			phescortfun += rand(2,6)
+			'It was long nasty kiss. When it ends, he slap my ass "Let''s go" and smile'
+
+			act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+		else
+			'He just ignored me "We need to go, please go"'
+			pcs_mood -= 10
+			gs 'stat'
+			act 'keep walking': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+		end
+	end
+
+	if $clothingworntype ! 'nude':
+		gs 'willpower', 'misc', 'self', 'hard'
+		temp = will_cost - (sexcorrupt / 3)
+		will_cost -= (sexcorrupt / 3)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+
+			act 'Undress myself (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'"I know the shortcut" I pulled him to less crowd street'
+				'I stoped him and start to undress in front of him'
+
+				if phescortfun > 40:
+					!! sex
+					'He unzip his flly, bend me and penetrates'
+
+					if $phchas = 'den':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex (4).mp4"></video></center>'
+					elseif $phchas = 'nich':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/1 bikini_start (2).mp4"></video></center>'
+					end
+					gs 'arousal', 'vaginal', 10, 'prostitution', 'sub'
+					gs 'stat'
+					phescortfun += 7
+
+					act 'continue':
+						*clr & cla
+
+						if $phchas = 'den':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+						elseif $phchas = 'nich':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+						end
+						gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+
+							if $phchas = 'den':
+								'He rotates me and push on my knees'
+								'He loads on my face'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/4 cumonface.mp4"></video></center>'
+							elseif $phchas = 'nich':
+								'He rotates me and push on my knees'
+								'"Jerk me!"'
+								'I start  to jerk himm and in a short time he start to shoot his cum all over my face'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/4 cumonface.mp4"></video></center>'
+							end
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'Prepare myself':
+								*clr & cla
+
+								minut += rand(3,5)
+								gs 'stat'
+
+								if $phchas = 'den':
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/5 go.mp4"></video></center>'
+								elseif $phchas = 'nich':
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/5 go.mp4"></video></center>'
+								end
+
+								phescortfunDONE = 1
+								phescortfunSexDONE += 1
+								phescortfun -= 50
+								if phescortfun <= 0: phescortfun = 0
+
+								act 'go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+							end
+						end
+					end
+				elseif $phescortude ! ' ':
+					'"No, girl, not now. We almost there" - He stoped me and with a facepalm go back to the main road'
+
+					phescortfun -= rand(0,2)
+
+					act 'go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				else
+					'"Okey, girl, lets see…"'
+					'He stay and is watching me undresing'
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+					$clothingworntype = 'nude'
+					gs 'stat'
+					phescortfun += rand(2,4)
+
+					if $phchas = 'den':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+					elseif $phchas = 'nich':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+					end
+					'he waited till I undress, than he slowly start walking'
+
+					act 'walk with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			end
+		else
+			act 'Undress myself ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+		end
+
+
+		if rand (1,100) + phescortfun/2 >= 100:
+			*clr & cla
+			'He took my hand and we stoped'
+			'"Girl, I have a crazy idea… I want you to undress"'
+
+			act 'Of course':
+				cla
+				'"It''s to crowdy, lets go to more quiet street" - I asked'
+				sexcorrupt += 1
+				'"…Of corse" - I see, he is happy'
+				'I pulled him to less crowd street'
+				'I stoped him and start to undress in front of him'
+
+				if phescortfun > 40:
+					!! sex
+					'He unzip his flly, bend me and penetrates'
+
+					if $phchas = 'den':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex (4).mp4"></video></center>'
+					elseif $phchas = 'nich':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/1 bikini_start (2).mp4"></video></center>'
+					end
+					gs 'arousal', 'vaginal', 10, 'prostitution', 'sub'
+					gs 'stat'
+					phescortfun += 7
+
+					act 'continue':
+						*clr & cla
+
+						if $phchas = 'den':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+						elseif $phchas = 'nich':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+						end
+						gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+
+							if $phchas = 'den':
+								'He rotates me and push on my knees'
+								'He loads on my face'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/4 cumonface.mp4"></video></center>'
+							elseif $phchas = 'nich':
+								'He rotates me and push on my knees'
+								'"Jerk me!"'
+								'I start  to jerk himm and in a short time he start to shoot his cum all over my face'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/4 cumonface.mp4"></video></center>'
+							end
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'Prepare myself':
+								*clr & cla
+
+								minut += rand(3,5)
+								gs 'stat'
+
+								if $phchas = 'den':
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/5 go.mp4"></video></center>'
+								elseif $phchas = 'nich':
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/5 go.mp4"></video></center>'
+								end
+
+								phescortfunDONE = 1
+								phescortfunSexDONE += 1
+								phescortfun -= 50
+								if phescortfun <= 0: phescortfun = 0
+
+								act 'go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+							end
+						end
+					end
+				else
+					'"Okey, girl, lets see…"'
+					'He stay and is watching me undresing'
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+					$clothingworntype = 'nude'
+					gs 'stat'
+					phescortfun += rand(2,4)
+
+					if $phchas = 'den':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+					elseif $phchas = 'nich':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+					end
+					'he waited till I undress, than he slowly start walking'
+
+					act 'walk with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			end
+
+			act 'I am sorry, it''s too crazy for me':
+				cla
+				phescortfun -= rand(5,10)
+				sexcorrupt -= 1
+				'"Too bad, I really want to see your naked body on this streets"'
+
+				act 'walk with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			end
+
+			if sexcorrupt >= rand(50,80):
+				cla
+				act 'I can''t resist':
+					cla
+					'"It''s to crowdy, lets go to more quiet street" - I asked'
+					sexcorrupt += 1
+					'"…Of corse" - I see, he is happy'
+					'I pulled him to less crowd street'
+					'I stoped him and start to undress in front of him'
+
+					if phescortfun > 40:
+						!! sex
+						'He unzip his flly, bend me and penetrates'
+
+						if $phchas = 'den':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex (4).mp4"></video></center>'
+						elseif $phchas = 'nich':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/1 bikini_start (2).mp4"></video></center>'
+						end
+						gs 'arousal', 'vaginal', 10, 'prostitution', 'sub'
+						gs 'stat'
+						phescortfun += 7
+
+						act 'continue':
+							*clr & cla
+
+							if $phchas = 'den':
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+							elseif $phchas = 'nich':
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+							end
+							gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+
+								if $phchas = 'den':
+									'He rotates me and push on my knees'
+									'He loads on my face'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/4 cumonface.mp4"></video></center>'
+								elseif $phchas = 'nich':
+									'He rotates me and push on my knees'
+									'"Jerk me!"'
+									'I start  to jerk himm and in a short time he start to shoot his cum all over my face'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/4 cumonface.mp4"></video></center>'
+								end
+								gs 'cum_call','face',$boy
+								gs 'stat'
+								gs 'cum_call','mouth',$boy
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'Prepare myself':
+									*clr & cla
+
+									minut += rand(3,5)
+									gs 'stat'
+
+									if $phchas = 'den':
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/5 go.mp4"></video></center>'
+									elseif $phchas = 'nich':
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/5 go.mp4"></video></center>'
+									end
+
+									phescortfunDONE = 1
+									phescortfunSexDONE += 1
+									phescortfun -= 50
+									if phescortfun <= 0: phescortfun = 0
+
+									act 'go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+								end
+							end
+						end
+					else
+						'"Okey, girl, lets see…"'
+						'He stay and is watching me undresing'
+						gs 'clothing', 'strip'
+						gs 'underwear', 'remove'
+						gs 'stat'
+						$clothingworntype = 'nude'
+						gs 'stat'
+						phescortfun += rand(2,4)
+
+						if $phchas = 'den':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+						elseif $phchas = 'nich':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+						end
+						'he waited till I undress, than he slowly start walking'
+
+						act 'walk with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+
+
+
+				end
+			end
+		end
+	end
+
+
+
+	if phescortfun >= 40:
+		+$OpenInnerThought+'I noticed a bulge in his pants!'+$CloseInnerThought
+		act 'Kiss him':
+			*clr & cla
+			'I have outrun him a bit and start leaning to his face trying to kiss him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/kiss.mp4"></video></center>'
+			minut += 2
+			gs 'stat'
+			if $phchas = 'nich':
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+
+			else
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'
+
+			end
+			gs 'stat'
+			'We are kissing passionately'
+			phescortfun += rand(2,6)
+			'It was long nasty kiss. When it ends, he slap my ass "Let''s go" and smile'
+
+			act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+		end
+
+		act 'tease him':
+			*clr & cla
+			if $phchas = 'nich':
+				if $clothingworntype ! 'nude':
+					if rand(1,3) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/night/tease/bikini (1).jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/tease/bikini ('+rand(1,2)+').mp4"></video></center>'
+					end
+				else
+					if rand(1,4) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/night/tease/naked (1).jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/tease/naked ('+rand(1,3)+').mp4"></video></center>'
+					end
+				end
+				'I show him my best parts… I want him to be really hungry'
+				gs 'arousal', 'flash', rand(5,10), 'prostitution'
+				phescortfun += rand(3,10)
+				gs 'stat'
+
+				act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			else
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/tease/bikini ('+rand(1,3)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/tease/naked ('+rand(1,3)+').jpg"></center>'
+				end
+				'I show him my best parts… I want him to be really hungry'
+				gs 'arousal', 'flash', rand(5,10), 'prostitution'
+				phescortfun += rand(3,10)
+				gs 'stat'
+
+				act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			end
+		end
+	else
+		act 'Kiss him': +$OpenInnerThought+'It''s a bad idea, he must be more aroused.'+$CloseInnerThought
+	end
+
+	if $clothingworntype ! 'nude' and phescortfun >= 40:
+		act 'lightly tease him':
+			*clr & cla
+			'I am trying to show him the best part(s) of me'
+			'I see, he enjoy'
+
+			if $phchas = 'nich':
+				gs 'arousal', 'flashlite', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/bikini ('+rand(1,2)+').mp4"></video></center>'
+
+			else
+				gs 'arousal', 'flashlite', 10, 'prostitution', 'sub'
+				minut -= 7
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/bikini_city.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/bikini_park.jpg"></center>'
+				end
+
+			end
+			phescortfun += rand(3,6)
+			act 'keep walking':
+				gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			end
+		end
+	end
+
+	if phcardrive >= 1 and phdoroga >= rand(1,2):
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'I dressed up before we come to the crowded street'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+		'We are at his car'
+
+		act 'Continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+	elseif $phescortude = 'cinema' and phdoroga >= rand(3,5):
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'I dressed up before we come to the crowded street'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+		'"Finally we here" - he said'
+		'There is a cinema in front of us'
+		'"Let''s go"'
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema'
+
+	elseif $phescortude = 'club' and phdoroga >= rand(5,7):
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'I dressed up before we come to the crowded street'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+
+		'"Finally we here" - he said'
+		'There is an enter to some sort of a nightclub in front of us'
+		'"Come on"'
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'club'
+
+	elseif $phescortude = 'dinner' and phdoroga >= rand(2,3):
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'I dressed up before we come to the crowded street'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+
+		'"Finally we here" - he said'
+		'There is an entrance to very good looking cafe'
+		'"Come on"'
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner'
+
+	elseif $phescortude = 'hotel' and phdoroga >= rand(1,10):
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'I dressed up before we come to the crowded street'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+
+		'"Finally we here" - he said'
+		'There is a entrance to a holtel in front of us'
+		'"Come on"'
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'hotel'
+
+	elseif $phescortude = ' ' and phdoroga >= rand(3,5):
+		*clr & cla
+		!! dumae kudy yty
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+
+		if daystart = phescortD:
+			temp = hour - phescortH
+		else
+			temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		end
+		if temp >= 14:
+			temp = 4
+		else
+			temp = rand(1,4)
+		end
+
+		'"I have enough walking… Let''s go some place"'
+		'he make a short pause'
+
+		if $phchas ! 'nich' and temp = 2: temp = rand(3,4)
+		if temp = 1:
+			$phescortude = 'cinema'
+			'"I want some movie, what do you think?"'
+
+		elseif temp = 2:
+			$phescortude = 'club'
+			'"I want to party, let''s go to the club"'
+
+		elseif temp = 3:
+			$phescortude = 'dinner'
+			'"I am hungry cuz all this walking)) Let''s go eat smth"'
+
+		elseif temp = 4:
+			$phescortude = 'hotel'
+			'"Let''s go to my place"'
+
+		end
+		phdoroga = rand(0,1)
+
+		act 'Agree': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+
+		if daystart = phescortD:
+			temp = hour - phescortH
+		else
+			temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		end
+		if temp - phsleeptime >= 20:
+			'I am tired, I don''t want to argue with him'
+		else
+			act '"Honey, I have better idea"':
+				cla
+				gs 'exp_gain', 'persuas', rand(3,5)
+				if pcs_humint + pcs_intel/5 >= phhismind:
+					if pcs_persuas >= rand(30, phhismind):
+						act 'Let''s go to the cinema':
+							cla
+							$phescortude = 'cinema'
+							'"Okey, sounds better, I know good cinema nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+
+						if $phchas = 'nich':
+							act 'Let''s go to the club':
+								cla
+								$phescortude = 'club'
+								'"Okey, sounds better, I know very nice club nearby"'
+								act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+							end
+						end
+
+						act 'Let''s go to the dinner':
+							cla
+							$phescortude = 'dinner'
+							'"Okey, sounds better, I know good place to eat nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+
+						act 'Let''s go to your place':
+							cla
+							$phescortude = 'hotel'
+							'"Okey, sounds much better, Let''s go"'
+						end
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					else
+						'He just ignore me and start moving somewhere'
+
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+				else
+					'He just ignore me and start moving somewhere'
+
+					act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			end
+		end
+	end
+
+	if phescortfun >= rand(60,80):
+		*clr & cla
+		if month >= 11 or month <= 3:
+			!! zyma
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/winterwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 8 or hour >= 18:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		else
+			!! lito
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/summerwalk ('+rand(1,2)+').jpg"></center>'
+			else
+
+			end
+			if hour <= 5 or hour >= 22:
+				!! nich
+				$phchas = 'nich'
+			else
+				!! den
+				$phchas = 'den'
+			end
+		end
+
+
+		if $phchas = 'nich' and $clothingworntype = 'nude':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/walk/naked.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		elseif $phchas = 'den' and $clothingworntype = 'nude':
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.jpg"></center>'
+			elseif temp = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/walk/naked_park.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/walk/naked_city.mp4"></video></center>'
+			end
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+		end
+
+		temp = phescortfun/10
+		if month >= 11 or month <= 3: temp = 9
+
+
+		if temp <= 6:
+			!! kiss
+			'He stoped me, turn me to him, face to face…'
+			if $phchas = 'nich':
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+
+			else
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'
+
+			end
+			gs 'stat'
+			'…We are kissing passionately'
+			phescortfun += rand(4,6)
+			'It was long nasty kiss. When it ends, he slap my ass "Let''s go" and smile'
+
+			act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+
+		elseif temp <= 8:
+			!! sex
+			'He stoped me, turn me to him, face to face…'
+			if $phchas = 'nich':
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+
+			else
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'
+
+			end
+			gs 'stat'
+			'…We are kissing passionately'
+			phescortfun += rand(4,6)
+
+			act 'continue':
+				*clr & cla
+				'He unzip his flly, bend me and penetrates'
+
+				if $phchas = 'den':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex (4).mp4"></video></center>'
+				elseif $phchas = 'nich':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/1 bikini_start (2).mp4"></video></center>'
+				end
+				gs 'arousal', 'vaginal', 10, 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 7
+
+				act 'continue':
+					*clr & cla
+
+					if $phchas = 'den':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+					elseif $phchas = 'nich':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+					end
+					gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+
+						if $phchas = 'den':
+							'He rotates me and push on my knees'
+							'He loads on my face'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/4 cumonface.mp4"></video></center>'
+						elseif $phchas = 'nich':
+							'He rotates me and push on my knees'
+							'"Jerk me!"'
+							'I start  to jerk himm and in a short time he start to shoot his cum all over my face'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/4 cumonface.mp4"></video></center>'
+						end
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Prepare myself':
+							*clr & cla
+
+							minut += rand(3,5)
+							gs 'stat'
+
+							if $phchas = 'den':
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/5 go.mp4"></video></center>'
+							elseif $phchas = 'nich':
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/5 go.mp4"></video></center>'
+							end
+
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+
+							act 'go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+					end
+				end
+			end
+		else
+			!! wc
+			!! sex
+			'He stoped me, turn me to him, face to face…'
+			if $phchas = 'nich':
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+
+			else
+				gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+				minut -= 7
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'
+
+			end
+			gs 'stat'
+			'…We are kissing passionately'
+			phescortfun += rand(4,6)
+			'"I want you right now" - he takes my hand and start moving somewhere. I have no choice but go with him'
+			minut += rand(3,5)
+			phdoroga -= rand(0,2)
+			if phdoroga < 0: phdoroga = 0
+			gs 'boyStat', $npclastgenerated
+			'In a short time we entered some resident building and start to go up the stairs'
+			'Between the 6 and 7-th floors, I think, he stops. He undress himself very quickly. He pushs me to the floor and it''s obvious what he want…'
+			'I start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/wc_public/1 bj.mp4"></video></center>'
+			gs 'arousal', 'bj', 10, 'prostitution', 'sub'
+			minut -= 5
+			gs 'stat'
+
+
+			act 'continue':
+				*clr & cla
+				'He rotates me and start to fuck me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/wc_public/2 sex ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'He pushes me back on my knees and keep is keeping fuck me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/wc_public/3 sex ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He starts to cum on me and I am trying to catch his shots'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/wc_public/4 cum.mp4"></video></center>'
+						'He dress up and I prepare myself, then we go away from the building'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+						gs 'cum_call', 'back', $npclastgenerated, 0
+						gs 'cum_call', 'butt', $npclastgenerated, 0
+						gs 'stat'
+
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Go': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'car':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	killvar 'phroberkilled'
+
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'car'
+	minut += 5
+	gs 'stat'
+
+	$phescortzara = 'street'
+
+	if phdoroga > 0 and $phescortude = 'boat': gt 'mod_public_WC_rab_btothel_escort_fly', 'start'
+
+
+	if phcardrive = 1:
+		'after a few minutes walk we come to his car'
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		if rand(1,3) = 1 and prava = 1:
+			!! me
+			phcardrive = 2
+			'"You are my driver for today"'
+			'He give a keys to me'
+		else
+			!! him
+			phcardrive = 3
+			'"Sit down" - he sits on a driver sit.'
+		end
+	elseif phcardrive = 2 and phdoroga ! 0:
+		!! me drive
+		if phcarjerk ! 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude' and phcarjerk ! 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/1 drive.jpg"></center>'
+			phescortfun += rand(0,3)
+		end
+		if $phescortude = ' ':
+			'We are driving around.'
+		elseif $phescortude = 'dinner':
+			'I am driving to the cafe'
+		else
+			'I am driving to the <<$phescortude>>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+		if rand(1,3) = 1:
+			'I stoped at a red traffic lights.'
+
+			if $clothingworntype ! 'nude':
+				act 'undress':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/undress.mp4"></video></center>'
+					minut += 3
+					gs 'clothing', 'strip'
+					gs 'stat'
+				end
+			elseif $clothingworntype = 'nude':
+				act 'dress up':
+					gs 'outfit', 'wear_last_worn'
+					'I put my clothes back on.'
+					gs 'stat'
+				end
+			end
+		end
+
+		if mc_inventory['cigarettes'] >= 1:
+			act 'Smoke':
+				'I put a cigarette in my mouth. The client light it up'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/smoke.jpg"></center>'
+				gs 'drugs','smoke'
+				gs 'stat'
+			end
+		end
+
+		if phescortfun >= 30 and phcarjerk = 0:
+			'I see a big bulb in his pants'
+			act 'jerk him':
+				cla
+				phcarjerk = 1
+				$cum1 = rand (40,60)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/2 hj (1).mp4"></video></center>'
+
+				temp = 10 + ( stat['hj'] / 10 )
+				$cum1 -= rand(0,temp)
+
+				gs 'mod_public_WC_rab_btothel_escort_hotel', 'man'
+				'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				gs 'arousal', 'hj', rand(10,10)
+				minut -= 10
+				gs 'stat'
+				phescortfun += 1
+
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+		elseif phcarjerk = 1 and $cum1 <= 15:
+			*clr & cla
+			phescortfunDONE = 1
+			phescortfunSexDONE += 1
+			phescortfun -= 50
+			if phescortfun <= 0: phescortfun = 0
+			killvar 'phcarjerk'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/3 cum.mp4"></video></center>'
+			gs 'cum_call','hands',$boy
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		elseif phcarjerk = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/2 hj (1).mp4"></video></center>'
+
+			temp = 10 + ( stat['hj'] / 10 )
+			$cum1 -= rand(0,temp)
+			phescortfun += rand(1,3)
+
+			gs 'mod_public_WC_rab_btothel_escort_hotel', 'man'
+			gs 'arousal', 'hj', rand(10,10)
+			minut -= 10
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		end
+
+		if phcarjerk = 1 and $cum1 <= 15:
+			*clr & cla
+			phescortfunDONE = 1
+			phescortfunSexDONE += 1
+			phescortfun -= 50
+			if phescortfun <= 0: phescortfun = 0
+			killvar 'phcarjerk'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/medriving/3 cum.mp4"></video></center>'
+			gs 'cum_call','hands',$boy
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		end
+
+		if alko >= 2 and rand(1,15) = 1:
+			*clr & cla
+			killvar 'phcarjerk'
+			'Policeman show me a sign to stop'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/1 stop.jpg"></center>'
+
+			act 'stop the car':	gt 'mod_public_WC_rab_btothel_escort_carcop', 'mecop'
+		elseif phescortfun >= rand(40,60):
+			cla
+			killvar 'phcarjerk'
+			'He ask me to turn to the lonely deadend'
+			'I want you babe'
+			killvar 'phsex'
+			killvar 'phtemp'
+			phsex = rand(2,3)
+			act 'sex': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexstop'
+		end
+	elseif phcardrive = 3 and phdoroga ! 0:
+		!! he drive
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		if $phescortude = ' ':
+			'We are driving around.'
+		elseif $phescortude = 'dinner':
+			'We are on the way to the cafe'
+		else
+			'We are on the way to the <<$phescortude>>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+		if $clothingworntype ! 'nude' and phcarjerk ! 1:
+			act 'undress':
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/undress.mp4"></video></center>'
+				minut += 3
+				gs 'clothing', 'strip'
+				gs 'stat'
+			end
+		elseif $clothingworntype = 'nude' and phcarjerk ! 1:
+			act 'dress up':
+				gs 'outfit', 'wear_last_worn'
+				'I put my clothes back on.'
+				gs 'stat'
+			end
+		end
+
+		if $clothingworntype ! 'nude'  and phcarjerk ! 1:
+			act 'tease him':
+				cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/tease.jpg"></center>'
+				'I am teasing him with my hot body'
+				phescortfun += rand(0,3)
+
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+
+			act 'show my tits':
+				cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/tease tits.mp4"></video></center>'
+				'He is in struggle to look on the road and on my tits too)))'
+				phescortfun += rand(1,3)
+
+				if rand(1,4) = 1:
+					'OMG! the passed by truckdriver saw my tits too'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/2 showtits.jpg"></center>'
+					phescortfun += rand(1,3)
+				end
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+		end
+
+		if pcs_horny >= 50 and phcarjerk ! 1:
+			act 'Masturbate':
+				cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/1 masturb.mp4"></video></center>'
+				phescortfun += rand(2,6)
+				gs 'arousal', 'masturbate', 10
+				minut -= 10
+				gs 'stat'
+				'I start to play with myself'
+				'"Damn girl… I… I… really don''t know what to say"'
+
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				if rand(1,4) = 1:
+					cla
+
+					'OMG! the passing by truckdriver looking at me too'
+					gs 'willpower', 'misc', 'self', 'hard'
+					temp = will_cost - (sexcorrupt / 3)
+					will_cost -= (sexcorrupt / 3)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+
+						act 'Make a show for a truckdriver (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/2 masturb.jpg"></center>'
+							phescortfun += rand(10,10)
+							gs 'arousal', 'masturbate', 10
+							gs 'stat'
+							phdoroga += 1
+
+							'"You are Nasty! My God, so crazy!!! He is laughing"'
+							'He accelerates… overtook the truck'
+							act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+						end
+					else
+						act 'Make a show for a truckdriver ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+					end
+					act 'stop it ': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				elseif rand (1,4) = 1 and phescortfun >= 30:
+					cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/events/1 hemasturb.jpg"></center>'
+					'He decided to help me'
+					phescortfun += rand(2,6)
+					gs 'arousal', 'masturbate', 10
+					minut -= 10
+					gs 'stat'
+
+					killvar 'phcarjerk'
+					'Soon, he turn to the lonely deadend'
+					'I want you babe'
+					killvar 'phsex'
+					killvar 'phtemp'
+					phsex = rand(2,3)
+					act 'sex': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexstop'
+				end
+			end
+		end
+
+		if alko >= 5 and $clothingworntype ! 'nude' and phcarjerk ! 1:
+			+$OpenInnerThought+'I am drunk and don''t feel well. Maybe behind would be better'+$CloseInnerThought
+			act 'Sit behind':
+				cla
+				'"I feel not well, I will relax a little on the back" - I am explained myself to the client while am moving to the back sits'
+				'"No problem, girl"'
+				phsitback = 1
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+		end
+
+		if mc_inventory['cigarettes'] >= 1:
+			act 'Smoke':
+				'I put a cigarette in my mouth. The client light it up'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/smoke.jpg"></center>'
+				gs 'drugs','smoke'
+				gs 'stat'
+			end
+		end
+
+		if phsitback = 1:
+			*clr & cla
+			killvar 'phcarjerk'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+			if $phescortude = ' ':
+				'We are driving around.'
+			elseif $phescortude = 'dinner':
+				'We are on the way to the cafe'
+			else
+				'We are on the way to the <<$phescortude>>'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+			if $clothingworntype ! 'nude':
+				act 'undress':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sit_behind/2.jpg"></center>'
+					minut += 3
+					gs 'clothing', 'strip'
+					gs 'stat'
+				end
+			elseif $clothingworntype = 'nude':
+				act 'dress up':
+					gs 'outfit', 'wear_last_worn'
+					'I put my clothes back on.'
+					gs 'stat'
+				end
+			end
+
+			if mc_inventory['cigarettes'] >= 1:
+				act 'Smoke':
+					'I put a cigarette in my mouth. The client light it up'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sit_behind/smoke.jpg"></center>'
+					gs 'drugs','smoke'
+					gs 'stat'
+				end
+			end
+
+			if $clothingworntype ! 'nude':
+				act 'tease him':
+					cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sit_behind/1.mp4"></video></center>'
+					'I am teasing him with my hot body'
+					'I know he is looking at me… he is silenced'
+					phescortfun += rand(0,3)
+
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			end
+
+			if pcs_horny >= 30:
+				act 'Masturbate':
+					cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sit_behind/3.mp4"></video></center>'
+					phescortfun += rand(2,6)
+					gs 'arousal', 'masturbate', 10
+					minut -= 10
+					gs 'stat'
+					'I start to play with myself'
+					'I know he is looking at me… he is silenced'
+
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			end
+
+			if pcs_horny >= 50 and dildonumber ! 0:
+				act 'Ride my dildo':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sit_behind/'+rand(4,6)+'.jpg"></center>'
+					'I know he is looking at me… His eyes are full of lust'
+					gs 'arousal', 'vaginal_dildo', 10, 'exhibitionism', 'sub'
+					gs 'stat'
+					phescortfun += rand(5,8)
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			elseif dildonumber ! 0:
+				+$OpenInnerThought+'I have a dildo in my purse.But I am not horny enough to use it'+$CloseInnerThought
+			end
+		end
+
+		if phgorilka >= 5 and rand(1,12) = 1:
+			*clr & cla
+			killvar 'phcarjerk'
+			'Policeman show a sign to stop'
+			'"Fuck" - the client said, but stops.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/2 cop/1 stop.jpg"></center>'
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_carcop', 'hecop'
+		elseif phgorilka < 5 and ( rand(1,10) + phgorilka ) > 10:
+			'We stoped at a red traffic lights. The client take a bottle of alcohol and sips a little'
+			phgorilka += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrink.jpg"></center>'
+		elseif phescortfun >= 50:
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+			if $phescortude = ' ':
+				'We are driving around.'
+			elseif $phescortude = 'dinner':
+				'We are on the way to the cafe'
+			else
+				'We are on the way to the <<$phescortude>>'
+			end
+
+			temp = rand (1,3)
+			if temp <= 1:
+				!! sexontheway
+				'"Babe I am soo horny, I want you right now"'
+
+				act 'jerk him':
+					!! hj
+					*clr & cla
+					'"Don''t worry, handsome. I have a release for you!"'
+					!! '<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/1 hj/.jpg"></center>'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/1 hj/2 hj ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'hj', rand(10,15), 'prostitution'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/1 hj/3 cum.mp4"></video></center>'
+						'He stoped on a red light and start cumming… I am trying to cach it with my mouth.'
+						'I clean his dick and we continue our ride'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','mouth_swallow',$boy
+						gs 'stat'
+						gs 'cum_call','arms',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				end
+
+				act 'blow him':
+					!! bj
+					*clr & cla
+					'"Don''t worry, handsome. I have a release for you!"'
+					if rand(1,6) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/2 bj/2 bj (1).jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/2 bj/2 bj ('+rand(1,5)+').mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'prostitution'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/2 bj/3 cum.mp4"></video></center>'
+						'He stoped on a red light and push his dick deeper… he cums in my mouth.'
+						'I clean his dick and we continue our ride'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','mouth_swallow',$boy
+						gs 'stat'
+						gs 'cum_call','arms',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				end
+
+				act 'let''s fuck':
+					!! sex
+					*clr & cla
+					'"We will fuck"'
+					'"Are you crazy? How?" - he said amazed'
+					'I unzip his fly. His <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock is erected. I go on top of him and start riding him.'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/3 sex/sex.mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/1 ride/hedriving/sex/3 sex/sex.mp4"></video></center>'
+						'He fill me up while driving'
+						'I sit back on my sit… we continue our driving'
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+						gs 'arousal', 'end'
+						gs 'stat'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				end
+			elseif temp <= 3 and $phescortude ! 'club' and $phescortude ! 'cinema':
+				if rand(1,3) ! 1:
+					!! 3 nature
+					'We stoped on some meadow on the edge of a city'
+					'"Come on. I want to fuck you here! Don''t worry this is quiet place"'
+					'I exit the car and start sexualy undress myself'
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/0.mp4"></video></center>'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/1.mp4"></video></center>'
+					gs 'arousal', 'flashlite', rand(5,15), 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He push me to my knees and start to fuck my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 1.mp4"></video></center>'
+						gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							'He is fucking my throat!'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 2.mp4"></video></center>'
+							gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								if rand(1,3) = 1:
+									'He cums deep in my throat, directly to my stomach'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 2.mp4"></video></center>'
+									'We dress up and sit back to the car'
+									phdoroga -= 1
+									if phdoroga < 1: phdoroga = 1
+									gs 'cum_call','mouth_swallow',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									phescortfunDONE = 1
+									phescortfunSexDONE += 1
+									phescortfun -= 50
+									if phescortfun <= 0: phescortfun = 0
+
+									act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+								else
+									'He rotates me and start to fuck me'
+									'Soon he cums in me'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/4 (1).mp4"></video></center>'
+									'We dress up and sit back to the car'
+									phdoroga -= 1
+									if phdoroga < 1: phdoroga = 1
+									gs 'cum_call','',$boy
+									gs 'cuminsidereact', $boydesc
+									gs 'arousal', 'end'
+									gs 'stat'
+									phescortfunDONE = 1
+									phescortfunSexDONE += 1
+									phescortfun -= 50
+									if phescortfun <= 0: phescortfun = 0
+
+									act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+								end
+							end
+						end
+					end
+				else
+					!! 4 tied
+					'We stoped in some forest on the edge of a city'
+					'"Come on. I want to fuck you here! Don''t worry this is quiet place"'
+					'I exit the car and start sexualy undress myself'
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/0.mp4"></video></center>'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/1.mp4"></video></center>'
+					gs 'arousal', 'flashlite', rand(5,15), 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He push me on the ground and start to tied my hands.'
+
+						act 'protest':
+							cla
+							'"There was no deal about ropes!"'
+
+							if rand (1,10) + phgorilka >= 7:
+								'"You are a high quality escort! I do what I want!"'
+								act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'rope'
+							else
+								'"Ow, you are right - no more ropes" - he drop it'
+
+								act 'continue':
+									*clr & cla
+									'He push me to my knees and start to fuck my mouth'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 1.mp4"></video></center>'
+									gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+									gs 'stat'
+
+									act 'continue':
+										*clr & cla
+										'He is fucking my throat!'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 2.mp4"></video></center>'
+										gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+										gs 'stat'
+
+										act 'continue':
+											*clr & cla
+											if rand(1,3) = 1:
+												'He cums deep in my throat, directly to my stomach'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/3 2.mp4"></video></center>'
+												'We dress up and sit back to the car'
+												phdoroga -= 1
+												if phdoroga < 1: phdoroga = 1
+												gs 'cum_call','mouth_swallow',$boy
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												phescortfunDONE = 1
+												phescortfunSexDONE += 1
+												phescortfun -= 50
+												if phescortfun <= 0: phescortfun = 0
+
+												act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+											else
+												'He rotates me and start to fuck me'
+												'Soon he cums in me'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/1 car/3 stop/3 nature/4 (1).mp4"></video></center>'
+												'We dress up and sit back to the car'
+												phdoroga -= 1
+												if phdoroga < 1: phdoroga = 1
+												gs 'cum_call','',$boy
+												gs 'cuminsidereact', $boydesc
+												gs 'arousal', 'end'
+												gs 'stat'
+												phescortfunDONE = 1
+												phescortfunSexDONE += 1
+												phescortfun -= 50
+												if phescortfun <= 0: phescortfun = 0
+
+												act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+											end
+										end
+									end
+								end
+							end
+						end
+
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_carcop', 'rope'
+					end
+				end
+			elseif temp <= 4:
+				!! 2 sexincar -> sexstop
+				'The client turn to the lonely deadend'
+				'"I want you babe"'
+				killvar 'phsex'
+				killvar 'phtemp'
+				phsex = rand(2,3)
+				act 'sex': gt 'mod_public_WC_rab_btothel_escort_carcop', 'sexstop'
+			end
+		end
+
+		if $phescortude = 'club' and doroga > 2:
+			if PCloSkirt > 2 or PCloPants > 4 or PCloPanties = 1 or ($clothingworntype = 'salacious_dress' or $clothingworntype = 'salacious_outfits') or phprymirochnapaid = 1:
+				' '
+				killvar 'prymirochna'
+			elseif prymirochna ! 1
+				cla
+				!-> prymirochna
+				prymirochna = 1
+				'"You know, girl… I need you to look better. You will be near me and I am a very highclass. Let''s go buy you some clothes"'
+
+				act 'Yes!':  gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+		elseif $phescortude = 'dinner' and doroga > 2:
+			if (CloQuality + ShoQuality) >= 8 or phprymirochnapaid = 1:
+				' '
+				killvar 'prymirochna'
+			elseif prymirochna ! 1
+				cla
+				!-> prymirochna
+				prymirochna = 1
+				'"You know, girl… I need you to look better. You will be near me and I am a very highclass. Let''s go buy you some clothes"'
+
+				act 'Yes!':  gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+			end
+		end
+	end
+
+	if phdoroga = 0:
+		killvar 'phsitback'
+		phdoroga += 1
+		if phcardrive = 3:
+			act 'sit on the front sit': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		else
+			act 'sit on the driver sit': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		end
+	else
+		if rand(1,3) ! 3: phdoroga += 1
+		minut += 5
+		gs 'stat'
+	end
+
+	if prymirochna = 1 and phdoroga > 3:
+		*clr & cla
+		killvar 'prymirochna'
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Honey, you are too damn slow and You will pay for this!"'
+			'"But now we have no time. You will end me later("'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is the mall in front of us'
+			'"Come on"'
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna'
+
+	elseif prymirochna = 1:
+		' '
+	elseif $phescortude = 'cinema' and phdoroga >= rand(3,5):
+		*clr & cla
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Honey, you are too damn slow and You will pay for this!"'
+			'"But now we have no time. You will end me later("'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is a cinema in front of us'
+			'"Come on"'
+		end
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema'
+
+	elseif $phescortude = 'club' and phdoroga >= rand(3,5):
+		*clr & cla
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Honey, you are too damn slow and You will pay for this!"'
+			'"But now we have no time. You will end me later("'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is an enter to some sort of a nightclub in front of us'
+			'"Come on"'
+		end
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'club'
+
+	elseif $phescortude = 'dinner' and phdoroga >= rand(2,3):
+		*clr & cla
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Honey, you are too damn slow and You will pay for this!"'
+			'"But now we have no time. You will end me later("'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is an entrance to very good looking cafe'
+			'"Come on"'
+		end
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner'
+
+	elseif phhishomevilla = 1 and $phescortude = 'hotel' and phdoroga >= rand(4,7):
+		*clr & cla
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Let''s go to my place and have some fun there!"'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is a big cottage in front of us'
+			'"Come on"'
+		end
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'villa'
+
+	elseif phhishomevilla ! 1 and $phescortude = 'hotel' and phdoroga >= rand(1,7):
+		*clr & cla
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+		if $clothingworntype = 'nude':
+			'I dressed up before exit the car'
+			gs 'outfit', 'wear_last_worn'
+			gs 'stat'
+		end
+		if phcarjerk = 1:
+			'"Let''s go to my place and have some fun there!"'
+			phescortfun -= rand(10,20)
+			killvar 'phcarjerk'
+		else
+			'"Finally we here" - he said'
+			'There is a entrance to a holtel in front of us'
+			'"Come on"'
+		end
+
+		if phescortfunDONE > 0 or phescortfun >= 50:
+			phescortfunNEED += 1
+			phescortfunDONE = 0
+		else
+			phescortfun -= rand(0,20)
+			if phescortfun <= 0: phescortfun = 0
+		end
+
+		act 'go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'hotel'
+
+	elseif $phescortude = ' ' and phdoroga >= rand(5,7):
+		*clr & cla
+		!! dumae kudy yty
+		if phcardrive = 2 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/medrive.jpg"></center>'
+		elseif phcardrive = 3 and phdoroga ! 0:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/1 car/hedrive.jpg"></center>'
+		end
+
+		if daystart = phescortD:
+			temp = hour - phescortH
+		else
+			temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		end
+		if temp >= 14:
+			temp = 4
+		else
+			temp = rand(1,4)
+		end
+
+		'"Let''s go to some place"'
+		'he make a short pause'
+
+		if $phchas ! 'nich' and temp = 2: temp = rand(3,4)
+		if temp = 1:
+			$phescortude = 'cinema'
+			'"I want to watch some movie, what do you think?"'
+
+		elseif temp = 2:
+			$phescortude = 'club'
+			'"I want to party, let''s go to the club"'
+
+		elseif temp = 3:
+			$phescortude = 'dinner'
+			'"I am hungry) Let''s go eat smth"'
+
+		elseif temp = 4:
+			$phescortude = 'hotel'
+			'"Let''s go to my place"'
+
+		end
+		phdoroga = rand(1,1)
+
+		act 'Agree': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+
+		if daystart = phescortD:
+			temp = hour - phescortH
+		else
+			temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		end
+		if temp - phsleeptime >= 20:
+			'I am tired, I don''t want to argue with him'
+		elseif phcardrive = 3:
+			act 'OK': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+		else
+			act '"Honey, I have better idea"':
+				cla
+				gs 'exp_gain', 'persuas', rand(3,5)
+				if pcs_humint + pcs_intel/5 >= phhismind:
+					if pcs_persuas >= rand(30, phhismind):
+						act 'Let''s go to the cinema':
+							cla
+							$phescortude = 'cinema'
+							'"Okey, sounds better, I know good cinema nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+
+						if $phchas = 'nich':
+							act 'Let''s go to the club':
+								cla
+								$phescortude = 'club'
+								'"Okey, sounds better, I know very nice club nearby"'
+								act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+							end
+						end
+
+						act 'Let''s go to the dinner':
+							cla
+							$phescortude = 'dinner'
+							'"Okey, sounds better, I know good place to eat nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+
+						act 'Let''s go to your place':
+							cla
+							$phescortude = 'hotel'
+							'"Okey, sounds much better, Let''s go"'
+						end
+						act 'nice': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					else
+						'No, I don''t think so'
+
+						act 'OK': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+					end
+				else
+					'No, I don''t think so'
+
+					act 'OK': gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			end
+		end
+	end
+		!! '-=wip=-'
+		!!2 yacht
+		!!plane_to_France
+		!!tent-fish-hunt
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = 'cinema':
+	*clr & cla
+	phdoroga = 0
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'cinema'
+	'We enter the cinema. He bought some popcorn and soda'
+	if rand(1,5) = 1: 'While he is buyng the tickets I see he bought more than 2…'
+	'He take my hand and we go to our places'
+	'We sit on our places and despite a lot of people the are a empty spot around us.'
+	'In a short time a movie starts'
+	phmovietime = 0
+	phmovietimeend = rand(60,120)
+	act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+end
+
+if $ARGS[0] = 'cinema2':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'cinema2'
+	minut += 15
+	phmovietime += 15
+	gs 'stat'
+	gs 'kino', 'movie'
+	phescortfun += rand(0,10)
+
+	if rand(1,4) = 1:
+		'"Do you want some popcorn" - he points on the bucket of popcorn on his laps'
+
+		act 'no thanks': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+
+		act 'sure':
+			cla
+			act 'eat the popcorn':
+				cla
+				gs 'food', 'crisps_stats'
+				gs 'food', 'aftermeal'
+				'I enjoy the flavour of a popcorn.'
+
+
+				act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+			end
+
+			act 'sit in front of him and move the bucket away':
+				cla
+				+$OpenInnerThought+'His fly is closed… Well, now I can''t just go back!'+$CloseInnerThought
+
+				act 'Blow him':
+					*clr & cla
+					'I have unzip his fly and start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					gs 'stat'
+
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+						end
+					end
+				end
+			end
+		end
+
+		if rand(1,100) + phescortfun >= 110:
+			*clr & cla
+			!! he strock
+			gs 'kino', 'movie'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/1.mp4"></video></center>'
+			'He unzip his fly… and start to strock his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			gs 'arousal', 'voyeur', rand(15,15), 'prostitution'
+			minut -= 15
+			gs 'stat'
+			itemp = 0
+
+			act 'stroke the D':
+				*clr & cla
+				'I start to strok his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/2.mp4"></video></center>'
+				gs 'arousal', 'hj', 5
+				gs 'stat'
+				phmovietime += 5
+
+				act 'Blow him':
+					*clr & cla
+					'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					gs 'stat'
+
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+						end
+					end
+				end
+
+				act 'jerk and masturbate':
+					gs 'arousal', 'hj', 5
+					gs 'stat'
+					phmovietime += 5
+					itemp += 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/3.mp4"></video></center>'
+
+					gs 'arousal', 'masturbate', 5
+					minut -= 5
+					gs 'stat'
+
+					if pcs_horny >= 90:
+						'Climax!!!'
+						pcs_mood += 15
+						if pcs_inhib < 40: inhib_exp += rand(1,3)
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'end'
+						gs 'stat'
+						itemp = 500
+					end
+
+					if itemp = 500:
+						cla
+						act 'Blow him':
+							*clr & cla
+							'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+
+							act 'keep sucking him':
+								*clr & cla
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								phmovietime += 15
+								gs 'stat'
+
+								act 'continue':
+									*clr & cla
+									'He cums in my mouth. I show him a result as a good girl.'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+									gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+									minut -= 15
+									gs 'stat'
+									gs 'cum_call','face',$boy
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									phescortfunDONE = 1
+									phescortfunSexDONE += 1
+									phescortfun -= 50
+									if phescortfun <= 0: phescortfun = 0
+
+									phmovietime += 15
+									act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+								end
+							end
+						end
+					elseif itemp >= 5:
+						cla
+						'I see he is not happy about wat is going on… It''s better to start suck him'
+						act 'Blow him':
+							*clr & cla
+							'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+
+							act 'keep sucking him':
+								*clr & cla
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								phmovietime += 15
+								gs 'stat'
+
+								act 'continue':
+									*clr & cla
+									'He cums in my mouth. I show him a result as a good girl.'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+									gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+									minut -= 15
+									gs 'stat'
+									gs 'cum_call','face',$boy
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									phescortfunDONE = 1
+									phescortfunSexDONE += 1
+									phescortfun -= 50
+									if phescortfun <= 0: phescortfun = 0
+
+									phmovietime += 15
+									act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+								end
+							end
+						end
+					end
+				end
+			end
+		elseif rand(1,100) + phescortfun >= 85:
+			cla
+			!! he put dickin
+			act 'no thanks': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+
+			act 'sure':
+				cla
+				act 'eat the popcorn':
+					cla
+					*clr
+					'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex2.jpg"></center>'
+					'Reaching into the bag, I quickly realize popcorn isn''t the only thing he''s offering, when my hand comes to rest on his erect penis.'
+					'"Go on baby, it''s already all buttered up", he says, grinning.'
+					act 'Stroke it':
+						cla
+						*clr
+						'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex3.jpg"></center>'
+						'I work my hand deeper down into the bag to get a firm grip on his buttery cock.'
+						'The client leans back with a smile. "That''s a good girl," he says, as I stroke my hand along his shaft.'
+						gs 'arousal', 'hj', 3
+						gs 'stat'
+						phmovietime += 3
+
+						act 'Further':
+							cla
+							*clr
+							'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex4.jpg"></center>'
+							'Feeling bold, I get him out of the bag. He groans loudly, when I begin to jerk him out in the open.'
+							'Realizing I may be drawing some unwanted attention he says: "Let''s move to the back, before I make a big mess."'
+							gs 'arousal', 'hj', 3
+							gs 'stat'
+							phmovietime += 3
+
+
+							act 'Move to the back':
+								cla
+								*clr
+								'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex5.jpg"></center>'
+								'I move to the back of the theater, trying to seem casual.'
+								'Nervously, I kneel before him, as I scan the crowd.'
+								'"Go on, baby, nobody is looking," he says.'
+								act 'Suck it':
+									cla
+									*clr
+									'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex6.jpg"></center>'
+									'I wrap my lips around his cock.'
+									'Soon all thoughts of the audience are gone, as I give myself over to pleasing him.'
+									gs 'arousal', 'bj', 5, 'exhibitionism'
+									gs 'stat'
+									phmovietime += 5
+
+
+									act 'Fuck him':
+										cla
+										*clr
+										'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex7.jpg"></center>'
+										'Throwing caution to the wind, I raise myself up to sit on his lap.'
+										'I moan softly, as I slowly bounce up and down on his cock.'
+										'After a few minutes of this, he says, "Lie down on the seat, someone is going to spot you."'
+										gs 'arousal', 'vaginal', 5, 'exhibitionism'
+										gs 'stat'
+										phmovietime += 10
+
+										act 'Lie down':
+											cls
+											'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex8.jpg"></center>'
+											'I lie back on the seats, and open my legs to the client. Now in charge, his thrusts come hard and fast. When he reaches a fever pitch, I cry out in pleasure, as he finishes inside me.'
+											gs 'arousal', 'vaginal', 10, 'exhibitionism'
+											$orgasm_or = 'yes'
+											gs 'stat'
+											gs 'cum_call', 'vagina', $npclastgenerated, 0
+											phmovietime += 30
+											gs 'stat'
+
+											phescortfunDONE = 1
+											phescortfunSexDONE += 1
+											phescortfun -= 50
+											if phescortfun <= 0: phescortfun = 0
+											gs 'arousal', 'end'
+											gs 'stat'
+											act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+
+				act 'sit in front of him and move the bucket away':
+					cla
+					+$OpenInnerThought+'Of course his <<npc_dick[$npclastgenerated]>>cm long dick was in the bucket'+$CloseInnerThought
+					'We gigled a little as I remove the D from the bucket'
+
+					act 'Blow him':
+						*clr & cla
+						'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+
+						act 'keep sucking him':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								'He cums in my mouth. I show him a result as a good girl.'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								minut -= 15
+								gs 'stat'
+								gs 'cum_call','face',$boy
+								gs 'stat'
+								gs 'cum_call','mouth',$boy
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								phescortfunDONE = 1
+								phescortfunSexDONE += 1
+								phescortfun -= 50
+								if phescortfun <= 0: phescortfun = 0
+
+								phmovietime += 15
+								act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+							end
+						end
+					end
+				end
+			end
+		end
+	else
+		if phescortfun >= 30:
+			act 'seduce':
+				cla
+				*clr
+				'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kino1.jpg"></center>'
+				'I rest a hand on clients inner thigh, and begin to gently caress him. It''s not long before he is breathing heavy.'
+				'With my intentions made clear, I slowly unbutton my top.'
+				phmovietime += 5
+
+
+				act 'Let''s move to the back, before we draw some unwanted attention':
+					cla
+					*clr
+					'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex5.jpg"></center>'
+					'I move to the back of the theater, trying to seem casual.'
+					'Nervously, I kneel before him, as I scan the crowd.'
+					'"Go on, baby, nobody is looking," he says.'
+					act 'Suck it':
+						cla
+						*clr
+						'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex6.jpg"></center>'
+						'I wrap my lips around his cock.'
+						'Soon all thoughts of the audience are gone, as I give myself over to pleasing him.'
+						gs 'arousal', 'bj', 5, 'exhibitionism'
+						gs 'stat'
+						phmovietime += 5
+
+
+						act 'Fuck him':
+							cla
+							*clr
+							'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex7.jpg"></center>'
+							'Throwing caution to the wind, I raise myself up to sit on his lap.'
+							'I moan softly, as I slowly bounce up and down on his cock.'
+							'After a few minutes of this, he says, "Lie down on the seat, someone is going to spot you."'
+							gs 'arousal', 'vaginal', 5, 'exhibitionism'
+							gs 'stat'
+							phmovietime += 10
+
+							act 'Lie down':
+								cls
+								'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex8.jpg"></center>'
+								'I lie back on the seats, and open my legs to the client. Now in charge, his thrusts come hard and fast. When he reaches a fever pitch, I cry out in pleasure, as he finishes inside me.'
+								gs 'arousal', 'vaginal', 10, 'exhibitionism'
+								$orgasm_or = 'yes'
+								gs 'stat'
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								phmovietime += 30
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								phescortfunDONE = 1
+								phescortfunSexDONE += 1
+								phescortfun -= 50
+								if phescortfun <= 0: phescortfun = 0
+
+								act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+							end
+						end
+					end
+				end
+
+				act 'Blow him':
+					*clr & cla
+					'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					gs 'stat'
+
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+							gs 'arousal', 'end'
+							gs 'stat'
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+						end
+					end
+				end
+			end
+		else
+			+$OpenInnerThought+'I could try to seduce him, but he is not aroused at all'+$CloseInnerThought
+		end
+
+		act 'snuggle up to him':
+			cla
+			'I squeeze my boobs to him… I want to remind him he is not alone here'
+			phescortfun += rand(3,7)
+			gs 'arousal', 'foreplay_give', rand(15,15), 'prostitution'
+			minut -= 10
+			gs 'stat'
+			phmovietime += 5
+
+			act 'keep watching': gt 'mod_public_WC_rab_btothel_escort_place', 'cinema2'
+		end
+	end
+
+	if phmovietime >= phmovietimeend:
+		!! end
+		*clr & cla
+		gs 'stat'
+		gs 'kino', 'movie'
+		killvar 'phmovietime'
+		killvar 'phmovietimeend'
+
+		'The movie have ended, we gather up and go outside'
+		$phescortude = ' '
+		phdoroga = 0
+
+		act '"Honey, I have an idea"':
+			cla
+			gs 'exp_gain', 'persuas', rand(3,5)
+			if pcs_humint + pcs_intel/5 >= phhismind:
+				if pcs_persuas >= rand(30, phhismind):
+
+					if $phchas = 'nich':
+						act 'Let''s go to the club':
+							cla
+							$phescortude = 'club'
+							'"Okey, sounds good, I know very nice club nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+					end
+
+					act 'Let''s go to the dinner':
+						cla
+						$phescortude = 'dinner'
+						'"Okey, sounds good, I know good place to eat nearby"'
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+
+					act 'Let''s go to your place':
+						cla
+						$phescortude = 'hotel'
+						'"Okey, sounds good, Let''s go"'
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+				else
+					'He just ignore me and start moving somewhere'
+
+					act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			else
+				'He just ignore me and start moving somewhere'
+
+				act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			end
+		end
+
+		act 'Go for a walk': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+
+		gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+	end
+end
+
+
+
+if $ARGS[0] = 'club':
+	*clr & cla
+	phdoroga = 0
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'club'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	'He paid some cash to the bouncer'
+	'The bouncer make a glowing mark on my wrist and we entered the club'
+	phdancestart = 0
+	phdancewant = rand(80,200)
+
+	act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'club2'
+end
+
+if $ARGS[0] = 'club2':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'club2'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$func('wrap', 'header center b', 'Unknown Nightclub')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/party.jpg"></center>'
+
+	phdancestart += 1
+	phguy = 1
+
+	act 'Go dance': gt 'mod_public_WC_rab_btothel_escort_club', 'dance'
+	act 'Go dance on the stage': gt 'mod_public_WC_rab_btothel_escort_club', 'scene'
+	act 'Let''s drink smth': gt 'mod_public_WC_rab_btothel_escort_club', 'drink'
+end
+
+
+
+if $ARGS[0] = 'dinner':
+	!! 'There is an entrance to very good looking cafe'
+	*clr & cla
+	phdoroga = 0
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'dinner'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	'We entered the cafe. We sit in the corner near the window.'
+	'This is nice place and the table is a little far away fromm other tables.'
+	pheatstart = 0
+	pheatwant = rand(20,45)
+	'In a short time a waiter comes'
+	'The client order some food for me and for himself'
+
+	act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner2'
+end
+
+if $ARGS[0] = 'dinner2':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_place'
+	$loc_arg = 'dinner2'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$func('wrap', 'header center b', 'Cafe')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/cafe.jpg"></center>'
+
+	act 'chat with him':
+		cla
+		if pcs_humint + pcs_intel/5 >= phhismind:
+			phescortfun += rand(2,4)
+			'We have a great conversation.'
+		else
+			if rand(1,3) = 1: phescortfun -= rand(1,2)
+			'I can''t find a topic to talk with him'
+			'It seems he frustrated a little.'
+		end
+		gs 'exp_gain', 'humint', rand(3,5)
+		pheatstart += 10
+		minut += 10
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner2'
+	end
+
+	if $pantyworntype ! 'none':
+		act 'Remove panties':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			gs 'panties', 'remove'
+			pheatstart += 5
+			gs 'stat'
+			phescortfun += rand(5,10)
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/remove panties ('+rand(1,2)+').mp4"></video></center>'
+			'He is looking at me with a big interest'
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner2'
+		end
+	end
+
+	if phescortfun >= rand(10,30):
+		act 'flash my tits':
+			cla
+			minut += 5
+			pheatstart += 5
+			gs 'stat'
+			phescortfun += rand(0,5)
+			'I flash my tits to the client'
+			'I see a big sile on his face'
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/tease_tits.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/tease_tits.jpg"></center>'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_place', 'dinner2'
+		end
+	end
+
+	if mc_inventory['cigarettes'] >= 1:
+		act 'Smoke':
+			'I put a cigarette in my mouth. The client light it up'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				phescortfun += 1
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+	end
+
+
+	if pheatstart >= pheatwant:
+		cla
+		!! prynesly iju
+		'a waiter bring us food and drinks'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/step2.jpg"></center>'
+		pheatstart = 0
+		pheatwant = rand (60,120)
+		phtemp = 0
+		phgorilka = 0
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+	end
+end
+
+
+
+if $ARGS[0] = 'hotel':
+	*clr & cla
+	phdoroga = 0
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	'We enter the lobby'
+	'He pressed the elevator button… we hear it''s somewhere on the top of a building'
+	'"It''s better to go up the stairs"'
+	phclient = 1
+	phlift = 1
+	phtemp = 0
+	phtemph = 0
+
+	act 'ask him to use the elevator': gt 'mod_public_WC_rab_btothel_escort_place', 'lift'
+
+	act 'go up the stairs to his room':
+		minut += 5
+		gs 'stat'
+		killvar 'phlift'
+		gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+	end
+
+	act 'Tease him':
+		*clr & cla
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/0.mp4"></video></center>'
+		gs 'arousal', 'flash', rand(3,5), 'prostitution', 'sub', 'rape'
+		gs 'stat'
+		phescortfun += rand(3,7)
+
+
+		act 'ask him to use the elevator': gt 'mod_public_WC_rab_btothel_escort_place', 'lift'
+
+		act 'go up the stairs to his room':
+			minut += 5
+			gs 'stat'
+			killvar 'phlift'
+			gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+		end
+	end
+
+end
+
+if $ARGS[0] = 'villa':
+	*clr & cla
+	phdoroga = 0
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/out/0 villa.jpg"></center>'
+	'He parked the car near the garage and help me exit the car'
+	phclient = 1
+	phtemp = 0
+	phtemph = 0
+	killvar 'phlift'
+	act 'Enter the cottage': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+end
+
+
+
+if $ARGS[0] = 'lift':
+	cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	if phlift = 1:
+		'We are waiting the elevator'
+		'Some man comes and waits it too'
+		'In some time the lift comes'
+		'We enter the lift, the client tap the floor higher than the man taped…'
+	end
+	minut += 1
+	gs 'stat'
+
+	if phlift = 3:
+		'The man exits the elevator…'
+	elseif phlift < 3:
+		'The man talking on the phone'
+	end
+
+	act 'wait till we come to the clients room': killvar 'phlift' & minut += 3 & gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+
+	act 'wait':
+		phlift += 1
+		gt 'mod_public_WC_rab_btothel_escort_place', 'lift'
+	end
+
+	if phlift <= 3:
+		act 'tease the client':
+			*clr & cla
+			phescortfun += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/1.mp4"></video></center>'
+			gs 'arousal', 'flash', rand(1,3), 'prostitution', 'sub'
+			gs 'stat'
+			'I show him my bare ass.'
+			'He enjoys to play with it'
+
+			act 'continue': phlift += 1 & gt 'mod_public_WC_rab_btothel_escort_place', 'lift'
+		end
+
+		if phescortfun >= 15:
+			'I see a big bulb in his pants'
+			act 'jerk the client':
+				*clr & cla
+				phescortfun += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/2.mp4"></video></center>'
+				gs 'arousal', 'hj', rand(10,10), 'prostitution', 'sub'
+				minut -= 8
+				gs 'stat'
+				'I have unzip his fly and start to jerk his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+
+				act 'continue': phlift += 1 & gt 'mod_public_WC_rab_btothel_escort_place', 'lift'
+			end
+		end
+	end
+
+	if phlift > 5:
+		!! come
+		*clr & cla
+		'The elevator stops, door opens'
+
+		if mc_inventory['food_wine'] = 1:
+			!! go roof drink
+			act 'Lets go drink on the roof!':
+				cla
+				if phescortfun >= 50:
+					'"No, my balls hurt"'
+					act 'go to his room': gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+				else
+					'"Sounds like a nice idea"'
+					phwine = 1
+					if $pantyworntype ! 'none': phstrip = 2
+					if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+					if $clothingworntype ! 'nude': phstrip = 0
+					act 'Go to the roof': gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+				end
+			end
+		end
+
+		if mc_inventory['cigarettes'] >= 1:
+			!! go roof smoke
+			act 'Lets go smoke on the roof!':
+				cla
+				if rand(1,10) = 1:
+					'"I don''t smoke"'
+					act 'go to his room': gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+				else
+					'"Yes, I want some"'
+					phsiga = 1
+					if $pantyworntype ! 'none': phstrip = 2
+					if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+					if $clothingworntype ! 'nude': phstrip = 0
+					act 'Go to the roof': gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+				end
+			end
+		end
+
+		if mc_inventory['cigarettes'] < 1 and mc_inventory['food_wine'] < 1:
+			+$OpenInnerThought+'We could go to the roof if I have smth to smoke or to drink…'+$CloseInnerThought
+		end
+
+		act 'go to his room': gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+
+	elseif phlift > 3 and phlift <= 5 and phescortfun >= 15:
+		killvar 'phlift'
+		!! can sex
+		*clr & cla
+		'He bends me and start to eat me'
+		phescortfun += 5
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/3.mp4"></video></center>'
+		gs 'arousal', 'cuni', rand(2,5), 'prostitution', 'sub'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/4.mp4"></video></center>'
+			'He rotates me and push his dick in my mouth'
+			gs 'arousal', 'cuni', rand(2,5), 'prostitution', 'sub'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/5 ('+rand(1,4)+').mp4"></video></center>'
+				'He is very wanting, It''s like he want to check all my holes'
+				gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/6.mp4"></video></center>'
+					'"I am cumming stand up!"'
+					gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub'
+					gs 'stat'
+					gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub'
+					minut -= 5
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/3 elevator/7.mp4"></video></center>'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+
+					'He dress up and press the lift button.'
+					'door opens'
+					gs 'arousal', 'end'
+					gs 'stat'
+					!! phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 30
+					if phescortfun <= 0: phescortfun = 0
+
+					act 'go to his room': gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'prymirochna':
+	*clr & cla
+	phprymirochnapaid = 1
+	$func('wrap', 'header b center', 'Mon Chéri')
+	'<br><center>'
+
+	'We enter the shop, the client show me the dressing booth'
+	'"I will bring you clothes soon"'
+	minut += rand (1,5)
+	gs 'stat'
+	phdresstry = 1
+	'in a short time his hand with a dress enters the booth - "Try this"'
+	''
+
+
+	$shoec = 'moncheri_dress'
+	itemp = rand (1,10)
+
+	shoeid = itemp
+	'<center><img <<$set_imgh>> src="images/pc/items/moncheri/dress/<<shoeid>>.jpg"></center>'
+
+	act 'Try it':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/change.jpg"></center>'
+		minut += 5
+		gs 'stat'
+
+		act 'Show him':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/exit.jpg"></center>'
+			'<center><img <<$set_imgh>> src="images/pc/items/moncheri/dress/<<shoeid>>.jpg"></center>'
+
+			'"No, I don''t like it"'
+			'"I will bring you next soon"'
+
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+		end
+	end
+
+	gs 'willpower', 'misc', 'self', 'easy'
+	temp = will_cost
+	will_cost += 0
+	if will_cost <= 0: will_cost = 0
+	if will_cost <= pcs_willpwr:
+		act 'I don''t want this one (<<temp>> Willpower)':
+			cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			phdresstry += 1
+			'"Ok, I''ll bring you next one"'
+
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+		end
+	else
+		act 'I don''t want this one ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+	end
+end
+
+if $ARGS[0] = 'prymirochna2':
+	*clr & cla
+	minut += rand(3,8)
+	phdresstry += 1
+	gs 'stat'
+	$func('wrap', 'header b center', 'Mon Chéri')
+	'<br><center>'
+
+	'in a short time his hand with a dress enters the booth - "Try this"'
+	''
+	$shoec = 'moncheri_dress'
+	itemp = rand (1,185)
+
+	shoeid = itemp
+	'<center><img <<$set_imgh>> src="images/pc/items/moncheri/dress/<<shoeid>>.jpg"></center>'
+
+	act 'Try it':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/change.jpg"></center>'
+		minut += 5
+		gs 'stat'
+
+		act 'Show him':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/exit.jpg"></center>'
+			'<center><img <<$set_imgh>> src="images/pc/items/moncheri/dress/<<shoeid>>.jpg"></center>'
+
+
+			if phdresstry >= rand(3,12):
+				'"This is good - I am taking this"'
+				'He goes somewhere, but come back soon'
+				'"Let''s go"'
+
+				act 'Go with him':
+					gs 'clothing', 'wear', 'moncheri_dress', shoeid
+					moncheri_dress[shoeid] = 1
+					killvar 'shoec'
+					killvar 'shoeid'
+					killvar 'phdresstry'
+					gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			else
+				'"No, I don''t like it"'
+				'"I will bring you next soon"'
+				phescortfun += rand(0,2)
+
+				act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+			end
+		end
+	end
+
+	gs 'willpower', 'misc', 'self', 'easy'
+	temp = will_cost
+	will_cost += 0
+	if will_cost <= 0: will_cost = 0
+	if will_cost <= pcs_willpwr:
+		act 'I don''t want this one (<<temp>> Willpower)':
+			cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			phdresstry += 1
+			'"Ok, I''ll bring you next one"'
+			phescortfun -= rand(0,5)
+			if phescortfun < 0: phescortfun = 0
+
+			act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+		end
+	else
+		act 'I don''t want this one ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+	end
+
+	if rand (1,100) + phescortfun >= 90 and phescortfunDONE ! 1:
+		*clr & cla
+		'in a short time hi remove the curtain - "Try this" - he points on a bulb in his pants'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/heenter.jpg"></center>'
+
+		act 'let him in': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna3'
+	end
+end
+
+if $ARGS[0] = 'prymirochna3':
+	*clr & cla
+	'He enters the booth and start to grope my ass'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/0 grope ('+rand(1,2)+').mp4"></video></center>'
+	gs 'arousal', 'foreplay', rand(5,5), 'prostitution', 'sub'
+	gs 'stat'
+
+	phtemp = 0
+	act 'jerk him':
+		if phtemp <= 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/1 hj.mp4"></video></center>'
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			phescortfun += rand (1,6)
+		end
+		phtemp += 1
+	end
+
+	act 'blow him':
+		*clr & cla
+		'I stand on my knees and start to suck his dick.'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/1 bj ('+rand(1,3)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+		gs 'stat'
+
+		act 'Continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/1 bj ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+			gs 'stat'
+
+			act 'Continue':
+				*clr & cla
+
+				if rand (1,3) = 1:
+					'He cums on my face and in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/2 cumon.mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'cum_call','arms',$boy
+					gs 'stat'
+				else
+					'He fill my mouth with his hot sperm'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/2 cumin.mp4"></video></center>'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+				act 'swallow':
+					*clr & cla
+					'I show himm my empty mouth'
+					'"What a good girl" - he pets my head'
+					'"Let''s find fine dress for you"'
+					'He exits the booth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/3 cumeat.mp4"></video></center>'
+
+					act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+				end
+			end
+		end
+	end
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/0 undress.mp4"></video></center>'
+			act 'sex':
+				*clr & cla
+				'I bends and press my butt to his dick'
+				'He diidn''t hesitate and start to fuck me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+				gs 'stat'
+
+				act 'sex':
+					*clr & cla
+					'I bends and press my butt to his dick'
+					'He diidn''t hesitate and start to fuck me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'Continue':
+						*clr & cla
+						'He cums on my ass.'
+						'"Let''s find fine dress for you - he slaped my ass playfully"'
+						'He exits the booth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/2 cumon.mp4"></video></center>'
+						gs 'cum_call','butt',$boy
+						gs 'stat'
+						gs 'cum_call','back',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0
+						act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+					end
+				end
+			end
+		end
+	else
+		act 'sex':
+			*clr & cla
+			'I bends and press my butt to his dick'
+			'He diidn''t hesitate and start to fuck me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+			gs 'stat'
+
+			act 'sex':
+				*clr & cla
+				'I bends and press my butt to his dick'
+				'He diidn''t hesitate and start to fuck me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+				gs 'stat'
+
+				act 'Continue':
+					*clr & cla
+					'He cums on my ass.'
+					'"Let''s find fine dress for you - he slaped my ass playfully"'
+					'He exits the booth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/2 cumon.mp4"></video></center>'
+					gs 'cum_call','butt',$boy
+					gs 'stat'
+					gs 'cum_call','back',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0
+					act 'wait': gt 'mod_public_WC_rab_btothel_escort_place', 'prymirochna2'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'chas':
+	if month >= 11 or month <= 3:
+		if hour <= 8 or hour >= 18:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	else
+		if hour <= 5 or hour >= 22:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	end
+end
+if $ARGS[0] = 'phescortfun':
+	if phescortfunDONE ! 1:
+		if phescortfun >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+		if phescortfun >= 90 and phescortfun < 100: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+		if phescortfun >= 80 and phescortfun < 90: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+		if phescortfun >= 70 and phescortfun < 80: $zadovolennia1 = '<font color = green	> ███████___ </font> '
+		if phescortfun >= 60 and phescortfun < 70: $zadovolennia1 = '<font color = green	> ██████____ </font> '
+		if phescortfun >= 50 and phescortfun < 60: $zadovolennia1 = '<font color = green	> █████_____ </font> '
+		if phescortfun >= 40 and phescortfun < 50: $zadovolennia1 = '<font color = green	> ████______ </font> '
+		if phescortfun >= 30 and phescortfun < 40: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+		if phescortfun >= 20 and phescortfun < 30: $zadovolennia1 = '<font color = yellow	> ██________ </font> '
+		if phescortfun >= 10 and phescortfun < 20: $zadovolennia1 = '<font color = yellow	> █_________ </font> '
+		if phescortfun < 10 and phescortfun > 0:
+			$zadovolennia1 = '<font color = red	> █_________ </font> '
+		end
+		if phescortfun <= 0:
+			$zadovolennia1 = '<font color = red	> __________ </font> '
+		end
+
+		'<center>The client''s funrate: <<$zadovolennia1>></center>'
+	elseif phescortfunDONE = 1:
+		$func('wrap', 'accent', ' The client is satisfied! ') + ' '
+		$func('wrap', 'accent', ' And it''s hard to tell how fun he is now. ') + ' '
+	end
+end
+
+if $ARGS[0] = 'phendescort':
+	if daystart = phescortD:
+		phendescort = 0
+		if hour - phescortH > 5 + phbuytime:
+			phendescort = 1
+		end
+	elseif daystart > phescortD:
+		temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+		if temp >= 24:
+			phendescort = 2
+		elseif temp > 5 + phbuytime:
+			phendescort = 1
+		end
+	end
+	if phendescort = 2:
+		act 'Sorry, but I need to go home':
+			cla
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			if temp <= 36:
+				'"It was unbelievable day"'
+			else
+				'"It was unbelievable days!"'
+			end
+			'"Of course, you can go home)))"'
+			phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+			temp = phmoneypaid * 100
+			phmoneypaid = temp
+			phmoneypaidH = rand(11,17)
+			phmoneypaidD = daystart + rand(1,2)
+			phescortfun = 0
+			killvar 'phclientava'
+			phescorttask = 0
+			killvar 'phescortD'
+			killvar 'phescortH'
+			'I kissed him as goodbuy and go'
+			+$OpenInnerThought+'I am sure he is pleased and is going to pay to my bank account'+$CloseInnerThought
+
+			act 'Go away': gt 'city_redlight', 'start'
+		end
+
+		killvar 'phendescort'
+	elseif phendescort >= 1:
+		act 'the paid 4 hours end':
+			cla
+			'"Ow, I see"'
+
+			if phescortfun >= rand(33,50):
+				'"Come on, baby, I want more. I will pay extra, please continue"'
+
+				act 'Okey 1000 cash and lets go':
+					cla
+					'"Hah, deal"'
+					'he give me the money.'
+					money += 1000
+					phbuytime += 5
+					phescortfun -= 30
+					if phescortfun <= 0: phescortfun = 0
+					act 'Okey, handsome)': gt $loc, $loc_arg
+				end
+
+				act 'Okey, handsome)':
+					phescortfunNEED += rand(0,3)
+					phescortfun -= 30
+					phbuytime += 5
+					if phescortfun <= 0: phescortfun = 0
+					gt $loc, $loc_arg
+				end
+
+				act 'Sorry, I need to go':
+					cla
+					'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+					'"Well, okey. It was fun time)"'
+					'"You can go."'
+					phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+					temp = phmoneypaid * 100
+					phmoneypaid = temp
+					phmoneypaidH = rand(11,17)
+					phmoneypaidD = daystart + rand(1,2)
+					phescortfun = 0
+					killvar 'phclientava'
+					phescorttask = 0
+					killvar 'phescortD'
+					killvar 'phescortH'
+
+					'"Okey, girl, it was good time. But it''s enough for now))"'
+					'I kissed him as goodbuy and go'
+					+$OpenInnerThought+'I hope he is pleased and will pay to my bank account'+$CloseInnerThought
+
+					act 'Go away': gt 'city_redlight', 'start'
+				end
+			else
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+				'"Well, okey. It was fun time)"'
+				'"You can go."'
+				phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+				temp = phmoneypaid * 100
+				phmoneypaid = temp
+				phmoneypaidH = rand(11,17)
+				phmoneypaidD = daystart + rand(1,2)
+				phescortfun = 0
+				killvar 'phclientava'
+				phescorttask = 0
+				killvar 'phescortD'
+				killvar 'phescortH'
+
+				'"Okey, girl, it was good time. But it''s enough for now))"'
+				'I kissed him as goodbuy and go'
+				+$OpenInnerThought+'I hope he is pleased and will pay to my bank account'+$CloseInnerThought
+
+				act 'Go away': gt 'city_redlight', 'start'
+			end
+		end
+		killvar 'phendescort'
+	end
+
+	if daystart = phescortD:
+		temp = hour - phescortH
+	else
+		temp = (24 - phescortH) + hour + (daystart - phescortD - 1) * 24
+	end
+
+	if phescortfunDONE > 0 or phescortfun >= 50:
+		phescortfunNEED += 1
+		phescortfunDONE = 0
+		phescortfun -= rand(0,20)
+		if phescortfun <= 0: phescortfun = 0
+	elseif temp >= 5 + phbuytime:
+		cla
+		phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+		temp = phmoneypaid * 100
+		phmoneypaid = temp
+		phmoneypaidH = rand(11,17)
+		phmoneypaidD = daystart + rand(1,2)
+		phescortfun = 0
+
+		phescorttask = 0
+		killvar 'phescortD'
+		killvar 'phescortH'
+
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		'"Okey, girl, it was good time. But it''s enough for now))"'
+		'I kissed him as goodbuy and go'
+		killvar 'phclientava'
+		+$OpenInnerThought+'I hope he is pleased and will pay to my bank account'+$CloseInnerThought
+
+		act 'Go away': gt 'city_redlight', 'start'
+	end
+end
+
+--- mod_public_WC_rab_btothel_escort_place ---------------------------------
+

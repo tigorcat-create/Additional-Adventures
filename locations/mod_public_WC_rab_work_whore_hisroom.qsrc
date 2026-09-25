@@ -1,0 +1,274 @@
+# mod_public_WC_rab_work_whore_hisroom
+if $ARGS[0] = 'start':
+	*clr & cla
+	menu_off = 0
+	PHMYROOM = 0
+	if phclient = 1:
+		heinvanna = rand (0,1)
+		if heinvanna = 1: heinvanna = 3
+		bcil = rand(4,37)
+		$func('wrap', 'header center b', '"Room <<bcil>>"')
+		if bcil >= 4 and bcil <= 20: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+		if bcil >= 21 and bcil <= 30: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+		if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'
+	end
+
+	'Next to the door, you can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the <a href="exec:gt ''mod_public_WC_rab_work_chystota_hotel'',''shower1''">bathroom</a> is to the right.'
+
+	$PHloc = $loc
+	$PHloc_arg = $loc_arg
+
+	$loc = 'mod_public_WC_rab_work_whore_hisroom'
+	$menu_loc = 'mod_public_WC_rab_work_whore_hisroom'
+	$loc_arg = 'start'
+	$menu_arg = 'start'
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+		end
+	end
+	if mc_inventory['cigarettes'] > 0:
+		act 'Smoking':
+			minut += rand(3,5)
+			gs 'drugs', 'smoke'
+			gs 'stat'
+		end
+	end
+	act 'Take a nap (1:00)':
+		cla
+		menu_off = 0
+		act 'continue': gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+		if pcs_sleep >= 20 and pcs_sleep <= 90:
+			pcs_sleep += 15
+			pcs_health += 5
+			minut += 60
+			gs 'stat'
+			*nl
+			'I sleep about an hour.'
+		elseif pcs_sleep < 20:
+			*clr & cla
+			gs 'stat'
+			gt 'pre_sleep', 'prepare_sleep'
+		else
+			minut += 5
+			gs 'stat'
+			*nl
+			'I am not tired enough to sleep, even for a short nap.'
+		end
+	end
+
+	act 'Go away':
+		if $metka = '4':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+		elseif $metka = '3':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		elseif $metka = '2':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+		else
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		end
+	end
+
+	if phclient = 1:
+		*clr & cla
+		phtemph = hour + rand(2,3)
+		colir = rand(1,2)
+		otemp = 1
+		if phtemph > 24: phtemph -= 24
+		gt 'mod_public_WC_rab_work_whore_room', 'roomsex'
+	elseif phclient = 2:
+		*clr & cla
+		$func('wrap', 'header center b', '"Room <<bcil>>"')
+		if bcil >= 4 and bcil <= 20: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+		if bcil >= 21 and bcil <= 30: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+		if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'
+
+		if heinvanna = 1 and hour >= phtemp:
+			'He comes back from the bathroom'
+			heinvanna = 0
+			killvar 'phtemp'
+		end
+
+		if heinvanna = 3:
+			if colir = 1:
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			else
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			end
+			'"I will go to bath"'
+			heinvanna = 1
+			phtemp = hour + 1
+		end
+
+		if heinvanna = 0:
+			'Next to the door, you can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the <a href="exec:gt ''mod_public_WC_rab_work_chystota_hotel'',''shower1''">bathroom</a> is to the right.'
+		else
+			'Next to the door, you can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the bathroom is to the right, but it locked.'
+		end
+
+		if heinvanna = 0:
+			if colir = 1:
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			else
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			end
+
+			if sexcorrupt <= rand(30,50) and otemp ! 0:
+				act 'ask about money':
+					cla
+					'"yes, sure, here you go."'
+					money += 100*rand(2,6)* otemp
+					gs 'stat'
+					sexcorrupt -= 1
+					phtemp = 1
+					otemp = 0
+
+					if rand(1,3) = 1:
+						'He stand up and go away'
+						phclient = 0
+					end
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				end
+			end
+		end
+
+		act 'go away' :gt $PHloc, $PHloc_arg
+
+		if heinvanna = 1:
+			if mc_inventory['mentats'] > 0 and narkday ! daystart:
+				act 'Do a line of cocaine (0:05)':
+					*clr & cla
+					menu_off = 1
+					minut += 5
+					narkday = daystart
+					gs 'drugs', 'cocaine'
+					'<center><img <<$set_imgh>> src="images/shared/drugs/dur.jpg"></center>'
+					'You snort some cocaine, feeling dizzy for just a moment. After that you feel fantastic, and incredibly horny.'
+
+					act 'Continue': menu_off = 0 & gt 'mod_public_WC_rab_work_whore_room', 'start'
+				end
+			end
+
+			act 'wait here (0:30)':
+				minut += 30
+				gs 'stat'
+				gt 'mod_public_WC_rab_work_whore_room', 'start'
+			end
+
+			act 'stand for breed in the front of the bathroom door':
+				*clr & cla
+				minut += 30
+				heinvanna = 0
+				killvar 'phtemp'
+
+				gs 'arousal', 'flash', 10
+				minut -= 5
+				gs 'stat'
+
+				if rand(1,13) <= 9:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/show_pussy/showpuss ('+rand(1,9)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/show_pussy/showpussv ('+rand(1,4)+').mp4"></video></center>'
+				end
+
+				temp = rand (1,10)
+				if temp <= 2:
+					'He was NOT hesitate and stick me with his dick'
+					gs 'arousal', 'vaginal', 5
+					gs 'stat'
+
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/b ('+rand(1,5)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/ch ('+rand(1,10)+').mp4"></video></center>'
+					end
+					$cum1 = rand (60,120)
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+				elseif temp <= 3:
+					'"Wow, wait a minut"'
+					'He come back from the bathroom in a few minutes, his dick is metal hard'
+					'He startfucking me!'
+					minut += 2
+					gs 'arousal', 'vaginal', 5
+					gs 'stat'
+
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/b ('+rand(1,5)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/ch ('+rand(1,10)+').mp4"></video></center>'
+					end
+					$cum1 = rand (60,120)
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+				else
+					'"Wow, girl, I appreciate this, but my balls is empty"'
+					act '"I take it as a comliment"': gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+				end
+			end
+		end
+
+		if mc_inventory['cigarettes'] > 0:
+			act 'Smoking':
+				minut += rand(3,5)
+				gs 'drugs', 'smoke'
+				gs 'stat'
+			end
+		end
+
+		temp = hour - phtemph
+		if hour > phtemph and rand(0,temp) > rand (0,3) and heinvanna = 0:
+			*clr & cla
+			if colir = 1:
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			else
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			end
+
+			'"Girl, I want you leave"'
+
+			act 'Goodbye' : gt $PHloc, $PHloc_arg
+
+			if sexcorrupt <= rand(30,50) and otemp ! 0:
+				act 'ask about money':
+					cla
+					'"yes, sure, here you go."'
+					money += 100*rand(2,6)* otemp
+					gs 'stat'
+					sexcorrupt -= 1
+					phtemp = 1
+					otemp = 0
+					act 'Goodbye':
+						if $metka = '4':
+							gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+						elseif $metka = '3':
+							gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+						elseif $metka = '2':
+							gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+						else
+							gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+--- mod_public_WC_rab_work_whore_hisroom ---------------------------------
+

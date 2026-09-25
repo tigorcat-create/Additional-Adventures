@@ -1,0 +1,861 @@
+# mod_public_WC_street_box_brothel
+if $ARGS[0] = 'start': 
+	gs 'mod_public_WC_street_box_brothel_start', 'start'
+end
+
+
+
+if $ARGS[0] = 'FINDgirls':
+	!! MYgirls
+	!! act 'search new girl'
+	! '-=wip=-' MORE GIRLS
+
+	if NatbelQW['QWstage'] >= 8 and NatbelQW['Debt'] > 0 and phNatasha = 0:
+		phNatasha = 1
+	end
+
+	if phNatasha = 1:
+		act 'ask Natasha to come here':
+			cla
+			phNatasha = 3
+			'Natasha you could ear a lot!'
+			
+			act 'Order natasha to work here':
+				cla
+				
+				phNatasha = 100
+				phwhores += 1
+				
+				i = phwhores
+				
+				phgirlstatHJ[i] = rand(20,30)
+				phgirlstatBJ[i] = rand(0,10)
+				phgirlstatFJ[i] = rand(0,0)
+				phgirlstatVAG[i] = rand(0,10)
+				phgirlstatASS[i] = rand(0,10)
+				
+				$phgirlname[i] = 'Natasha'
+				girltype[i] = 101
+				girlid[i] = phwhores
+				
+				$phgirlava[i] = 'images/characters/pavlovsk/school/girl/natasha/bedtalk'
+				'NATASHA: "Okey, I believe you, I will be there."'				
+				
+				act 'Continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end	
+	
+	act 'Find random workers in the web':
+		cla
+		gs 'mod_public_WC_street_box_brothel', 'girlrandomiser'
+		*nl
+		*nl
+		'___________________________________________________'	
+		gs 'mod_public_WC_street_box_brothel', 'girlrandomiser'
+		*nl
+		*nl
+		'___________________________________________________'	
+		gs 'mod_public_WC_street_box_brothel', 'girlrandomiser'
+		*nl
+		*nl
+		'___________________________________________________'	
+	end
+end
+
+
+
+if $ARGS[0] = 'WORKgirls':
+	!! act 'look my whores'
+	
+	i = 2
+	:loopgirlslist
+	
+	!! visualise girl with stats
+	
+	!! girlame
+	'<center><img Height = 250 src="<<$phgirlava[i]>>.jpg"></center>'
+	if $phgirlname[i] = '':
+		temp = rand(1,15)
+		if temp = 1:
+			$phgirlname[i] = 'Vika'
+		elseif temp = 2:
+			$phgirlname[i] = 'Janna'
+		elseif temp = 3:
+			$phgirlname[i] = 'Oksana'
+		elseif temp = 4:
+			$phgirlname[i] = 'Sonja'
+		elseif temp = 5:
+			$phgirlname[i] = 'Stanislava'
+		elseif temp = 6:
+			$phgirlname[i] = 'Valentina'
+		elseif temp = 7:
+			$phgirlname[i] = 'Valeriya'
+		elseif temp = 8:
+			$phgirlname[i] = 'Zora'
+		elseif temp = 9:
+			$phgirlname[i] = 'Aleksandra'
+		elseif temp = 10:
+			$phgirlname[i] = 'Ivanka'
+		elseif temp = 11:
+			$phgirlname[i] = 'Katerina'
+		elseif temp = 12:
+			$phgirlname[i] = 'Marta'
+		elseif temp = 13:
+			$phgirlname[i] = 'Nadia'
+		elseif temp = 14:
+			$phgirlname[i] = 'Natalia'
+		elseif temp = 15:
+			$phgirlname[i] = 'Feodora'
+		end
+	else
+		'<<$phgirlname[i]>>'
+	end
+	
+	'Hand job stat = <<phgirlstatHJ[i]>>'
+	'Blow job stat = <<phgirlstatBJ[i]>>'
+	'Footjob job stat = <<phgirlstatFJ[i]>>'
+	'Vaginal stat = <<phgirlstatVAG[i]>>'
+	'Anal stat = <<phgirlstatASS[i]>>'
+	*nl
+	'<<phclientserved[i]>> clients served'
+	'_________________________________________________'
+	*nl
+	
+	i += 1
+	if i <= phwhores: jump 'loopgirlslist'
+end
+
+
+if $ARGS[0] = 'girlrandomiser':
+	if dayrandomiser ! daystart:
+		dayrandomiser = daystart
+		timesrandomiser = 0
+	end
+	timesrandomiser += 1
+	
+	if timesrandomiser >= rand(3,7):
+		'No more girls for today!'
+	else		
+		i = timesrandomiser
+		'Girl # <<i>>'
+		
+		temp = rand(1,100)
+		if temp <= 60:
+			otemp = 5
+		elseif temp <= 95:
+			otemp = 3
+		else
+			otemp = 1
+		end
+		temp = temp/otemp		
+		temp_phgirlstatHJ[i] = rand(1,temp)
+		
+		temp = rand(1,100)
+		if temp <= 60:
+			otemp = 5
+		elseif temp <= 95:
+			otemp = 3
+		else
+			otemp = 1
+		end
+		temp = temp/otemp
+		temp_phgirlstatBJ[i] = rand(1,temp)
+		
+		temp = rand(1,100)
+		if temp <= 60:
+			otemp = 5
+		elseif temp <= 95:
+			otemp = 3
+		else
+			otemp = 1
+		end
+		temp = temp/otemp
+		temp_phgirlstatFJ[i] = rand(1,temp)
+		
+		temp = rand(1,100)
+		if temp <= 60:
+			otemp = 5
+		elseif temp <= 95:
+			otemp = 3
+		else
+			otemp = 1
+		end
+		temp = temp/otemp
+		temp_phgirlstatVAG[i] = rand(1,temp)
+		
+		temp = rand(1,100)
+		if temp <= 60:
+			otemp = 5
+		elseif temp <= 95:
+			otemp = 3
+		else
+			otemp = 1
+		end
+		temp = temp/otemp
+		temp_phgirlstatASS[i] = rand(1,temp)
+		
+		temp_girlnumber[i] = i
+		
+		temp_girltype[i] = rand(1,10)
+		
+		if temp_girltype[i] = 2:
+			temp_phgirlstatBJ[i] = rand(40,66)
+		end
+		
+		
+		$temp_phgirlava[i] = 'mod/public_WC/newstreet/whore/maf work/girlslist/<<temp_girltype[i]>>/pic/ava/ava ('+rand(1,5)+')'
+		'<center><img <<$set_imgh>> src="<<$temp_phgirlava[i]>>.jpg"></center>'
+		
+		
+		'Hand job stat = <<temp_phgirlstatHJ[i]>>'
+		'Blow job stat = <<temp_phgirlstatBJ[i]>>'
+		'Footjob job stat = <<temp_phgirlstatFJ[i]>>'
+		'Vaginal stat = <<temp_phgirlstatVAG[i]>>'
+		'Anal stat = <<temp_phgirlstatASS[i]>>'
+		*nl
+		
+		temp_price[i] = (temp_phgirlstatHJ[i]+temp_phgirlstatBJ[i]+temp_phgirlstatFJ[i]+temp_phgirlstatVAG[i]+temp_phgirlstatASS[i])*rand(2,4)*20
+		
+		gs 'mod_public_WC_street_box_brothel_actbuy', 'actbuy'
+	end
+	
+	act 'exit': gt 'mod_public_WC_street_box', 'start'
+end
+
+
+if $ARGS[0] = 'ph_clientgenerate':
+	carclient = 0
+	ztemp = 0
+	phclient_mood = 0	
+	bcil = 0
+	phwindevent = 0
+	phraperape = 0
+	temp = phcopcop*80/100
+	phcopcop = temp
+	
+	
+	temp = rand(1,3)
+	ztemp = rand(1,3)	
+	
+	
+	temp1 = ph_brothelfame/10
+	if temp1 >= 3: temp1 = 3
+	if temp1 <= 1: temp1 = 1
+	
+	temp2 = ph_brothelfame/20
+	if temp2 >= 3: temp2 = 3
+	if temp2 <= 0: temp2 = 0
+	
+	ytemp = rand(temp1,10) + temp
+	
+	killvar 'temp1'
+	killvar 'temp2'	
+	
+	phtemp1 = temp
+	phtemp2 = ztemp
+	phtemp3 = ytemp	
+	
+	if $loc = 'mod_public_WC_street' and $loc_arg = 'start':
+		
+		
+		temp1 = ph_brothelfame/10
+		if temp1 >= 3: temp1 = 3
+		if temp1 <= 1: temp1 = 1
+		
+		temp2 = ph_brothelfame/20
+		if temp2 >= 3: temp2 = 3
+		if temp2 <= 0: temp2 = 0
+		ytemp = rand(temp1,8) + temp
+		killvar 'temp1'
+		killvar 'temp2'		
+	end
+	
+	'The guy looks like…'
+	*nl
+	if ytemp <= 6:
+		ytemp = 1
+		'poor'
+		phclientwantprice_pricekoef = rand(1,2)
+	elseif ytemp <= 9:
+		'casual dressed'	
+		ytemp = 2
+		phclientwantprice_pricekoef = rand(1,3)
+	else
+		'fancy'
+		ytemp = 3
+		phclientwantprice_pricekoef = rand(2,3)			
+	end
+	
+	
+	if temp = 1:
+		'stuffy'
+		bcil += rand(0,40)
+	elseif temp = 2:
+		'average'
+		bcil += rand(40,60)
+	else
+		'brutal'
+		bcil += rand(60,100)
+	end
+	
+	if ztep = 1:
+		'weak man'
+		bcil -= rand(0,30)
+	elseif ztemp = 2:
+		'man'
+		bcil += rand(0,20)
+	else
+		'strong man'
+		bcil += rand(20,50)
+	end
+	if bcil <= 0: bcil = 10
+	ztemp = 0
+	if rand(1,5) = 1: fame['pav_prostitute'] += 1
+	
+	phclient_mood = rand(0,10)
+	if rand (1,100) + pcs_humint >= 100: 
+		if phclient_mood <= 2:
+			'His mood is obviously terrible'
+		elseif phclient_mood <= 3:
+			'His is not in a good mood'
+		elseif phclient_mood <= 7:
+			'I can''t understand his mood'
+		else
+			'He seems happy'
+		end
+	else
+		'I can''t understand his mood'
+	end	
+
+
+	$cum1 = rand(80,120)
+	killvar 'phsextimer'
+	killvar 'phspeed'
+	killvar 'phbjforce'
+	killvar 'phmasturb_me'
+	killvar 'phclientforce'
+	killvar 'phthrowup'
+	killvar 'phbjlick'
+	killvar 'phasktonotcuminside'
+	colir = 1
+	protect = 0
+	phclientdrugs = rand(1,4)
+	
+	
+	if phsex = 0 or phsex >= 100:
+		if rand(0,1) = 0:
+			'CLIENT: "How much the blowjob?"'
+			phsex = 2
+		elseif rand(0,1) = 0:
+			'CLIENT: "How much to fuck?"'
+			phsex = 3
+		elseif rand(0,1) = 0:
+			'CLIENT: "How much the buttsex?"'
+			phsex = 4
+		else
+			'CLIENT: "How much the handjob?"'
+			phsex = 1
+		end
+	else		
+		if phsex = 1 or phsex = 101: 'CLIENT: "How much the handjob?"'
+		if phsex = 2 or phsex = 102: 'CLIENT: "How much the blowjob?"'
+		if phsex = 3 or phsex = 103: 'CLIENT: "How much to fuck?"'
+		if phsex = 4 or phsex = 104: 'CLIENT: "How much the buttsex?"'		
+	end
+	
+	if phsex = 1 or phsex = 101:		
+		act 'It costs <<ph_brothelhj>>':			
+			PH_full_pay = ph_brothelhj
+			gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+		end	
+	elseif phsex = 2 or phsex = 102:
+		act 'It costs <<ph_brothelbj>>':			
+			PH_full_pay = ph_brothelbj
+			gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+		end		
+	elseif phsex = 3 or phsex = 103:
+		act 'It costs <<ph_brothelvag>>':			
+			PH_full_pay = ph_brothelvag
+			gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+		end		
+	elseif phsex = 4 or phsex = 104:
+		act 'It costs <<ph_brothelass>>':			
+			PH_full_pay = ph_brothelass
+			gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+		end		
+	end
+end
+
+
+
+if $ARGS[0] = 'thinktopay':
+	cla
+	!! client think to pay or not
+	
+	gs 'npcgeneratec', 0, 'a my brothel''s client', rand(18,55)
+	gs 'boyStat', $npclastgenerated	
+	
+	if phsex = 1 or phsex = 101:
+		phclientwantprice = 38 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end		
+	elseif phsex = 2 or phsex = 102:
+		phclientwantprice = 112 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 3 or phsex = 103:
+		phclientwantprice = 150 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 4 or phsex = 104:
+		phclientwantprice = 165 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 100:
+		phclientwantprice = rand(80,150) * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	end
+	phclientwantprice1 = phclientwantprice
+	
+
+	temp = phclientwantprice * 120/100
+	phclientwantprice = temp
+
+	phclientwantprice2 = phclientwantprice
+	
+	if phtemp3 <= 6:
+		temp = phclientwantprice * rand(30,50)/100
+		phclientwantprice = temp	
+	elseif phtemp3 <= 9:
+		temp = phclientwantprice * rand(100,130)/100
+		phclientwantprice = temp
+	else
+		temp = phclientwantprice * rand(120,170)/100
+		phclientwantprice = temp	
+	end	
+	phclientwantprice3 = phclientwantprice
+	
+	if ph_brothelfame <= 50:
+		temp = PH_full_pay * 120/100
+	elseif ph_brothelfame <= 100:
+		temp = PH_full_pay * 100/100
+	elseif ph_brothelfame <= 150:
+		temp = PH_full_pay * 90/100
+		!! '"Are you that whore?"'
+	elseif ph_brothelfame <= 200:
+		temp = PH_full_pay * 80/100
+		!! '"I think I saw you"'
+	elseif ph_brothelfame <= 250:
+		temp = PH_full_pay * 70/100
+		!! '"OMG! It is you, that famos whore!"'
+	else
+		temp = PH_full_pay * 60/100
+		!! '"OMG! It is you, is it? You are <<$pcs_firstname>> - that famos whore!"'
+	end
+	phclientwantprice4 = temp
+	
+	if phclientfunnow <= 100: phclientfunnow = 100
+	hewant = phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100)
+	if phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100) < phclientwantprice4:
+		'"Hah, I am good, goodbye"'
+		phclient_mood -= 1
+		
+		act 'try to bargain':
+			*clr & cla
+			
+			act '10% discount':
+				temp = PH_full_pay * 90 / 100
+				PH_full_pay = temp
+				cla
+				gt 'mod_public_WC_street_box_brothel', 'bargain'
+				
+			end
+			
+			act '30% discount':
+				temp = PH_full_pay * 70 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += rand(0,1)
+				gt 'mod_public_WC_street_box_brothel', 'bargain'
+				
+			end
+			
+			act '50% discount':
+				temp = PH_full_pay * 50 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 1
+				gt 'mod_public_WC_street_box_brothel', 'bargain'
+				
+			end
+			
+			act '90% discount':
+				temp = PH_full_pay * 10 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 2
+				gt 'mod_public_WC_street_box_brothel', 'bargain'
+				
+			end
+		end
+		
+		act 'bye':
+			cla
+			gs 'mod_public_WC_street_box_brothel', 'clientaway'
+		end
+	else
+		'"Deal!"'
+		phclient_mood += rand(0,2)
+		
+		temp = rand(1,10)
+		if temp <= 2:
+			phclient['condom'] = 1
+		elseif temp <= 7:
+			phclient['condom'] = 2
+		else
+			phclient['condom'] = 3
+		end
+		!! 1,3 - use, ok with it, never
+		
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['pay'] = 1
+		elseif temp <= 9:
+			phclient['pay'] = 2
+		else
+			phclient['pay'] = 3
+		end
+		!! 1,3 - anywhere, attheend, never		
+		
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['cuminside'] = 1
+		elseif temp <= 8:
+			phclient['cuminside'] = 2
+		else
+			phclient['cuminside'] = 3
+		end
+		!! 1,3 - NOKIDS, whatever, must			
+	
+		gs 'mod_public_WC_street_box_brothel', 'placetalk'
+	end
+end
+
+if $ARGS[0] = 'bargain':
+	if phsex = 1 or phsex = 101:
+		phclientwantprice = 38 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end		
+	elseif phsex = 2 or phsex = 102:
+		phclientwantprice = 112 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 3 or phsex = 103:
+		phclientwantprice = 150 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 4 or phsex = 104:
+		phclientwantprice = 165 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	elseif phsex = 100:
+		phclientwantprice = rand(80,150) * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end	
+	end
+	phclientwantprice1 = phclientwantprice
+	
+
+	temp = phclientwantprice * 120/100
+	phclientwantprice = temp
+	phclientwantprice2 = phclientwantprice
+	
+	if phtemp3 <= 6:
+		temp = phclientwantprice * rand(30,50)/100
+		phclientwantprice = temp	
+	elseif phtemp3 <= 9:
+		temp = phclientwantprice * rand(100,130)/100
+		phclientwantprice = temp
+	else
+		temp = phclientwantprice * rand(120,170)/100
+		phclientwantprice = temp	
+	end
+	phclientwantprice3 = phclientwantprice	
+	
+	if ph_brothelfame <= 50:
+		temp = PH_full_pay * 120/100
+	elseif ph_brothelfame <= 100:
+		temp = PH_full_pay * 100/100
+	elseif ph_brothelfame <= 150:
+		temp = PH_full_pay * 90/100
+		!! '"Are you that whore?"'
+	elseif ph_brothelfame <= 200:
+		temp = PH_full_pay * 80/100
+		!! '"I think I saw you"'
+	elseif ph_brothelfame <= 250:
+		temp = PH_full_pay * 70/100
+		!! '"OMG! It is you, that famos whore!"'
+	else
+		temp = PH_full_pay * 60/100
+		!! '"OMG! It is you, is it? You are <<$pcs_firstname>> - that famos whore!"'
+	end
+	phclientwantprice4 = temp
+	
+	*clr & cla
+	
+	if phclientfunnow <= 100: phclientfunnow = 100
+	hewant = phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100)	
+	if phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100) < phclientwantprice4:
+		'"Hah, I am good, goodbye"'
+		gs 'mod_public_WC_street_box_brothel', 'clientaway'
+	else
+		'"Deal!"'
+		
+		temp = rand(1,10)
+		if temp <= 2:
+			phclient['condom'] = 1
+		elseif temp <= 7:
+			phclient['condom'] = 2
+		else
+			phclient['condom'] = 3
+		end
+		!! 1,3 - use, ok with it, never
+		
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['pay'] = 1
+		elseif temp <= 9:
+			phclient['pay'] = 2
+		else
+			phclient['pay'] = 3
+		end
+		!! 1,3 - anywhere, attheend, never		
+		
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['cuminside'] = 1
+		elseif temp <= 8:
+			phclient['cuminside'] = 2
+		else
+			phclient['cuminside'] = 3
+		end
+		!! 1,3 - NOKIDS, whatever, must
+		
+		!! gs 'mod_public_WC_street_sex', 'moneyfirst'		
+		gs 'mod_public_WC_street_box_brothel', 'placetalk'
+	end
+end
+
+
+if $ARGS[0] = 'moneyfirst':
+	otemp = 0	
+	if rand(1,5) ! 1:
+		gs 'mod_public_WC_street_box_brothel_girlchoose', 'moneyfirst2'
+	else
+		cla
+		'He paid me and…'
+		money += PH_full_pay
+		gs 'stat'
+		'He choose a girl'
+		if ph_Iammaownwhore = 1:			
+			:loopgirlsbusylist
+			i = rand(1,phwhores)
+			
+			if PH_full_pay <= 20: phjoy[i] += 30
+			
+			if phwhores[i] ! 0:
+				'CLIENT: "I want…"'
+				jump 'loopgirlsbusylist' 
+			else
+				'CLIENT: "I want this girl"'
+				if i = 1:
+					'<center><img <<$set_imgh>> src="<<func(''$face_image'')>>"></center>'
+				else
+					'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				end
+				'<<$phgirlname[i]>>'
+				phwhores[i] = 1
+			end
+			
+			if i = 1:
+				'He took me to the free room'
+				phwhores[1] = 1
+				
+				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+			else
+				'He took <<$phgirlname[i]>> to the free room'
+				phserv[i] = phsex
+				todayclientsgirlsboxnumber += 1
+				
+				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+			end
+			phwhores_hour[i] = hour + 1
+			phwhores_day[i] = daystart
+			
+			if phwhores_hour[i] >= 24: 
+				phwhores_day[i] = daystart + 1
+				phwhores_hour[i] -= 24
+			end	
+		else
+			:loopgirlsbusylist2
+			i = rand(2,phwhores)
+			if PH_full_pay <= 20: phjoy[i] += 30
+			
+			if phwhores[i] ! 0:
+				'CLIENT: "I want…"'
+				jump 'loopgirlsbusylist2' 
+			else
+				'CLIENT: "I want this girl"'
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				'<<$phgirlname[i]>>'
+				phwhores[i] = 1				
+			end
+			
+			if i = 1:
+				'He took me to the free room'
+				phwhores[1] = 1
+				
+				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+			else
+				'He took <<$phgirlname[i]>> to the free room'
+				phserv[i] = phsex
+				todayclientsgirlsboxnumber += 1
+				
+				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+			end
+			phwhores_hour[i] = hour + 1
+			phwhores_day[i] = daystart
+			
+			if phwhores_hour[i] >= 24: 
+				phwhores_day[i] = daystart + 1
+				phwhores_hour[i] -= 24
+			end
+		end
+		
+		ph_bussygirls += 1
+	end
+end
+
+
+if $ARGS[0] = 'clientaway':	
+	'Client goes away'
+
+	killvar 'carclient'
+	phclient_mood = 0
+	otemp = 0
+	
+	act 'continue': gt 'mod_public_WC_street_box_brothel','start'
+end
+
+
+if $ARGS[0] = 'placetalk':
+	otemp = rand(1,5)	
+	
+	act 'talk about the rules':
+		cla
+		
+		'ME: "We have next rules here:"'
+		
+		if phcondomonly = 1:
+			'Client MUST use condom'		
+		else
+			'Client can use condom if he want'
+		end
+		
+		if phclient['condom'] = 3 and phcondomonly = 1:
+			'CLIENT: "Pfff, no way"'
+			gs 'mod_public_WC_street_box_brothel', 'clientaway'
+		else
+			'CLIENT: "Okey"'			
+			
+			gs 'mod_public_WC_street_box_brothel', 'moneyfirst'			
+		end
+	end
+end
+
+
+if $ARGS[0] = 'clienttrigger':
+	!! otemp = 1258
+	
+	if otemp > 1:	
+		if ph_brothelfame <= 10:
+			if otemp >= rand(3,10):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 30:
+			if otemp >= rand(3,8):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 50:
+			if otemp >= rand(3,7):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 80:
+			if otemp >= rand(2,7):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 100:
+			if otemp >= rand(2,6):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 130:
+			if otemp >= rand(2,4):
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 150:
+			if rand(1,2) ! 1:
+				otemp = 1258
+			end
+		elseif ph_brothelfame <= 180:
+			if rand(1,3) ! 1:
+				otemp = 1258
+			end
+		else
+			if rand(1,4) ! 1:
+				otemp = 1258
+			end
+		end
+	end
+end
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_brothel ---------------------------------
+

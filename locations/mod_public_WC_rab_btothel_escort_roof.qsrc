@@ -1,0 +1,412 @@
+# mod_public_WC_rab_btothel_escort_roof
+if $ARGS[0] = 'start':
+	*clr & cla	
+	if phwine = 1:
+		
+		gs 'drugs', 'alcohol', 'wine'
+		gs 'stat'
+		minut += 2
+		gs 'stat'
+		phgorilka += 1
+		phescortfun += rand(1,2)
+		'He opened my bottle and we are drinking with a smal talk and a great view'
+		
+		if rand(1,3) = 1:
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+				phwine = 0
+			elseif alkowine = 0: 
+				alkowine = 1
+			end
+		end		
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/drink.jpg"></center>'
+	elseif phsiga = 1:
+		mc_inventory['cigarettes'] -= 1
+		minut += rand(3,5)
+		gs 'drugs', 'smoke'
+		gs 'stat'	
+		phescortfun += rand(1,2)
+		'We are smoking and share our live experience.'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/smoke.jpg"></center>'
+	end
+	if phstrip >= 3:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 5 ('+rand(1,2)+').jpg"></center>'
+	end
+	itemp = 0
+	
+	if $clothingworntype ! 'nude':
+		act 'kiss him':
+			*clr
+			if itemp <= 2:
+				gs 'arousal', 'kiss', 5, 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/kiss.jpg"></center>'
+			end
+			itemp += 1
+		end
+	end
+	
+	phtemp = 0	
+	if $clothingworntype ! 'nude':
+		act 'tease him':
+			*clr
+			if phtemp <= 2:
+				gs 'arousal', 'flash', 5, 'prostitution'
+				gs 'stat'
+				phescortfun += rand(2,5)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/1 start/1 tease.mp4"></video></center>'
+			end
+			phtemp += 1
+		end
+	end
+	
+	if phstrip = 0:
+		act 'undress myself':
+			*clr & cla
+			killvar 'phtemp'
+			killvar 'temp'
+			phstrip += 1
+			gs 'clothing', 'strip'
+			gs 'stat'
+			phescortfun += rand(1,3)
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 1.jpg"></center>'
+			
+			if $pantyworntype ! 'none': phstrip = 2
+			if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+			
+			act 'go to his room': 
+				killvar 'phwine'
+				killvar 'phsiga'
+				killvar 'phstrip'
+				gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+			end
+			
+			if mc_inventory['food_wine'] = 1: 
+				act 'keep drinking': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+				end
+			end
+			
+			if mc_inventory['cigarettes'] >= 1:
+				act 'Smoke': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					phsiga = 1
+					gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+				end
+			end
+		end
+	elseif phstrip > 0 and phstrip < 3:			
+		if phstrip = 1:
+			act 'undress myself even more':
+				*clr & cla
+				killvar 'phtemp'
+				killvar 'temp'
+				phstrip += 1
+				gs 'bras', 'remove'
+				gs 'stat'
+				phescortfun += rand(2,5)
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 2 ('+rand(1,2)+').jpg"></center>'
+				
+				if $pantyworntype ! 'none': phstrip = 2
+				if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+				
+				act 'go to his room': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					killvar 'phstrip'
+					gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+				end
+				
+				if mc_inventory['food_wine'] = 1: 
+					act 'keep drinking': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+					end
+				end
+				
+				if mc_inventory['cigarettes'] >= 1:
+					act 'Smoke': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						phsiga = 1
+						gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+					end
+				end
+			end
+		elseif phstrip = 2:
+			act 'undress my panties':
+				*clr & cla
+				killvar 'phtemp'
+				killvar 'temp'
+				phstrip += 1
+				gs 'underwear', 'remove'
+				gs 'stat'
+				phescortfun += rand(2,5)
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 4.jpg"></center>'
+				
+				if $pantyworntype ! 'none': phstrip = 2
+				if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+				
+				act 'go to his room': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					killvar 'phstrip'
+					gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+				end
+				
+				if mc_inventory['food_wine'] = 1: 
+					act 'keep drinking': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+					end
+				end
+				
+				if mc_inventory['cigarettes'] >= 1:
+					act 'Smoke': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						phsiga = 1
+						gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 1:
+		act 'blow him':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			'I approache him, bare his diick and start to suck it'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/1 bj start.mp4"></video></center>'
+			gs 'arousal', 'bj', rand(1,5), 'prostitution'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+					
+					if rand (1,3) = 1:
+						*clr & cla
+						'He start to fuck my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/3 deep.mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onface (2).mp4"></video></center>'
+							'He loads on my face'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/ontits.mp4"></video></center>'
+							'As he ready to cum I point his dick on my tits'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+							gs 'cum_call','breasts',$boy
+							gs 'stat'	
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'go to his room': 
+							killvar 'phwine'
+							killvar 'phsiga'
+							killvar 'phstrip'
+							gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 2:		
+		act 'masturbate':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/1 start/2 masturb.mp4"></video></center>'
+			'I sit in front of him and start to masturbate'
+			gs 'arousal', 'masturbate', rand(10,10), 'prostitution'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla				
+				'He unzip his fly approaches me - "Open your mouth"'
+				'As I open my mouth he fill it with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+					
+					if rand (1,3) = 1:
+						*clr & cla
+						'He start to fuck my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/3 deep.mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onface (2).mp4"></video></center>'
+							'He loads on my face'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/ontits.mp4"></video></center>'
+							'As he ready to cum I point his dick on my tits'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+							gs 'cum_call','breasts',$boy
+							gs 'stat'	
+						end
+						gs 'arousal', 'end'
+						gs 'stat'						
+						act 'go to his room': 
+							killvar 'phwine'
+							killvar 'phsiga'
+							killvar 'phstrip'
+							gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 3:	
+		act 'spread my legs':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/1 start sex.mp4"></video></center>'
+			gs 'arousal', 'flash', rand(1,5), 'prostitution'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'He start to fuck me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/2 sex ('+rand(1,5)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'He start to fuck me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/2 sex ('+rand(1,5)+').mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onbelly.mp4"></video></center>'
+							'At the end he pulls out and cum on my belly'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/inpanties.mp4"></video></center>'
+							gs 'cum_call','pantyfront',$boy
+							gs 'stat'
+							gs 'cum_call','pantyrear',$boy
+							gs 'stat'
+							gs 'cum_call','labia',$boy
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'						
+						act 'go to his room': 
+							killvar 'phwine'
+							killvar 'phsiga'
+							killvar 'phstrip'
+							gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	act 'go to his room': 
+		killvar 'phwine'
+		killvar 'phsiga'
+		killvar 'phstrip'
+		gt 'mod_public_WC_rab_btothel_escort_hotel', 'nomer_full'
+	end
+	
+	if mc_inventory['food_wine'] = 1: 
+		act 'keep drinking': 
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+		end
+	end
+	
+	if mc_inventory['cigarettes'] >= 1:
+		act 'Smoke': 
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			phsiga = 1
+			gt 'mod_public_WC_rab_btothel_escort_roof', 'start'
+		end
+	end
+end
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_roof ---------------------------------
+

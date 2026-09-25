@@ -1,0 +1,295 @@
+# mod_public_WC_options2
+*clr & cla
+
+
+
+'<center><h2>Public WC mod Settings</h2></center>'
+'<center><h2>v. 3.48<<$mod_info[1]>></h2></center>'
+
+
+if WCzoo > 0:
+	cla	
+	'Beasts interactions ON'
+	act 'disable beast interactions':
+		WCzoo = 0
+		gt 'mod_public_WC_options2'
+	end
+else
+	cla
+	'Beasts interactions OFF'
+	act 'enable beast interactions':
+		WCzoooff = 1
+		WCzoo = 1
+		gt 'mod_public_WC_options2'
+	end
+end
+
+if noeventGH = 0:
+	'Glory hole events ON'
+	act 'disable all Glory hole events':
+		noeventGH = 1
+		gt 'mod_public_WC_options2'
+	end
+else
+	'Glory hole events OFF'
+	act 'enable all Glory hole events':
+		noeventGH = 0
+		gt 'mod_public_WC_options2'
+	end
+end
+
+
+
+act 'change the video width':
+	*clr & cla
+	'Current video width is <<WCvideoweight>>'
+	act 'Change to 100': WCvideoweight = 100 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 200': WCvideoweight = 200 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 300': WCvideoweight = 300 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 400': WCvideoweight = 400 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 500': WCvideoweight = 500 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 600': WCvideoweight = 600 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 700': WCvideoweight = 700 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 800': WCvideoweight = 800 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 900': WCvideoweight = 900 & 'Now the video width is <<WCvideoweight>>'
+	act 'Change to 1000': WCvideoweight = 1000 & 'Now the video width is <<WCvideoweight>>'
+	
+	act '<b>Return</b>': gt 'mod_setting'
+end
+
+Act 'SHOW CHEATS':
+	act 'add 10 words': slova += 10 & gs 'stat'
+	act 'add 1000 words': slova += 1000 & gs 'stat'
+
+	act 'give me a gun':
+		gun = 1
+		ammo += 10
+		gs 'stat'
+	end
+	
+	act 'clear all my crimes': crime = 0 & gs 'stat'
+	
+	act '+1 symbol in the Pleasure House': ryska += 1 & gs 'stat'
+	
+	act '+10% to sex corrupt': sexcorrupt += 10 & gs 'stat'
+	act '-10% to sex corrupt': 
+		sexcorrupt -= 10
+		if sexcorrupt < 0: sexcorrupt = 0
+		gs 'stat'
+	end
+	
+	
+	act '+1 hour to the stag party of the FUN room client':
+		stagtime +=1
+		'stat'
+		'Current stag party extra time is <<stagtime>> hours'
+	end
+	act '-1 hour to the stag party of the FUN room client':
+		stagtime -=1
+		if stagtime <= 0: stagtime = 0
+		'stat'
+		'Current stag party extra time is <<stagtime>> hours'
+	end	
+
+	act '+10% submited to Vania': 
+		VaniaMayster += 10		
+		if VaniaMayster >= 120: VaniaMayster = 120
+		gs 'stat'
+	end	
+	act '-10% submited to Vania': 
+		VaniaMayster -= 10		
+		if VaniaMayster <= 0: VaniaMayster = 0
+		gs 'stat'
+	end	
+	
+	act 'Change the "robber event" chances during escort in the villa':
+		act 'chances +10%':
+			phroberchances -= 1
+			i = phroberchances * (-1) * 15 + 15
+			'Now there is a <<i>>% chance of the event triggered'
+		end
+		act 'chances -10%':
+			phroberchances += 1
+			i = phroberchances * (-1) * 15 + 15
+			'Now there is a <<i>>% chance of the event triggered'
+		end
+		act 'Change to default':
+			phroberchances = 0
+			i = phroberchances * (-1) * 15 + 15
+			'Now there is a <<i>>% chance of the event triggered'
+		end
+	end
+end
+
+act 'Change the time betweeen MAIN escort tasks':
+	*clr & cla
+	'Currently the MAIN escort task waits at least <<escortpauseconfig>> days to start.'
+	
+	act 'Change to 0+ days': escortpauseconfig = 0 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	act 'Change to 1+ day': escortpauseconfig = 1 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	act 'Change to 2+ days': escortpauseconfig = 2 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	act 'Change to 3+ days': escortpauseconfig = 3 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	act 'Change to 4+ days': escortpauseconfig = 4 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	act 'Change to 5+ days': escortpauseconfig = 5 & 'Now the escort task waits at least <<escortpauseconfig>> days to start'
+	
+	act '<b>Return</b>': gt 'mod_setting'
+end
+act 'Change the time betweeen short escort tasks':
+	*clr & cla
+	'Currently the short escort task waits at least <<phescortshorttaskconfig>> days to start.'
+	
+	act 'Change to 0+ days': phescortshorttaskconfig = 0 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	act 'Change to 1+ day': phescortshorttaskconfig = 1 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	act 'Change to 2+ days': phescortshorttaskconfig = 2 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	act 'Change to 3+ days': phescortshorttaskconfig = 3 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	act 'Change to 4+ days': phescortshorttaskconfig = 4 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	act 'Change to 5+ days': phescortshorttaskconfig = 5 & 'Now the short escort task waits at least <<phescortshorttaskconfig>> days to start'
+	
+	act '<b>Return</b>': gt 'mod_setting'
+end
+
+act 'Change streetwhoring prices':
+	'Current multiplier <<phwhorepay>>'
+	act 'Change to 1':	phwhorepay = 1
+	act 'Change to 2':	phwhorepay = 2
+	act 'Change to 3':	phwhorepay = 3
+	act 'Change to 4':	phwhorepay = 4
+	act 'Change to 5':	phwhorepay = 5	
+	act 'Change to 6':	phwhorepay = 6
+	act 'Change to 7':	phwhorepay = 7
+	act 'Change to 8':	phwhorepay = 8
+	act 'Change to 9':	phwhorepay = 9
+	act 'Change to 10':	phwhorepay = 10
+	act 'Change to 11':	phwhorepay = 11
+	act 'Change to 12':	phwhorepay = 12
+	act 'Change to 13':	phwhorepay = 13
+	act 'Change to 14':	phwhorepay = 14
+	act 'Change to 15':	phwhorepay = 15
+	act 'Change to default (2)':	phwhorepay = 2	
+end
+
+
+if $start_type[1] ! 'nomagic':
+	' '
+else
+	if PHmagic = 0:
+		'All magic is OFF'
+		act 'MAGIC settings':
+			cla
+			'All magic is OFF'
+			
+			act 'Enable magic': 
+				PHmagic = 1
+				pcs_magik += 100
+				'All magic is ON'
+			end
+			
+			act '<b>Return</b>': gt 'mod_setting'
+		end
+	elseif PHmagic = 1:
+		'All magic is ON'
+		act 'MAGIC settings':
+			cla
+			'All magic is ON'
+			
+			act 'Disable magic': 
+				PHmagic = 0
+				'All magic is OFF'
+			end
+			
+			act '<b>Return</b>': gt 'mod_setting'
+		end
+	end
+end
+
+act 'Change chance to meet a girl in the Glory hole':
+	'TYou can met a girl only after 13:00'
+	'current chance: <<CHANCE_MEET_HER_GH>>%'
+	act 'make it 100%': CHANCE_MEET_HER_GH = 100 & 'current chance: <<CHANCE_MEET_HER_GH>>%'	
+	act '+10%': CHANCE_MEET_HER_GH += 10 & 'current chance: <<CHANCE_MEET_HER_GH>>%'
+	act '+5%': CHANCE_MEET_HER_GH += 5 & 'current chance: <<CHANCE_MEET_HER_GH>>%'
+	act '+1%': CHANCE_MEET_HER_GH += 1 & 'current chance: <<CHANCE_MEET_HER_GH>>%'	
+	act '-1%': CHANCE_MEET_HER_GH -= 1 & 'current chance: <<CHANCE_MEET_HER_GH>>%'	
+	act '-5%': CHANCE_MEET_HER_GH -= 5 & 'current chance: <<CHANCE_MEET_HER_GH>>%'
+	act '-10%': CHANCE_MEET_HER_GH -= 10 & 'current chance: <<CHANCE_MEET_HER_GH>>%'
+	act 'make it 0%': CHANCE_MEET_HER_GH = 0 & 'current chance: <<CHANCE_MEET_HER_GH>>%'	
+end
+act 'Change the glory hole colegue whore skills':
+	temp = SHE_SLUT_LEVEL_GH*100 / 90
+	if temp = 100: 
+		'She is as slutty as a default'
+	elseif temp > 100: 
+		temp -= 100
+		'She is <<temp>>% more slut'
+	else
+		temptemp = (temp - 100)*(-1)
+		'She is <<temptemp>>% less slut'		
+	end
+
+	act 'Change to default':
+		SHE_SLUT_LEVEL_GH = 90	
+		'She is as slutty as a default'	
+	end
+	act '+10% whore skills':
+		SHE_SLUT_LEVEL_GH += 10
+		if SHE_SLUT_LEVEL_GH <= 10: 
+			'She can''t be less skilled'
+			SHE_SLUT_LEVEL_GH = 10
+		end
+		temp = SHE_SLUT_LEVEL_GH*100 / 90
+		if temp = 100: 
+			'She is as slutty as a default'
+		elseif temp > 100: 
+			temp -= 100
+			'She is <<temp>>% more slut'
+		else
+			temptemp = (temp - 100)*(-1)
+			'She is <<temptemp>>% less slut'		
+		end
+	end
+	act '-10% whore skills':
+		SHE_SLUT_LEVEL_GH -= 10
+		if SHE_SLUT_LEVEL_GH <= 10: 
+			'She can''t be less skilled'
+			SHE_SLUT_LEVEL_GH = 10
+		end
+		temp = SHE_SLUT_LEVEL_GH*100 / 90
+		if temp = 100: 
+			'She is as slutty as a default'
+		elseif temp > 100: 
+			temp -= 100
+			'She is <<temp>>% more slut'
+		else
+			temptemp = (temp - 100)*(-1)
+			'She is <<temptemp>>% less slut'		
+		end
+	end		
+end
+act 'Glory hole together: Change of angree clients gang bang ':
+	temp = 4 - agreesive_GH_publick
+	'At least <<temp>> unserved clients needed to trigger a gang bang event'
+
+	act'change to the default':
+		agreesive_GH_publick = 1
+		temp = 4 - agreesive_GH_publick
+		'At least <<temp>> unserved clients needed to trigger a gang bang event'		
+	end
+	act 'make it 1 unserved client less':
+		agreesive_GH_publick += 1
+		temp = 4 - agreesive_GH_publick
+		'At least <<temp>> unserved clients needed to trigger a gang bang event'	
+	end
+	act 'make it 1 unserved client more':
+		agreesive_GH_publick -= 1
+		temp = 4 - agreesive_GH_publick
+		'At least <<temp>> unserved clients needed to trigger a gang bang event'	
+	end	
+end
+
+
+act '<b>Return</b>': gt 'mod_setting'
+
+
+
+--- mod_public_WC_options2 ---------------------------------
+

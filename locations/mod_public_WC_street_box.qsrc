@@ -1,0 +1,1038 @@
+# mod_public_WC_street_box
+if $ARGS[0] = 'start': 
+	*clr & cla
+	if phwhores < 1: phwhores = 1
+	killvar 'ph_bussygirls'
+	$phgirlname[1] = $pcs_firstname
+	
+	if hour > 6 and hour < 22:
+		phbrothelwork = 0
+	end
+	
+	act 'wait (0:30)':
+		minut += 30
+		gs 'stat'
+		gt 'mod_public_WC_street_box', 'start'
+	end
+	
+	menu_off = 0
+	gs 'mod_public_WC_street_box_info', 'boxid'	
+
+	
+	$locM = 'mod_public_WC_street_box'
+	$locM_arg = 'start'		
+
+	if phboxspace < 3*phBoxnumberhere:
+		temp = 3*phBoxnumberhere - phboxspace
+		'The box have <<temp>> place to improve the box.'
+	end
+	
+	act 'Buy staff for the box':	
+		
+		act '---------------------------':
+		
+		end
+		
+		if phboxspace < 3*phBoxnumberhere:
+			temp = 3*phBoxnumberhere - phboxspace
+			!! 'The box have <<temp>> place to improve the box.'
+			
+			
+			
+			act 'Call Grisha to improve the box':
+				gs 'mod_public_WC_street_box', 'improvebox'
+			end
+		end
+		
+		
+		if phboxspace ! 0:		
+			act 'Call Grisha to change the box':
+				gs 'mod_public_WC_street_box', 'changebox'
+			end
+		end
+		
+		if phMYbrothel = phBOXid:			
+			'Booze storage is <<phbooze>>/30'
+			'Drugs storage is <<phdrugs>>/50'
+			
+			'<i>Girls are trying to sell as much booze/drugs as they can. Girls spend more time with a clients, who bought some, and are trying to sell more.</i>'
+			
+			act 'Order 10 booze mix (4000)':
+				if money >= 4000:
+					if phbooze >= 21:
+						'I have no plase to storage that much'
+					else
+						minut += 15
+						phbooze += 10
+						money -= 4000
+						gs 'stat'
+						'Soon the guy comes, he brings booze.'
+						'Booze storage is <<phbooze>>/30'
+					end
+				else
+					'not enough cash'
+				end
+			end
+			
+			act 'Order 10 drugs mix (10000)':
+				if money >= 10000:
+					if phdrugs >= 41:
+						'I have no plase to storage that much'
+					else
+						minut += 15
+						phdrugs += 10
+						money -= 10000
+						gs 'stat'
+						'Soon the guy comes, he brings drugs mix in a small box.'
+						'Drugs storage is <<phdrugs>>/50'
+					end
+				else
+					'not enough cash'
+				end
+			end
+			
+			
+		end
+	end	
+	
+	
+	gs 'mod_public_WC_street_box_info', 'furniture'
+	
+	act '<b>Go to the street</b>':		
+		if $clothingworntype = 'nude':
+			$func('wrap', 'neg b', 'You need to get dressed before going out.')			
+		elseif sick > 72:
+			$func('wrap', 'neg b', 'You''re too sick to walk around in the streets.')			
+		else
+			if bugfix = 115:
+				killvar 'bugfix'
+				gt $phbug, $phbugloc
+			else
+				minut += 3
+				gt $phsexstart, $phsexstart_loc
+			end
+		end
+	end	
+	
+	
+	if magicwhore = 0:
+		+$OpenInnerThought+'I feel a warming pleasure…'+$CloseInnerThought
+		gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub'
+		minut -= 10
+		gs 'stat'
+		
+		act 'Relax and try to jump into pleasure warm':
+			*clr & cla
+			'SOME VOICE IN MY HEAD: "You are connected to global Whoreweb… do you want to joy or work"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/search.jpg"></center>'
+			
+			act 'WORK':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/search.jpg"></center>'				
+				'Whoreweb: "The client founded: threesome from the Avatar XV world. Price is 2500 "'
+				
+				act 'Agree': magicwhore += 1 & gt 'mod_public_WC_street_box', 'Mfirstsex'
+				
+				act 'Refuse': gt 'mod_public_WC_street_box', 'start'
+			end
+			
+			act 'Open my eyes': gt 'mod_public_WC_street_box', 'start'
+		end
+	elseif magicwhore ! 0 and pcs_mana >= 100:
+		act 'Connect to the global Whoreweb (100 mana)':
+			*clr & cla
+			
+			pcs_mana -= 100
+			minut += 10
+			gs 'stat'
+			
+			if (succubusQW = 5) OR (PH_consanguinity_L = 4 and GBSpirit ! 0) OR (PH_consanguinity_D = 4 and Helllordwhore ! 0):
+				act 'JOY':
+					if succubusQW = 5:
+						act 'Find the target to feed (this can take a lot of time)':
+							cla
+							!! 'You wait until he has dragged you into the alley before turning on him.'
+							!! act 'Continue': gt 'succubus', 'RapistFight'
+							gt 'mod_public_WC_street_box_magicwhore_sex', '11 sucub hunt'
+						end
+					end
+					
+					if PH_consanguinity_L = 4 and ((daystart - GBSpirit) >= 10 and GBSpirit ! 0):
+						act 'Fuck Eldrich spirits':
+							gt 'mod_public_WC_street_box_magicwhore_rithual', 'L4'
+						end
+					elseif PH_consanguinity_L = 4 and GBSpirit ! 0:
+						act 'Fuck Eldrich spirits':
+							'Request will come in a week or smth'
+						end
+					end
+					
+					if PH_consanguinity_D = 4 and ((daystart - Helllordwhore) >= 10 and Helllordwhore ! 0):
+						act 'Hell whore service':
+							gt 'mod_public_WC_street_box_magicwhore_rithual', 'D4'
+						end
+					elseif PH_consanguinity_D = 4 and Helllordwhore ! 0:
+						act 'Hell whore service':
+							'Request will come in a week or smth'
+						end
+					end
+				end
+			end
+			
+			phi = 0
+			
+			act 'WORK':
+				!*clr & cla
+				*clr
+				gs 'mod_public_WC_street_box_magicwhore', 'relationship'
+				gs 'mod_public_WC_street_box_magicwhore', 'consanguinity'
+				gs 'stat'
+				*nl
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/search.jpg"></center>'
+				phi += 1
+				
+				
+				
+				if (rand(1,3) + phtestcheat) >= 3 or phi >= rand(6,10):
+					cla	
+					ztemp = 12349
+					gs 'mod_public_WC_street_box_magicwhore', 'task_randomiser'
+				else
+					!*clr
+					!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/search.jpg"></center>'
+					'Whoreweb: "the client is being searched…<<phi>>"'
+					pcs_mana -= 50
+					minut += 10
+					gs 'stat'
+				end
+			end			
+			
+
+			
+			if PH_consanguinity_L = 0 and PHmwrstat >= 25:				
+				act 'Start Light Forces contract rithual LVL 1':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'L1'
+				end
+			elseif PH_consanguinity_L = 1 and PHmwrstat >= 50:
+				act 'Start Light Forces contract rithual LVL 2':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'L2'
+				end
+			elseif PH_consanguinity_L = 2 and PHmwrstat >= 75:
+				act 'Start Light Forces contract rithual LVL 3':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'L3'
+				end
+			elseif PH_consanguinity_L = 3 and PHmwrstat >= 100:
+				act 'Start Light Forces contract rithual LVL 4':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'L4'
+				end
+			end
+			
+
+			
+			if PH_consanguinity_D = 0 and PHmwrstat <= -25:				
+				act 'Start Dark Forces contract rithual LVL 1':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'D1'
+				end
+			elseif PH_consanguinity_D = 1 and PHmwrstat <= -50:
+				act 'Start Dark Forces contract rithual LVL 2':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'D2'
+				end
+			elseif PH_consanguinity_D = 2 and PHmwrstat <= -75:
+				act 'Start Dark Forces contract rithual LVL 3':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'D3'
+				end
+			elseif PH_consanguinity_D = 3 and PHmwrstat <= -100:
+				act 'Start Dark Forces contract rithual LVL 4':
+					gt 'mod_public_WC_street_box_magicwhore_rithual', 'D4'
+				end
+			end
+
+			if PH_consanguinity_D >= 3 or PH_consanguinity_L >= 3:
+				act 'Show the daily deals':
+					cla
+					If PHmagicdailydeals = daystart:
+						*nl
+						$PHtasktype = $PHdealtype[1]
+						PHtaskrand = $PHdealtemp[1]
+						phtemp = $PHdealphtemp[1]
+						PH_full_pay = $PHdealphpay[1]
+						gs 'mod_public_WC_street_box_magicwhore_daily', 'task_randomiser'
+						'______________________________________________________________________________'
+						*nl
+						*nl
+						$PHtasktype = $PHdealtype[2]
+						PHtaskrand = $PHdealtemp[2]
+						phtemp = $PHdealphtemp[2]
+						PH_full_pay = $PHdealphpay[2]
+						gs 'mod_public_WC_street_box_magicwhore_daily', 'task_randomiser'
+						'______________________________________________________________________________'
+						*nl
+						*nl
+						$PHtasktype = $PHdealtype[3]
+						PHtaskrand = $PHdealtemp[3]
+						phtemp = $PHdealphtemp[3]
+						PH_full_pay = $PHdealphpay[3]
+						gs 'mod_public_WC_street_box_magicwhore_daily', 'task_randomiser'
+						'______________________________________________________________________________'
+						*nl
+						*nl
+						$PHtasktype = $PHdealtype[4]
+						PHtaskrand = $PHdealtemp[4]
+						phtemp = $PHdealphtemp[4]
+						PH_full_pay = $PHdealphpay[4]
+						gs 'mod_public_WC_street_box_magicwhore_daily', 'task_randomiser'
+						'______________________________________________________________________________'
+						*nl
+						*nl
+					else
+						otemp = 1325
+						gs 'mod_public_WC_street_box_magicwhore_daily', 'start'
+					end
+					
+					act 'Open my eyes': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+			
+			act 'FAQ':
+				'There are neutral, light and dark requests'
+				'Working with light requests, you increase relationship with the Light Forces and dicrease the relationship with the Dark Forces'
+				'Working with dark requests, you increase relationship with the Dark Forces and dicrease the relationship with the Light Forces'
+				*nl
+				'When you achiewed 25%,50%,75%,100% relationship, you can start the contract rithual.'
+				'Once the contract is signed it will never be canceled'
+				'Each contract unlocks new request of the corresponding Forces'
+				*nl
+				'Each New contract provides you new <b>consanguinity</b> level with the Forces'
+				'It is almost imposible to lose your <b>consanguinity</b> level with the Forces'
+				
+				gs 'mod_public_WC_street_box_magicwhore', 'relationship'
+				gs 'mod_public_WC_street_box_magicwhore', 'consanguinity'
+				gs 'stat'				
+			end
+			
+			act 'Open my eyes': gt 'mod_public_WC_street_box', 'start'
+		end
+	elseif magicwhore ! 0 and pcs_mana < 100:
+		act 'Connect to the global Whoreweb (100 mana)':
+			'I need 100 mana for this'
+			
+			'<i>(if your start is NOmagic start: go to the MOD settings to enable magic events)</i>'
+		end
+	end
+	
+	if $clothingworntype = 'nude':
+		act 'dress up':
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+		end
+	end	
+	
+	if fame['pav_prostitute'] >= 80 and phMYbrothel = 0 and phBoxnumberhere < 3:
+		+$OpenInnerThought+'If I build more boxes here, I will have bigger place to live and work!'+$CloseInnerThought	
+		+$OpenInnerThought+'I need 3 boxes to open my own brothel!'+$CloseInnerThought	
+	elseif fame['pav_prostitute'] < 80 and phMYbrothel = 0 and phBoxnumberhere < 3:	
+		+$OpenInnerThought+'If I would be more famous whore, the client will come to me, and I would not need to search for them'+$CloseInnerThought
+		
+	elseif fame['pav_prostitute'] >= 80 and phMYbrothel = 0 and phBoxnumberhere >= 3:
+		+$OpenInnerThought+'Can I start the brothel?!'+$CloseInnerThought	
+		
+		act 'Can I start the brothel?!':
+			
+			if phBOX['table'] <= 0:
+				'I need at least 1 table here'
+			end
+			
+			if phBOX['shower'] <= 0:
+				'I need at least 1 shower here'
+			end
+			
+			if phBOX['wc'] <= 0:
+				'I need at least 1 wc here'
+			end
+			
+			if phBOX['bed'] <= 0:
+				'I need at least 1 bed here'
+				'If I have more beds, then I need more whores?'
+			end
+			
+			if phBOX['table'] > 0 and phBOX['shower'] > 0 and phBOX['wc'] > 0 and phBOX['bed'] > 0:
+				act 'Open the brothel':
+					cla
+					phMYbrothel = phBOXid					
+					
+					$ph_brothelname = input("What is the brothel name? (Leave blank for Pleasure box)")
+					if $ph_brothelname = '':$ph_brothelname = 'Pleasure box'
+					
+					'Each night clients will come'					
+					'I can improve my brothel with new equipment and whores'
+					
+					'If I have more beds, then I need more whores?'
+					
+					ph_brothelhj = 38 * phclientwantprice_pricekoef
+					ph_brothelbj = 112 * phclientwantprice_pricekoef
+					ph_brothelvag = 150 * phclientwantprice_pricekoef
+					ph_brothelass = 165 * phclientwantprice_pricekoef
+					
+					phwhores = 1
+					ph_Iammaownwhore = 1
+					
+					act 'Continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+		end
+	elseif phMYbrothel = phBOXid:	
+		'My brothel fame is <<ph_brothelfame>>'
+		
+		if hour <= 6 or hour >= 22:
+			if phteach ! daystart or ( phteach = daystart and hour >= 22 ):
+				act '<b>light the "working" sign on the <<$ph_brothelname>></b>':
+					*clr & cla
+					phbrothelwork = 1
+					otemp = 0
+					todayclientsgirlsboxnumber = 0
+					$phbug = $phsexstart 
+					$phbugloc = $phsexstart_loc
+					bugfix = 115
+					phdruggedgirls = 0
+					
+					!! cla
+					gt 'mod_public_WC_street_box_brothel', 'start'
+				end
+			else
+				act '<b>light the "working" sign on the <<$ph_brothelname>></b>':
+					!*clr & cla
+					!! phbrothelwork = 1
+					!! otemp = 0
+					!! todayclientsgirlsboxnumber = 0
+					!$phbug = $phsexstart 
+					!$phbugloc = $phsexstart_loc
+					!! bugfix = 115
+					!! phdruggedgirls = 0
+					
+					!! cla
+					!! gt 'mod_public_WC_street_box_brothel', 'start'
+					'I will not work today, there are no girls, cuz I spent this night on training'
+				end
+			end
+			
+			if phwhores > 1:
+				act 'spend a night to train a whore':
+					gt 'mod_public_WC_street_box_brothel_teach', 'teach'
+				end
+			end
+		else
+			phbrothelwork = 0
+			act '<b>light the "working" sign on the <<$ph_brothelname>></b>':
+				'Brothel works at night time only. Girls come to work at 22:00, amd work till 6:00.'
+			end
+		end
+		
+		!! whorejobs? - events, etc
+		!-=wip=-
+		
+		act 'Change prices':
+			cla
+			'Current prices:'
+			'The hand job price is  <<ph_brothelhj>>'
+			'The blow job price is <<ph_brothelbj>>'
+			'The vaginal sex price is <<ph_brothelvag>>'
+			'The anal sex price is <<ph_brothelass>>'
+			
+			'<i>Each time a girl provides a service, you pay 500 for that</i>'
+			
+			temp = ph_brothelhj
+			ph_brothelhj = input("The hand job price is… (Leave blank for no changes)")
+			if ph_brothelhj = '': ph_brothelhj = temp
+			
+			temp = ph_brothelbj
+			ph_brothelbj = input("The blow job price is… (Leave blank for no changes)")
+			if ph_brothelbj = '': ph_brothelbj = temp		
+			
+			temp = ph_brothelvag
+			ph_brothelvag = input("The vaginal sex price is… (Leave blank for no changes)")
+			if ph_brothelvag = '': ph_brothelvag = temp
+			
+			temp = ph_brothelass
+			ph_brothelass = input("The anal sex price is… (Leave blank for no changes)")
+			if ph_brothelass = '': ph_brothelass = temp
+			
+			act 'Continue': gt 'mod_public_WC_street_box', 'start'
+		end
+		
+		act 'Change rules':
+			cla
+			
+			if phcondomonly = 1:
+				'Client MUST use condom'
+				
+				act 'Client can use condom if he want': phcondomonly = 0 & 'Now Client must NOT use condom'
+			else
+				'Client can use condom if he want'
+				
+				act 'Client MUST use condom': phcondomonly = 1 & 'Now Client MUST use condom'
+			end
+			
+			if ph_Iammaownwhore = 0: 
+				'I am just receptionist, no whore service'
+				
+				act 'I want to work with girls': ph_Iammaownwhore = 1 & 'Now I am whore too'
+			else
+				'I am working in the brotheltogether with my whores'
+				
+				act 'I want to be receptionist only': ph_Iammaownwhore = 0 & 'Now I am receptionist only'
+			end
+			
+			act 'Continue': gt 'mod_public_WC_street_box', 'start'
+		end
+		
+		!! '-=wip=-'
+		!! zapovnyty bar, narkotu
+		
+		!! zalyshyty igrashky
+		
+		!! zamovyty extra mebli u grishy
+		
+		
+		
+		act 'look my whores (or find more?)':
+			*clr & cla
+			'<<phwhores>> girls work in my brothel:'
+			
+			*nl
+			'<<$pcs_firstname>>'
+			$img_temp = func('$face_image')
+			'<center><img <<$set_imgh>> src="<<$img_temp>>"></a></center>'
+			
+			i = 1				
+			phgirlstatHJ[i] = stat['hj']
+			phgirlstatBJ[i] = stat['bj']
+			phgirlstatFJ[i] = stat['footjob']
+			phgirlstatVAG[i] = stat['vaginal']
+			phgirlstatASS[i] = stat['anal']
+			
+			temp = stat['hj']
+			'Hand job stat = <<temp>>'
+			temp = stat['bj']
+			'Blow job stat = <<temp>>'
+			temp = stat['footjob']
+			'Footjob job stat = <<temp>>'
+			temp = stat['vaginal']
+			'Vaginal stat = <<temp>>'
+			temp = stat['anal']
+			'Anal stat = <<temp>>'
+			*nl	
+			
+			if phwhores > 1:
+				gs 'mod_public_WC_street_box_brothel', 'WORKgirls'
+				
+				act 'expel girl':
+					cla
+					i = 2
+					gt 'mod_public_WC_street_box', 'expel'					
+				end
+			end
+			
+			act 'search new girl':
+				cla
+				gs 'mod_public_WC_street_box_brothel', 'FINDgirls'
+				
+				
+				act 'exit': gt 'mod_public_WC_street_box', 'start'
+			end
+			
+			act 'Continue': gt 'mod_public_WC_street_box', 'start'
+		end		
+	end
+	
+	if phMYbrothel ! phBOXid and phMYbrothel ! 0:
+		'My brothel is in another box'
+	end
+	
+	if phbrothelwork = 1: gt 'mod_public_WC_street_box_brothel', 'start'
+	gs 'stat'
+end
+
+
+
+if $ARGS[0] = 'improvebox':
+	!! cla	
+	'GRISHA: "Hi, <<$pcs_firstname>>, how can I help you?"'
+	
+	if money >= 5000:
+		act 'install shower (5000)':
+			cla
+			money -= 5000
+			
+			minut += 120
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 2 hours to install the shower."'
+			'ME: "ok"'
+			'Very soon worker comes and install the shower'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 += 1
+				phBOX1['shower'] += 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 += 1
+				phBOX2['shower'] += 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 += 1
+				phBOX3['shower'] += 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 += 1
+				phBOX4['shower'] += 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 += 1
+				phBOX5['shower'] += 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 += 1
+				phBOX6['shower'] += 1
+			end
+			
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	else
+		act 'install shower (5000)': 'I don''t have enough cash'
+	end
+	
+	if money >= 3500:
+		act 'install bed (3500)':
+			cla
+			money -= 3500
+			
+			minut += 70
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to install the bed."'
+			'ME: "ok"'
+			'Very soon worker comes and install the bed'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 += 1
+				phBOX1['bed'] += 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 += 1
+				phBOX2['bed'] += 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 += 1
+				phBOX3['bed'] += 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 += 1
+				phBOX4['bed'] += 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 += 1
+				phBOX5['bed'] += 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 += 1
+				phBOX6['bed'] += 1
+				
+								
+			end
+			
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	else
+		act 'install bed (3500)': 'I don''t have enough cash'
+	end		
+	
+	if money >= 4000:
+		act 'install toilet (4000)':
+			cla
+			money -= 4000
+			
+			minut += 120
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 2 hours to install the toilet."'
+			'ME: "ok"'
+			'Very soon worker comes and install the toilet'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 += 1
+				phBOX1['wc'] += 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 += 1
+				phBOX2['wc'] += 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 += 1
+				phBOX3['wc'] += 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 += 1
+				phBOX4['wc'] += 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 += 1
+				phBOX5['wc'] += 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 += 1
+				phBOX6['wc'] += 1				
+			end
+			
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	else
+		act 'install toilet (4000)': 'I don''t have enough cash'
+	end		
+	
+	if money >= 2500:
+		act 'install desk and wardrobe (2500)':
+			cla
+			money -= 2500
+			
+			minut += 40
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to install desk and wardrobe."'
+			'ME: "ok"'
+			'Very soon worker comes and install desk and wardrobe'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 += 1
+				phBOX1['table'] += 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 += 1
+				phBOX2['table'] += 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 += 1
+				phBOX3['table'] += 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 += 1
+				phBOX4['table'] += 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 += 1
+				phBOX5['table'] += 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 += 1
+				phBOX6['table'] += 1				
+			end
+			
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	else
+		act 'install desk and wardrobe (2500)': 'I don''t have enough cash'
+	end		
+	
+	act 'Call you later': gt 'mod_public_WC_street_box', 'start'
+end
+
+
+
+if $ARGS[0] = 'changebox':
+	cla	
+	
+	if money >= 1000 and phBOX['shower'] > 0:
+		act 'remove shower (1000)':
+			cla
+			money -= 1000
+			
+			minut += 65
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to uninstall."'
+			'ME: "ok"'
+			'Very soon worker comes and do everything I need'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 -= 1
+				phBOX1['shower'] -= 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 -= 1
+				phBOX2['shower'] -= 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 -= 1
+				phBOX3['shower'] -= 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 -= 1
+				phBOX4['shower'] -= 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 -= 1
+				phBOX5['shower'] -= 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 -= 1
+				phBOX6['shower'] -= 1				
+			end
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	elseif money < 3500 and phBOX['shower'] > 0:
+		act 'remove shower (1000)': 'I don''t have enough cash'
+	end				
+	
+	if money >= 1000 and phBOX['bed']	 > 0:
+		act 'remove bed (1000)':
+			cla
+			money -= 1000
+			
+			minut += 65
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to uninstall."'
+			'ME: "ok"'
+			'Very soon worker comes and do everything I need'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 -= 1
+				phBOX1['bed'] -= 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 -= 1
+				phBOX2['bed'] -= 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 -= 1
+				phBOX3['bed'] -= 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 -= 1
+				phBOX4['bed'] -= 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 -= 1
+				phBOX5['bed'] -= 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 -= 1
+				phBOX6['bed'] -= 1				
+			end
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	elseif money < 3500 and phBOX['bed'] > 0:
+		act 'remove bed (1000)': 'I don''t have enough cash'
+	end	
+	
+	if money >= 1000 and phBOX['wc'] > 0:
+		act 'remove shower (1000)':
+			cla
+			money -= 1000
+			
+			minut += 65
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to uninstall."'
+			'ME: "ok"'
+			'Very soon worker comes and do everything I need'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 -= 1
+				phBOX1['wc'] -= 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 -= 1
+				phBOX2['wc'] -= 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 -= 1
+				phBOX3['wc'] -= 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 -= 1
+				phBOX4['wc'] -= 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 -= 1
+				phBOX5['wc'] -= 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 -= 1
+				phBOX6['wc'] -= 1				
+			end
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	elseif money < 3500 and phBOX['wc'] > 0:
+		act 'remove toilet (1000)': 'I don''t have enough cash'
+	end				
+	
+	if money >= 1000 and phBOX['table'] > 0:
+		act 'remove shower (1000)':
+			cla
+			money -= 1000
+			
+			minut += 65
+			gs 'stat'
+			'GRISHA: "Worker will be in 10 minutes, he need around 1 hour to uninstall."'
+			'ME: "ok"'
+			'Very soon worker comes and do everything I need'
+			'I paid the price and he goes away'
+			
+			if phBOXid = 1:
+				phboxspace1 -= 1
+				phBOX1['table'] -= 1
+				
+				
+			elseif phBOXid = 2:
+				phboxspace2 -= 1
+				phBOX2['table'] -= 1
+				
+				
+			elseif phBOXid = 3:
+				phboxspace3 -= 1
+				phBOX3['table'] -= 1
+				
+				
+			elseif phBOXid = 4:
+				phboxspace4 -= 1
+				phBOX4['table'] -= 1
+				
+				
+			elseif phBOXid = 5:
+				phboxspace5 -= 1
+				phBOX5['table'] -= 1
+				
+			elseif phBOXid = 6:
+				phboxspace6 -= 1
+				phBOX6['table'] -= 1				
+			end
+			
+			act 'continue': gt $phsexstart, $phsexstart_loc
+		end
+	elseif money < 3500 and phBOX['table'] > 0:
+		act 'remove table and wardrobe (1000)': 'I don''t have enough cash'
+	end	
+	
+	act 'Call you later': gt 'mod_public_WC_street_box', 'start'
+end
+
+
+
+
+if $ARGS[0] = 'Mfirstsex':
+	*clr & cla
+	PH_full_pay = 2500
+	
+	PHMAGICWORKNOW = 1
+	
+	!! 'Whoreweb: "The client founded: threesome from the Avatar XV world. Price is 1000 "'
+	gt 'mod_public_WC_street_sex_corner_drugs', '1'
+end
+
+
+if $ARGS[0] = 'expel':
+	'There is no cancel for this action!!!'
+	
+	if i > phwhores: i = 2
+	if i <= 1: i = phwhores
+	
+	'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+	'<<$phgirlname[i]>>'
+	
+	*nl
+	'Hand job stat = <<phgirlstatHJ[i]>>'
+	'Blow job stat = <<phgirlstatBJ[i]>>'
+	'Footjob job stat = <<phgirlstatFJ[i]>>'
+	'Vaginal stat = <<phgirlstatVAG[i]>>'
+	'Anal stat = <<phgirlstatASS[i]>>'
+	*nl
+	'<<phclientserved[i]>> clients served'
+	'_________________________________________________'
+	*nl	
+	
+	act 'see previous':  i -= 1 & gt 'mod_public_WC_street_box', 'expel'
+	act 'see next': i += 1 & gt 'mod_public_WC_street_box', 'expel'
+	
+	act 'EXPEL <<$phgirlname[i]>>':		
+		temp = i + 1
+		
+		:loopgirlsexpel	
+		
+		$phgirlava[i] = $phgirlava[temp]
+		$phgirlname[i] = $phgirlname[temp]
+		
+		girltype[i] = girltype[temp]
+		
+		phgirlstatHJ[i] = phgirlstatHJ[temp]
+		phgirlstatBJ[i] = phgirlstatBJ[temp]
+		phgirlstatFJ[i] = phgirlstatFJ[temp]
+		phgirlstatVAG[i] = phgirlstatVAG[temp]
+		phgirlstatASS[i] = phgirlstatASS[temp]
+		
+		phclientserved[i] = phclientserved[temp]
+		girlid[i] = girlid[temp]
+		
+		
+		temp += 1
+		i += 1
+		if temp > phwhores:
+			phwhores -= 1
+			i = 2
+			gt 'mod_public_WC_street_box', 'expel'
+		else
+			jump 'loopgirlsexpel'
+		end
+	end
+	
+	
+	act 'exit': gt 'mod_public_WC_street_box', 'start'	
+end
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box ---------------------------------
+

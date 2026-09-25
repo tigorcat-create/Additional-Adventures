@@ -1,0 +1,2695 @@
+# mod_public_WC_PH_blackcat_daily_ania
+if $ARGS[0] = 'ania_start':
+	*clr & cla	
+	$metka = 'ania_start'
+	$loc = 'mod_public_WC_PH_blackcat_daily_ania'
+	$menu_loc = 'mod_public_WC_PH_blackcat_daily_ania'
+	$menu_arg = 'ania_start'
+	menu_off = 0
+	*clr & cla
+	gs 'stat'
+	
+	$func('wrap', 'header center b', 'My today''s room №<<roomtemp>>')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/room<<roomtemp>>.jpg"></center>'
+	
+	if ania_bouse = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+	end	
+	
+	gt 'mod_public_WC_PH_blackcat_daily_ania', 'ania'
+end
+
+if $ARGS[0] = 'ania':
+	*clr & cla	
+	$metka = 'ania'
+	$loc = 'mod_public_WC_PH_blackcat_daily_ania'
+	$menu_loc = 'mod_public_WC_PH_blackcat_daily_ania'
+	$menu_arg = 'ania'
+	menu_off = 0
+	*clr & cla
+	gs 'stat'
+	gs 'boyStat', 'A550'
+	gs 'stat'
+	
+	if npc_QW['A550'] >= 50:
+		if rand(1,3) = 1: phgirlsrelations += 1
+	end
+	
+	$func('wrap', 'header center b', 'My today''s room №<<roomtemp>>')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/room<<roomtemp>>.jpg"></center>'
+	
+	if ania_bouse = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+	end
+	'<<$npc_firstname[''A550'']>> is here'
+	
+	act 'chat':
+		*clr & cla
+		if npc_QW['A550'] <= 30: npc_QW['A550'] += 1
+		
+		minut += rand(15,30)
+		humint_exp += rand(0,1)
+		gs 'stat'
+		'We chat about funny life and "work" situations'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/chat.mp4"></video></center>'
+		
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily_ania', 'ania'
+	end
+
+	if ania_bouse = 1 or mc_inventory['food_wine'] = 1:
+		act 'drink':
+			*clr & cla
+			if npc_QW['A550'] <= 30: npc_QW['A550'] += rand(1,2)
+			if mc_inventory['food_wine'] = 1:
+				'I pour some wine from my purse'
+				'-Nice, move <<$pcs_firstname>>!'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0: 
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'				
+			else
+				'I asked ' + $npc_firstname['A52']+' to drink'
+				'She pour me some alkohol and we have nice chat'
+				gs 'drugs', 'alcohol', 'whiskey'
+				gs 'stat'
+			end
+			
+			+$OpenInnerThought+'Tasty…'+$CloseInnerThought
+			
+			'we drink and talk, even share work experience…'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/drink.mp4"></video></center>'
+			
+			minut += 10
+			gs 'stat'
+			ania_bouse = 1
+			
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end	
+			
+			act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+		end
+	end
+	
+	
+	act 'tease':
+		*clr & cla
+		minut += 5
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/tease.mp4"></video></center>'
+		if npc_QW['A550'] > 30:
+			npc_QW['A550'] += rand(0,1)
+			'- Hey, what are you doing?'
+			'- Nosing)))'
+			'- I know why you doing it'
+			'- Don''t know what are you talking about)))'
+			
+			temp = rand(1,100)
+			if temp < 70:
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+			elseif temp >= 70 and npc_QW['A550'] >=50:
+				if npc_QW['A550'] >=50 and npc_QW['A550'] < 70:
+					*clr & cla
+					'She start kissing me'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/kiss ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+					gs 'stat'
+					
+					
+					gs 'willpower', 'misc', 'force'
+					temp = will_cost + (sexcorrupt / 3) - ania_sub
+					will_cost += (sexcorrupt / 3)
+					will_cost -= ania_sub
+					if will_cost <= pcs_willpwr:
+						
+						act 'Stop her (<<temp>> Willpower)':
+							cla
+							minut += 5
+							gs 'stat'
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							
+							'- Ania, stop! I don''t feel like this for now'
+							'- sad, but ok, I understand…'
+							ania_sub += 1
+							
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+						end
+					elseif will_cost <= pcs_willpwr:
+						act 'I am to corrupt of sex to Stop her:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+					else
+						act 'Stop her ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+					
+					act 'lick her pussy':						
+						npc_QW['A550'] += rand(1,2)
+						ztemp = 1
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+					end
+					
+					act 'lick her ass':						
+						npc_QW['A550'] += rand(1,2)
+						ztemp = 2
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+					end
+					
+					act 'ask her to lick my pussy':						
+						npc_QW['A550'] += rand(1,1)
+						ztemp = 1
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+					end
+					
+					act 'ask her to lick my ass':						
+						npc_QW['A550'] += rand(1,1)
+						ztemp = 2
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+					end
+					
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+					
+				elseif npc_QW['A550'] >=70:
+					*clr & cla
+					'She undress her dress with few moves, and shows her pussy as a wellcome to me'
+					gs 'arousal', 'voyeur', rand(3,3), 'lesbian'
+					gs 'stat'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/.mp4"></video></center>'
+					
+					act 'kiss her':
+						*clr & cla
+						gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/kiss.mp4"></video></center>'
+						
+						if npc_QW['A550'] <= 50: 
+							npc_QW['A550'] += rand(1,2)
+						elseif npc_QW['A550'] <= 100: 
+							npc_QW['A550'] += 1
+						end
+						
+						act 'lick her pussy':						
+							npc_QW['A550'] += rand(1,2)
+							ztemp = 1
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+						end
+						
+						act 'lick her ass':						
+							npc_QW['A550'] += rand(1,2)
+							ztemp = 2
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+						end
+						
+						act 'ask her to lick my pussy':						
+							npc_QW['A550'] += rand(1,1)
+							ztemp = 1
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+						end
+						
+						act 'ask her to lick my ass':						
+							npc_QW['A550'] += rand(1,1)
+							ztemp = 2
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+						end
+						
+						
+						
+					end
+					
+					act 'lick her pussy':						
+						npc_QW['A550'] += rand(1,2)
+						ztemp = 1
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+					end
+					
+					gs 'willpower', 'misc', 'force'
+					temp = will_cost + (sexcorrupt / 3) - ania_sub
+					will_cost += (sexcorrupt / 3)
+					will_cost -= ania_sub
+					if will_cost <= pcs_willpwr:
+						
+						act 'Stop her (<<temp>> Willpower)':
+							cla
+							minut += 5
+							gs 'stat'
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							
+							'- Ania, stop! I don''t feel like this for now'
+							'- sad, but ok, I understand…'
+							ania_sub += 1
+							
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+						end
+					elseif will_cost <= pcs_willpwr:
+						act 'I am to corrupt of sex to Stop her:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+					else
+						act 'Stop her ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+				end
+			else
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+			end
+		elseif npc_QW['A550'] <= 30:
+			npc_QW['A550'] -= rand(0,1)
+			if npc_QW['A550'] < 1: npc_QW['A550'] = 1
+			humint_exp += rand(0,1)
+			gs 'stat'
+			'- Hey, wtf are you doing?!'
+			'- Relax, juxt messing with you)))' +$OpenInnerThought+'- I try to change the situation to a joke'+$CloseInnerThought
+			'- Don''t do that, please.'
+			
+			act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+		end
+	end
+	
+	if npc_QW['A550'] >=30:
+		act 'kiss':
+			*clr & cla
+			gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/kiss ('+rand(1,2)+').mp4"></video></center>'
+			if npc_QW['A550'] <= 50: 
+				npc_QW['A550'] += rand(1,2)
+			elseif npc_QW['A550'] <= 100: 
+				npc_QW['A550'] += 1
+			end
+			
+			if npc_QW['A550'] >= 60:
+				act 'lick her pussy':
+					*clr & cla
+					npc_QW['A550'] += rand(1,2)
+					ztemp = 1
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+				end
+				
+				act 'lick her ass':
+					*clr & cla
+					npc_QW['A550'] += rand(1,2)
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/.mp4"></video></center>'
+					ztemp = 2
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+				end
+			end
+			
+			act 'stop': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+		end
+	end
+	
+	
+	
+	temp = rand(1,120)
+	if temp <= 30:
+		*clr & cla
+		'2 Black cats enter the room'
+		
+		if npc_QW['A550'] >= 30:
+			act 'tease kiss':
+				*clr & cla
+				ktemp +=1
+				
+				'We start kissing and undressing each other.'
+				gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+				gs 'stat'				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/start_kiss.mp4"></video></center>'
+				
+				act 'continue':
+					*clr & cla
+					gt 'mod_public_WC_PH_blackcat_daily', '2meet'
+				end
+			end
+		end
+		
+		act 'hello':
+			*clr & cla
+			'We hi to the guests.'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/start_hello.mp4"></video></center>'
+			
+			act 'continue':
+				cla
+				temp = rand(1,4)
+				if temp = 1: '- my  whore is the left one'
+				if temp = 2: '- dibs the right one'
+				if temp = 3: '"Nice girls…"'
+				if temp = 4: '"You are right, come here is good idea"'
+				
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2meet'
+			end
+		end
+		
+		if npc_QW['A550'] >= 60:
+			act 'tease: undress and kiss':
+				*clr & cla
+				ktemp += 3
+				'We tease guys!'
+				gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+				gs 'stat'
+				gs 'arousal', 'flash', rand(5,8), 'lesbian'
+				minut -= 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/start_tease_sex.mp4"></video></center>'
+				
+				act 'continue':
+					*clr & cla
+					i = 14
+					gt 'mod_public_WC_PH_blackcat_daily', '2meet'
+				end				
+			end
+		end
+	elseif temp <= 50:	
+		*clr & cla
+		'A Black Cat enters the room'
+		
+		act '"Ania it''s your turn" - go away':
+			temp = 0
+			asminut = minut + 60
+			if asminut >= 60: 
+				asminut -= 60
+				temp = 1
+			end
+			ashour = hour + 1 + temp
+			temp = 0
+			if ashour >= 24:
+				ashour -= 24
+				temp = 1
+			end
+			asday = daystart + temp
+			gt 'mod_public_WC_PH_blackcat_daily', 'start'
+		end
+		
+		
+		gs 'willpower', 'misc', 'force', 'easy'
+		temp = will_cost
+		if will_cost <= pcs_willpwr:			
+			act '"Ania it''s my turn" - show her on the door (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				ania_sub += 1
+				'Ania go away from the room'
+				
+				act 'Ask a guy "How can I serve you?"':
+					cla
+					temp = rand(1,4)
+					if temp = 1:
+						'I want hand job.'
+						
+					elseif temp = 2:
+						'I want blow job.'
+						
+					elseif temp = 3:
+						'I want your pussy.'
+						
+					elseif temp = 4:
+						'I want your asshole.'				
+					end
+					
+					if catpay ! 0: 
+						act  '"Agree, cash only"':
+							cla
+							'nice, lets go'
+							otemp = 1
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '1'
+						end
+					end
+					
+					act  'agree':
+						cla
+						'nice, lets go'
+						otemp = 0
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '1'				
+					end
+				end
+				
+				
+				if $pantyworntype ! 'none':
+					act 'tease him with my pussy':
+						*clr & cla
+						gs 'flash', 'exhibitionism', 1
+						gs 'stat'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/1/tease_showpussy.mp4"></video></center>'				
+						
+						temp = rand(1,3)
+						
+						if temp = 1:
+							'The guy drop his pants'					
+							+$OpenInnerThought+'OMG so big DICK!!!'+$CloseInnerThought
+							
+							
+							gs 'willpower', 'misc', 'self', 'hard'
+							temp = will_cost + (sexcorrupt / 3)
+							will_cost += (sexcorrupt / 3)
+							if will_cost <= pcs_willpwr:
+								
+								act 'keep my focus (<<temp>> Willpower)':
+									cla
+									gs 'willpower', 'pay', 'self'
+									gs 'stat'
+									willpowermax += 1
+									sexcorrupt -= 2
+									
+									
+									act 'Ask a guy "How can I serve you?"':
+										cla
+										otemp = rand(2,4)											
+										if otemp = 2:
+											'I want blow job.'
+											
+										elseif otemp = 3:
+											'I want your pussy.'
+											
+										elseif otemp = 4:
+											'I want your asshole.'				
+										end
+										
+										if catpay ! 0: 
+											act  '"Agree, cash only"':
+												cla
+												'"Here is your cash, let''s start"'
+												money += 50 * rand(2,6)
+												gs 'stat'
+												
+												act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+											end
+										end
+										
+										act 'agree':
+											cla
+											'"nice, lets start"'									
+											act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'				
+										end
+										
+										
+										gs 'willpower', 'misc', 'resist'
+										temp = will_cost + (sexcorrupt / 3)
+										will_cost += (sexcorrupt / 3)
+										if will_cost <= pcs_willpwr:
+											
+											act 'Let''s better I show you my skills in (<<temp>> Willpower)':
+												cla
+												gs 'willpower', 'pay', 'self'
+												gs 'stat'
+												
+												'"Ok, and what you want to show me?"'
+												
+												
+												act 'Let me suck you!':
+													cla
+													'Ok, show me, what you got'
+													otemp = 1
+													act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+												end
+												
+												act 'Fuck my pussy!':
+													cla
+													'Ok, show me, what you got'
+													otemp = 2
+													act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+												end
+												
+												act 'My ass is all your!':
+													cla
+													'Ok, show me, what you got'
+													otemp = 3
+													act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+												end				
+											end
+										elseif will_cost <= pcs_willpwr:
+											act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+										else
+											act 'Let''s better I show you my skills in ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+										end
+										
+										
+										gs 'willpower', 'misc', 'self', 'hard'
+										temp = will_cost + (sexcorrupt / 3)
+										will_cost += (sexcorrupt / 3)
+										if will_cost<= pcs_willpwr:
+											
+											act '"Sorry I better go" - run away (<<temp>> Willpower)':
+												*clr & cla
+												gs 'willpower', 'pay', 'self'
+												gs 'stat'
+												sexcorrupt -= 5
+												gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											end
+										elseif will_cost <= pcs_willpwr:
+											act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+										else
+											act '"Sorry I better go" - run away ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+										end
+									end
+								end
+							elseif will_cost <= pcs_willpwr:
+								act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+							else
+								act 'keep my focus ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+							end
+							
+							act 'I can''t controll myself':
+								*clr & cla
+								sexcorrupt += 2
+								otemp = 1
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/1/big_dick_enters.mp4"></video></center>'
+								gs 'arousal', 'bj', rand(0,5), 'sub'
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+							end
+						elseif temp = 2:
+							otemp = 0
+							gt 'mod_public_WC_PH_blackcat_daily', 'rought1'
+						else
+							'His eyes are hungry'
+							act 'Ask a guy "How can I serve you?"':
+								cla
+								'I want a blow job.'
+								if catpay ! 0: 
+									act  '"Agree, cash only"':
+										cla
+										'nice'
+										otemp = 1
+										act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'deep'
+									end
+								end
+								
+								act  'agree':
+									cla
+									'nice, lets go'
+									otemp = 0
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'deep'				
+								end
+							end
+						end
+					end
+				else
+					+$OpenInnerThought+'could use my pussy to tease, but I need to undress my panty!'+$CloseInnerThought
+				end
+				
+				act 'tease him with handjob sign':
+					*clr & cla
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/1/tease_droch/0 droch.mp4"></video></center>'
+					
+					temp = rand(1,3)			
+					if temp = 1:
+						'His eyes are hungry'
+						'"Ok, show me your hand job" - he says with a smile'
+						if catpay ! 0: 
+							act  '"Agree, cash only"':
+								cla
+								'nice'
+								otemp = 1
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'hjtest'
+							end
+						end
+						
+						act 'agree':
+							cla
+							'nice, lets go'
+							otemp = 0
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'hjtest'				
+						end
+					elseif temp = 2:
+						otemp = 0
+						gt 'mod_public_WC_PH_blackcat_daily', 'rought1'
+					else
+						'His eyes are hungry'
+						act 'Ask a guy "How can I serve you?"':
+							cla
+							'I want a blow job.'
+							if catpay ! 0: 
+								act  '"Agree, cash only"':
+									cla
+									'nice'
+									otemp = 1
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'deep'
+								end
+							end
+							
+							act 'agree':
+								cla
+								'nice, lets go'
+								otemp = 0
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'deep'				
+							end
+						end
+					end
+				end
+			end
+		else
+			act '"Ania it''s my turn" - show her on the door ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+		
+		
+		act 'hello':
+			*clr & cla
+		
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/start_hello.mp4"></video></center>'
+			
+			act 'continue':
+				cla
+				'He sit and unzip his pants, "Need your help, girls."'
+				
+			
+
+				act '"Ania it''s your turn" - go away':
+					temp = 0
+					asminut = minut + 60
+					if asminut >= 60: 
+						asminut -= 60
+						temp = 1
+					end
+					ashour = hour + 1 + temp
+					temp = 0
+					if ashour >= 24:
+						ashour -= 24
+						temp = 1
+					end
+					asday = daystart + temp
+					gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+				
+				
+				gs 'willpower', 'misc', 'force', 'easy'
+				temp = will_cost
+				if will_cost <= pcs_willpwr:			
+					act '"Ania it''s my turn" - show her on the door (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						ania_sub += 1
+						killvar 'ktemp'
+						'Ania go away from the room'
+						
+						act 'Ask a guy "How can I serve you?"':
+							cla
+							temp = rand(1,4)
+							if temp = 1:
+								'I want hand job.'
+								
+							elseif temp = 2:
+								'I want blow job.'
+								
+							elseif temp = 3:
+								'I want your pussy.'
+								
+							elseif temp = 4:
+								'I want your asshole.'				
+							end
+							
+							if catpay ! 0: 
+								act  '"Agree, cash only"':
+									cla
+									'nice, lets go'
+									otemp = 1
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '1'
+								end
+							end
+							
+							act 'agree':
+								cla
+								'nice, lets go'
+								otemp = 0
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '1'				
+							end
+						end
+					end
+				end				
+				
+				act 'strock his dick':
+					*clr & cla					
+					'I stroke the guys dick and wellcome Ania to join!'
+					gs 'arousal', 'hj', rand(5,8)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/0 start.mp4"></video></center>'
+					act 'continue':
+						*clr & cla					
+						'Ania joins me…'
+						gs 'arousal', 'bj', rand(5,10)
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/1.mp4"></video></center>'
+						act 'continue':
+							*clr & cla					
+							'we blow him together'
+							gs 'arousal', 'bj', rand(5,10)
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/2.mp4"></video></center>'
+							'"I want rimming"'
+							
+							act 'Rimming him':
+								*clr & cla
+								'I rimming him while <<$npc_firstname[''A550'']>> suck him'
+								ktemp += 1
+								gs 'arousal', 'rimming_give', rand(5,10)
+								gs 'stat'
+								stat['rimming_give'] += rand(0,1)
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/3.mp4"></video></center>'
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm'
+								
+							end
+							
+
+
+							gs 'willpower', 'rimming', 'force'
+							temp = will_cost - ania_sub
+							will_cost -= ania_sub
+							if will_cost < 0: will_cost = 0
+							if will_cost <= pcs_willpwr:
+								
+								act 'Force Ania to rimmming (<<temp>> Willpower)':
+									*clr & cla
+									gs 'willpower', 'pay', 'self'
+									gs 'stat'
+									ania_sub += 1
+									
+									
+									'It seems <<$npc_firstname[''A550'']>> doesn''t want, but she agrees.' 
+									'She rimming him while I suck him'
+									ktemp += 1
+									gs 'arousal', 'bj', rand(5,10)
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/3.mp4"></video></center>'
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm'
+								end
+							else
+								act 'Force Ania to rimmming ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+							end
+							
+							act 'ignore the ask, keep blowing':
+								if rand(1,4) = 1:
+									'It seems <<$npc_firstname[''A550'']>> doesn''t want, but she starts rimming.' 									
+									ktemp += 1
+									gs 'arousal', 'bj', rand(5,10)
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/3.mp4"></video></center>'
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm'
+								else
+									gs 'arousal', 'bj', rand(5,10)
+									gs 'stat'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/2.mp4"></video></center>'
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+		
+		if npc_QW['A550'] >= 60:
+			act 'tease: undress and kiss':
+				*clr & cla
+				ktemp += 3
+				'We tease guys!'
+				gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+				gs 'stat'
+				gs 'arousal', 'flash', rand(5,8), 'lesbian'
+				minut -= 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/start_tease_sex.mp4"></video></center>'
+				
+				act 'continue':
+					cla
+					'"Nice…" - he undressing himself'
+					alotemp = 1
+					
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm2'
+				end				
+			end
+		end
+	elseif temp <= 70:
+		if npc_QW['A550'] >=50 and npc_QW['A550'] < 70:
+			*clr & cla
+			'She start kissing me'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/kiss ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+			gs 'stat'
+			
+			
+			gs 'willpower', 'misc', 'force'
+			temp = will_cost + (sexcorrupt / 3) - ania_sub
+			will_cost += (sexcorrupt / 3)
+			will_cost -= ania_sub
+			if will_cost<= pcs_willpwr:
+				
+				act 'Stop her (<<temp>> Willpower)':
+					cla
+					minut += 5
+					gs 'stat'
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					
+					'- Ania, stop! I don''t feel like this for now'
+					'- sad, but ok, I understand…'
+					ania_sub += 1
+					
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+				end
+			elseif will_cost <= pcs_willpwr:
+				act 'I am to corrupt of sex to Stop her:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+			else
+				act 'Stop her ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+			
+			act 'lick her pussy':						
+				npc_QW['A550'] += rand(1,2)
+				ztemp = 1
+				gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+			end
+			
+			act 'lick her ass':						
+				npc_QW['A550'] += rand(1,2)
+				ztemp = 2
+				gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+			end
+			
+			act 'ask her to lick my pussy':						
+				npc_QW['A550'] += rand(1,1)
+				ztemp = 1
+				gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+			end
+			
+			act 'ask her to lick my ass':						
+				npc_QW['A550'] += rand(1,1)
+				ztemp = 2
+				gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+			end
+			
+			act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+			
+			
+		elseif npc_QW['A550'] >=70:
+			*clr & cla
+			'She undress her dress with few moves, and shows her pussy as a wellcome to me'
+			gs 'arousal', 'voyeur', rand(3,3), 'lesbian'
+			gs 'stat'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/.mp4"></video></center>'
+			
+			act 'kiss her':
+				*clr & cla
+				gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/kiss.mp4"></video></center>'
+				
+				if npc_QW['A550'] <= 50: 
+					npc_QW['A550'] += rand(1,2)
+				elseif npc_QW['A550'] <= 100: 
+					npc_QW['A550'] += 1
+				end
+				
+				act 'lick her pussy':						
+					npc_QW['A550'] += rand(1,2)
+					ztemp = 1
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+				end
+				
+				act 'lick her ass':						
+					npc_QW['A550'] += rand(1,2)
+					ztemp = 2
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+				end
+				
+				act 'ask her to lick my pussy':						
+					npc_QW['A550'] += rand(1,1)
+					ztemp = 1
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+				end
+				
+				act 'ask her to lick my ass':						
+					npc_QW['A550'] += rand(1,1)
+					ztemp = 2
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+				end
+				
+				
+				
+			end
+			
+			act 'lick her pussy':						
+				npc_QW['A550'] += rand(1,2)
+				ztemp = 1
+				gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+			end
+			
+			gs 'willpower', 'misc', 'force'
+			temp = will_cost + (sexcorrupt / 3) - ania_sub
+			will_cost += (sexcorrupt / 3)
+			will_cost -= ania_sub
+			if will_cost <= pcs_willpwr:
+				
+				act 'Stop her (<<temp>> Willpower)':
+					cla
+					minut += 5
+					gs 'stat'
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					
+					'- Ania, stop! I don''t feel like this for now'
+					'- sad, but ok, I understand…'
+					ania_sub += 1
+					
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+				end
+			elseif will_cost <= pcs_willpwr:
+				act 'I am to corrupt of sex to Stop her:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+			else
+				act 'Stop her ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+		end
+	end	
+end
+
+if npc_loyality >= 70 and   npc_loyality < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'wwm':
+	*clr & cla
+	
+	if pcs_apprn >= rand(140,220):
+		girltemp = 1
+	else
+		girltemp = 2
+	end
+	
+	if girltemp = 1:
+		'He rotates me, push away <<$npc_firstname[''A550'']>> and start to fuck me… Ania kissing me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/0pussy_kiss.mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(5,10)
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm2'
+		killvar 'alotemp'
+	else
+		'He push me away and rotates <<$npc_firstname[''A550'']>>, he starts to fuck her… I start kissing Ania'
+		gs 'arousal', 'kiss', rand(5,10), 'lesbian'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'wwm2'
+		killvar 'alotemp'
+	end
+end
+
+if $ARGS[0] = 'wwm2':
+	*clr & cla
+	if alotemp = 1:
+		killvar 'alotemp'
+		if pcs_apprn >= rand(140,220):
+			girltemp = 1
+		else
+			girltemp = 2
+		end
+		
+		if girltemp = 1:
+			'He comes closer and enters me from behind…'
+			'…I feel Ania''s saliva on my anus'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/1ass_spit.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+		else
+			'He comes closer and enters Ania from behind'
+			'…I rotate to him, whant to lick balls'
+			'"Spit on her anus" - he wishper but in command voice'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/1ass_spit.mp4"></video></center>'
+			minut += rand(5,10)
+			gs 'stat'				
+		end
+	else
+		if girltemp = 1:
+			'we change to doggy position…'
+			'…I feel Ania''s saliva on my anus'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/1ass_spit.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+		else
+			'He put Annia to doggy position…'
+			'…I rotate myself to him, whant to lick his balls'
+			'"Spit on her anus" - he wishper but in command voice'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/1ass_spit.mp4"></video></center>'
+			minut += rand(5,10)
+			gs 'stat'		
+		end	
+	end
+	
+	act 'continue':
+		*clr & cla
+		'He puts us both on the bed asses to him'
+		if girltemp = 1:
+			'He start to fuck my ass.'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'
+		else
+			'He start to fuck Anias ass.'
+			gs 'arousal', 'porn', rand(5,10)
+			gs 'stat'
+		end
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/2ass_turns_start.mp4"></video></center>'
+		act 'continue':
+			*clr & cla
+			'He make turns to fuck both of us'
+			gs 'arousal', 'porn', rand(5,10)
+			gs 'stat'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/wwm/4/3ass_turns.jpg"></center>'
+			
+			act 'continue':
+				*clr & cla
+				killvar 'girltemp'
+				minut += rand(3,5)
+				gs 'stat'
+				if rand (1,2) = 1:
+					'He cums deep in my ass'
+					gs 'cum_call', 'anus', 'A550', 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'I see he filled Anias ass with cum'
+				end
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/assv.mp4"></video></center>'
+				girltemp = 100
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+				
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '2meet':
+	*clr & cla
+	if rand(1,2) = 1 and i ! 14:
+		'Black Cat tooks Ania from me and start kissing with her. The other one come close to me: "I want some blow, bitch"'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/start.mp4"></video></center>'
+		gs 'arousal', 'bj', rand(10,15)
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'
+			
+			
+			act 'continue':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+				gs 'arousal', 'bj', rand(5,10)
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'They cum on us'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumon ('+rand(1,2)+').mp4"></video></center>'
+					gs 'cum_call', 'face', 'A550', 0
+					gs 'cum_call', 'mouth', 'A550', 0
+					gs 'cum_call', 'hands', 'A550', 0
+					gs 'cum_call', 'stomach', 'A550', 0
+					gs 'cum_call', 'breasts', 'A550', 0
+					gs 'cum_call', 'hair', 'A550', 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					i = 1
+					if npc_QW['A550'] > 30:
+						act 'kiss her':														
+							if i = 1: ktemp += 1
+							i += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+							gs 'cum_call', 'face', 'A550', 0
+							gs 'cum_call', 'mouth', 'A550', 0
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+							gs 'stat'
+						end
+					end
+					
+					
+					if catpay = 1:
+						act 'ask about money':
+							*clr & cla
+							'"Sure, girls, lets repeat some time"'
+							
+							temp = 100*catpay*rand(3,5)*(ktemp + 1)
+							money += temp
+							'they give <<temp>> rubles to me. And go away'
+							gs 'stat'
+							
+							act 'Give half the money to Ania':
+								*clr & cla
+								money -= temp / 2
+								gs 'stat'
+								'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+								if ania_bouse = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+								end	
+								killvar 'ktemp'															
+								act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+							end
+							
+							if ania_sub >= 10:
+								+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+								act 'keep the money':
+									*clr & cla
+									if ania_sub >= 80:
+										ania_sub += 1
+										'Ania is silence'
+										+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+										
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+									else
+										'"<<$pcs_firstname>>, hey! You forget something"'
+										npc_QW['A550'] -= rand(0,1)
+										
+										act 'Ow sorry, here is your part':
+											*clr & cla
+											money -= temp / 2
+											gs 'stat'
+											'"No problem)"'
+											'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+											if ania_bouse = 1:
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+											end	
+											killvar 'ktemp'	
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+										end
+										
+										gs 'willpower', 'humiliation', 'force'
+										temp = will_cost - ania_sub
+										will_cost -= ania_sub
+										if will_cost < 0: will_cost = 0
+										if will_cost <= pcs_willpwr:
+											
+											act 'Convince her, I must collect the money (<<temp>> Willpower)':
+												*clr & cla
+												gs 'willpower', 'pay', 'self'
+												gs 'stat'
+												
+												'"Well, if you say so…"'
+												if ania_sub <= 80: npc_QW['A550'] -= 2
+												
+												humint_exp += 3
+												ania_sub += 1
+												gs 'stat'
+												killvar 'ktemp'	
+												
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											end
+										else
+											act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+										end
+									end
+								end															
+							end
+						end
+					end
+					
+					
+					act 'wait':	
+						if ktemp >= 1:
+							killvar 'ktemp'	
+							'"Hey, guys, tips us please"'
+							
+							'"Sure, girls, lets repeat some time"'
+							
+							temp = 100*catpay*rand(3,5)*(ktemp + 1)
+							money += temp / 2
+							'they give <<temp>> rubles to Ania. And go away'
+							'Ania count the half of it and give it to me'
+							
+							
+							ania_sub -= rand(0,2)
+							gs 'stat'
+							
+							act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+							
+							
+						else
+							killvar 'ktemp'															
+							'they threw few bills on the bed: "Girl,lets repeat some time"'														
+							
+							if ania_sub >= 10:
+								gs 'willpower', 'humiliation', 'force'
+								temp = will_cost - ania_sub
+								will_cost -= ania_sub
+								if will_cost < 0: will_cost = 0
+								if will_cost <= pcs_willpwr:
+									
+									act 'Convince her, I must collect the money (<<temp>> Willpower)':
+										*clr & cla
+										gs 'willpower', 'pay', 'self'
+										gs 'stat'
+										
+										'"Well, if you say so…"'
+										if ania_sub <= 80: npc_QW['A550'] -= 2
+										
+										humint_exp += 3
+										ania_sub += 1
+										gs 'stat'
+										killvar 'ktemp'	
+										
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+									end
+								else
+									act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+								end
+							end
+							
+							temp = 100*catpay*rand(3,5)*(ktemp + 1)														
+							act 'Take half of the money and give other half to Ania':
+								*clr & cla
+								money += temp / 2
+								gs 'stat'
+								'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+								if ania_bouse = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+								end	
+								act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+							end
+						end													
+					end
+				end				
+				
+				if rand(1,4) = 1:
+					'"Pss, <<$pcs_firstname>> let''s rimming them! They will tips us!"'
+					
+					gs 'willpower', 'rimming', 'self'
+					temp = will_cost + (sexcorrupt / 3) - ania_sub
+					will_cost += (sexcorrupt / 3)
+					will_cost -= ania_sub
+					if will_cost <= pcs_willpwr:									
+						act 'Agree (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							sexcorrupt += 2
+							ktemp += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/asslick.mp4"></video></center>'
+							gs 'arousal', 'rimming_give', rand(5,10)
+							gs 'stat'
+							stat['rimming_give'] += rand(0,1)
+							
+							act 'continue':
+								*clr & cla											
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+								gs 'arousal', 'bj', rand(5,10)
+								gs 'stat'
+								
+								
+								act 'continue':
+									*clr & cla
+									'They cum on us'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumon ('+rand(1,2)+').mp4"></video></center>'
+									gs 'cum_call', 'face', 'A550', 0
+									gs 'cum_call', 'mouth', 'A550', 0
+									gs 'cum_call', 'hands', 'A550', 0
+									gs 'cum_call', 'stomach', 'A550', 0
+									gs 'cum_call', 'breasts', 'A550', 0
+									gs 'cum_call', 'hair', 'A550', 0
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									i = 1
+									if npc_QW['A550'] > 30:
+										act 'kiss her':														
+											if i = 1: ktemp += 1
+											i += 1
+											
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+											gs 'cum_call', 'face', 'A550', 0
+											gs 'cum_call', 'mouth', 'A550', 0
+											gs 'arousal', 'end'
+											gs 'stat'
+											gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+											gs 'stat'
+										end
+									end
+									
+									
+									if catpay = 1:
+										act 'ask about money':
+											*clr & cla
+											'"Sure, girls, lets repeat some time"'
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)
+											money += temp
+											'they give <<temp>> rubles to me. And go away'
+											gs 'stat'
+											
+											act 'Give half the money to Ania':
+												*clr & cla
+												money -= temp / 2
+												gs 'stat'
+												'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+												if ania_bouse = 1:
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+												else
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+												end	
+												killvar 'ktemp'															
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+											end
+											
+											if ania_sub >= 10:
+												+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+												act 'keep the money':
+													*clr & cla
+													if ania_sub >= 80:
+														ania_sub += 1
+														'Ania is silence'
+														+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+														
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													else
+														'"<<$pcs_firstname>>, hey! You forget something"'
+														npc_QW['A550'] -= rand(0,1)
+														
+														act 'Ow sorry, here is your part':
+															*clr & cla
+															money -= temp / 2
+															gs 'stat'
+															'"No problem)"'
+															'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+															killvar 'ktemp'	
+															if ania_bouse = 1:
+																'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+															else
+																'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+															end	
+															act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+														end														
+														
+														gs 'willpower', 'humiliation', 'force'
+														temp = will_cost - ania_sub
+														will_cost -= ania_sub
+														if will_cost < 0: will_cost = 0
+														if will_cost <= pcs_willpwr:
+															
+															act 'Convince her, I must collect the money (<<temp>> Willpower)':
+																*clr & cla
+																gs 'willpower', 'pay', 'self'
+																gs 'stat'
+																
+																'"Well, if you say so…"'
+																if ania_sub <= 80: npc_QW['A550'] -= 2
+																
+																humint_exp += 3
+																ania_sub += 1
+																gs 'stat'
+																killvar 'ktemp'	
+																
+																act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+															end
+														else
+															act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+														end
+													end
+												end															
+											end
+										end
+									end
+									
+									
+									act 'wait':	
+										if ktemp >= 1:
+											killvar 'ktemp'	
+											'"Hey, guys, tips us please"'
+											
+											'"Sure, girls, lets repeat some time"'
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)
+											money += temp / 2
+											'they give <<temp>> rubles to Ania. And go away'
+											'Ania count the half of it and give it to me'
+											
+											
+											ania_sub -= rand(0,2)
+											gs 'stat'
+											
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											
+											
+										else
+											killvar 'ktemp'															
+											'they threw few bills on the bed: "Girl,lets repeat some time"'														
+											
+											if ania_sub >= 10:
+												gs 'willpower', 'humiliation', 'force'
+												temp = will_cost - ania_sub
+												will_cost -= ania_sub
+												if will_cost < 0: will_cost = 0
+												if will_cost <= pcs_willpwr:
+													
+													act 'Convince her, I must collect the money (<<temp>> Willpower)':
+														*clr & cla
+														gs 'willpower', 'pay', 'self'
+														gs 'stat'
+														
+														'"Well, if you say so…"'
+														if ania_sub <= 80: npc_QW['A550'] -= 2
+														
+														humint_exp += 3
+														ania_sub += 1
+														gs 'stat'
+														killvar 'ktemp'	
+														
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													end
+												else
+													act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+												end
+											end
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)														
+											act 'Take half of the money and give other half to Ania':
+												*clr & cla
+												money += temp / 2
+												gs 'stat'
+												'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+												if ania_bouse = 1:
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+												else
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+												end	
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+											end
+										end													
+									end
+								end											
+							end
+						end
+					else
+						act 'Agree ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+				else
+					gs 'willpower', 'rimming', 'self', 'hard'
+					temp = will_cost + (sexcorrupt / 3)
+					will_cost += (sexcorrupt / 3)
+					if will_cost <= pcs_willpwr:
+						
+						act 'wishper to Ania "Lets lick ass, they will tips us" (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							sexcorrupt += 3
+							ktemp += 1
+							'She agree…'
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/asslick.mp4"></video></center>'
+							gs 'arousal', 'rimming_give', rand(5,10)
+							gs 'stat'
+							stat['rimming_give'] += rand(0,1)
+							
+							act 'continue':
+								*clr & cla											
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+								gs 'arousal', 'bj', rand(5,10)
+								gs 'stat'
+								
+								
+								act 'continue':
+									*clr & cla
+									'They cum on us'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumon ('+rand(1,2)+').mp4"></video></center>'
+									gs 'cum_call', 'face', 'A550', 0
+									gs 'cum_call', 'mouth', 'A550', 0
+									gs 'cum_call', 'hands', 'A550', 0
+									gs 'cum_call', 'stomach', 'A550', 0
+									gs 'cum_call', 'breasts', 'A550', 0
+									gs 'cum_call', 'hair', 'A550', 0
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									i = 1
+									if npc_QW['A550'] > 30:
+										act 'kiss her':														
+											if i = 1: ktemp += 1
+											i += 1
+											
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+											gs 'cum_call', 'face', 'A550', 0
+											gs 'cum_call', 'mouth', 'A550', 0
+											gs 'arousal', 'end'
+											gs 'stat'
+											gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+											gs 'stat'
+										end
+									end
+									
+									
+									if catpay = 1:
+										act 'ask about money':
+											*clr & cla
+											'"Sure, girls, lets repeat some time"'
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)
+											money += temp
+											'they give <<temp>> rubles to me. And go away'
+											gs 'stat'
+											
+											act 'Give half the money to Ania':
+												*clr & cla
+												money -= temp / 2
+												gs 'stat'
+												'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+												killvar 'ktemp'
+												if ania_bouse = 1:
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+												else
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+												end	
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+											end
+											
+											if ania_sub >= 10:
+												+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+												act 'keep the money':
+													*clr & cla
+													if ania_sub >= 80:
+														ania_sub += 1
+														'Ania is silence'
+														+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+														
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													else
+														'"<<$pcs_firstname>>, hey! You forget something"'
+														npc_QW['A550'] -= rand(0,1)
+														
+														act 'Ow sorry, here is your part':
+															*clr & cla
+															money -= temp / 2
+															gs 'stat'
+															'"No problem)"'
+															'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+															killvar 'ktemp'	
+															if ania_bouse = 1:
+																'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+															else
+																'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+															end	
+															act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+														end
+														
+														gs 'willpower', 'humiliation', 'force'
+														temp = will_cost - ania_sub
+														will_cost -= ania_sub
+														if will_cost < 0: will_cost = 0
+														if will_cost <= pcs_willpwr:
+															
+															act 'Convince her, I must collect the money (<<temp>> Willpower)':
+																*clr & cla
+																gs 'willpower', 'pay', 'self'
+																gs 'stat'
+																
+																'"Well, if you say so…"'
+																if ania_sub <= 80: npc_QW['A550'] -= 2
+																
+																humint_exp += 3
+																ania_sub += 1
+																gs 'stat'
+																killvar 'ktemp'	
+																
+																act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+															end
+														else
+															act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+														end
+													end
+												end															
+											end
+										end
+									end
+									
+									
+									act 'wait':	
+										if ktemp >= 1:
+											killvar 'ktemp'	
+											'"Hey, guys, tips us please"'
+											
+											'"Sure, girls, lets repeat some time"'
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)
+											money += temp / 2
+											'they give <<temp>> rubles to Ania. And go away'
+											'Ania count the half of it and give it to me'
+											
+											
+											ania_sub -= rand(0,2)
+											gs 'stat'
+											
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											
+											
+										else
+											killvar 'ktemp'															
+											'they threw few bills on the bed: "Girl,lets repeat some time"'														
+											
+											if ania_sub >= 10:
+												gs 'willpower', 'humiliation', 'force'
+												temp = will_cost - ania_sub
+												will_cost -= ania_sub
+												if will_cost < 0: will_cost = 0
+												if will_cost <= pcs_willpwr:
+													
+													act 'Convince her, I must collect the money (<<temp>> Willpower)':
+														*clr & cla
+														gs 'willpower', 'pay', 'self'
+														gs 'stat'
+														
+														'"Well, if you say so…"'
+														if ania_sub <= 80: npc_QW['A550'] -= 2
+														
+														humint_exp += 3
+														ania_sub += 1
+														gs 'stat'
+														killvar 'ktemp'	
+														
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													end
+												else
+													act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+												end
+											end
+											
+											temp = 100*catpay*rand(3,5)*(ktemp + 1)														
+											act 'Take half of the money and give other half to Ania':
+												*clr & cla
+												money += temp / 2
+												gs 'stat'
+												'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+												if ania_bouse = 1:
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+												else
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+												end	
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+											end
+										end													
+									end
+								end											
+							end
+						end
+					else
+						act 'wishper to Ania "Lets lick ass, they will tips us" ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+				end
+			end
+			
+			if rand(1,4) = 1:
+				'"Pss, <<$pcs_firstname>> let''s rimming them! They will tips us!"'
+				
+				gs 'willpower', 'rimming', 'self'
+				temp = will_cost + (sexcorrupt / 3)
+				will_cost += (sexcorrupt / 3)
+				will_cost -= ania_sub
+				if will_cost <= pcs_willpwr:									
+					act 'Agree (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						sexcorrupt += 2
+						ktemp += 1
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/asslick.mp4"></video></center>'
+						gs 'arousal', 'rimming_give', rand(5,10)
+						gs 'stat'
+						stat['rimming_give'] += rand(0,1)
+						
+						act 'continue':
+							*clr & cla											
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+							gs 'arousal', 'bj', rand(5,10)
+							gs 'stat'
+							
+							
+							act 'continue':
+								*clr & cla
+								'They cum on us'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumon ('+rand(1,2)+').mp4"></video></center>'
+								gs 'cum_call', 'face', 'A550', 0
+								gs 'cum_call', 'mouth', 'A550', 0
+								gs 'cum_call', 'hands', 'A550', 0
+								gs 'cum_call', 'stomach', 'A550', 0
+								gs 'cum_call', 'breasts', 'A550', 0
+								gs 'cum_call', 'hair', 'A550', 0
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								i = 1
+								if npc_QW['A550'] > 30:
+									act 'kiss her':														
+										if i = 1: ktemp += 1
+										i += 1
+										
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+										gs 'cum_call', 'face', 'A550', 0
+										gs 'cum_call', 'mouth', 'A550', 0
+										gs 'arousal', 'end'
+										gs 'stat'
+										gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+										gs 'stat'
+									end
+								end
+								
+								
+								if catpay = 1:
+									act 'ask about money':
+										*clr & cla
+										'"Sure, girls, lets repeat some time"'
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)
+										money += temp
+										'they give <<temp>> rubles to me. And go away'
+										gs 'stat'
+										
+										act 'Give half the money to Ania':
+											*clr & cla
+											money -= temp / 2
+											gs 'stat'
+											'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+											killvar 'ktemp'	
+											if ania_bouse = 1:
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+											end	
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+										end
+										
+										if ania_sub >= 10:
+											+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+											act 'keep the money':
+												*clr & cla
+												if ania_sub >= 80:
+													ania_sub += 1
+													'Ania is silence'
+													+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+													
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												else
+													'"<<$pcs_firstname>>, hey! You forget something"'
+													npc_QW['A550'] -= rand(0,1)
+													
+													act 'Ow sorry, here is your part':
+														*clr & cla
+														money -= temp / 2
+														gs 'stat'
+														'"No problem)"'
+														'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+														killvar 'ktemp'	
+														if ania_bouse = 1:
+															'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+														else
+															'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+														end	
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+													end
+													
+													gs 'willpower', 'humiliation', 'force'
+													temp = will_cost - ania_sub
+													will_cost -= ania_sub
+													if will_cost < 0: will_cost = 0
+													if will_cost <= pcs_willpwr:
+														
+														act 'Convince her, I must collect the money (<<temp>> Willpower)':
+															*clr & cla
+															gs 'willpower', 'pay', 'self'
+															gs 'stat'
+															
+															'"Well, if you say so…"'
+															if ania_sub <= 80: npc_QW['A550'] -= 2
+															
+															humint_exp += 3
+															ania_sub += 1
+															gs 'stat'
+															killvar 'ktemp'	
+															
+															act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+														end
+													else
+														act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+													end
+												end
+											end															
+										end
+									end
+								end
+								
+								
+								act 'wait':	
+									if ktemp >= 1:
+										killvar 'ktemp'	
+										'"Hey, guys, tips us please"'
+										
+										'"Sure, girls, lets repeat some time"'
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)
+										money += temp / 2
+										'they give <<temp>> rubles to Ania. And go away'
+										'Ania count the half of it and give it to me'
+										
+										
+										ania_sub -= rand(0,2)
+										gs 'stat'
+										
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										
+										
+									else
+										killvar 'ktemp'															
+										'they threw few bills on the bed: "Girl,lets repeat some time"'														
+										
+										if ania_sub >= 10:
+											gs 'willpower', 'humiliation', 'force'
+											temp = will_cost - ania_sub
+											will_cost -= ania_sub
+											if will_cost < 0: will_cost = 0
+											if will_cost <= pcs_willpwr:
+												
+												act 'Convince her, I must collect the money (<<temp>> Willpower)':
+													*clr & cla
+													gs 'willpower', 'pay', 'self'
+													gs 'stat'
+													
+													'"Well, if you say so…"'
+													if ania_sub <= 80: npc_QW['A550'] -= 2
+													
+													humint_exp += 3
+													ania_sub += 1
+													gs 'stat'
+													killvar 'ktemp'	
+													
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												end
+											else
+												act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+											end
+										end
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)														
+										act 'Take half of the money and give other half to Ania':
+											*clr & cla
+											money += temp / 2
+											gs 'stat'
+											'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+											if ania_bouse = 1:
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+											end	
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+										end
+									end													
+								end
+							end											
+						end
+					end
+				else
+					act 'Agree ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			else
+				gs 'willpower', 'rimming', 'self', 'hard'
+				temp = will_cost + (sexcorrupt / 3)
+				will_cost += (sexcorrupt / 3)
+				if will_cost <= pcs_willpwr:
+					
+					act 'wishper to Ania "Lets lick ass, they will tips us" (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						sexcorrupt += 3
+						ktemp = 1
+						'She agree…'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/asslick.mp4"></video></center>'
+						gs 'arousal', 'rimming_give', rand(5,10)
+						gs 'stat'
+						stat['rimming_give'] += rand(0,1)
+						
+						act 'continue':
+							*clr & cla											
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/bj/bj ('+rand(1,6)+').mp4"></video></center>'
+							gs 'arousal', 'bj', rand(5,10)
+							gs 'stat'
+							
+							
+							act 'continue':
+								*clr & cla
+								'They cum on us'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumon ('+rand(1,2)+').mp4"></video></center>'
+								gs 'cum_call', 'face', 'A550', 0
+								gs 'cum_call', 'mouth', 'A550', 0
+								gs 'cum_call', 'hands', 'A550', 0
+								gs 'cum_call', 'stomach', 'A550', 0
+								gs 'cum_call', 'breasts', 'A550', 0
+								gs 'cum_call', 'hair', 'A550', 0
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								i = 1
+								if npc_QW['A550'] > 30:
+									act 'kiss her':														
+										if i = 1: ktemp += 1
+										i += 1
+										
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+										gs 'cum_call', 'face', 'A550', 0
+										gs 'cum_call', 'mouth', 'A550', 0
+										gs 'arousal', 'end'
+										gs 'stat'
+										gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+										gs 'stat'
+									end
+								end
+								
+								
+								if catpay = 1:
+									act 'ask about money':
+										*clr & cla
+										'"Sure, girls, lets repeat some time"'
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)
+										money += temp
+										'they give <<temp>> rubles to me. And go away'
+										gs 'stat'
+										
+										act 'Give half the money to Ania':
+											*clr & cla
+											money -= temp / 2
+											gs 'stat'
+											'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+											killvar 'ktemp'	
+											if ania_bouse = 1:
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+											end	
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+										end
+										
+										if ania_sub >= 10:
+											+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+											act 'keep the money':
+												*clr & cla
+												if ania_sub >= 80:
+													ania_sub += 1
+													'Ania is silence'
+													+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+													
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												else
+													'"<<$pcs_firstname>>, hey! You forget something"'
+													npc_QW['A550'] -= rand(0,1)
+													
+													act 'Ow sorry, here is your part':
+														*clr & cla
+														money -= temp / 2
+														gs 'stat'
+														'"No problem)"'
+														'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+														if ania_bouse = 1:
+															'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+														else
+															'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+														end	
+														killvar 'ktemp'	
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+													end
+													
+													gs 'willpower', 'humiliation', 'force'
+													temp = will_cost - ania_sub
+													will_cost -= ania_sub
+													if will_cost < 0: will_cost = 0
+													if will_cost  <= pcs_willpwr:
+														
+														act 'Convince her, I must collect the money (<<temp>> Willpower)':
+															*clr & cla
+															gs 'willpower', 'pay', 'self'
+															gs 'stat'
+															
+															'"Well, if you say so…"'
+															if ania_sub <= 80: npc_QW['A550'] -= 2
+															
+															humint_exp += 3
+															ania_sub += 1
+															gs 'stat'
+															killvar 'ktemp'	
+															
+															act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+														end
+													else
+														act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+													end
+												end
+											end															
+										end
+									end
+								end								
+								
+								act 'wait':	
+									if ktemp >= 1:
+										killvar 'ktemp'	
+										'"Hey, guys, tips us please"'
+										
+										'"Sure, girls, lets repeat some time"'
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)
+										money += temp / 2
+										'they give <<temp>> rubles to Ania. And go away'
+										'Ania count the half of it and give it to me'
+										
+										
+										ania_sub -= rand(0,2)
+										gs 'stat'
+										
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										
+										
+									else
+										killvar 'ktemp'															
+										'they threw few bills on the bed: "Girl,lets repeat some time"'														
+										
+										if ania_sub >= 10:
+											gs 'willpower', 'humiliation', 'force'
+											temp = will_cost - ania_sub
+											will_cost -= ania_sub
+											if will_cost < 0: will_cost = 0
+											if will_cost <= pcs_willpwr:
+												
+												act 'Convince her, I must collect the money (<<temp>> Willpower)':
+													*clr & cla
+													gs 'willpower', 'pay', 'self'
+													gs 'stat'
+													
+													'"Well, if you say so…"'
+													if ania_sub <= 80: npc_QW['A550'] -= 2
+													
+													humint_exp += 3
+													ania_sub += 1
+													gs 'stat'
+													killvar 'ktemp'	
+													
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												end
+											else
+												act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+											end
+										end
+										
+										temp = 100*catpay*rand(3,5)*(ktemp + 1)														
+										act 'Take half of the money and give other half to Ania':
+											*clr & cla
+											money += temp / 2
+											gs 'stat'
+											'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+											if ania_bouse = 1:
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+											else
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+											end	
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+										end
+									end													
+								end
+							end											
+						end
+					end
+				else
+					act 'wishper to Ania "Lets lick ass, they will tips us" ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+		end
+	else
+		killvar 'i'
+		'Black Cats threw us on the bed and start to fuck!'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/sex/start.mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(10,15)
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'they are going too cum'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/sex/sex ('+rand(1,9)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(10,15)
+			gs 'stat'
+			
+			act 'wait':
+				*clr & cla
+				act 'wait': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+				temp = rand(1,9)
+				if temp <= 4:
+					'he cums over my face'
+					if rand(1,3) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/cum/onface ('+rand(1,7)+').jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onface.mp4"></video></center>'
+					end
+					gs 'cum_call','face',$boy
+					gs 'cum_call','arms',$boy
+					gs 'cum_call','mouth',$boy
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					
+					i = 1
+					if npc_QW['A550'] > 30:
+						act 'kiss her':														
+							if i = 1: ktemp += 1
+							i += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+							gs 'cum_call', 'face', 'A550', 0
+							gs 'cum_call', 'mouth', 'A550', 0
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+							gs 'stat'
+						end
+					end
+				elseif temp <= 8:
+					'He spreys sperm all over me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onme.mp4"></video></center>'
+					gs 'cum_call','breasts',$boy
+					gs 'cum_call','stomach',$boy
+					gs 'cum_call','hair',$boy
+					gs 'cum_call','face',$boy
+					gs 'cum_call','arms',$boy
+					gs 'cum_call','mouth',$boy
+					gs 'cum_call','labia',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					
+				elseif temp <= 9:
+					'He cums deep inside my pussy'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'					
+					
+					gs 'willpower', 'swallow', 'force'
+					temp = will_cost - ania_sub
+					will_cost -= ania_sub
+					if will_cost < 0: will_cost = 0
+					if will_cost<= pcs_willpwr:
+						
+						act 'Force Ania to swallow cum from my pussy (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							ania_sub += 1
+							'"Guys amazed"'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/lickfrom pussy.mp4"></video></center>'
+							ktemp += 2
+							
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+						end
+					else
+						act 'Force Ania to swallow cum from my pussy ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+				end
+				
+				if rand(1,9) = 9:
+					if temp = 9:
+						'I see Ania receives inside too'
+					else
+						'I see Ania receives inside'										
+					end	
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+					
+					act 'swallow cum from Anias pussy':
+						*clr & cla
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						'"Guys amazed"'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/lickfrom pussy.mp4"></video></center>'
+						ktemp += 2
+						gs 'arousal', 'end'
+						gs 'stat'						
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+					end
+				elseif rand(1,4) = 1:
+					'I see Ania receives on her face'
+					i = 1
+					if npc_QW['A550'] > 30:
+						act 'kiss her':														
+							if i = 1: ktemp += 1
+							i += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+							gs 'cum_call', 'face', 'A550', 0
+							gs 'cum_call', 'mouth', 'A550', 0
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+							gs 'stat'
+						end
+					end
+				end
+			end
+			
+			gs 'willpower', 'cum_inside', 'self', 'hard'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost < 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				
+				act 'Please cum in me (<<temp>> Willpower)':
+					*clr & cla
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					sexcorrupt += 2
+					ktemp += 1
+					
+					'He cums deep inside my pussy'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'stat'
+					temp = 9
+					
+					gs 'arousal', 'end'
+					gs 'stat'					
+					
+					gs 'willpower', 'swallow', 'force'
+					temp = will_cost - ania_sub
+					will_cost -= ania_sub
+					if will_cost < 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						
+						act 'Force Ania to swallow cum from my pussy (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							ania_sub += 1
+							'"Guys amazed"'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/lickfrom pussy.mp4"></video></center>'
+							ktemp += 2
+							
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+						end
+					else
+						act 'Force Ania to swallow cum from my pussy ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+					
+					if rand(1,9) = 9:
+						if temp = 9:
+							'I see Ania receives inside too'
+						else
+							'I see Ania receives inside'										
+						end	
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+						
+						act 'swallow cum from Anias pussy':
+							*clr & cla
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							'"Guys amazed"'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/lickfrom pussy.mp4"></video></center>'
+							ktemp += 2
+							gs 'arousal', 'end'
+							gs 'stat'							
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', '2pay'
+						end
+					elseif rand(1,4) = 1:
+						'I see Ania receives on her face'
+						i = 1
+						if npc_QW['A550'] > 30:
+							act 'kiss her':														
+								if i = 1: ktemp += 1
+								i += 1
+								
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/cum/cumswap '+rand(1,2)+'.mp4"></video></center>'
+								gs 'cum_call', 'face', 'A550', 0
+								gs 'cum_call', 'mouth', 'A550', 0
+								gs 'arousal', 'end'
+								gs 'stat'
+								gs 'arousal', 'kiss', rand(5,8), 'lesbian'
+								gs 'stat'
+							end
+						end
+					end
+				end
+			else
+				act 'Kick him in the balls ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2pay':
+	*clr & cla
+	if catpay = 1:
+		act 'ask about money':
+			*clr & cla
+			'"Sure, girls, lets repeat some time"'
+			
+			temp = 100*catpay*rand(3,5)*(ktemp + 1)
+			money += temp
+			if girltemp = 100:
+				'they give <<temp>> rubles to me. And go away'
+				killvar 'girltemp'
+			else
+				'they give <<temp>> rubles to me. And go away'
+			end
+			gs 'stat'
+			
+			act 'Give half the money to Ania':
+				*clr & cla
+				money -= temp / 2
+				gs 'stat'
+				'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+				if ania_bouse = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+				end	
+				killvar 'ktemp'															
+				act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+			end
+			
+			if ania_sub >= 10:
+				+$OpenInnerThought+'Ania is used to listen me!.. I think I can keep the money'+$CloseInnerThought
+				act 'keep the money':
+					*clr & cla
+					if ania_sub >= 80:
+						ania_sub += 1
+						'Ania is silence'
+						+$OpenInnerThought+'Yes, she is my puppet now)))'+$CloseInnerThought
+						
+						act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					else
+						'"<<$pcs_firstname>>, hey! You forget something"'
+						npc_QW['A550'] -= rand(0,1)
+						
+						act 'Ow sorry, here is your part':
+							*clr & cla
+							money -= temp / 2
+							gs 'stat'
+							'"No problem)"'
+							'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+							if ania_bouse = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+							end	
+							killvar 'ktemp'	
+							act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'	
+						end
+												gs 'willpower', 'humiliation', 'force'
+						temp = will_cost - ania_sub
+						will_cost -= ania_sub
+						if will_cost < 0: will_cost = 0
+						if will_cost <= pcs_willpwr:
+							
+							act 'Convince her, I must collect the money (<<temp>> Willpower)':
+								*clr & cla
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								
+								'"Well, if you say so…"'
+								if ania_sub <= 80: npc_QW['A550'] -= 2
+								
+								humint_exp += 3
+								ania_sub += 1
+								gs 'stat'
+								killvar 'ktemp'	
+								
+								act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+							end
+						else
+							act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+						end
+					end
+				end															
+			end
+		end
+	end	
+	
+	act 'wait':	
+		if ktemp >= 1:
+				
+			temp = 100*catpay*rand(3,5)*(ktemp + 1)
+			money += temp / 2
+			
+			
+			if girltemp = 100:
+				'Are we good, will you tip us?'
+				'"Sure, girls, lets repeat some time"'
+				'He gives <<temp>> rubles to Ania. And go away'
+				killvar 'girltemp'
+			else
+				'"Hey, guys, tips us please"'
+				'"Sure, girls, lets repeat some time"'
+				'they give <<temp>> rubles to Ania. And go away'
+			end
+			
+			killvar 'ktemp'
+
+			'Ania count the half of it and give it to me'			
+			ania_sub -= rand(0,2)
+			gs 'stat'
+			act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+		else
+			if girltemp = 100:
+				'He threw few bills on the bed: "Girls, lets repeat some time"'
+				killvar 'girltemp'
+			else			
+				'they threw few bills on the bed: "Girls, lets repeat some time"'
+			end
+			
+			if ania_sub >= 10:
+				gs 'willpower', 'humiliation', 'force'
+				temp = will_cost - ania_sub
+				will_cost -= ania_sub
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					
+					act 'Convince her, I must collect the money (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						
+						'"Well, if you say so…"'
+						if ania_sub <= 80: npc_QW['A550'] -= 2
+						
+						humint_exp += 3
+						ania_sub += 1
+						money += temp
+						gs 'stat'
+						killvar 'ktemp'	
+						
+						act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					end
+				else
+					act 'Convince her, you must collect the money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+			
+			temp = 100*catpay*rand(3,5)*(ktemp + 1)
+			
+			act 'Take half of the money and give other half to Ania':
+				*clr & cla
+				money += temp / 2
+				gs 'stat'
+				killvar 'ktemp'	
+				'"It was cool <<$pcs_firstname>>, I like to work with you!"'
+				if ania_bouse = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania drink.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/few girls/she/Ania.jpg"></center>'
+				end	
+				act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'															
+			end
+		end													
+	end
+end
+
+
+
+if $ARGS[0] = 'sexher':
+	gs 'boyStat', 'A550'
+	if ztemp = 1:
+		'I start to lick her pussy'
+		'I lay her on the couch and sink my lips into her pussy, the smell of her sex drives me crazy, I could not help but to lick her pussy.'				
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/pussy ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'cuni_give', 10, 'lesbian', 'group'
+		gs 'stat'
+		
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily_ania', 'pussy2'		
+	else
+		'I start to lick her ass'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/ass ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'rimming_give', 10, 'lesbian', 'group'
+		gs 'stat'
+		stat['rimming_give'] += rand(0,1)
+		act 'lick her pussy': gt 'mod_public_WC_PH_blackcat_daily_ania', 'pussy2'		
+	end
+	ztemp = 2
+end
+
+if $ARGS[0] = 'sexme':
+	gs 'boyStat', 'A550'
+	if ztemp = 1:
+		'She bends me over the couch. Then she begins to pleasure my pussy with her tongue'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/pussy ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'cuni', 10, 'lesbian', 'group'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily_ania', 'pussy2'	
+	else
+		'Ania licks my ass'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/ass ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'rimming', 10, 'lesbian', 'group'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily_ania', 'pussy2'	
+	end
+	ztemp = 1
+end
+
+if $ARGS[0] = 'pussy2':
+	if ztemp = 1:
+		'I start moaning in pleasure at once loudly, as Ania pleasuring my pussy'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/pussy ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'cuni', 10, 'lesbian', 'group'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'My body spasms hard with an orgasm, coating Ania''s face from the wetness of my pussy.'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/orgasm ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'cuni', 5, 'lesbian', 'group'
+			gs 'stat'
+			$orgasm_or = 'yes'
+			
+			act 'Oh, that was amazing!':
+				*clr & cla
+				'Yes, it was fun'
+				'With a smile on the face Ania starts dressing up'
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+				
+				act 'kiss her':
+					*clr & cla
+					gs 'arousal', 'kiss', rand(5,7), 'lesbian'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/kiss.mp4"></video></center>'
+					if npc_QW['A550'] <= 50: 
+						npc_QW['A550'] += rand(1,2)
+					elseif npc_QW['A550'] <= 100: 
+						npc_QW['A550'] += 1
+					end
+					
+					if npc_QW['A550'] >= 60:
+						act 'lick her pussy':
+							*clr & cla
+							npc_QW['A550'] += rand(1,2)
+							ztemp = 1
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+						end
+						
+						act 'lick her ass':
+							*clr & cla
+							npc_QW['A550'] += rand(1,2)
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/.mp4"></video></center>'
+							ztemp = 2
+							gt 'mod_public_WC_PH_blackcat_daily', 'sexher'
+						end
+					end
+					
+					act 'stop': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+				end
+			end
+		end
+	else
+		'She starts moaning in pleasure at once loudly, as I pleasuring her pussy'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/pussy ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'cuni_give', 10, 'lesbian', 'group'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'Ania clutches my hair, no longer able to hold back, she moans loudly as she orgasms. Then she pushes my head away from her.'
+
+			gs 'arousal', 'cuni_give', 10, 'lesbian', 'sub'
+			gs 'stat'
+			
+			act 'dress up': gt 'mod_public_WC_PH_blackcat_daily', 'ania'
+
+			if pcs_horny >= 50:
+				'Ania smiles at you "That was great <<$pcs_nickname>>. Spread your legs."'
+				act 'Spread my legs': 
+					ztemp = 1
+					gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+				end
+			else
+				gs 'willpower', 'cuni', 'force'
+				temp = will_cost - ania_sub
+				will_cost -= ania_sub
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					
+					act 'Force Ania to lick my pussy (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						
+						ztemp = 1
+						ania_sub += 2
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+					end
+				else
+					act 'Force Ania to lick my pussy ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+
+				gs 'willpower', 'cuni', 'force'
+				temp = will_cost - ania_sub
+				will_cost -= ania_sub
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:					
+					act 'Force Ania to lick my ass (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						
+						ztemp = 2
+						ania_sub += 2
+						gt 'mod_public_WC_PH_blackcat_daily', 'sexme'
+					end
+				else
+					act 'Force Ania to lick my ass ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/room/few girls/alone/sex/orgasm ('+rand(1,4)+').mp4"></video></center>'
+		end
+	end
+end
+--- mod_public_WC_PH_blackcat_daily_ania ---------------------------------
+

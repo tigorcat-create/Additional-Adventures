@@ -1,0 +1,662 @@
+# mod_public_WC_rab_btothel_escort_dinner
+if $ARGS[0] = 'dinner3':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_dinner'
+	$loc_arg = 'dinner3'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$func('wrap', 'header center b', 'Cafe')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/cafe.jpg"></center>'
+
+
+	if phgorilka >= rand(1,4):
+		act 'ask to drink a vodka':
+			cla
+			pheatstart += 7
+			minut += 7
+			gs 'stat'
+			'He looks amazed, but pour a shot for me'
+			'He make a tots "Za zdorovie!"'
+			'And we drink'
+			gs 'drugs', 'alcohol', 'vodka'
+			gs 'stat'
+			phescortfun += rand(5,6)
+			phtemp -= 2
+			if phtemp < 0: phtemp = 0
+			phgorilka += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/drink.jpg"></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+		end
+	end
+
+	if phtemp > rand(1,3):
+		'He pour a shot of vodka and drink'
+		phtemp = 0
+		phescortfun += rand(0,2)
+		phgorilka += 1
+	end
+
+	act 'eat & chat with him':
+		cla
+		if pcs_humint  >= ( phhismind - phgorilka*5 ):
+			phescortfun += rand(3,5)
+			'We have a great conversation.'
+		else
+			if rand(1,3) = 1: phescortfun -= rand(1,2)
+			'I can''t find a topic to talk with him'
+			'It seems he frustrated a little.'
+		end
+		phtemp += 1
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/eat.jpg"></center>'
+		gs 'food', 'bar_snack_stats'
+		gs 'food', 'aftermeal'
+		gs 'stat'
+
+		gs 'exp_gain', 'humint', rand(3,5)
+		pheatstart += 10
+		minut += 10
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+	end
+
+	if phtemp >= rand(2,4):
+		act 'Playfully feed him':
+			phtemp -= 2
+			phescortfun += rand(1,3)
+			pheatstart += 5
+			minut += 5
+			gs 'stat'
+
+			'It''s fun, I missed a little, but he just laughing… '
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/feed him.jpg"></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+		end
+	end
+
+	if $pantyworntype ! 'none':
+		act 'Remove panties':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			gs 'panties', 'remove'
+			pheatstart += 5
+			gs 'stat'
+			phescortfun += rand(5,10)
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/remove panties ('+rand(1,2)+').mp4"></video></center>'
+			'He is looking at me with a big interest'
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+		end
+	end
+
+	if phescortfun >= rand(20,30):
+		act 'flash my tits':
+			cla
+			minut += 5
+			pheatstart += 5
+			gs 'stat'
+			phescortfun += rand(0,5)
+			'I flash my tits to the client'
+			'I see a big sile on his face'
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/tease_tits.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/tease_tits.jpg"></center>'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+		end
+	end
+
+	if phescortfun >= rand(40,60):
+		cla
+		act 'do you want some fun?':
+			cla
+			'"Yes, definitely!"'
+
+			act 'Take him to the girls room':
+				gt 'mod_public_WC_rab_btothel_escort_dinner', 'wcsex'
+			end
+		end
+	end
+
+	if phgorilka >= 4 or phescortfun >= rand(40,60):
+		!! undertablesex
+		act 'go under the table':
+			gt 'mod_public_WC_rab_btothel_escort_dinner', 'unt'
+		end
+	end
+
+	if mc_inventory['cigarettes'] >= 1:
+		act 'Smoke':
+			'I put a cigarette in my mouth. The client light it up'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				phescortfun += 1
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+	end
+
+
+	if pheatstart >= pheatwant:
+		cla
+		killvar 'phgorilka'
+		killvar 'pheatstart'
+		killvar 'pheatwant'
+		killvar 'phtemp'
+
+		'The client stops a waiter and ask for a bill'
+		'In a short time he paid and we go out from the cafe'
+		$phescortude = ' '
+		phdoroga = 0
+
+		act '"Honey, I have an idea"':
+			cla
+			gs 'exp_gain', 'persuas', rand(3,5)
+			if pcs_humint + pcs_intel/5 >= phhismind:
+				if pcs_persuas >= rand(30, phhismind):
+
+					if $phchas = 'nich':
+						act 'Let''s go to the club':
+							cla
+							$phescortude = 'club'
+							'"Okey, sounds good, I know very nice club nearby"'
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						end
+					end
+
+					act 'Let''s go to the cinema':
+						cla
+						$phescortude = 'cinema'
+						'"Okey, sounds better, I know good cinema nearby"'
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+
+					act 'Let''s go to your place':
+						cla
+						$phescortude = 'hotel'
+						'"Okey, sounds good, Let''s go"'
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					end
+					act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				else
+					'He just ignore me and start moving somewhere'
+
+					act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				end
+			else
+				'He just ignore me and start moving somewhere'
+
+				act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			end
+		end
+
+		act 'Go for a walk': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+
+		gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+	end
+end
+
+
+
+if $ARGS[0] = 'wcsex':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+	$loc = 'mod_public_WC_rab_btothel_escort_dinner'
+	$loc_arg = 'wcsex'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$func('wrap', 'header center b', 'Toilet')
+
+
+	'We entered the toilet'
+	temp = rand(1,8)
+
+	if temp <= 4:
+		'as I closed the door he undress me and roughly bend'
+		'"Nice holes…"'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/1.jpg"></center>'
+		gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub'
+		pheatstart += 10
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He start to eat my ass'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/2.jpg"></center>'
+			gs 'arousal', 'rimming', rand(10,15), 'prostitution', 'sub'
+			pheatstart += 10
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'When he ends, he slap my ass "Are you ready, Bitch?.. I think so"'
+				'He start to fuck me'
+
+
+				if rand(1,2) = 1:
+					'He didn''t stand for long and fill me with his cum'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(1,2)+').jpg"></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+					pheatstart += 10
+					gs 'stat'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'stat'
+				else
+					'He didn''t stand for long and fill my ass with his cum'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(1,2)+').jpg"></center>'
+					gs 'arousal', 'anal', rand(10,15), 'prostitution', 'sub'
+					pheatstart += 10
+					gs 'stat'
+					gs 'cum_call','anus',$boy
+					gs 'stat'
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+				act 'Come back to the table': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+			end
+		end
+	elseif temp <= 7:
+		!! hj+bj
+		phtempcum = rand(60,80)
+		pheatstart += 5
+		'I closed the door and turn to him'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/0.jpg"></center>'
+		itemp = 0
+		act 'hand job':
+			*clr & cla
+			'I unzip his fly and grab his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/1 hj.jpg"></center>'
+			temp = 10 + ( stat['hj'] / 10 )
+			phtempcum -= rand(0,temp)
+			gs 'arousal', 'hj', rand(5,10), 'prostitution'
+			gs 'stat'
+			itemp += 1
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'wcsex2'
+		end
+
+		act 'blow job':
+			*clr & cla
+			'I unzip his fly and start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 bj (2).jpg"></center>'
+			temp = 10 + ( stat['bj'] / 10 )
+			phtempcum -= rand(5,temp)
+			gs 'arousal', 'bj', rand(5,10), 'prostitution'
+			gs 'stat'
+			itemp += 1
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'wcsex2'
+		end
+	else
+		phtempcum = rand(60,80)
+		pheatstart += 5
+		'I lick my lips and turn to him'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/0.jpg"></center>'
+		itemp = 100
+		act 'hand job':
+			*clr & cla
+			'I unzip his fly and grab his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/1 hj.jpg"></center>'
+			temp = 10 + ( stat['hj'] / 10 )
+			phtempcum -= rand(0,temp)
+			gs 'arousal', 'hj', rand(5,10), 'prostitution'
+			gs 'stat'
+			itemp += 1
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'wcsex2'
+		end
+
+		act 'blow job':
+			*clr & cla
+			'I unzip his fly and start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 bj (2).jpg"></center>'
+			temp = 10 + ( stat['bj'] / 10 )
+			phtempcum -= rand(5,temp)
+			gs 'arousal', 'bj', rand(5,10), 'prostitution'
+			gs 'stat'
+			itemp += 1
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'wcsex2'
+		end
+	end
+end
+
+if $ARGS[0] = 'wcsex2':
+	*clr & cla
+	$loc = 'mod_public_WC_rab_btothel_escort_dinner'
+	$loc_arg = 'wcsex2'
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	$func('wrap', 'header center b', 'Toilet')
+
+	act 'hand job':
+		*clr
+		'I unzip his fly and grab his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/1 hj.jpg"></center>'
+		temp = 10 + ( stat['hj'] / 10 )
+		phtempcum -= rand(0,temp)
+		gs 'arousal', 'hj', rand(10,10), 'prostitution'
+		pheatstart += 5
+		minut -= 5
+		gs 'stat'
+		itemp += 1
+		gs 'mod_public_WC_rab_btothel_escort_dinner', 'phtempcum'
+	end
+
+	act 'blow job':
+		*clr
+		'I unzip his fly and start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 bj (2).jpg"></center>'
+		temp = 10 + ( stat['bj'] / 10 )
+		phtempcum -= rand(5,temp)
+		gs 'arousal', 'bj', rand(10,10), 'prostitution'
+		pheatstart += 5
+		minut -= 5
+		gs 'stat'
+		itemp += 1
+		gs 'mod_public_WC_rab_btothel_escort_dinner', 'phtempcum'
+	end
+end
+
+if $ARGS[0] = 'phtempcum':
+	if itemp >= rand(103,105):
+		*clr & cla
+		'"Too slow, bitch"'
+		'He rotates me and start to fuck!'
+		killvar 'phtempcum'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(2,2)+').jpg"></center>'
+		gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub'
+		pheatstart += 10
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(2,2)+').jpg"></center>'
+			'Suddenly the door opens and some guy come in… the client doesn''t bother to stop fucking me'
+			'"Do you want to join, pal?" - cliient ask'
+			pheatstart += 5
+
+			act 'Hell no, Get out!':
+				*clr & cla
+				'He run away, the client just laught'
+				'Soon he fill me with his cum'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+				pheatstart += 10
+				gs 'stat'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				gs 'stat'
+				sexcorrupt -= 2
+				gs 'arousal', 'end'
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0
+				act 'Come back to the table': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+			end
+
+			if sexcorrupt <= rand(30,50):
+				act 'You can join for 300':
+					cla
+					'"It''s on my buddy" - I see 300 falls on a floor'
+					'The guy undressed very quicly and put his dick in my mouth'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/2/2 (3).jpg"></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group'
+					gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'group'
+					pheatstart += 10
+					minut -= 10
+					gs 'stat'
+					money += 300
+					gs 'stat'
+
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'sex2'
+				end
+			end
+
+			if sexcorrupt >= rand(50,80):
+				act 'I can''t resist':
+					cla
+					sexcorrupt += 1
+					'"I have somme empty holes"'
+					'The guy undressed very quicly and put his dick in my mouth'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/2/2 (3).jpg"></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group'
+					gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'group'
+					pheatstart += 10
+					minut -= 10
+					gs 'stat'
+
+					act 'continue': gt 'mod_public_WC_rab_btothel_escort_dinner', 'sex2'
+				end
+			end
+		end
+	elseif phtempcum <= 0:
+		*clr & cla
+		!! cum
+		'"I am cummming" - he said'
+		killvar 'phtempcum'
+		'I point his dick on my tits'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/wcsex/cum.mp4"></video></center>'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		phescortfunDONE = 1
+		phescortfunSexDONE += 1
+		phescortfun -= 50
+		if phescortfun <= 0: phescortfun = 0
+		act 'Come back to the table': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+	elseif itemp >= rand(5,7) and itemp <= 100:
+		cla
+		phescortfun -= 10
+		'"Too slow, bitch"'
+		'He rotates me and start to fuck!'
+		killvar 'phtempcum'
+
+		if rand(1,2) = 1:
+			'He didn''t stand for long and fill me with his cum'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(1,2)+').jpg"></center>'
+			gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+			pheatstart += 10
+			gs 'stat'
+			gs 'cum_call','',$boy
+			gs 'cuminsidereact', $boydesc
+			gs 'stat'
+		else
+			'He didn''t stand for long and fill my ass with his cum'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/3 vag ('+rand(1,2)+').jpg"></center>'
+			gs 'arousal', 'anal', rand(10,15), 'prostitution', 'sub'
+			pheatstart += 10
+			gs 'stat'
+			gs 'cum_call','anus',$boy
+			gs 'stat'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		phescortfunDONE = 1
+		phescortfunSexDONE += 1
+		phescortfun -= 50
+		if phescortfun <= 0: phescortfun = 0
+		act 'Come back to the table': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+	end
+end
+
+if $ARGS[0] = 'sex2':
+	*clr & cla
+	'They are fucking me'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/2/2 ('+rand(1,3)+').jpg"></center>'
+	gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group'
+	gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'group'
+	pheatstart += 10
+	minut -= 10
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'They put me on my knees and load on my face'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/wcsex/2/3 ('+rand(1,2)+').jpg"></center>'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+		gs 'cum_call','face','toilet buddy'
+		gs 'stat'
+		gs 'cum_call','mouth','toilet buddy'
+		gs 'stat'
+		gs 'cum_call','hair','toilet buddy'
+		gs 'stat'
+		'Guy wipe his dick in my hair, put his pants back and just go away'
+		gs 'arousal', 'end'
+		gs 'stat'
+		phescortfunDONE = 1
+		phescortfunSexDONE += 1
+		phescortfun -= 20
+		if phescortfun <= 0: phescortfun = 0
+		act 'Come back to the table': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+	end
+end
+
+
+
+if $ARGS[0] = 'unt':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/under the table.jpg"></center>'
+	+$OpenInnerThought+'I hope noone see me'+$CloseInnerThought
+	if rand(1,4) = 1:
+		gs 'arousal', 'flashlite', rand(10,10), 'prostitution'
+		minut -= 10
+		gs 'stat'
+	end
+
+	act 'blow the client':
+		*clr & cla
+		pheatstart += 5
+		'I have unziped the clients pants and warm it with my breath'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/dinner/sex/2 bj/1.jpg"></center>'
+		gs 'arousal', 'voyeur', rand(5,10), 'prostitution'
+		gs 'stat'
+		+$OpenInnerThought+'I hope noone see me'+$CloseInnerThought
+		if rand(1,4) = 1:
+			gs 'arousal', 'flashlite', rand(10,10), 'prostitution'
+			minut -= 10
+			gs 'stat'
+		end
+
+
+
+		act 'Suck it':
+			*clr & cla
+			pheatstart += 5
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/2 bj/2.mp4"></video></center>'
+			pheatstart += 5
+			gs 'arousal', 'bj', rand(5,10), 'prostitution'
+			gs 'stat'
+
+			+$OpenInnerThought+'I hope noone see me'+$CloseInnerThought
+			if rand(1,4) = 1:
+				gs 'arousal', 'flashlite', rand(10,10), 'prostitution'
+				minut -= 10
+				gs 'stat'
+			end
+
+			act 'keep sucking':
+				*clr & cla
+				pheatstart += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/2 bj/3 bj ('+rand(1,4)+').mp4"></video></center>'
+				pheatstart += 5
+				gs 'arousal', 'bj', rand(5,10), 'prostitution'
+				gs 'stat'
+
+				+$OpenInnerThought+'I hope noone see me'+$CloseInnerThought
+				if rand(1,4) = 1:
+					gs 'arousal', 'flashlite', rand(10,10), 'prostitution'
+					minut -= 10
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					'He cums in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/2 bj/4 cum in ('+rand(1,2)+').mp4"></video></center>'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','arms',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0
+
+					act 'go back to my sit': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+				end
+			end
+
+			act 'Drop his pants and fuck':
+				*clr & cla
+				pheatstart += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/3 sex/1.mp4"></video></center>'
+				pheatstart += 5
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution'
+				gs 'stat'
+
+				+$OpenInnerThought+'I hope noone see me'+$CloseInnerThought
+				if rand(1,2) = 1:
+					gs 'arousal', 'flashlite', rand(10,10), 'prostitution'
+					minut -= 10
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					'He cums in me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/dinner/sex/3 sex/2.mp4"></video></center>'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+					phescortfunDONE = 1
+					phescortfunSexDONE += 1
+					phescortfun -= 50
+					if phescortfun <= 0: phescortfun = 0
+
+					act 'go back to my sit': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+				end
+			end
+		end
+	end
+
+	act 'go back to my sit': gt 'mod_public_WC_rab_btothel_escort_dinner', 'dinner3'
+end
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_dinner ---------------------------------
+

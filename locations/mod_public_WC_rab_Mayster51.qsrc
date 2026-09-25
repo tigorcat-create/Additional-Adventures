@@ -1,0 +1,60 @@
+# mod_public_WC_rab_Mayster51
+if $ARGS[0] = 'start':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'"Hmm, if you feel, you couldn''t handle the pain in the BDSM training… well that is good idea"'
+	if stat['BDSM'] <= 40: '"I see your progress, I think you could find the pleasure waves in a pain"'
+
+	act 'wait': gt 'mod_public_WC_rab_Mayster51', '2'
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = '2':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+
+	'Vania tied me and starts the lesson!'
+
+	temp = rand (1,4)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+	stat['BDSM'] += rand(2,3)
+	gs 'arousal', 'BDSM', rand(45,120), 'bound', 'sub'
+	gs 'pain', rand(0,2), 'back', 'spank'
+	gs 'pain', rand(0,2), 'asscheeks', 'spank'
+	gs 'pain', rand(0,2), 'hips', 'spank'
+	gs 'pain', rand(0,2), 'legL', 'spank'
+	gs 'pain', rand(0,2), 'legR', 'spank'
+	gs 'pain', rand(0,2), 'shoulders', 'spank'
+	gs 'pain', rand(0,2), 'armL', 'spank'
+	gs 'pain', rand(0,2), 'armR', 'spank'
+	gs 'pain', rand(0,2), 'chest', 'spank'
+	gs 'pain', rand(0,2), 'breasts', 'spank'
+	gs 'pain', rand(0,2), 'nipples', 'spank'
+	gs 'pain', rand(0,2), 'ribs', 'spank'
+	gs 'pain', rand(0,2), 'tummy', 'spank'
+	gs 'pain', rand(0,2), 'pubic', 'spank'
+	gs 'pain', rand(0,2), 'labia', 'spank'
+	gs 'stat'
+
+	'After the lesson he untied me and say'
+	'"Betsi, it''s nice to see your desire to study!"'
+	pcs_mood += rand(0,20)
+	gs 'stat'
+	ztemp = rand(1,2)
+	act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+end
+--- mod_public_WC_rab_Mayster51 ---------------------------------
+

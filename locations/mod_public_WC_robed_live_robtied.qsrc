@@ -1,0 +1,171 @@
+# mod_public_WC_robed_live_robtied
+if $ARGS[0] = 'start':		
+	act 'wait (0:30)':
+		minut += 20
+		gs 'stat'
+		pheventstartlive -= rand(0,1)
+		gt 'mod_public_WC_robed_live', 'start2'
+	end
+	
+	act 'try to unbind myself':
+		cla
+		if phknife = 1:
+			act 'cut the ropes':
+				cla
+				'I am free!'
+				$rope = 0
+				phrobtied = 0
+				gs 'mod_public_WC_cabine', 'motuzka'
+				wait 500
+				act 'look around':
+					pheventstartlive += rand(0,2)
+					gt 'mod_public_WC_robed_live', 'start2'
+				end
+			end
+		end
+		
+		act 'Try to break the ropes':
+			if pcs_stren >= 90 and phwindow = 0:
+				cla
+				'Under my power, all the ropes broke through with a loud sound'
+				$rope = 0
+				phrobtied = 0
+				gs 'mod_public_WC_cabine', 'motuzka'
+				wait 500
+				act 'look around':
+					pheventstartlive += rand(0,2)
+					gt 'mod_public_WC_robed_live', 'start2'
+				end
+			elseif pcs_stren >= 50:
+				cla
+				'I hear the rope crackle, but the rope does not lend itself.'
+				$rope -= pcs_stren * 3 / 10 + 2
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': 
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				else
+					*clr & cla
+					'With the loud sound of the rope, it finally bursts.'
+					wait 500
+					act 'look around':
+						phrobtied = 0
+						pheventstartlive += rand(0,2)
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				end
+			else
+				cla
+				'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+				$rope -= 15
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': 
+						znaydut += 1
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				else
+					cla
+					'With the loud sound of the rope, it finally bursts.'
+					wait 500
+
+					act 'look around':
+						phrobtied = 0
+						pheventstartlive += rand(0,2)
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				end
+			end				
+		end
+		act 'Try to get out of the ropes':
+			if pcs_agil >= 80 and phwindow = 0:
+				cla
+				$rope = 0
+				phrobtied = 0
+				gs 'mod_public_WC_cabine', 'motuzka'
+				'Turning my hands from behind my back to the front, I find how to turn my hand and slip through the knots.'
+				wait 500
+				act 'look around':
+					pheventstartlive += rand(0,2)
+					gt 'mod_public_WC_robed_live', 'start2'
+				end
+			elseif pcs_agil >= 50:
+				cla
+				'I move my hands, looking for a way to slip out of the shackles.'
+				$rope -= pcs_agil * 3 / 10 + 5
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': 
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				else
+					cla
+					'Finally I find how to wrap my hand and slip through the knots.'
+					wait 500
+					act 'look around':
+						phrobtied = 0
+						pheventstartlive += rand(0,2)
+						gt 'mod_public_WC_robed_live', 'start2'						
+					end
+				end			
+			elseif pcs_agil < 50:
+				cla
+				'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+				$rope -= 15
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': 
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				else
+					cla
+					'Finally I find how to wrap my hand and slip through the knots.'
+					wait 500
+					act 'look around':
+						phrobtied = 0
+						pheventstartlive += rand(0,2)
+						gt 'mod_public_WC_robed_live', 'start2'
+					end
+				end				
+			end		
+		end
+		act 'Expand the knots to slip out of the ropes':
+			if pcs_agil + pcs_stren >= rand(120, 200) and phwindow = 0:
+				cla
+				$rope = 0
+				phrobtied = 0
+				gs 'mod_public_WC_cabine', 'motuzka'
+				'Finally, the ropes don''t hold me.'
+				wait 500
+
+				act 'look around':
+					pheventstartlive += rand(0,2)
+					gt 'mod_public_WC_robed_live', 'start2'
+				end
+			else
+				cla
+				$rope -= rand(1,10)
+				gs 'mod_public_WC_cabine', 'motuzka'
+				'The nodes became lighter, but not enough.'
+				act 'continue': 
+					gt 'mod_public_WC_robed_live', 'start2'
+				end	
+			end
+		end
+	end
+	
+	if pcs_sleep <= 30:
+		act 'sleep':
+			gt 'bed', 'start'
+		end
+	end
+end
+
+
+
+
+
+
+--- mod_public_WC_robed_live_robtied ---------------------------------
+

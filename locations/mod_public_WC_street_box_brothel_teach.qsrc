@@ -1,0 +1,2207 @@
+# mod_public_WC_street_box_brothel_teach
+if $ARGS[0] = 'teach':
+	*clr & cla
+	'ME: No work today girls. Today I will teach…'
+	!! phteach = 1
+	
+	if i > phwhores: i = 2
+	if i <= 1: i = phwhores
+	ztemp = i
+	
+	'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+	'<<$phgirlname[i]>>'
+	
+	*nl
+	'Hand job stat = <<phgirlstatHJ[i]>>'
+	'Blow job stat = <<phgirlstatBJ[i]>>'
+	'Footjob job stat = <<phgirlstatFJ[i]>>'
+	'Vaginal stat = <<phgirlstatVAG[i]>>'
+	'Anal stat = <<phgirlstatASS[i]>>'
+	*nl
+	'<<phclientserved[i]>> clients served'
+	'_________________________________________________'
+	*nl	
+	
+	act 'see previous': i -= 1 & gt 'mod_public_WC_street_box_brothel_teach', 'teach'
+	act 'see next': i += 1 & gt 'mod_public_WC_street_box_brothel_teach', 'teach'
+	
+	act '<b>…I will teach <<$phgirlname[i]>></b>':
+		cla
+		phteach = daystart
+		if hour >= 22: phteach += 1
+		i = ztemp
+		'Other girls leave the box'
+		
+		!! teach more than 3 hours
+		
+		act 'bj theory':
+			!! dildo
+			
+			gt 'mod_public_WC_street_box_brothel_teach', 'bjdildo'
+		end
+		
+		act 'vaginal theory':
+			!! dildo
+			
+			gt 'mod_public_WC_street_box_brothel_teach', 'vagdildo'
+		end
+		
+		act 'anal theory':
+			!! dildo
+			
+			gt 'mod_public_WC_street_box_brothel_teach', 'assdildo'
+		end
+		
+		if phgirlstatBJ[i] + phgirlstatBJ[1] >= 120:
+			!! bjtheotogether
+			act 'blowjob theory together':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'bjdildo2'
+			end
+		end
+		
+		if phgirlstatVAG[i] + phgirlstatVAG[1] >= 80:
+			!! vagtheotogether
+			act 'vaginal theory together':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'vagdildo2'
+			end
+		end
+		
+		if phgirlstatASS[i] + phgirlstatASS[1] >= 150:
+			!! asstheotogether
+			act 'anal theory together':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'assdildo2'
+			end
+		end
+		
+		if phgirlstatBJ[i] >= 35:
+			!! bjpr1
+			act 'blowjob practice':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'bj'
+			end
+		else
+			act 'blowjob practice':
+				'<<$phgirlname[i]>> is not ready for this. She must need better skills'
+			end
+		end
+		
+		!! if phgirlstatBJ[i] >= 75:
+			!! bjpr2
+			!! act 'deep throat practice':
+				
+				!! gt 'mod_public_WC_street_box_brothel_teach', 'bj1'
+			!! end
+		!! else
+			!! act 'deep throat practice':
+				!! '<<$phgirlname[i]>> is not ready for this. She must need better skills'
+			!! end
+		!! end
+		
+		if phgirlstatVAG[i] >= 30:
+			!! vagpr2
+			act 'vaginal practice':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'vag'
+			end
+		else
+			!! vagpr2
+			act 'vaginal practice':
+				'<<$phgirlname[i]>> is not ready for this. She must need better skills'
+			end
+		end
+		
+		if phgirlstatASS[i] >= 50:
+			!! asspr2
+			act 'anal practice':
+				
+				gt 'mod_public_WC_street_box_brothel_teach', 'ass'
+			end
+		else
+			act 'anal practice':
+				'<<$phgirlname[i]>> is not ready for this. She must need better skills'
+			end
+		end
+	end
+	
+	
+	act 'change my mind': gt 'mod_public_WC_street_box', 'start'	
+end
+
+
+
+if $ARGS[0] = 'bjdildo':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 0
+	'<<$phgirlname[i]>> Blow job stat = <<phgirlstatBJ[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+			
+		
+		'I fix a dildo with a nice slap sound'
+		'ME: "suck this"'
+		
+		gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		'<<$phgirlname[i]>> do her best to please the dildo'
+		temp = 0
+		if rand(1,3) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/bj ('+rand(1,4)+').mp4"></video></center>'
+		
+		
+		act 'keep sucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'bjdildo_loop1'
+		end
+		
+		act 'push her on the dildo':
+			*clr & cla
+			'She was too concentrated and was not ready for such training'
+			i = ztemp
+			temp = 0
+			temp = rand(1,2)
+			'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+			phgirlstatBJ[i] += temp			
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force bj ('+rand(1,2)+').mp4"></video></center>'
+			
+			'As I leave her, she starts heavy breathing…'
+			
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		if otemp <= rand(2,4):
+			!''
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'vagdildo':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	!otemp = 0
+	'<<$phgirlname[i]>> Vaginal stat stat = <<phgirlstatVAG[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+		:vaglessonloop		
+		
+		'I fix a dildo with a nice slap sound'
+		'ME: "ride this"'
+		
+		gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		'<<$phgirlname[i]>> do her best to please the dildo'
+		temp = 0
+		if rand(1,3) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/vag ('+rand(1,9)+').mp4"></video></center>'
+		
+		
+		act 'keep fucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'vagdildo_loop1'
+		end
+		
+		act 'push her deep on the dildo':
+			*clr & cla
+			'She was too concentrated and was not ready for such training'
+			'I pushed her all way down the dildo'
+			i = ztemp
+			temp = 0
+			temp = rand(1,2)
+			'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+			phgirlstatVAG[i] += temp			
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force vag ('+rand(1,1)+').mp4"></video></center>'
+			
+			'As I leave her, she jumps out the dildo…'
+			
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		if otemp <= rand(2,4):
+			
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'assdildo':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 0
+	'<<$phgirlname[i]>> Anal stat = <<phgirlstatASS[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+		
+		
+		'I fix a dildo with a nice slap sound'
+		'ME: "ride this"'
+		
+		gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		'<<$phgirlname[i]>> do her best to keep her ass safe'
+		temp = 0
+		if rand(1,3) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/ass ('+rand(1,6)+').mp4"></video></center>'
+		
+		
+		act 'keep fucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'assdildo_loop1'
+		end
+		
+		act 'fuck her with dildo':
+			*clr & cla
+			'She was too concentrated and was not ready for such training'
+			'I pushed her to missionary, grab the dildo and put it all in'
+			i = ztemp
+			temp = 0
+			temp = rand(1,2)
+			'<<$phgirlname[i]>> Anal stat += <<temp>>'
+			phgirlstatVAG[i] += temp			
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force ass ('+rand(1,1)+').mp4"></video></center>'
+			
+			'As I leave her, she pulls out dildo immediately…'
+			
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		if otemp <= rand(2,4):
+			
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bjdildo2':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 0
+	'<<$phgirlname[i]>> Blow job stat = <<phgirlstatBJ[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+		
+		
+		
+		'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+		'I took a big long dildo, explain her what to do and we start the training'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/bj ('+rand(1,5)+').mp4"></video></center>'
+		temp = 0
+		if rand(1,2) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp
+		
+		pain['throat'] += 5
+		gs 'arousal_funcs', 'stretch', 'oral', 1
+		gs 'arousal', 'dildo_suck', 20, 'rough'
+		gs 'stat'
+		i = ztemp
+		
+		
+		act 'keep sucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'bjdildo2_loop1'
+		end
+		
+
+			
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+
+		
+		if otemp <= rand(2,4):
+			
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'vagdildo2':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 0
+	'<<$phgirlname[i]>> Vaginal stat = <<phgirlstatVAG[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+		
+		
+		
+		'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+		'I took a big long dildo, explain her what to do and we start the training'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/vag ('+rand(1,10)+').mp4"></video></center>'
+		temp = 0
+		if rand(1,2) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		!! pain['throat'] += 5
+		!! gs 'arousal_funcs', 'stretch', 'oral', 1
+		dick = 30
+		if pcs_vag > dildoBig:
+			gs 'arousal', 'vaginal_dildo', 20
+		else
+			pain['vaginal'] += 5
+			gs 'arousal_funcs', 'stretch', 'vaginal', 1
+			gs 'arousal', 'vaginal_dildo', 20, 'rough'
+		end
+		gs 'stat'
+		!! gs 'arousal', 'dildo_suck', 20, 'rough'
+		
+		i = ztemp
+		
+		
+		act 'keep fucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'vagdildo2_loop1'
+		end
+		
+
+			
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+
+		
+		if otemp <= rand(2,4):
+			
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'assdildo2':
+	!*clr & cla
+	cla
+	i = ztemp
+	'I spend some time to tell some tricks and share mine best practicies to <<$phgirlname[i]>>'
+	
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 0
+	'<<$phgirlname[i]>> Anal stat = <<phgirlstatVAG[i]>>'
+	
+	act 'Now it is time for the practice':
+		*clr & cla
+		i = ztemp
+		
+		
+		
+		'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+		'I took a big long dildo, explain her what to do and we start the training'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/ass ('+rand(1,3)+').mp4"></video></center>'
+		temp = 0
+		if rand(1,2) = 1: temp = rand(1,2)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatASS[i] += temp
+		
+		!! pain['throat'] += 5
+		!! gs 'arousal_funcs', 'stretch', 'oral', 1
+		dick = 30
+		if pcs_ass > dildoBig:
+			gs 'arousal', 'anal_dildo', 20
+		else
+			pain['asshole'] += 5
+			gs 'arousal_funcs', 'stretch', 'anal', 1
+			gs 'arousal', 'anal_dildo', 20, 'rough'
+		end
+		gs 'stat'
+		!! gs 'arousal', 'dildo_suck', 20, 'rough'
+		
+		i = ztemp
+		
+		
+		act 'keep fucking':
+			*clr & cla
+			otemp += 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'assdildo2_loop1'
+		end
+		
+
+			
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+
+		
+		if otemp <= rand(2,4):
+			
+		else
+			cla
+			'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+			'I see, she really exhausted'
+			
+			act 'okey, that is all for today':
+				cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bj':
+	*clr & cla
+	i = ztemp
+	'I called Grisha to use him as a practice tool. I am sure he will be happy about it'
+	'As he come I showed <<$phgirlname[i]>> to him and explain what is going on'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/start ('+rand(1,1)+').mp4"></video></center>'
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 1
+	'<<$phgirlname[i]>> Blow job stat = <<phgirlstatBJ[i]>>'
+	
+	protect = 0
+	$cum1 = rand(90,150)
+	phclient_mood = 3
+	
+	act '<<$phgirlname[i]>> blow him':
+		*clr & cla		
+		
+		!:grishabj
+		
+		i = ztemp
+		bjcil[i] = phgirlstatBJ[i]
+		
+		
+		if otemp = 1:
+			'<<$phgirlname[i]>> is sucking Grisha'
+			if bjcil[i] <= 25:
+				maxrand = 0
+				if girltype[i] = 1:
+					maxrand = 2
+				elseif girltype[i] = 2:
+					maxrand = 1
+				elseif girltype[i] = 3:
+					maxrand = 2
+				elseif girltype[i] = 4:
+					maxrand = 5
+				elseif girltype[i] = 5:
+					maxrand = 2
+				elseif girltype[i] = 6:
+					maxrand = 4
+				elseif girltype[i] = 7:
+					maxrand = 6
+				elseif girltype[i] = 8:
+					maxrand = 3
+				elseif girltype[i] = 9:
+					maxrand = 7
+				elseif girltype[i] = 10:
+					maxrand = 2
+				elseif girltype[i] = 101:
+					maxrand = 6
+				end
+			
+			
+			
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/1/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+			else
+				if bjcil[i] <= 60:
+					maxrand = 0
+					if girltype[i] = 1:
+						maxrand = 5
+					elseif girltype[i] = 2:
+						maxrand = 2
+					elseif girltype[i] = 3:
+						maxrand = 2
+					elseif girltype[i] = 4:
+						maxrand = 5
+					elseif girltype[i] = 5:
+						maxrand = 3
+					elseif girltype[i] = 6:
+						maxrand = 3
+					elseif girltype[i] = 7:
+						maxrand = 2
+					elseif girltype[i] = 8:
+						maxrand = 5
+					elseif girltype[i] = 9:
+						maxrand = 6
+					elseif girltype[i] = 10:
+						maxrand = 6
+					elseif girltype[i] = 101:
+						maxrand = 9
+					end
+				
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/2/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+				else
+					if rand(1,3) <= 2:
+						maxrand = 0
+						if girltype[i] = 1:
+							maxrand = 5
+						elseif girltype[i] = 2:
+							maxrand = 2
+						elseif girltype[i] = 3:
+							maxrand = 2
+						elseif girltype[i] = 4:
+							maxrand = 5
+						elseif girltype[i] = 5:
+							maxrand = 3
+						elseif girltype[i] = 6:
+							maxrand = 3
+						elseif girltype[i] = 7:
+							maxrand = 2
+						elseif girltype[i] = 8:
+							maxrand = 5
+						elseif girltype[i] = 9:
+							maxrand = 6
+						elseif girltype[i] = 10:
+							maxrand = 6
+						elseif girltype[i] = 101:
+							maxrand = 9
+						end
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/2/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+					else
+						maxrand = 0
+						if girltype[i] = 1:
+							maxrand = 5
+						elseif girltype[i] = 2:
+							maxrand = 10
+						elseif girltype[i] = 3:
+							maxrand = 3
+						elseif girltype[i] = 4:
+							maxrand = 2
+						elseif girltype[i] = 5:
+							maxrand = 4
+						elseif girltype[i] = 6:
+							maxrand = 2
+						elseif girltype[i] = 7:
+							maxrand = 10
+						elseif girltype[i] = 8:
+							maxrand = 5
+						elseif girltype[i] = 9:
+							maxrand = 2
+						elseif girltype[i] = 10:
+							maxrand = 9
+						elseif girltype[i] = 101:
+							maxrand = 7
+						end
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/3/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+					end
+				end
+			end
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(0,1)
+			'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+			phgirlstatBJ[i] += temp
+			
+			temp = 3*0 + ( phgirlstatBJ[i] / 10 ) + 0 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 2:
+			'I am helping <<$phgirlname[i]>> to suck better'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/1 ('+rand(1,4)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+			phgirlstatBJ[i] += temp
+			
+			temp = 3*1 + ( phgirlstatBJ[i] / 10 ) + 1 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 3:
+			'I am forcing <<$phgirlname[i]>> deep throating'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/2 ('+rand(1,4)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+			phgirlstatBJ[i] += temp
+			
+			temp = 3*3 + ( phgirlstatBJ[i] / 10 ) + 2 * rand(1,5)
+			$cum1 -= rand(0,temp)
+		end
+		
+		gs 'mod_public_WC_street_sex', 'man'
+		
+		act 'Just watch':
+			*clr & cla
+			otemp = 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+			
+		end
+		
+		act 'Help her suck better':
+			*clr & cla
+			otemp = 2
+			gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+		end		
+		
+		if phgirlstatBJ[i] >= 75:
+			act 'Train her deep throat skills':
+				*clr & cla
+				otemp = 3
+				gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+			end
+		end
+		
+		
+		
+		
+		if $cum1 <= 0:
+			cla
+			'Grisha is ready to cun'
+			i = ztemp
+			
+			
+			act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+			
+			act 'See <<$phgirlname[i]>> swalows':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'vag':
+	*clr & cla
+	i = ztemp
+	'I called Grisha to use him as a practice tool. I am sure he will be happy about it'
+	'As he come I showed <<$phgirlname[i]>> to him and explain what is going on'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/start ('+rand(1,1)+').mp4"></video></center>'
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 1
+	'<<$phgirlname[i]>> Vaginal stat = <<phgirlstatVAG[i]>>'
+	
+	protect = 0
+	$cum1 = rand(90,150)
+	phclient_mood = 3
+	
+	act '<<$phgirlname[i]>> fuck him':
+		*clr & cla		
+		
+		!:grishavag
+		
+		i = ztemp
+		!! bjcil[i] = phgirlstatBJ[i]
+		
+		
+		if otemp = 1:
+			'<<$phgirlname[i]>> is fucking Grisha'
+			
+			maxrand = 0
+			if girltype[i] = 1:
+				maxrand = 10
+			elseif girltype[i] = 2:
+				maxrand = 10
+			elseif girltype[i] = 3:
+				maxrand = 8
+			elseif girltype[i] = 4:
+				maxrand = 10
+			elseif girltype[i] = 5:
+				maxrand = 10
+			elseif girltype[i] = 6:
+				maxrand = 5
+			elseif girltype[i] = 7:
+				maxrand = 10
+			elseif girltype[i] = 8:
+				maxrand = 13
+			elseif girltype[i] = 9:
+				maxrand = 12
+			elseif girltype[i] = 10:
+				maxrand = 13
+			elseif girltype[i] = 101:
+				maxrand = 13
+			end
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/vag/vag ('+rand(1,maxrand)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(0,1)
+			'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+			phgirlstatVAG[i] += temp
+			
+			temp = 3*0 + ( phgirlstatVAG[i] / 10 ) + 0 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 2:
+			'I was bored, so make <<$phgirlname[i]>> entertain me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/3 vag/lickme ('+rand(1,2)+').mp4"></video></center>'
+			
+			gs 'arousal', 'cuni', 15
+			!! minut -= 10
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+			phgirlstatVAG[i] += temp
+			
+			temp = 3*1 + ( phgirlstatVAG[i] / 10 ) + 0 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 3:
+			'I am pushing <<$phgirlname[i]>>, so Grisha is balls deep in her '
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/3 vag/pushher ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+			phgirlstatVAG[i] += temp
+			
+			temp = 3*3 + ( phgirlstatVAG[i] / 10 ) + 2 * rand(1,5)
+			$cum1 -= rand(0,temp)
+		end
+		
+		gs 'mod_public_WC_street_sex', 'man'
+		
+		act 'Just watch':
+			*clr & cla
+			otemp = 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+			
+		end
+		
+		act 'Force her to lick my pussy':
+			*clr & cla
+			otemp = 2
+			gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+		end		
+		
+		if phgirlstatBJ[i] >= 75:
+			act 'help her fuck':
+				*clr & cla
+				otemp = 3
+				gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+			end
+		end
+		
+		
+		
+		
+		if $cum1 <= 0:
+			cla
+			'Grisha is ready to cun'
+			i = ztemp
+			
+			
+			act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+			
+			act 'Command <<$phgirlname[i]>> to swallow':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'ass':
+	*clr & cla
+	i = ztemp
+	'I called Grisha to use him as a practice tool. I am sure he will be happy about it'
+	'As he come I showed <<$phgirlname[i]>> to him and explain what is going on'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/start ('+rand(1,1)+').mp4"></video></center>'
+	minut += 90
+	gs 'stat'
+	i = ztemp
+	otemp = 1
+	'<<$phgirlname[i]>> Anal stat = <<phgirlstatASS[i]>>'
+	
+	protect = 0
+	$cum1 = rand(90,150)
+	phclient_mood = 3
+	
+	act '<<$phgirlname[i]>> assfuck him':
+		*clr & cla		
+		
+		!:grishaass
+		
+		i = ztemp
+		!! bjcil[i] = phgirlstatBJ[i]
+		
+		
+		if otemp = 1:
+			'<<$phgirlname[i]>> is fucking Grisha'
+			
+			maxrand = 0
+			if girltype[i] = 1:
+				maxrand = 5
+			elseif girltype[i] = 2:
+				maxrand = 5
+			elseif girltype[i] = 3:
+				maxrand = 7
+			elseif girltype[i] = 4:
+				maxrand = 1
+			elseif girltype[i] = 5:
+				maxrand = 1
+			elseif girltype[i] = 6:
+				maxrand = 1
+			elseif girltype[i] = 7:
+				maxrand = 3
+			elseif girltype[i] = 8:
+				maxrand = 1
+			elseif girltype[i] = 9:
+				maxrand = 9
+			elseif girltype[i] = 10:
+				maxrand = 3
+			elseif girltype[i] = 101:
+				maxrand = 9
+			end
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/ass/ass ('+rand(1,maxrand)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(0,1)
+			'<<$phgirlname[i]>> Anal stat += <<temp>>'
+			phgirlstatASS[i] += temp
+			
+			temp = 3*0 + ( phgirlstatASS[i] / 10 ) + 0 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 2:
+			'I was bored, so make <<$phgirlname[i]>> entertain me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/4 ass/lickme ('+rand(1,2)+').mp4"></video></center>'
+			
+			gs 'arousal', 'cuni', 15
+			!! minut -= 10
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Anal stat += <<temp>>'
+			phgirlstatASS[i] += temp
+			
+			temp = 3*1 + ( phgirlstatASS[i] / 10 ) + 0 * rand(1,10)
+			$cum1 -= rand(0,temp)
+		elseif otemp = 3:
+			'I am pushing <<$phgirlname[i]>>, so Grisha is balls deep in her '
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/4 ass/pushher ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+			gs 'stat'
+			i = ztemp
+			
+			temp = rand(1,1)
+			'<<$phgirlname[i]>> Anal stat += <<temp>>'
+			phgirlstatASS[i] += temp
+			
+			temp = 3*3 + ( phgirlstatASS[i] / 10 ) + 2 * rand(1,5)
+			$cum1 -= rand(0,temp)
+		end
+		
+		gs 'mod_public_WC_street_sex', 'man'
+		
+		act 'Just watch':
+			*clr & cla
+			otemp = 1
+			gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+			
+		end
+		
+		act 'Force her to lick my pussy':
+			*clr & cla
+			otemp = 2
+			gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+		end		
+		
+		if phgirlstatBJ[i] >= 75:
+			act 'help her fuck':
+				*clr & cla
+				otemp = 3
+				gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+			end
+		end
+		
+		
+		
+		
+		if $cum1 <= 0:
+			cla
+			'Grisha is ready to cum'
+			i = ztemp
+			
+			
+			act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+			
+			act 'Command <<$phgirlname[i]>> to swallow':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+				gs 'stat'
+				
+				'ME: Thanks Grisha, you can go now.'
+				'Grisha dress up and go away.'
+				
+				act 'okey, that is all for today':
+					*clr & cla
+					i = ztemp
+					'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+					minut += 30
+					gs 'stat'
+					
+					act 'continue': gt 'mod_public_WC_street_box', 'start'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bjdildo_loop1':
+	!'I fix a dildo with a nice slap sound'
+	'ME: "suck this"'
+	
+	gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+	gs 'stat'
+	i = ztemp
+	
+	'<<$phgirlname[i]>> do her best to please the dildo'
+	temp = 0
+	if rand(1,3) = 1: temp = rand(1,2)
+	if phgirlstatBJ[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+	phgirlstatBJ[i] += temp
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/bj ('+rand(1,4)+').mp4"></video></center>'
+	
+	
+	act 'keep sucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'bjdildo_loop1'
+	end
+	
+	act 'push her on the dildo':
+		*clr & cla
+		'She was too concentrated and was not ready for such training'
+		i = ztemp
+		temp = 0
+		temp = rand(1,2)
+		if phgirlstatBJ[i] <= 50: temp = rand(1,4)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp			
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force bj ('+rand(1,2)+').mp4"></video></center>'
+		
+		'As I leave her, she starts heavy breathing…'
+		
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+	
+	if otemp <= rand(2,4):
+		!''	
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+if $ARGS[0] = 'vagdildo_loop1':
+
+		
+	gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+	gs 'stat'
+	i = ztemp
+	
+	'<<$phgirlname[i]>> do her best to please the dildo'
+	temp = 0
+	if rand(1,3) = 1: temp = rand(1,2)
+	if phgirlstatVAG[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+	phgirlstatVAG[i] += temp
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/vag ('+rand(1,9)+').mp4"></video></center>'
+	
+	
+	act 'keep fucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'vagdildo_loop1'
+	end
+	
+	act 'push her deep on the dildo':
+		*clr & cla
+		'She was too concentrated and was not ready for such training'
+		'I pushed her all way down the dildo'
+		i = ztemp
+		temp = 0
+		temp = rand(1,2)
+		if phgirlstatVAG[i] <= 50: temp = rand(1,4)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp			
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force vag ('+rand(1,1)+').mp4"></video></center>'
+		
+		'As I leave her, she jumps out the dildo…'
+		
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+	
+	if otemp <= rand(2,4):
+		
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'assdildo_loop1':
+	
+		
+	'I fix a dildo with a nice slap sound'
+	'ME: "ride this"'
+	
+	gs 'arousal', 'voyeur_sex', rand(20,20), 'prostitution', 'sub'
+	gs 'stat'
+	i = ztemp
+	
+	'<<$phgirlname[i]>> do her best to keep her ass safe'
+	temp = 0
+	if rand(1,3) = 1: temp = rand(1,2)
+	if phgirlstatASS[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Anal stat += <<temp>>'
+	phgirlstatASS[i] += temp
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/nohelp/ass ('+rand(1,6)+').mp4"></video></center>'
+	
+	
+	act 'keep fucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'assdildo_loop1'
+	end
+	
+	act 'fuck her with dildo':
+		*clr & cla
+		'She was too concentrated and was not ready for such training'
+		'I pushed her to missionary, grab the dildo and put it all in'
+		i = ztemp
+		temp = 0
+		temp = rand(1,2)
+		if phgirlstatASS[i] <= 50: temp = rand(1,4)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatASS[i] += temp			
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/1/force ass ('+rand(1,1)+').mp4"></video></center>'
+		
+		'As I leave her, she pulls out dildo immediately…'
+		
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+	
+	if otemp <= rand(2,4):
+		
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bjdildo2_loop1':
+
+	!:doubledildolessonbj
+	
+	'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+	'I took a big long dildo, explain her what to do and we start the training'
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/bj ('+rand(1,5)+').mp4"></video></center>'
+	temp = 0
+	if rand(1,2) = 1: temp = rand(1,2)
+	if phgirlstatBJ[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+	phgirlstatBJ[i] += temp
+	
+	pain['throat'] += 5
+	gs 'arousal_funcs', 'stretch', 'oral', 1
+	gs 'arousal', 'dildo_suck', 20, 'rough'
+	gs 'stat'
+	i = ztemp
+	
+	
+	act 'keep sucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'bjdildo2_loop1'
+	end
+	
+
+		
+	act 'okey, that is all for today':
+		cla
+		i = ztemp
+		'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+		minut += 30
+		gs 'stat'
+		
+		act 'continue': gt 'mod_public_WC_street_box', 'start'
+	end
+
+	
+	if otemp <= rand(2,4):
+		
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'vagdildo2_loop1':
+
+	!:doubledildolessonvag
+	
+	'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+	'I took a big long dildo, explain her what to do and we start the training'
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/vag ('+rand(1,10)+').mp4"></video></center>'
+	temp = 0
+	if rand(1,2) = 1: temp = rand(1,2)
+	if phgirlstatVAG[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+	phgirlstatVAG[i] += temp
+	
+	!! pain['throat'] += 5
+	!! gs 'arousal_funcs', 'stretch', 'oral', 1
+	dick = 30
+	if pcs_vag > dildoBig:
+		gs 'arousal', 'vaginal_dildo', 20
+	else
+		pain['vaginal'] += 5
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		gs 'arousal', 'vaginal_dildo', 20, 'rough'
+	end
+	gs 'stat'
+	!! gs 'arousal', 'dildo_suck', 20, 'rough'
+	
+	i = ztemp
+	
+	
+	act 'keep fucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'vagdildo2_loop1'
+	end
+	
+
+		
+	act 'okey, that is all for today':
+		cla
+		i = ztemp
+		'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+		minut += 30
+		gs 'stat'
+		
+		act 'continue': gt 'mod_public_WC_street_box', 'start'
+	end
+
+	
+	if otemp <= rand(2,4):
+		
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'assdildo2_loop1':
+
+	:doubledildolessonass
+	
+	'ME: we are going to do it together, cuz I dob''t want towaste my time on you only'
+	'I took a big long dildo, explain her what to do and we start the training'
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/dildo theory/2/ass ('+rand(1,3)+').mp4"></video></center>'
+	temp = 0
+	if rand(1,2) = 1: temp = rand(1,2)
+	if phgirlstatASS[i] <= 50: temp = rand(1,4)
+	'<<$phgirlname[i]>> Anal stat += <<temp>>'
+	phgirlstatASS[i] += temp
+	
+	!! pain['throat'] += 5
+	!! gs 'arousal_funcs', 'stretch', 'oral', 1
+	dick = 30
+	if pcs_ass > dildoBig:
+		gs 'arousal', 'anal_dildo', 20
+	else
+		pain['asshole'] += 5
+		gs 'arousal_funcs', 'stretch', 'anal', 1
+		gs 'arousal', 'anal_dildo', 20, 'rough'
+	end
+	gs 'stat'
+	!! gs 'arousal', 'dildo_suck', 20, 'rough'
+	
+	i = ztemp
+	
+	
+	act 'keep fucking':
+		*clr & cla
+		otemp += 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'assdildo2_loop1'
+	end
+	
+
+		
+	act 'okey, that is all for today':
+		cla
+		i = ztemp
+		'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+		minut += 30
+		gs 'stat'
+		
+		act 'continue': gt 'mod_public_WC_street_box', 'start'
+	end
+
+	
+	if otemp <= rand(2,4):
+		
+	else
+		cla
+		'<<$phgirlname[i]>>: Please, <<$phgirlname[1]>>, I can''t do it anymore'
+		'I see, she really exhausted'
+		
+		act 'okey, that is all for today':
+			cla
+			i = ztemp
+			'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+			minut += 30
+			gs 'stat'
+			
+			act 'continue': gt 'mod_public_WC_street_box', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bj_loop1':
+
+	!:grishabj
+	
+	i = ztemp
+	bjcil[i] = phgirlstatBJ[i]
+	
+	
+	if otemp = 1:
+		'<<$phgirlname[i]>> is sucking Grisha'
+		if bjcil[i] <= 25:
+			maxrand = 0
+			if girltype[i] = 1:
+				maxrand = 2
+			elseif girltype[i] = 2:
+				maxrand = 1
+			elseif girltype[i] = 3:
+				maxrand = 2
+			elseif girltype[i] = 4:
+				maxrand = 5
+			elseif girltype[i] = 5:
+				maxrand = 2
+			elseif girltype[i] = 6:
+				maxrand = 4
+			elseif girltype[i] = 7:
+				maxrand = 6
+			elseif girltype[i] = 8:
+				maxrand = 3
+			elseif girltype[i] = 9:
+				maxrand = 7
+			elseif girltype[i] = 10:
+				maxrand = 2
+			elseif girltype[i] = 101:
+				maxrand = 6
+			end
+		
+		
+		
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/1/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+		else
+			if bjcil[i] <= 60:
+				maxrand = 0
+				if girltype[i] = 1:
+					maxrand = 5
+				elseif girltype[i] = 2:
+					maxrand = 2
+				elseif girltype[i] = 3:
+					maxrand = 2
+				elseif girltype[i] = 4:
+					maxrand = 5
+				elseif girltype[i] = 5:
+					maxrand = 3
+				elseif girltype[i] = 6:
+					maxrand = 3
+				elseif girltype[i] = 7:
+					maxrand = 2
+				elseif girltype[i] = 8:
+					maxrand = 5
+				elseif girltype[i] = 9:
+					maxrand = 6
+				elseif girltype[i] = 10:
+					maxrand = 6
+				elseif girltype[i] = 101:
+					maxrand = 9
+				end
+			
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/2/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+			else
+				if rand(1,3) <= 2:
+					maxrand = 0
+					if girltype[i] = 1:
+						maxrand = 5
+					elseif girltype[i] = 2:
+						maxrand = 2
+					elseif girltype[i] = 3:
+						maxrand = 2
+					elseif girltype[i] = 4:
+						maxrand = 5
+					elseif girltype[i] = 5:
+						maxrand = 3
+					elseif girltype[i] = 6:
+						maxrand = 3
+					elseif girltype[i] = 7:
+						maxrand = 2
+					elseif girltype[i] = 8:
+						maxrand = 5
+					elseif girltype[i] = 9:
+						maxrand = 6
+					elseif girltype[i] = 10:
+						maxrand = 6
+					elseif girltype[i] = 101:
+						maxrand = 9
+					end
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/2/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+				else
+					maxrand = 0
+					if girltype[i] = 1:
+						maxrand = 5
+					elseif girltype[i] = 2:
+						maxrand = 10
+					elseif girltype[i] = 3:
+						maxrand = 3
+					elseif girltype[i] = 4:
+						maxrand = 2
+					elseif girltype[i] = 5:
+						maxrand = 4
+					elseif girltype[i] = 6:
+						maxrand = 2
+					elseif girltype[i] = 7:
+						maxrand = 10
+					elseif girltype[i] = 8:
+						maxrand = 5
+					elseif girltype[i] = 9:
+						maxrand = 2
+					elseif girltype[i] = 10:
+						maxrand = 9
+					elseif girltype[i] = 101:
+						maxrand = 7
+					end
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/bj/3/bj ('+rand(1,maxrand)+').mp4"></video></center>'
+				end
+			end
+		end
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(0,1)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp
+		
+		temp = 3*0 + ( phgirlstatBJ[i] / 10 ) + 0 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 2:
+		'I am helping <<$phgirlname[i]>> to suck better'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/1 ('+rand(1,4)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp
+		
+		temp = 3*1 + ( phgirlstatBJ[i] / 10 ) + 1 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 3:
+		'I am forcing <<$phgirlname[i]>> deep throating'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/2 ('+rand(1,4)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Blow job stat += <<temp>>'
+		phgirlstatBJ[i] += temp
+		
+		temp = 3*3 + ( phgirlstatBJ[i] / 10 ) + 2 * rand(1,5)
+		$cum1 -= rand(0,temp)
+	end
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	
+	act 'Just watch':
+		*clr & cla
+		otemp = 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+		
+	end
+	
+	act 'Help her suck better':
+		*clr & cla
+		otemp = 2
+		gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+	end		
+	
+	if phgirlstatBJ[i] >= 75:
+		act 'Train her deep throat skills':
+			*clr & cla
+			otemp = 3
+			gs 'mod_public_WC_street_box_brothel_teach', 'bj_loop1'
+		end
+	end
+	
+	
+	
+	
+	if $cum1 <= 0:
+		cla
+		'Grisha is ready to cun'
+		i = ztemp
+		
+		
+		act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		act 'See <<$phgirlname[i]>> swalows':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'vag_loop1':
+
+	!:grishavag
+	
+	i = ztemp
+	!! bjcil[i] = phgirlstatBJ[i]
+	
+	
+	if otemp = 1:
+		'<<$phgirlname[i]>> is fucking Grisha'
+		
+		maxrand = 0
+		if girltype[i] = 1:
+			maxrand = 10
+		elseif girltype[i] = 2:
+			maxrand = 10
+		elseif girltype[i] = 3:
+			maxrand = 8
+		elseif girltype[i] = 4:
+			maxrand = 10
+		elseif girltype[i] = 5:
+			maxrand = 10
+		elseif girltype[i] = 6:
+			maxrand = 5
+		elseif girltype[i] = 7:
+			maxrand = 10
+		elseif girltype[i] = 8:
+			maxrand = 13
+		elseif girltype[i] = 9:
+			maxrand = 12
+		elseif girltype[i] = 10:
+			maxrand = 13
+		elseif girltype[i] = 101:
+			maxrand = 13
+		end
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/vag/vag ('+rand(1,maxrand)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(0,1)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		temp = 3*0 + ( phgirlstatVAG[i] / 10 ) + 0 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 2:
+		'I was bored, so make <<$phgirlname[i]>> entertain me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/3 vag/lickme ('+rand(1,2)+').mp4"></video></center>'
+		
+		gs 'arousal', 'cuni', 15
+		!! minut -= 10
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		temp = 3*1 + ( phgirlstatVAG[i] / 10 ) + 0 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 3:
+		'I am pushing <<$phgirlname[i]>>, so Grisha is balls deep in her '
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/3 vag/pushher ('+rand(1,1)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Vaginal stat += <<temp>>'
+		phgirlstatVAG[i] += temp
+		
+		temp = 3*3 + ( phgirlstatVAG[i] / 10 ) + 2 * rand(1,5)
+		$cum1 -= rand(0,temp)
+	end
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	
+	act 'Just watch':
+		*clr & cla
+		otemp = 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+		
+	end
+	
+	act 'Force her to lick my pussy':
+		*clr & cla
+		otemp = 2
+		gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+	end		
+	
+	if phgirlstatBJ[i] >= 75:
+		act 'help her fuck':
+			*clr & cla
+			otemp = 3
+			gs 'mod_public_WC_street_box_brothel_teach', 'vag_loop1'
+		end
+	end
+	
+	
+	
+	
+	if $cum1 <= 0:
+		cla
+		'Grisha is ready to cun'
+		i = ztemp
+		
+		
+		act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		act 'Command <<$phgirlname[i]>> to swallow':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'ass_loop1':
+
+	:grishaass
+	
+	i = ztemp
+	!! bjcil[i] = phgirlstatBJ[i]
+	
+	
+	if otemp = 1:
+		'<<$phgirlname[i]>> is fucking Grisha'
+		
+		maxrand = 0
+		if girltype[i] = 1:
+			maxrand = 5
+		elseif girltype[i] = 2:
+			maxrand = 5
+		elseif girltype[i] = 3:
+			maxrand = 7
+		elseif girltype[i] = 4:
+			maxrand = 1
+		elseif girltype[i] = 5:
+			maxrand = 1
+		elseif girltype[i] = 6:
+			maxrand = 1
+		elseif girltype[i] = 7:
+			maxrand = 3
+		elseif girltype[i] = 8:
+			maxrand = 1
+		elseif girltype[i] = 9:
+			maxrand = 9
+		elseif girltype[i] = 10:
+			maxrand = 3
+		elseif girltype[i] = 101:
+			maxrand = 9
+		end
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/girlslist/<<girltype[i]>>/ass/ass ('+rand(1,maxrand)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(0,1)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatASS[i] += temp
+		
+		temp = 3*0 + ( phgirlstatASS[i] / 10 ) + 0 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 2:
+		'I was bored, so make <<$phgirlname[i]>> entertain me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/4 ass/lickme ('+rand(1,2)+').mp4"></video></center>'
+		
+		gs 'arousal', 'cuni', 15
+		!! minut -= 10
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatASS[i] += temp
+		
+		temp = 3*1 + ( phgirlstatASS[i] / 10 ) + 0 * rand(1,10)
+		$cum1 -= rand(0,temp)
+	elseif otemp = 3:
+		'I am pushing <<$phgirlname[i]>>, so Grisha is balls deep in her '
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/4 ass/pushher ('+rand(1,1)+').mp4"></video></center>'
+		
+		gs 'arousal', 'voyeur_sex', rand(15,15), 'prostitution', 'sub'
+		gs 'stat'
+		i = ztemp
+		
+		temp = rand(1,1)
+		'<<$phgirlname[i]>> Anal stat += <<temp>>'
+		phgirlstatASS[i] += temp
+		
+		temp = 3*3 + ( phgirlstatASS[i] / 10 ) + 2 * rand(1,5)
+		$cum1 -= rand(0,temp)
+	end
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	
+	act 'Just watch':
+		*clr & cla
+		otemp = 1
+		gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+		
+	end
+	
+	act 'Force her to lick my pussy':
+		*clr & cla
+		otemp = 2
+		gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+	end		
+	
+	if phgirlstatBJ[i] >= 75:
+		act 'help her fuck':
+			*clr & cla
+			otemp = 3
+			gs 'mod_public_WC_street_box_brothel_teach', 'ass_loop1'
+		end
+	end
+	
+	
+	
+	
+	if $cum1 <= 0:
+		cla
+		'Grisha is ready to cum'
+		i = ztemp
+		
+		
+		act 'aim Grisha''s dick to <<$phgirlname[i]>> mouth':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+		
+		act 'Command <<$phgirlname[i]>> to swallow':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/train/practice/2 bj/3 ('+rand(2,2)+').mp4"></video></center>'
+			gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			'ME: Thanks Grisha, you can go now.'
+			'Grisha dress up and go away.'
+			
+			act 'okey, that is all for today':
+				*clr & cla
+				i = ztemp
+				'<<$phgirlname[i]>> dressup, take all her belongings and go away'
+				minut += 30
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_street_box', 'start'
+			end
+		end
+	end
+end
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_brothel_teach ---------------------------------
+

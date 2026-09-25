@@ -1,0 +1,358 @@
+# mod_public_WC_robed_live_BOSS
+if $ARGS[0] = 'start':
+	*clr & cla
+	PHbossevent = daystart
+	gs 'mod_public_WC_robed_live_sex', 'look'
+	'Boss enters the room'
+	
+	if phdtape = 1:
+		!! remove the tape			
+		phdtape = 0			
+		'He removed the ducktape from my mouth in a one move'
+		gs 'pain', rand(1,3), 'lips', 'pull'
+		gs 'stat'
+	end	
+	if phrobtied = 1:
+		!! unbind
+		'The Boss took a knife and untied me: "Why are you tied and not prepared to met me?"'
+		'ME: "They tied me, what is my fault?"'
+		'Boss: "It looks like not my problem. Also, I know my boys, if they tied you, it IS your fault."'
+		phrobtied = 0
+	end
+	
+
+	
+	if $clothingworntype ! 'nude':
+		phbosshappy -= 1
+		'Boss: "Why are you not naked? - you need to be better prepared."'
+		'I quickly resolve the problem'
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+	else
+		phbosshappy += 1
+	end
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/0 START/2 me wait nude/1.jpg"></center>'
+	
+	act 'continue':
+		*clr & cla
+		
+
+		!! add few pins
+		if pin2 <= 0:
+			'Boss: "Where are pins on your nipples? I definitelly left pins here"'
+			phbosshappy -= 1			
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/wait_naked.jpg"></center>'			
+		elseif pin2 >= 2:
+			
+			phbosshappy += 1
+			phbosshappy += 1
+			'Boss: "I am happy you so carefully save my pins on your nipples"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/3.jpg"></center>'
+		else
+			'Boss: "You lost the pin, don''t worry, I am gald you save one, also I have more of them"'
+			
+			'He gently grab my breast, stretches the nipple a little…'
+			'… and pins it!'			
+			pin2 = 2
+			
+			minut += rand(3,5)
+			stat['BDSM'] += rand(0,1)
+			if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+				'<i>I had some BDSM experience… nipples hurts, but I can handle it</i>'			
+				gs 'pain', rand(1,2), 'nipples', 'pinch'
+				gs 'stat'
+			elseif stat['BDSM'] > 25:
+				'<i>Yeeees, it feels great!</i>'
+				gs 'pain', rand(0,1), 'nipples', 'pinch'			
+				gs 'stat'
+			elseif stat['BDSM'] <= 10:
+				'<i><b>AAAAAAAAAAAAAA sharp pain! nipples hurts!</b></i>'
+				gs 'pain', rand(2,3), 'nipples', 'pinch'
+				gs 'stat'
+			end
+			
+			phbosshappy += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2.jpg"></center>'
+		end
+		
+		act 'continue':
+			*clr & cla
+			
+			if pduck >= 1:
+				'Boss: "Sometimes it really makes me laugh, cuz my guys need such means to remember NOT TO RAPE THE GIRL"'
+				'He removed the ducktape from my pussy in a one move'
+				gs 'pain', rand(0,2), 'clitoris', 'pull'
+				gs 'stat'
+				pduck = 0	
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/2 remove tape.jpg"></center>'
+			else
+				' '
+			end
+			
+			if pin3 = 1:
+				!! add pins on pussy
+				'Boss: "Sweet, juicy pined pussy… what a beautifull picture"'
+				'Boss: "it is enought for now" - he romove the pin'
+				phbosshappy += 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/puss/1 (1).jpg"></center>'
+				pin3 = 0
+			elseif pin3 >= 2:
+				'Boss: "Sweet, juicy pined pussy… what a beautifull picture"'
+				'Boss: "it is enought for now" - he romove the pin'
+				phbosshappy += 1
+				phbosshappy += 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/puss/2.jpg"></center>'
+				pin3 = 0
+			else	
+				'Boss: "And where are pins from here?"'
+				'Boss: "Very bad, maybe I need to punish you, so you understood, you need to be prepared for me, to entertain me!"'				
+				phbosshappy -= 1
+				pin3 = 0
+			end
+			
+			act 'continue':
+				*clr & cla				
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/0 START/2 me wait nude/2.jpg"></center>'
+				'He put fingers inside my vagine'
+				
+				if cumloc[1] ! 0:
+					'Boss: "WTF, who cumed in you?!" - he wiped his hand on the bed'
+					'Boss: "I can''t fuck you! I am so pissed! You will be punished "'
+					phbosshappy -= 10
+				else
+					'He smells his fingers…'
+					'Boss: "yup, sweet and juicy…"'
+					phbosshappy += 1					
+				end
+				
+				
+				if phbosshappy <= -5:					
+					!! other cum -> chair
+					act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'start'
+					phtemp = 1
+				elseif phbosshappy < 0:					
+					!! bad prepared -> wall/street
+					act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'start'
+					phtemp = 4
+				elseif phbosshappy <= 2:
+					!! good prepared -> column
+					act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'start'
+					phtemp = rand(2,3)
+				else
+					!! bdsm event + just sex
+					act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'start'
+					phtemp = 5
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'startbosses':
+	*clr & cla
+	!! '2bosses'	
+	if phrobtied = 1:
+		phrobtied = 0
+		'Robber enters the room and untied me: "Boss is here"'
+		'As he exit…'
+	end
+	
+	'The Boss with some other old fart enter the room'
+	'Boss: "This is the girl I talked you"'
+	'They sit from the both sides of me'
+	'Old fart: "Yes, I see, really pretty one"'
+	'Boss: "She is not very skillfull for the play, but I think she can handle twosords fight"'
+	'Old fart: "Theen, let''s check it"'
+	'They look at me… well, I know what is going on…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/1.jpg"></center>'
+	minut += 6
+	gs 'stat'
+	!! gs 'npcgeneratec', 0, 'Old fart', 70
+	!! gs 'boyStat', $npclastgenerated	
+	
+	gs 'npcgeneratec', 0, 'Boss', 60
+	gs 'boyStat', $npclastgenerated	
+	
+	act 'Show them "I understood"':
+		*clr & cla
+		'I put my hands on their legs… the Boss is the first one, who reacts'	
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/2.jpg"></center>'
+		minut += 3
+		gs 'stat'
+		
+		act 'contnue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/3.jpg"></center>'
+			'The Boss is kissing me passionatelly'
+			gs 'arousal', 'kiss', 10
+			gs 'stat'
+			
+			act 'contnue':
+				*clr & cla				
+				'During the kiss old fart grooping me'
+				if $clothingworntype ! 'nude':
+					'Then they start to undress me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/4.jpg"></center>'
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+				end
+				gs 'arousal', 'foreplay', 10, 'group'
+				gs 'stat'
+				'Then they both just playing with me - touching everywhere'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/5 ('+rand(1,2)+').jpg"></center>'
+				
+				act 'contnue':
+					*clr & cla
+					gs 'npcgeneratec', 0, 'Old fart', 70
+					gs 'boyStat', $npclastgenerated					
+					'old fart remove his pants. I start to suck his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					gs 'arousal', 'foreplay', 10, 'group'
+					gs 'stat'
+					gs 'arousal', 'bj', 10, 'group'
+					minut -= 10
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/6.jpg"></center>'
+					
+					act 'contnue':
+						*clr & cla				
+						'Boss is licking my pussy while I am blowing the old fart'
+						gs 'arousal', 'foreplay', 10, 'group'
+						gs 'stat'
+						gs 'arousal', 'bj', 10, 'group'
+						minut -= 10
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/7.jpg"></center>'
+							
+							
+						act 'contnue':
+							*clr & cla				
+							'They are spit roasting me'
+							gs 'arousal', 'vaginal', 20, 'group'
+							gs 'stat'
+							gs 'arousal', 'bj', 20, 'group'
+							minut -= 20
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/8 ('+rand(1,6)+').jpg"></center>'
+							
+							
+							act 'contnue':
+								*clr & cla				
+								'They are spit roasting me… They are very endurant for their age'
+								gs 'arousal', 'vaginal', 20, 'group'
+								gs 'stat'
+								gs 'arousal', 'bj', 20, 'group'
+								minut -= 20
+								gs 'stat'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/8 ('+rand(1,6)+').jpg"></center>'
+								
+								
+								act 'contnue':
+									*clr & cla				
+									'Finally the both decided to cum all over my tits'
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/2bosses/9.jpg"></center>'
+									gs 'cum_call','breasts',$boy
+									gs 'stat'
+									gs 'npcgeneratec', 0, 'Boss', 60
+									gs 'boyStat', $npclastgenerated	
+									gs 'cum_call','breasts',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									PHbossevent = daystart
+									
+									'old guys dress up and go away. After them the robber ebnters the room'
+									gs 'mod_public_WC_robed_live', 'walkroom'
+									act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'fly':
+	*clr & cla
+	!! 'It passed a lot of time… he opened the trunk and I feel he is bringing me somewhere'
+	!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/4 took/1 end 1.mp4"></video></center>'
+
+	phescortfun = 0
+	phclientava = rand(1,7)
+	phescorttask = 1
+	phescortD = daystart
+	phescortH = hour
+	
+	if phclientava < 1 or phclientava > 7: phclientava = rand(1,7)
+	if phclientava = 3: phclientava = rand(4,7)
+	colir = 1
+	
+	
+	gs 'npcgeneratec', 0, 'Inokentiy', rand(60,70)
+	gs 'boyStat', $npclastgenerated
+	
+	phcardrive = 0
+	phdoroga = 0
+	phhismind = rand(1,70)	
+	phescortfunDONE = 0
+	phescortfunNEED = 0
+	phescortfunSexDONE = 0
+	phbuytime = 0
+	phdrug = 0
+	phdrugconsumed = 0
+	phgorilkabottle = 0
+	phwinebottle = 0
+	phhishomevilla = 0
+	phhishomevilla = 1
+	phprymirochnapaid = 0
+	phgorilka = 0
+	phsleeptime = 0
+	phsleep = 0
+	killvar 'phclientname'
+	phrober = 0
+	killvar 'phrobkill'
+
+	$phescortzara = 'car'
+	$phescortude = 'boat'
+	phcardrive = 1
+	phdoroga = 0	
+	
+	phescortmeet = 1	
+	$phclientname = 'Inokentiy'
+	
+	
+	'Robber put me on the ground and untied'
+	'There is a plain in front of me and the Boss'
+	'"Finally you are here" - You are very skilled, I want to spend more time with you"'
+	if phescort = 1: 'I even order you from the Pleasure house'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/charter.jpg"></center>'
+	
+	act 'What is going on?':
+		'"I have a yacht in Dubai, and I want to sail with you"'
+		'"It would be fun, I promise, and I will even pay"'
+	end
+	
+	if phescortfunDONE > 0 or phescortfun >= 50:
+		phescortfunNEED += 1
+		phescortfunDONE = 0
+	else
+		phescortfun -= rand(0,20)
+		if phescortfun <= 0: phescortfun = 0
+	end
+	
+	act 'go with him': gt 'mod_public_WC_rab_btothel_escort_fly', 'fly1'	
+end
+
+
+
+
+--- mod_public_WC_robed_live_BOSS ---------------------------------
+

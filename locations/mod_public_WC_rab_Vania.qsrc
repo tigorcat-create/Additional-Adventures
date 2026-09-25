@@ -1,0 +1,254 @@
+# mod_public_WC_rab_Vania
+if $ARGS[0] = 'start':
+	if week <= 5 and Vania ! 2:
+		Vania = 0
+		
+		if $metka = 'dvir': 
+			if hour >= 0 and hour <= 2:
+				*nl
+				'Vania smokes and drinks at the table.'
+				Vania = 1
+			end
+			if hour = 20:
+				Vania = 1
+			end
+			if hour = 3:
+		
+				*nl
+				'Vania eats yesterday''s malnutrition.'
+				Vania = 1
+			end
+			if hour >= 4 and hour <= 5:
+ 
+				*nl
+				'Vania smokes and drinks at the table.'
+				Vania = 1
+
+			end
+			if hour >= 21:
+			
+				*nl
+				'Vania smokes and drinks at the table… It doesn''t seem to pay attention to me'
+				Vania = 1
+			end
+			if hour = 6:
+			 
+				*nl
+				'It sounds like Vania is making some noise in the forester''s house'
+				Vania = 1
+			end
+		end
+
+		if $metka = 'lisnyk_dim':
+			if hour = 6:
+			 
+				*nl
+				'Vania spins in the lodge preparing breakfast'
+				Vania = 1
+			end
+
+			if hour >= 19 and hour <= 20:
+
+				*nl
+				'Vania spins in the lodge preparing supper'
+				Vania = 1
+			end
+		end
+
+		if $metka = 'spat1': 
+			if hour >= 7 and hour <= 12:
+			
+				*nl
+				'Vania is sleeping'
+				Vania = 3
+			end
+
+			if hour >= 13 and hour <= 14:
+ 
+				*nl
+				'Vania is sleeping.'
+				Vania = 3
+			end
+		end
+	end
+
+
+	if week = 6 and Vania ! 2:
+		Vania = 0
+
+		if $metka = 'dvir': 
+	
+			if hour >= 0 and hour <= 2:
+			
+				*nl
+				'Vania smokes and drinks at the table.'
+				Vania = 1
+			end
+
+			if hour = 20:
+				Vania = 1
+			end
+
+			if hour = 3:			 
+				*nl
+				'Vania eats yesterday''s malnutrition.'
+				Vania = 1
+			end		
+
+			if hour >= 4 and hour <= 5:			
+				*nl
+				'Vania smokes and drinks at the table.'
+				Vania = 1
+			end		
+
+			if hour >= 21:			 
+				*nl
+				'Vania smokes and drinks at the table… It doesn''t seem to pay attention to me'
+				Vania = 1
+			end		
+
+			if hour = 6:			
+				*nl
+				'It sounds like Vania is making some noise in the forester''s house'
+				Vania = 1
+			end
+
+			if hour = 13:			
+				*nl
+				'Vania is eating.'
+				Vania = 1
+			end
+
+			if hour >= 16 and hour <= 19:
+				*nl
+				'All rednecks hard drinking at the table in the yard.'
+				Vania = 1
+			end
+		end
+
+
+		if $metka = 'lisnyk_dim':
+			if hour = 6:
+			 
+				*nl
+				'Vania spins in the lodge preparing breakfast'
+				Vania = 1
+			end
+		end
+
+
+		if $metka = 'spat1':
+			if hour >= 7 and hour <= 12:			 
+				*nl
+				'Vania is sleeping'
+				Vania = 3
+			end
+
+			if hour >= 14 and hour <= 15:		
+				Vania = 1
+			end
+		end
+	end
+
+	if week = 7 and Vania ! 2:
+		Vania = 0
+
+		if $metka = 'spat1':
+			if hour >= 13 and hour <= 14:			 
+				*nl
+				'Vania is sleeping.'
+				Vania = 3
+			end
+
+
+			if hour >= 7 and hour <= 12:
+				*nl
+				'Vania is sleeping'
+				Vania = 3
+			end
+		end
+
+		if $metka = 'lisnyk_dim': 
+			if hour >= 19 and hour <= 20:			
+				*nl
+				'Vania spins in the lodge preparing supper'
+				Vania = 1
+			end
+
+			if hour = 6:			
+				*nl
+				'Vania spins in the lodge preparing breakfast'
+				Vania = 1
+			end
+		end
+
+
+		if $metka = 'dvir':
+
+			if hour = 13:			
+				Vania = 1
+			end			
+
+			if hour >= 0 and hour <= 2:			
+				*nl
+				'Vania smokes and drinks at the table.'
+				Vania = 1
+			end
+
+
+			if hour = 20:
+				Vania = 1
+			end
+
+			if hour = 3:
+				*nl
+				'Vania eats yesterday''s malnutrition.'
+				Vania = 1
+			end
+
+			if hour >= 4 and hour <= 5: 
+				*nl
+				'Vania smokes and drinks at the table.e'
+				Vania = 1
+			end
+
+			if hour >= 21: 
+				*nl
+				'Vania smokes and drinks at the table… It doesn''t seem to pay attention to me'
+				Vania = 1
+			end
+
+			if hour = 6: 
+				*nl
+				'It sounds like Vania is making some noise in the forester''s house'
+				Vania = 1
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'vania_setup':
+	npctemp = 442
+	npc_gender['A<<npctemp>>'] = 0
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Vania'
+	$npc_nickname['A<<npctemp>>'] = 'Master'
+	$npc_lastname['A<<npctemp>>'] = ' '
+	$npc_usedname['A<<npctemp>>'] = 'Vania'
+	$npc_notes['A<<npctemp>>'] = 'the craziest guy I ever saw'
+	npc_intel['A<<npctemp>>'] = 70
+	npc_dob['A<<npctemp>>'] = 442
+	npc_spermpot['A<<npctemp>>'] = 5000	
+	npc_sexskill['A<<npctemp>>'] = 3
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0	
+	$npc_thdick['A<<npctemp>>'] = 'thicker than average'	
+	npc_dick['A<<npctemp>>'] = 17
+	npc_sexskill['A<<npctemp>>'] = 3
+	npc_intel['A<<npctemp>>'] = 70
+end
+--- mod_public_WC_rab_Vania ---------------------------------
+

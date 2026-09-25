@@ -1,0 +1,1383 @@
+# mod_public_WC
+!input mod entry point here. this will be checked on every location, please keep it clean and brief to avoid game lag
+if WCvideoweight <= 0: WCvideoweight = 600
+If stagtime = 0: stagtime = 3
+if phwhorepay <= 0: phwhorepay = 2
+if CHANCE_MEET_HER_GH = 0: CHANCE_MEET_HER_GH = 12
+If SHE_SLUT_LEVEL_GH = 0: SHE_SLUT_LEVEL_GH = 90
+if agreesive_GH_publick = 0: agreesive_GH_publick = 1
+
+if PHmagic = 1:
+	if pcs_mana < 100: pcs_mana = 100
+end
+
+if $curloc = 'pav_complex' and phBOXFiveEightEstate > 0 and menu_off = 0:
+	'there is my box'
+	!$phsexstart = 'pav_complex'
+	PH_area_moneybonus = rand(100,120)
+	gs 'mod_public_WC_street_box_info', 'boxid2'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+	act '<b>enter my box</b>': gt 'mod_public_WC_street_box', 'start'
+elseif $curloc = 'pav_commercial' and phBOXCommercial > 0 and menu_off = 0:
+	'there is my box'
+	!$phsexstart = 'pav_commercial'
+	PH_area_moneybonus = rand(130,190)
+	gs 'mod_public_WC_street_box_info', 'boxid2'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+	act '<b>enter my box</b>': gt 'mod_public_WC_street_box', 'start'
+elseif $curloc = 'pav_park' and phBOXpark > 0 and menu_off = 0:
+	'there is my box'
+	!$phsexstart = 'pav_park'
+	PH_area_moneybonus = rand(100,150)
+	gs 'mod_public_WC_street_box_info', 'boxid2'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+	act '<b>enter my box</b>': gt 'mod_public_WC_street_box', 'start'
+elseif $curloc = 'pav_industrial' and phBOXIndustrial > 0 and menu_off = 0:
+	'there is my box'
+	!$phsexstart = 'pav_industrial'
+	PH_area_moneybonus = rand(100,120)
+	gs 'mod_public_WC_street_box_info', 'boxid2'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+	act '<b>enter my box</b>': gt 'mod_public_WC_street_box', 'start'
+elseif $curloc = 'pav_residential' and phBOXresidential > 0 and menu_off = 0:
+	'there is my box'
+	!$phsexstart = 'pav_residential'
+	PH_area_moneybonus = rand(100,150)
+	gs 'mod_public_WC_street_box_info', 'boxid2'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 mybox.jpg"></center>'
+	act '<b>enter my box</b>': gt 'mod_public_WC_street_box', 'start'
+end
+
+
+if $curloc = 'pav_complex' or $curloc = 'pav_residential' or $curloc = 'pav_commercial' or $curloc = 'pav_industrial' or $curloc = 'pav_market' or $curloc = 'pav_park' and menu_off = 0:
+
+	act 'Walk to the Snokhachestvo street (0:15)':minut += 15 & gt 'mod_public_WC_street', 'start'
+
+	phshowfame = fame['pav_prostitute']
+	if $curloc = 'pav_industrial':
+		if fame['pav_prostitute'] >= 50:
+			gs 'mod_public_WC_street', 'actprostitute'
+		else
+			'I need more fame to find clients here (<<phshowfame>>/50)'
+		end
+	elseif $curloc = 'pav_park':
+		if fame['pav_prostitute'] >= 80:
+			gs 'mod_public_WC_street', 'actprostitute'
+		else
+			'I need more fame to find clients here (<<phshowfame>>/80)'
+		end
+	elseif $curloc = 'pav_commercial':
+		if fame['pav_prostitute'] >= 100:
+			gs 'mod_public_WC_street', 'actprostitute'
+		else
+			'I need more fame to find clients here (<<phshowfame>>/100)'
+		end
+	elseif $curloc = 'pav_residential':
+		if fame['pav_prostitute'] >= 130:
+			gs 'mod_public_WC_street', 'actprostitute'
+		else
+			'I need more fame to find clients here (<<phshowfame>>/130)'
+		end
+	elseif $curloc = 'pav_complex':
+		if fame['pav_prostitute'] >= 150:
+			gs 'mod_public_WC_street', 'actprostitute'
+		else
+			'I need more fame to find clients here (<<phshowfame>>/150)'
+		end
+	end
+	killvar 'phshowfame'
+end
+
+
+if func('homes_properties', 'is_at_a_home') = -1 and $curloc ! 'korrPar' and $curloc ! 'bedrPar' and $curloc ! 'sitrPar' and $curloc ! 'kuhrPar' and $curloc ! 'vanrPar' and $curloc ! 'grandparents_house' and $curloc ! '14' and $curloc ! 'gaddvor' and $curloc ! 'gadgarden' and $curloc ! 'gadbana' and $curloc ! 'gadhouse':
+	if phathome ! 1: +$OpenInnerThought+'I am at home'+$CloseInnerThought
+	phathome = 1
+	if rand(1,40) + phtestcheat <= 1:
+		'I hear a doorbell'
+		act 'Go to the door': gt 'mod_public_WC_rob_at_home', 'start'
+	end
+else
+	killvar 'phathome'
+end
+
+
+if counter_g1=1:
+	counter_g1_2=2
+	if counter_g1_2=2:
+		rand5-=1
+		counter_g1_2=0
+
+		!! pl'<font color=green><b><i>Time: <font size=6><<rand5>></font></i></b></font>'
+		pl'<b>Fish caught: <<rand6>></b>'
+		pl'<b><i><font size=16>Goal: Tap a Fishspot to cast</i></b></font>'
+		if rand5=0:
+			pl'<b><i><font color=red size=6>The result <<rand6>> fishes</font></i></b>'
+			if rand6>rekord_g1:
+				rekord_g1=rand6
+				pl'<br><font color="<<$theme_hex[''accent'']>>" size=4><b><i>New	record <<rekord_g1>> fishes!</i></b>'
+			else
+				pl'<br><font color="<<$theme_hex[''accent'']>>" size=4><b><i>Record: <<rekord_g1>></i></b>'
+			end
+			pl'<br><a href="exec:GT ''mod_public_WC_fishing_game'',''g1_0''"><b>Again</b></a>'
+			counter_g1=0
+		end
+
+		rand1=rand(1,10)
+		if rand1=1:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=2:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=3:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=4:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=5:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=6:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=7:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=8:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=9:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		if rand1=10:$game1_1='<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'
+		rand3=rand(1,10)
+		if rand3=1:$game1_2='          '
+		if rand3=2:$game1_2='                                '
+		if rand3=3:$game1_2='                                                    '
+		if rand3=4:$game1_2='                                                                        '
+		if rand3=5:$game1_2='                                                                                            '
+		if rand3=6:$game1_2='                                                                                                                '
+		if rand3=7:$game1_2='                                                                                                                                    '
+		if rand3=8:$game1_2='                                                                                                                                                        '
+		if rand3=9:$game1_2='                                                                                                                                                                            '
+		if rand3=10:$game1_2='                                                                                                                                                                                                '
+		if counter_g1=1:'<br><<$game1_1>><<$game1_2>><a href="exec:GT ''mod_public_WC_fishing_game2'',''g1_3''"><img width=50 src="mod/public_WC/escort/2 place/2 yacht/water.gif" ></a>'
+		if counter_g1=0:'<br><<$game1_1>><<$game1_2>><img width=50 src="mod/public_WC/escort/2 place/2 yacht/water.gif" >'
+	end
+end
+
+
+
+if daystart >= phmoneypaidD:
+	if phescortmeet = 1 and (( daystart = phmoneypaidD and hour >= phmoneypaidH ) or ( daystart > phmoneypaidD and phmoneypaidD ! 0)):
+		if phmoneypaid = 0:
+			gs 'telefon', 'add_sms', ' ', 'You have failed your escort job.'
+			escortpause = daystart + escortpauseconfig
+		else
+			karta += phmoneypaid
+			gs 'telefon', 'add_sms', ' ', 'Your BANK account received <<phmoneypaid>>.'
+			phmoneypaid = 0
+			escortpause = daystart + escortpauseconfig
+			phescortshorttask = daystart + phescortshorttaskconfig
+		end
+		killvar 'phmoneypaidD'
+		killvar 'phmoneypaidH'
+		killvar 'phmoneypaid'
+		killvar 'phescortmeet'
+	end
+end
+
+if phescort = 1 and phescorttask = 0 and phinforest = 0 and phmoneypaidD = 0 and phmoneypaid = 0:
+	gs 'mod_public_WC_rab_btothel_escort', 'smscheck'
+end
+
+if $loc = 'city_redlight' and $location_type = 'public_outdoors' and menu_off = 0:
+	if phescort = 1 and phescorttask = 1 and phescortH = hour and phescortD = daystart:
+		'I see a man with the two yellow roses. I think he is my client'
+		if $clothingworntype ! 'nude':
+			act 'go to the client': gt 'mod_public_WC_rab_btothel_escort', 'start'
+		else
+			+$OpenInnerThought+'I must not be naked to met the client'+$CloseInnerThought
+		end
+	end
+elseif phescort = 1 and phescorttask = 1 and ((phescortD < daystart) or (phescortD = daystart and phescortH < hour)) and phescortmeet ! 1:
+	gs 'telefon', 'add_sms', ' ', 'You did NOT meet your client on time! It is not proffessional, You have been removed from the escort list'
+	minut += 2
+	gs 'stat'
+	gs 'telefon', 'add_sms', ' ', 'Your BANK account fined on 5000.'
+	karta -= 5000
+	ryska -= 5
+	phescort = 0
+	phescorttask = 0
+	killvar 'phescortD'
+	killvar 'phescortH'
+	killvar 'phmoneypaidD'
+	killvar 'phmoneypaidH'
+	killvar 'phmoneypaid'
+	killvar 'phescortmeet'
+end
+
+if phescort = 1 and phescorttask = 1 and phescortfun <= 0 and (( phescortD < daystart ) or ( phescortH < hour and phescortD = daystart )):
+	if $location_type = 'private':
+		act 'send a message to my escort client':
+			if dildo = 1 or middildo = 1 or largedildo = 1 or bigdildo = 1 or extradildo = 1 or superdildo = 1 or maddildo = 1:
+				act 'tease him… with the dildo help':
+					if $phrequest = 'You need to dress up like a schoolgirl': asfagatemp = 3
+					if phescortfun <= 0: phescortfun += 7 + asfagatemp
+					minut += 5
+					gs 'stat'
+					killvar 'asfagatemp'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/1 start_ad/dildo.mp4"></video></center>'
+					+$OpenInnerThought+'Wil he pay me more?!'+$CloseInnerThought
+				end
+			else
+				'I could use a dildo to tease him, if I have one'
+			end
+
+			if stat['bj'] >= 100:
+				act 'show my tongue skills':
+					if phescortfun <= 0: phescortfun += 7
+					minut += 5
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/1 start_ad/knots.mp4"></video></center>'
+					+$OpenInnerThought+'Wil he pay me more?!'+$CloseInnerThought
+				end
+			else
+				'I need more skills in a blowjob'
+			end
+
+			if (CloStyle2 = 4 or CloSchool = 1):
+				act 'make schoolgirl tic-Thot dance':
+					if phescortfun <= 0: phescortfun += 5
+					minut += 5
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/1 start_ad/dance_school.mp4"></video></center>'
+					+$OpenInnerThought+'Wil he pay me more?!'+$CloseInnerThought
+				end
+			else
+				'I could wear a school uniform and make it better'
+			end
+
+			act 'send my pussy sneak peek':
+				if phescortfun <= 0: phescortfun += 5
+				minut += 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/1 start_ad/lingerie_pussy.mp4"></video></center>'
+				+$OpenInnerThought+'Wil he pay me more?!'+$CloseInnerThought
+			end
+
+			act 'send "I am so horny" video':
+				if phescortfun <= 0: phescortfun += 3
+				minut += 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/1 start_ad/horny escort.mp4"></video></center>'
+				+$OpenInnerThought+'Wil he pay me more?!'+$CloseInnerThought
+			end
+		end
+	end
+end
+
+if $loc = 'city_lake' and PTNPNH < daystart and month >= 5 and month < 10:
+	PTNPNH = daystart + 7
+	*clr
+	'I see the plain in the sky!'
+	+$OpenInnerThought+'putin is definitely a dickhead!!!'+$CloseInnerThought
+	+$OpenInnerThought+'it''s a pity that ruSSians are slowly turning into Nazis, but no one notices it…'+$CloseInnerThought
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/PTNPNH.mp4"></video></center>'
+	pcs_mood += 100
+	minut += 5
+	gs 'stat'
+end
+
+
+if phwork = 7:
+	if phwhoreshift > 0:
+		pl 'I need to have <<phwhoreshift>> more clients till the end of my shift'
+	else
+		if phwhoreshift = 0:
+			pl 'I done all my must clients.'
+		else
+			temp = (-1) * phwhoreshift
+			pl 'I serv <<temp>> more clients than must number'
+		end
+	end
+end
+
+if $loc = 'pav_commercial' and menu_off = 0 and $location_type = 'public_outdoors':
+	*nl
+	'There is a <a href="exec:minut += 1 & gt ''mod_public_WC_cabine'', ''start''">public WC</a> here.'
+end
+
+if ( $loc = 'gad_forest' or $loc = 'gad_forest_lost' ) and pregChem = 0:
+	if $loc_arg = 'forest_outskirts': temp = 1
+	if $loc_arg = 'forest_center': temp = 2
+	if $loc = 'gad_forest_lost': temp = 4
+	zustrich = rand(1,100) - vtecha * 15 + temp * 8
+end
+
+if ( $loc = 'gad_forest' or $loc = 'gad_forest_lost' ) and pregChem ! 0 and zvit_Weekout >= 1:
+	if $loc_arg = 'forest_outskirts': temp = 1
+	if $loc_arg = 'forest_center': temp = 2
+	if $loc = 'gad_forest_lost': temp = 4
+	zustrich = rand(1,100) - vtecha * 15 + temp * 8
+end
+
+if $loc = 'city_park':
+	if marshrutka = 1:
+		'I know about marshrutka to "Pleasure house".'
+		if vic_card = 1: 'this is the way shown on that business card from the underground body…'
+		act 'go to the marshrutka bus stop': gt 'mod_public_WC_PH_come', 'start'
+	end
+	if vhid5 = 1:
+		' '
+	elseif vhid5 > 1 and vhid5 < 10:
+		if rand(1,3) = 1: vhid5 += 1
+		if vhid5 = 10: vhid5 = 1
+	else
+		vhid5 = 2
+	end
+end
+
+if $loc = 'city_center' and menu_off = 0 and $location_type = 'public_outdoors' and $curloc = 'city_center':
+	if vhid1 = 1 or vhid1 = 100:
+		'I know about basement nearby'
+		act 'go to basement entrence': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+	elseif vhid1 >= 2:
+		'I know somewhere around must be the basement'
+		act 'look for the basement':
+			cla
+			minut += rand (15,45)
+			gs 'stat'
+			vhid1 += rand (1,3)
+			if vhid1 >= 10:
+				cla
+				vhid1 = 1
+				act 'YES! I found it': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+			else
+				'I don''t find it. But, I reduced the search range.'
+				act 'continue': gt 'city_center'
+			end
+		end
+	end
+	if hour >= 6 and hour <= 20 and rand(1,10) = 1:
+		ztemp = 1
+		'I see 2 bums with a bottle of vodka argue about, where can they find the 3rd one.'
+		act 'come to the bums':
+			*clr & cla
+			'The 2 bums with a bottle of vodka are arguing about, where can they find the 3rd one.'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/meet__bomj_1.jpg"></center>'
+			act 'ask, who is 3rd one they are talking about':
+				'We need money, if you pay us 120, you can drink with us.'
+				minut += rand(5,15)
+				gs 'stat'
+				if money >= 120:
+					act 'Ok, let''s do it':
+						money -= 120
+						gs 'stat'
+						gt 'mod_public_WC_citybasement_enter', 'vhid0'
+					end
+				end
+			end
+
+			if money >= 120:
+				act 'Hi guys, I will be 3rd':
+					cla
+					'Perfect'
+					'I paid 120 and we starts to go somewhere'
+					money -= 120
+					minut += rand(5,15)
+					gs 'stat'
+					act 'go': gt 'mod_public_WC_citybasement_enter', 'vhid0'
+				end
+			end
+			act 'Go away': gt $loc, $loc_arg
+		end
+	end
+elseif $loc = 'city_industrial' and menu_off = 0 and $location_type = 'public_outdoors' and $curloc = 'public_outdoors':
+	if vhid2 = 1 or vhid2 = 100:
+		'I know about basement nearby'
+		act 'go to basement entrence': gt 'mod_public_WC_citybasement_enter', 'vhid2'
+	elseif vhid2 >= 2:
+		'I know somewhere around must be the basement'
+		act 'look for the basement':
+			cla
+			minut += rand (15,45)
+			gs 'stat'
+			vhid2 += rand (1,3)
+			if vhid2 >= 10:
+				cla
+				vhid2 = 1
+				act 'YES! I found it': gt 'mod_public_WC_citybasement_enter', 'vhid2'
+			else
+				'I don''t find it. But, I reduced the search range.'
+				act 'continue': gt 'city_industrial'
+			end
+		end
+	end
+	if hour >= 6 and hour <= 20 and rand(1,10) = 1:
+		ztemp = 2
+		'I see 2 bums with a bottle of vodka argue about, where can they find the 3rd one.'
+		act 'come to the bums':
+			*clr & cla
+			'The 2 bums with a bottle of vodka are arguing about, where can they find the 3rd one.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/meet__bomj_1.jpg"></center>'
+			act 'ask, who is 3rd one they are talking about':
+				'We need money, if you pay us 120, you can drink with us.'
+				minut += rand(5,15)
+				gs 'stat'
+				if money >= 120:
+					act 'Ok, let''s do it':
+						money -= 120
+						gs 'stat'
+						gt 'mod_public_WC_citybasement_enter', 'vhid0'
+					end
+				end
+			end
+
+			if money >= 120:
+				act 'Hi guys, I will be 3rd':
+					cla
+					'Perfect'
+					'I paid 120 and we starts to go somewhere'
+					money -= 120
+					minut += rand(5,15)
+					gs 'stat'
+					act 'go': gt 'mod_public_WC_citybasement_enter', 'vhid0'
+				end
+			end
+			act 'Go away': gt $loc, $loc_arg
+		end
+	end
+elseif $loc = 'city_redlight' and $loc_arg = 'start' and menu_off = 0 and $location_type = 'public_outdoors' and $curloc = 'city_redlight':
+	if vhid3 = 1 or vhid3 = 100:
+		'I know about basement nearby'
+		act 'go to basement entrence': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+	elseif vhid3 >= 2:
+		'I know somewhere around must be the basement'
+		act 'look for the basement':
+			cla
+			minut += rand (15,45)
+			gs 'stat'
+			vhid3 += rand (1,3)
+			if vhid3 >= 10:
+				cla
+				vhid3 = 1
+				act 'YES! I found it': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+			else
+				'I don''t find it. But, I reduced the search range.'
+				act 'continue': gt 'city_redlight', 'start'
+			end
+		end
+	end
+	if hour >= 6 and hour <= 20 and rand(1,10) = 1:
+		ztemp = 3
+		'I see 2 bums with a bottle of vodka argue about, where can they find the 3rd one.'
+		act 'come to the bums':
+			*clr & cla
+			'The 2 bums with a bottle of vodka are arguing about, where can they find the 3rd one.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/meet__bomj_1.jpg"></center>'
+			act 'ask, who is 3rd one they are talking about':
+				'We need money, if you pay us 120, you can drink with us.'
+				minut += rand(5,15)
+				gs 'stat'
+				if money >= 120:
+					act 'Ok, let''s do it':
+						money -= 120
+						gs 'stat'
+						gt 'mod_public_WC_citybasement_enter', 'vhid0'
+					end
+				end
+			end
+
+			if money >= 120:
+				act 'Hi guys, I will be 3rd':
+					cla
+					'Perfect'
+					'I paid 120 and we starts to go somewhere'
+					money -= 120
+					minut += rand(5,15)
+					gs 'stat'
+					act 'go': gt 'mod_public_WC_citybasement_enter', 'vhid0'
+				end
+			end
+			act 'Go away': gt $loc, $loc_arg
+		end
+	end
+elseif $loc = 'city_residential' and menu_off = 0 and $location_type = 'public_outdoors' and $curloc = 'city_residential':
+	if vhid4 = 1 or vhid4 = 100:
+		'I know about basement nearby'
+		act 'go to basement entrence': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+	elseif vhid4 >= 2:
+		'I know somewhere around must be the basement'
+		act 'look for the basement':
+			cla
+			minut += rand (15,45)
+			gs 'stat'
+			vhid4 += rand (1,3)
+			if vhid4 >= 10:
+				cla
+				vhid4 = 1
+				act 'YES! I found it': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+			else
+				'I don''t find it. But, I reduced the search range.'
+				act 'continue': gt 'city_residential'
+			end
+		end
+	end
+	if hour >= 6 and hour <= 20 and rand(1,10) = 1:
+		ztemp = 4
+		'I see 2 bums with a bottle of vodka argue about, where can they find the 3rd one.'
+		act 'come to the bums':
+			*clr & cla
+			'The 2 bums with a bottle of vodka are arguing about, where can they find the 3rd one.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/meet__bomj_1.jpg"></center>'
+			act 'ask, who is 3rd one they are talking about':
+				'We need money, if you pay us 120, you can drink with us.'
+				minut += rand(5,15)
+				gs 'stat'
+				if money >= 120:
+					act 'Ok, let''s do it':
+						money -= 120
+						gs 'stat'
+						gt 'mod_public_WC_citybasement_enter', 'vhid0'
+					end
+				end
+			end
+
+			if money >= 120:
+				act 'Hi guys, I will be 3rd':
+					cla
+					'Perfect'
+					'I paid 120 and we starts to go somewhere'
+					money -= 120
+					minut += rand(5,15)
+					gs 'stat'
+					act 'go': gt 'mod_public_WC_citybasement_enter', 'vhid0'
+				end
+			end
+			act 'Go away': gt $loc, $loc_arg
+		end
+	end
+elseif $loc = 'city_park' and menu_off = 0 and $location_type = 'public_outdoors' and $curloc = 'city_park':
+	if vhid5 = 1:
+		'I know undercity tunnel has an entrance nearby'
+		act 'go to the entrance': gt 'mod_public_WC_citybasement_enter', 'vhid5'
+	elseif vhid5 >= 2:
+		'I know somewhere around must be the entrence'
+		act 'look for the entrence':
+			cla
+			minut += rand (15,45)
+			gs 'stat'
+			vhid5 += rand (1,3)
+			if vhid5 >= 10:
+				cla
+				vhid5 = 1
+				act 'YES! I found it': gt 'mod_public_WC_citybasement_enter', 'vhid5'
+			else
+				'I don''t find it. But, I reduced the search range.'
+				act 'continue': gt 'city_park', 'start'
+			end
+		end
+	end
+	if hour >= 6 and hour <= 20 and rand(1,10) = 1:
+		ztemp = 5
+		'I see 2 bums with a bottle of vodka argue about, where can they find the 3rd one.'
+		act 'come to the bums':
+			*clr & cla
+			'The 2 bums with a bottle of vodka are arguing about, where can they find the 3rd one.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/meet__bomj_1.jpg"></center>'
+			act 'ask, who is 3rd one they are talking about':
+				'We need money, if you pay us 120, you can drink with us.'
+				minut += rand(5,15)
+				gs 'stat'
+				if money >= 120:
+					act 'Ok, let''s do it':
+						money -= 120
+						gs 'stat'
+						gt 'mod_public_WC_citybasement_enter', 'vhid0'
+					end
+				end
+			end
+
+			if money >= 120:
+				act 'Hi guys, I will be 3rd':
+					cla
+					'Perfect'
+					'I paid 120 and we starts to go somewhere'
+					money -= 120
+					minut += rand(5,15)
+					gs 'stat'
+					act 'go': gt 'mod_public_WC_citybasement_enter', 'vhid0'
+				end
+			end
+			act 'Go away': gt $loc, $loc_arg
+		end
+	end
+end
+
+
+if ( $loc = 'gad_forest' or $loc = 'gad_forest_lost' ) and zustrich > 90:
+	if Vania = 2 or Tolik = 2 or Artem = 2:
+		'( ◣∀◢)ψ'
+	elseif vtecha = 1:
+		gt 'mod_public_WC_lis_zustrich', 'vtecha'
+	else
+		*nl
+		'There is a <a href="exec:minut += 1 & gt ''mod_public_WC_lis_zustrich'', ''start''">some people. Judging by their appearance they must be hunters</a> here.'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+
+if task1 = 1 or task1 = 3 or task2 = 1 or task3 = 1 or task4 = 1 or task5 = 1 or task5 = 3 or task6 = 1:
+	if task1 = 1: pl '<b>I need to prepare firewoods</b>'
+	if task1 = 3: pl '<b>I need to prepare more firewoods</b>'
+	if task2 = 1: pl '<b>I need to wash dishes</b>'
+	if task3 = 1: pl '<b>I need to prepare food</b>'
+	if task4 = 1: pl '<b>I need to make me a shirt</b>'
+	if task5 = 1: pl '<b>I need to gather grape</b>'
+	if task5 = 3: pl '<b>I need to gather more grape</b>'
+	if task6 = 1: pl '<b>I need to clean our yard</b>'
+	if task7 = 1: pl '<b>I need to wash dirty clothes</b>'
+	if task7 = 3: pl '<b>I need to take off dry clothes</b>'
+end
+if $loc = 'mod_public_WC_rab' or $loc = 'mod_public_WC_rab_DVIR':
+	if task1 ! 1 and task1 ! 3 and task2 ! 1 and task3 ! 1 and task4 ! 1 and task5 ! 1 and task5 ! 3 and task6 ! 1 and task17 ! 1 and task7 ! 3:
+		pl '<b>I have no tasks to do</b>'
+		pl '<b>It''s better to ask any redneck about a task</b>'
+	end
+	If Artem = 0:
+		Artem = 0
+	end
+	if dayvlada ! daystart:
+		if vlada >= 20: brak -= rand(0,1)
+		if vlada >= 40: brak -= 1
+		if vlada >= 60: brak -= rand(1,2)
+		if brak <= 0: brak = 0
+		dayvlada = daystart
+	end
+end
+
+
+if zashmorg = 1 or zashmorg = 3:
+	if supnatvnesh < 11: supnatvnesh += 12
+	bimbowithdrawal = 0
+	if Vania = 1:
+		temp = rand (1,50) - VaniaMayster
+		if temp <= 1:
+			if zashmorg = 1:
+				VaniaMayster += 1
+			elseif zashmorg = 3:
+				VaniaMayster += rand(0,1)
+				'"Nice look, my pet" - Vania said'
+			end
+		end
+	end
+end
+
+
+if zashmorg = 1 or zashmorg = 2 or zashmorg = 3:
+	if cheatBimbo = 1 and bimbolevel > 0: bimbowithdrawal = 40
+end
+
+if zashmorg = 1:
+	pl $func('wrap', 'neg', 'I have Whore collar on my neck.')
+	pl 'I can <a href="exec:gt ''mod_public_WC_rab_zashmorg'', ''start''">dress off</a> a <a href="exec:gs ''mod_public_WC_rab'',''img msg'',''mod/public_WC/lisrab/Vania/items/zashmorg.jpg''">Whore collar</a>.'
+end
+if zashmorg = 2:
+	pl 'I can <a href="exec:gt ''mod_public_WC_rab_zashmorg'', ''start''">dress</a> a Whore collar.'
+end
+if zashmorg = 3:
+	pl $func('wrap', 'neg', 'I have Whore collar on my neck.')
+	pl 'I can''t dress off a Whore collar, Vania locked it.'
+end
+
+
+if MYMODversion ! 30610:
+	if ($loc = 'pav_commercial' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'city_center' and menu_off = 0):
+		menu_off = 1
+		gt 'mod_public_WC_PH_come', 'ctart'
+	end
+end
+
+if $loc = 'mod_public_WC_rab' or $loc = 'mod_public_WC_rab_DVIR' or $loc = 'mod_public_WC_kara' or $loc = 'mod_public_WC_kara7' or $loc = 'mod_public_WC_kara71' or $loc = 'mod_public_WC_rab_Mayster' or $loc = 'mod_public_WC_rab_tryrun' or $loc = 'mod_public_WC_rab_talk' or $loc = 'mod_public_WC_rab_sex' or $loc = 'mod_public_WC_rab_Artem' or $loc = 'mod_public_WC_rab_Vania' or $loc = 'mod_public_WC_rab_Tolik' or $loc = 'mod_public_WC_rab_Task' or $loc = 'mod_public_WC_rab_random_event' or $loc = 'mod_public_WC_rab_zashmorg':
+	if slova ! 1:
+		if brak < 0: brak = 0
+		pl 'I have <<slova>> words. I have relationship = <<vlada>> and conflict = <<brak>>'
+	else
+		pl 'I have <<slova>> word. I have relationship = <<vlada>> and conflict = <<brak>>'
+	end
+
+	phinforest = 1
+
+	if Artem = 1 or ahide = 1:
+		gs 'boyStat', 'A441'
+	end
+	if Vania = 1:
+		gs 'boyStat', 'A442'
+	end
+	if Tolik = 1:
+		gs 'boyStat', 'A443'
+	end
+
+	if Vurok >= 1:
+		if week = 7 and hour > 16 and lis_Weekout < 4 and lis_Weekout > 1:
+			vkara_colo2 = 1
+			ztemp = 1248
+			lis_Weekout = 0
+			moju_yty = 0
+			$loc = 'mod_public_WC_rab_Mayster'
+			gt 'mod_public_WC_rab_Mayster', 'vkara'
+		elseif week = 7 and hour > 16 and lis_Weekout >= 4:
+			lis_Weekout = 1
+		end
+	end
+end
+
+if vtecha ! 0:
+	phinforest = 0
+end
+
+if ($loc = 'mod_public_WC_rab' and $menu_loc ! 'bed2') or ($loc = 'mod_public_WC_rab_DVIR' and $menu_loc ! 'bed2'):
+	if Vania = 2 or Tolik = 2 or Artem = 2:
+		'( ◣∀◢)ψ'
+	elseif hour >= 22 and zvit_Weekout = 1:
+		zvit = week
+		gt 'mod_public_WC_rab_Task', 'start2'
+	elseif hour >= 22 and zvit = week and zvit_Weekout = 0:
+		gt 'mod_public_WC_rab_Task', 'start2'
+	elseif zvit + 1 = week and zvit_Weekout = 0:
+		gt 'mod_public_WC_rab_Task', 'start2'
+	elseif zvit - 6 = week and zvit_Weekout = 0:
+		gt 'mod_public_WC_rab_Task', 'start2'
+	end
+end
+
+if $loc = 'mod_public_WC_rab' or $loc = 'mod_public_WC_rab_DVIR':
+	if hypnoSchedule ! 0:
+		modhypnosave = hypnoSchedule
+		hypnoSchedule = 0
+	end
+elseif $loc = 'mod_public_WC_kara' or $loc = 'mod_public_WC_kara7' or $loc = 'mod_public_WC_kara71' or $loc = 'mod_public_WC_rab_livesklad' or $loc = 'mod_public_WC_rab_livesklad_willdecrising':
+	''
+	if Artem = 1 or ahide = 1:
+		gs 'boyStat', 'A441'
+	end
+	if Vania = 1:
+		gs 'boyStat', 'A442'
+	end
+	if Tolik = 1:
+		gs 'boyStat', 'A443'
+	end
+else
+	if modhypnosave ! 0:
+		hypnoSchedule = modhypnosave
+		modhypnosave = 0
+	end
+end
+
+if $loc = 'train' and $loc_arg = 'gadukino' and hour = 21 and lis_Weekout >= 1:
+	'I see Vania'
+	act 'go with Vania':
+		minut += rand(30,70)
+		zvit_Weekout = 0
+		gs 'stat'
+		gt 'mod_public_WC_rab_DVIR', 'dvir'
+	end
+end
+
+if zvit_Weekout >= 1 and week >= 6 and $location_type ! 'indoors' and $location_type ! 'public_indoors' and  $location_type ! 'bathroom' and $location_type ! 'event':
+	gt 'mod_public_WC_rab_Task', 'shopyly'
+end
+
+if zvit_Weekout >= 1 and daystart - day_Weekout >= 7 and $location_type ! 'indoors' and $location_type ! 'public_indoors' and  $location_type ! 'bathroom' and $location_type ! 'event':
+	gt 'mod_public_WC_rab_Task', 'shopyly'
+end
+
+
+
+if ($loc = 'mod_public_WC_rab' or $loc = 'mod_public_WC_rab_DVIR') and ttemp ! 2762940:
+	if Tolik = 2 and Vania = 2 and Artem = 2:
+		act 'Run away from this horrible place':
+			minut += rand(10,40)
+			gt 'gad_forest_lost', 'forest_center'
+		end
+	elseif Tolik = 2 or Vania = 2 or Artem = 2:
+		if Artem = 2:
+			'Artem is dead'
+		end
+		if Tolik = 2:
+			'Tolik is dead'
+		end
+		if Vania = 2:
+			'Vania is dead'
+		end
+		If Tolik = 3: Tolik = 1
+		If Artem = 3: Artem = 1
+		If Vania = 3: Vania = 1
+		If Tolik = 1:
+			cla
+			act 'continue': gt 'mod_public_WC_rab_gun', 'lastfight'
+		elseIf Artem = 1:
+			cla
+			act 'continue': gt 'mod_public_WC_rab_gun', 'lastfight'
+		elseIf Vania = 1:
+			cla
+			act 'continue': gt 'mod_public_WC_rab_gun', 'lastfight'
+		end
+	end
+end
+
+if sexcorrupt > 0:
+	pl '<b>I''m addicted to sex on <<sexcorrupt>>%</b>'
+end
+
+if sexcorrupt > 0:
+	if sexcorruptday ! daystart:
+		sexcorruptday = daystart
+		if sexcorruptstat = stat['bj'] + stat['hj'] + stat['footjob'] + stat['titjob'] + stat['vaginal'] + stat['anal']:
+			+$OpenInnerThought+'I NEED MORE SEX!!!'+$CloseInnerThought
+			pcs_mood -= (sexcorrupt / 2)
+			kjhg = sexcorrupt * rand(70,90) / 100
+			if kjhg < 10: kjhg = 10
+			sexcorrupt -= kjhg
+			killvar 'kjhg'
+		else
+			sexcorruptstat = stat['bj'] + stat['hj'] + stat['footjob'] + stat['titjob'] + stat['vaginal'] + stat['anal']
+		end
+	end
+end
+
+if gun = 1 and menu_off = 0:
+	pl 'There''s a <a href="exec:gt ''mod_public_WC_rab_gun'', ''start''">gun</a> in my purse.'
+
+	if ($loc = 'road' or $loc = 'city_center' or $loc = 'city_residential' or $loc = 'pav_residential') and (hour >= 21 or hour < 6):
+		if $loc = 'road' and ammo > 0:
+			act '[CRIME] Find target, Seduce him and rob':	gt 'mod_public_WC_rab_gun_rob','start'
+		elseif ($loc = 'city_center' or $loc = 'city_residential' or $loc = 'pav_residential') and ammo > 0:
+			act '[CRIME] Find target, Seduce him and rob': gt 'mod_public_WC_rab_gun_rob','start'
+		end
+	end
+	If (($loc = 'meadow' and MiraLoc ! 2) or ($loc = 'gad_forest' and $loc_arg ! 'forest_edge')) and ammo > 0:
+		act 'start shoot practice':
+			*clr & cla
+			minut += rand (5,15)
+			ammo -= 1
+			shoot_exp += rand(1,2)
+			gs 'stat'
+			'I put some targets with bottles and atc, and start shooting.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/target.mp4"></video></center>'
+			act 'continue':  gt $loc, $loc_arg
+		end
+	end
+end
+
+if zucchini = 1:
+	pl 'There''s a <<zucchinilong>> cm long zucchini in my purse.'
+end
+if apple = 1:
+	pl 'There''s an apple in my purse.'
+end
+if ogirok = 1:
+	pl 'There''s a <<ogiroklong>> cm long cucumber in my purse.'
+end
+
+if zucchini = 1:
+	if $curloc = 'selfplay':
+		act 'play with the zucchini': gt 'mod_public_WC_rab_zashmorg', 'zucchini'
+	end
+	if Artem ! 1 and Tolik ! 1 and Vania ! 1:
+		if $location_type = 'secluded' or $curloc = 'selfplay':
+			pl 'I can <a href="exec:gt ''mod_public_WC_rab_zashmorg'', ''zucchini''">use</a> zucchini for my pleasure.'
+		else
+			pl 'If I find secluded place, I can have some pleasure time with the zucchini.'
+		end
+	end
+end
+if apple = 1:
+	if $curloc = 'selfplay':
+		act 'play with the apple': gt 'mod_public_WC_rab_zashmorg', 'apple'
+	end
+	if Artem ! 1 and Tolik ! 1 and Vania ! 1:
+		if $location_type = 'secluded' or $curloc = 'selfplay':
+			pl 'I can <a href="exec:gt ''mod_public_WC_rab_zashmorg'', ''apple''">use</a> apple for my pleasure.'
+		else
+			pl 'If I find secluded place, I can have some pleasure time with the apple.'
+		end
+	end
+end
+if ogirok = 1:
+	if $curloc = 'selfplay':
+		act 'play with the cucumber': gt 'mod_public_WC_rab_zashmorg', 'ogirok'
+	end
+	if Artem ! 1 and Tolik ! 1 and Vania ! 1:
+		if $location_type = 'secluded' or $curloc = 'selfplay':
+			pl 'I can <a href="exec:gt ''mod_public_WC_rab_zashmorg'', ''ogirok''">use</a> cucumber for my pleasure.'
+		else
+			pl 'If I find secluded place, I can have some pleasure time with the cucumber.'
+		end
+	end
+end
+
+if week = zucchiniweek and zucchini = 1:
+	zucchiniweek = 0
+	*nl
+	'My zucchini is not good at all. I throw it away.'
+	zucchini = 0
+end
+if week = ogirokweek and ogirok = 1:
+	ogirokweek = 0
+	*nl
+	'My cucumber is not good at all. I throw it away.'
+	ogirok = 0
+end
+if week = appleweek and apple = 1:
+	appleweek = 0
+	*nl
+	'My apple is not good at all. I throw it away.'
+	apple = 0
+end
+if $loc = 'kuhrPar' and $loc_arg = '':
+	gs 'mod_public_WC_rab', 'ovochi'
+end
+
+if menu_off = 0:
+	pl '<a href="exec:gt ''mod_public_WC_options2''">Public_WC Options</a>.'
+end
+
+if $curloc = 'miroslava' and mirapimp = 1 and miraprost > 0:
+	if getmoney = 1 and getmoneyd ! day:
+		act 'What about my percentage?':
+			temp = month - getmoneym
+			if temp < 0: temp += 12
+			if temp > 3: temp = 3
+			money += temp*30*50
+			temp = day - getmoneyd
+			if temp < 0: temp += 30
+			money += temp*50
+			getmoneyd = day
+			getmoneym = month
+			cla
+			gt 'miroslava'
+		end
+	else
+		act 'Mira, from today you give a percentage to me.':
+			getmoneyd = day
+			getmoneym = month
+			getmoney = 1
+			gs 'stat'
+			cla
+			gt 'miroslava'
+		end
+	end
+end
+
+if crime >= rand(50,1000) and $location_type ! 'private':
+	gt 'mod_public_WC_cabine_crime', 'start'
+end
+if crime >= 50:
+	if rand(0,1000) + icrime + crime > (1000+(crime/2)) and icrime > 50:
+		gs 'telefon', 'add_sms', ' ', 'For the all you have done - I am going to kill YOU!!!'
+		gs 'stat'
+		icrime = -15
+	else
+		if rand(1,4) = 1: icrime += 1
+	end
+end
+
+
+
+if fightEnding > 0 and gun = 1 and ammo > 0:
+	act 'shoot in air':
+		ztemp = 0
+		gs 'mod_public_WC_rab_gun', 'fightshoot'
+	end
+	act 'shoot to injure':
+		ztemp = 10
+		gs 'mod_public_WC_rab_gun', 'fightshoot'
+	end
+	act 'shoot to kill':
+		ztemp = 30
+		gs 'mod_public_WC_rab_gun', 'fightshoot'
+	end
+end
+
+if $ARGS[0] = 'loss' or $ARGS[0] = 'win' or $ARGS[0] = 'surrender':
+	inFight = 0
+end
+
+if $ARGS[0] = 'loss' and gun = 3:
+	gun = 0
+end
+if $ARGS[0] = 'loss' and gun = 1:
+	gun = 0
+end
+if $ARGS[0] = 'surrender' and gun = 3:
+	gun = 0
+end
+if $ARGS[0] = 'surrender' and gun = 1:
+	gun = 0
+end
+if $ARGS[0] = 'win' and gun = 3:
+	gun = 1
+end
+
+if $menu_arg = 'viranda' and week ! 6 and Vurok >= 1 and hour >= 15 and hour <= 18:
+	act 'Go to the master''s Vania lesson': gt 'mod_public_WC_rab_Mayster', 'enter'
+elseif $menu_arg = 'viranda' and week = 6 and Vurok >= 1 and hour >= 15 and hour <= 18:
+	'It''s Saturday, no lesson for me.'
+	if vday - daystart > 1: vday = daystart + 1
+	if vday - daystart = 0: vday = daystart + 1
+end
+if Vurok >= 1 and vday = daystart and week = 6:
+	vday += 1
+end
+
+if pierc = 1 and rand(1,100) >= 50 and Vania = 1 and $clothingworntype ! 'nude' and pvshow ! daystart:
+	if pvshow ! (daystart - 1):
+		pvshow = (daystart - 1)
+	else
+		pvshow = daystart
+	end
+	gt 'mod_public_WC_rab_Mayster5', 'piercing'
+elseif pierc = 2 and rand(1,100) >= 50 and Vania = 1 and $clothingworntype ! 'nude' and pvshow ! daystart:
+	if pvshow ! (daystart - 1):
+		pvshow = (daystart - 1)
+	else
+		pvshow = daystart
+	end
+	gt 'mod_public_WC_rab_Mayster5', 'piercing'
+end
+
+if month = 8 and day = 24:
+	pl '<b>ПТН ПНХ</b>'
+	pl '<b>PTN PNH</b>'
+	pl '<b>Путін - хуйло!</b>'
+	pl '<b>Putin – khuylo! (commonly translated as "Putin is a dickhead")</b>'
+elseif month = 2 and day = 24:
+	pl '<b>Today in 2022 nazi ruSSia attacked Ukraine.</b>'
+	pl '<b>Nazi ruSSiian soldiers was killing, raping, torturing civilian man, womens and children</b>'
+elseif month = 9 and day = 17:
+	pl'<b>today in 1939 ruSSia invasion Poland to support their ally Nazi Germany</b>'
+elseif month = 11 and day >= 24 and week = 6:
+	pl '<b>Remembrance Day for the victims of the Holodomor-genocide created by ruSSia.</b>'
+elseif month = 8 and day = 1:
+	pl '<b>On this day in 2008, ruSSia''s dishonest attack on Georgia began.</b>'
+else
+	''
+end
+
+if Vania = 1 and vaniaplag = 1 and rand(1,10) <= 3:
+	'"Show it to me!" - Vania orders'
+	'I stoped and show IT to him'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/holestrain/ass/plug/plug_show.mp4"></video></center>'
+	minut += 5
+	gs 'flash', 'exhibitionism', 1
+	VaniaMayster += rand(0,1)
+	willpowermax -= rand(0,1)
+end
+
+
+
+if VaniaMayster >= 1 and vtecha ! 1:
+	VMrist = 1
+	if VaniaMayster >= 120: $vm = '<b><font color = red	> Vania is my MASTER! </font></b> '
+	if VaniaMayster >= 100 and VaniaMayster < 120: $vm = '<font color = red	> █████ </font> '
+	if VaniaMayster >= 80 and VaniaMayster < 100: $vm = '<font color = yellow	> ████_ </font> '
+	if VaniaMayster >= 60 and VaniaMayster < 80: $vm = '<font color = yellow	> ███__ </font> '
+	if VaniaMayster >= 40 and VaniaMayster < 60: $vm = '<font color = green	> ██___ </font> '
+	if VaniaMayster >= 20 and VaniaMayster < 40: $vm = $func('wrap', 'accent', ' █____ ') + ' '
+	if VaniaMayster < 20: $vm = '<font color = red	> Pff, he tries to control me, but he is NOT!</font> '
+	pl '<center>I see Vania as my master: <<$vm>></center>'
+elseif ( VaniaMayster > 1 and vtecha = 1 and VMrist ! daystart ) or ( Vania = 2 and VaniaMayster > 1  and VMrist ! daystart ):
+	VMrist = daystart
+	*nl
+	if VaniaMayster >= 120:
+		'<i>Vania is my master and I very miss him!</i>'
+		pcs_mood -= rand(50,70)
+		gs 'stat'
+		VaniaMayster -= rand(5,15)
+	elseif VaniaMayster >= 100 and VaniaMayster < 120:
+		'<i>Vania is my master and I very miss him!</i>'
+		pcs_mood -= rand(50,70)
+		gs 'stat'
+		VaniaMayster -= rand(3,5)
+	elseif VaniaMayster >= 80 and VaniaMayster < 100:
+		'<i>I feel lonely without Vania</i>'
+		pcs_mood -= rand(30,50)
+		gs 'stat'
+		VaniaMayster -= rand(1,3)
+	elseif VaniaMayster >= 60 and VaniaMayster < 80:
+		'<i>I feel lonely without Vania</i>'
+		pcs_mood -= rand(30,50)
+		gs 'stat'
+		VaniaMayster -= rand(1,3)
+	elseif VaniaMayster >= 40 and VaniaMayster < 60:
+		'<i>I feel lonely without Vania</i>'
+		pcs_mood -= rand(30,50)
+		gs 'stat'
+		VaniaMayster -= rand(1,3)
+	elseif VaniaMayster >= 20 and VaniaMayster < 40:
+		'<i>I almost forgot Vanina''s torture</i>'
+		VaniaMayster -= rand(0,1)
+	elseif VaniaMayster < 20:
+		'<i>I almost forgot Vanina''s torture</i>'
+		VaniaMayster -= rand(0,1)
+	end
+	if VaniaMayster <= 1: VaniaMayster = 1
+end
+
+if PH_Ania ! 1: PH_Ania = 1 & gs 'mod_public_WC_PH_blackcat_daily', 'ania_setup'
+if PH_ch_setup ! 1 and $loc = 'pav_commercial': PH_ch_setup = 1 & gs 'mod_public_WC_rab_btothel', 'bch_setup'
+if lis_Artem_setup ! 1: lis_Artem_setup = 1 & gs 'mod_public_WC_rab_Artem', 'artem_setup'
+if lis_vania_setup ! 1: lis_vania_setup = 1 & gs 'mod_public_WC_rab_Vania', 'Vania_setup'
+if lis_tolik_setup ! 1: lis_tolik_setup = 1 & gs 'mod_public_WC_rab_Tolik', 'tolik_setup'
+if PH_bc_setup ! 1: PH_bc_setup = 1 & gs 'mod_public_WC_rab_btothel', 'bc_setup'
+
+if MYMODversion ! 30610:
+	if ($loc = 'pav_commercial' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) and ($loc = 'city_center' and menu_off = 0):
+		menu_off = 1
+		gt 'mod_public_WC_war', 'start'
+	end
+end
+
+
+
+if $ARGS[0] = 'salon':
+	phtest = 1001
+	if cardrive = 1 and ( hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 4 and (hour <=7 or hour >=21):
+		carrape =3
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 5 and (hour <=9 or hour >=19):
+		carrape =5
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 8 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 10 and (hour <=7 or hour >=19):
+		carrape =3
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 12 and (hour <=24 or hour >24):
+		carrape =9
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 13 and (hour <=24 or hour >24):
+		carrape =9
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 14 and (hour <=9 or hour >=19):
+		carrape =5
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 18 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 19 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 20 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 22:
+		carrape =14
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 23:
+		carrape =9
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 24 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 25 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 26 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 27 and (hour <=9 or hour >=19):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	elseif cardrive = 28 and (hour <=5 or hour >=23):
+		carrape =2
+		temp = rand(1,100)
+		phtest = temp
+		if temp <= 1 + carrape + phtestcheat:
+			killvar 'carrape'
+			gt 'mod_public_WC_rob_car', 'carrob'
+		else
+			''
+			killvar 'carrape'
+		end
+	end
+end
+
+
+
+if $curloc = 'komp' and menu_off = 0:
+	if phescort = 1 and phescorttask = 0:
+		act 'Go to PleasureHouse.com':
+			cla
+			if phmoneypaid > 0: 'The <<phmoneypaid>> money will be transferd to your banc account soon'
+
+			if PHsetup = 1:
+				gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+			else
+				'I see an empty profile'
+				'I need to fill all the "MUST" fields'
+				'All the general lines: age, weight, breast size etc I have filled… Now I need to choose 3 or more interests'
+				act 'continue':
+					gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+				end
+			end
+		end
+	elseif phescort = 1 and phescorttask = 1:
+		act 'Go to PleasureHouse.com':
+			if phmoneypaid > 0: 'The <<phmoneypaid>> money will be transferd to your banc account soon'
+			'My rank is <<phecrortrank1>>.<<phecrortrank2>>'
+
+			'<font color=red size=6>You need to focus on your current client!</font>'
+
+			'As I logged in, the red letters is my only option on the screen'
+		end
+	end
+end
+
+
+
+if PHsetup = 1:
+	if phescort = 1 and phescortshorttask = 0 and rand(1,300) - ryska <= 0 and hour <= 15 and phescortD ! daystart and daystart > phshorttimer:
+		!! chance to find a client for me
+		phescortshorttask = daystart + phescortshorttaskconfig
+		!! escortpause = daystart + escortpauseconfig
+		gs 'mod_public_WC_rab_work_PHescort_PC', 'sms'
+	end
+
+	gs 'mod_public_WC_rab_work_PHescort_PC', 'PHsetup'
+end
+
+
+
+
+--- mod_public_WC ---------------------------------
+

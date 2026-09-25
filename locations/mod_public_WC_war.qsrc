@@ -1,0 +1,42 @@
+# mod_public_WC_war
+if $ARGS[0] = 'start':
+	*clr & cla
+
+
+	
+	
+	
+	
+	
+	'<b>Guys, I need to ask your support for Ukraine.
+	I know, that you are here for fun and etc… But I am need your help and millions like me also.
+	Please support my very friend Dima, he is a volunteer, who work with medical equipment for soldiers and different request for civilians in liberated terittories. His paypal email is <u>dmytro.skihin@gmail.com</u>
+	If you have no trust to me (I can understand this, I am just some text on your monitor), please support Ukraine in any other way you can (this government site as example: <u>https://u24.gov.ua/</u>)
+	We are needed to win (cuz it''s the only way to survive), and we really need your support.</b>'		
+	*nl
+	'<b>THANK YOU!!!</b>'
+	'<b>Dima constantly support our front soldiers with a military med kits. And I know, you helped him with this.</b>'
+	'<b>Thank you! I am proud about our community!</b>'
+	
+	
+	act 'continue':
+		*clr & cla
+		'The ruSSians are unhuman beings'
+		'ruSSians are the Nazis of the 21st century'
+		'ruSSia is a terrorist state'	
+		'I am agree with all the civilized world - ruSSia have committed war crimes against many nations'
+		
+		
+		
+		
+		
+
+		act 'I am agree with all the statements (agree and exit)':
+			gs 'stat'
+			MYMODversion = 30610
+			gt $loc, $loc_arg
+		end
+	end
+end
+--- mod_public_WC_war ---------------------------------
+

@@ -1,0 +1,2738 @@
+# mod_public_WC_rab_Mayster7
+if $ARGS[0] = 'start':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'I come with Vania to the Barn where the exercise bike stands…'
+
+	'"Before we will go to the big world, you need to train on this bad boy…"'
+	'Vania fixed the dildo to the bike…'
+	'"Come on, Betsi, ride it!"'
+
+	act 'No!':
+		*clr & cla
+		willpowermax += 1
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'I tierd of this shit, Betsi.'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'ride the bike':
+		*clr & cla
+		'This ride is amazing!'
+		VaniaMayster += 1
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/trainride ('+rand(1,4)+').mp4"></video></center>'
+		gs 'arousal', 'vaginal_dildo_give', rand(40,70), 'humiliation', 'sub'
+		gs 'stat'
+
+
+		run_exp += rand(0,2)
+		stren_exp += rand(0,2)
+		fat -= 2
+		pcs_mood += 10
+		pcs_sweat += 2
+		gs 'stat'
+
+
+		vbike -= rand(10,15)
+		if vbike < 1: vbike = 1
+
+
+		'in about a hour Vania stops me'
+		'"Ok Betsi, few more trains and we will ride outside"'
+
+		pcs_mood += rand(0,20)
+		gs 'stat'
+		ztemp = rand (1,4)
+		if ztemp = 3: ztemp = 4
+		act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+		act 'Please master, can I ride more!':
+			*clr & cla
+			VaniaMayster += 1
+			willpowermax -= 1
+			'"Of course, Betsi, I like the spirit"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/trainride ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal_dildo_give', rand(40,70), 'humiliation', 'sub'
+			gs 'stat'
+
+
+			run_exp += rand(0,2)
+			stren_exp += rand(0,2)
+			fat -= 2
+			pcs_mood += 10
+			pcs_sweat += 2
+			gs 'stat'
+
+
+			vbike -= rand(10,15)
+			if vbike < 1: vbike = 1
+
+
+			'in about a hour Vania stops me'
+			'"Ok Betsi, few more trains and we will ride outside"'
+
+			pcs_mood += rand(0,20)
+			gs 'stat'
+			ztemp = rand (1,4)
+			if ztemp = 3: ztemp = 4
+			act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+	end
+
+	if vbike = 1:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+		'I come with Vania to the Barn where the casual bike stands…'
+
+		'"Today you will go to the big world!.."'
+
+		vbike = 200
+
+		if zashmorg = 2:
+			'Vania locks the collar with a lock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/items/zashmorg.jpg"></center>'
+			zashmorg = 3
+		elseif zashmorg = 1:
+			'Vania locks the collar around me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+			zashmorg = 3
+		end
+
+		'"Remember Betsi, I trust my pet… don''t disappoint me"'
+
+
+		'"You can ride anywhere you want… cuz we can find you anywhere))"'
+		'"But you need to come back to the meet with Tolik on time."'
+
+
+		'Vania fixed the dildo to the bike…'
+		'"Come on, Betsi, ride it!"'
+
+		if month > 4 and month < 10:
+			''
+			'You can go swim if you turn left on the second turn left.'
+		else
+			'You better dress a coat, it''s cold outside'
+		end
+		'The forest is dangerous place, avoid it.'
+
+
+
+
+		act 'Go ride!':
+			onvelyk = 1
+			gt 'mod_public_WC_rab_Mayster7', 'ridestart'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'start2':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'I come with Vania to the Barn where the casual bike stands…'
+
+	'"Today you will go to the big world!.."'
+
+	if zashmorg = 2:
+		'Vania locks the collar with a lock'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/items/zashmorg.jpg"></center>'
+		zashmorg = 3
+	elseif zashmorg = 1:
+		'Vania locks the collar around me'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+		zashmorg = 3
+	end
+
+	'"Remember Betsi, I trust my pet… don''t disappoint me"'
+
+	'"You can ride anywhere you want… cuz we can find you anywhere))"'
+	'"But you need to come back to the meet with Tolik on time."'
+
+	'Vania fixed the dildo to the bike…'
+	'"Come on, Betsi, ride it!"'
+
+	if month > 4 and month < 10:
+		'You can go swim if you turn left on the second turn left.'
+	else
+		'You better dress a coat, it''s cold outside'
+	end
+	'The west forest is very dangerous place, you must not go there or I would punish you!.'
+
+	act 'Go ride!':
+		onvelyk = 1
+		gt 'mod_public_WC_rab_Mayster7', 'ridestart'
+	end
+end
+
+
+
+if $ARGS[0] = 'ridestart':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc_arg = $ARGS[0]
+
+	coord_x = 0
+	coord_y = 0
+	poshuk = 0
+	killvar 'vogon_x'
+	killvar 'vogon_y'
+	killvar 'vogond'
+	killvar 'vogon'
+	killvar 'phour'
+	killvar 'pday'
+	coord_v_x = 0
+	coord_v_y = 0
+
+	poletan = 0
+	rope = 0
+
+	$loc = 'mod_public_WC_rab_Mayster7'
+
+	'I start my ride'
+
+	'<i><b>Ok, I am not sure where am I. I will try to use world directions for not to get lost!</b></i>'
+
+	gs 'arousal', 'vaginal_dildo_give', rand(40,70), 'humiliation', 'sub'
+	gs 'stat'
+
+
+	run_exp += rand(0,2)
+	stren_exp += rand(0,2)
+	fat -= 2
+	pcs_mood += 10
+	pcs_sweat += 2
+	gs 'stat'
+
+	if month > 4 and month < 10:
+		if hour >= 6 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_d.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_n.jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 17:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_d.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_n.jpg"></center>'
+		end
+	end
+
+	if rand (1,8) <= 2:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/ride ('+rand(1,2)+').jpg"></center>'
+	else
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/ridev ('+rand(1,6)+').mp4"></video></center>'
+	end
+
+	act '<b>stick to the road</b> (east)': coord_x += 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+	act 'go left (north) to the field':  coord_y += 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+	act 'go right (south) to the forest': coord_y -= 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'ride':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc_arg = $ARGS[0]
+
+	if coord_x = coord_v_x and coord_y = coord_v_y and onvelyk = 0:
+		'<b>This is my byke!</b>'
+		act '<b>Take my bike</b>':
+			onvelyk = 1
+			'I have taken my bike'
+			killvar 'coord_v_x'
+			killvar 'coord_v_y'
+
+			if coord_x = 11 and coord_y <= 0:
+				act 'I can''t ride west, the river is an obstacle':
+					'I can''t ride west, the river is an obstacle'
+				end
+			elseif coord_x = 5 and coord_y >= 2:
+				act 'I can''t ride west, the river is an obstacle':
+					'I can''t ride west, the river is an obstacle'
+				end
+			else
+				act 'ride a bike on west':
+					coord_x -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+
+
+			if coord_x = 10 and coord_y <= 0:
+				act 'I can''t go east, the river is an obstacle':
+					'I can''t go east, the river is an obstacle'
+				end
+			elseif coord_x = 4 and coord_y >= 2:
+				act 'I can''t ride east, the river is an obstacle':
+					'I can''t ride east, the river is an obstacle'
+				end
+			else
+				act 'ride a bike on east':
+					coord_x += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+
+
+			if coord_x >= 5 and x <= 6 and coord_y = 1:
+				act 'I can''t ride north, the river is an obstacle':
+					'I can''t ride north, the river is an obstacle'
+				end
+			else
+				act 'ride a bike on north':
+					coord_y += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+
+			if coord_x >= 5 and x <= 6 and coord_y = 2:
+				act 'I can''t ride south, the river is an obstacle':
+					'I can''t ride south, the river is an obstacle'
+				end
+			else
+				act 'ride a bike on south':
+					coord_y -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+		end
+	end
+
+	if hour >= 21 and zvit = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	elseif zvit + 1 = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	elseif zvit - 6 = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	end
+
+
+
+	if poshuk > 0:
+		if daystart - pday > 0:
+			if daystart - pday = 1:
+				poshuk = (daystart - pday) * 4 + (24 - phour)
+			elseif daystart - pday <= 2:
+				poshuk = (daystart - pday) * 12 + (24 - phour)
+			else
+				poshuk = (daystart - pday) * 24 + (24 - phour)
+			end
+		else
+			poshuk = hour - phour
+		end
+
+		if zashmorg = 0: poshuk = poshuk / rand(1,10)
+
+		if coord_x < 0: tempx = coord_x * (0 - 1)
+		if coord_y < 0: tempy = coord_y * (0 - 1)
+
+		if poshuk > tempx + tempy:
+			killvar 'tempx'
+			killvar 'tempy'
+			gt 'mod_public_WC_rab_Mayster7', 'Vania'
+		else
+			killvar 'tempx'
+			killvar 'tempy'
+		end
+		if poshuk = 0: poshuk = 1
+	end
+
+	if onvelyk = 1:
+		'I am riding!'
+		gs 'arousal', 'vaginal_dildo_give', 5, 'humiliation', 'sub'
+		gs 'stat'
+
+		temp = rand(1,4)
+		if temp = 1:
+			run_exp += rand(0,1)
+			stren_exp += rand(0,1)
+			fat -= 1
+			pcs_mood += 3
+			gs 'stat'
+		end
+	elseif onvelyk = 0:
+		'I am walking'
+		minut += rand(5,10)
+		gs 'stat'
+	end
+
+	pcs_mood += rand(1,2)
+	pcs_sweat += 1
+	gs 'stat'
+
+	if coord_x < 0:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			lis = 2
+		elseif coord_y = 2:
+			lis = 2
+		elseif coord_y = 3:
+			lis = 1
+			'<b>The road goes from the forest''s edge (east) - to deeper in the forest (west)</b>'
+		elseif coord_y = 4:
+			lis = 2
+		elseif coord_y >= 4:
+		lis = 2
+		end
+	elseif coord_x = 0:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			'home'
+		elseif coord_y = 1:
+			pole = 2
+		elseif coord_y = 2:
+			pole = 2
+		elseif coord_y = 3:
+			pole = 1
+			'<b>The road goes from the field (east) - to the forest (west)</b>'
+		elseif coord_y = 4:
+			pole = 2
+		elseif coord_y >= 4:
+			pole = 2
+		end
+	elseif coord_x = 1:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			pole = 1
+			'<b>The road goes from the home (west) - to the field (east)</b>'
+		elseif coord_y = 1:
+			pole = 2
+		elseif coord_y = 2:
+			pole = 1
+			'<b>The road goes from the field (east) - to the field (north)</b>'
+		elseif coord_y = 3:
+			pole = 1
+			'<b>The road goes from the field (south) - to the forest (west)</b>'
+		elseif coord_y = 4:
+			pole = 2
+		elseif coord_y >= 4:
+			pole = 2
+		end
+	elseif coord_x = 2:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			pole = 1
+			'<b>The road goes from the home (west) - to the field (east)</b>'
+			'<b>The road also goes to other the field (north)</b>'
+		elseif coord_y = 1:
+			pole = 1
+			'<b>The road goes from the field (south) - to the field (north)</b>'
+		elseif coord_y = 2:
+			pole = 1
+			'<b>The road goes from the field (south) - to the field (west)</b>'
+		elseif coord_y = 3:
+			lis = 2
+		elseif coord_y = 4:
+			lis = 2
+		elseif coord_y >= 4:
+			lis = 2
+		end
+	elseif coord_x = 3:
+		if coord_y <= -4:
+			lis = 1
+			'<b>The road goes from the forest (south) - to the forest (north)</b>'
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (south) - to the forest (east)</b>'
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 1
+			'<b>The road goes from the forest (east) - to the forest (north)</b>'
+		elseif coord_y = 0:
+			pole = 1
+			'<b>The road goes from the home (west) - to the field (east)</b>'
+			'<b>The road also goes from the forest (south)</b>'
+		elseif coord_y = 1:
+			pole = 2
+		elseif coord_y = 2:
+			pole = 2
+		elseif coord_y = 3:
+			pole = 2
+		elseif coord_y = 4:
+			pole = 2
+		elseif coord_y > 4:
+			pole = 2
+		end
+	elseif coord_x = 4:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (east)</b>'
+			'<b>The road also goes to the forest (north)</b>'
+		elseif coord_y = -2:
+			lis = 1
+			'<b>The road goes from the forest (south) - to the forest (north)</b>'
+		elseif coord_y = -1:
+			lis = 1
+			'<b>The road goes from the forest (south) - to the forest (west)</b>'
+		elseif coord_y = 0:
+			pole = 1
+			'<b>The road goes from the home (west) - to the field (east)</b>'
+		elseif coord_y = 1:
+			rika = 1
+			'<b>The road goes along the river (east) - to the (north)</b>'
+		elseif coord_y = 2:
+			rika = 1
+			'<b>The road goes along the river (south) - to the (north)</b>'
+		elseif coord_y = 3:
+			rika = 1
+			'<b>The road goes along the river (south) - to the (north)</b>'
+		elseif coord_y = 4:
+			'<b>The road goes along the river (south) but ends here</b>'
+			rika = 1
+		elseif coord_y >= 4:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		end
+	elseif coord_x = 5:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (east)</b>'
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			pole = 1
+			'<b>The road goes from the home (west) - to the river (north)</b>'
+		elseif coord_y = 1:
+			'<b>The road goes from the field (south) along the river (west)</b>'
+		elseif coord_y = 2:
+			rika = 1
+			'<b>The river goes from east to north</b>'
+		elseif coord_y = 3:
+			'<b>The river goes from south to north</b>'
+			rika = 1
+		elseif coord_y = 4:
+			rika = 1
+			'<b>The river goes from south to north</b>'
+		elseif coord_y > 4:
+			rika = 1
+			'<b>The river goes from south to north</b>'
+		end
+	elseif coord_x = 6:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (east)</b>'
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			rika = 1
+			'<b>The river goes from west to east</b>'
+			'<b>There is a swamp on the east</b>'
+		elseif coord_y = 2:
+			rika = 1
+			'<b>The river goes from west to east</b>'
+			'<b>There is a swamp on the east</b>'
+		elseif coord_y = 3:
+			lis = 2
+			'<b>There is a swamp on the east</b>'
+		elseif coord_y = 4:
+			lis = 2
+			'<b>There is a swamp on the east</b>'
+		elseif coord_y >= 4:
+			lis = 2
+			'<b>There is a swamp on the east</b>'
+		end
+	elseif coord_x = 7:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (east)</b>'
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp goes to the east and north</b>'
+			'<b>The river starts from the swamp and goes to the west</b>'
+		elseif coord_y = 2:
+			boloto = 1
+			'<b>The swamp goes to the east</b>'
+			'<b>The river starts from the swamp and goes to the west</b>'
+		elseif coord_y = 3:
+			boloto = 1
+			'<b>The swamp goes to the east</b>'
+		elseif coord_y = 4:
+			boloto = 1
+			'<b>The swamp goes to the east</b>'
+		elseif coord_y > 4:
+			boloto = 1
+			'<b>The swamp goes to the east</b>'
+		end
+	elseif coord_x = 8:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (north)</b>'
+		elseif coord_y = -2:
+			lis = 1
+			'<b>The road goes from the forest (south) - to the forest (east)</b>'
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp starts here and goes to the north</b>'
+		elseif coord_y = 2:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 3:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y >= 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		end
+	elseif coord_x = 9:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 1
+			'<b>The road goes from the forest (west) - to the forest (north)</b>'
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp starts here and goes to the north</b>'
+		elseif coord_y = 2:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 3:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y >= 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		end
+	elseif coord_x = 10:
+		if coord_y <= -4:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -3:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -2:
+			'<b>the road goes from the west and ends here on the river bank</b>'
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -1:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = 0:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp starts here and goes to the north</b>'
+			'<b>The river starts from the swamp and goes to the south</b>'
+		elseif coord_y = 2:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 3:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y > 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		end
+	elseif coord_x = 11:
+		if coord_y <= -4:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -3:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -2:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = -1:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = 0:
+			rika = 1
+			'<b>the river goes from south to north</b>'
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp starts here and goes to the north</b>'
+			'<b>The river starts from the swamp and goes to the south</b>'
+		elseif coord_y = 2:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 3:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y >= 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		end
+	elseif coord_x > 11:
+		if coord_y <= -4:
+			lis = 2
+		elseif coord_y = -3:
+			lis = 2
+		elseif coord_y = -2:
+			lis = 2
+		elseif coord_y = -1:
+			lis = 2
+		elseif coord_y = 0:
+			lis = 2
+		elseif coord_y = 1:
+			boloto = 1
+			'<b>The swamp starts here and goes to the north</b>'
+		elseif coord_y = 2:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 3:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y = 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		elseif coord_y >= 4:
+			boloto = 2
+			'<b>I am in the middle of the swamp</b>'
+		end
+	end
+
+	if pole = 2 or lis = 2 or rika = 1 and onvelyk = 1:
+		'It''s very hard to ride here without a road'
+		run_exp += rand(0,1)
+		stren_exp += rand(0,1)
+		fat -= 1
+		pcs_mood += 3
+		pcs_sweat += 3
+		minut += 10
+		gs 'stat'
+	end
+
+	if pole = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_n.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_n.jpg"></center>'
+			end
+		end
+	elseif pole = 2:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/ld.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/ln.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/zd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/zn.jpg"></center>'
+			end
+		end
+	elseif lis = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/l_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/l_road_n.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/z_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/z_road_n.jpg"></center>'
+			end
+		end
+	elseif lis = 2:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/ld.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/ln.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/zd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/zn.jpg"></center>'
+			end
+		end
+	elseif rika = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/ld ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/ln ('+rand(1,3)+').jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zd ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zn (1).jpg"></center>'
+			end
+		end
+	elseif boloto >= 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ld ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ln ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zd ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zn ('+rand(1,2)+').jpg"></center>'
+			end
+		end
+	end
+
+	if onvelyk = 1:
+		if rand (1,8) <= 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/ride ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/ridev ('+rand(1,6)+').mp4"></video></center>'
+		end
+	end
+
+	if onvelyk = 0:
+		if coord_x = 11 and coord_y <= 0:
+			act 'I can''t go west, the river is an obstacle':
+				'I can''t go west, the river is an obstacle'
+			end
+		elseif coord_x = 5 and coord_y >= 2:
+			act 'I can''t go west, the river is an obstacle':
+				'I can''t go west, the river is an obstacle'
+			end
+		else
+			act 'go west':
+				coord_x -= 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+		if coord_x = 10 and coord_y <= 0:
+			act 'I can''t go east, the river is an obstacle':
+				'I can''t go east, the river is an obstacle'
+			end
+		elseif coord_x = 4 and coord_y >= 2:
+			act 'I can''t go east, the river is an obstacle':
+				'I can''t go east, the river is an obstacle'
+			end
+		else
+			act 'go east':
+				coord_x += 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+		if coord_x >= 5 and x <= 6 and coord_y = 1:
+			act 'I can''t go north, the river is an obstacle':
+				'I can''t go north, the river is an obstacle'
+			end
+		else
+			act 'go north':
+				coord_y += 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+		if coord_x >= 5 and x <= 6 and coord_y = 2:
+			act 'I can''t go south, the river is an obstacle':
+				'I can''t go south, the river is an obstacle'
+			end
+		else
+			act 'go south':
+				coord_y -= 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+	elseif onvelyk = 1:
+
+
+		if coord_x = 11 and coord_y <= 0:
+			act 'I can''t ride west, the river is an obstacle':
+				'I can''t ride west, the river is an obstacle'
+			end
+		elseif coord_x = 5 and coord_y >= 2:
+			act 'I can''t ride west, the river is an obstacle':
+				'I can''t ride west, the river is an obstacle'
+			end
+		else
+			act 'ride a bike on west':
+				coord_x -= 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				onvelyk = 1
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+
+		if coord_x = 10 and coord_y <= 0:
+			act 'I can''t go east, the river is an obstacle':
+				'I can''t go east, the river is an obstacle'
+			end
+		elseif coord_x = 4 and coord_y >= 2:
+			act 'I can''t ride east, the river is an obstacle':
+				'I can''t ride east, the river is an obstacle'
+			end
+		else
+			act 'ride a bike on east':
+				coord_x += 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				onvelyk = 1
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+
+		if coord_x >= 5 and x <= 6 and coord_y = 1:
+			act 'I can''t ride north, the river is an obstacle':
+				'I can''t ride north, the river is an obstacle'
+			end
+		else
+			act 'ride a bike on north':
+				coord_y += 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				onvelyk = 1
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+
+		if coord_x >= 5 and x <= 6 and coord_y = 2:
+			act 'I can''t ride south, the river is an obstacle':
+				'I can''t ride south, the river is an obstacle'
+			end
+		else
+			act 'ride a bike on south':
+				coord_y -= 1
+				pole = 0
+				lis = 0
+				rika = 0
+				boloto = 0
+				onvelyk = 1
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+	end
+
+	if onvelyk = 0 and hmyz >= 5:
+		act 'make a fire':
+			*clr & cla
+			hmyz -= 5
+			'I spent some time to make a fire'
+			minut += rand(5,15)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_on.jpg"></center>'
+			vogon = hour
+			vogond = daystart
+			vogon_x = coord_x
+			vogon_y = coord_y
+			act 'continue': gt $loc, $loc_arg
+		end
+	end
+
+	if onvelyk = 1:
+		act 'stop and get off the bike':
+			*clr & cla
+			onvelyk = 0
+
+			coord_v_x = coord_x
+			coord_v_y = coord_y
+
+
+			minut -= 5
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/outv.mp4"></video></center>'
+
+			act 'continue': gt $loc, $loc_arg
+		end
+	end
+
+	if onvelyk = 0:
+		act 'Sit and relax (1:00)':
+			cla
+			minut += 60
+			gs 'stat'
+
+			'I spend half an hour relaxing.'
+
+			act 'Continue': gt $loc, $loc_arg
+		end
+		if pcs_sleep < 40:
+			act 'Nap on the ground (2:00)':
+				*clr & cla
+
+				minut += 120
+				pcs_sleep += 20
+				pcs_health += 5
+				pcs_mood += 10
+				gs'stat'
+
+
+				'I am able to make myself fall asleep for about 2 hours, but that is it.'
+				'Even though I had to sleep on the ground, I do wake up feeling a bit more rested.'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+		if boletus_cooked > 0:
+			act 'Eat cooked mushrooms (0:15)':
+				*clr & cla
+
+				minut += 15
+				boletus_cooked -= 1
+				gs 'food', 'light_snack_stats'
+
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/boletuscook.jpg"></center>'
+				*nl
+				'I eat some cooked mushrooms. They are pretty tasty.'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+		if ryba_cooked > 0:
+			act 'Eat cooked fish (0:15)':
+				*clr & cla
+
+				minut += 15
+				ryba_cooked -= 1
+				gs 'food', 'light_snack_stats'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/ryba_gotuyu ('+rand(1,2)+').jpg"></center>'
+				*nl
+				'I eat some cooked fish. They are pretty tasty!'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+		if bilberry > 0:
+			act 'Eat berries (0:15)':
+				*clr & cla
+
+				minut += 15
+				bilberry -= 1
+				gs 'food', 'bilberry_stats'
+
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/bilberry.jpg"></center>'
+				*nl
+				'I eat some berries. These are great.'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+	end
+
+	if vogon > 0 and coord_x = vogon_x and coord_y = vogon_y:
+		if daystart - vogond > 0:
+			if hour + 24 - vogon > 4:
+				vogon = 0
+				'the fire went out'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_off.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_on.jpg"></center>'
+			end
+		elseif daystart - vogond = 0:
+			if hour - vogon > 4:
+				vogon = 0
+				'the fire went out'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_off.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_on.jpg"></center>'
+			end
+		end
+
+		if onvelyk = 0:
+			act 'Warm up by the fire (1:00)':
+				*clr & cla
+
+				minut += 60
+				if frost > 0: frost -= 1
+				gs 'stat'
+
+				if hour >= 6 and hour < 21:
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/gad_forestrelax_bonfire2.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/gad_forestrelax_bonfire3.jpg"></center>'
+				end
+				*nl
+				'I spend half an hour huddled by the flames'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+			if pcs_sleep < 40:
+				act 'Nap by the fire (2:00)':
+					*clr & cla
+
+					minut += 120
+					pcs_sleep += 20
+					pcs_health += 10
+					pcs_mood += 20
+					frost = 0
+					gs 'stat'
+
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/gad_forestrelax_bonfiresleep.jpg"></center>'
+					*nl
+					'I am able to make myself fall asleep for about 2 hours, but that is it.'
+					'Even though I had to sleep on the ground, I do wake up feeling a bit more rested.'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+			if boletus > 0:
+				act 'Cook some mushrooms in the fire (0:15)':
+					*clr & cla
+
+					minut += 15
+					boletus_cooked += 1
+					boletus -= 1
+					frost = 0
+					if pcs_servng < 100: servng_exp += 1
+					gs'stat'
+
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/boletushot.jpg"></center>'
+					*nl
+					'I spend 15 minutes grilling some mushrooms in the fire.'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+			if ryba > 0:
+				act 'Cook some fish in the fire (0:15)':
+					*clr & cla
+
+					minut += 15
+					ryba_cooked += 1
+					ryba -= 1
+					frost = 0
+					if pcs_servng < 100: servng_exp += 1
+					gs'stat'
+
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/ryba_gotuyu ('+rand(1,2)+').jpg"></center>'
+					*nl
+					'I spend 15 minutes grilling some fish in the fire.'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+		end
+	elseif vogon = 0 and coord_x = vogon_x and coord_y = vogon_y:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/vogon_off.jpg"></center>'
+		'I was here'
+	end
+
+	if boloto = 2:
+		pole = 0
+		lis = 0
+		rika = 0
+		gt 'mod_public_WC_rab_Mayster7', 'boloto'
+	end
+
+	if coord_x = 0 and coord_y = 0:
+		pole = 0
+		lis = 0
+		rika = 0
+		boloto = 0
+		gt 'mod_public_WC_rab_Mayster7', 'end'
+	end
+
+
+	gs 'mod_public_WC_rab_Mayster7', 'events'
+
+	gs 'mod_public_WC_rab_Mayster7','actions'
+
+	'<i>Ok, I am not sure where am I. I will try to use world directions for not to get lost!</i>'
+end
+
+if $ARGS[0] = 'actions':
+	if (coord_x = 5 and coord_y = 1) or (coord_x = 10 and coord_y = -2) or (coord_x = 4 and coord_y = 4):
+		rika = 1
+	end
+
+	if pole = 1:
+		if sunWeather = 1: poletan += 1
+		if poletan >= 8:
+			pcs_tan += 1
+			poletan = 0
+			gs 'stat'
+		end
+
+		if onvelyk = 0:
+			act 'rest a little in the grass (1:00)':
+				cla
+				if sunWeather = 1: pcs_tan += 1
+				minut += 60
+				if sunWeather = 1 and pcs_sweat < 35 : gs 'sweat', 'add', 5
+
+				gs 'stat'
+				pcs_sleep += 7
+				pcs_health += 4
+				pcs_mood += 7
+				gs 'stat'
+				act 'stand up': gt $loc, $loc_arg
+			end
+		end
+	elseif pole = 2:
+		if sunWeather = 1: poletan += 1
+		if poletan >= 8:
+			pcs_tan += 1
+			poletan = 0
+			gs 'stat'
+		end
+
+		if onvelyk = 0:
+			act 'rest a little in the grass (1:00)':
+				cla
+				if sunWeather = 1: pcs_tan += 1
+				minut += 60
+				if sunWeather = 1 and pcs_sweat < 35 : gs 'sweat', 'add', 5
+
+				gs 'stat'
+				pcs_sleep += 7
+				pcs_health += 4
+				pcs_mood += 7
+				gs 'stat'
+				act 'stand up': gt $loc, $loc_arg
+			end
+		end
+	elseif lis >= 1:
+		if onvelyk = 0:
+			if hmyz < 15:
+				'<i>I can pick up some firewood around here for a fire.</i>'
+				act 'Collect firewood (0:15)':
+					cla & *clr
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/'+iif($clothingworntype ! 'nude','firewood_normal.jpg','firewood_nude.jpg')+'"></center>'
+					'I pick up some dry branches and twigs.'
+					hmyz += rand(2,6)
+					if hmyz < 15:
+						'I have <<firewood>> pieces of firewood.'
+					else
+						'I have <<firewood>> pieces of firewood and I can''t carry more.'
+					end
+					minut += 15
+					gs 'stat'
+					act 'Further': gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+
+			if boletus + boletus_cooked + bilberry + ryba_cooked + ryba < 10:
+				act 'Try to find mushrooms (00:30)':
+					if rand(1,100) + pcs_observ >= rand(50,100):
+						*clr & cla
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/mushroom0.'+rand(1,3)+'.jpg"></center>'
+						*nl
+						'Searching in the forest, I stumble upon a clearing full of mushrooms. How lucky!.'
+
+						observ_exp += 1
+						minut += 30
+						boletus += rand(1,3)
+						gs 'stat'
+
+						gs 'gad_forest', 'picking_clothes', 'forest_center', 'mushroom'
+						*nl
+						'I begin collecting mushrooms trying to make everything fit in my basket.'
+
+						act 'Continue': gt 'mod_public_WC_rab_Mayster7','ride'
+					else
+						cla
+						observ_exp += rand(0,1)
+						minut += 30
+						gs 'stat'
+						'I have found no mushrooms'
+						act 'Continue': gt 'mod_public_WC_rab_Mayster7','ride'
+					end
+				end
+			else
+				'My basket is totally full! I cannot carry any more.'
+			end
+
+			if boletus + boletus_cooked + bilberry + ryba_cooked + ryba < 10:
+				act 'Try to find mushrooms (00:30)':
+					if rand(1,100) + pcs_observ >= rand(50,100):
+						*clr & cla
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/bilberry'+rand(3,5)+'.jpg"></center>'
+						*nl
+						'Wandering in the forest, I stumble upon a clearing full of berries. How lucky!.'
+
+						observ_exp += 1
+						minut += 30
+						bilberry += rand(2,4)
+						gs 'stat'
+
+						gs 'gad_forest', 'picking_clothes', 'forest_center', 'berry'
+						*nl
+						'I begin collecting berries trying to make everything fit in my basket.'
+
+						act 'Continue': gt 'mod_public_WC_rab_Mayster7','ride'
+					else
+						cla
+						observ_exp += rand(0,1)
+						minut += 30
+						gs 'stat'
+						'I have found no berries'
+						act 'Continue': gt 'mod_public_WC_rab_Mayster7','ride'
+					end
+				end
+			else
+				'My basket is totally full! I cannot carry any more.'
+			end
+		end
+	elseif rika = 1:
+		if onvelyk = 0:
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/odiag/0.jpg"></center>'
+				act 'Strip naked':
+					*clr & cla
+					minut += 5
+					$lastwornclothingtype['swim'] = $clothingworntype
+					lastwornclothingnumber['swim'] = clothingwornnumber
+					$lastwornpantytype['swim'] = $pantyworntype
+					lastwornpantynumber['swim'] = pantywornnumber
+					$lastwornbratype['swim'] = $braworntype
+					lastwornbranumber['swim'] = brawornnumber
+					gs 'clothing', 'strip_all', 'VillageRiver'
+					'Without hesitation, I take off all my clothes and neatly fold them before putting them down on a pile.'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/odiag/1 ('+rand(1,2)+').jpg"></center>'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			elseif $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/odiag/2.jpg"></center>'
+				act 'Get dressed':
+					clothesAtLocation = FUNC('lost_clothes_here','VillageRiver')
+					*clr & cla
+					minut += 5
+					gs 'panties', 'wear', $lastwornpantytype['swim'], lastwornpantynumber['swim']
+					gs 'bras', 'wear', $lastwornbratype['swim'], lastwornbranumber['swim']
+					if clothesAtLocation = 1: gs 'clothing', 'recover_lost_clothes', 'VillageRiver', 1
+					act 'Continue': gt $loc, $loc_arg
+				end
+
+
+				act 'swim to other side (without the bike)':
+					*clr & cla
+					if coord_v_x = coord_v_y = 0:
+						coord_v_x = coord_x
+						coord_v_y = coord_y
+						onvelyk = 0
+					end
+					if coord_x = 4 and coord_y > 1:
+						coord_x += 1
+					elseif coord_x = 4 and coord_y = 1:
+						coord_x += 1
+						coord_y += 1
+					elseif coord_x >= 5 and coord_x <= 7 and coord_y = 1:
+						coord_y += 1
+					elseif coord_x = 5 and coord_y > 1:
+						coord_x -= 1
+					elseif coord_x >= 6 and coord_x <= 7 and coord_y = 2:
+						coord_y -= 1
+					elseif coord_x = 10 and coord_y <= 0:
+						coord_x += 1
+					elseif coord_x = 11 and coord_y <= 0:
+						coord_x -= 1
+					end
+
+					cumspclnt = 4
+					gs 'cum_cleanup'
+					minut += 30
+					gs 'exercise', 'tier1', 1, 'stren_exp'
+					gs 'stat'
+
+					pcs_sweat = 0
+					if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+
+					if month > 4 and month < 10:
+						if hour >= 6 and hour <= 21:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater ('+rand(1,10)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater n ('+rand(1,4)+').jpg"></center>'
+						end
+					else
+						if hour >= 8 and hour <= 17:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater zyma.jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater zyma n.jpg"></center>'
+						end
+					end
+					act 'continue': gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+
+				act 'Go in water to swim and relax (00:30)':
+					gt 'mod_public_WC_rab_Mayster7', 'swim'
+				end
+
+				act 'make an exercise': gt 'mod_public_WC_rab_Mayster7', 'sport'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'swim':
+	*clr & cla
+	cumspclnt = 4
+	gs 'cum_cleanup'
+	minut += 30
+	gs 'exercise', 'tier1', 1, 'stren_exp'
+
+	pcs_sweat = 0
+	if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+
+	if month > 4 and month < 10:
+		if hour >= 6 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater ('+rand(1,10)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater n ('+rand(1,4)+').jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 17:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater zyma.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/gowater zyma n.jpg"></center>'
+		end
+	end
+
+	act 'Swim and relax (00:30)':
+		gt 'mod_public_WC_rab_Mayster7', 'swim'
+	end
+
+	act 'Go skinny dipping (00:15)':
+		*clr & cla
+		temp_gr = rand(0,15)
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		minut += 15
+		pcs_sweat = 0
+		pcs_mood += 5
+
+		if pcs_stren < 30: stren_exp += 1
+
+		if deodorant_on = 1: gs 'sweat', 'remove_deo' and '<br>Your deodorant gets washed away in the water.</br>'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/plav/nyrayu ('+rand(1,2)+').jpg"></center>'
+
+		act 'Ascend':
+			temp_gr = rand(0,15)
+			minut -= 29
+			gs 'stat'
+			gt 'mod_public_WC_rab_Mayster7', 'swim'
+		end
+
+		act 'Search something on the bottom (0:03)':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/plav/pidvodoyu (2).jpg"></center>'
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 3
+			pcs_sweat = 0
+			pcs_mood += rand(0,1)
+
+			temp = rand(1,100)
+			if temp <= 5:
+				'I have found a gold coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 500
+			elseif temp <= 10:
+				'I have found a silver coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 100
+			else
+				'I have found nothing'
+			end
+			gs 'stat'
+
+			act 'Ascend':
+				temp_gr = rand(0,15)
+				minut -= 29
+				gs 'stat'
+				gt 'mod_public_WC_rab_Mayster7', 'swim'
+			end
+		end
+	end
+	act 'Get out from water':
+		gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'sport':
+	*clr & cla
+	if pole = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_n.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_n.jpg"></center>'
+			end
+		end
+	elseif pole = 2:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/ld.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/ln.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/zd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/zn.jpg"></center>'
+			end
+		end
+	elseif lis = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/l_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/l_road_n.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/z_road_d.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/z_road_n.jpg"></center>'
+			end
+		end
+	elseif lis = 2:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/ld.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/ln.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/zd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/lis/zn.jpg"></center>'
+			end
+		end
+	elseif rika = 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/ld ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/ln ('+rand(1,3)+').jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zd ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zn (1).jpg"></center>'
+			end
+		end
+	elseif boloto >= 1:
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ld ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ln ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zd ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zn ('+rand(1,2)+').jpg"></center>'
+			end
+		end
+	end
+
+	act 'Go for a run (00:30)':
+		*clr & cla
+		minut += 30
+		mult = 2
+		pcs_stam -= 10
+		gs 'sweat', 'add', (3*mult)
+		fat -= (4 + mult/2)
+		pcs_energy -= 1*mult
+		pcs_hydra -= 2*mult
+		pcs_mood += (3 + mult)
+		vital_exp += rand(0,1)
+		run_exp += rand(0, 1)
+		gs 'stat'
+		killvar 'mult'
+		'<i>The sport here in the middle of nowhere gives my head more clear… I think about my life decisions and how Vania has control over me.. Is it normal?.. Am I ok with it?</i>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/sport/run.jpg"></center>'
+		act 'continue': gt $loc, $loc_arg
+	end
+
+	act 'Meditate (00:30)':
+		*clr & cla
+		mult = 2
+		minut += 30
+		pcs_stam -= mult * 10
+		gs 'sweat', 'add', (10*mult)
+		fat -= (3 + mult/2)
+		pcs_energy -= 2*mult
+		pcs_hydra -= 4*mult
+		pcs_mood += (5 + mult)
+		vital_exp += rand(0,1)
+		willpowermax += rand(1,2)
+		VaniaMayster -= rand(1,4)
+		gs 'stat'
+		killvar 'mult'
+		'<i>I deeply think about my life decisions and how Vania has control over me.. Is it normal?.. Am I ok with it?</i>'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/sport/meditate.mp4"></video></center>'
+		act 'continue': gt $loc, $loc_arg
+	end
+
+	act 'Jump on the rope (00:30)':
+		*clr & cla
+		mult = 2
+		minut += 30
+		pcs_stam -= 15*mult
+
+		gs 'sweat', 'add', (15*mult)
+		fat -= (2 + mult/2)
+		pcs_energy -= 3*mult
+		pcs_hydra -= 6*mult
+		pcs_mood += (5 + mult)
+		react_exp += rand(0,1)
+		agil_exp += rand(0,1)
+		gs 'stat'
+		killvar 'mult'
+		'<i>The sport here in the middle of nowhere gives my head more clear… I think about my life decisions and how Vania has control over me.. Is it normal?.. Am I ok with it?</i>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/sport/skak.jpg"></center>'
+		act 'continue': gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'boloto':
+	*clr & cla
+
+	if month > 4 and month < 10:
+		if hour >= 6 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ld ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/ln ('+rand(1,2)+').jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 17:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zd ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/boloto/zn ('+rand(1,2)+').jpg"></center>'
+		end
+	end
+
+	if onvelyk = 1:
+		if coord_y = 1:
+			act 'ride back from the swamp (south)':
+				coord_y -= 1
+				onvelyk = 1
+				killvar 'coord_v_x'
+				killvar 'coord_v_y'
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		elseif coord_y >= 2:
+			act 'ride back from the swamp (west)':
+				coord_x -= 1
+				onvelyk = 1
+				killvar 'coord_v_x'
+				killvar 'coord_v_y'
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+	end
+
+	if onvelyk = 0:
+		act 'go west':
+			coord_x -= 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 1
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'go east':
+			coord_x += 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 1
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'go north':
+			coord_y += 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 1
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'go south':
+			coord_y -= 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 1
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+	end
+
+	if onvelyk = 1:
+		coord_v_x = coord_x
+		coord_v_y = coord_y
+		onvelyk = 0
+		'<i>The bike is almost stuck, I need to ride out the swamp or to left the bike here.</i>'
+		act 'LEFT the bike and go west':
+			coord_x -= 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 0
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'LEFT the bike and go east':
+			coord_x += 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 0
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'LEFT the bike and go north':
+			coord_y += 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 0
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+		act 'LEFT the bike and go south':
+			coord_y -= 1
+			pole = 0
+			lis = 0
+			rika = 0
+			boloto = 0
+			onvelyk = 0
+			gt 'mod_public_WC_rab_Mayster7', 'ride'
+		end
+	end
+
+
+	if coord_x = coord_v_x and coord_y = coord_v_y:
+		'This is my byke!'
+		if coord_y = 1:
+			act 'ride back from the swamp (south)':
+				coord_y -= 1
+				onvelyk = 1
+				killvar 'coord_v_x'
+				killvar 'coord_v_y'
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		elseif coord_y >= 2:
+			act 'ride back from the swamp (west)':
+				coord_x -= 1
+				onvelyk = 1
+				killvar 'coord_v_x'
+				killvar 'coord_v_y'
+				gt 'mod_public_WC_rab_Mayster7', 'ride'
+			end
+		end
+	end
+
+
+	if coord_x >= 11 and coord_y >= 0:
+		temp = rand(1,10)
+		if temp + coord_y - boloto_temp >= 6:
+			boloto_temp = 200
+			*clr & cla
+			'As I walk through the swamp, I feel myself begin to sink into the mud with each step.'
+			if $clothingworntype ! 'nude' and PCloSkirt = 0:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp1.jpg"></center>'
+			elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski1.jpg"></center>'
+			elseif $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+rand(4,5)+'.jpg"></center>'
+			end
+
+			act 'Struggle':
+				*clr & cla
+				swamp_stuck += 1
+				minut += 15
+				gs 'sweat', 'add', 15
+				gs 'stat'
+				if swamp_stuck mod 3 = 0:
+					swamp_check = pcs_stren + pcs_agil + pcs_bushcraft
+					swamprand = rand(0,225)
+				elseif swamp_stuck mod 2 = 0:
+					swamp_check = pcs_stren + pcs_agil
+					swamprand = rand(0,150)
+				else
+					swamp_check = pcs_stren
+					swamprand = rand(0,75)
+				end
+				if swamp_stuck = 10 and Enable_nogameover = 0:
+					over = 10
+					gt 'gameover'
+				else
+					if swamp_check > swamprand:
+						'<center><H4>Swamp</H4></center>'
+						if $clothingworntype ! 'nude' and PCloSkirt = 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp.jpg"></center>'
+						elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski.jpg"></center>'
+						elseif $clothingworntype = 'nude':
+							swamprand = rand(0,3)
+							if swamprand = 0:
+								'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0… jpg"></center>'
+							else
+								'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+swamprand+'.jpg"></center>'
+							end
+						end
+						*nl
+						'My efforts are not in vain as I begin to feel the mud''s hold loosen. With another burst of strength, I free myself and breathe a sigh of relief.'
+						boloto_temp = -100
+
+						act 'Success!': gt 'mod_public_WC_rab_Mayster7','boloto'
+					else
+						'<center><H4>Swamp</H4></center>'
+						if $clothingworntype ! 'nude' and PCloSkirt = 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp1.jpg"></center>'
+						elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski1.jpg"></center>'
+						elseif $clothingworntype = 'nude':
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+rand(4,5)+'.jpg"></center>'
+						end
+						*nl
+						'Your efforts are for nothing. The mud''s hold feels as tight as ever. In fact, you feel yourself sinking even deeper.'
+
+						act 'Failure': gt 'mod_public_WC_rab_Mayster7','boloto'
+					end
+				end
+			end
+			if month >= 4 and month <= 10:
+				act 'Scream for help':
+					*clr & cla
+					minut += 15
+					if ((hour >= 8 and hour < 12) or (hour >= 14 and hour < 18)):
+						swamprand = rand(1,4)
+					elseif (hour >= 7 and hour < 23):
+						swamprand = rand(1,5)
+					else
+						swamprand = rand(1,6)
+					end
+					'<center><H4>Swamp</H4></center>'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/gad_forest_losthelp.jpg"></center>'
+					*nl
+					'I don''t think I am strong enough to break free of the mud and decide my best chance is to simply yell for help. Hopefully someone will hear me.'
+					swamprand = 4
+					if swamprand = 1:
+						act 'Success!':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/handshelp.jpg"></center>'
+							*nl 'I hear men speaking and begin to shout louder. The voices come closer, and finally, I feel strong hands grab me and drag me out to solid ground.'
+							gs 'stat'
+
+							act 'Relax': gt 'swamp_yard','start'
+						end
+					else
+						*nl 'I yell out into the void, but my only response is the howling of the wind and the chirp of some crickets.'
+						gs 'stat'
+
+						act 'Failure': gt 'mod_public_WC_rab_Mayster7','ride'
+					end
+				end
+			end
+		else
+			killvar 'boloto_temp'
+			' '
+		end
+	elseif coord_x >= 7 and coord_y >= 1:
+		temp = rand(1,10)
+		if temp + coord_y - boloto_temp >= 6:
+			boloto_temp = 200
+			*clr & cla
+			'As I walk through the swamp, I feel myself begin to sink into the mud with each step.'
+			if $clothingworntype ! 'nude' and PCloSkirt = 0:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp1.jpg"></center>'
+			elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski1.jpg"></center>'
+			elseif $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+rand(4,5)+'.jpg"></center>'
+			end
+
+			act 'Struggle':
+				*clr & cla
+				swamp_stuck += 1
+				minut += 15
+				gs 'sweat', 'add', 15
+				gs 'stat'
+				if swamp_stuck mod 3 = 0:
+					swamp_check = pcs_stren + pcs_agil + pcs_bushcraft
+					swamprand = rand(0,225)
+				elseif swamp_stuck mod 2 = 0:
+					swamp_check = pcs_stren + pcs_agil
+					swamprand = rand(0,150)
+				else
+					swamp_check = pcs_stren
+					swamprand = rand(0,75)
+				end
+				if swamp_stuck = 10 and Enable_nogameover = 0:
+					over = 10
+					gt 'gameover'
+				else
+					if swamp_check > swamprand:
+						'<center><H4>Swamp</H4></center>'
+						if $clothingworntype ! 'nude' and PCloSkirt = 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp.jpg"></center>'
+						elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski.jpg"></center>'
+						elseif $clothingworntype = 'nude':
+							swamprand = rand(0,3)
+							if swamprand = 0:
+								'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0… jpg"></center>'
+							else
+								'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+swamprand+'.jpg"></center>'
+							end
+						end
+						*nl
+						'My efforts are not in vain as I begin to feel the mud''s hold loosen. With another burst of strength, I free myself and breathe a sigh of relief.'
+						boloto_temp = -100
+
+						act 'Success!': gt 'mod_public_WC_rab_Mayster7','boloto'
+					else
+						'<center><H4>Swamp</H4></center>'
+						if $clothingworntype ! 'nude' and PCloSkirt = 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp1.jpg"></center>'
+						elseif $clothingworntype ! 'nude' and PCloSkirt > 0:
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_ski1.jpg"></center>'
+						elseif $clothingworntype = 'nude':
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/goswamp_nude0.'+rand(4,5)+'.jpg"></center>'
+						end
+						*nl
+						'Your efforts are for nothing. The mud''s hold feels as tight as ever. In fact, you feel yourself sinking even deeper.'
+
+						act 'Failure': gt 'mod_public_WC_rab_Mayster7','boloto'
+					end
+				end
+			end
+			if month >= 4 and month <= 10:
+				act 'Scream for help':
+					*clr & cla
+					minut += 15
+					if ((hour >= 8 and hour < 12) or (hour >= 14 and hour < 18)):
+						swamprand = rand(1,4)
+					elseif (hour >= 7 and hour < 23):
+						swamprand = rand(1,5)
+					else
+						swamprand = rand(1,6)
+					end
+					'<center><H4>Swamp</H4></center>'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/gad_forest_losthelp.jpg"></center>'
+					*nl
+					'I don''t think I am strong enough to break free of the mud and decide my best chance is to simply yell for help. Hopefully someone will hear me.'
+
+					if swamprand = 1:
+						act 'Success!':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/handshelp.jpg"></center>'
+							*nl 'I hear men speaking and begin to shout louder. The voices come closer, and finally, I feel strong hands grab me and drag me out to solid ground.'
+							gs 'stat'
+							b_big = 1
+
+							act 'Relax': gt 'mod_public_WC_rab_Mayster7', 'run'
+						end
+					else
+						*nl 'I yell out into the void, but my only response is the howling of the wind and the chirp of some crickets.'
+						gs 'stat'
+
+						act 'Failure': gt 'mod_public_WC_rab_Mayster7','ride'
+					end
+				end
+			end
+		else
+			killvar 'boloto_temp'
+			' '
+
+			if coord_x = 8 and coord_y = 2:
+				cla
+				'<center><H4>Swamp</H4></center>'
+				if month >= 4 and month <= 10:
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/'+iif(DayStage < 4,'gad_forest_lostswamp.jpg','gad_forest_lostswamp_night.jpg')+'"></center>'
+				else
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/'+iif(DayStage < 4,'gad_forest_lostswamp_winter.jpg','gad_forest_lostswamp_winter_night.jpg')+'"></center>'
+				end
+				*nl
+				minut += 15
+				'After a few minutes walking through the swamp, I almost at the cabin.'
+
+				gs 'stat'
+				b_big = 1
+				act 'Continue': gt 'mod_public_WC_rab_Mayster7', 'run'
+			elseif coord_x >= 7 and coord_y >= 1 and coord_x <= 9 and coord_y <= 3:
+				'I see not far away a hunters cabin'
+				act 'go there':
+					if coord_x ! 8:
+						coord_x = 8
+						gt 'mod_public_WC_rab_Mayster7','ride'
+					elseif coord_y ! 2:
+						coord_y = 2
+						gt 'mod_public_WC_rab_Mayster7','ride'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'events':
+	if pole = 1:
+		temp = rand(1,100)
+		if temp <= 4:
+			'<font size=10>I hear a guitar melody</font>'
+			act 'Search the source of the melody': gt 'mod_public_WC_rab_Mayster71', 'guitarist'
+		elseif temp <= 8:
+			'<font size=10>I see some gay gathers the haystacks</font>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/1.jpg"></center>'
+			act 'come to the guy': gt 'mod_public_WC_rab_Mayster71', 'sino'
+		elseif temp <= 14 and onvelyk = 1:
+			cla
+			'<font size=10>Some guy stands on the road try to stops me</font>'
+			act 'turn around': ztemp = 2 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			act 'stop in front of him': ztemp = 1 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/jora/0.jpg"></center>'
+		elseif temp <= 20:
+			'<font size=10>I see some guy not far away goes in my direction</font>'
+			if onvelyk = 1:
+				act 'tease him with my pussy': ztemp = 1 & gt 'mod_public_WC_rab_Mayster72', 'tease'
+				act 'tease him by showing my blow skills': ztemp = 2 & gt 'mod_public_WC_rab_Mayster72', 'tease'
+			else
+				act 'stay on my four and tease him with my holes': gt 'mod_public_WC_rab_Mayster72', 'tease'
+			end
+		end
+	elseif pole = 2:
+		temp = rand(1,100)
+		if temp <= 4:
+			'<font size=10>I hear a guitar melody</font>'
+			act 'Search the source of the melody': gt 'mod_public_WC_rab_Mayster71', 'guitarist'
+		elseif temp <= 8:
+			'<font size=10>I see some guy gathers the haystacks</font>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/1.jpg"></center>'
+			act 'come to the guy': gt 'mod_public_WC_rab_Mayster71', 'sino'
+		elseif temp <= 14 and onvelyk = 1:
+			cla
+			'<font size=10>Some guy runs toward me, definitely wants to stop me</font>'
+			act 'turn around': ztemp = 2 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			act 'stop in front of him': ztemp = 1 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/jora/0.jpg"></center>'
+		end
+	elseif lis = 1:
+		temp = rand(1,100)
+		if temp <= 12:
+			'<font size=10>I see some guy not far away goes in my direction</font>'
+			if onvelyk = 1:
+				act 'tease him with my pussy': ztemp = 1 & gt 'mod_public_WC_rab_Mayster72', 'tease'
+				act 'tease him by showing my blow skills': ztemp = 2 & gt 'mod_public_WC_rab_Mayster72', 'tease'
+			else
+				act 'stay on my four and tease him with my holes': gt 'mod_public_WC_rab_Mayster72', 'tease'
+			end
+		elseif temp <= 37 and onvelyk = 1:
+			gt 'mod_public_WC_rab_Mayster71', 'velorape'
+		end
+	elseif lis = 2:
+		temp = rand(1,100)
+		if temp <= 8 and WCzoo = 1 and pcs_magik > 0:
+			gt 'mod_public_WC_rab_Mayster71', 'beast'
+		elseif temp <= 30 and WCzoo = 1:
+			'<font size=10>A big dog runs to me</font>'
+			if onvelyk = 1:
+				act 'ride away from the dog!': ztemp = 1 & gt 'mod_public_WC_rab_Mayster71', 'mastif'
+				act 'stop and wait the dog': ztemp = 2 & gt 'mod_public_WC_rab_Mayster71', 'mastif'
+			else
+				cla
+				act 'run away': ztemp = 1 & gt 'mod_public_WC_rab_Mayster71', 'mastif'
+				act 'wait': ztemp = 2 & gt 'mod_public_WC_rab_Mayster71', 'mastif'
+				act 'stay on my four and give him my holes': ztemp = 3 & gt 'mod_public_WC_rab_Mayster71', 'mastif'
+			end
+		end
+	elseif rika = 1:
+		temp = rand(1,100)
+		if temp <= 24 and onvelyk = 1:
+			cla
+			'<font size=10>Some guy comes from beiind the tree and stands on my way.</font>'
+			act 'turn around': ztemp = 2 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			act 'stop in front of him': ztemp = 1 & gt 'mod_public_WC_rab_Mayster71', 'jora'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/jora/0.jpg"></center>'
+		end
+	elseif boloto = 1:
+		' '
+	end
+
+	if (coord_x = 5 and coord_y = 1) or (coord_x = 10 and coord_y = -2) or (coord_x = 4 and coord_y = 4):
+		*clr
+		'<font size=10>It''s looks like a beach</font>'
+		'<font size=10>There is a rod! I can use it for fishing</font>'
+
+
+		if month > 4 and month < 10:
+			if hour >= 6 and hour <= 21:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/pliajd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/pliajn.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour <= 17:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zpliajd.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/rika/zpliajn.jpg"></center>'
+			end
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/vudka.jpg"></center>'
+
+		act 'start fishing': gt 'mod_public_WC_rab_Mayster7', 'rybalka'
+	elseif coord_x = 5 and coord_y = 3:
+		'<center><H2>Slavka River</H2></center>'
+
+		if month >= 5 and month <= 9:
+			if hour >= 6 and hour < 22:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_night.jpg"></center>'
+			end
+		else
+			if hour >= 8 and hour < 18:
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_winter.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_winter_night.jpg"></center>'
+			end
+		end
+
+		'A large river flows lazily a for a few hundred meters in the northern outskirts of Gadukino.'
+
+		if hour >= 6 and hour < 21 and sunWeather = 1: 'You see the local <a href="exec:gt ''gadriver'', ''fishers''">fishermen</a> fishing with their rods on the riverbank.'
+
+		temp_gr = rand(0,20)
+
+		if temp_gr <= 3 and hour < 5 and month >= 5 and month <= 9 and npc_QW['A60'] >= 20: 'Right next to the path leading to the river, you see <a href="exec: gt ''gadriver'', ''mirapunish'' ">Mira</a> naked, bound with ropes between two trees…'
+
+		if temp_gr = 4 and MiraLoc ! 1 and npc_QW['A63'] >= 13 and hour >= 5:
+			if mitkaguysriver ! daystart:
+				mitkaguysriver = daystart
+				'While going to the river you meet Kolyamba and Vasyan. They first invite you to join them, then insist you go with them.'
+
+				act 'Go with them':
+					*clr & cla
+					menu_off = 1
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/sex/mitka/mitkaguysriversex17.jpg"></center>'
+					'The boys take you to Vasyan''s house, where, they rudely keep pushing you until you are bent over the kitchen table. They then take turns fucking you…'
+					gs 'boyStat', 'A61'
+					npc_sex[$boy] += 1
+					pose = 1
+					if mesec = 0:
+						gs 'dinsex', 'boy_puts_condom'
+						gs 'dinsex','vaginal_sex',20,'sub','gangbang'
+						gs 'dinsex','sexcum'
+					else
+						gs 'dinSex','boy_wants_anal','','lubri'
+						gs 'dinsex','analsex',20,'sub','gangbang'
+					end
+					gs 'boyStat', 'A62'
+					npc_sex[$boy] += 1
+					if mesec = 0:
+						gs 'dinsex', 'boy_puts_condom'
+						gs 'dinsex','vaginal_sex',20,'sub','gangbang'
+						gs 'dinsex','sexcum'
+					else
+						gs 'dinSex','boy_wants_anal','','lubri'
+						gs 'dinsex','analsex',20,'sub','gangbang'
+					end
+					gs 'stat'
+
+					act 'Finish': minut += 10 & gt'gadukino'
+				end
+			else
+				act 'Go to Gadukino': minut += 20 & b_big = 7 & gt 'mod_public_WC_rab_Mayster7', 'run'
+			end
+		elseif temp_gr = 5 and MiraLoc ! 1 and npc_QW['A63'] >= 13 and hour >= 5:
+			if mitkaguysriver ! daystart:
+				mitkaguysriver = daystart
+				'While walking towards the river you meet the village boys, whom you''ve been drinking with recently. They ask you to go with them.'
+
+				act 'Go with them':
+					*clr & cla
+					menu_off = 1
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/sex/mitka/mitkaguysriversex18.jpg"></center>'
+					'The boys lead you to Vasyan''s house and start undressing, following their lead you strip off too, "We''re going to fuck your ass I hope you can enjoy it but I''m not going to be upset if you don''t."'
+					gs 'arousal', 'auto_lube', 'anal'
+					'They don''t say anything more before they spend the next hour fucking you in the ass…'
+					gs 'arousal', 'anal', 20, 'gangbang', 'sub'
+					gs 'arousal', 'anal', 20, 'gangbang', 'sub'
+					gs 'arousal', 'anal', 20, 'gangbang', 'sub'
+					gs 'arousal', 'end'
+					gs 'boyStat', 'A63'
+					npc_sex[$boy] += 1
+					gs 'cum_call','butt',$boy,1
+					gs 'boyStat', 'A61'
+					npc_sex[$boy] += 1
+					gs 'cum_call','butt',$boy,1
+					gs 'boyStat', 'A62'
+					npc_sex[$boy] += 1
+					gs 'cum_call','butt',$boy,1
+					gs 'arousal_funcs', 'stretch', 'anal', 3
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Leave': gt'gadukino'
+				end
+			else
+				act 'Go to Gadukino': minut += 20 & b_big = 7 & gt 'mod_public_WC_rab_Mayster7', 'run'
+			end
+		elseif temp_gr = 6 and MiraLoc ! 1 and npc_QW['A63'] >= 13 and hour >= 5:
+			if mitkaguysriver ! daystart:
+				mitkaguysriver = daystart
+				'On your way to the river you meet Vasyan, he insists you follow him home…'
+
+				act 'Go with him':
+					*clr & cla
+					menu_off = 1
+					gs 'boyStat', 'A62'
+					npc_sex[$boy] += 1
+					pose = 1
+
+					if mesec = 0:
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/sex/mitka/mitkaguysriversex20.jpg"></center>'
+						'As soon as you open the door, Vasyan pushes you inside and starts pulling your clothes off crudely. Once you are naked, he pushes you towards the sofa and forces you to your knees…'
+						gs 'arousal', 'vaginal', 20, 'sub'
+						gs 'cum_call','butt',$boy,1
+					else
+						'<center><img <<$set_imgh>> src="images/locations/gadukino/sex/mitka/mitkaguysriversex21.jpg"></center>'
+						'As soon as you open the door, Vasyan pushes you inside and starts pulling your clothes off crudely. He then throws you onto his bed. Noticing, that you are slightly bleeding he asks if it is that time of the month. You whimper, "Yes." He curses angrily, turns you over and begins roughly fucking your ass…'
+						gs 'arousal', 'anal', 20, 'sub'
+						gs 'cum_call','butt',$boy,1
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'Finish': b_big = 7 & gt 'mod_public_WC_rab_Mayster7', 'run'
+				end
+			else
+				act 'Run away from Vania and rednecks! Go to the road home (0:10)': b_big = 2 & minut += 20 & gt 'mod_public_WC_rab_Mayster7', 'run'
+			end
+		else
+			act 'Run away from Vania and rednecks! Go to the road home (0:10)': b_big = 2 & minut += 20 & gt 'mod_public_WC_rab_Mayster7', 'run'
+		end
+	elseif coord_x = 0 and coord_y ! 0:
+		'<b><font size=10>If I go more west I will entered the forbiden forest?!</font></b>'
+	elseif coord_x < 0 and coord_y ! 0:
+		'<font size=10>I can''t see any guides I could lost myself</font>'
+		if rand (1,100) >= 70:
+			cla
+			'<font size=10>I am lost!</font>'
+			act 'continue':
+				b_big = 3
+
+				gt 'mod_public_WC_rab_Mayster7', 'run'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rybalka':
+	*clr & cla
+
+	if month >= 5 and month <= 9:
+		if hour >= 6 and hour < 22:
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_night.jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour < 18:
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_winter.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver_winter_night.jpg"></center>'
+		end
+	end
+
+
+	'You caught <<ryba>> fish.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/sitka.jpg"></center>'
+
+	act 'Throw the bait':
+		*clr & cla
+		minut += rand(5,10)
+		if hour < 12:
+			temp_gr = rand(5,20)
+		elseif hour >= 12 and hour < 18:
+			temp_gr = rand(0,20)
+		else
+			temp_gr = rand(10,20)
+		end
+		gs 'stat'
+
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/fishing ('+rand(1,3)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/fishing_naked ('+rand(1,2)+').jpg"></center>'
+		end
+
+
+		'I throw out the lure and carefully watch the bobber for signs of nibble.'
+
+		if temp_gr > rand(15,19):
+			cla
+			*clr
+			minut += 1
+			gs 'stat'
+
+			'<center><img <<$set_imgh>> src="images/locations/gadukino/river/nofishingriver.jpg"></center>'
+			'Suddenly the bobber dives under the water dramatically. <b>I got one!</b>'
+
+			act 'Pull':
+				cla
+				*clr
+				minut += 1
+				temp_gr = rand(0,120)
+				if temp_gr < 50: react_exp += 1
+				gs 'stat'
+
+				if pcs_react > temp_gr:
+					pcs_mood += rand(5,10)
+					minut += 1
+					react_exp += 1
+					ryba += 1
+					gs 'stat'
+
+					'I skillfully strike, pulling the rod up sharply. I feel the rod straining slightly, and after a few moments, <b>I excitedly pull a fish out of the water.</b>'
+
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/catch ('+rand(1,3)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/catch_naked ('+rand(1,5)+').jpg"></center>'
+					end
+				else
+					pcs_mood -= rand(5,10)
+					minut += 1
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/river/gadriver.jpg"></center>'
+					'I strike, but the lack of tension makes the <b>fish escape from the hook</b>.'
+
+				end
+				act 'continue': gt 'mod_public_WC_rab_Mayster7', 'rybalka'
+			end
+		else
+			'The bobber remains perfectly still, eventually I decide to try a different lure.'
+			act 'Retrieve bait': gt 'mod_public_WC_rab_Mayster7', 'rybalka'
+		end
+	end
+	act 'Finish': gt $loc, $loc_arg
+end
+
+
+
+if $ARGS[0] = 'end':
+	cla
+	'I see the house in the forest'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/dim.jpg"></center>'
+	if month > 4 and month < 10:
+		if hour >= 6 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_d.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/l_road_n.jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 17:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_d.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/road_ride/pole/z_road_n.jpg"></center>'
+		end
+	end
+	act 'Ride home': gt 'mod_public_WC_rab_Mayster7', 'home'
+	act 'Ride more, <b>stick to the road</b> (east)': coord_x += 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+	act 'Ride more, go to the field (north)': coord_y += 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+	act 'Ride more, go to the forest (south)': coord_y -= 1 & gt 'mod_public_WC_rab_Mayster7', 'ride'
+end
+
+if $ARGS[0] = 'home':
+	Vurok += 1
+	if (hour >= 22 and zvit = week and poshuk > 0) or (zvit + 1 = week and poshuk > 0) or (zvit - 6 = week and poshuk > 0):
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'Vania met me.'
+		if onvelyk = 0 and coord_x ! coord_v_x and coord_y ! coord_v_y:
+			vbike = rand(25,60)
+			'"And where is my bike?"'
+			'"Ow, bitch, luckily for you I don''t care about bike much."'
+			'"But you need to restart your bike trainings to understand how to use a bike!"'
+			brak += 5
+			vbike = rand(25,60)
+		end
+		'"WTF BETSI!!! You missed the meet with Tolik!"'
+		'"I will think twice about your next bike ride."'
+		vbrak += 4
+
+		act 'continue': gt 'mod_public_WC_rab_Task', 'start2'
+	else
+		if hour >= 21:
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+			'"Hello, Betsi, you are playing with fire… go to the Tolik and quick!"'
+			'Vania take off the colar''s lock'
+			zashmorg = 1
+
+			'<i>Hmm, could I  go further next time… maybe he is not my boss?</i>'
+			Vaniamayster -= rand(3,5)
+			willpowermax += rand(1,3)
+			gs 'stat'
+
+			if onvelyk = 0 and coord_x ! coord_v_x and coord_y ! coord_v_y:
+				vbike = rand(25,60)
+				'"And where is my bike?"'
+				'"Ow, bitch, luckily for you I don''t care about bike much."'
+				'"But you need to restart your bike trainings to understand how to use a bike!"'
+				brak += 5
+				vbike = rand(25,60)
+			end
+
+			act 'Go to the Tolik': gt 'mod_public_WC_rab', 'vhid'
+		else
+			*clr & cla
+			$func('wrap', 'header center b', 'The yard where I''m being held')
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/dim.jpg"></center>'
+
+			if onvelyk = 1:
+				'I come "home" and left the bike on it''s place'
+			end
+
+			'I come "home"…'
+			ktemp = 3657753
+			vbrak -= 2
+			if vbrak < 0: vbrak = 0
+			act 'continue': gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'Vania':
+	Vurok += 1
+	if (hour >= 22 and zvit = week and poshuk > 0) or (zvit + 1 = week and poshuk > 0) or (zvit - 6 = week and poshuk > 0):
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'Vania rides to me on the bike'
+
+		'"WTF, BETSI!!! You must be home and not here!"'
+
+		if rope <= 0:
+			if onvelyk = 1:
+				act 'throw a bike as an obstacle to Vania and run away to off-road':
+					ktemp = 105
+					gt 'mod_public_WC_rab_tryrun', 'run'
+				end
+			elseif onvelyk = 0:
+				act 'Run away to off-road':
+					ktemp = 105
+					gt 'mod_public_WC_rab_tryrun', 'run'
+				end
+			end
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+		end
+
+		if rope > 0:
+			vbike = 200
+			'"Ow… Well, I see you in troubles… it explains a lot…"'
+			'Vania helps me'
+			act 'Go with Vania':
+				minut += rand(5,20)
+				gs 'stat'
+				gt 'mod_public_WC_rab_DVIR', 'dvir'
+			end
+		elseif onvelyk = 0 and coord_x ! coord_v_x and coord_y ! coord_v_y:
+			'"And where is my bike?"'
+			'"Ow, bitch, luckily for you I don''t care about bike much."'
+			'"But you need to restart your bike trainings to understand how to use a bike!"'
+			brak += 5
+			vbike = rand(25,60)
+		end
+
+		if rope <= 0:
+			'"It''s very doubt you will ride a bike again!"'
+			vbrak += 9
+			brak += 10
+			act 'Go with Vania':
+				minut += rand(5,20)
+				gs 'stat'
+				gt 'mod_public_WC_kara', 'vtecha'
+			end
+		end
+	elseif hour = 21:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'Vania rides to me on a bike…'
+
+		if rope > 0:
+			vbike = 200
+			'"Well, I see you in troubles… it explains a lot…"'
+			'Vania helps me'
+		elseif onvelyk = 0 and coord_x ! coord_v_x and coord_y ! coord_v_y:
+			'"Hello Betsi"'
+			'"And where is my bike?"'
+			'"Ow, bitch, luckily for you I don''t care about bike much."'
+			'"But you need to restart your bike trainings to understand how to use a bike!"'
+			'"Ok, doesn''t matter for now, it''s time to go home!"'
+			brak += 5
+			vbike = rand(25,60)
+		else
+			'"Hello Betsi, it''s time to go home!"'
+		end
+
+		if rope <= 0:
+			if onvelyk = 1:
+				act 'throw a bike as an obstacle to Vania and run away to off-road':
+					ktemp = 105
+					gt 'mod_public_WC_rab_tryrun', 'run'
+				end
+			elseif onvelyk = 0:
+				act 'Run away to off-road':
+					ktemp = 105
+					gt 'mod_public_WC_rab_tryrun', 'run'
+				end
+			end
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+		end
+
+		act 'Go with Vania':
+			minut += rand(5,20)
+			gs 'stat'
+			gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'run':
+	onvelyk = 0
+	poshuk = 0
+	killvar 'vogon_x'
+	killvar 'vogon_y'
+	killvar 'vogond'
+	killvar 'vogon'
+	killvar 'phour'
+	killvar 'pday'
+	poletan = 0
+	killvar 'coord_v_x'
+	killvar 'coord_v_y'
+	vtecha = 1
+	Artem = 0 & Tolik = 0 & Vania = 0
+	brak += 10
+	vbike = 0
+
+	if b_big = 1:
+		killvar 'b_big'
+		gt 'swamp_yard', 'start'
+	elseif b_big = 2:
+		killvar 'b_big'
+		gt 'gadroad'
+	elseif b_big = 3:
+		killvar 'b_big'
+		Y = 0
+		X = 0
+
+		if hour < 16:
+			endhour = hour + 6
+		else
+			endhour = rand(5,6)
+			if week = 7:
+				endday = 1
+			else
+				endday = week + 1
+			end
+		end
+
+		ztemp = 0
+		vtecha = 1
+		Artem = 0
+		Tolik = 0
+		Vania = 0
+		gt 'mod_public_WC_kara71', 'runrun'
+	elseif b_big = 4:
+		killvar 'b_big'
+		minut += rand(30,60)
+		gs 'stat'
+		gt 'mod_public_WC_rab_DVIR', 'dvir'
+	elseif b_big = 5:
+		killvar 'b_big'
+		gt 'mod_public_WC_kara7', 'maniak'
+	elseif b_big = 6:
+		killvar 'b_big'
+		gt 'mod_public_WC_kara7', 'maniakd'
+	elseif b_big = 7:
+		killvar 'b_big'
+		gt'gadukino'
+	end
+end
+--- mod_public_WC_rab_Mayster7 ---------------------------------
+

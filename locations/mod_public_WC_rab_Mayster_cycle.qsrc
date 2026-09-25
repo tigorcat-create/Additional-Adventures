@@ -1,0 +1,1207 @@
+# mod_public_WC_rab_Mayster_cycle
+if $ARGS[0] = 'start':
+	*clr & cla
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'"Betsi, you are my favorite pet, and BDSM lessons with you are very good for my mood)))."'
+
+	'Let''s start'
+
+	vcycle = rand(1,4)
+
+	if vcycle = 1:
+		act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '1'
+	elseif vcycle = 2:
+		act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '2'
+	elseif vcycle = 3:
+		act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+	elseif vcycle = 4:
+		act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+	end
+end
+
+
+
+if $ARGS[0] = '1':
+	*clr & cla
+	'Vania gives me a ball gag'
+	'"I wear the ball gag"'
+
+
+	if rand (1,7) > 3:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+	end
+	'Nice, Betsi…'
+
+
+	minut += 15
+	if stat['BDSM'] <= 15 and stat['BDSM'] ! 0:
+		'<i>I had some BDSM experience… It start to hurt in 15 minutes, but I can handle it</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(1,3), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] > 15:
+		'<i>With my BDSM experience it was casual waiting, even boring!</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(0,1), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] = 0:
+		'<i>In few minutes it starts to hurt, it''s very unpleasant feel</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(3,5), 'mouth', 'freeze'
+		gs 'stat'
+	end
+
+	if rand(1,2) = 1:
+		act 'wait':
+			*clr & cla
+			minut += 5
+
+
+			if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+				'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+				gs 'pain', rand(1,3), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] > 25:
+				gs 'pain', rand(0,1), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] <= 10:
+				'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+				gs 'pain', rand(3,5), 'mouth', 'freeze'
+				gs 'stat'
+			end
+
+
+			if zashmorg = 3 or zashmorg  = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/leash.jpg"></center>'
+			else
+				'Vania takes the collar and locks it on me'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start ('+rand(1,2)+').mp4"></video></center>'
+				stat['BDSM'] += rand(0,1)
+				gs 'stat'
+			end
+			zashmorg = 3
+
+			'Vania takes a leash and lock it to the collar.'
+
+			'"Now, Betsi, sit like a dog"'
+
+			if rand (1,7) > 3:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+			end
+
+
+			act 'Mghght (try to protest)':
+				*clr & cla
+				willpowermax += 1
+				VaniaMayster -= 3
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				'I tierd of this shit, Betsi.'
+				act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+			end
+
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+
+
+
+			act 'sit like a dog':
+				*clr & cla
+				stat['BDSM'] += rand(0,1)
+				vurok += rand(0,1)
+				bdsmurok += 1
+				gs 'stat'
+
+				minut += 30
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+					gs 'pain', rand(1,3), 'mouth', 'freeze'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					gs 'pain', rand(0,1), 'mouth', 'freeze'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+					gs 'pain', rand(3,5), 'mouth', 'freeze'
+					gs 'stat'
+				end
+
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/waitv (1).mp4"></video></center>'
+
+				if rand (1,7) > 3:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+				end
+
+				'"Nice pet, let''s go for a walk"'
+
+
+				act 'Mghght (try to protest)':
+					*clr & cla
+					willpowermax += 1
+					VaniaMayster -= 3
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+					'I tierd of this shit, Betsi.'
+					act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+				end
+
+
+				if VaniaMayster >= 100:
+					cla
+					'<i>I obey Vania for so long…</i>'
+					'<i>I can''t say "no" to Vania anymore</i>'
+				end
+
+
+
+				act 'go for a walk':
+					*clr & cla
+
+					minut += 30
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+						gs 'pain', rand(1,3), 'mouth', 'freeze'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						gs 'pain', rand(0,1), 'mouth', 'freeze'
+						gs 'stat'
+					elseif stat['BDSM'] <= 10:
+						'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+						gs 'pain', rand(3,5), 'mouth', 'freeze'
+						gs 'stat'
+					end
+
+					'It''s so humiliating, I go with Vania like a pet…'
+
+					if rand (1,5) > 4:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/gov.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go ('+rand(1,3)+').jpg"></center>'
+					end
+
+					'"My doggy, ask! ask!"'
+
+					act 'Mghght (try to protest)':
+						*clr & cla
+						willpowermax += 1
+						VaniaMayster -= 3
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+						'I tierd of this shit, Betsi.'
+						act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+					end
+
+
+					if VaniaMayster >= 100:
+						cla
+						'<i>I obey Vania for so long…</i>'
+						'<i>I can''t say "no" to Vania anymore</i>'
+					end
+
+					act 'ask like a dog':
+						*clr & cla
+
+
+						'"Good girl, Vania pets me…"'
+						"Very good! let''s go back"
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/waitv (1).mp4"></video></center>'
+
+						minut += 30
+						if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+							'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+							gs 'pain', rand(1,3), 'mouth', 'freeze'
+							gs 'stat'
+						elseif stat['BDSM'] > 25:
+							gs 'pain', rand(0,1), 'mouth', 'freeze'
+							gs 'stat'
+						elseif stat['BDSM'] <= 10:
+							'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+							gs 'pain', rand(3,5), 'mouth', 'freeze'
+							gs 'stat'
+						end
+
+						act 'go with Vania':
+							*clr & cla
+							stat['BDSM'] += rand(0,1)
+							minut += 30
+							bdsmurok += 1
+							gs 'stat'
+
+							if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+								'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+								gs 'pain', rand(1,3), 'mouth', 'freeze'
+								gs 'stat'
+							elseif stat['BDSM'] > 25:
+								gs 'pain', rand(0,1), 'mouth', 'freeze'
+								gs 'stat'
+							elseif stat['BDSM'] <= 10:
+								'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+								gs 'pain', rand(3,5), 'mouth', 'freeze'
+								gs 'stat'
+							end
+
+
+							'"Ok, Betsi, good. It''s enought for now"'
+							'"Show me your saliva!"'
+							'"perfect! XD"'
+							'He unlocks the collar'
+							zashmorg = 2
+
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/openmv ('+rand(1,2)+').mp4"></video></center>'
+
+							pcs_mood += rand(0,20)
+							gs 'stat'
+
+
+
+							act 'sit and wait': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+						end
+					end
+				end
+			end
+		end
+	else
+		act 'undress':
+			*clr & cla
+			inhib_exp += rand(0,1)
+
+			minut += 5
+			willpowermax -= rand(0,1)
+
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+
+			if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+				'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+				gs 'pain', rand(1,3), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] > 25:
+				gs 'pain', rand(0,1), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] <= 10:
+				'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+				gs 'pain', rand(3,5), 'mouth', 'freeze'
+				gs 'stat'
+			end
+
+
+			if zashmorg = 3 or zashmorg  = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/leash.jpg"></center>'
+			else
+				'Vania takes the collar and locks it on me'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start ('+rand(1,2)+').mp4"></video></center>'
+				stat['BDSM'] += rand(0,1)
+				gs 'stat'
+			end
+			zashmorg = 3
+
+			'Vania takes a leash and lock it to the collar while I was undressing.'
+
+			'"Now, Betsi, sit like a dog"'
+
+			if rand (1,7) > 3:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+			end
+
+
+			act 'Mghght (try to protest)':
+				*clr & cla
+				willpowermax += 1
+				VaniaMayster -= 3
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				'I tierd of this shit, Betsi.'
+				act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+			end
+
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+
+
+
+
+			act 'sit like a dog':
+				*clr & cla
+				stat['BDSM'] += rand(0,1)
+				vurok += rand(0,1)
+				bdsmurok += 1
+				gs 'stat'
+
+				minut += 30
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+					gs 'pain', rand(1,3), 'mouth', 'freeze'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					gs 'pain', rand(0,1), 'mouth', 'freeze'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+					gs 'pain', rand(3,5), 'mouth', 'freeze'
+					gs 'stat'
+				end
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/waitnakedv ('+rand(1,2)+').mp4"></video></center>'
+
+				if rand (1,7) > 3:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+				end
+
+				act 'sit and wait': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2':
+	if pirsf = 0:
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster5_shipka', 't2'
+		else
+			gt 'mod_public_WC_rab_Mayster5_shipka', 'ya2'
+		end
+	else
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster5_piercetrain', 'ttrain'
+		else
+			if pirsg ! 0:
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piercwalk'
+			else
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'ttrain'
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'tied':
+	*clr & cla
+	'"Now lets play with restrains!"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	vurok += 1
+	bdsmurok += 1
+
+	temp = rand(1,3)
+	if temp = 1:
+		'Vania takes a handcuff - "Show me your hands"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'stretch out my hands':
+			*clr & cla
+			'Vania locks the handcuff on my hands.'
+			miut += 5
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/naruchi/naruchi ('+rand(1,5)+').jpg"></center>'
+
+
+			vtide = 1
+
+			if vcycle = 3:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '3'
+			elseif vcycle = 4:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '4'
+			else
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '7'
+			end
+		end
+	elseif temp = 2:
+		'Vania takes a rope - "turn around"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'turn around':
+			*clr & cla
+			'I feel how Vania tied my hands behind my back.'
+			miut += 5
+			gs 'stat'
+
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/hands behind/hb ('+rand(1,7)+').jpg"></center>'
+
+			vtide = 2
+
+			if vcycle = 3:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '3'
+			elseif vcycle = 4:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '4'
+			else
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '7'
+			end
+		end
+	elseif temp = 3:
+		'Vania takes a rope - "lie down"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'lie down':
+			*clr & cla
+			'I feel how Vania tied my hands, legs, everything!..'
+			miut += 5
+			gs 'stat'
+
+			if rand(1,16) <= 5:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/allv ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/all ('+rand(1,11)+').jpg"></center>'
+			end
+
+
+			vtide = 3
+
+			if vcycle = 3:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '3'
+			elseif vcycle = 4:
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '4'
+			else
+				act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '7'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '3':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	if vtide = 1:
+		'Vania grab some extra ropes and tied me more carrefull to the furniture.'
+	elseif vtide = 2:
+		'Vania grab some extra ropes and tied me more carrefullto the furniture.'
+	elseif vtide = 3:
+		'Vania grab a rope and tied me more carrefull to the furniture.'
+	end
+
+	if pirsf = 0:
+		'Vania locks the chained pins to my nipples'
+	else
+		'Vania locks the chains to my pirced nipples'
+	end
+
+	'<i>I can do nothing, only wait</i>'
+
+	act 'wait':
+		*clr & cla
+
+		'Vania strts to pull the chains… increasing the tension with each moment!'
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/3/titsv_tension ('+rand(1,3)+').mp4"></video></center>'
+
+		minut += rand(10,20)
+		stat['BDSM'] += rand(1,3)
+
+		if stat['BDSM'] <= 109 and stat['BDSM'] > 79:
+			'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+			gs 'pain', rand(5,8), 'nipples', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] > 109:
+			'<i>Yeeees, it feels great!!!</i>'
+			$orgasm_or = 'custom'
+			$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+			gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+			gs 'stat'
+			gs 'pain', rand(0,5), 'nipples', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] <= rand (49,79):
+			cla
+			'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+			'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+			'AAA, I am screaming from the isnside of my soul!!!'
+
+			'"Your scream is a honey for my soul, but Betsi, don''t pretend…"'
+
+			gs 'stat'
+			gs 'pain', rand(6,9), 'nipples', 'stretch'
+			gs 'stat'
+		end
+
+		'"Betsi, I am very turnd on about all of this!"'
+
+		act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', '7'
+	end
+end
+
+
+
+if $ARGS[0] = '7':
+	*clr & cla
+	if ( pin1 + pin2 + pin3 > 0 ):
+		pin1 = 0 and pin2 = 0 and pin3 = 0
+		'Vania removes all the pins from me'
+	end
+
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+
+	if vtide = 1:
+		temp = rand(1,3)
+		if temp = 1:
+			'Vania undressed his pants, he stands in between my face and the handcuffs'
+			'I start to blow him'
+			'I can''t control the process, vania uses my hands to controlls me'
+
+			if rand(1,5) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bj_n ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bjv_n ('+rand(1,3)+').mp4"></video></center>'
+			end
+
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'I feel Vanias'' dick becomes hotter and hotter, Vania pulled my hands and cums deeply in my throat, I can do nothing in this position except swallow everything!'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(6,7)+').mp4"></video></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 2:
+			'Vania pulls the handcuffs and stands me in the comfy pose for him…'
+			'Vania is fucking me'
+			if rand(1,3) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag_n (1).jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv_n ('+rand(1,2)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/vag.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 3:
+			'Vania pulls the handcuffs and stands me in the comfy pose for him…'
+			'Vania is fucking my ass'
+
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv_n ('+rand(1,3)+').mp4"></video></center>'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/ass_n.jpg"></center>'
+
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'anus', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		end
+	elseif vtide = 2:
+		temp = rand(1,3)
+		if temp = 1:
+			'Vania undressed his pants, grab my head and penetrates it'
+			'My hands tied behind me and I can''t push him when he is too deep'
+
+			if rand(1,3) <= 2:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bjv_b ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bj_b (1).jpg"></center>'
+			end
+
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+
+				if rand (1,2) = 1:
+					'Vania fills my whole mouth with his hot cum'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(1,7)+').mp4"></video></center>'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'When Vania starts to cum he pulls out his dick and sprays over me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/faceon ('+rand(1,3)+').jpg"></center>'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'stat'
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 2:
+			'Vania use me as a sex doll…'
+
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag_b (1).jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv_b ('+rand(1,2)+').mp4"></video></center>'
+			end
+
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/vag.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 3:
+			'Vania push me to the floor and starts to fuck my ass'
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv_b ('+rand(1,2)+').mp4"></video></center>'
+
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'anus', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		end
+	elseif vtide = 3:
+		temp = rand(1,3)
+		if temp = 1:
+			'I tottaly tied and can do no resistance '
+			'Vania is fucking my head'
+			if rand (1,9) <= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bj ('+rand(1,3)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bjv ('+rand(1,6)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+
+				if rand (1,2) = 1:
+					'Vania fills my whole mouth with his hot cum'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(1,7)+').mp4"></video></center>'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'When Vania starts to cum he pulls out his dick and sprays over me'
+
+					if rand (1,5) <= 3:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/tied/facon ('+rand(1,3)+').jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/tied/faceonv ('+rand(1,2)+').mp4"></video></center>'
+					end
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 2:
+			'Vania use me as a sex doll…'
+
+			if rand(1,11) <= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag ('+rand(1,4)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv ('+rand(1,7)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/tied/vag.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		elseif temp = 3:
+			'Vania push me to the floor and starts to fuck my ass'
+
+			if rand (1,4) ! 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/ass.jpg"></center>'
+			end
+
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'anus', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Nice, Betsi, it''s enought for the lesson."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				ztemp = 4
+				act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '4':
+	*clr & cla
+	if vtide = 1:
+		phi = rand(1,2)
+		if phi = 1:
+			'Vania locks the chain which connects my breasts'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/odiagnuv ('+rand(1,3)+').jpg"></center>'
+		else
+			'Vania tied me with a rope and starts to lift me up'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/start3.jpg"></center>'
+		end
+	elseif vtide = 2:
+		phi = rand(1,2)
+		if phi = 1:
+			'Vania locks the chain which connects my breasts'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/odiagnuv ('+rand(1,3)+').jpg"></center>'
+		else
+			'Vania tied me with a rope and starts to lift me up'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/start'+rand(1,3)+'.jpg"></center>'
+		end
+	elseif vtide = 3:
+		phi = 2
+		'Vania starts to lift me up'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/start'+rand(1,3)+'.jpg"></center>'
+	end
+
+
+	act 'wait':
+		if phi = 1:
+			temp = 1
+			cla
+			'Vania undress his pants and swing his dick in front of me'
+
+			act 'No, crawl away from Vania':
+				*clr & cla
+				willpowermax += 1
+				VaniaMayster -= 3
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				'I tierd of this shit, Betsi.'
+				act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+			end
+
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+
+			act 'open my mouth':
+				*clr & cla
+				'Vania starts to deepfuck my mouth…'
+
+				if stat['bj'] <= 50:
+					*clr & cla
+					'I started to throw up in the exact same second as his dick meet my throat.'
+					'He pulls out his dick, but I throw up few more times.'
+
+					'"You are not ready for this. You need more practice!"'
+
+					'I throw up even few times more.'
+					pcs_mood -= rand(30,70)
+					'"For today the lesson is over"'
+
+					gs 'arousal', 'bj', 1, 'sub'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/holestrain/m/deep/sex/ryg.mp4"></video></center>'
+					ztemp = 4
+					vurok -= 1
+					act 'continue': gt 'mod_public_WC_rab_Mayster', 'end'
+				elseif stat['bj'] <= 100:
+					'Vania quickly and roughtly starts to fuck my mouth.'
+					'<i>He goes very deep… to deep… I was on the edge to throw up</i>'
+
+					gs 'arousal', 'bj', rand(10,29), 'sub'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/tits_train_bj/1 bj.mp4"></video></center>'
+				else
+					gs 'arousal', 'bj', rand(10,29), 'sub'
+					gs 'stat'
+
+					'Vania quickly and roughtly starts to fuck my mouth.'
+					'<i>He goes very deep'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/tits_train_bj/1 bj.mp4"></video></center>'
+
+					'Sometimes he stops on a moment to ckeck his dick through my neck… and then continue'
+					'"Impressive, Betsi, very good!"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/holestrain/m/deep/sex/check.mp4"></video></center>'
+				end
+
+				act 'continue sucking':
+					*clr & cla
+					'Vania takes the chain and hooked it on his dick'
+					'My nipples are stretching with each his thrust to my throat'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/tits_train_bj/2 bj.mp4"></video></center>'
+
+					if stat['bj'] <= 100:
+						gs 'arousal', 'bj', rand(10,29), 'sub'
+						gs 'stat'
+					else
+						gs 'arousal', 'bj', rand(10,29), 'sub'
+						gs 'stat'
+						'"Impressive, Betsi, very good!"'
+					end
+
+					stat['BDSM'] += rand(1,3)
+
+					if stat['BDSM'] <= 89 and stat['BDSM'] > 59:
+						'<i>I try to combine the pain with the arousal from blow job!</i>'
+						gs 'pain', rand(5,8), 'nipples', 'stretch'
+						gs 'stat'
+					elseif stat['BDSM'] > 89:
+						'<i>Yeeees, it feels great the mix of pain and pleasure is awesome!!!</i>'
+						$orgasm_or = 'custom'
+						$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with all the feelings… I realize I am about to have an orgasm… I moan as loud as I can with Vania dick in my throat… my whole body begins to tremble'
+						gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+						gs 'stat'
+						gs 'pain', rand(0,5), 'nipples', 'stretch'
+						gs 'stat'
+					elseif stat['BDSM'] <= rand (39,59):
+						cla
+						'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+						'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+						'AA-ghhhhtgh-AAAAA-ggGhh-AAA, I am screaming from the isnside of my soul!'
+
+						'"Your scream is a honey for my soul, but Betsi, don''t pretend…"'
+
+						gs 'stat'
+						gs 'pain', rand(6,9), 'nipples', 'stretch'
+						gs 'stat'
+					end
+
+					act 'continue sucking':
+						*clr & cla
+						'Vania cums on my face'
+						minut += rand (5,15)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/tits_train_bj/3 cum.mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						'"Nice, Betsi, it''s enought for the lesson."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+						ztemp = rand(1,2)
+						act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+					end
+				end
+			end
+		elseif phi = 2:
+			temp = 2
+			*clr & cla
+			'I hang like a chandelier while Vania decides what to do with me…'
+			minut += rand(5,15)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/povisyv.jpg"></center>'
+
+			act 'wait':
+				*clr & cla
+				temp = rand(1,3)
+
+				if temp = 1:
+					'Vania changes the centre of knots on my body and I sagged upside down'
+					'Vania lies down and aims my mouth to his dick'
+					'I start to suck it'
+
+					gs 'arousal', 'bj', rand(10,29), 'sub'
+					gs 'stat'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/bj/bjv ('+rand(1,3)+').mp4"></video></center>'
+					act 'continue sucking':
+						cla
+
+						'Vania cums as a geyser all over me'
+						'"Nice, Betsi, it''s enought for the lesson."'
+
+						gs 'arousal', 'bj', rand(10,29), 'sub'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+						ztemp = rand(1,2)
+						act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+					end
+				elseif temp = 2:
+					'Vania changes the centre of knots on my body and I hang ass to bottom '
+					'Vania lies down and put his dick in my pussy'
+
+
+					gs 'arousal', 'vaginal', rand(10,29), 'sub'
+					gs 'stat'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/vag/vagv (1).mp4"></video></center>'
+					act 'continue':
+						cla
+
+						'Vania cums as a geyser all over me'
+						'"Nice, Betsi, it''s enought for the lesson."'
+
+						gs 'arousal', 'vaginal', rand(10,29), 'sub'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+						ztemp = rand(1,2)
+						act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+					end
+				elseif temp = 3:
+					'Vania changes the centre of knots on my body and I hang ass to bottom '
+					'Vania lies down and aims with his finger'
+
+					gs 'arousal', 'anal_finger', rand(3,5), 'sub'
+					gs 'stat'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/ass/ass_aim.mp4"></video></center>'
+					act 'continue':
+						*clr & cla
+						gs 'arousal', 'anal', rand(10,29), 'sub'
+						gs 'stat'
+
+						'Vania start to fuck my ass'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/4/verhnyz_sex/ass/assv ('+rand(1,5)+').mp4"></video></center>'
+
+						act 'continue':
+							cla
+							'Vania cums as a geyser all over me'
+							'"Nice, Betsi, it''s enought for the lesson."'
+
+							gs 'arousal', 'anal', rand(10,29), 'sub'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							pcs_mood += rand(0,20)
+							gs 'stat'
+							ztemp = rand(1,2)
+							act 'wait': gt 'mod_public_WC_rab_Mayster', 'end'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_Mayster_cycle ---------------------------------
+

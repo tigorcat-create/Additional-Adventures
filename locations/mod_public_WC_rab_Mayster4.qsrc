@@ -1,0 +1,116 @@
+# mod_public_WC_rab_Mayster4
+if $ARGS[0] = 'start':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	Cumsluttrain = 1
+
+	'"Ok, this is an easy one train"'
+	'"You just need to eat food"'
+	minut += 5
+	gs 'stat'
+	act 'wait':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'Vania puts some food on the table in front of me.'
+		'Then he strats to strock his dick'
+
+		'In a short time he flooded everything with his cum.'
+
+		'With wide grin Vania says "Bon appetite, Betsi!"'
+		gs 'arousal', 'voyeur', 10, 'sub'
+		gs 'stat'
+
+		act 'eat the main dish':
+			*clr & cla
+			minut += rand(60,90)
+			if bimbolevel >= 2:
+				pcs_mood += 40
+				'Owww, yamy it''s good one!'
+			end
+			pcs_mood -= 20
+			gs 'cum_call', 'mouth', 'A442', 0
+			stat['swallow'] += 1
+			gs 'stat'
+			gs 'food', 'mush_soup_stats'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/food/food ('+rand(1,4)+').jpg"></center>'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'eat the dessert':
+				*clr & cla
+				minut += rand(10,30)
+				if bimbolevel >= 2:
+					pcs_mood += 40
+					'Owww, yamy it''s good one and really tasty!!'
+				end
+				pcs_mood -= 20
+				gs 'cum_call', 'mouth', 'A442', 0
+				stat['swallow'] += 1
+				gs 'stat'
+				gs 'food', 'mush_soup_stats'
+
+				if rand (1,7) >= 6:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/sweet/sweetv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/sweet/sweet ('+rand(1,5)+').jpg"></center>'
+				end
+
+				act 'end with a great coffe.':
+					*clr & cla
+					minut += rand(2,10)
+					if bimbolevel >= 2:
+						pcs_mood += 40
+						'Owww, yamy it''s good one and really tasty!!'
+					end
+					pcs_mood -= 20
+					gs 'cum_call', 'mouth', 'A442', 0
+					stat['swallow'] += 1
+					gs 'stat'
+					gs 'food', 'mush_soup_stats'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/tea/tea ('+rand(1,4)+').jpg"></center>'
+
+					act 'Thank you master':
+						cla
+						vurok += rand(0,1)
+						VaniaMayster += 1
+						vlove += 1
+
+						'"Nice work, Betsi."'
+						'"The lesson is end"'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						'"Betsi sit here…"'
+
+						ztemp = rand(1,2)
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+					end
+
+					act 'wait':
+						cla
+						vurok += rand(0,1)
+
+						'"Nice work, Betsi."'
+						'"The lesson is end"'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						'"Betsi sit here…"'
+
+						ztemp = 4
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+					end
+				end
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_Mayster4 ---------------------------------
+

@@ -1,0 +1,574 @@
+# mod_public_WC_street_box_magicwhore_sex_monks
+if $ARGS[0] = 'start':
+	*clr & cla
+	
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/0 ('+rand(1,1)+').jpg"></center>'
+	
+	'Monks lie down in a line'
+	minut += 10
+	gs 'stat'
+	
+	
+	phmonkrithual = 0
+	phrazom = 6
+	
+	i = 1
+	:loopmonkslightcum
+	$cum[i] = rand(100,160)
+	phrazom[i] = 1	
+	i += 1
+	if i <= phrazom: jump 'loopmonkslightcum'		
+	
+	phmonknumber = 0
+	
+	act 'wait':
+		*clr & cla
+		phsex = 100
+		phi = 0
+		razom = 0
+		gt 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+	end
+end
+
+if $ARGS[0] = 'line':
+	!*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+	*nl
+	phmonkrithual = 1
+	
+	gs 'npcgeneratec', 0, 'LIGHT FORCE MONK', rand(50,50)
+	gs 'boyStat', $npclastgenerated
+		
+	phi += 1
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+	
+	if phrazom[1] = 100:
+		'MONK #1 stand aside and waiting'
+	end
+	if phrazom[2] = 100:
+		'MONK #2 stand aside and waiting'
+	end
+	if phrazom[3] = 100:
+		'MONK #3 stand aside and waiting'
+	end
+	if phrazom[4] = 100:
+		'MONK #4 stand aside and waiting'
+	end
+	if phrazom[5] = 100:
+		'MONK #5 stand aside and waiting'
+	end
+	if phrazom[6] = 100:
+		'MONK #6 stand aside and waiting'
+	end
+	
+	if phsex = 100:
+		if phmasturb_me = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/masturb ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/1 wait ('+rand(1,1)+').jpg"></center>'
+		end
+		'some monks jerking'
+		
+		
+		if pcs_horny >=40 and phmasturb_me = 0:
+			act 'Caress Myself':
+				*clr & cla
+				phmasturb_me = 1
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/masturb ('+rand(1,1)+').mp4"></video></center>'
+				'Feeling a bit turned on, I reach down and start rubbing my clit. All the monks eating me with eyes'				
+				gs 'arousal', 'masturbate', 6, 'exhibitionism', 'prostitution'
+				gs 'stat'
+				
+				$phchoke += rand(0,3)
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+				
+				act 'keep doing':
+					*clr & cla
+					razom += 1
+					gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+				end
+			end
+		elseif phmasturb_me = 1:
+			act 'Stop masturbating':
+				phmasturb_me = 0
+				'Now I can concentrated more on the work'
+				cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		elseif pcs_horny < 40:
+			act 'Caress Myself':
+				'I am NOT horny enought to do this'
+			end
+		end		
+	end
+	
+	if phsex = 101:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/hj ('+rand(1,1)+').mp4"></video></center>'
+		temp = 6 + ( stat['hj'] / 10 ) + rand(5,10)
+		i = phmonknumber
+		$cum[i] -= rand(0,temp)		
+		
+		'I jerk his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'hj', rand(5,10)
+		gs 'stat'
+		gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+		
+	elseif phsex = 102:		
+		if razom = 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/bj/start ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/bj/bj ('+rand(1,2)+').mp4"></video></center>'
+		end
+		
+		temp = 4 + ( stat['bj'] / 10 ) + rand(5,10)
+		i = phmonknumber
+		$cum[i] -= rand(5,temp)
+		
+		gs 'arousal', 'bj', rand(5,10)
+		gs 'stat'
+		'I am sucking him'
+		
+		gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+
+		
+		if stat['bj'] >= 40 and phspeed <= 2:
+			act 'lick the balls':
+				!*clr & cla
+				cla				
+				temp = ( stat['bj'] / 15 )
+				i = phmonknumber
+				$cum[i] -= rand(0,temp)
+
+				gs 'arousal', 'bj', rand(5,10)
+				gs 'stat'					
+				
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/balls ('+rand(1,1)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/balls ('+rand(1,1)+').mp4"></video></center>'
+				end
+				
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+				
+				act 'keep sucking':
+					*clr & cla
+					!! phsex = 100
+					razom += 1
+					gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+				end
+			end
+		elseif stat['bj'] < 40:
+			act 'lick the balls': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+		end		
+	elseif phsex = 107:
+		gs 'arousal', 'cuni', rand(5,10), 'prostitution', 'sub', 'group'
+		gs 'stat'
+		
+		if razom < 2:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/1 start ('+rand(1,2)+').mp4"></video></center>'			
+			$phchoke += rand(razom,6)			
+			
+		elseif phspeed = 3:
+			if rand(1,3) ! 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/3 push his head ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/3 push his head ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			$phchoke += rand(4,6)
+		elseif phspeed = 3 and razom > 3:	
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/4 leg_lick ('+rand(1,2)+').mp4"></video></center>'
+			'MONK: "YES MY Queen" - licks my leg'
+			
+			
+			$phchoke += rand(6,8)
+		elseif razom >= 2:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/2 sitontheface ('+rand(1,2)+').mp4"></video></center>'
+			
+			$phchoke += rand(razom,6)
+		end
+		
+		'Monk is eating my pussy'
+		
+		temp = 8
+		i = phmonknumber
+		$cum[i] -= rand(2,temp)
+		
+		gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+		
+		if razom >= 2 and phspeed ! 3:
+			act 'push his face':
+				*clr & cla
+				phspeed = 3
+				razom += 1
+				
+				if rand(1,3) ! 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/3 push his head ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/cuni/3 push his head ('+rand(1,1)+').jpg"></center>'
+				end
+				
+				$phchoke += rand(4,6)
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+	end
+	
+	
+	if phsex ! 107:
+		act 'kiss a guy':
+			cla
+			if rand(1,3) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/kiss/kiss ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/kiss/kiss ('+rand(1,2)+').jpg"></center>'
+			end
+			
+			$phmonknumber = phmonknumber
+			$phmonknumber = input("The monk number I want to kiss? (Leave blank for current)")
+			if $phmonknumber ! '': phmonknumber = $phmonknumber
+			
+			$phchoke += rand(2,2)
+			i = phmonknumber
+			if $cum[i] <= 100:
+				$phchoke += rand(5,10)
+			end
+			i = phmonknumber
+			$cum[i] -= 5
+			
+			phmasturb_me = 0
+			razom = 0
+			
+			gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+			*nl
+			gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+			
+			act 'continue':
+				*clr & cla
+				razom += 1
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+		
+		act 'slap a guy':
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/slap_him ('+rand(1,1)+').mp4"></video></center>'
+			
+			$phmonknumber = phmonknumber
+			$phmonknumber = input("The monk number I want to slap? (Leave blank for current)")
+			if $phmonknumber ! '': phmonknumber = $phmonknumber
+			
+			$phchoke += rand(7,7)
+			i = phmonknumber
+			if $cum[i] <= 100:
+				$phchoke += rand(5,10)
+				i = phmonknumber
+				$cum[i] += 10
+			end
+			
+			minut += 2
+			gs 'stat'
+			
+			gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+			*nl
+			gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+			
+			act 'continue':
+				*clr & cla
+				razom += 1
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+	end
+	
+	act 'tease a guy':
+		cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/tease ('+rand(1,1)+').mp4"></video></center>'
+		
+		$phmonknumber = phmonknumber
+		$phmonknumber = input("The monk number I want to tease? (Leave blank for current)")
+		if $phmonknumber ! '': phmonknumber = $phmonknumber
+		
+		$phchoke += rand(1,4)
+		i = phmonknumber
+		if $cum[i] <= 100:
+			$phchoke += rand(5,10)
+		end
+		
+		phmasturb_me = 0
+		razom = 0
+		phsex = 100
+		
+		minut += 3
+		gs 'stat'
+		
+		gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+		*nl
+		gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+		
+		act 'wait':
+			*clr & cla
+			razom = 0
+			phsex = 100
+			phspeed = 0
+			gt 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+		end
+	end
+	
+	if phsex >= 100:	
+		if phrazom[phmonknumber] ! 100 and phsex > 100:
+			act 'keep doing':
+				*clr & cla
+				!! phsex = 100
+				razom += 1
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+		
+		if phsex ! 101:
+			act '<b>jerk him</b>':
+				$phmonknumber = phmonknumber
+				$phmonknumber = input("The monk number I want to jerk? (Leave blank for current)")
+				if $phmonknumber ! '': phmonknumber = $phmonknumber
+				
+				if phrazom[phmonknumber] = 100:
+					'This monk stay aside and waiting, please choose other'
+					$phmonknumber = phmonknumber
+					$phmonknumber = input("The monk number I want to jerk? (Leave blank for current)")
+					if $phmonknumber ! '': phmonknumber = $phmonknumber
+				end
+				
+				phmasturb_me = 0
+				phspeed = 0
+				razom = 0
+				phsex = 101
+				phspeed = 1					
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+		if phsex ! 102:			
+			act '<b>blow him</b>':
+				$phmonknumber = phmonknumber
+				$phmonknumber = input("The monk number I want to blow? (Leave blank for current)")
+				if $phmonknumber ! '': phmonknumber = $phmonknumber
+				
+				if phrazom[phmonknumber] = 100:
+					'This monk stay aside and waiting, please choose other'
+					$phmonknumber = phmonknumber
+					$phmonknumber = input("The monk number I want to blow? (Leave blank for current)")
+					if $phmonknumber ! '': phmonknumber = $phmonknumber
+				end
+				
+				phmasturb_me = 0
+				phspeed = 0
+				razom = 0
+				phsex = 102
+				phspeed = 1					
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+		if phsex ! 107:			
+			act '<b>make him lick me</b>':
+				$phmonknumber = phmonknumber
+				$phmonknumber = input("The monk number I want to lick me? (Leave blank for current)")
+				if $phmonknumber ! '': phmonknumber = $phmonknumber
+				
+				if phrazom[phmonknumber] = 100:
+					'This monk stay aside and waiting, please choose other'
+					$phmonknumber = phmonknumber
+					$phmonknumber = input("The monk number I want to lick me? (Leave blank for current)")
+					if $phmonknumber ! '': phmonknumber = $phmonknumber
+				end
+				
+				phmasturb_me = 0
+				phspeed = 0
+				razom = 0
+				phsex = 107
+				phspeed = 1					
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+			end
+		end
+	elseif phsex = 100:
+		if $clothingworntype = 'nude':
+			act 'Get dressed':
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'I dress up'
+				gs 'stat'
+			end
+		end
+		if $clothingworntype ! 'nude':
+			act 'undress':
+				minut+=3
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				'I am naked'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/undress ('+rand(1,1)+').mp4"></video></center>'
+				gs 'stat'
+			end
+		end
+	end
+	
+	act 'wait':
+		*clr & cla
+		razom = 0
+		phsex = 100
+		phspeed = 0
+		phmasturb_me = 0
+		gt 'mod_public_WC_street_box_magicwhore_sex_monks', 'line'
+	end		
+	
+	if phi >= rand(12,20) or $phchoke >= 100:
+		*clr & cla		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/2 brothers/1/1 wait ('+rand(1,1)+').jpg"></center>'		
+		
+		phmonkrithual = 2
+		!! go to the rithual
+		'Suddenly…'
+		
+		if $phchoke >= 90:
+			'All monks stand up and say: "YOU are my queen!"'
+			phrazom = 6
+			
+		elseif $phchoke >= 80:
+			'5 monks stand up and say: "YOU are my queen!"'
+			phrazom = 5			
+			
+		elseif $phchoke >= 70:
+			'4 monks stand up and say: "YOU are my queen!"'
+			phrazom = 4			
+			
+		elseif $phchoke >= 60:
+			'3 monks stand up and say: "YOU are my queen!"'
+			phrazom = 3			
+			
+		elseif $phchoke >= 50:
+			'2 monks stand up and say: "YOU are my queen!"'
+			phrazom = 2			
+			
+		elseif $phchoke >= 40:
+			'One monk stands up and say: "YOU are my queen!"'
+			phrazom = 1			
+			
+		else
+			'All monks say nothing for some time… You are not QUEEN!!! please, go away'
+			
+			act 'Go away':
+				PH_full_pay = PH_full_pay *1/4
+				PH_pay_PHmwrstat = 0
+				
+				
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		end
+		
+		if phrazom ! 0:
+			i = 1
+			:loopmonkslightcumnext
+			phrazom[i] = 1	
+			i += 1
+			if i <= phrazom: jump 'loopmonkslightcumnext'
+			
+			act 'Finalyse the rithual':
+				*clr & cla
+				gt 'mod_public_WC_street_box_magicwhore_sex_monks2', 'sex2'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'Queen status':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'Queen status'
+	
+	if $phchoke >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $phchoke >= 90 and $phchoke < 100: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if $phchoke >= 80 and $phchoke < 90: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+	if $phchoke >= 70 and $phchoke < 80: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+	if $phchoke >= 60 and $phchoke < 70: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+	if $phchoke >= 50 and $phchoke < 60: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+	if $phchoke >= 40 and $phchoke < 50: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+	if $phchoke >= 30 and $phchoke < 40: $zadovolennia1 = '<font color = yellow	> ███______ </font> '
+	if $phchoke >= 20 and $phchoke < 30: $zadovolennia1 = '<font color = red	> ██________ </font> '
+	if $phchoke >= 10 and $phchoke < 20: $zadovolennia1 = '<font color = red	> █_________ </font> '
+	if $phchoke < 10:  $zadovolennia1 = '<font color = red	> __________ </font> '
+	!! if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>Queen status, %: <<$zadovolennia1>></center>'
+end
+
+
+
+if $ARGS[0] = 'man':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_monks', 'man'
+	i = 1
+	:loopmonkscum
+	*nl
+	
+	if phrazom[i] = 0:
+		' '
+	elseif phrazom[i] = 1:	
+		if $cum[i] >= 100: $zadovolennia[i] = $func('wrap', 'accent', ' ██████████ ') + ' '
+		if $cum[i] >= 90 and $cum[i] < 100: $zadovolennia[i] = '<font color = green	> █████████_ </font> '
+		if $cum[i] >= 80 and $cum[i] < 90: $zadovolennia[i] = '<font color = green	> ████████__ </font> '
+		if $cum[i] >= 70 and $cum[i] < 80: $zadovolennia[i] = '<font color = yellow	> ███████___ </font> '
+		if $cum[i] >= 60 and $cum[i] < 70: $zadovolennia[i] = '<font color = yellow	> ██████____ </font> '
+		if $cum[i] >= 50 and $cum[i] < 60: $zadovolennia[i] = '<font color = yellow	> █████_____ </font> '
+		if $cum[i] >= 40 and $cum[i] < 50: $zadovolennia[i] = '<font color = yellow	> ████______ </font> '
+		if $cum[i] >= 30 and $cum[i] < 40: $zadovolennia[i] = '<font color = yellow	> ███______ </font> '
+		if $cum[i] >= 20 and $cum[i] < 30: $zadovolennia[i] = '<font color = red	> ██________ </font> '
+		if $cum[i] >= 10 and $cum[i] < 20: $zadovolennia[i] = '<font color = red	> █_________ </font> '
+		if $cum[i] < 10:
+			
+			if phmonkrithual = 1:
+				phrazom[i] = 100
+				$zadovolennia[i] = '<font color = red	> Monk#<<i>> stands up and go away from me. I am ready my queen </font> '
+				
+				$phchoke += 17
+			elseif phmonkrithual = 2:
+				phrazom[i] = 100
+				$zadovolennia[i] = '<font color = red	> Monk#<<i>> CUMS </font> '
+				gs 'mod_public_WC_street_box_magicwhore_sex_monks','cumvideo'
+			end	
+		end
+		'<center>Monk#<<i>> endurance meter: <<$zadovolennia[i]>></center>'
+	elseif phrazom[i] = 100:
+		' '
+	end
+	
+	i += 1
+	if i <= phrazom: jump 'loopmonkscum'	
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_sex_monks ---------------------------------
+

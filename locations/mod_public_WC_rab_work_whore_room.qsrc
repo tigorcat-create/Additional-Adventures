@@ -1,0 +1,1461 @@
+# mod_public_WC_rab_work_whore_room
+if $ARGS[0] = 'start':
+	*clr & cla
+	menu_off = 0
+	$func('wrap', 'header center b', 'My today''s room №<<roomtemp>>')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/room<<roomtemp>>.jpg"></center>'
+	PHMYROOM = 1
+	act 'wait here (0:30)':
+		minut += 30
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore_room', 'start'
+	end
+	if mc_inventory['painkillers'] > 0:
+		'You have <b><<mc_inventory[''painkillers'']>></b> painkiller'+iif(mc_inventory['painkillers'] > 1, 's.', '.')
+		if pain['total'] > 0:
+			act $func('drugs', 'painkiller_act_str'):
+				cla
+				gs 'drugs', 'painkiller'
+				pcs_hydra += 20
+				gs 'stat'
+
+				*nl
+				'You take a painkiller and gulp it down with a glass of water.'
+
+				act 'Finish':menu_off = 0 & gt 'mod_public_WC_rab_work_whore_room', 'start'
+			end
+		end
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'sit and smoke':
+			*clr & cla
+			'I decide to kill some time with a cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(10,15)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+		end
+	end
+	if mc_inventory['mentats'] > 0 and narkday ! daystart:
+		act 'Do a line of cocaine (0:05)':
+			*clr & cla
+			menu_off = 1
+			minut += 5
+			narkday = daystart
+			gs 'drugs', 'cocaine'
+			'<center><img <<$set_imgh>> src="images/shared/drugs/dur.jpg"></center>'
+			'You snort some cocaine, feeling dizzy for just a moment. After that you feel fantastic, and incredibly horny.'
+
+			act 'Continue': menu_off = 0 & gt 'mod_public_WC_rab_work_whore_room', 'start'
+		end
+	end
+
+	act 'Take a nap (1:00)':
+		cla
+		menu_off = 0
+		if pcs_sleep <= 90:
+			pcs_sleep += 20
+			pcs_health += 20
+			minut += 60
+			gs 'stat'
+			*nl
+			'I sleep about an hour.'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+		else
+			minut += 5
+			gs 'stat'
+			*nl
+			'I am not tired enough to sleep, even for a short nap.'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+		end
+	end
+	if $clothingworntype ! 'nude':
+		act 'undress':
+
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+		end
+	end
+
+	act 'listen the corridor sounds to find a client':
+		minut += rand(10,25)
+		gs 'stat'
+		if rand(1,4) = 1:
+			cla
+			'I hear a heavy footsteps'
+			'It must be a man going down the stairs'
+
+			act 'Open the door and tease him, when he will be near my door':
+				*clr & cla
+				minut += rand(3,5)
+				gs 'stat'
+				'I wait till his steps will be near my door'
+				'I pushed the door'
+				'And tease the guy'
+				'"I am sooo lonely, could you help me?"'
+				if rand(1,8) <= 2:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/tease naked/tease_naked ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/tease naked/tease_nakedv ('+rand(1,6)+').mp4"></video></center>'
+				end
+
+				if rand(1,2) = 1:
+					'He just ignored me and pass by'
+					act 'stand up': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					'He stops a little shocked but in a good way'
+					'"Well-well, I would like to help"'
+					'He goes to me'
+					phclient = 1
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				end
+			end
+
+			act 'Open my door a bit. Go masturbate and moans loudly':
+				*clr & cla
+				gs 'arousal', 'masturbate', 5
+				gs 'stat'
+				'I am moaning loudly'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/masturbate/masturbate ('+rand(1,4)+').mp4"></video></center>'
+				if rand(1,2) = 1:
+					'I see he passed by my door'
+					act 'stand up': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					'I see he peek me'
+					act 'Hey, it''s better to be participant than peeker':
+						cla
+						'"OMG, you are so right!"'
+						'He goes to me'
+						phclient = 1
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					end
+				end
+			end
+
+			if $clothingworntype ! 'nude':
+				act 'Go out and tease him with my pussy':
+					*clr & cla
+					'As he comes to my floor'
+					'I just silently stay and look in his eyes'
+					'In a short time I pulled up my skirt and am looking at him'
+					'Than I turn around and go to my room'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/tease.mp4"></video></center>'
+					gs 'arousal', 'flash', 5
+					gs 'stat'
+
+					if rand (1,2) = 1:
+						'I hear he went away'
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						'I hear his footsteps behind me.'
+						phclient = 1
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					end
+				end
+			end
+
+			act 'Do nothing': gt 'mod_public_WC_rab_work_whore_room', 'start'
+
+		else
+			'Everything quiet'
+		end
+	end
+
+	act 'Go away':
+		phclient = 0
+		if $metka = '4':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+		elseif $metka = '3':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		elseif $metka = '2':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+		else
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		end
+	end
+
+	if phclient = 1:
+		*clr & cla
+		otemp = 1
+		colir = rand(1,2)
+		gt 'mod_public_WC_rab_work_whore_room', 'roomsex'
+	elseif phclient = 2:
+		cla
+		if colir = 1:
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		else
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		end
+
+		if $clothingworntype = 'nude':
+			act 'Get dressed':
+				cla
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'I put my clothes back on.'
+				gs 'stat'
+			end
+		end
+
+		if mc_inventory['cigarettes'] > 0:
+			act 'sit and smoke':
+				*clr & cla
+				'I decide to kill some time with a cigarette.'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+				minut += rand(10,15)
+				gs 'drugs','smoke'
+				gs 'stat'
+				if rand(1,4) = 1:
+					pcs_willpwr += rand(1,2)
+					if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+					if pcs_willpwr <= 0: pcs_willpwr = 0
+					gs 'stat'
+
+				end
+				act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+			end
+		end
+
+		if sexcorrupt <= rand(30,50) and otemp ! 0:
+			act 'ask about money':
+				cla
+				'"yes, sure, here you go."'
+				money += 100*rand(2,6)* otemp
+				gs 'stat'
+				sexcorrupt -= 1
+				phtemp = 1
+				otemp = 0
+
+				if rand(1,3) = 1:
+					'He stand up and go away'
+					phclient = 0
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+			end
+		end
+
+		if narkoman = 1 and narkday ! daystart and narkoman = 1:
+			cla
+			act 'Do you have some cococaine?':
+				cla
+				if rand(1,4) = 1:
+					'"Yea, I have. But it''s not for charity."'
+					'"I want a blowjob for that!"'
+
+					if ( narkoman = 1 and narkday ! daystart ) or SLomka > 0:
+						act 'yes-yes, agree!':
+							*clr & cla
+							'He eat some pills… and wait for few minutes'
+							'"Wait a minute" - he said'
+							'He rotates and start to do something with his cock, but I can''t see what he is doing'
+							'"Good, Look here"'
+							gs 'arousal', 'voyeur', 3, 'exhibitionism'
+							gs 'stat'
+							'I looked'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/1 start.mp4"></video></center>'
+							act 'Sniff it all':
+								*clr & cla
+								'I sniff the drug, but something left… I need that!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/2 drug.mp4"></video></center>'
+								gs 'arousal', 'voyeur', 3, 'exhibitionism'
+								gs 'stat'
+
+								mc_inventory['mentats'] += 2
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+
+								sexcorrupt += 2
+
+								'I start suck his dick to consume all the drug!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/3 drug_bj.mp4"></video></center>'
+								gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+								gs 'stat'
+
+								act 'keep sucking':
+									*clr & cla
+									'He hold my head and cuming on my mouth'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/brothel/bar/solotable_request/1/cum/inmouth.mp4"></video></center>'
+									gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'wait next request':
+										minut += 10
+										gs 'stat'
+										gt 'mod_public_WC_rab_work_whore_room', 'start'
+									end
+								end
+							end
+						end
+					else
+						act 'No, thanks':
+							cla
+							'"As you wish)"'
+							act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+						end
+
+						act 'Agree':
+							*clr & cla
+							'He eat some pills… and wait for few minutes'
+							'"Wait a minute" - he said'
+							'He rotates and start to do something with his cock, but I can''t see what he is doing'
+							'"Good, Look here"'
+							gs 'arousal', 'voyeur', 3, 'exhibitionism'
+							gs 'stat'
+							'I looked'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/1 start.mp4"></video></center>'
+
+							act 'consume it':
+								*clr & cla
+								'Unusual situation but it somehow even fun'
+								'I consumed it all'
+
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/2 drug.mp4"></video></center>'
+								gs 'arousal', 'voyeur', 3, 'exhibitionism'
+								gs 'stat'
+
+								mc_inventory['mentats'] += 2
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+								gs 'drugs', 'cocaine'
+								gs 'stat'
+
+								act 'wait next request':
+									minut += 10
+									gs 'stat'
+									gt 'mod_public_WC_rab_PHwork_solotable_cykle', 'table_cycl'
+								end
+								act 'blow him':
+									cla
+									'I sell a bj for a line of cococaine'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/drug/3 drug_bj.mp4"></video></center>'
+									gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+									gs 'stat'
+
+									act 'keep sucking':
+										*clr & cla
+										'He hold my head and cuming on my mouth'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/bar/solotable_request/1/cum/inmouth.mp4"></video></center>'
+										gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+										gs 'stat'
+										gs 'cum_call','mouth',$boy
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+									end
+								end
+							end
+						end
+					end
+				else
+					'"No, I have nothing"'
+
+					if rand(1,1) = 1:
+						'He stand up and go away'
+						shtraf += rand(0,2)
+						phclient = 0
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					end
+				end
+			end
+		end
+
+		act 'Say goodbye and go away':
+			phclient = 0
+			gt $loc, $loc_arg
+		end
+
+
+		act 'talk with him':
+			cla
+
+			act 'casual talk':
+				cla
+				minut += rand(15,30)
+				humint_exp += 3
+				gs 'stat'
+
+				if pcs_humint >= rand(0,120):
+					'we have a great conversation…'
+					'"wow, it was very good talk"'
+					if pcs_humint >= 80:
+						'"Maybe the best talk in my life!"'
+					end
+					'"You know, You are whore, but one of the best person I met"'
+					'"Sorry I spent so much your time, I will go"'
+					if pcs_humint >= 70:
+						'He stands up, and go to the door'
+						'before he exit he put some cash on the nightstand, - "For the talk." - he said'
+						minut += 5
+						money += 100 * rand(1,3)
+						gs 'stat'
+					end
+					phclient = 0
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					'we have a great conversation…'
+					'About life and problems'
+
+					if rand(1,3) = 1: 'About our ruler. the putin is a dickhead!'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+				end
+			end
+
+			if PHaskhimleave ! 1:
+				act 'ask him to leave':
+					cla
+					minut += 3
+					humint_exp += 3
+					persuas_exp += 2
+					gs 'stat'
+					PHaskhimleave = 1
+					if rand (1,3) = 1 or pcs_persuas >= rand(30,120):
+						'"Yes, you right, I have so much to do"'
+						'He stand up and go away'
+						phclient = 0
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						'"Nah, I am ok. Let''s better do smth?"'
+						act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'start'
+					end
+				end
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'roomsex':
+	*clr & cla
+	menu_off = 0
+	phclientava = rand(1,3)
+
+	if colir = 1:
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+	else
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+	end
+
+	if PHMYROOM = 1:
+		$func('wrap', 'header center b', 'My today''s room №<<roomtemp>>')
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/room<<roomtemp>>.jpg"></center>'
+		'He entered my room and…'
+	else
+		$func('wrap', 'header center b', '"Room <<bcil>>"')
+		if bcil >= 4 and bcil <= 20: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+		if bcil >= 21 and bcil <= 30: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+		if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'
+		'We entered his room and…'
+	end
+	''
+	if phwork = 7: phwhoreshift -= 1
+	phclient = 2
+	$cum1 = rand (60,120)
+	!! sex для обох кімнат
+	phtemp = rand(1,6)
+	if phtemp = 1:
+		if $clothingworntype ! 'nude':
+			!! ass
+			'he bends me and start to undress'
+			gs 'arousal', 'flash', 3
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/1 dress up ('+rand(1,3)+').mp4"></video></center>'
+		end
+		if $pantyworntype ! 'none':
+			'then he removes my panties'
+			gs 'arousal', 'flashlite', 3
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/2 panties ('+rand(1,3)+').mp4"></video></center>'
+		end
+
+		act 'continue':
+			*clr & cla
+			'he puts me ass up and checks my anus'
+			gs 'arousal', 'anal_finger', 5
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/3 use anus ('+rand(1,2)+').mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+				'he is fucking my ass'
+				gs 'arousal', 'anal', 5
+				gs 'stat'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/ass/b ('+rand(1,10)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/ass/ch ('+rand(1,13)+').mp4"></video></center>'
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+			end
+		end
+
+	elseif phtemp = 2:
+		!! bj
+		'He pulls out his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'voyeur', 5
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/bj/start/b.mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/bj/start/ch ('+rand(1,2)+').mp4"></video></center>'
+		end
+
+		act 'continue':
+			*clr & cla
+			'I start sucking him'
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/bj/b ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/bj/ch ('+rand(1,9)+').mp4"></video></center>'
+			end
+
+			gs 'arousal', 'bj', 5
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+		end
+	elseif phtemp = 3:
+		!! hj
+		'I am unzip his fly and start jerking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'hj', 5
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/b ('+rand(1,13)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/ch ('+rand(1,11)+').mp4"></video></center>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	elseif phtemp = 4:
+		!! lj
+		'He sits and I start legfucking his cock'
+		gs 'arousal', 'footjob', 5
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/b ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/ch ('+rand(1,4)+').mp4"></video></center>'
+		end
+
+		act 'continue':
+			*clr & cla
+			'I make my grip firmer'
+			gs 'arousal', 'footjob', 5
+			gs 'stat'
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/b ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/ch ('+rand(1,4)+').mp4"></video></center>'
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+		end
+	elseif phtemp = 5:
+		!! tj
+		*clr
+		'I am unzip his fly and help him to poke his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my tits'
+		gs 'arousal', 'titjob', 5
+		gs 'stat'
+
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/b ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/ch ('+rand(1,10)+').mp4"></video></center>'
+		end
+
+		act 'continue':
+			*clr & cla
+			'his speed increasing'
+			gs 'arousal', 'titjob', 5
+			gs 'stat'
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/b ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/ch ('+rand(1,10)+').mp4"></video></center>'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+		end
+	elseif phtemp = 6:
+		!! vag
+		if $clothingworntype ! 'nude':
+			'he bends me and start to undress'
+			gs 'arousal', 'flash', 3
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/1 dress up ('+rand(1,3)+').mp4"></video></center>'
+		end
+
+		if $pantyworntype ! 'none':
+			'then he removes my panties'
+			gs 'arousal', 'flashlite', 3
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/2 panties ('+rand(1,3)+').mp4"></video></center>'
+		end
+
+		act 'continue':
+			*clr & cla
+			'he checks my holes'
+			gs 'arousal', 'flash', 5
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/start sex/3 see vag.mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+				'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				gs 'arousal', 'vaginal', 5
+				gs 'stat'
+
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/b ('+rand(1,5)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/ch ('+rand(1,10)+').mp4"></video></center>'
+				end
+				act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'roomsexcycl':
+	cla
+	act 'do anal':
+		*clr & cla
+
+		temp = 20 + ( stat['anal'] / 10 )
+		$cum1 -= rand(15,temp)
+		phtemp = 1
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'he is fucking my ass'
+		gs 'arousal', 'anal', rand(10,15)
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/ass/b ('+rand(1,10)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/ass/ch ('+rand(1,13)+').mp4"></video></center>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	end
+	act 'blow him':
+		*clr & cla
+
+		temp = 10 + ( stat['bj'] / 10 )
+		$cum1 -= rand(5,temp)
+		phtemp = 2
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I am sucking him'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/bj/b ('+rand(1,3)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/bj/ch ('+rand(1,9)+').mp4"></video></center>'
+		end
+
+		gs 'arousal', 'bj', rand(10,15)
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	end
+	act 'jerk him':
+		*clr & cla
+
+		temp = 10 + ( stat['hj'] / 10 )
+		$cum1 -= rand(0,temp)
+		phtemp = 3
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'hj', rand(10,15)
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/b ('+rand(1,13)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/ch ('+rand(1,11)+').mp4"></video></center>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+
+	end
+	act 'foot jerk him':
+		*clr & cla
+
+		temp = 10 + ( stat['footjob'] / 10 )
+		$cum1 -= rand(0,temp)
+		phtemp = 4
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I stroke him with my foots'
+		gs 'arousal', 'footjob', rand(10,15), 'exhibitionism'
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/b ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/lj/ch ('+rand(1,4)+').mp4"></video></center>'
+		end
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	end
+	act 'tits fuck him':
+		*clr & cla
+
+		temp = 15 + ( stat['titjob'] / 10 )
+		$cum1 -= rand(10,temp)
+		phtemp = 5
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'his hard cock is rubbing between my tits'
+		gs 'arousal', 'titjob', rand(10,15)
+		gs 'stat'
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/b ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/tj/ch ('+rand(1,10)+').mp4"></video></center>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	end
+	act 'fuck him':
+		*clr & cla
+
+		temp = 20 + ( stat['vaginal'] / 10 )
+		$cum1 -= rand(15,temp)
+		phtemp = 6
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'vaginal', rand(10,15)
+		gs 'stat'
+
+		if colir = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/b ('+rand(1,5)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/ch ('+rand(1,10)+').mp4"></video></center>'
+		end
+		act 'continue': gt 'mod_public_WC_rab_work_whore_room', 'roomsexcycl'
+	end
+
+	if $cum1 < 20:
+		*clr & cla
+		if phtemp = 1:
+			'his speed increasing'
+
+			temp = rand(1,4)
+			if temp <= 2:
+				'He cum deep in my ass'
+				if colir = 1:
+					if rand(1,3)<= 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/b ('+rand(1,1)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/b ('+rand(1,2)+').jpg"></center>'
+					end
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/ch ('+rand(1,4)+').mp4"></video></center>'
+				end
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'anus', $npclastgenerated, 0
+				gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+
+			elseif temp = 3:
+				'He take of his dick and spreys my butt with sperm'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/b_on ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/ch_on ('+rand(1,4)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'butt', $npclastgenerated, 0
+
+				gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+			elseif temp = 4:
+				'He pulls out and cumshot my body'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/b ('+rand(1,14)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/ch ('+rand(1,2)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue':
+				phclient = 2
+				phtemp = 0
+				sexcorrupt += 1
+				if PHMYROOM = 1:
+					gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+				end
+			end
+		elseif phtemp = 2:
+
+			'I feel how his dick temperature increasing'
+
+			i = 1
+			act 'swallow it all':
+				*clr & cla
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+
+				'I feel every plash of his cum in my throat'
+
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/bj/b ('+rand(1,13)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/bj/ch ('+rand(1,8)+').mp4"></video></center>'
+				end
+
+				i = 1
+				act 'play with cum for him':
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/bj/cumplay/play ('+rand(1,5)+').mp4"></video></center>'
+					minut += 5
+					gs 'stat'
+
+					if i = 1:
+						i = 2
+						otemp += 1
+					end
+				end
+
+				gs 'willpower', 'misc', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone bj.mp4"></video></center>'
+						if otemp <= 3: otemp += 1
+						minut += 5
+						gs 'stat'
+						fame['pav_prostitute'] += 4
+						slutty += 2
+						pav_media += rand(0,1)
+						gs 'exp_gain', 'inhib', rand(1,2)
+						gs 'flash', 'exhibitionism', 2
+						gs 'stat'
+					end
+				else
+					act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+
+			act 'take it on my face':
+				*clr & cla
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+
+				'He make his deposite on my face…'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/cum/face/b ('+rand(1,14)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nonude/cum/face/ch ('+rand(1,9)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'cum_call', 'hair', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'willpower', 'misc', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'thanks him to make me pretty (<<temp>> Willpower)':
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/face/thanks.mp4"></video></center>'
+						if otemp <= 2: otemp += 1
+						minut += 5
+						sexcorrupt += 1
+						gs 'stat'
+						fame['pav_prostitute'] += 4
+						slutty += 2
+						pav_media += rand(0,1)
+						gs 'exp_gain', 'inhib', rand(1,2)
+						gs 'flash', 'exhibitionism', 2
+						gs 'stat'
+					end
+				else
+					act 'thanks him to make me pretty ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+				gs 'willpower', 'misc', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone face.mp4"></video></center>'
+						if otemp <= 3: otemp += 1
+						minut += 5
+						gs 'stat'
+						fame['pav_prostitute'] += 4
+						slutty += 2
+						pav_media += rand(0,1)
+						gs 'exp_gain', 'inhib', rand(1,2)
+						gs 'flash', 'exhibitionism', 2
+						gs 'stat'
+					end
+				else
+					act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+
+			act 'aim it to my brests':
+				*clr & cla
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+
+
+				'He make his deposite on my brests…'
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/tits/b ('+rand(1,11)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/tits/ch ('+rand(1,9)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'willpower', 'misc', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone tits.mp4"></video></center>'
+						if otemp <= 3: otemp += 1
+						minut += 5
+						gs 'stat'
+						fame['pav_prostitute'] += 4
+						slutty += 2
+						pav_media += rand(0,1)
+						gs 'exp_gain', 'inhib', rand(1,2)
+						gs 'flash', 'exhibitionism', 2
+						gs 'stat'
+					end
+				else
+					act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			end
+
+		elseif phtemp = 3:
+
+			'I feel how his dick temperature increasing'
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/b ('+rand(1,13)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/ch ('+rand(1,11)+').mp4"></video></center>'
+			end
+
+			if stat['hj'] >= 50:
+				act 'jerk till the client almost, 99% finished ':
+					*clr & cla
+					if phad > 0: phad += 2
+					'I feel how his dick temperature rised to max'
+					gs 'arousal', 'hj', 5
+					gs 'stat'
+
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/b ('+rand(1,13)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/ch ('+rand(1,11)+').mp4"></video></center>'
+					end
+
+
+					act 'keep him a moment on the edge and make a last touch':
+						*clr & cla
+						gs 'arousal', 'hj', rand(10,15), 'exhibitionism'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/last_touch ('+rand(1,2)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'arms', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						act 'continue':
+							phclient = 2
+							phtemp = 0
+							sexcorrupt += 1
+							if PHMYROOM = 1:
+								gt 'mod_public_WC_rab_work_whore_room', 'start'
+							else
+								gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+							end
+						end
+					end
+				end
+			end
+
+			act 'jerk till the end':
+				*clr & cla
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/b ('+rand(1,9)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/ch ('+rand(1,6)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+			end
+
+			act 'Point the cock on my tits':
+				*clr & cla
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/b_tits ('+rand(1,4)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/ch_tits ('+rand(1,5)+').mp4"></video></center>'
+				end
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'willpower', 'misc', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone tits.mp4"></video></center>'
+						if otemp <= 3: otemp += 1
+						minut += 5
+						gs 'stat'
+						fame['pav_prostitute'] += 4
+						slutty += 2
+						pav_media += rand(0,1)
+						gs 'exp_gain', 'inhib', rand(1,2)
+						gs 'flash', 'exhibitionism', 2
+						gs 'stat'
+					end
+				else
+					act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+			end
+
+			if colir = 1:
+				act 'Point the cokck on my face':
+					*clr & cla
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/b_face ('+rand(1,4)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/.mp4"></video></center>'
+					end
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					gs 'willpower', 'misc', 'self'
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'thanks him to make me pretty (<<temp>> Willpower)':
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/face/thanks.mp4"></video></center>'
+							if otemp <= 2: otemp += 1
+							minut += 5
+							sexcorrupt += 1
+							gs 'stat'
+							fame['pav_prostitute'] += 4
+							slutty += 2
+							pav_media += rand(0,1)
+							gs 'exp_gain', 'inhib', rand(1,2)
+							gs 'flash', 'exhibitionism', 2
+							gs 'stat'
+						end
+					else
+						act 'thanks him to make me pretty ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+					gs 'willpower', 'misc', 'self'
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone face.mp4"></video></center>'
+							if otemp <= 3: otemp += 1
+							minut += 5
+							gs 'stat'
+							fame['pav_prostitute'] += 4
+							slutty += 2
+							pav_media += rand(0,1)
+							gs 'exp_gain', 'inhib', rand(1,2)
+							gs 'flash', 'exhibitionism', 2
+							gs 'stat'
+						end
+					else
+						act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+
+
+
+
+					act 'continue':
+						phclient = 2
+						phtemp = 0
+						sexcorrupt += 1
+						if PHMYROOM = 1:
+							gt 'mod_public_WC_rab_work_whore_room', 'start'
+						else
+							gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+						end
+					end
+				end
+
+				act 'Swallow everything':
+					*clr & cla
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/b_swallow ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/.mp4"></video></center>'
+					end
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'play with cum for him':
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/bj/cumplay/play ('+rand(1,5)+').mp4"></video></center>'
+						minut += 5
+						gs 'stat'
+
+						if i = 1:
+							i = 2
+							otemp += 1
+						end
+					end
+
+					gs 'willpower', 'misc', 'self'
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone bj.mp4"></video></center>'
+							if otemp <= 3: otemp += 1
+							minut += 5
+							gs 'stat'
+							fame['pav_prostitute'] += 4
+							slutty += 2
+							pav_media += rand(0,1)
+							gs 'exp_gain', 'inhib', rand(1,2)
+							gs 'flash', 'exhibitionism', 2
+							gs 'stat'
+						end
+					else
+						act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+
+
+					act 'continue':
+						phclient = 2
+						phtemp = 0
+						sexcorrupt += 1
+						if PHMYROOM = 1:
+							gt 'mod_public_WC_rab_work_whore_room', 'start'
+						else
+							gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+						end
+					end
+				end
+			end
+		elseif phtemp = 4:
+			'He cums'
+			gs 'arousal', 'footjob', rand(10,15), 'exhibitionism'
+			gs 'stat'
+
+			if rand (1,3) > 1:
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/lj/b ('+rand(1,10)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/lj/ch ('+rand(1,4)+').mp4"></video></center>'
+				end
+
+				gs 'boyStat', $npclastgenerated
+
+				gs 'cum_call', 'legs', $npclastgenerated, 0
+			else
+				if colir = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/lj/b_labia (1).mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/lj/ch ('+rand(1,4)+').mp4"></video></center>'
+				end
+
+				gs 'boyStat', $npclastgenerated
+
+				gs 'cum_call', 'legs', $npclastgenerated, 0
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue':
+				phclient = 2
+				phtemp = 0
+				sexcorrupt += 1
+				if PHMYROOM = 1:
+					gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+				end
+			end
+		elseif phtemp = 5:
+			'He cumed on my tits'
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/tj/b ('+rand(1,7)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/tj/ch ('+rand(1,2)+').mp4"></video></center>'
+			end
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone tits.mp4"></video></center>'
+					if otemp <= 3: otemp += 1
+					minut += 5
+					gs 'stat'
+					fame['pav_prostitute'] += 4
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+				end
+			else
+				act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+
+			act 'continue':
+				phclient = 2
+				phtemp = 0
+				sexcorrupt += 1
+				if PHMYROOM = 1:
+					gt 'mod_public_WC_rab_work_whore_room', 'start'
+				else
+					gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+				end
+			end
+		elseif phtemp = 6:
+			if colir = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/b ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/vag/ch ('+rand(1,10)+').mp4"></video></center>'
+			end
+
+			gs 'willpower', 'cum_inside', 'self'
+			temp = will_cost + (sexcorrupt / 3)
+			will_cost += (sexcorrupt / 3)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'Please not cum in me (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+
+					sexcorrupt -= 1
+
+					cumtemp = rand(1,4)
+					if rand(1,3) = 1: 'He look at me with a disappoint'
+					if cumtemp = 1:
+						'"You loose, it''s up to me"'
+					elseif cumtemp = 2:
+						'"Ok, ok…"'
+					else
+						'"Ok, ok…"'
+					end
+				end
+			elseif will_cost <= pcs_willpwr:
+				act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+			else
+				act 'Please not cum in me ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+			act 'continue':
+				*clr & cla
+				if otemp = 0: otemp = 1
+				if cumtemp < 1: cumtemp = rand(1,4)
+
+				if cumtemp = 1:
+					'He cums deep in my pussy'
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/vag/b ('+rand(1,14)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/vag/ch ('+rand(1,13)+').jpg"></center>'
+					end
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+					gs 'cuminsidereact', $boydesc
+				elseif cumtemp = 2:
+					'He take of his dick and spreys my belly with sperm'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/naked_sex/cum/vag/pullout-in.mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'cum_call', 'labia', $npclastgenerated, 0
+				elseif cumtemp = 3:
+					'He aimed for a moment and cumshot my body'
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/b ('+rand(1,14)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/ch ('+rand(1,2)+').mp4"></video></center>'
+					end
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+				elseif cumtemp = 4:
+					'He make a load on my pubic'
+					if colir = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/b_labia ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/ch_labia ('+rand(1,4)+').mp4"></video></center>'
+					end
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'labia', $npclastgenerated, 0
+				end
+				killvar 'cumtemp'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue':
+					phclient = 2
+					phtemp = 0
+					sexcorrupt += 1
+					if PHMYROOM = 1:
+						gt 'mod_public_WC_rab_work_whore_room', 'start'
+					else
+						gt 'mod_public_WC_rab_work_whore_hisroom', 'start'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'man':
+	if $cum1 >= 100: $zadovolennia1 = $func('wrap', 'accent', ' █████ ') + ' '
+	if $cum1 >= 80 and $cum1 < 100: $zadovolennia1 = '<font color = green	> ████_ </font> '
+	if $cum1 >= 60 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ███__ </font> '
+	if $cum1 >= 40 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██___ </font> '
+	if $cum1 >= 20 and $cum1 < 40: $zadovolennia1 = '<font color = red	> █____ </font> '
+	if $cum1 < 20:
+		$zadovolennia1 = '<font color = red	> Client cums! </font> '
+	end
+	if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>Client''s endurance meter: <<$zadovolennia1>></center>'
+end
+
+
+--- mod_public_WC_rab_work_whore_room ---------------------------------
+

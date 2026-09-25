@@ -1,0 +1,147 @@
+# mod_public_WC_kara71
+if $ARGS[0] = 'runrun':
+	*clr & cla
+	$loc = 'mod_public_WC_kara71'
+	gs 'stat'
+
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/RUNRUN2.mp4"></video></center>'
+
+	if zashmorg = 1 and pcs_magik > 0:
+		'My Whore collar produces a beam of light… even if I rotate myself the beam direction is constant.'
+		act 'go in the beam''s direction':
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			gt 'gad_forest', 'forest_center'
+		end
+	end
+
+	if pcs_observ >= 40:
+		'Ok, I understand where is north'
+		act 'go North':
+			phcoordY += 1
+			minut += rand (15,40)
+			gs 'stat'
+			gt 'mod_public_WC_kara71', 'run2'
+
+
+		end
+		act 'go South':
+			phcoordY -= 1
+			minut += rand (15,40)
+			gs 'stat'
+			gt 'mod_public_WC_kara71', 'run2'
+		end
+		act 'go West':
+			phcoordX -= 1
+			minut += rand (15,40)
+			gs 'stat'
+			gt 'mod_public_WC_kara71', 'run2'
+		end
+		act 'go East':
+			phcoordX += 1
+			minut += rand (15,40)
+			gs 'stat'
+			gt 'mod_public_WC_kara71', 'run2'
+		end
+	end
+
+	if pcs_observ >= 70:
+		'I know redneck''s house on east.'
+		*nl
+		'I know deepest woods on north.'
+		*nl
+		'Some path goes fromsouth to west'
+
+	end
+
+	act 'go anywhere':
+		temp = rand(1,2)
+		if temp = 1:
+			phcoordX += 1
+		else
+			phcoordY += 1
+		end
+
+		minut += rand (15,40)
+		gs 'stat'
+		gt 'mod_public_WC_kara71', 'run2'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality  < 1000:   gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'run2':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/RUNRUN2.mp4"></video></center>'
+
+	temp = rand (Y,3)
+	if temp = 3: ztemp += 1
+	gs 'mod_public_WC_kara7', 'ztemp'
+
+	temp = rand(pcs_observ,100)
+
+	If hour >= endhour:
+		temptemp = 30 + phcoordX * 10
+		if temp <= temptemp:
+			cla
+			vtecha = 2
+			'I met Rednecks, they capture me and tied up.'
+			act 'continue': minut += rand(30,60) & gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+	end
+	killvar 'temptemp'
+	temptemp = 40 + phcoordY * 10
+	if temp <= 20:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/maniakd/unis.mp4"></video></center>'
+		'I set on a ground for a moment to rest, suddenly from nowhere some maniak catch me'
+		if hour <= 5 or hour >= 22:
+			act 'continue': gt 'mod_public_WC_kara7', 'maniak'
+		else
+			act 'continue': gt 'mod_public_WC_kara7', 'maniakd'
+		end
+	elseif temp <= temptemp:
+		killvar 'temptemp'
+		ztemp += 1
+		gs 'mod_public_WC_kara7', 'ztemp'
+		gt 'mod_public_WC_kara71', 'runrun'
+	elseif temp <= 50:
+		if pcs_magik > 0:
+			if hour <= 5 or hour >= 22:
+				'Something grabbed my legs'
+				act 'continue': gt 'mod_public_WC_kara7', 'beasthentai'
+			else
+				act 'continue': gt 'mod_public_WC_kara7', 'beastd2'
+			end
+
+		else
+			act 'I wander in the forest': gt 'mod_public_WC_kara71', 'runrun'
+		end
+	elseif temp <= 80:
+		act 'I wander in the forest': gt 'mod_public_WC_kara71', 'runrun'
+	elseif temp <= 90:
+		'The forest is chaged, it looks another way'
+		act 'I wander in the forest': gt 'gad_forest_lost',  'forest_center'
+	else
+		if nkolo = 0:
+			'I found a mysterious obelisk'
+			if pcs_magik > 0: 'I feel magic in it'
+			nkolo = 1
+		end
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/obelisk.jpg"></center>'
+		'There is a mysterious obelisc'
+		if pcs_magik > 0:
+			act 'touch the obelisk' :
+				cla
+				'In a blink of eye everything changes around me'
+				act 'look around': gt 'gad_forest', 'forest_center'
+
+			end
+		end
+		act 'I wander in the forest': gt 'gad_forest_lost', 'forest_center'
+	end
+end
+
+--- mod_public_WC_kara71 ---------------------------------
+

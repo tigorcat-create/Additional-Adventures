@@ -1,0 +1,371 @@
+# mod_public_WC_2girls1booth5
+if ARGS[0] = 1:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	!$GBPH_act_me = ''
+	
+	*clr & cla
+	if GBPH_color_man[i] = 1:
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+	else
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+	end
+	GBPH_condom[i] = 0
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		'"Ni-i-ice"... few more banknots slip throught the hole.'
+		money += rand(1,8) * 25
+		!act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		!act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+	end	
+	act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'		
+end
+
+
+if ARGS[0] = 2:
+	*clr & cla
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla			
+	GBPH_condom[i] = 1
+	prezik -= 1
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/condom action/on/she ('+rand(1,1)+').mp4"></video></center>'
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		!'"Ni-i-ice"... few more banknots slip throught the hole.'
+		!money += rand(1,8) * 25
+		act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+	end	
+end
+
+
+if ARGS[0] = 3:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	cla
+	*clr
+	stat['hj'] += 1
+	$GBPH_act_me = 1100
+
+	gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+	
+	'I wrap my hands around his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to jerk it enthusiastically.'
+	gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'	
+	
+	i = otemp
+	temp = 2 + ( stat['hj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(0,temp)
+	
+	
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2girls1booth2', 'start2'
+	end						
+end
+
+
+if ARGS[0] = 4:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	$GBPH_act_me = 1010
+
+	gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+	
+	'You wrap your lips around his dick and take his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in your mouth and start to suck it, you suck the cock enthusiastically.'
+	gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'
+	
+	i = otemp
+	temp = 2 + ( stat['bj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(5,temp)		
+
+
+	GBPH_act_man[i] = 1200
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2girls1booth2', 'start2'
+	end
+end
+
+
+if ARGS[0] = 5:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	$GBPH_act_me = 9000
+
+	gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+
+	i = otemp
+	temp = 0 + ( stat['vaginal'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(15,temp)							
+	
+	
+	gs 'arousal', 'vaginal', rand(5,10), 'sub', 'gloryhole'
+	gs 'stat'
+
+
+	GBPH_act_man[i] = 1300
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2girls1booth2', 'start2'
+	end
+end
+
+
+if ARGS[0] = 6:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	$GBPH_act_me = 9000
+
+	gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+
+	i = otemp
+	temp = 0 + ( stat['anal'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(15,temp)							
+	
+	
+	gs 'arousal', 'anal', rand(5,10), 'sub', 'gloryhole'
+	gs 'stat'
+
+
+	GBPH_act_man[i] = 1400
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 7:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	if GBPH_condom[i] = 1 and rand(1,100) <= 28 and GBPH_act_man[i] = 1000:
+		'She removes condom from the dick'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/condom action/off/she ('+rand(1,1)+').jpg"></center>'
+		GBPH_condom[i] = 0
+	end
+
+	if GBPH_condom[i] = 1:
+		act 'remove condom':		
+			*clr & cla
+			!$GBPH_act_me = ''
+
+			if GBPH_color_man[i] = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+			end
+			GBPH_condom[i] = 0
+			
+			temp = rand(1,20)
+			if temp <= 10:
+				'"Ni-i-ice"... few more banknots slip throught the hole.'
+				money += rand(1,8) * 25
+			elseif temp >= 18:
+				'The guy said WTF bitch!!!'
+				cla
+
+				gs 'mod_public_WC_2girls1booth2', 'manleave'
+
+				'He quickly remove his cock and angrily go away.'
+				!act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+			end	
+			act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'		
+		end
+	elseif GBPH_condom[i] = 0 and prezik > 0:
+		act 'put condom':
+			*clr & cla			
+			GBPH_condom[i] = 1
+			prezik -= 1
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/condom action/on/she ('+rand(1,1)+').mp4"></video></center>'
+			
+			temp = rand(1,20)
+			if temp <= 10:
+				!'"Ni-i-ice"... few more banknots slip throught the hole.'
+				!money += rand(1,8) * 25
+			elseif temp >= 18:
+				'The guy said WTF bitch!!!'
+				cla
+
+				gs 'mod_public_WC_2girls1booth2', 'manleave'
+
+				'He quickly remove his cock and angrily go away.'
+				act 'Continue': gs 'mod_public_WC_2girls1booth2', 'start2'
+			end	
+		end
+	end
+
+
+	act 'Jerk him':
+		cla
+		*clr
+		stat['hj'] += 1
+		$GBPH_act_me = 1100
+
+		gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+		
+		'I wrap my hands around his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to jerk it enthusiastically.'
+		gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole'
+		gs 'stat'	
+		
+		i = otemp
+		temp = 2 + ( stat['hj'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(0,temp)
+		
+		
+		GBPH_act_man[i] = 1100
+		GBPH_active_man[i] = 1
+		gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+		act 'Continue': 
+			cla
+			gs 'mod_public_WC_2girls1booth2', 'start2'
+		end						
+	end
+
+	act 'blow him':
+		*clr & cla
+		$GBPH_act_me = 1010
+
+		gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+		
+		'You wrap your lips around his dick and take his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in your mouth and start to suck it, you suck the cock enthusiastically.'
+		gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole'
+		gs 'stat'
+		
+		i = otemp
+		temp = 2 + ( stat['bj'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(5,temp)		
+
+
+		GBPH_act_man[i] = 1200
+		GBPH_active_man[i] = 1
+		gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+		act 'Continue': 
+			cla
+			gs 'mod_public_WC_2girls1booth2', 'start2'
+		end
+	end
+
+	if GBPH_nude_Me = 1:
+		act 'fuck him':
+			*clr & cla
+			$GBPH_act_me = 9000
+
+			gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+
+			i = otemp
+			temp = 0 + ( stat['vaginal'] / 10 ) - (GBPH_condom[i]*12)
+			GBPH_cum_man[i] -= rand(15,temp)							
+			
+			
+			gs 'arousal', 'vaginal', rand(5,10), 'sub', 'gloryhole'
+			gs 'stat'
+
+
+			GBPH_act_man[i] = 1300
+			GBPH_active_man[i] = 1
+			gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+			act 'Continue': 
+				cla
+				gs 'mod_public_WC_2girls1booth2', 'start2'
+			end
+		end
+
+		act 'assfuck him':
+			*clr & cla
+			$GBPH_act_me = 9000
+
+			gs 'mod_public_WC_2girls1booth', 'videoNOTtogether'
+
+			i = otemp
+			temp = 0 + ( stat['anal'] / 10 ) - (GBPH_condom[i]*12)
+			GBPH_cum_man[i] -= rand(15,temp)							
+			
+			
+			gs 'arousal', 'anal', rand(5,10), 'sub', 'gloryhole'
+			gs 'stat'
+
+
+			GBPH_act_man[i] = 1400
+			GBPH_active_man[i] = 1
+			gs 'mod_public_WC_2girls1booth', 'MANCUM'
+
+			act 'Continue': 
+				cla
+				gs 'mod_public_WC_2girls1booth2', 'start2'
+			end
+		end
+	else
+		act 'fuck him':
+			'<i>I must be naked to to do this.</i>'
+		end
+		act 'assfuck him':
+			'<i>I must be naked to to do this.</i>'
+		end
+	end
+end
+
+
+
+
+
+
+--- mod_public_WC_2girls1booth5 ---------------------------------
+

@@ -1,0 +1,120 @@
+# mod_public_WC_rab_work_PHescort_work3
+if $ARGS[0] = '8':
+	*clr & cla
+	!! 8 bdsm
+	gs 'npcgeneratec', 0, 'client', rand(18,35)
+	gs 'boyStat', $npclastgenerated		
+	!! 'He opened the door and drags me in'	
+	gs 'clothing', 'strip'
+	gs 'underwear', 'remove'
+	gs 'stat'
+	
+	phmarkshortescort = 1
+	FUNJOBDONE = 0
+	
+	phtempttemp = 1
+	phtempttemp += rand(10,15)
+	PHpin = 2
+	$rope = 200	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/retied.mp4"></video></center>'
+	temp = rand (1,6)
+	if temp = 1:
+		!! bed
+		'He tied me to the bed'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_bed'
+		
+	elseif temp = 2:
+		!! chair
+		'He tied me to the chair'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_chair'
+		
+	elseif temp = 3:
+		!! floor
+		'He tied me to the hooks in the floor'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_floor'
+		
+	elseif temp = 4:
+		!! rod
+		'He used rop to tied my hands to the hook on the ceiling'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_rod'
+		
+	elseif temp = 5:
+		!! sit
+		'He push me on the floor and tied my hands to some wooden ramp'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_sit'
+		
+	elseif temp = 6:
+		!! small furniture
+		'He tied me to some peace of furniture'
+		act 'wait': gt 'mod_public_WC_rab_work_whore_fun_sex_dop', 'tied21_furniture'
+		
+	end	
+end
+
+if $ARGS[0] = 'endend':
+	'The guy unbind me… and led me to exit'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/retied.mp4"></video></center>'
+	minut+=3
+	phwhoreshift = 0
+	gs 'outfit', 'wear_last_worn'
+	phshortescortfun = FUNJOBDONE
+	money += phshortescortfun / 100 * PH_full_pay
+	gs 'stat'
+	gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+	killvar 'phshortescortfun'
+	killvar 'phclientava'
+	killvar 'PH_full_pay'
+	killvar 'phmarkshortescort'
+	act 'take the money and go away': gt $loc, $loc_arg		
+end
+
+
+
+if $ARGS[0] = '10':
+	*clr & cla
+	!! 10 black
+	temp = rand(1,2)
+	if temp = 1:
+		ztemp = rand(3,12)
+		'The room full of blacks'
+		act 'Seductively go to the centre of the room and say "hello big boys"':
+			sexcorrupt += 1
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/1 hello.mp4"></video></center>'
+			phshortescortfun += 10
+			if rand(1,2) = 1:
+				'Guys with hunger eyes undressing on their way approach me…'				
+				act 'smiling to them': gt 'mod_public_WC_rab_work_PHescort_work', '4more_sp'	
+			else
+				'Guys starts to undress and sit on the sofa'
+				'"Come here, Bitch!"'				
+				act 'Go and please them': gt 'mod_public_WC_rab_work_PHescort_work', '4more_line'
+			end
+		end
+		
+		act 'wait':
+			cla
+			
+			if rand(1,2) = 1:
+				'Guys with hunger eyes undressing on their way approach me…'				
+				act 'smiling to them': gt 'mod_public_WC_rab_work_PHescort_work', '4more_sp'	
+			else
+				'Guys starts to undress and sit on the sofa'
+				'"Come here, Bitch!"'				
+				act 'Go and please them': gt 'mod_public_WC_rab_work_PHescort_work', '4more_line'
+			end
+		end		
+	else	
+		!! black one
+		phmarkshortescort = 1
+		PHclientFUNJOBDONE = 0
+		FUNJOBDONE = 0
+		PH_full_pay = 300*2
+		
+		colir = 2
+		gt 'mod_public_WC_sex', '1'		
+	end
+end
+
+--- mod_public_WC_rab_work_PHescort_work3 ---------------------------------
+

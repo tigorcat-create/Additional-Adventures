@@ -1,0 +1,257 @@
+# mod_public_WC_rab_btothel
+if $ARGS[0] = 'Toha':
+	$location_type = 'indoors'
+	
+	$metka = 'Toha'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'Toha'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'Toha'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'Toha'
+	
+	$PHloc = $loc
+	$PHloc_arg = $loc_arg
+	
+	*clr & cla
+	$func('wrap', 'header center b', 'Toha')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+	
+	act 'go to other room':
+		cla
+		act'Go to the hotel': minut += 4 & gt 'mod_public_WC_rab_work_chystota', 'hotel'
+		act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_btothel', 'tables'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_btothel', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_btothel', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_btothel', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_btothel', 'dancefloor'
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+if $ARGS[0] = 'tables':
+	$location_type = 'indoors'
+	
+	$metka = 'tables'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'tables'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'tables'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'tables'
+	*clr & cla
+	$func('wrap', 'header center b', '"Tables"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tables.jpg"></center>'
+	if phwork = 7:
+		gs 'mod_public_WC_rab_work_whore', 'actions'
+	end
+
+	act 'go to other room':
+		cla	
+		act'Go to the Toha': minut += 1 & gt 'mod_public_WC_rab_btothel', 'Toha'
+		act'Go to the hotel': minut += 4 & gt 'mod_public_WC_rab_work_chystota', 'hotel'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_btothel', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_btothel', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_btothel', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_btothel', 'dancefloor'
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+	
+	
+	
+	if hour >= 10 and hour < 21:
+		*clr & cla
+		$func('wrap', 'header center b', 'Toha')
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+		'Toha approached me'
+		'Did you enjoy working so much? Your shift is over, you can go to the room '
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'		
+	end
+end
+
+
+
+if $ARGS[0] = 'billiard':
+	$location_type = 'indoors'
+	
+	$metka = 'billiard'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'billiard'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'billiard'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'billiard'
+	*clr & cla
+	$func('wrap', 'header center b', 'Billiard')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/billiard.jpg"></center>'
+	if phwork = 7:
+		gs 'mod_public_WC_rab_work_whore', 'actions'
+	end
+	
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 5 & gt 'mod_public_WC_rab_btothel', 'tables'
+		act'Go to balcony': minut += 8 & gt 'mod_public_WC_rab_btothel', 'balcony'
+		act'Go to office': minut += 3 & gt 'mod_public_WC_rab_btothel', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_btothel', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'balcony':
+	$location_type = 'indoors'
+	
+	$metka = 'balcony'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'balcony'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'balcony'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'balcony'
+	*clr & cla
+	$func('wrap', 'header center b', 'Balcony')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/balcony.jpg"></center>'
+	if phwork = 7:
+		gs 'mod_public_WC_rab_work_whore', 'actions'
+	end
+	
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 3 & gt 'mod_public_WC_rab_btothel', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_btothel', 'billiard'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_btothel', 'office'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_btothel', 'dancefloor'
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'office':
+	$location_type = 'indoors'
+	
+	$metka = 'office'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'office'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'office'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'office'
+	*clr & cla
+	$func('wrap', 'header center b', 'Office')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/office.jpg"></center>'
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_btothel', 'tables'
+		act'Go to billiard': minut += 3 & gt 'mod_public_WC_rab_btothel', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_btothel', 'balcony'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_btothel', 'dancefloor'
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'dancefloor':
+	$location_type = 'indoors'
+	
+	$metka = 'dancefloor'
+	$loc = 'mod_public_WC_rab_btothel'
+	$loc_arg = 'dancefloor'
+	
+	$menu_loc = 'mod_public_WC_rab_btothel'
+	$menu_arg = 'dancefloor'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_rab_btothel'
+	$locM_arg = 'dancefloor'
+	*clr & cla
+	
+	$func('wrap', 'header center b', 'Dancefloor')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/party.jpg"></center>'
+	
+	
+	if phwork = 7:
+		gs 'mod_public_WC_rab_work_whore', 'actions'
+		
+		' '
+	end
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_btothel', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_btothel', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_btothel', 'balcony'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_btothel', 'office'
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+	' '
+end
+
+
+
+if $ARGS[0] = 'bc_setup':
+	npctemp = 491
+	npc_gender['A<<npctemp>>'] = 0	
+	$npc_firstname['A<<npctemp>>'] = 'Boss'
+	$npc_nickname['A<<npctemp>>'] = 'Big Black Cat'
+	$npc_lastname['A<<npctemp>>'] = ' '
+	$npc_usedname['A<<npctemp>>'] = 'Big Black Cat'
+	$npc_notes['A<<npctemp>>'] = 'Black Cat gang leader'
+	npc_intel['A<<npctemp>>'] = 100	
+	npc_dob['A<<npctemp>>'] = 491
+	npc_spermpot['A<<npctemp>>'] = 30000	
+	npc_sexskill['A<<npctemp>>'] = 3
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0	
+	$npc_thdick['A<<npctemp>>'] = 'massive'	
+	npc_dick['A<<npctemp>>'] = 25
+end
+
+
+if $ARGS[0] = 'bch_setup':
+	npctemp = 4910
+	npc_gender['A<<npctemp>>'] = 0
+	npc_loyality += 15
+	$npc_firstname['A<<npctemp>>'] = 'Friend'
+	$npc_nickname['A<<npctemp>>'] = 'Black Cat'
+	$npc_lastname['A<<npctemp>>'] = ' '
+	$npc_usedname['A<<npctemp>>'] = 'Black Cat'
+	$npc_notes['A<<npctemp>>'] = 'Black Cat gang'
+	npc_intel['A<<npctemp>>'] = 60	
+	npc_dob['A<<npctemp>>'] = 4910
+	npc_spermpot['A<<npctemp>>'] = 30000	
+	npc_sexskill['A<<npctemp>>'] = 3
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_thdick['A<<npctemp>>'] = 'massive'	
+	npc_dick['A<<npctemp>>'] = 29
+end
+--- mod_public_WC_rab_btothel ---------------------------------
+

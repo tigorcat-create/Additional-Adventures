@@ -1,0 +1,1613 @@
+# mod_public_WC_kara7
+if $ARGS[0] = 'kara7':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	$loc = 'mod_public_WC_kara7'
+	*clr & cla
+	gs 'stat'
+	phcoordY = 0
+	phcoordX = 0
+	Zvit = week + 1
+	if zvit = 8: zvit = 1
+	'Betsi, Last round of warnings starts now, we all pissed off and if you wouldn''t change your habits, well… you better don''t know what would be.'
+	'Now, we will go for a walk. They put a bag on my head. I wait for some time and then we go somewhere.'
+	temp = rand (1,3)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/go/trip<<temp>>.jpg"></center>'
+	temp = 0
+	if hour <= 1:
+		temp = 300
+	elseif hour <= 2:
+		temp = 180
+	elseif hour <= 4:
+		temp = 120
+	end
+	if hour >= 22:
+		temp = 0
+	elseif hour >= 20:
+		temp = 120
+	elseif hour >= 18:
+		temp = 240
+	elseif hour >= 16:
+		temp = 360
+	end
+	minut += temp
+
+	'We walked like 40 or something minuts, then they tide me up to somethig and remove the bag from my head.'
+	'Rednecks turned and walked away. Leaving me alone naked and tied in the middle of the forest'
+	gs 'bras', 'remove'
+	gs 'clothing', 'strip'
+	gs 'panties', 'remove'
+	gs 'stat'
+
+
+	if hour < 16:
+		endhour = hour + 6
+	else
+		endhour = rand(5,6)
+		if week = 7:
+			endday = 1
+		else
+			endday = week + 1
+		end
+	end
+
+
+	if hour >= 5 and hour < 22:
+		'<<hour>> den'
+		ztemp = 0
+		act 'wait': gt 'mod_public_WC_kara7', 'kara7den'
+	else
+		'<<hour>> nich'
+		act 'continue':
+			cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+			'OMG! Now is night.'
+			'I''m terrified'
+			willpowermax -= rand(1,2)
+			gs 'stat'
+			ztemp = 0
+
+			wait 1000
+			*nl
+			'…'
+			minut += rand(15,45)
+
+			temp = rand(1,4)
+			if temp = 1: ztemp += 1
+			gs 'mod_public_WC_kara7', 'ztemp'
+
+			gs 'pain', 2, 'legL', 'stretch'
+			gs 'pain', 2, 'legR', 'stretch'
+			gs 'pain', 2, 'armL', 'stretch'
+			gs 'pain', 2, 'armR', 'stretch'
+			gs 'pain', 2, 'back', 'labor'
+			gs 'pain', 2, 'toes', 'cramp'
+			gs 'stat'
+
+
+			wait 1000
+			minut += rand(15,45)
+			*nl
+			'…'
+			if hour >= 3: 'Down soon!'
+			if hour >= 3 and ztemp > 0: 'And I will survive!'
+			if ztemp > 0:
+				'I still waiting for my death'
+				willpowermax -= rand(0,1)
+				gs 'stat'
+			end
+			temp = rand(1,6)
+			if temp <= 2: ztemp += 1
+			if temp = 6 and ztemp > 0: ztemp -= 1
+			gs 'mod_public_WC_kara7', 'ztemp'
+
+			gs 'pain', 2, 'legL', 'stretch'
+			gs 'pain', 2, 'legR', 'stretch'
+			gs 'pain', 2, 'armL', 'stretch'
+			gs 'pain', 2, 'armR', 'stretch'
+			gs 'pain', 2, 'back', 'labor'
+			gs 'pain', 2, 'toes', 'cramp'
+			gs 'stat'
+
+			If hour = endhour or hour = endhour + 1:
+				'I see Rednecks'
+				if ztemp > 0:
+					'Yes!! I really happy they come!'
+				else
+					'I don''t know why this was punishment?'
+				end
+				'Rednecks give jokes to each other and come clother to me. They put bag on my had and we starts to go somewhere (home, I suppose).'
+				act 'continue': minut += rand(30,60) & gt 'mod_public_WC_rab_DVIR', 'dvir'
+			else
+				act 'wait': gt 'mod_public_WC_kara7', 'waitnight'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'waitnight':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+	wait 1000
+	minut += rand(30,60)
+	*nl
+	'…'
+	if hour >= 3: 'Down soon!' & mood += 5
+	if hour >= 3 and ztemp > 0: 'And I hope I''ll survive!'
+	if ztemp > 0:
+		'I still waiting for the wolfs'
+		willpowermax -= rand(0,1)
+		gs 'stat'
+	end
+	temp = rand(1,6)
+	if temp <= 2: ztemp += 1
+	if temp = 6 and ztemp > 0: ztemp -= 1
+	gs 'mod_public_WC_kara7', 'ztemp'
+
+	gs 'pain', 2, 'legL', 'stretch'
+	gs 'pain', 2, 'legR', 'stretch'
+	gs 'pain', 2, 'armL', 'stretch'
+	gs 'pain', 2, 'armR', 'stretch'
+	gs 'pain', 2, 'back', 'labor'
+	gs 'pain', 2, 'toes', 'cramp'
+	gs 'stat'
+
+
+
+	temp = rand(1,25)
+	if hour <= 4: temp += hour
+
+	If hour >= endhour and week = endday :
+		cla
+		'I see Rednecks'
+		*nl
+		'Yes!! I really happy they come!'
+		*nl
+		'Rednecks give jokes to each other and come clother to me. They put bag on my had and we starts to go somewhere (home, I suppose).'
+		act 'continue': minut += rand(30,60) & gt 'mod_public_WC_rab_DVIR', 'dvir'
+	elseif temp >= 23:
+		if pcs_magik > 0 and temp >= 19 and WCzoo = 1:
+			*clr & cla
+			temp = rand(1,2)
+			if temp = 1:
+				'Some shadow bigger than man with animal noise comes to me. Shadow becomes bigger with each step, I see a monster!'
+				act 'freez in terror': gt 'mod_public_WC_kara7', 'beast'
+			else
+				'Something slippery and sticky toches my leg…'
+				act 'freez in terror': gt 'mod_public_WC_kara7', 'beasthentai'
+			end
+		else
+			*clr & cla
+			'I see some man sneaks up'
+			act 'wait in silence':
+
+
+
+				temp = rand(1,6)
+				if temp = 1:
+					ztemp += 1
+				elseif temp = 6:
+					if ztemp > 0: ztemp -= 1
+				end
+
+				if ztemp = 3:
+					'When I stopped screaming, I hear a terrifying howl which started to approaches me!'
+					act 'Shut up myself…':
+						gt 'mod_public_WC_kara7', 'ztemp3'
+					end
+				else
+					ztemp = 0
+					act 'continue':
+						gt 'mod_public_WC_kara7', 'maniak'
+					end
+				end
+			end
+			act 'Screem for help!':
+				ztemp += 1
+				gt 'mod_public_WC_kara7', 'maniak'
+
+				temp = rand(1,6)
+				if temp = 1:
+					ztemp += 1
+				elseif temp = 6:
+					if ztemp > 0: ztemp -= 1
+				end
+
+				if ztemp = 3:
+					'When I stopped screaming, I hear a terrifying howl which started to approaches me!'
+					act 'Shut up myself…':
+						gt 'mod_public_WC_kara7', 'ztemp3'
+					end
+				else
+					ztemp = 0
+					act 'continue':
+						gt 'mod_public_WC_kara7', 'maniak'
+					end
+				end
+			end
+		end
+
+	elseif temp >= 18:
+		cla
+		'Some man approches me with crazy smile.'
+		act 'Look at him with terror': gt 'mod_public_WC_kara7', 'bdsmn'
+	elseif temp >= 14:
+		cla
+		'I hear some steps, I can''t see but I am sure someone stands behind me…'
+		act 'wait': gt 'mod_public_WC_kara7', 'sexbjn'
+	else
+		cla
+		act 'wait': gt 'mod_public_WC_kara7', 'waitnight'
+	end
+end
+
+if npc_loyality >= 70 and   npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'sexbjn':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	temp = rand (1,2)
+	if temp = 1:
+		'Guy bend me and starts to fuck me from behinde'
+		temp = rand(1,2)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/sex<<temp>>.mp4"></video></center>'
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(35,60)
+		gs 'boyStat', $npclastgenerated
+		stat['vaginal'] += 1
+
+		guy += 1
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		rape += 1
+		gs 'arousal', 'vaginal', rand(5,15)
+		gs 'stat'
+
+		act 'ask to untied me':
+			cla
+			temp = rand(1,20)
+			if temp = 1: 'If you think it will help you'
+			'Ha-ha-ha, man laughs'
+			'Stranger groans and I feel warm sperm on my body'
+			gs 'sweat', 'add', 5
+			cumarrkno =  0
+			spafinloc = 4
+			gs 'cum_call', 'butt', 'a random man'
+			gs 'stat'
+
+			cumarrkno =  0
+			spafinloc = 8
+			gs 'cum_call', 'back', 'a random man'
+			gs 'stat'
+
+			if temp = 1:
+				act 'remind stranger to untied you.': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'take a breath' : gt 'mod_public_WC_kara7','waitnight'
+		end
+	else
+		'Some man comes in front of me, he grins and pull his pant down. "You know, what to do."'
+		act 'ask to untied me':
+			'He slaps me. Only I make demands right now!'
+			minut += 2
+			gs 'pain', 2, 'cheeks', 'slap'
+			gs 'stat'
+		end
+		act 'start to suck his dick':
+			cla
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bj.mp4"></video></center>'
+			gs 'npcgeneratec', 0, 'Some man', rand(19,40)
+			gs 'boyStat', $npclastgenerated
+
+
+			stat['bj'] += 2
+			gs 'arousal', 'bj', rand(10,25), 'sub', 'humiliation', 'rough', 'rape'
+			gs 'stat'
+
+			act 'Continue sucking':
+				cla
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bj_fin.mp4"></video></center>'
+				'Man cums in my mouth'
+				stat['swallow'] += 1
+				spafinloc = 12
+				sparrvol = 20
+				cumarrcpt = 20
+				gs 'sweat', 'add', 2
+				gs 'cum_call', 'mouth', 'Some man'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'take a breath' :
+					temp = rand(1,20)
+					if temp >= 19:
+						*clr & cla
+						'He forgot to tie back my arms.'
+						act 'wait': gt 'mod_public_WC_kara7','waitnight'
+						act 'untied my legs and run away':
+							vtecha = 1
+							Artem = 0 & Tolik = 0 & Vania = 0
+							gt 'mod_public_WC_kara71', 'runrun'
+						end
+					else
+						gt 'mod_public_WC_kara7','waitnight'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bdsmn':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	if ztemp > 1: ztemp = 1
+	'Man show his lash and starts to hit me. He laugs like a maniak!'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bdsm/slap.mp4"></video></center>'
+
+	gs 'arousal', 'BDSM', rand(10,15), 'bound', 'sub'
+	gs 'pain', 4, 'back', 'slap'
+	gs 'pain', 3, 'neck', 'slap'
+	gs 'pain', 2, 'asscheeks', 'slap'
+	gs 'pain', 2, 'breasts', 'slap'
+	gs 'stat'
+	temp = rand(1,4)
+	if temp = 1:
+		'Man stops hit me. I feel his hands on my pussy, suddenly new pain!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/bdsm/puss.mp4"></video></center>'
+		minut += 15
+		gs 'pain', 6, 'clitoris', 'pinch'
+		gs 'stat'
+	end
+	'In some time man satisfied his desires and just go back to the forest.'
+	act 'take a breath' : gt 'mod_public_WC_kara7','waitnight'
+end
+
+if $ARGS[0] = 'beast':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	ztemp = 0
+	'Monster starts to fuck me as he used to do it, I think I am not a first girl, he has fucked here…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/beast/sex_start.mp4"></video></center>'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 6
+
+	rape += 1
+	stat['vaginal'] += 6
+
+	gs 'pain', 8, 'vaginal', 'stretch'
+	gs 'stat'
+
+	gs 'arousal', 'vaginal', 45, 'rape' , 'beast'
+	gs 'stat'
+
+	$orgasm_or = 'yes'
+	gs 'stat'
+
+	if succubusQW >= 1:
+		act 'Try to use my succubus powers to control some beast''s moves and destroys my ropes':
+			if sucexcess >= 500:
+				sucexcess -= 500
+				gs 'stat'
+				beast = 1
+				'With each move beast damages a rope'
+			else
+				'I am too weak'
+			end
+		end
+	end
+
+	act 'continue pleasure':
+		cla
+		'Beast yells and cums. I feel hot sperm in me. Then beast without any hurry just goes away.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/beast/sex2.mp4"></video></center>'
+
+		gs 'npcgeneratec', 0, 'le beast', 113
+		gs 'boyStat', $npclastgenerated
+
+
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+		gs 'cum_call', 'butt', $npclastgenerated, 0
+		if beast = 1:
+			act 'Beast broke all ropes! Run away' :
+				killvar 'beast'
+				vtecha = 1
+				Artem = 0 & Tolik = 0 & Vania = 0
+				gt 'mod_public_WC_kara71', 'runrun'
+
+			end
+		end
+		act 'take a breath' :
+			killvar 'beast'
+			gt 'mod_public_WC_kara7','waitnight'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = 'beasthentai':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	ztemp = 0
+	'A lot of squishy tentacles covers my body and fills my ass and pussy!'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/hbeast/hsex.mp4"></video></center>'
+
+
+	mc_inventory['aphrodisiac'] += 1
+	gs 'drugs', 'aphrodisiac'
+	gs 'stat'
+
+	gs 'arousal_funcs', 'stretch', 'vaginal', 10
+	gs 'arousal_funcs', 'stretch', 'anal', 8 + 2
+
+	rape += 1
+	stat['vaginal'] += 6
+	stat['anal'] += 6
+
+
+	mc_inventory['aphrodisiac'] += 1
+	gs 'drugs', 'aphrodisiac'
+	gs 'stat'
+
+	gs 'pain', 6, 'asshole', 'stretch'
+	gs 'pain', 6, 'vaginal', 'stretch'
+	gs 'stat'
+
+
+	gs 'arousal', 'vaginal', 15, 'rape' , 'beast'
+	gs 'arousal', 'anal', 15, 'rape' , 'beast'
+	gs 'stat'
+
+	$orgasm_or = 'yes'
+	gs 'stat'
+
+	if succubusQW >= 1 and sucexcess > 0:
+		'It''s elder beast and it''s very horny'
+		act 'try to consume beast''s powers' :
+			sucexcess -= 1000
+			if sucexcess <= 0:
+				sucexcess = 0
+				gs 'stat'
+				'I am concentrate all my powers, but beast is like a well withiut bottom. I can''t suck all it''s powers. I need to give something back… and in that moment beast suck all my powers!'
+				$orgasm_or = 'yes'
+				pcs_magik -= 5000
+				if pcs_magik <= 0: pcs_magik = 0
+				gs 'stat'
+
+			else
+				beast = 1
+				gs 'stat'
+				'I drained all beast''s powers. Now I control it'
+				act 'Order: carry me from this forest!':
+					$orgasm_or = 'yes'
+					vtecha = 1
+					Artem = 0 & Tolik = 0 & Vania = 0
+					gt 'gad_forest', 'forest_center'
+				end
+			end
+		end
+	end
+	act 'continue pleasure':
+		cla
+		'Thing starts to deepthroats me!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/hbeast/hbj.mp4"></video></center>'
+		0
+		stat['bj'] += 6
+		gs 'arousal', 'bj', 10, 'rape' , 'beast'
+		gs 'pain', 8, 'throat', 'choke'
+		$orgasm_or = 'yes'
+		gs 'stat'
+
+		'In short time beast shudders and I take cum in all my holes and all over my body. Like a bath…'
+
+		gs 'npcgeneratec', 0, 'elder beast', 478
+		gs 'boyStat', $npclastgenerated
+
+		stat['swallow'] += 6
+		facial += 6
+
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+		gs 'cum_call', 'labia', $npclastgenerated, 0
+
+		gs 'cum_call', 'anus', $npclastgenerated, 0
+
+		gs 'cum_call', 'butt', $npclastgenerated, 0
+
+		gs 'cum_call', 'back', $npclastgenerated, 0
+
+		gs 'cum_call', 'legs', $npclastgenerated, 0
+
+		gs 'cum_call', 'arms', $npclastgenerated, 0
+
+		gs 'cum_call', 'face', $npclastgenerated, 0
+
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+		gs 'cum_call', 'hands', $npclastgenerated, 0
+
+		gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+		gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+
+
+		if beast = 1:
+			'I can control this beast'
+			act 'Order: carry me from this forest!':
+				$orgasm_or = 'yes'
+				killvar 'beast'
+				vtecha = 1
+				Artem = 0 & Tolik = 0 & Vania = 0
+				gt 'gad_forest', 'forest_center'
+			end
+		end
+
+		act 'take a breath' :
+			killvar 'beast'
+			gt 'mod_public_WC_kara7','waitnight'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+end
+
+
+
+if $ARGS[0] = 'maniak':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+	'Man approches me.'
+	if pcs_magik > 0: 'I see something unhuman in his eyes…'
+
+
+	temp = rand (1,2)
+	if temp = 1:
+		'Stranger takes some branch and grins'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick1.mp4"></video></center>'
+		act 'stare terrified':
+			'He use this branch to rub my pussy…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick2.mp4"></video></center>'
+			if pcs_magik > 0:
+				'Sometimes his disguise disappears and I see his real form…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/monster.mp4"></video></center>'
+			end
+			gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+			gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+			gs 'pain', 5, 'labia', 'burn'
+			gs 'pain', 5, 'breasts', 'slap'
+			gs 'pain', 5, 'nipples', 'slap'
+			gs 'stat'
+			'At last he put the branch aside'
+			act 'wait': gt 'mod_public_WC_kara7', 'maniak2'
+		end
+	else
+		'Stranger grins and starts to put all his focus on my tits…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/tits1.mp4"></video></center>'
+		gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+		gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+		gs 'pain', 5, 'breasts', 'burn'
+		gs 'pain', 5, 'nipples', 'burn'
+		gs 'pain', 5, 'breasts', 'slap'
+		gs 'pain', 5, 'nipples', 'slap'
+		gs 'pain', 5, 'breasts', 'pinch'
+		gs 'pain', 5, 'nipples', 'pinch'
+		gs 'pain', 5, 'breasts', 'pull'
+		gs 'pain', 5, 'nipples', 'twist'
+		gs 'pain', 5, 'nipples', 'pull'
+		gs 'stat'
+
+		'At last he stops'
+		act 'wait': gt 'mod_public_WC_kara7', 'maniak2'
+	end
+end
+
+if $ARGS[0] = 'maniak2':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+
+	if ztemp = 'cultist' or ztemp = 'maniak':
+		'Then <<ztemp>> pulls me down and retied to a tree…'
+	else
+		'Then man pulls me down and retied to a tree…'
+	end
+	*nl
+	minut += 5
+	'He went somewhere but come back in 5 minutes with another branch with a duct-taped dildo! He starts to fuck me with this tool…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_start.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'BDSM', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'vaginal_dildo', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+	gs 'pain', 2, 'labia', 'burn'
+	stat['vaginal'] += 1
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'When he finished to play with my pussy he forced me to suck that dildo.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_bj.mp4"></video></center>'
+		gs 'arousal', 'bj', 5, 'bound', 'beast', 'rough', 'rape'
+		stat['bj'] += 1
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'"Now, you are ready for me…"'
+			*nl
+			'He changes my position, and tied be another way.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_start.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+			stat['vaginal'] += 1
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_2.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,20), 'bound', 'beast', 'rough', 'rape'
+				gs 'stat'
+				if pcs_magik > 0:
+					'Sometimes his disguise disappears and I see his real form…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_monstr_3.mp4"></video></center>'
+				end
+				act 'continue':
+					*clr & cla
+					'He groans and this is stops…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_fin.mp4"></video></center>'
+
+					if pcs_magik > 0:
+						gs 'npcgeneratec', 0, 'cultist', 420
+						gs 'boyStat', $npclastgenerated
+					else
+						gs 'npcgeneratec', 0, 'maniak', 42
+						gs 'boyStat', $npclastgenerated
+					end
+
+
+					guy += 1
+					rape += 1
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+
+
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+					if pcs_magik > 0:
+						$ztemp = 'cultist'
+						gs 'cuminsidereact', 'cultist'
+
+					else
+						$ztemp = 'maniak'
+						gs 'cuminsidereact', 'maniak'
+					end
+
+					stat['vaginal'] += 1
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'wait':
+						*clr & cla
+						'<<$ztemp>> silently makes fire and started to do meat.'
+						*nl
+						'then <<$ztemp>> lights some candles and forced me to sit me near the fire'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Eat.mp4"></video></center>'
+						act 'say nothing':
+							cla
+							temp = rand(1,3)
+							if temp <= 2:
+								'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+								killvar 'ztemp'
+								act 'wait' : gt 'mod_public_WC_kara7', 'waitnight'
+							else
+								'"Well, next round!"'
+								act 'Ow, No!' : gt 'mod_public_WC_kara7', 'maniak2'
+							end
+						end
+						act 'ask to eat':
+							'<<$ztemp>> threw few bones to me.'
+							gs 'food', 'kitchen_snack_stats'
+							gs 'food', 'aftermeal'
+
+							'I enjoy the nicely cooked meat'
+
+							if $ztemp = 'cultist' and $wombthfath ! 'cultist':
+								act 'Ask him What cultist is he?':
+									cla
+									'It''s not your business… Ok, witch, now I am sure. I can give you a deal.'
+									*nl
+									'Do you want to be free? I can do it, but I request a payment, I will not tell what the payment is… Are you agree?'
+									act 'agree':
+										cla
+										'"Perfect"'
+										'He kiss me.. and I feel how his tounge go deeper in my body, it''s hard to breathe, but in a few minuts everything stops.'
+										'Then <<$ztemp>> untied me and we walk to the edge of the forest'
+										pcs_magik += 500
+										ztemp = 0
+										mesec = 0
+										focH = 0
+										EggRH = 0
+										Ovulate = 0
+										UnfertEgg = 0
+										lutH = 0
+										RecovH = 0
+										preg = 1
+										cycle = 5
+										!!Setting implantation date for the due date calculation
+										lastovulation = daystart - 5
+										pregChem = 150
+										$wombthfath = 'cultist'
+										babyembryo += 1
+										if fertegg = 0:
+											nextBaby = arrsize('$ChildFath')
+											Temppolkid = rand(0,1)
+											polkid[nextBaby] = Temppolkid
+											$kidname[nextBaby] = 'unborn'
+											kidage[nextBaby] = 0
+											daykid[nextBaby] = 0
+											monthkid[nextBaby] = 0
+											yearkid[nextBaby] = 0
+											Babyptype[nextBaby] = 0
+											$ChildFath[nextBaby] = 'cultist'
+											$ChildThFath[nextBaby] = 'cultist'
+											hairkid[nextBaby] = rand(0, 3)
+											eyeskid[nextBaby] = rand(0, 3)
+											ChildConType[nextBaby] = 0
+											Babyptype[nextBaby] = 1
+										else
+											gs 'medical_din', 'remove_preg'
+											knowpregloss = 2
+											if FertEgg > 0: FertEgg = 0
+
+
+											nextBaby = arrsize('$ChildFath')
+											Temppolkid = rand(0,1)
+											polkid[nextBaby] = Temppolkid
+											$kidname[nextBaby] = 'unborn'
+											kidage[nextBaby] = 0
+											daykid[nextBaby] = 0
+											monthkid[nextBaby] = 0
+											yearkid[nextBaby] = 0
+											Babyptype[nextBaby] = 0
+											$ChildFath[nextBaby] = 'cultist'
+											$ChildThFath[nextBaby] = 'cultist'
+											hairkid[nextBaby] = rand(0, 3)
+											eyeskid[nextBaby] = rand(0, 3)
+											ChildConType[nextBaby] = 0
+											Babyptype[nextBaby] = 1
+										end
+										gs 'arousal_funcs', 'stretch', 'oral', 10
+										stat['swallow'] += 1
+										rape += 1
+										stat['bj'] += 10
+
+										gs 'arousal', 'kiss', 5, 'beast', 'rough', 'rape'
+										gs 'arousal', 'bj', 5, 'beast', 'rough', 'rape'
+										gs 'pain', 8, 'throat', 'burn'
+										gs 'pain', 8, 'throat', 'pierce'
+										gs 'pain', 6, 'throat', 'stretch'
+										gs 'pain', 7, 'throat', 'choke'
+										gs 'pain', 6, 'throat', 'tear'
+										gs 'stat'
+
+										vtecha = 1
+										Artem = 0 & Tolik = 0 & Vania = 0
+										act 'continue': gt 'gad_forest', 'forest_center'
+									end
+									act 'no':
+										cla
+										'Well, unfortunately, for this I can''t force you. Then, good night.'
+										act 'wait':
+											killvar 'ztemp'
+											gt 'mod_public_WC_kara7', 'waitnight'
+										end
+									end
+								end
+							end
+
+							act 'Tell him intresting story of your life':
+								cla
+								'Hmm, it looks like you have intresting life. And I think you have money. I can make you free, if you pays me 15000 <b>₽</b>'
+								mood += 5
+
+
+
+
+								if karta + bankDebtLimit >= 15000:
+									act 'agree to pay':
+										'I have money on my card, is it enought for you?'
+										*nl
+										'Yes, give me your card'
+										act 'Give him card to pay 15000 <b>₽</b> (card)':
+											karta -= 15000
+											gs 'stat'
+											if karta + bankDebtLimit >= 1000: karta -= 1000
+											if karta + bankDebtLimit >= 5000: karta -= 5000
+											gs 'stat'
+											'He untied me and go away'
+											act 'run': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & ztemp = 0 & gt 'mod_public_WC_kara71', 'runrun'
+										end
+									end
+								end
+								act 'I don''t have money':
+									*clr & cla
+									temp = rand(1,3)
+									if temp <= 2:
+										'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+										ztemp = 0
+										act 'wait' : gt 'mod_public_WC_kara7', 'waitnight'
+									else
+										'"Well, next round!"'
+										act 'Ow, No!' : gt 'mod_public_WC_kara7', 'maniak2'
+									end
+								end
+							end
+							act 'ask him to make you free':
+								*clr & cla
+								'ha-ha, definitely not!'
+								temp = rand(1,3)
+								if temp <= 2:
+									'He finished his eating and tied me back to the tree… he don''t put out the fire, and goes away'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tiedNight.mp4"></video></center>'
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/vogon.jpg"></center>'
+									ztemp = 0
+									act 'wait' : gt 'mod_public_WC_kara7', 'waitnight'
+								else
+									'"Well, next round!"'
+									act 'Ow, No!' : gt 'mod_public_WC_kara7', 'maniak2'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'ztemp':
+	$loc = 'mod_public_WC_kara7'
+	if ztemp = 0:
+		'I wait in the dark, uncomfortable posture give no chance to sleep, well also I am so terrifying I can''t sleep anyway'
+	elseif ztemp = 1:
+		'Suddenly your hear a terrifying howl not far away. A jolt of adrenaline passes through you. Wolves!!!'
+
+		willpowermax -= rand(2,5)
+		gs 'stat'
+	elseif ztemp = 2:
+		'Suddenly your hear a terrifying howl close behind you. Another jolt of adrenaline passes through you. Goodbye life!!!'
+
+		willpowermax -= rand(3,6)
+	elseif ztemp = 3:
+		cla
+		*clr
+		gt 'mod_public_WC_kara7', 'ztemp3'
+	end
+end
+
+
+
+
+if $ARGS[0] = 'ztemp3':
+	$loc = 'mod_public_WC_kara7'
+	'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/horror.jpg"></center>'
+	'You froze from fear, staring into the darkness, trying to make sense of the shadows that seemed to move and swirl around you. Suddenly, you feel a sharp pain on your back.'
+	if Enable_nogameover = 0:
+		act 'Freeze in terror':
+			cla
+			minut += 1
+			gs 'stat'
+			act 'Get mauled to death by wolves': over = 11 & gt 'gameover'
+		end
+	else
+		act 'Kick as many wolfes as I can': minut += rand(300,720) & gt 'mod_public_WC_kara7', 'death'
+	end
+end
+
+if $ARGS[0] = 'death':
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	pcs_hydra = 50
+	pcs_energy = 50
+	pcs_sleep = 50
+
+	vtecha = 1
+	Artem = 0 & Tolik = 0 & Vania = 0
+	pcs_health = 20
+	'<center><img <<$set_imgh>> src="images/pre/csb/darknesscsb.jpg"></center>'
+	'…'
+	wait 1500
+	*nl
+	'…'
+	wait 1500
+	*nl
+	'…'
+	wait 1500
+	*nl
+	'…'
+	wait 1500
+	*nl
+
+	'I open my eyes and see I am in a hospital room.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/likarnia.jpg"></center>'
+	'I am survived!'
+	*nl
+	*nl
+	'I feel good and after medical exam, doctor says I can go home'
+	act 'Go out': pcs_health += 5 & gt 'pav_commercial'
+end
+
+
+if $ARGS[0] = 'kara7den':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+
+	minut += rand(30,50)
+	gs 'stat'
+	temp = rand(1,10)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tied<<temp>>.jpg"></center>'
+
+	gs 'pain', 2, 'legL', 'stretch'
+	gs 'pain', 2, 'legR', 'stretch'
+	gs 'pain', 2, 'armL', 'stretch'
+	gs 'pain', 2, 'armR', 'stretch'
+	gs 'pain', 2, 'back', 'labor'
+	gs 'pain', 2, 'toes', 'cramp'
+	gs 'stat'
+
+	temp = rand (1,50) + ztemp
+	if temp > 50:
+		ztemp = 0
+		cla
+		if Enable_nogameover = 0:
+			'Some disgusting guys comes to me with unhuman sneer'
+			act 'Scream!!!':
+				minut += 1
+				gs 'stat'
+				over = 12
+				gt 'gameover'
+			end
+		else
+			'I see 2 men, and they also see me. They changed their way and started to go in my direction.'
+			act 'try to be calm': gt 'mod_public_WC_kara7', '2sex'
+		end
+	elseif temp >= 40:
+		ztemp = 0
+		if pcs_magik > 0 and WCzoo = 1:
+			cla
+
+			'Some unbelievable beast saw me, and starts to approach me with horrible monstrosity noise'
+			act 'freez in terror': gt 'mod_public_WC_kara7', 'beastd'
+		else
+			*clr & cla
+
+			'I see 2 men with a dog, and they also see me. They changed their way and started to go in my direction.'
+			act 'try to be calm': gt 'mod_public_WC_kara7', '2sex'
+		end
+
+	elseif temp >= 30:
+		ztemp = 0
+		cla
+		'Some guy comes from behind and slaps my ass'
+		gs 'pain', 3, 'asscheeks', 'slap'
+		gs 'stat'
+		act 'look at him angry eyes': gt 'mod_public_WC_kara7', 'bdsm'
+
+	elseif temp >= 15:
+		ztemp = 0
+		*clr & cla
+		'Some man with happy eyes comes to me!'
+		temp = rand(1,3)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/start<<temp>>.jpg"></center>'
+		act 'wait': gt 'mod_public_WC_kara7', 'bjsex'
+
+	elseif temp >= 0:
+		cla
+		'Gladly nothing happened, only body hurts because of ropes.'
+		ztemp += temp
+		act 'wait': gt 'mod_public_WC_kara7', 'kara7den'
+	end
+
+	if hour >= endhour:
+		*clr & cla
+		temp = rand(1,10)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/tied/tied<<temp>>.jpg"></center>'
+		'Finaly! I see Rednecks. I am so happy to see them!'
+		*nl
+		'Rednecks give jokes to each other and come clother to me. They put bag on my had and we starts to go somewhere (home, I suppose).'
+		act 'continue': minut += rand(30,60) & gt 'mod_public_WC_rab_DVIR', 'dvir'
+	end
+end
+
+if $ARGS[0] = 'beastd':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+
+	ztemp = 0
+	'Monster starts to fuck me as he used to do it, I think I am not a first girl, he has fucked here…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/sex_start.mp4"></video></center>'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 6
+
+	rape += 1
+	stat['vaginal'] += 6
+
+	gs 'pain', 8, 'vaginal', 'stretch'
+	gs 'stat'
+
+	gs 'arousal', 'vaginal', 45, 'rape' , 'beast'
+	gs 'stat'
+
+	$orgasm_or = 'yes'
+	gs 'stat'
+
+	if succubusQW >= 1:
+		act 'Try to use my succubus powers to control some beast''s moves and destroys my ropes':
+			if sucexcess >= 500:
+				sucexcess -= 500
+				gs 'stat'
+				beast = 1
+				'With each move beast damages a rope'
+			else
+				'I am too weak'
+			end
+		end
+	end
+
+	act 'continue pleasure':
+		cla
+		'Beast yells and cums. I feel hot sperm in me. Then beast without any hurry just goes away.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/sex2.mp4"></video></center>'
+
+		gs 'npcgeneratec', 0, 'le beast', 113
+		gs 'boyStat', $npclastgenerated
+
+
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+		gs 'cum_call', 'butt', $npclastgenerated, 0
+		if beast = 1:
+			act 'Beast broke all ropes! Run away' :
+				killvar 'beast'
+				vtecha = 1
+				Artem = 0 & Tolik = 0 & Vania = 0
+				gt 'mod_public_WC_kara7', 'beastd2'
+			end
+		end
+		act 'take a breath':
+			killvar 'beast'
+			gt 'mod_public_WC_kara7','kara7den'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = 'beastd2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	minut += rand (5,15)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/RUNRUN3.mp4"></video></center>'
+	'Beast runs after me! I am not shure if I can run from it!'
+	act 'climb a tree':
+		cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo.mp4"></video></center>'
+		'I tried to climb a tree, but it appears to hard… And I hanging on a branch…'
+		act 'Try to find something with my feet to push myself':
+			*clr & cla
+			'I feel something hard with my feet and try to use it as a support for climbing…'
+			wait 1500
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo_fin.mp4"></video></center>'
+			'I Hear beast''s moaning. Look down… The beast lie on the ground'
+			gs 'arousal', 'footjob', 5, 'beast', 'feet', 'unknown'
+			stat['footjob'] += 1
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'legs', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'run away': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+		end
+	end
+
+
+	act 'continue running':
+		if pcs_agil >= 90 or pcs_run >= 70:
+			cla
+			minut += 15
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			'I ran away!'
+			act 'take a breath' :  vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+		else
+			*clr & cla
+			'Beast caught me and knocked me down! It growls and rub his dick over my tits… It''s beter to help him'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/titjob.mp4"></video></center>'
+			gs 'arousal', 'titjob', 20, 'beast', 'rape', 'rough'
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'hands', $npclastgenerated, 0
+
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			'The beast cums all over my body, and lie down with pleasure on muzzle.'
+			if pcs_sleep <= 20:
+				act 'go to sleep with beast':
+					*clr & cla
+					wait 500
+					temp = rand(45,120)
+					minut += temp
+					if temp > 60:
+						pcs_sleep += 20
+					else
+						pcs_sleep += 8
+					end
+					'I wake up, beast is still sleeping.'
+					act 'run away': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara7', 'runrun'
+					act 'go to sleep with beast':
+						*clr & cla
+						*nl
+						'…Zzz…'
+						wait 500
+						temp = rand(45,120)
+						minut += temp
+						if temp > 60:
+							pcs_sleep += 20
+						else
+							pcs_sleep += 8
+						end
+						if hour >= endhour:
+							*clr & cla
+							temp = rand(1,3)
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/go/trip<<temp>>.jpg"></center>'
+							'I woke up because Rednecks tide me up, there is no beast around…'
+							*nl
+							'They put bag on my had and we starts to go somewhere (home, I suppose).'
+							act 'continue': minut += rand(30,60) & gt 'mod_public_WC_rab_DVIR', 'dvir'
+						else
+							*clr & cla
+							'I wake up, because some maniak catchs and  carries me somewhere.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/maniakd/unis.mp4"></video></center>'
+							if hour <= 5 or hour >= 22:
+								act 'continue': gt 'mod_public_WC_kara7', 'maniak'
+							else
+								act 'continue': gt 'mod_public_WC_kara7', 'maniakd'
+							end
+						end
+					end
+				end
+			end
+			act 'run away': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara7', 'runrun'
+		end
+	end
+end
+
+if $ARGS[0] = '2sex':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	'"Hi beauty, It has something horrible happened with you. We want to help… but, we ask for a little favor, you know, for fun!.."'
+	act 'agree':
+		cla
+		'Let''s help this young Lady'
+		act 'continue': gt 'mod_public_WC_kara7', '2sex2'
+	end
+	act 'don''t agree':
+		cla
+		'Even so… As jentleman I can''t go away when girl needs help… Let''s help this young Lady'
+				act 'continue': gt 'mod_public_WC_kara7', '2sex2'
+	end
+end
+
+if $ARGS[0] = '2sex2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	'Guys untied me and starts to spit roasts'
+	temp = rand(1,3)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex2den/2sex<<temp>>.mp4"></video></center>'
+	gs 'arousal', 'vaginal', 15, 'sub', 'group', 'rape'
+	gs 'arousal', 'bj', 15, 'sub', 'group', 'rape'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+	stat['bj'] += 1
+	stat['vaginal'] += 1
+	gs 'sweat', 'add', 20
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'each guy cums on my face, then wipe they dicks with my hair…'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex2den/2sex<<temp>>.mp4"></video></center>'
+		minut += 5
+		rape += 1
+		guy += 2
+
+		facial += 2
+		gs 'stat'
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'legs', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(1,20)
+			if temp = 2:
+				'Happy guys goes away…'
+				act 'Run!': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+				act 'wait' : gt 'mod_public_WC_kara7','kara7den'
+			elseif temp <= 17:
+				'Guys laugh and tied me back. I try to resist, but they are too strong'
+				act 'wait' : gt 'mod_public_WC_kara7','kara7den'
+			else
+				if WCzoo >= 1:
+					'It was fun, but Bobik whant to have fun too…'
+					*nl
+					'They forced me to fuck the dog…'
+					gs 'arousal', 'vaginal', 15, 'beast', 'sub', 'rape'
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/pes.jpg"></center>'
+
+					gs 'npcgeneratec', 0, 'Bobik', rand(18,45)
+					gs 'boyStat', $npclastgenerated
+					cumnostd = 1
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+					mood -= 20
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'Guys laugh, I am cries… they go away'
+					act 'run away!': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+					act 'continue crying' : mood += 10 & gt 'mod_public_WC_kara7','kara7den'
+				else
+					'Guys laugh and tied me back. I try to resist, but they are too strong'
+					act 'wait' : gt 'mod_public_WC_kara7','kara7den'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bdsm':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	'Stranger starts to squeeze and pinch my tits… pain!..'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound'
+	gs 'arousal', 'BDSM', rand(10,15), 'bound'
+	gs 'pain', 2, 'nipples', 'pull'
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'…this guy takes pins from his pockets and started to use them…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits2.mp4"></video></center>'
+		gs 'arousal', 'foreplay', 5, 'bound'
+		gs 'pain', 3, 'breasts', 'pinch'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'…pin after pin… pain after pain…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits3.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 10, 'bound'
+			gs 'pain', 3, 'breasts', 'pinch'
+			gs 'pain', 3, 'breasts', 'pinch'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'…and even more pins…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bdsm/tits4.mp4"></video></center>'
+				gs 'arousal', 'foreplay', 30, 'bound'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'pain', 3, 'breasts', 'pinch'
+				gs 'stat'
+				'At last he used all his pins, look at me for few moments… and take all his pins and go away…'
+				act 'try to relax':	gt 'mod_public_WC_kara7','kara7den'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'bjsex':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	temp = rand (1,2)
+	if temp = 1:
+		'Guy opened my jaw. And forced me to blow him.'
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,5)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/bv<<temp>>.mp4"></video></center>'
+		else
+			temp = rand(1,5)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/b<<temp>>.jpg"></center>'
+		end
+		gs 'npcgeneratec', 0, 'Some man', rand(19,40)
+		gs 'boyStat', $npclastgenerated
+
+
+		stat['bj'] += 2
+		gs 'arousal', 'bj', rand(10,25), 'sub', 'humiliation', 'rough', 'rape'
+		gs 'stat'
+
+
+		act 'Continue to suck':
+			*clr & cla
+			'Soon guy groans and cums in my mouth'
+			temp = rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/bj/bj_fin<<temp>>.mp4"></video></center>'
+			stat['swallow'] += 1
+			spafinloc = 12
+			sparrvol = 20
+			cumarrcpt = 20
+			gs 'sweat', 'add', 2
+			gs 'cum_call', 'mouth', 'Some man'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				temp = rand(1,20)
+				if temp >= 19:
+					*clr & cla
+					'Guy forgot to tie back my arms.'
+					act 'wait': gt 'mod_public_WC_kara7','kara7den'
+					act 'untied my lags and run away': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+				else
+					gt 'mod_public_WC_kara7','kara7den'
+				end
+			end
+		end
+	else
+
+
+		gs 'npcgeneratec', 0, 'a random man', rand(35,60)
+		gs 'boyStat', $npclastgenerated
+
+
+		'Guy starts to fuck me'
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,9)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/sex<<temp>>.mp4"></video></center>'
+		else
+			temp = rand(1,4)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/sex/sexp<<temp>>.jpg"></center>'
+		end
+
+
+
+
+		stat['vaginal'] += 1
+
+		guy += 1
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		rape += 1
+		gs 'arousal', 'vaginal', rand(5,15)
+		gs 'stat'
+
+		act 'ask to untied me':
+			cla
+			temp = rand(1,15)
+			if temp = 1: 'If you think it will help you'
+			'Ha-ha-ha, man laughs'
+			'Stranger groans and I feel warm sperm on my body'
+			gs 'sweat', 'add', 5
+			cumarrkno =  0
+			spafinloc = 4
+			gs 'cum_call', 'butt', 'a random man'
+			gs 'stat'
+
+			cumarrkno =  0
+			spafinloc = 8
+			gs 'cum_call', 'back', 'a random man'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			if temp = 1:
+				act 'remind sranger to untied you.': vtecha = 1 & Artem = 0 & Tolik = 0 & Vania = 0 & gt 'mod_public_WC_kara71', 'runrun'
+			end
+
+			act 'take a breath' : gt 'mod_public_WC_kara7','kara7den'
+		end
+	end
+end
+
+if $ARGS[0] = 'maniakd':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	ztemp = 0
+
+	'Man approches me.'
+	if pcs_magik > 0: 'I see something unhuman in his eyes…'
+
+
+	temp = rand (1,2)
+	if temp = 1:
+		'Stranger takes some branch and grins'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick1.mp4"></video></center>'
+		act 'stare terrified':
+			'He use this branch to rub my pussy…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick2.mp4"></video></center>'
+			if pcs_magik > 0:
+				'Sometimes his disguise disappears and I see his real form…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/monster.mp4"></video></center>'
+			end
+			gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+			gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+			gs 'pain', 5, 'labia', 'burn'
+			gs 'pain', 5, 'breasts', 'slap'
+			gs 'pain', 5, 'nipples', 'slap'
+			gs 'stat'
+			'At last he put the branch aside'
+			act 'wait': gt 'mod_public_WC_kara7', 'maniakd2'
+		end
+	else
+		'Stranger grins and starts to put all his focus on my tits…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/tits1.mp4"></video></center>'
+		'At last he stops'
+		act 'wait':
+			gt 'mod_public_WC_kara7', 'maniakd2'
+		end
+
+		gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+		gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+		gs 'pain', 5, 'breasts', 'burn'
+		gs 'pain', 5, 'nipples', 'burn'
+		gs 'pain', 5, 'breasts', 'slap'
+		gs 'pain', 5, 'nipples', 'slap'
+		gs 'pain', 5, 'breasts', 'pinch'
+		gs 'pain', 5, 'nipples', 'pinch'
+		gs 'pain', 5, 'breasts', 'pull'
+		gs 'pain', 5, 'nipples', 'twist'
+		gs 'pain', 5, 'nipples', 'pull'
+		gs 'stat'
+	end
+end
+
+
+if $ARGS[0] = 'maniakd2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	$loc = 'mod_public_WC_kara7'
+	gs 'stat'
+
+	if ztemp = 'cultist' or ztemp = 'maniak':
+		'Then <<ztemp>> pulls me down and retied to a tree…'
+	else
+		'Then man pulls me down and retied to a tree…'
+	end
+	*nl
+	minut += 5
+	'He went somewhere but come back in 5 minutes with another branch with a duct-taped dildo! He starts to fuck me with this tool…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_start.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'BDSM', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'vaginal_dildo', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+	gs 'pain', 2, 'labia', 'burn'
+	stat['vaginal'] += 1
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'When he finished to play with my pussy he forced me to suck that dildo.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_bj.mp4"></video></center>'
+		gs 'arousal', 'bj', 5, 'bound', 'beast', 'rough', 'rape'
+		stat['bj'] += 1
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'"Now, you are ready for me…"'
+			*nl
+			'He changes my position, and tied be another way.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_start.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+			stat['vaginal'] += 1
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_2.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,20), 'bound', 'beast', 'rough', 'rape'
+				gs 'stat'
+				if pcs_magik > 0:
+					'Sometimes his disguise disappears and I see his real form…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_monstr_3.mp4"></video></center>'
+				end
+				act 'continue':
+					*clr & cla
+					'He groans and this is stops…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_fin.mp4"></video></center>'
+
+					if pcs_magik > 0:
+						gs 'npcgeneratec', 0, 'cultist', 420
+						gs 'boyStat', $npclastgenerated
+					else
+						gs 'npcgeneratec', 0, 'maniak', 42
+						gs 'boyStat', $npclastgenerated
+					end
+
+
+					guy += 1
+					rape += 1
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+
+
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+					if pcs_magik > 0:
+						ztemp = 'cultist'
+						gs 'cuminsidereact', 'cultist'
+
+					else
+						ztemp = 'maniak'
+						gs 'cuminsidereact', 'maniak'
+
+					end
+
+					stat['vaginal'] += 1
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<<ztemp>> wore his pants, slap my ass few times and go away…'
+					act 'wait': ztemp = 0 & gt 'mod_public_WC_kara7', 'kara7den'
+				end
+			end
+		end
+	end
+end
+
+--- mod_public_WC_kara7 ---------------------------------
+

@@ -1,0 +1,4089 @@
+# mod_public_WC_rab_livesklad_willdecrising
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	*clr & cla
+	menu_off = 1
+	$location_type = 'secluded'
+	willdec = daystart
+
+
+	$loc = 'mod_public_WC_rab_livesklad_willdecrising'
+	$metka = 'start'
+	$menu_loc = 'mod_public_WC_rab_livesklad_willdecrising'
+	$menu_arg = 'start'
+	$loc_arg = $ARGS[0]
+
+
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+
+	if consent < 0: consent = 0
+	temp = rand(1,consent)
+	if consent = 0: temp = 1
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	ropeslack = 0
+	$rope = 100
+
+	if pcs_magik > 0 and WCzoo = 1:
+		if temp > 8: temp -= 4
+		if temp > 8: temp -= 4
+		if temp > 8: temp -= 4
+		if temp > 8: temp = 8
+	elseif WCzoo = 1:
+		if temp >= 8: temp -= 3
+		if temp >= 8: temp -= 3
+		if temp >= 8: temp -= 3
+		if temp >= 8: temp = 7
+	else
+		if temp >= 7: temp -= 2
+		if temp >= 7: temp -= 2
+		if temp >= 7: temp -= 2
+		if temp >= 7: temp = 6
+	end
+
+	if temp = 1:
+		consent += 1
+		'"Now we will talk a little…" - I am deeply fear of his mad and calm voice'
+		act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '1'
+
+	elseif temp = 2:
+		consent += 1
+		if rand(1,2) = 1:
+			'"I am your Master, you need to understand this, show me your respect in a christian way - wash my legs…"'
+			'He unboot his leg and put it in a front of my face…'
+			lick = 1
+			act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', '2'
+		else
+			'"I am your Master, you need to visualise your respect to me, Betsi"'
+			'He push my face to his boot - "Lick it!"'
+			lick = 2
+			act 'lick his boot': gt 'mod_public_WC_rab_livesklad_willdecrising', '2'
+			act 'no way':
+				*clr & cla
+				'"So sad… I am your master. And you are going to learn it"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+				'Vania slaps me, than grab my hair and drag me…'
+				gs 'pain', rand(4,5), 'cheeks', 'slap'
+				gs 'stat'
+				gs 'pain', rand(4,6), 'hair', 'stretch'
+				gs 'stat'
+				zgoda -= 10
+				consent += rand(2,3)
+				'"Lets work on your consent harder" - he said with an icecold voice'
+				killvar 'atemp'
+				act 'I need to think about my choices': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+			end
+		end
+
+	elseif temp = 3:
+		consent += 1
+		if rand(1,2) = 1:
+			'"All your holes need to used to my cum"'
+			'"Now we will teach your pussy"'
+			'Vania fastens me harder'
+			atemp = 1
+			act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '3'
+		else
+			'"All your holes need to used to my cum"'
+			'"Now we will teach your ass"'
+			'Vania fastens me harder'
+			atemp = 2
+			act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '3'
+		end
+
+	elseif temp = 4:
+		consent += 1
+		'"You need to serv and help your Master."'
+		'I need to bring beer to Tilik and you will help me.'
+		act 'agree': gt 'mod_public_WC_rab_livesklad_willdecrising', '4'
+
+	elseif temp = 5:
+		consent += 2
+		'"I am your Master… but you still try to not listen me. I need one more tool to make you good girl."'
+		'"Today we will create it together" - he gigles'
+		act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '5'
+	elseif temp = 6:
+		consent += 2
+		'I like clean pussy, today we will cleaning yours.'
+		act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '6'
+	elseif temp = 7:
+		consent += 2
+		'"Today, my friend Mujyk will help us"'
+		'Vania untied me from the bed.'
+		'"lets go to the barn on the haystack"'
+		act 'go with Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '7'
+	elseif temp = 8:
+		consent += 3
+		'Vania untied me from the bed.'
+		'"have you read Harry Potter? We will go for a walk to the forest today"'
+		act 'go with Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '8'
+	end
+
+	if stat['boyfriends_current'] > 0:
+		gs 'willpower', 'exhib', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Please Vania I want to prove you that I am fully consent. Make a video with me and send it to my boyfriend.' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				atemp = rand(1,5)
+				if atemp >= 3:
+					'Hmmm…'
+					'Sounds good, lets do it'
+					act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', '0'
+				else
+					'Hmmm…'
+					'Nah, I don''t want to, I think you need better methods'
+					act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', '<<temp>>'
+				end
+			end
+		else
+			act 'Please Vania I want to prove you that I am fully consent. Make a video with me and send it to my boyfriend.' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+	if wcrok = 1:
+		cla
+		wcrok = 0
+
+		if temp = 1:
+				consent += 1
+				'"Now we will talk a little…" - I am deeply fear of his mad and calm voice'
+				act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '1'
+
+		elseif temp = 2:
+			consent += 1
+			if rand(1,2) = 1:
+				'"I am your Master, you need to understand this, show me your respect in a christian way - wash my legs…"'
+				'He unboot his leg and put it in a front of my face…'
+				lick = 1
+				act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', '2'
+			else
+				'"I am your Master, you need to visualise your respect to me, Betsi"'
+				'He push my face to his boot - "Lick it!"'
+				lick = 2
+				act 'lick his boot': gt 'mod_public_WC_rab_livesklad_willdecrising', '2'
+				act 'no way':
+					*clr & cla
+					'"So sad… I am your master. And you are going to learn it"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					'Vania slaps me, than grab my hair and drag me…'
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,6), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 10
+					consent += rand(2,3)
+					'"Lets work on your consent harder" - he said with an icecold voice'
+					killvar 'atemp'
+					act 'I need to think about my choices': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+				end
+			end
+		elseif temp = 3:
+			consent += 1
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/3cum/readytofuck.mp4"></video></center>'
+			if rand(1,2) = 1:
+				'"All your holes need to used to my cum"'
+				'"Now we will teach your pussy"'
+				'Vania fastens me harder'
+				atemp = 1
+				act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '3'
+			else
+				'"All your holes need to used to my cum"'
+				'"Now we will teach your ass"'
+				'Vania fastens me harder'
+				atemp = 2
+				act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '3'
+			end
+		elseif temp = 4:
+			consent += 1
+			'"You need to serv and help your Master."'
+			'I need to bring beer to Tilik and you will help me.'
+			act 'agree': gt 'mod_public_WC_rab_livesklad_willdecrising', '4'
+		elseif temp = 5:
+			consent += 2
+			'"I am your Master… but you still try to not listen me. I need one more tool to make you good girl."'
+			'"Today we will create it together" - he gigles'
+			act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '5'
+		elseif temp = 6:
+			consent += 2
+			'I like clean pussy, today we will cleaning yours.'
+			act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '6'
+		elseif temp = 7:
+			consent += 2
+			'"Today, my friend Mujyk will help us"'
+			'Vania untied me from the bed.'
+			'"lets go to the barn on the spft hay"'
+			act 'go with Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '7'
+		elseif temp = 8:
+			consent += 3
+			'Vania untied me from the bed.'
+			'"have you read Harry Potter? We will go for a walk to the forest today"'
+			act 'go with Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '8'
+		end
+	end
+
+	if (month = 12 and rand(1,3) = 1) or (month = 12 and day = 31):
+		*clr & cla
+		'"I have great idea for you gor today!"'
+		'"Holidays are coming!!! You know!"'
+		'"We need to celebrate!"'
+		act 'I am scared and have no choice': gt'mod_public_WC_rab_livesklad_willdecrising', 'ny'
+	end
+end
+
+
+
+if $ARGS[0] = '0':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	'Vania untied me.'
+	'"OK, Betsi, lets start"'
+	'He puls out his phone on himself.'
+	'"I am the Master of Betsi, you will see her in a moment. But you know her as…"'
+	'Vania waits…'
+	consent -= 1
+
+	act 'keep silence':
+		cla
+		'Betsi, the audience are waiting…'
+		zgoda -= 5
+
+		act 'say "<<$pcs_nickname>> <<$pcs_lastname>>"':
+			gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+		end
+
+		act 'lies about my name':
+			cla
+			persuas_exp += rand(0,2)
+			gs 'stat'
+			if pcs_persuas >= rand(50,100):
+				gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+			else
+				'Betsi, it was your idea… Good girls never lies'
+				consent += 1
+				zgoda -= 5
+				act 'say "<<$pcs_nickname>> <<$pcs_lastname>>"':
+					gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+				end
+				act 'No, I don''t want to':
+					cla
+					consent += 1
+					'It was your idea stupid bitch.'
+					'"Well, Lets work on your consent other way"'
+					wcrok = 1
+					act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+				end
+			end
+		end
+	end
+
+	act 'say "<<$pcs_nickname>> <<$pcs_lastname>>"':
+		gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+	end
+
+	act 'lies about my name':
+		cla
+		persuas_exp += rand(0,2)
+		gs 'stat'
+		if pcs_persuas >= rand(50,100):
+			gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+		else
+			'Betsi, it was your idea… Good girls never lies'
+			consent += 1
+			zgoda -= 5
+			act 'say "<<$pcs_nickname>> <<$pcs_lastname>>"':
+				gt 'mod_public_WC_rab_livesklad_willdecrising', '01'
+			end
+			act 'No, I don''t want to':
+				cla
+				consent += 1
+				'It was your idea stupid bitch.'
+				'"Well, Lets work on your consent other way"'
+				wcrok = 1
+				act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+			end
+		end
+	end
+end
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+if $ARGS[0] = '01':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	'"Yup, this piece of meat is mine"'
+	'"Here is she, show your tits, Betsi, don''t be shy"'
+	act 'show the tits':
+		*clr & cla
+		'"Nice tits, Betsi!"'
+		'"They all mine!"'
+		'"Ok ex-whoever you are, now is a showtime"'
+		'He gives me his phone, drop his pants… now his dick wiggling near my face.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/0.mp4"></video></center>'
+		gs 'arousal', 'flash', rand(5,10), 'sub', 'humiliation'
+		gs 'stat'
+		act 'start to suck':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/1.mp4"></video></center>'
+			'"Say hello to your ex"'
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation'
+			gs 'stat'
+			videovania = 1
+
+			act '"helooughh"':
+				cla
+				'"Good girl"'
+				willpowermax -= rand(1,5)
+				gs 'stat'
+				'<i>Deep inside I am very embarrassed…</i>'
+				bimbo += 10
+				gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation'
+				gs 'stat'
+				act 'keep sucking':
+					*clr & cla
+					gs 'arousal', 'bj', rand(5,15), 'sub', 'humiliation'
+					gs 'stat'
+					'In some time Vania fills my mouth with a hot cum'
+					'"Good girl, now play with my cum a little…"'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/2.mp4"></video></center>'
+					act 'continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+						'"It was fun."'
+						'"I am going to keep this video. We will ssend it together with some similar videos, lets make some sort of a collection"'
+						act 'nod':
+							cla
+							'"Good Betsi, now you can rest"'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(5,10)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+
+			if stat['bj'] >= 200:
+				act 'Work harder to make him cum quicker':
+					*clr & cla
+					gs 'arousal', 'bj', rand(1,5), 'sub', 'humiliation'
+					gs 'stat'
+					'In a few minutes Vania fills my mouth with his hot cum'
+					'"Good girl, now play with my cum a little…"'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/2.mp4"></video></center>'
+					act 'continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+						'"It was fun."'
+						'"I am going to keep this video. We will ssend it together with some similar videos, lets make some sort of a collection"'
+						act 'nod':
+							cla
+							'"Good Betsi, now you can rest"'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(5,10)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+	end
+
+
+
+
+	act 'No, I don''t want to':
+		cla
+		consent += 1
+		'It was your idea stupid bitch.'
+		'"Well, Lets work on your consent other way"'
+		'He puts the phone in his pocket'
+		wcrok = 1
+		act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+	end
+
+
+
+
+
+
+	if videovania >= 1:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'"Yup, this piece of meat is mine and we are ready for round 2!"'
+		'"Show your tits, Betsi, don''t be shy"'
+		act 'show the tits':
+			*clr & cla
+			'"Nice tits, Betsi!"'
+			'"They all mine!"'
+			'"Ok ex-whoever you are, now is a showtime"'
+			'He gives me his phone, drop his pants… now his dick wiggling near my face.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/0.mp4"></video></center>'
+			gs 'arousal', 'flash', rand(5,10), 'sub', 'humiliation'
+			gs 'stat'
+			act 'start to suck':
+				*clr & cla
+				'"Nice, Betsi. Now ride me!"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/1.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation'
+				gs 'stat'
+				videovania = 1
+
+
+				act 'ride Vania':
+					*clr & cla
+
+					'"Yes, Betsi it''s nice new video to my collection"'
+					videovania = 2
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/sex.mp4"></video></center>'
+
+					gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+					gs 'stat'
+
+
+					act 'continue':
+						*clr & cla
+						temp = rand(1,10)
+						'Vania full me with a warm sperm'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						gs 'sweat', 'add', 15
+						spafinloc = 0
+						cumnostd = 1
+						cumarrkno =  1
+						cumarrdel = 0
+						sparrvol = 200
+						cumarrcpt = 200
+						gs 'cum_call', 'vaginal', 'Vania'
+						gs 'cuminsidereact', 'Vania'
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+							'"It was fun."'
+							'"Really god video for the collection"'
+							act 'nod':
+								cla
+								'"Good Betsi, now you can rest"'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(5,10)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							end
+						end
+					end
+				end
+			end
+		end
+		act 'No, I don''t want to…':
+			cla
+
+			if stat['boyfriends_current'] > 0:
+				'"Betsi, I still have the first video"'
+				'"Do you really wnat to show it to your bf?"'
+
+				act 'No! Don''t show him, I am begging you!!!… show my tits':
+					*clr & cla
+					'"Nice tits, Betsi!"'
+					'"They all mine!"'
+					'"Ok ex-whoever you are, now is a showtime"'
+					'He gives me his phone, drop his pants… now his dick wiggling near my face.'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/0.mp4"></video></center>'
+					gs 'arousal', 'flash', rand(5,10), 'sub', 'humiliation'
+					gs 'stat'
+					act 'start to suck':
+						*clr & cla
+						'"Nice, Betsi. Now ride me!"'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/1.mp4"></video></center>'
+
+						gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation'
+						gs 'stat'
+						videovania = 1
+
+
+						act 'ride Vania':
+							*clr & cla
+
+							'"Yes, Betsi it''s nice new video to my collection"'
+							videovania = 2
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/sex.mp4"></video></center>'
+
+							gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+							gs 'stat'
+
+
+							act 'continue':
+								*clr & cla
+								temp = rand(1,10)
+								'Vania full me with a warm sperm'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+									'"It was fun."'
+									'"Really god video for the collection"'
+									act 'nod':
+										cla
+										'"Good Betsi, now you can rest"'
+										'He pet me like a dog a little and then tied me back to my bad'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+										minut += 90
+										pcs_mood += rand(30,50)
+										bimbo += 5
+										zgoda += rand(5,10)
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+								end
+							end
+						end
+					end
+				end
+				act 'I don''t care':
+					cla
+					'Ok, as you wish'
+
+					consent += 1
+					wcrok = 1
+
+					'Here a cool story about you on ВКонтакте'
+
+					minut += 5
+
+					fame['pav_prostitute'] += 8
+					slutty += 4
+					pav_media += 2
+					gs 'exp_gain', 'inhib', 4
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					if stat['boyfriends_current'] > 0:
+						if rand(0,100) >= 60:
+							'I received a massage from my boyfriend… We broke up.'
+							gs 'lover', 'remove', lover_number
+							slutty += 4
+							gs 'stat'
+						end
+					end
+					'Let''s develope your consent, you obviously don''t want to skip today lesson'
+					act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+				end
+			else
+				cla
+				consent += 1
+				'It was your idea stupid bitch.'
+				'"Well, Lets work on your consent other way"'
+				'He puts the phone in his pocket'
+				wcrok = 1
+				act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+			end
+		end
+	end
+
+	if videovania >= 2:
+		act 'I have better idea, my Master… let''s make a video show':
+			*clr & cla
+			willpowermax -= rand(2,5)
+			'"Well, well, I can''t disagree"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			act 'showtime!':
+				*clr & cla
+				'I put my hand on Vania''s groin and other hand in his pocket'
+				'While I rub his groin I put out his phone.'
+
+				act 'start to suck and filming':
+					*clr & cla
+					'I stand on my knees and suck him'
+					videovania = 3
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/31bj.mp4"></video></center>'
+
+					gs 'arousal', 'bj', rand(10,20), 'sub', 'humiliation'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'Vania takes hios phone from me to release my second hand for sucking'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/32bj.mp4"></video></center>'
+
+						gs 'arousal', 'bj', rand(10,20), 'sub', 'humiliation'
+						gs 'stat'
+
+
+						act 'continue':
+							*clr & cla
+							'I take the phone from Vania and bend myself'
+							'Vania fucks me'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/33sex.mp4"></video></center>'
+
+							gs 'arousal', 'vaginal', rand(10,20), 'sub', 'humiliation'
+							gs 'stat'
+
+
+
+
+							act 'continue':
+								*clr & cla
+								temp = rand(1,10)
+								'Vania full me with a warm sperm'
+								'Betsi, this was the shit… I really glad you are so good slut for me'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+									'"It was amazing."'
+									zgoda += rand(5,10)
+									consent -= 2
+									if consent < 0: consent = 0
+
+									act 'nod':
+										*clr & cla
+										temp = rand(1,3)
+										if temp >= 2 and stat['boyfriends_current'] > 0:
+											'Vania is peting me like a dog'
+											'"You know, Now, my collection is full"'
+											'"Lets send it to your bf!"'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+											minut += 90
+											pcs_mood += rand(30,50)
+											bimbo += 5
+											zgoda += rand(5,10)
+											gs 'stat'
+
+											act 'Yes, master. You are the only man in my life':
+												*clr & cla
+												'We sits together and send a mails to my bf and block them'
+												bimbo += 25
+												minut += 30
+												willpowermax -= rand(1,5)
+
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+
+												zgoda = 100
+												dick = 17
+												npc_dick[$npclastgenerated] = dick
+												gs 'boyStat', 'A442'
+												gs 'stat'
+
+
+												'"Well, Betsy, for now I am pleased, you are really me slut"'
+												'"You can go back to live in your room."'
+												'"We will start your train tomorrow"'
+												'"you will have a lesson each day, except Saturday. Come here at 4 PM"'
+												'Don''t forget to visit Tolik at evening.'
+
+												'Ow, Also I give you 20 words'
+
+												slova += 20
+												zvit = week
+												consent = 0
+												$loc = 'mod_public_WC_rab'
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+												act 'Go to my room':
+													gt 'mod_public_WC_rab', 'spat2'
+												end
+											end
+
+											act 'no, please no':
+												cla
+												'"Hmmm, this is not the answer I want to hear."'
+												'"You still not fully my pet…"'
+												'"Well, you need to choose one… I will download the collections to the all pornsites I know OR you will send the collection to your bf"'
+												act 'Do whatever you want':
+
+													'"Ok, you are going to be famos"'
+													porn_fame += 12
+													gs 'fame', 'city', 'porn', 90
+													pornbj += 2
+													pornvag += 2
+													porncream += 2
+													gs 'stat'
+
+
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+
+
+
+
+													act 'wait':
+														cla
+														'Vania tied me back to the bed'
+														'"rest now, porn star…"'
+
+														act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+													end
+												end
+
+												act 'Lets send it to my bf!':
+													*clr & cla
+													'We sits together and send a mails to my bf and block him'
+													bimbo += 25
+													minut += 30
+													willpowermax -= rand(1,3)
+
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+
+													zgoda += 20
+													'"Good Betsi, it''s a big step for you on your way to be my slave"'
+													'He pet me like a dog a little and then tied me back to my bad'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+													minut += 90
+													pcs_mood += rand(30,50)
+													bimbo += 5
+
+													gs 'stat'
+													act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+												end
+											end
+										else
+											'"Good Betsi, now you can rest"'
+											'He pet me like a dog a little and then tied me back to my bad'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+											minut += 90
+											pcs_mood += rand(30,50)
+											bimbo += 5
+											zgoda += rand(5,10)
+											gs 'stat'
+											act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '1':
+	*clr & cla
+	zgoda += rand(5,10)
+	pcs_mood -= rand(30,50)
+	minut += rand(45,60)
+	willpowermax -= rand(0,2)
+	gs 'stat'
+	'He didn''t screem, he just talk deeply cold and calm voice'
+	'It was horrible…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/1agressivespeach/agressive_speach ('+rand(1,2)+').jpg"></center>'
+	if pcs_humint >= rand(20,80):
+		minut += rand(45,60)
+		gs 'stat'
+		'He talks, but I am sure I managed it…'
+	else
+		'I couldn''t stand it and start to cry…'
+		'He slap me hard'
+		'"Shut the fuck up and listen me."'
+		'I am so scared that I have stoped to cry immediately…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+		gs 'pain', rand(5,8), 'cheeks', 'slap'
+		gs 'stat'
+		temp = 14145
+	end
+
+	'He talk some more time'
+	'"I hope you will remember this talk for a lifetime"'
+
+	act 'nod':
+		cla
+		if temp = 14145:
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/aftertrain ('+rand(1,3)+').jpg"></center>'
+			temp = 1
+		end
+		'"Good Betsi, now you can rest"'
+		act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+	end
+end
+
+
+
+if $ARGS[0] = '2':
+	*clr & cla
+	if lick = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		killvar 'lick'
+
+		act 'lick his foot':
+			*clr & cla
+			zgoda += rand(5,10)
+			pcs_mood -= rand(10,30)
+			minut += rand(45,60)
+			willpowermax -= rand(1,2)
+			gs 'stat'
+
+			'Nice, Betsi. Now clean the second foot'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+
+			act 'lick his 2nd foot':
+				*clr & cla
+				if rand(1,3) = 1: consent -= 1
+				zgoda += rand(5,10)
+				pcs_mood -= rand(10,30)
+				minut += rand(45,60)
+				willpowermax -= rand(1,2)
+				gs 'stat'
+
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+
+				'"Nice work, Betsi. I see your respects me"'
+				'"Good Betsi, now you can rest"'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+
+		end
+
+		act 'no way':
+			*clr & cla
+			zgoda -= 5
+			gs 'pain', rand(1,4), 'mouth', 'pierce'
+			gs 'stat'
+			'"Wrong answer"'
+			'He puls the leash and my head pierces on his foot…'
+			'"Lick bitch!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickleg.jpg"></center>'
+			act 'lick his foot':
+				*clr & cla
+				zgoda += rand(5,10)
+				pcs_mood -= rand(10,30)
+				minut += rand(45,60)
+				willpowermax -= rand(1,2)
+				gs 'stat'
+
+				'Ok, Betsi. Now clean the second foot'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+
+				act 'lick his 2nd foot':
+					*clr & cla
+					zgoda += rand(5,10)
+					pcs_mood -= rand(10,30)
+					minut += rand(45,60)
+					willpowermax -= rand(1,2)
+					gs 'stat'
+
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+
+					'"Nice work, Betsi. I see your respects me"'
+					'"Good Betsi, now you can rest"'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+
+			end
+		end
+	else
+		'I lick his boot, it has bad taste, some dirt, maybe something else… no, it must be dirt only'
+		zgoda += rand(5,10)
+		pcs_mood -= rand(10,30)
+		minut += rand(45,60)
+		willpowermax -= rand(1,2)
+		'The shoe is half clean'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickedshoes ('+rand(1,3)+').mp4"></video></center>'
+		killvar 'lick'
+		act 'lick more':
+			*clr & cla
+			if rand(1,3) = 1: consent -= 1
+			'I lick his shoes even more, it''s '
+			minut += rand(45,60)
+			pcs_mood -= rand(10,20)
+			willpowermax -= rand(1,2)
+			gs 'stat'
+			'Now the shoes is clean'
+			'"Nice work, Betsi. Now I see your respect to me, it''shining"'
+			'"Good Betsi, now you can rest"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickedshoes ('+rand(1,3)+').mp4"></video></center>'
+
+
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+		act 'look up on Vania':
+			*clr & cla
+			'"IS it clean?!"'
+			'Vania slaps me!'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+			gs 'pain', rand(4,5), 'cheeks', 'slap'
+			gs 'stat'
+
+			act 'look up on Vania':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				'"You worthless cunt."'
+				'He spits on me few times'
+				'"Ok, it''s not so bed for now. Anyway I can see your respect"'
+				zgoda += rand(0,10)
+				pcs_mood -= rand(0,10)
+				minut += rand(45,60)
+				willpowermax += rand(1,2)
+				gs 'stat'
+				'"Go to your bed"'
+				act 'go to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+
+			act 'lick more':
+				*clr & cla
+				if rand(1,3) = 1: consent -= 1
+				'I lick his shoes even more, it''s '
+				minut += rand(45,60)
+				pcs_mood -= rand(10,20)
+				willpowermax -= rand(1,2)
+				gs 'stat'
+				'Now the shoes is clean'
+				'"Nice work, Betsi. Now I see your respect to me, it''shining"'
+				'"Good Betsi, now you can rest"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickedshoes ('+rand(1,3)+').mp4"></video></center>'
+
+
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		end
+	end
+
+	if week >= 6:
+		*clr & cla
+
+		if lick = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			killvar 'lick'
+
+			act 'lick his foot':
+				*clr & cla
+				zgoda += rand(5,10)
+				pcs_mood -= rand(10,30)
+				minut += rand(45,60)
+				willpowermax -= rand(1,2)
+				gs 'stat'
+
+				'While I was licking his foot Tolik, Artem and some other guy? come in…'
+				'"The "Fool", OMG I have totally forget about the game!" - Vania says'
+				'"Meh, Lets play here. We will use Betsi as a table."'
+				'"Well, lets winner team also use Betsi" - add Tolik'
+				'"ok"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+				act 'be a table': gt 'mod_public_WC_rab_livesklad_willdecrising', '21'
+			end
+
+			act 'no way':
+				*clr & cla
+				zgoda -= 5
+				gs 'pain', rand(1,4), 'mouth', 'pierce'
+				gs 'stat'
+				'"Wrong answer"'
+				'He puls the leash and my head pierces on his foot…'
+				'"Lick bitch!"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickleg.jpg"></center>'
+				act 'lick his foot':
+					*clr & cla
+					zgoda += rand(5,10)
+					pcs_mood -= rand(10,30)
+					minut += rand(45,60)
+					willpowermax -= rand(1,2)
+					gs 'stat'
+
+					'While I was licking his foot Tolik, Artem and some other guy? come in…'
+					'"The "Fool", OMG I have totally forget about the game!" - Vania says'
+					'"Meh, Lets play here. We will use Betsi as a table."'
+					'"Well, lets winner team also use Betsi" - add Tolik'
+					'"ok"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/licklegv.mp4"></video></center>'
+					act 'be a table': gt 'mod_public_WC_rab_livesklad_willdecrising', '21'
+
+				end
+			end
+		else
+			'I lick his boot, it has bad taste, some dirt, maybe something else… no, it must be dirt only'
+			zgoda += rand(5,10)
+			pcs_mood -= rand(10,30)
+			minut += rand(45,60)
+			willpowermax -= rand(1,2)
+			'While I was licking his foot Tolik, Artem and some other guy? come in…'
+			'"The "Fool", OMG I have totally forget about the game!" - Vania says'
+			'"Meh, Lets play here. We will use Betsi as a table."'
+			'"Well, lets winner team also use Betsi" - add Tolik'
+			'"ok"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/lickedshoes ('+rand(1,3)+').mp4"></video></center>'
+			killvar 'lick'
+			act 'be a table': gt 'mod_public_WC_rab_livesklad_willdecrising', '21'
+		end
+	end
+end
+
+if $ARGS[0] = '21':
+	*clr & cla
+	'Guys play the game and on me while I licks the Vania leg'
+	zgoda += rand(0,10)
+	pcs_mood -= rand(5,10)
+	minut += rand(10,30)
+	willpowermax -= rand(0,1)
+	gs 'stat'
+
+	foolcv = 0
+	foolct = 0
+
+	'"And here the 6-s for you on military shoulder straps" '
+	if rand(1,2) = 1:
+		'happily Vania said'
+		act 'rotate myself - face to unknown man': gt 'mod_public_WC_rab_livesklad_willdecrising', '22'
+	else
+		'happily Tolik said'
+		act 'rotate myself - face to Artem': gt 'mod_public_WC_rab_livesklad_willdecrising', '22'
+	end
+
+	'Betsi, rotate yourself, we need to start next round.'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/cards_event/0lickvanialeg.mp4"></video></center>'
+
+
+end
+
+if $ARGS[0] = '22':
+	*clr & cla
+	'I have sex with a winners while guys play the round…'
+
+	if rand(1,3) = 1: consent -= 1
+	zgoda += rand(0,6)
+
+	atemp = rand(10,30)
+	minut -= atemp
+	willpowermax -= rand(0,1)
+	gs 'stat'
+
+	gs 'arousal', 'bj', atemp, 'sub', 'humiliation', 'exhibitionism', 'group', 'unknown'
+	gs 'stat'
+	gs 'arousal', 'vaginal', atemp, 'sub', 'humiliation', 'exhibitionism', 'group', 'unknown'
+	gs 'stat'
+
+
+	if rand(1,2) = 1:
+		'happily Vania said'
+		foolcv += 1
+		temp = 6 + foolcv
+		'"And here the <<temp>>-s for you on military shoulder straps" '
+
+		act 'rotate myself - face to unknown man': gt 'mod_public_WC_rab_livesklad_willdecrising', '22'
+	else
+		'happily Tolik said'
+		foolct += 1
+		temp = 6 + foolct
+		'"And here the <<temp>>-s for you on military shoulder straps" '
+		act 'rotate myself - face to Artem': gt 'mod_public_WC_rab_livesklad_willdecrising', '22'
+	end
+
+	'Betsi, rotate yourself, we need to start next round.'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/cards_event/2winerfuck.jpg"></center>'
+
+	if foolcv >= rand(3,5):
+		killvar 'foolcv'
+		*clr & cla
+
+		'Vania and unknown guy cum in me!'
+		'"Yeah we won!"'
+		'"Lets go…"'
+		'"Betsi, good, you can rest"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/cards_event/2winerfuck.jpg"></center>'
+
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'vagina', $npclastgenerated, 0
+		gs 'npcgeneratec', 0, 'a unknown man', rand(18,45)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+
+	elseif foolct >= rand(3,5):
+		killvar 'foolct'
+		*clr & cla
+
+		'Artem and Tolik cum in me!'
+		'"Yeah we won!"'
+		'"Lets go…"'
+		'"Betsi, good, you can rest"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/2lick_leg/cards_event/2winerfuck.jpg"></center>'
+
+		dick = 25
+		npc_dick[$npclastgenerated] = dick
+		gs 'boyStat', 'A443'
+		gs 'cum_call', 'vagina', 'A443', 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		dick = 18
+		npc_dick[$npclastgenerated] = dick
+		gs 'boyStat', 'A441'
+		gs 'cum_call', 'mouth', 'A441', 0
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+	end
+end
+
+
+
+if $ARGS[0] = '3':
+	*clr & cla
+	'Vania start to fuck me'
+	if rand(1,3) = 1: consent -= 1
+	if atemp = 1:
+
+		temp = rand(1,2)
+		if temp = 1: temp = rand(5,6)
+		if temp = 2: temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv (<<temp>>).mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(10,20), 'sub', 'humiliation'
+		gs 'stat'
+	else
+
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/ass.jpg"></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv (6).mp4"></video></center>'
+		end
+		gs 'arousal', 'anal', rand(10,20), 'sub', 'humiliation'
+		gs 'stat'
+	end
+
+	act 'wait':
+		*clr & cla
+		'In a short time Vania cums in me'
+
+
+
+		if atemp = 1:
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/vag.jpg"></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'vagina', $npclastgenerated, 0
+			gs 'arousal', 'vaginal', rand(1,5), 'sub', 'humiliation'
+			gs 'stat'
+		else
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'anus', $npclastgenerated, 0
+			gs 'arousal', 'anal', rand(1,5), 'sub', 'humiliation'
+			gs 'stat'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'wait':
+			*clr & cla
+			'Vania take a butplug'
+			if atemp = 1:
+				'End put it in my pussy'
+				'"I fully fill you, maybe a little Vania will be in a 9 mounthes XD"'
+				'"Enyway your pussy and my cum need to know each other better"'
+				'"I''ll be back XD"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/3cum/1havemycumallday.mp4"></video></center>'
+				gs 'arousal', 'vaginal_dildo_give', rand(1,5), 'sub', 'humiliation'
+				gs 'stat'
+			else
+				'End put it in my ass'
+				'"Enyway your ass and my cum need to know each other better"'
+				'"I''ll be back XD"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/3cum/1havemycumalldayinass.jpg"></center>'
+				analPlugIn = 1
+				gs 'arousal', 'anal_dildo_give', rand(1,5), 'sub', 'humiliation'
+				gs 'stat'
+			end
+
+			act 'wait':
+				*clr & cla
+				'I am waiting, cuz I can do nothing…'
+				'In some time Vania comes back'
+				'"Hi, Betsi…"'
+				if atemp = 1:
+					'I think your pussy has anought lesson for today'
+					'Vania takes plug away'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/3cum/2havemycumallday.mp4"></video></center>'
+
+				else
+					'I think your ass has anought lesson for today'
+					'Vania takes plug away'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/3cum/2havemycumalldayinass.mp4"></video></center>'
+					analPlugIn = 0
+
+				end
+				killvar 'atemp'
+				if rand(1,3) = 1: consent -= 1
+				zgoda += rand(1,4)
+
+				'"Now, you can rest."'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '4':
+	*clr & cla
+	beerwalk = 0
+	if putbeer = 0:
+		atemp = 0
+		putbeer += 1
+	elseif putbeer <= 2:
+		atemp = rand(1,2)
+	elseif putbeer <= 4:
+		atemp = rand(1,4)
+	elseif putbeer >= 7:
+		atemp = rand(1,3)
+		if atemp = 1:
+			atemp = rand(1,2)
+		elseif atemp = 2:
+			atemp = rand(3,4)
+		else
+			atemp = 5
+		end
+	end
+
+	if atemp = 0:
+		'"Now I will untie you and you will bring this beer to the Tolik."'
+		'"But before I will push this beer inside you."'
+		putbeer += 1
+		atemp = 1
+	end
+
+	if atemp = 1:
+		putbeer += 1
+		'Vania takes a beer bottle, and putt it deep in my pussy'
+		'When I stoped screaming, Vania starts to untie me.'
+		'"Tolik on his bed right now, bring the beer to him."'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_bottle_in.mp4"></video></center>'
+		gs 'arousal', 'vaginal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		gs 'pain', rand(4,7), 'vaginal', 'pierce'
+		gs 'stat'
+
+		gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+		gs 'stat'
+	elseif atemp = 2:
+		putbeer += 1
+		'Vania takes a beer can, and putt it deep in my pussy'
+		'When I stoped screaming, Vania starts to untie me.'
+		'"Tolik on his bed right now, bring the beer to him."'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_can_in.jpg"></center>'
+		gs 'arousal', 'vaginal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		gs 'pain', rand(6,9), 'vaginal', 'pierce'
+		gs 'stat'
+
+		gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+		gs 'stat'
+	elseif atemp = 3:
+		analPlugIn = 1
+		putbeer += 1
+		'Vania takes a beer bottle, and putt it deep in my ass'
+		'When I stoped screaming, Vania starts to untie me.'
+		'"Tolik on his bed right now, bring the beer to him."'
+		if rand(1,3) >= 2:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in'+rand(1,2)+'.mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in1p.jpg"></center>'
+		end
+		gs 'arousal', 'anal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		if pcs_ass <= 20:
+			gs 'pain', rand(4,7), 'asshole', 'pierce'
+			gs 'stat'
+		else
+			'My asshole is so big, it can easy "eat" the beer'
+		end
+		gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+
+		gs 'stat'
+
+
+
+
+	elseif atemp = 4:
+		analPlugIn = 1
+		putbeer += 1
+		'Vania takes a beer can, and putt it deep in my ass'
+		'When I stoped screaming, Vania starts to untie me.'
+		'"Tolik on his bed right now, bring the beer to him."'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/can_in'+rand(1,2)+'.jpg"></center>'
+
+		gs 'arousal', 'anal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		if pcs_ass <= 20:
+			gs 'pain', rand(4,7), 'asshole', 'pierce'
+			gs 'stat'
+		else
+			'My asshole is so big, it can easy "eat" the beer'
+		end
+		gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+
+		gs 'stat'
+	end
+
+
+
+
+	act 'I Put the beer out from me':
+		*clr & cla
+		willpowermax += rand(1,3)
+		'"So sad… I am your master. And you are going to learn it"'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+		'Vania slaps me, than grab my hair and drag me…'
+		gs 'pain', rand(4,5), 'cheeks', 'slap'
+		gs 'stat'
+		gs 'pain', rand(4,6), 'hair', 'stretch'
+		gs 'stat'
+		zgoda -= 10
+		consent += rand(2,3)
+		'"Lets work on your consent harder" - he said with an icecold voice'
+		killvar 'atemp'
+		'Vania ties me back to the bed… and push the bottle in my ass…'
+		analPlugIn = 1
+		gs 'arousal', 'anal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		if pcs_ass <= 20:
+			gs 'pain', rand(5,8), 'asshole', 'pierce'
+			gs 'stat'
+		end
+		'I start to scream and Vania with a laught starts to fuck me'
+		gs 'arousal', 'vaginal', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/fuck_while_botle_in_ass.mp4"></video></center>'
+		act 'continue':
+			*clr & cla
+			'Vania fucks me with his dick and the bottle'
+			'He suddenly pulls out the bottle when he cums in me…'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/tied/vag.jpg"></center>'
+			gs 'boyStat', $npclastgenerated
+			spafinloc = 0
+			analPlugIn = 0
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			'Next time think beeter, Betsi…'
+			act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+
+	act 'bring the beer to the Tolik': gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+
+
+
+
+	if atemp = 5:
+		*clr & cla
+		analPlugIn = 1
+		putbeer += 1
+		'Vania takes a beer can, and putt it deep in my pussy'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_can_in.jpg"></center>'
+		gs 'arousal', 'vaginal_dildo_give', rand(20,35), 'sub', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		gs 'pain', rand(6,9), 'vaginal', 'pierce'
+		gs 'stat'
+
+		act 'Screem!':
+			*clr & cla
+			'While I am screeming Vania casually takes a beer bottle, and putt it deep in my ass'
+
+			if rand(1,3) >= 2:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in'+rand(1,2)+'.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in1p.jpg"></center>'
+			end
+			gs 'arousal', 'anal_dildo_give', rand(30,35), 'sub', 'humiliation'
+			minut -= 30
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+			gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+			gs 'stat'
+			if pcs_ass <= 20:
+				gs 'pain', rand(4,7), 'asshole', 'pierce'
+				gs 'stat'
+				act 'More screem!':
+					*clr & cla
+					'When I stoped screaming, Vania starts to untie me.'
+					'"Tolik on his bed right now, bring the beer to him."'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+
+					act 'bring the beer to the Tolik': gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+				end
+			else
+				'Myasshole is so big, it can easy "eat" the beer'
+				act 'continue':
+					*clr & cla
+					'Vania starts to untie me.'
+					'"Tolik on his bed right now, bring the beer to him."'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+
+					act 'bring the beer to the Tolik': gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+				end
+			end
+
+		end
+	end
+end
+
+if $ARGS[0] = '41':
+	*clr & cla
+	willpowermax -= rand(0,2)
+	gs 'stat'
+	'I am on my way to Tolik, but I am slowly, cuz I''m afraid to fall the beer.'
+
+	act 'go to Tolik':
+		beerwalk += 1
+		gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+	end
+
+	if rand(1,4) = 1 and atemp <= 4:
+		*clr & cla
+		if beerwalk > 0: temp = rand(1,4)
+		if temp = 1: 'I am on my way to Tolik'
+		if temp = 2: 'I am closer and closer to Tolik'
+		if temp = 3: 'OMG it''s so hummiliating'
+		if temp = 4: 'few more steps left…'
+		'I am on my way to Tolik, but I am slowly, cuz I''m afraid to fall the beer.'
+		'…Suddenly the beer falls out from me…'
+		analPlugIn = 0
+		'But I grab it…'
+		'<i>Do I need to put it back?</i>'
+		if atemp = 1: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_bottle'+rand(1,4)+'.jpg"></center>'
+		if atemp = 2: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_can'+rand(1,6)+'.jpg"></center>'
+		if atemp = 3: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle'+rand(1,5)+'.jpg"></center>'
+		if atemp = 4: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/can'+rand(1,6)+'.jpg"></center>'
+		if atemp = 5: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+		act 'put it back':
+			cla
+			willpowermax -= rand(1,3)
+			gs 'stat'
+			if atemp <= 2:
+				gs 'arousal', 'vaginal_dildo_give', rand(20,25), 'sub', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				gs 'pain', rand(4,7), 'vaginal', 'pierce'
+				gs 'stat'
+				'AAgggh, so painfull'
+
+				gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+				gs 'stat'
+			else
+				gs 'arousal', 'anal_dildo_give', rand(20,25), 'sub', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				if pcs_ass <= 20:
+					gs 'pain', rand(5,8), 'asshole', 'pierce'
+					gs 'stat'
+					'AAgggh, so painfull'
+				end
+				analPlugIn = 1
+				gs 'stat'
+				gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+
+				gs 'stat'
+				'the beer is in my deep ass'
+			end
+			act 'go to Tolik':
+				beerwalk += 1
+				gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+			end
+		end
+
+		act 'just bring beer to Tolik in my hands':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+			temp = rand(1,3)
+			if temp <= 2:
+				'I gave the beer to Tolik, He takes not even bother to look at me'
+				'Everything good…'
+				act 'go back to Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '42'
+			else
+				'Tolik looks at me… "WTF? Why you use your hands?"'
+				'"You sink you so smart, Betsi?!"'
+				'He breaks me down, take a bottle from the table and pierces it inside my ass with a nig force.'
+				analPlugIn = 1
+				putbeer -= 1
+				if rand(1,3) >= 2:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in'+rand(1,2)+'.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_in1p.jpg"></center>'
+				end
+				gs 'arousal', 'anal_dildo_give', rand(20,35), 'sub', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				gs 'pain', rand(6,7), 'asshole', 'pierce'
+				gs 'stat'
+				act 'Screem!':
+					*clr & cla
+					'Tolik starts to fuck me!'
+					dick = 25
+					npc_dick[$npclastgenerated] = dick
+					gs 'boyStat', 'A443'
+
+					gs 'arousal', 'vaginal', rand(20,45), 'sub', 'humiliation'
+					gs 'stat'
+					gs 'pain', rand(2,4), 'vaginal', 'stretch'
+					gs 'pain', rand(0,2), 'vaginal', 'tear'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/fuck_while_botle_in_ass.mp4"></video></center>'
+					act 'Continue':
+						*clr & cla
+						temp = rand(1,10)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						'Tolik always fucks for a long time and always completely pumps my vagina'
+						'He suddenly pulls out the bottle when he cums in me…'
+						'When he wipes his deek he say "Go back to Vania, you can tell the beer was good"'
+						gs 'sweat', 'add', 15
+						spafinloc = 0
+						cumnostd = 1
+						cumarrkno =  1
+						cumarrdel = 0
+						sparrvol = 200
+						cumarrcpt = 200
+						gs 'cum_call', 'vaginal', 'Tolik'
+						gs 'cuminsidereact', 'Tolik'
+						gs 'cum_manage'
+						gs 'stat'
+						analPlugIn = 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						bwg = 1
+						act 'go to Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '42'
+					end
+				end
+			end
+		end
+	elseif rand(1,3) = 1 and atemp = 5:
+		*clr & cla
+
+		gs 'arousal', 'vaginal_dildo_give', 20, 'sub', 'humiliation'
+		minut -= 15
+		gs 'stat'
+		gs 'arousal', 'anal_dildo_give', 20, 'sub', 'humiliation'
+		minut -= 15
+		gs 'stat'
+		'I am on my way to Tolik, but I am slowly, cuz I''m afraid to fall the beer.'
+		'…Suddenly the beer falls out from me…'
+
+		'But I grab it…'
+		'<i>I need to put it back!!!</i>'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+
+		temp = rand(1,2)
+		if temp = 2: analPlugIn = 0
+
+
+		act 'put it back':
+			cla
+			willpowermax -= rand(1,2)
+			gs 'stat'
+			if temp = 1:
+				gs 'arousal', 'vaginal_dildo_give', rand(20,25), 'sub', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				gs 'pain', rand(4,7), 'vaginal', 'pierce'
+				gs 'stat'
+				'AAgggh, so painfull'
+
+				gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+				gs 'stat'
+			elseif temp = 2:
+				gs 'arousal', 'anal_dildo_give', rand(20,25), 'sub', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				if pcs_ass <= 20:
+					gs 'pain', rand(5,8), 'asshole', 'pierce'
+					gs 'stat'
+					'AAgggh, so painfull'
+				end
+				analPlugIn = 1
+				gs 'stat'
+
+				'the beer is in my deep ass'
+				gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+
+				gs 'stat'
+			end
+			act 'go to Tolik':
+				beerwalk += 1
+				gt 'mod_public_WC_rab_livesklad_willdecrising', '41'
+			end
+		end
+	else
+		if atemp = 1: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_bottle'+rand(1,4)+'.jpg"></center>'
+		if atemp = 2: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_can'+rand(1,6)+'.jpg"></center>'
+		if atemp = 3: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle'+rand(1,5)+'.jpg"></center>'
+		if atemp = 4: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/can'+rand(1,6)+'.jpg"></center>'
+		if atemp = 5:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+			gs 'arousal', 'vaginal_dildo_give', 20, 'sub', 'humiliation'
+			minut -= 15
+			gs 'stat'
+			gs 'arousal', 'anal_dildo_give', 20, 'sub', 'humiliation'
+			minut -= 15
+			gs 'stat'
+		else
+			if analPlugIn = 0:
+				gs 'arousal', 'vaginal_dildo_give', 20, 'sub', 'humiliation'
+				minut -= 15
+				gs 'stat'
+			else
+				gs 'arousal', 'anal_dildo_give', 20, 'sub', 'humiliation'
+				minut -= 15
+				gs 'stat'
+			end
+		end
+	end
+
+
+	if beerwalk >= rand(3,5):
+		*clr & cla
+		'finaly I come to Tolik'
+		if atemp = 5: consent -= 1
+		consent -= 1
+		'"Ow, my beer, just in time!"'
+		'He pulls out the beer'
+		'"Betsi, nice"'
+		'"The beer is perfect"'
+		'"Go back to Vania"'
+		bwg = 2
+		if atemp = 1: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_bottle_out.mp4"></video></center>'
+		if atemp = 2: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/1 pussy/pussy_can_out'+rand(1,3)+'.mp4"></video></center>'
+		if atemp = 3: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/bottle_out'+rand(1,4)+'.mp4"></video></center>'
+		if atemp = 4: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/2 ass/can_out'+rand(1,2)+'.mp4"></video></center>'
+		if atemp = 5: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/4beertolik/3 2together.jpg"></center>'
+		analPlugIn = 0
+		act 'Go back to Vania': gt 'mod_public_WC_rab_livesklad_willdecrising', '42'
+	end
+end
+
+if $ARGS[0] = '42':
+	*clr & cla
+	'I come back to Vania'
+	killvar 'beerwalk'
+
+	if bwg = 1:
+		act	'the beer was good':
+			cla
+			killvar 'bwg'
+			zgoda += rand(5,10)
+			'"Nice work Betsi, now you can rest."'
+			'Vania tied me to the bed'
+			act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+
+
+
+		end
+	elseif bwg = 2:
+		act	'the beer was perfect':
+			cla
+			killvar 'bwg'
+			zgoda += rand(15,20)
+			'"Nice work Betsi, now you can rest."'
+			'Vania tied me to the bed'
+			act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	else
+		act	'the beer was good':
+			cla
+			killvar 'bwg'
+			zgoda += rand(5,10)
+			'"Nice work Betsi, now you can rest."'
+			'Vania tied me to the bed'
+			act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+
+		act	'the beer was perfect':
+			cla
+			killvar 'bwg'
+			zgoda += rand(15,20)
+			'"Nice work Betsi, now you can rest."'
+			'Vania tied me to the bed'
+			act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+end
+
+
+
+if $ARGS[0] = '5':
+	*clr & cla
+
+	ztemp = 0
+	if videovaniaporn = 3:
+		if rand (1,2) = 1:
+			gt 'mod_public_WC_rab_livesklad_willdecrising', '51'
+		else
+			temp = 9074
+		end
+	end
+
+
+
+	if videovaniaporn = 2 or temp = 9074:
+		temp = 0
+		'Vania goes somewhere but comes back in a short time with a camera'
+		'He puts a camera and takes the phone from his pocket'
+		'"Few cameras, pro actor and amateur bitch… as real production.. He-he, you''ll be a star!"'
+		'Vania unties me and put me on my knees in front of the camera'
+		'He threw my phone to me.'
+		'"Call your boyfriend!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/start.jpg"></center>'
+
+
+
+		act 'call the wrong number':
+			cla
+			videovaniaporn = 3
+			'I starts to talk with my friend on a casual topics…'
+			'Vania grins and put his dick in fromt of me'
+			'"Suck it, Betsi"'
+			act 'suck the dick':
+				*clr & cla
+				pornbj += 1
+				'I suck the dick and try to concentrate on the talk, I hope the friend isn''t notice the sucking sounds…'
+				persuas_exp += 1
+
+				if rand(1,3) = 1:
+					'sometimes my frind jokes, like "I hear you so horrible, are you sucking there? XD"'
+					slutty += 2
+					gs 'stat'
+				end
+
+				'"I am ready, now rotate!" - Vania commands'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+				gs 'stat'
+
+				act 'fucks with Vania':
+					cla
+					pornvag += 1
+					porncream += 1
+					persuas_exp += 2
+
+					'I tried my best to talk normaly, but Vania''s dick is soooo good'
+
+					if rand(1,4) = 1:
+						'"Ok, you definitely fucks with someone, you are so pervert!" - my friend says'
+						'"I''ll play your game, I want to hear your orgasm!"'
+						slutty += 4
+						gs 'stat'
+					end
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/sex.mp4"></video></center>'
+
+					act 'screem in orgasm!':
+						*clr & cla
+
+						'"Wow, thats sounds awesome! - good for you, girl))) Alright, call me other time XD"'
+
+						temp = rand(1,10)
+						'Vania cums deep in me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						gs 'sweat', 'add', 15
+						spafinloc = 0
+						cumnostd = 1
+						cumarrkno =  1
+						cumarrdel = 0
+						sparrvol = 200
+						cumarrcpt = 200
+						gs 'cum_call', 'vaginal', 'Vania'
+						gs 'cuminsidereact', 'Vania'
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'"Good film Betsi, now you can rest"'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(15,20)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+
+					act 'lie about illness, tries not to screem':
+						*clr & cla
+						persuas_exp += 2
+
+						'"Yup, I know that "illness", deepdickosis XD"'
+						'"I hear you are bussy, lets talk later, bye"'
+
+						temp = rand(1,10)
+						'Vania cums deep in me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						gs 'sweat', 'add', 15
+						spafinloc = 0
+						cumnostd = 1
+						cumarrkno =  1
+						cumarrdel = 0
+						sparrvol = 200
+						cumarrcpt = 200
+						gs 'cum_call', 'vaginal', 'Vania'
+						gs 'cuminsidereact', 'Vania'
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'good bye friend':
+							*clr & cla
+							'"Good film Betsi, now you can rest"'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(15,20)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+		if stat['boyfriends_current'] > 0:
+			act 'call my bf':
+				cla
+				videovaniaporn = 2
+				willpowermax -= rand(1,2)
+				'I starts to talk with my beloved on a casual topics…'
+				'Vania grins and put his dick in fromt of me'
+
+
+				'"Suck it, Betsi"'
+				act 'suck the dick':
+					*clr & cla
+					pornbj += 1
+					'I suck the dick and try to concentrate on the talk, I hope my bf isn''t notice the sucking sounds…'
+					persuas_exp += 2
+
+					if rand(1,3) = 1:
+						'sometimes my bf asks me if everything allright'
+						slutty += 2
+						gs 'stat'
+					end
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+					gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+					gs 'stat'
+
+					act 'fucks with Vania':
+						*clr & cla
+
+						pornvag += 1
+						porncream += 1
+
+						'I tried my best to talk normaly, but Vania''s dick is soooo good'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/sex.mp4"></video></center>'
+
+						if rand(1,7) = 1:
+							'"Ok, you definitely fucks with someone!!!" - my bf says'
+							'"Why did you call me?!"'
+							'<b>"You are crazy bitch, everything is over!!!"</b>'
+							'"I will do all I can, everybody will know what a big slut you are!!!"'
+							'He hangs the phone'
+							pcs_mood -= rand(50,70)
+							gs 'lover', 'remove', lover_number
+							slutty += 10
+							gs 'fame', 'pav', 'prostitute', rand(10,30)
+							gs 'fame', 'city', 'prostitute', rand(10,30)
+							gs 'fame', 'village', 'prostitute', rand(10,30)
+							gs 'stat'
+
+
+							act 'screem in orgasm!':
+								*clr & cla
+								temp = rand(1,10)
+								'Vania cums deep in me'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'"Good film Betsi, now you can rest"'
+									'He pet me like a dog a little and then tied me back to my bad'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+									minut += 90
+									pcs_mood += rand(30,50)
+									bimbo += 5
+									zgoda += rand(15,20)
+									gs 'stat'
+									act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+								end
+							end
+						else
+							'"What is going on? Why you sounds so tense?"'
+
+							act '"I do fitness"':
+								*clr & cla
+								'<i> I do my best and try not to screem </i>'
+								'When time to time I starts to screem a little I lied about muscle crump'
+								persuas_exp += 2
+								gs 'stat'
+
+								if pcs_persuas >= rand(0,60):
+									'Ow, you sounds bad. Do you nedd any help?'
+									act 'No, everything alright, I need to rest, goodbye honey.':
+										*clr & cla
+										'"Ok, take care, call me if need something, honey. Bye."'
+										'I hung up.'
+
+										'"Good film Betsi, now you can rest"'
+										'He pet me like a dog a little and then tied me back to my bad'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+										minut += 90
+										pcs_mood += rand(30,50)
+										bimbo += 5
+										zgoda += rand(15,20)
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+								elseif rand(1,5) = 1:
+									'"Ok, you definitely fucks with someone!!!" - my bf says'
+									'"Why did you call me?!"'
+									'<b>"You are crazy bitch, everything is over!!!"</b>'
+									'"I will do all I can, everybody will know what a big slut you are!!!"'
+									'He hangs the phone'
+									pcs_mood -= rand(50,70)
+									gs 'lover', 'remove', lover_number
+									slutty += 10
+									gs 'fame', 'pav', 'prostitute', rand(10,30)
+									gs 'fame', 'city', 'prostitute', rand(10,30)
+									gs 'fame', 'village', 'prostitute', rand(10,30)
+									gs 'stat'
+
+									act 'continue':
+										*clr & cla
+										'"Good film Betsi, now you can rest"'
+										'He pet me like a dog a little and then tied me back to my bad'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+										minut += 90
+										pcs_mood += rand(30,50)
+										bimbo += 5
+										zgoda += rand(15,20)
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+								else
+									'"Honey, you sounds more like have a diarrhea. You can just tell me truth."'
+									'"I can bring some medicine, do you need?"'
+									act 'Ok, sorry for the lie. No Ij ust need some rest':
+										*clr & cla
+										'"Ok, take care, call me if need something, honey. Bye."'
+										'I hung up.'
+
+										'"Good film Betsi, now you can rest"'
+										'He pet me like a dog a little and then tied me back to my bad'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+										minut += 90
+										pcs_mood += rand(30,50)
+										bimbo += 5
+										zgoda += rand(15,20)
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+								end
+
+								temp = rand(1,10)
+								'Vania cums deep in me'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+
+
+							act 'screem in orgasm!':
+								*clr & cla
+								'"Ok, you definitely fucks with someone!!!" - my bf says'
+								'"Why did you call me?!"'
+								'<b>"You are crazy bitch, everything is over!!!"</b>'
+								'"I will do all I can, everybody will know what a big slut you are!!!"'
+								'He hangs the phone'
+								pcs_mood -= rand(50,70)
+								gs 'lover', 'remove', lover_number
+								slutty += 10
+								gs 'fame', 'pav', 'prostitute', rand(10,30)
+								gs 'fame', 'city', 'prostitute', rand(10,30)
+								gs 'fame', 'village', 'prostitute', rand(10,30)
+								gs 'stat'
+
+								temp = rand(1,10)
+								'Vania cums deep in me'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'"Good film Betsi, now you can rest"'
+									'He pet me like a dog a little and then tied me back to my bad'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+									minut += 90
+									pcs_mood += rand(30,50)
+									bimbo += 5
+									zgoda += rand(15,20)
+									gs 'stat'
+									act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+								end
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'I don''t have a bf':
+				if rand(1,2) = 1:
+					'"Never lie to me!"'
+					'Vania slaps me, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+
+					zgoda -= 2
+					ztemp += 1
+				else
+					'"Never lie to me!"'
+					'Vania grab my hair and slaps my tits, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/untied_hit_tits.mp4"></video></center>'
+
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'breasts', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,5), 'nipples', 'slap'
+					gs 'stat'
+					gs 'pain', rand(1,3), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 2
+					ztemp += 1
+				end
+				if ztemp >= rand(5,10):
+					*clr & cla
+					'"I am tierd of your shit!"'
+					'Vania puts a lrash on me and drags me somewhere'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+					act 'wait':
+						*clr & cla
+						minut += rand(20,60)
+						'Vania tied me and starts to <i> AAaaaaa </i>'
+						temp = rand (1,4)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+						gs 'pain', rand(2,3), 'back', 'spank'
+						gs 'pain', rand(2,3), 'asscheeks', 'spank'
+						gs 'pain', rand(2,3), 'hips', 'spank'
+						gs 'pain', rand(2,3), 'legL', 'spank'
+						gs 'pain', rand(2,3), 'legR', 'spank'
+						gs 'pain', rand(2,3), 'shoulders', 'spank'
+						gs 'pain', rand(2,3), 'armL', 'spank'
+						gs 'pain', rand(2,3), 'armR', 'spank'
+						gs 'pain', rand(2,3), 'chest', 'spank'
+						gs 'pain', rand(2,3), 'breasts', 'spank'
+						gs 'pain', rand(2,3), 'nipples', 'spank'
+						gs 'pain', rand(2,3), 'ribs', 'spank'
+						gs 'pain', rand(2,3), 'tummy', 'spank'
+						gs 'pain', rand(2,3), 'pubic', 'spank'
+						gs 'pain', rand(2,3), 'labia', 'spank'
+						gs 'stat'
+						act 'AAaaAAa':
+							*clr & cla
+							minut += rand(20,60)
+							'"Enought for now, next time just let me make a film"'
+							temp = rand (1,4)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+							gs 'pain', rand(0,2), 'back', 'spank'
+							gs 'pain', rand(0,2), 'asscheeks', 'spank'
+							gs 'pain', rand(0,2), 'hips', 'spank'
+							gs 'pain', rand(0,2), 'legL', 'spank'
+							gs 'pain', rand(0,2), 'legR', 'spank'
+							gs 'pain', rand(0,2), 'shoulders', 'spank'
+							gs 'pain', rand(0,2), 'armL', 'spank'
+							gs 'pain', rand(0,2), 'armR', 'spank'
+							gs 'pain', rand(0,2), 'chest', 'spank'
+							gs 'pain', rand(0,2), 'breasts', 'spank'
+							gs 'pain', rand(0,2), 'nipples', 'spank'
+							gs 'pain', rand(0,2), 'ribs', 'spank'
+							gs 'pain', rand(0,2), 'tummy', 'spank'
+							gs 'pain', rand(0,2), 'pubic', 'spank'
+							gs 'pain', rand(0,2), 'labia', 'spank'
+							gs 'stat'
+							zgoda -= 15
+
+							act 'Finally the end': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+	elseif videovaniaporn = 1:
+		'Vania goes somewhere but comes back in a short time with a camera'
+		'He puts a camera and takes the phone from his pocket'
+		'"Few cameras, pro actor and amateur bitch… as real production.. He-he, you''ll be a star!"'
+		'Vania unties me and put me on my knees in front of the camera'
+		'He threw my phone to me.'
+		'"Call your boyfriend!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/start.jpg"></center>'
+
+
+
+		act 'call the wrong number':
+			cla
+			videovaniaporn = 2
+			'I starts to talk with my friend on a casual topics…'
+			'Vania grins and put his dick in fromt of me'
+			'"Suck it, Betsi"'
+			act 'suck the dick':
+				*clr & cla
+				pornbj += 1
+				'I suck the dick and try to concentrate on the talk, I hope the friend isn''t notice the sucking sounds…'
+
+				if rand(1,3) = 1:
+					'sometimes my frind jokes, like "I hear you so horrible, are you sucking there? XD"'
+					slutty += 2
+					gs 'stat'
+				end
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					if rand(1,2) = 1:
+
+						'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+
+						'My friend loudly laught!!!'
+						'"You are pervert, <<$pcs_firstname>>!!!"'
+						slutty += 4
+						gs 'fame', 'pav', 'prostitute', rand(0,3)
+						gs 'fame', 'city', 'prostitute', rand(0,3)
+						gs 'fame', 'village', 'prostitute', rand(0,3)
+						gs 'stat'
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						'Vania cums on me, I think I managed the talk, friend didn''t notice.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+
+					act 'good bye friend':
+						*clr & cla
+						'"Good film Betsi, now you can rest"'
+						'He pet me like a dog a little and then tied me back to my bad'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+						minut += 90
+						pcs_mood += rand(30,50)
+						bimbo += 5
+						zgoda += rand(15,20)
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+					end
+				end
+			end
+		end
+		if stat['boyfriends_current'] > 0:
+			act 'call my bf':
+				cla
+				videovaniaporn = 2
+				willpowermax -= rand(1,2)
+				'I starts to talk with my beloved on a casual topics…'
+				'Vania grins and put his dick in fromt of me'
+
+
+				'"Suck it, Betsi"'
+				act 'suck the dick':
+					*clr & cla
+					pornbj += 1
+					'I suck the dick and try to concentrate on the talk, I hope my bf isn''t notice the sucking sounds…'
+
+
+					if rand(1,3) = 1:
+						'sometimes my bf asks me if everything allright'
+						slutty += 2
+						gs 'stat'
+					end
+
+
+
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+					gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						if rand(1,4) = 1:
+
+							'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+
+							'"WTF are you doing there?"'
+
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							'Vania cums on me, I think I managed the talk, bf didn''t notice.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+
+						act 'tell true':
+							*clr & cla
+							'"You are bitch, everything is over!!!"'
+							'He hangs the phone'
+							pcs_mood -= rand(50,70)
+							gs 'lover', 'remove', lover_number
+							slutty += 4
+							gs 'fame', 'pav', 'prostitute', rand(0,3)
+							gs 'fame', 'city', 'prostitute', rand(0,3)
+							gs 'fame', 'village', 'prostitute', rand(0,3)
+							gs 'stat'
+
+
+							'"Good film Betsi, now you can rest" - says Vania'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(15,20)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+
+
+
+						act 'lie about illness':
+							*clr & cla
+							persuas_exp += rand(1,3)
+							if pcs_persuas >= rand(20,80):
+								persuas_exp += 1
+								'Ow, get well honey, lets talk later.'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							else
+								'"You are bitch, everything is over!!!"'
+								'He hangs the phone'
+								pcs_mood -= rand(50,70)
+								gs 'lover', 'remove', lover_number
+								slutty += 4
+								gs 'fame', 'pav', 'prostitute', rand(0,3)
+								gs 'fame', 'city', 'prostitute', rand(0,3)
+								gs 'fame', 'village', 'prostitute', rand(0,3)
+								gs 'stat'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'I don''t have a bf':
+				if rand(1,2) = 1:
+					'"Never lie to me!"'
+					'Vania slaps me, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+
+					zgoda -= 2
+					ztemp += 1
+				else
+					'"Never lie to me!"'
+					'Vania grab my hair and slaps my tits, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/untied_hit_tits.mp4"></video></center>'
+
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'breasts', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,5), 'nipples', 'slap'
+					gs 'stat'
+					gs 'pain', rand(1,3), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 2
+					ztemp += 1
+				end
+				if ztemp >= rand(5,10):
+					*clr & cla
+					'"I am tierd of your shit!"'
+					'Vania puts a lrash on me and drags me somewhere'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+					act 'wait':
+						*clr & cla
+						minut += rand(20,60)
+						'Vania tied me and starts to <i> AAaaaaa </i>'
+						temp = rand (1,4)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+						gs 'pain', rand(2,3), 'back', 'spank'
+						gs 'pain', rand(2,3), 'asscheeks', 'spank'
+						gs 'pain', rand(2,3), 'hips', 'spank'
+						gs 'pain', rand(2,3), 'legL', 'spank'
+						gs 'pain', rand(2,3), 'legR', 'spank'
+						gs 'pain', rand(2,3), 'shoulders', 'spank'
+						gs 'pain', rand(2,3), 'armL', 'spank'
+						gs 'pain', rand(2,3), 'armR', 'spank'
+						gs 'pain', rand(2,3), 'chest', 'spank'
+						gs 'pain', rand(2,3), 'breasts', 'spank'
+						gs 'pain', rand(2,3), 'nipples', 'spank'
+						gs 'pain', rand(2,3), 'ribs', 'spank'
+						gs 'pain', rand(2,3), 'tummy', 'spank'
+						gs 'pain', rand(2,3), 'pubic', 'spank'
+						gs 'pain', rand(2,3), 'labia', 'spank'
+						gs 'stat'
+						act 'AAaaAAa':
+							*clr & cla
+							minut += rand(20,60)
+							'"Enought for now, next time just let me make a film"'
+							temp = rand (1,4)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+							gs 'pain', rand(0,2), 'back', 'spank'
+							gs 'pain', rand(0,2), 'asscheeks', 'spank'
+							gs 'pain', rand(0,2), 'hips', 'spank'
+							gs 'pain', rand(0,2), 'legL', 'spank'
+							gs 'pain', rand(0,2), 'legR', 'spank'
+							gs 'pain', rand(0,2), 'shoulders', 'spank'
+							gs 'pain', rand(0,2), 'armL', 'spank'
+							gs 'pain', rand(0,2), 'armR', 'spank'
+							gs 'pain', rand(0,2), 'chest', 'spank'
+							gs 'pain', rand(0,2), 'breasts', 'spank'
+							gs 'pain', rand(0,2), 'nipples', 'spank'
+							gs 'pain', rand(0,2), 'ribs', 'spank'
+							gs 'pain', rand(0,2), 'tummy', 'spank'
+							gs 'pain', rand(0,2), 'pubic', 'spank'
+							gs 'pain', rand(0,2), 'labia', 'spank'
+							gs 'stat'
+							zgoda -= 15
+
+							act 'Finally the end': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+	elseif videovania = 1:
+		'Vania goes somewhere but comes back in a short time with a camera'
+		'He puts a camera and takes the phone from his pocket'
+		'"Few cameras, pro actor and amateur bitch… as real production.. He-he, you''ll be a star!"'
+		'Vania unties me and put me on my knees in front of the camera'
+		'He threw my phone to me.'
+		'"Today we will continue or work for the films collection"'
+		'"Call your boyfriend!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/start.jpg"></center>'
+
+		act 'the video would be much spicier if I will film myself.':
+			cla
+			'"But it''s very hard to film myself and talk with someone, I am not a multitask girl…"'
+
+			'"Hmmm, sounds reasonable… deal, lets do your way."'
+			'He gives me his phone, drop his pants… now his dick wiggling near my face.'
+			'"Ok ex-whoever you are, now is a showtime" - Vania says in the camera'
+
+			gs 'arousal', 'flash', rand(5,10), 'sub', 'humiliation'
+			gs 'stat'
+			act 'start to suck':
+				*clr & cla
+				'"Nice, Betsi. Now ride me!"'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/1.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation'
+				gs 'stat'
+				videovania = 1
+
+
+				act 'ride Vania':
+					*clr & cla
+
+					'"Yes, Betsi it''s nice new video to my collection"'
+					videovania = 2
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/sex.mp4"></video></center>'
+
+					gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+					gs 'stat'
+
+
+					act 'continue':
+						*clr & cla
+						temp = rand(1,10)
+						'Vania full me with a warm sperm'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						gs 'sweat', 'add', 15
+						spafinloc = 0
+						cumnostd = 1
+						cumarrkno =  1
+						cumarrdel = 0
+						sparrvol = 200
+						cumarrcpt = 200
+						gs 'cum_call', 'vaginal', 'Vania'
+						gs 'cuminsidereact', 'Vania'
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+							'"It was fun."'
+							'"Really god video for the collection"'
+							act 'nod':
+								cla
+								'"Good Betsi, now you can rest"'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(5,10)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							end
+						end
+					end
+				end
+			end
+		end
+
+		act 'call the wrong number':
+			cla
+			videovaniaporn = 2
+			'I starts to talk with my friend on a casual topics…'
+			'Vania grins and put his dick in fromt of me'
+			'"Suck it, Betsi"'
+			act 'suck the dick':
+				*clr & cla
+				pornbj += 1
+				'I suck the dick and try to concentrate on the talk, I hope the friend isn''t notice the sucking sounds…'
+
+				if rand(1,3) = 1:
+					'sometimes my frind jokes, like "I hear you so horrible, are you sucking there? XD"'
+					slutty += 2
+					gs 'stat'
+				end
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					if rand(1,2) = 1:
+
+						'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+
+						'My friend loudly laught!!!'
+						'"You are pervert, <<$pcs_firstname>>!!!"'
+						slutty += 4
+						gs 'fame', 'pav', 'prostitute', rand(0,3)
+						gs 'fame', 'city', 'prostitute', rand(0,3)
+						gs 'fame', 'village', 'prostitute', rand(0,3)
+						gs 'stat'
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						'Vania cums on me, I think I managed the talk, friend didn''t notice.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+
+					act 'good bye friend':
+						*clr & cla
+						'"Good film Betsi, now you can rest"'
+						'He pet me like a dog a little and then tied me back to my bad'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+						minut += 90
+						pcs_mood += rand(30,50)
+						bimbo += 5
+						zgoda += rand(15,20)
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+					end
+				end
+			end
+		end
+		if stat['boyfriends_current'] > 0:
+			act 'call my bf':
+				cla
+				videovaniaporn = 2
+				willpowermax -= rand(1,2)
+				'I starts to talk with my beloved on a casual topics…'
+				'Vania grins and put his dick in fromt of me'
+
+
+				'"Suck it, Betsi"'
+				act 'suck the dick':
+					*clr & cla
+					pornbj += 1
+					'I suck the dick and try to concentrate on the talk, I hope my bf isn''t notice the sucking sounds…'
+
+
+					if rand(1,3) = 1:
+						'sometimes my bf asks me if everything allright'
+						slutty += 2
+						gs 'stat'
+					end
+
+
+
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+					gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						if rand(1,4) = 1:
+
+							'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+
+							'"WTF are you doing there?"'
+
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							'Vania cums on me, I think I managed the talk, bf didn''t notice.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+
+						act 'tell true':
+							*clr & cla
+							'"You are bitch, everything is over!!!"'
+							'He hangs the phone'
+							pcs_mood -= rand(50,70)
+							gs 'lover', 'remove', lover_number
+							slutty += 4
+							gs 'fame', 'pav', 'prostitute', rand(0,3)
+							gs 'fame', 'city', 'prostitute', rand(0,3)
+							gs 'fame', 'village', 'prostitute', rand(0,3)
+							gs 'stat'
+
+
+							'"Good film Betsi, now you can rest" - says Vania'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(15,20)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+
+						act 'lie about illness':
+							*clr & cla
+							persuas_exp += rand(1,3)
+							if pcs_persuas >= rand(20,80):
+								persuas_exp += 1
+								'Ow, get well honey, lets talk later.'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							else
+								'"You are bitch, everything is over!!!"'
+								'He hangs the phone'
+								pcs_mood -= rand(50,70)
+								gs 'lover', 'remove', lover_number
+								slutty += 4
+								gs 'fame', 'pav', 'prostitute', rand(0,3)
+								gs 'fame', 'city', 'prostitute', rand(0,3)
+								gs 'fame', 'village', 'prostitute', rand(0,3)
+								gs 'stat'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'I don''t have a bf':
+				if rand(1,2) = 1:
+					'"Never lie to me!"'
+					'Vania slaps me, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+
+					zgoda -= 2
+					ztemp += 1
+				else
+					'"Never lie to me!"'
+					'Vania grab my hair and slaps my tits, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/untied_hit_tits.mp4"></video></center>'
+
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'breasts', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,5), 'nipples', 'slap'
+					gs 'stat'
+					gs 'pain', rand(1,3), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 2
+					ztemp += 1
+				end
+				if ztemp >= rand(5,10):
+					*clr & cla
+					'"I am tierd of your shit!"'
+					'Vania puts a lrash on me and drags me somewhere'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+					act 'wait':
+						*clr & cla
+						minut += rand(20,60)
+						'Vania tied me and starts to <i> AAaaaaa </i>'
+						temp = rand (1,4)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+						gs 'pain', rand(2,3), 'back', 'spank'
+						gs 'pain', rand(2,3), 'asscheeks', 'spank'
+						gs 'pain', rand(2,3), 'hips', 'spank'
+						gs 'pain', rand(2,3), 'legL', 'spank'
+						gs 'pain', rand(2,3), 'legR', 'spank'
+						gs 'pain', rand(2,3), 'shoulders', 'spank'
+						gs 'pain', rand(2,3), 'armL', 'spank'
+						gs 'pain', rand(2,3), 'armR', 'spank'
+						gs 'pain', rand(2,3), 'chest', 'spank'
+						gs 'pain', rand(2,3), 'breasts', 'spank'
+						gs 'pain', rand(2,3), 'nipples', 'spank'
+						gs 'pain', rand(2,3), 'ribs', 'spank'
+						gs 'pain', rand(2,3), 'tummy', 'spank'
+						gs 'pain', rand(2,3), 'pubic', 'spank'
+						gs 'pain', rand(2,3), 'labia', 'spank'
+						gs 'stat'
+						act 'AAaaAAa':
+							*clr & cla
+							minut += rand(20,60)
+							'"Enought for now, next time just let me make a film"'
+							temp = rand (1,4)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+							gs 'pain', rand(0,2), 'back', 'spank'
+							gs 'pain', rand(0,2), 'asscheeks', 'spank'
+							gs 'pain', rand(0,2), 'hips', 'spank'
+							gs 'pain', rand(0,2), 'legL', 'spank'
+							gs 'pain', rand(0,2), 'legR', 'spank'
+							gs 'pain', rand(0,2), 'shoulders', 'spank'
+							gs 'pain', rand(0,2), 'armL', 'spank'
+							gs 'pain', rand(0,2), 'armR', 'spank'
+							gs 'pain', rand(0,2), 'chest', 'spank'
+							gs 'pain', rand(0,2), 'breasts', 'spank'
+							gs 'pain', rand(0,2), 'nipples', 'spank'
+							gs 'pain', rand(0,2), 'ribs', 'spank'
+							gs 'pain', rand(0,2), 'tummy', 'spank'
+							gs 'pain', rand(0,2), 'pubic', 'spank'
+							gs 'pain', rand(0,2), 'labia', 'spank'
+							gs 'stat'
+							zgoda -= 15
+
+							act 'Finally the end': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+	elseif videovania >= 2:
+		'Vania goes somewhere but comes back in a short time with a camera'
+		'He puts a camera and takes the phone from his pocket'
+		'"Few cameras, pro actor and amateur bitch… as real production.. He-he, you''ll be a star!"'
+		'Vania unties me and put me on my knees in front of the camera'
+		'He threw my phone to me.'
+		'"Today we will continue or work for the films collection"'
+		'"Call your boyfriend!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/start.jpg"></center>'
+
+
+		act 'I have better idea, my Master… let''s make a video show. But without calling anybody':
+			*clr & cla
+			willpowermax -= rand(2,5)
+			'"Hmmm, ok sounds good lets do it"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			act 'showtime!':
+				*clr & cla
+				'I put my hand on Vania''s groin and other hand in his pocket'
+				'While I rub his groin I put out his phone.'
+
+				act 'start to suck and filming':
+					*clr & cla
+					'I stand on my knees and suck him'
+					videovania = 3
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/31bj.mp4"></video></center>'
+
+					gs 'arousal', 'bj', rand(10,20), 'sub', 'humiliation'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'Vania takes hios phone from me to release my second hand for sucking'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/32bj.mp4"></video></center>'
+
+						gs 'arousal', 'bj', rand(10,20), 'sub', 'humiliation'
+						gs 'stat'
+
+
+						act 'continue':
+							*clr & cla
+							'I take the phone from Vania and bend myself'
+							'Vania fucks me'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/0askvania/33sex.mp4"></video></center>'
+
+							gs 'arousal', 'vaginal', rand(10,20), 'sub', 'humiliation'
+							gs 'stat'
+
+
+
+
+							act 'continue':
+								*clr & cla
+								temp = rand(1,10)
+								'Vania full me with a warm sperm'
+								'Betsi, this was the shit… I really glad you are so good slut for me'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								cumarrdel = 0
+								sparrvol = 200
+								cumarrcpt = 200
+								gs 'cum_call', 'vaginal', 'Vania'
+								gs 'cuminsidereact', 'Vania'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+									'"It was amazing."'
+									zgoda += rand(5,10)
+									consent -= 2
+									if consent < 0: consent = 0
+
+									act 'nod':
+										*clr & cla
+										temp = rand(1,3)
+										if temp >= 2 and stat['boyfriends_current'] > 0:
+											'Vania is peting me like a dog'
+											'"You know, Now, my collection is full"'
+											'"Lets send it to your bf!"'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+											minut += 90
+											pcs_mood += rand(30,50)
+											bimbo += 5
+											zgoda += rand(5,10)
+											gs 'stat'
+
+											act 'Yes, master. You are the only man in my life':
+												*clr & cla
+												'We sits together and send a mails to my bf and block them'
+												bimbo += 25
+												minut += 30
+												willpowermax -= rand(1,5)
+
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+												if stat['boyfriends_current'] > 0:
+													gs 'lover', 'remove', lover_number
+													slutty += 4
+													gs 'stat'
+												end
+
+												zgoda = 100
+												dick = 17
+												npc_dick[$npclastgenerated] = dick
+												gs 'boyStat', 'A442'
+												gs 'stat'
+
+
+												'"Well, Betsy, for now I am pleased, you are really me slut"'
+												'"You can go back to live in your room."'
+												'"We will start your train tomorrow"'
+												'"you will have a lesson each day, except Saturday. Come here at 4 PM"'
+												'Don''t forget to visit Tolik at evening.'
+
+												'Ow, Also I give you 20 words'
+
+												slova += 20
+												zvit = week
+												consent = 0
+												$loc = 'mod_public_WC_rab'
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+												act 'Go to my room':
+													gt 'mod_public_WC_rab', 'spat2'
+												end
+											end
+
+											act 'no, please no':
+												cla
+												'"Hmmm, this is not the answer I want to hear."'
+												'"You still not fully my pet…"'
+												'"Well, you need to choose one… I will download the collections to the all pornsites I know OR you will send the collection to your bf"'
+												act 'Do whatever you want':
+
+													'"Ok, you are going to be famos"'
+													porn_fame += 12
+													gs 'fame', 'city', 'porn', 90
+													pornbj += 2
+													pornvag += 2
+													porncream += 2
+													gs 'stat'
+
+
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0 and rand(1,10) >= 4:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+
+
+
+
+													act 'wait':
+														cla
+														'Vania tied me back to the bed'
+														'"rest now, porn star…"'
+
+														act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+													end
+												end
+
+												act 'Lets send it to my bf!':
+													*clr & cla
+													'We sits together and send a mails to my bf and block him'
+													bimbo += 25
+													minut += 30
+													willpowermax -= rand(1,3)
+
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+													if stat['boyfriends_current'] > 0:
+														gs 'lover', 'remove', lover_number
+														slutty += 4
+														gs 'stat'
+													end
+
+													zgoda += 20
+													'"Good Betsi, it''s a big step for you on your way to be my slave"'
+													'He pet me like a dog a little and then tied me back to my bad'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+													minut += 90
+													pcs_mood += rand(30,50)
+													bimbo += 5
+
+													gs 'stat'
+													act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+												end
+											end
+										else
+											'"Good Betsi, now you can rest"'
+											'He pet me like a dog a little and then tied me back to my bad'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+											minut += 90
+											pcs_mood += rand(30,50)
+											bimbo += 5
+											zgoda += rand(5,10)
+											gs 'stat'
+											act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+
+		act 'call the wrong number':
+			cla
+			videovaniaporn = 2
+			'I starts to talk with my friend on a casual topics…'
+			'Vania grins and put his dick in fromt of me'
+			'"Suck it, Betsi"'
+			act 'suck the dick':
+				*clr & cla
+				pornbj += 1
+				'I suck the dick and try to concentrate on the talk, I hope the friend isn''t notice the sucking sounds…'
+
+				if rand(1,3) = 1:
+					'sometimes my frind jokes, like "I hear you so horrible, are you sucking there? XD"'
+					slutty += 2
+					gs 'stat'
+				end
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					if rand(1,2) = 1:
+
+						'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+
+						'My friend loudly laught!!!'
+						'"You are pervert, <<$pcs_firstname>>!!!"'
+						slutty += 4
+						gs 'fame', 'pav', 'prostitute', rand(0,3)
+						gs 'fame', 'city', 'prostitute', rand(0,3)
+						gs 'fame', 'village', 'prostitute', rand(0,3)
+						gs 'stat'
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						'Vania cums on me, I think I managed the talk, friend didn''t notice.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+
+					act 'good bye friend':
+						*clr & cla
+						'"Good film Betsi, now you can rest"'
+						'He pet me like a dog a little and then tied me back to my bad'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+						minut += 90
+						pcs_mood += rand(30,50)
+						bimbo += 5
+						zgoda += rand(15,20)
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+					end
+				end
+			end
+		end
+		if stat['boyfriends_current'] > 0:
+			act 'call my bf':
+				cla
+				videovaniaporn = 2
+				willpowermax -= rand(1,2)
+				'I starts to talk with my beloved on a casual topics…'
+				'Vania grins and put his dick in fromt of me'
+
+
+				'"Suck it, Betsi"'
+				act 'suck the dick':
+					*clr & cla
+					pornbj += 1
+					'I suck the dick and try to concentrate on the talk, I hope my bf isn''t notice the sucking sounds…'
+
+
+					if rand(1,3) = 1:
+						'sometimes my bf asks me if everything allright'
+						slutty += 2
+						gs 'stat'
+					end
+
+
+
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/bj.mp4"></video></center>'
+
+					gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						if rand(1,4) = 1:
+
+							'Vania cums in my mouth.. I helplessly mumbling in the phone…'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/in ('+rand(1,2)+').mp4"></video></center>'
+
+
+							'"WTF are you doing there?"'
+
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							'Vania cums on me, I think I managed the talk, bf didn''t notice.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/3 force to talk/cum/on ('+rand(1,6)+').mp4"></video></center>'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+
+						act 'tell true':
+							*clr & cla
+							'"You are bitch, everything is over!!!"'
+							'He hangs the phone'
+							pcs_mood -= rand(50,70)
+							gs 'lover', 'remove', lover_number
+							slutty += 4
+							gs 'fame', 'pav', 'prostitute', rand(0,3)
+							gs 'fame', 'city', 'prostitute', rand(0,3)
+							gs 'fame', 'village', 'prostitute', rand(0,3)
+							gs 'stat'
+
+
+							'"Good film Betsi, now you can rest" - says Vania'
+							'He pet me like a dog a little and then tied me back to my bad'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+							minut += 90
+							pcs_mood += rand(30,50)
+							bimbo += 5
+							zgoda += rand(15,20)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+
+						act 'lie about illness':
+							*clr & cla
+							persuas_exp += rand(1,3)
+							if pcs_persuas >= rand(20,80):
+								persuas_exp += 1
+								'Ow, get well honey, lets talk later.'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							else
+								'"You are bitch, everything is over!!!"'
+								'He hangs the phone'
+								pcs_mood -= rand(50,70)
+								gs 'lover', 'remove', lover_number
+								slutty += 4
+								gs 'fame', 'pav', 'prostitute', rand(0,3)
+								gs 'fame', 'city', 'prostitute', rand(0,3)
+								gs 'fame', 'village', 'prostitute', rand(0,3)
+								gs 'stat'
+
+
+								'"Good film Betsi, now you can rest" - says Vania'
+								'He pet me like a dog a little and then tied me back to my bad'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+								minut += 90
+								pcs_mood += rand(30,50)
+								bimbo += 5
+								zgoda += rand(15,20)
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'I don''t have a bf':
+				if rand(1,2) = 1:
+					'"Never lie to me!"'
+					'Vania slaps me, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+
+					zgoda -= 2
+					ztemp += 1
+				else
+					'"Never lie to me!"'
+					'Vania grab my hair and slaps my tits, "I repeat, call your bf"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/untied_hit_tits.mp4"></video></center>'
+
+					minut += rand(3,5)
+					gs 'pain', rand(4,5), 'breasts', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,5), 'nipples', 'slap'
+					gs 'stat'
+					gs 'pain', rand(1,3), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 2
+					ztemp += 1
+				end
+				if ztemp >= rand(5,10):
+					*clr & cla
+					'"I am tierd of your shit!"'
+					'Vania puts a lrash on me and drags me somewhere'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+					act 'wait':
+						*clr & cla
+						minut += rand(20,60)
+						'Vania tied me and starts to <i> AAaaaaa </i>'
+						temp = rand (1,4)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+						gs 'pain', rand(2,3), 'back', 'spank'
+						gs 'pain', rand(2,3), 'asscheeks', 'spank'
+						gs 'pain', rand(2,3), 'hips', 'spank'
+						gs 'pain', rand(2,3), 'legL', 'spank'
+						gs 'pain', rand(2,3), 'legR', 'spank'
+						gs 'pain', rand(2,3), 'shoulders', 'spank'
+						gs 'pain', rand(2,3), 'armL', 'spank'
+						gs 'pain', rand(2,3), 'armR', 'spank'
+						gs 'pain', rand(2,3), 'chest', 'spank'
+						gs 'pain', rand(2,3), 'breasts', 'spank'
+						gs 'pain', rand(2,3), 'nipples', 'spank'
+						gs 'pain', rand(2,3), 'ribs', 'spank'
+						gs 'pain', rand(2,3), 'tummy', 'spank'
+						gs 'pain', rand(2,3), 'pubic', 'spank'
+						gs 'pain', rand(2,3), 'labia', 'spank'
+						gs 'stat'
+						act 'AAaaAAa':
+							*clr & cla
+							minut += rand(20,60)
+							'"Enought for now, next time just let me make a film"'
+							temp = rand (1,4)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+							gs 'pain', rand(0,2), 'back', 'spank'
+							gs 'pain', rand(0,2), 'asscheeks', 'spank'
+							gs 'pain', rand(0,2), 'hips', 'spank'
+							gs 'pain', rand(0,2), 'legL', 'spank'
+							gs 'pain', rand(0,2), 'legR', 'spank'
+							gs 'pain', rand(0,2), 'shoulders', 'spank'
+							gs 'pain', rand(0,2), 'armL', 'spank'
+							gs 'pain', rand(0,2), 'armR', 'spank'
+							gs 'pain', rand(0,2), 'chest', 'spank'
+							gs 'pain', rand(0,2), 'breasts', 'spank'
+							gs 'pain', rand(0,2), 'nipples', 'spank'
+							gs 'pain', rand(0,2), 'ribs', 'spank'
+							gs 'pain', rand(0,2), 'tummy', 'spank'
+							gs 'pain', rand(0,2), 'pubic', 'spank'
+							gs 'pain', rand(0,2), 'labia', 'spank'
+							gs 'stat'
+							zgoda -= 15
+
+							act 'Finally the end': gt 'mod_public_WC_rab_livesklad', 'start'
+						end
+					end
+				end
+			end
+		end
+	else
+		'Vania goes somewhere but comes back in a short time with a camera'
+		'He puts a camera and takes the phone from his pocket'
+		'"Few cameras, pro actor and amateur bitch… as real production.. He-he, you''ll be a star!"'
+		'Vania unties me and put me on my knees in front of the camera'
+		'"Blow me!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/start.jpg"></center>'
+		act 'Blow Vania':
+			*clr & cla
+			videovaniaporn = 1
+
+			'I sucks Vania''s <<dick>> cm dick while he is filming me…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/2 bj/bj ('+rand(1,8)+').mp4"></video></center>'
+
+			gs 'arousal', 'bj', rand(15,25), 'sub', 'humiliation'
+			gs 'stat'
+
+			act 'Continue':
+				*clr & cla
+				'Vania cums in my mouth and all over my face'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/2 bj/cumplay.mp4"></video></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'hands', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				pornbj += 1
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'"Good film Betsi, now you can rest"'
+					'He pet me like a dog a little and then tied me back to my bad'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/aftertrain/petv.mp4"></video></center>'
+					minut += 90
+					pcs_mood += rand(30,50)
+					bimbo += 5
+					zgoda += rand(10,15)
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '51':
+	*clr & cla
+	'Vania puts a leash on me and drags me somewhere'
+	'Vania sit me on some sort of chair and tied me, I almost can''t move'
+
+	'"Now, when you the porn star, you can look at your work with pleasure…"'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+
+	act 'wait':
+		*clr & cla
+		'Vania puts a TV in front of me and plays my "films" on it'
+		'<i>Ok, it''s not so bed I think</i>'
+
+		'But I have this thought only for a moment before Vania launched the machine!'
+
+		'The machine starts constantly fuck me!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/4 seeselfporn/seeselfporn.mp4"></video></center>'
+
+		gs 'arousal', 'vaginal_dildo_give', rand(30,60), 'bound', 'rough', 'sub', 'rape'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'Aaaaaght, it''s sooo good'
+			bimbo += 10
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/4 seeselfporn/seeselfporn.mp4"></video></center>'
+
+			gs 'arousal', 'vaginal_dildo_give', rand(30,60), 'bound', 'rough', 'sub', 'rape'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'Aaaaaght, All my thoughts drowned in a pleasure… I can''t think…'
+				bimbo += 10
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/5video/4 seeselfporn/seeselfporn.mp4"></video></center>'
+
+				gs 'arousal', 'vaginal_dildo_give', rand(30,60), 'bound', 'rough', 'sub', 'rape'
+				gs 'stat'
+
+				act 'fade out':
+					*clr & cla
+					'I can remember nothing. I found myself tied in the bed'
+					bimbo += 15
+					zgoda += rand(5,10)
+					act 'focus and collect my thoughts': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '6':
+	*clr & cla
+	'Vania tied my harder to the bed'
+	'"Today you will become cleaner."'
+	'"Clean pussy - clean thoughts"'
+	'"After this you need to reconsider your choices and be more loyal to your Master"'
+	if rand(1,3) = 1: consent -= 1
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	ztemp = 1
+
+	act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '61'
+end
+
+if $ARGS[0] = '61':
+	*clr & cla
+	if ztemp = 1:
+		'Vania literally wants to clean my pussy with a brush: He pierce it in me!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/6yorshyk/0.mp4"></video></center>'
+		minut += 10
+		gs 'arousal', 'vaginal', rand(3,5), 'sub', 'humiliation'
+		gs 'stat'
+	else
+		if atemp = 15: 'I am not sure, if I believe you. Please say it again.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/6yorshyk/clean'+rand(1,4)+'.mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+		gs 'stat'
+	end
+	ztemp += 1
+	gs 'pain', rand(7,10), 'vaginal', 'pierce'
+	gs 'stat'
+	gs 'pain', rand(7,10), 'urethra', 'pierce'
+	gs 'stat'
+	gs 'pain', rand(7,10), 'cervix', 'pierce'
+	gs 'stat'
+
+
+	act 'promise to do anything he wants!':
+		atemp = 15
+		persuas_exp += rand(0,2)
+		willpowermax -= rand(4,8)
+		gs 'stat'
+		ztemp += rand(2,3)
+		gt 'mod_public_WC_rab_livesklad_willdecrising', '61'
+	end
+
+	act 'tell nothing, just screem!':
+		gt 'mod_public_WC_rab_livesklad_willdecrising', '61'
+	end
+
+
+	if ztemp >= rand(5,13):
+		cla
+		'"It''s enought for now"'
+		if atemp = 15:
+			'Ok, I believe you.'
+			zgoda += rand(15,25)
+		end
+
+		'Vania puts the brush out and untied me a little'
+		zgoda += rand(10,15)
+		act 'rest': gt 'mod_public_WC_rab_livesklad', 'start'
+	end
+end
+
+
+
+if $ARGS[0] = '7':
+	*clr & cla
+	'"Stand on your four!"'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/hliv.jpg"></center>'
+
+	act 'Stand on my four':
+		*clr & cla
+
+		'Vania wait a few moments and starts to fuck me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/gotobarn_then_beastgotobarn_then_beast0.jpg"></center>'
+		gs 'arousal', 'flash', rand(5,10), 'sub'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'Vania fucks me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/gotobarn_then_beast1.jpg"></center>'
+			gs 'arousal', 'vaginal', rand(10,15), 'sub'
+			gs 'stat'
+
+			act 'Continue':
+				cla
+				'Vania cums in me'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/untied/vagv.mp4"></video></center>'
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Continue':
+					cla
+					'Suddenly Vania tied me harder with a rope in a pose I am… '
+					'It was so unexpected that I even make no scream… And now I can''t to move'
+					'"Now, I''ll prepare you for the Mujyk"'
+					'He takes me on his sholder and we goes somewhere in the barn.'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+					wait 800
+					'He puts me on the floor and I see some metal barrel or something on the legs'
+					'He puts me in that barrel and close the entrence…'
+					'It is dark here'
+
+					act 'wait':
+						*clr & cla
+						minut += 12
+						gs 'stat'
+						'I hear a horselike sounds in a few minutes'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/horse'+rand(1,2)+'.jpg"></center>'
+
+						act 'wait':
+							cla
+							bm_mujyk_setup = 1
+							gs 'mod_public_WC_rab_work_zoo', 'mujyk_setup'
+							'I feel something penetrates me!'
+							'OMG it''s soo big!!!'
+							gs 'boyStat', 'A221'
+							gs 'arousal_funcs', 'stretch', 'vaginal', 4
+							if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+							HVag+=1
+
+							if HVag <= 9:
+								temp = 9 - HVag
+								gs 'pain', rand(temp,9),'vaginal', 'pierce'
+							else
+								gs 'pain', rand(1,4),'vaginal', 'pierce'
+							end
+
+
+
+
+							gs 'stat'
+							gs 'arousal', 'vaginal', 15, 'sub', 'beast', 'rough'
+							gs 'arousal', 'end'
+							gs 'stat'
+
+
+							act 'OMG! OMG!':
+								*clr & cla
+								'It erupts in me, I am sooo full I am going to explode!'
+
+								gs 'arousal_funcs', 'stretch', 'vaginal', 4
+								gs 'boyStat', 'A221'
+								gs 'cum_call', 'vagina', 'A221', 0, '', '', rand(100,250)
+								gs 'stat'
+								gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+								if rand(1,2) = 1:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/dripping-cum.mp4"></video></center>'
+								else
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/H_cum.mp4"></video></center>'
+								end
+
+								act 'cry':
+									*clr & cla
+									'Vania opens the entrence and put me out from the barrel… I see a horse with a cumed dick…'
+									'"Look Betsi, this is Mujyk"'
+									'"He likes you"'
+									'"he will help me more often if you wouldn''t find the consent with me)))"'
+									'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/h.jpg"></center>'
+
+									act 'be silent':
+										*clr & cla
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+										if rand(1,3) = 1: consent -= 1
+										zgoda += rand(5,10)
+										gs 'stat'
+										act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+
+									act 'promice to do anything he want':
+										*clr & cla
+										'I''ll try to believe you'
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+										willpowermax -= rand(6,10)
+										if rand(1,3) = 1: consent -= 1
+										zgoda += rand(15,20)
+										gs 'stat'
+										act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '8':
+	*clr & cla
+	'Vania walks me on the leash…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/8beast/walk'+rand(1,2)+'.jpg"></center>'
+	minut += rand(40,60)
+	gs 'stat'
+	act 'walk':
+		*clr & cla
+		'In some time we stops in the middle of nowhere.'
+		'Vania make a loud breath.'
+		'"Yes, this is the place"'
+		'Vania tied me to the tree.'
+		'"Betsi, I am a full honest with you right now. This is my last warning."'
+		'"I''ll be back in a few hours…"'
+		'Vania walks away.'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/8beast/wait.jpg"></center>'
+		ztemp = 1
+		act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '81'
+	end
+end
+
+if $ARGS[0] = '81':
+	*clr & cla
+	temp = rand(20,45)
+	ztemp += temp
+	minut += temp
+	if temp >= 35:
+		'Something grabs me and push to the tree… big horrible paws holds me…'
+		'…while big filthy dick fucks me!!!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/8beast/beast.mp4"></video></center>'
+
+		gs 'npcgeneratec', 0, 'le beast', 113
+		gs 'boyStat', $npclastgenerated
+
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+		if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+		HVag+=1
+
+		if HVag <= 9:
+			temp = 9 - HVag
+			gs 'pain', rand(temp,9),'vaginal', 'pierce'
+		else
+			gs 'pain', rand(1,4),'vaginal', 'pierce'
+		end
+
+
+
+
+		gs 'stat'
+		gs 'arousal', 'vaginal', 25, 'sub', 'beast', 'rough'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+
+		act 'continue':
+			cla
+			'This dick is rearranging my guts… OMG!!!'
+			'Finally it cums in me'
+			'OMFG it cums IN me… Can I become pregnant from it?'
+
+			gs 'arousal_funcs', 'stretch', 'vaginal', 4
+
+			gs 'npcgeneratec', 0, 'beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'vagina', $npclastgenerated, 0, '', '', rand(100,250)
+			gs 'stat'
+			gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			ztemp += 35
+			mdk = 1
+			if rand(1,2) = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/dripping-cum.mp4"></video></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/7horse/H_cum.mp4"></video></center>'
+			end
+			act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '81'
+		end
+	else
+		'Nothing happens…'
+		'I even rest a bit'
+		pcs_mood += rand(1,30)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/8beast/wait.jpg"></center>'
+		act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', '81'
+	end
+
+
+	if mdk = 1 and ztemp >= 240:
+		*clr & cla
+		'Vania comes back'
+		'"You look very used…"'
+		'"I am going to bring you here till you find the consent with me…"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+
+		act 'be silent':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			if rand(1,3) = 1: consent -= 1
+			zgoda += rand(5,10)
+			gs 'stat'
+			act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+
+		act 'promice to do anything he want':
+			*clr & cla
+			'I''ll try to believe you'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			willpowermax -= rand(6,10)
+			if rand(1,3) = 1: consent -= 1
+			zgoda += rand(15,20)
+			gs 'stat'
+			act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'ny':
+	*clr & cla
+	'Vania turn the light off and throw the shiny garland on me.'
+	'"Dress this"'
+	'I turned the garland around me…'
+	'"Perfect, now play with yourself."'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	act 'masturbate':
+		*clr & cla
+
+		'I rub my clit'
+		'<i>Masturbate in the darkness and shiny garland… I feel something… new year spirit?</i>'
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/1self.mp4"></video></center>'
+
+		gs 'arousal', 'masturbate', 20, 'bound', 'sub'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'Vania comes clother and starts to fingering me'
+			'"Suck me" - said vania in a short time'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/2fingering.mp4"></video></center>'
+
+			gs 'arousal', 'vaginal_finger', 20, 'bound', 'sub'
+			gs 'stat'
+
+			act 'blow him':
+				*clr & cla
+				'I am blowing Vania'
+
+				'Good, now I want your pussy!'
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/3bj'+rand(1,2)+'.mp4"></video></center>'
+
+				gs 'arousal', 'bj', rand(20,30), 'bound', 'sub'
+				gs 'stat'
+
+				act 'give it to him':
+					*clr & cla
+					'Vania fucks me'
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/4vag'+rand(1,2)+'.mp4"></video></center>'
+
+					gs 'arousal', 'vaginal', rand(20,30), 'bound', 'sub'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'Vania wealthy cums on me'
+
+						pcs_mood += rand(15,30)
+
+
+						$orgasm_txt = 'it was not so bad, even pleasure'
+						$orgasm_or = 'yes'
+
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/5cum.mp4"></video></center>'
+
+						wait 800
+
+						'Suddenly Vania starts to tied the garland arounds my legs'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/6start_tie.jpg"></center>'
+
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'labia', $npclastgenerated, 0
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						if rand(1,3) = 1: consent -= 1
+
+						zgoda += 10
+
+						act 'wait':
+							*clr & cla
+							'He finished tied me in a few minutes…'
+							'And he starts to sing:'
+
+							'"A Christmas tree was born in the forest."'
+							'"in the forest it grew up."'
+							'"Slim and green in winter and summer…"'
+
+							'He laughts and goes somewhere'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/7NY_tree.jpg"></center>'
+
+							'And I can do nothing except be a Christmas tree'
+
+							gs 'pain', rand(0,1), 'back', 'labor'
+							gs 'pain', rand(0,1), 'hips', 'labor'
+							gs 'pain', rand(0,1), 'thighs', 'labor'
+							gs 'pain', rand(0,1), 'legL', 'labor'
+							gs 'pain', rand(0,1), 'legR', 'labor'
+							gs 'pain', rand(0,1), 'shoulders', 'labor'
+							gs 'pain', rand(0,1), 'armL', 'labor'
+							gs 'pain', rand(0,1), 'armr', 'labor'
+							gs 'pain', rand(0,1), 'chest', 'labor'
+							ztemp = 1
+							gs 'stat'
+
+							act 'wait': gt 'mod_public_WC_rab_livesklad_willdecrising', 'ny2'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'ny2':
+	*clr & cla
+	ztemp += 1
+	minuts += rand (15,30)
+	temp = rand(1,4)
+	if temp = 1: 'Because of the awkward posture the body hurts'
+	if temp = 2: 'When will it end ?!'
+	if temp = 3: 'Aaaaaaa'
+	if temp = 4: 'My body hurts…'
+
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/ny/7NY_tree.jpg"></center>'
+
+	gs 'pain', rand(0,1), 'back', 'labor'
+	gs 'pain', rand(0,1), 'hips', 'labor'
+	gs 'pain', rand(0,1), 'thighs', 'labor'
+	gs 'pain', rand(0,1), 'legL', 'labor'
+	gs 'pain', rand(0,1), 'legR', 'labor'
+	gs 'pain', rand(0,1), 'shoulders', 'labor'
+	gs 'pain', rand(0,1), 'armL', 'labor'
+	gs 'pain', rand(0,1), 'armr', 'labor'
+	gs 'pain', rand(0,1), 'chest', 'labor'
+	gs 'stat'
+
+	act 'wait as a tree…': gt 'mod_public_WC_rab_livesklad_willdecrising', 'ny2'
+
+	if ztemp >= rand(4,6):
+		cla
+		'Vania comes back'
+		'"Hello my new year happiness)))"'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+		act 'be silent':
+			cla
+			'I will make you a tree other time, now you can rest XD'
+
+			gs 'stat'
+			act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+
+		act 'please untie me':
+			cla
+			'"Yes, Betsi. I am not a monster, I am your Master and I want you to hear my message. And it looks like you heared it."'
+			'he unties me from the garland'
+
+			willpowermax -= rand(1,3)
+
+			zgoda += 5
+			gs 'stat'
+			act 'Vania bring me back to the bed': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+end
+
+--- mod_public_WC_rab_livesklad_willdecrising ---------------------------------
+

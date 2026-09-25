@@ -1,0 +1,49 @@
+# mod_public_WC_play_the_piano
+if $ARGS[0] = 'Play_the_piano':
+	minut += 5
+	instrmusic_exp += 1
+	gs 'stat'
+	'I am playing..'
+	if hour <= 5 or hour >= 23: 
+		If Tolik ! 2: Tolik = 1
+		If Tolik = 1: gt 'mod_public_WC_rab_random_event', 'event8'
+	end
+	if hour >= 7 and hour <= 14: 
+		If Vania ! 2: Vania = 1
+		If Vania = 1: gt 'mod_public_WC_rab_random_event', 'event8'
+	end
+
+	temp = rand(1,5)
+	if week <= 5 and hour >= 15 and hour <= 19 and temp = 1 and Alove < 20:
+		if Artem ! 2: Artem = 1
+		If Artem = 1: gt 'mod_public_WC_rab_random_event', 'event8'
+	end
+	instrmusic_exp += rand(0,3)
+	pcs_mood += 5
+	minut += rand(15,35)
+	
+	if  pcs_instrmusic >= 100:
+		'Music fascinated me and took me to another world, music conveyed harmony to everyone around'
+		pcs_mood += 10
+		brak -= 3
+	elseif pcs_instrmusic >= 70:
+		'Music comforted my hearing and pleasantly pleased my soul'
+		pcs_mood += 5
+		brak -= 2
+	elseif pcs_instrmusic >= 40:
+		'The music is quite entertaining'
+		brak -= 1
+	elseif pcs_instrmusic >= 20:
+		'I can call it music'
+	else
+		'The cacophony of sounds is cheered me up a little bit.'
+		pcs_mood -= 3
+		brak += 1
+	end
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/hata/piano.jpg"></center>'
+	gs 'stat'
+	act 'Stop playing': gt 'mod_public_WC_rab', 'spat1'
+end
+
+--- mod_public_WC_play_the_piano ---------------------------------
+

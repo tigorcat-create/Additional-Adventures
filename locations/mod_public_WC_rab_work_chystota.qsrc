@@ -1,0 +1,620 @@
+# mod_public_WC_rab_work_chystota
+if $ARGS[0] = 'start':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'start'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'start'
+	gs 'stat'
+	*clr & cla
+	'"Yana looked at me, "Fine, now you''re ready.'
+
+	'<center><img <<$set_imgh>> src="images/locations/pavlovsk/hotel/maid.cloth'+rand(0,5)+'.jpg"></center>'
+
+	'Go to the bar, Toha will explain everything to you.'
+
+	act 'Go to the bar':
+		*clr & cla
+		'I went to the bar, a handsome young boy immediately began to command'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+		if vladajob13 = 1 and vladajob11 = 1:
+			'Hi, Yana said you''re new to Betsy. Your task is to walk around the club and clean where it is dirty. At least once every two hours, come here to the counter and check if I have any special instructions. At 9 o''clock your shift ends, you will come to me. '
+			vladajob13 = 0
+		elseif vladajob11 = 0 and vladajob13 = 1:
+			'Hello, Betsy. Your task is to walk around the club and clean where it is dirty. At least once every two hours, come here to the counter and check if I have any special instructions. At 9 o''clock your shift ends, you will come to me. '
+			vladajob13 = 0
+		else
+			'Hi Betsy, let''s get to work soon. At 9 o''clock your shift ends. '
+		end
+
+		bcilg = 0
+		bhour = hour + 2
+		bminut = minut
+		if bhour >= 24: bhour -= 24
+		bcil = 0
+
+		act'Continue talk with Toha': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'Toha'
+		act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+	end
+end
+
+
+
+
+if $ARGS[0] = 'Toha':
+	gt 'mod_public_WC_rab_work_TOHA', 'tohachystota'
+end
+
+
+
+
+
+
+if $ARGS[0] = 'tables':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'tables'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'tables'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', '"Tables"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tables.jpg"></center>'
+
+
+	act 'go to other room':
+		cla
+		if bcil > 0: act 'Go to the hotel': minut += 4 & gt 'mod_public_WC_rab_work_chystota', 'hotel'
+		act'Go to the Toha': minut += 1 & gt 'mod_public_WC_rab_work_chystota', 'Toha'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+	end
+	act 'wait': 'I can''t wait here, I''m sure Toha will pay attention to it. '
+
+
+	if broom = 1: 'The puddle hasn''t disappeared yet, probably the other girls haven''t noticed it yet.'
+
+	temp = rand (1,5)
+	if temp = 1 and broom ! 1:
+		'I noticed a puddle'
+		broom = 1
+	end
+
+	if broom = 1:
+		act 'Remove the puddle':
+			gt 'mod_public_WC_rab_work_chystota', 'RP'
+		end
+	end
+
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+
+	if hour >= 10 and hour < 21:
+		*clr & cla
+		'Toha approached me'
+		'Did you enjoy working so much? Why don''t you come to me? Your shift is over, you can go to the room '
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+		if shtraf >= 5:
+			act 'Ask if I can make up for my current guilt at work?':
+				cla
+				'Of course you can, let''s go to the utility room. - Toha smiles greedily '
+				act 'No, thanks.':
+					cla
+					act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+				end
+				gs 'willpower', 'prostitution', 'self', 'medium'
+				if will_cost <= pcs_willpwr:
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						'Going into the utility room, Toh bent me by force and began to have'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+
+						guy += 1
+						dick = 18
+						npc_dick[$npclastgenerated] = dick
+
+						stat['vaginal'] += 1
+						shtraf = 0
+						gs 'sweat', 'add', 5
+						gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+						gs 'stat'
+
+
+
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+							'Toha finished on me.'
+							'"It was good, your sins are forgiven." - finally Toha slapped me on the buttocks. '
+							$cumarrnam = 'Toha'
+							spafinloc = 11
+							spafinloc = 15
+							shtraf = 0
+							gs 'cum_manage'
+							gs 'stat'
+							act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+					end
+				else
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			end
+			if shtraf > 10:
+				cla
+				'Betsy, you''ve done so many stupid things that even I can''t cover you.'
+				act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+			end
+		end
+	end
+end
+
+
+
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+
+if $ARGS[0] = 'billiard':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'billiard'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'billiard'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Billiard')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/billiard.jpg"></center>'
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 5 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+		act'Go to balcony': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+		act'Go to office': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+	if broom = 2: 'The puddle hasn''t disappeared yet, probably the other girls haven''t noticed it yet.'
+	temp = rand (1,5)
+	if temp = 1 and broom ! 2:
+		'I noticed a puddle'
+		broom = 2
+	end
+	if broom = 2:
+		act 'Remove the puddle':
+			gt 'mod_public_WC_rab_work_chystota', 'RP'
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+
+
+if $ARGS[0] = 'balcony':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'balcony'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'balcony'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Balcony')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/balcony.jpg"></center>'
+
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'office'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+	if broom = 3: 'The puddle hasn''t disappeared yet, probably the other girls haven''t noticed it yet.'
+
+	temp = rand (1,5)
+	if temp = 1 and broom ! 3:
+		'I noticed a puddle'
+		broom = 3
+	end
+
+	if broom = 3:
+		act 'Remove the puddle':
+			gt 'mod_public_WC_rab_work_chystota', 'RP'
+		end
+	end
+	if mc_inventory['cigarettes'] > 0:
+		act 'Smoking':
+			minut += rand(3,5)
+			gs 'drugs', 'smoke'
+			gs 'stat'
+		end
+	end
+	if mc_inventory['cigarettes'] <= 0:
+		act 'Ask one of the guests on the balcony for a cigarette':
+			minut += rand(3,5)
+			temp = rand(1,10)
+			gs 'stat'
+			if pcs_sweat >= 10: temp -= pcs_sweat/10
+			if temp <= 2:
+				'The guest looks at you in astonishment and leaves.'
+				shtraf += rand(5,10)
+			elseif temp <= 6:
+				shtraf += rand(0,1)
+				'The guest pretends you don''t exist'
+			elseif temp <= 9:
+				'A man smiles, gives you a cigarette and lights it'
+				gs 'drugs', 'smoke'
+				mc_inventory['cigarettes'] += 1
+				gs 'stat'
+			else
+				'A man smiles, gives you a cigarette and lights it'
+				gs 'drugs', 'smoke'
+				gs 'drugs', 'aphrodisiac'
+				mc_inventory['aphrodisiac'] += 1
+				mc_inventory['cigarettes'] += 1
+				gs 'stat'
+			end
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+
+if $ARGS[0] = 'office':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'office'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'office'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Office')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/office.jpg"></center>'
+
+
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+		act'Go to billiard': minut += 3 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+	if broom = 4: 'The puddle hasn''t disappeared yet, probably the other girls haven''t noticed it yet.'
+
+	temp = rand (1,5)
+	if temp = 1 and broom ! 4:
+		'I noticed a puddle'
+		broom = 4
+	end
+
+	if broom = 4:
+		act 'Remove the puddle':
+			gt 'mod_public_WC_rab_work_chystota', 'RP'
+		end
+	end
+	if ( pcs_intel >= rand(50,70) or pcs_compskl >= rand(40,60) or pcs_comphckng >= rand(20,35) ) and rand(1,10) = 1:
+		*nl
+		'I see an open bank website with a logged-in account'
+		act 'Pretend I''m cleaning up at the computer and take a closer look':
+			*clr & cla
+			minut += 3
+			temp = rand(1,100)
+			if temp <=5:
+				'account balance is 250000'
+				bglass = 250000
+			elseif temp <=15:
+				'account balance is 10000'
+				bglass = 10000
+			elseif temp <=40:
+				'account balance is 5000'
+				bglass = 5000
+			else
+				'There is debt on the bank account'
+			end
+			if temp <= 40 and bankAccount = 1:
+				act 'Transfer money to your card':
+					*clr & cla
+					temp = rand(1,10)
+					if temp = 1:
+						'The money was transferred.'
+						money += bglass
+						mood += bglass/1000
+						act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+					elseif temp <=5:
+						'The program blocks transfers to unfamiliar cards.'
+						act 'Hack':
+							*clr & cla
+							minut += rand(5,30)
+							if pcs_comphckng >= rand(30,60):
+								'Hacked successfully'
+								'The money was transferred.'
+								money += bglass
+								mood += bglass/1000
+								act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+							else
+								'I can''t Hack that'
+								mood -= 10
+								act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+							end
+						end
+					elseif temp <=8:
+						*clr & cla
+						'The program requires double authentication. I can''t break this without preparation '
+						mood -= 10
+						if pcs_comphckng >= rand(70,90):
+							'Ha, in the last hope, I did succeed!'
+							'The money was transferred.'
+							money += bglass
+							mood += bglass/1000
+						end
+						act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+					elseif temp >=9:
+						*clr & cla
+						if bglass = 250000:
+							'I felt a blow and lost consciousness'
+							over = 1
+							gt 'gameover'
+						else
+							'I felt a blow and the man behind my ear pulled me away from the computer "What the hell!"'
+							'In a weeping voice, I assure him that I just cleaned up'
+							'Get out of here!'
+							gs 'pain', 9, 'ears', 'pull'
+							gs 'pain', 9, 'head', 'spank'
+							shtraf += 10
+							gs 'stat'
+							act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+						end
+					end
+				end
+			end
+			act 'get away from the computer': gs 'stat' & gt 'mod_public_WC_rab_work_chystota', 'office'
+		end
+	end
+
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+
+
+if $ARGS[0] = 'dancefloor':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$metka = 'dancefloor'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'dancefloor'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Dancefloor')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/party.jpg"></center>'
+
+
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_work_chystota', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'balcony'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_work_chystota', 'office'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+	if broom = 5: 'The puddle hasn''t disappeared yet, probably the other girls haven''t noticed it yet.'
+
+	temp = rand (1,5)
+	if temp = 1 and broom ! 5:
+		'I noticed a puddle'
+		broom = 5
+	end
+
+	if broom = 5:
+		act 'Remove the puddle':
+			gt 'mod_public_WC_rab_work_chystota', 'RP'
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+if $ARGS[0] = 'hotel':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_chystota'
+	$menu_loc = 'mod_public_WC_rab_work_chystota'
+	$menu_arg = 'hotel'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', '"Lift"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/lift.jpg"></center>'
+
+	'I''m in the elevator.'
+	if $metka ! 'tables':
+		if phwork ! 7:
+			act 'I press on the floor 1':
+				minut += 1
+				gt 'mod_public_WC_rab_work_chystota', 'tables'
+			end
+		end
+		if phwork = 7:
+			act 'I press on the floor 1':
+				minut += 1
+				gt 'mod_public_WC_rab_btothel', 'tables'
+			end
+		end
+	end
+
+	act 'I press on the floor 2': minut += 1 & gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+	act 'I press on the floor 3': minut += 2 & gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+	act 'I press on the floor 4': minut += 3 & gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+end
+
+
+
+
+
+if $ARGS[0] = 'RP':
+	*clr & cla
+	act 'Dancing with a mop':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/serving/serv/clean/maidmopdance.mp4"></video></center>'
+		if pcs_dancero > 70 or pcs_danc > 90:
+			'Men have broken away from dinner and do not take their eyes off you'
+			mood += rand(5,10)
+			minut += rand(10,20)
+			if ryska < 10:
+				temp = rand(1,10)
+				if temp = 1: ryska += 1 & 'A man comes up to you, slaps your buttocks and draws a symbol with "Daaaamn."'
+			end
+			broom = 0
+			'I brought cleanliness'
+			cleaning_exp += rand (1,5)
+			gs 'sweat', 'add', 10
+			act 'continue': gs 'stat' & gt $loc, $loc_arg
+		elseif pcs_dancero > 40 or pcs_danc > 60:
+			'Men start to notice me'
+			pcs_dancero += rand(0,1)
+			mood += rand(5,10)
+			minut += rand(10,20)
+			if ryska < 10:
+				temp = rand(1,20)
+				if temp = 1: ryska += 1 & 'A man comes up to you, slaps your buttocks and draws a symbol with "Daaaamn."'
+			end
+			broom = 0
+			'I brought cleanliness'
+			cleaning_exp += rand (1,5)
+			gs 'sweat', 'add', 10
+			act 'continue':  gs 'stat' & gt $loc, $loc_arg
+		else
+			'Clumsily tugging at the mop, I just made those who noticed me laugh ('
+			minut += rand(5,20)
+			mood -= rand(5,10)
+			pcs_dancero += rand(0,1)
+			broom = 0
+			'I brought cleanliness'
+			cleaning_exp += rand (1,5)
+			gs 'sweat', 'add', 10
+			act 'continue':  gs 'stat' & gt $loc, $loc_arg
+		end
+	end
+	act 'Bend so that it is visible under the skirt':
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/clean/mop/mop_tease (1).jpg"></center>'
+		gs 'arousal', 'flash', rand(10,20), 'exhibitionism'
+		gs 'flash', 'exhibitionism', 1
+		gs 'stat'
+		'I feel the hungry looks of men'
+		temp = rand(1,10)
+		if temp = 1:
+			*clr & cla
+			'Someone came up behind me and pressed me to the table by force, breaking me, I felt my panties slip off.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/sexstill (1).mp4"></video></center>'
+
+			guy += 1
+			stat['vaginal'] += 1
+			dick = rand(14,30)
+			npc_dick[$npclastgenerated] = dick
+
+			gs 'arousal', 'vaginal', rand(5,20), 'sub', 'rough'
+			gs 'stat'
+			'Someone fuck me'
+			minut += rand(5,15)
+			gs 'willpower', 'humiliation', 'self'
+				if will_cost <= pcs_willpwr:
+					act 'Take me handsome' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'Well, you''re a bitch'
+						'Soon he finished and put some money in my panties'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/sexstill (2).mp4"></video></center>'
+						spafinloc = 0
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						temp = rand(1,12)
+						if temp = 1: ryska += 1 & "Here, damn it, the stallion draws a symbol on me."
+						money += rand (1,3)*100
+						act 'Finish cleaning':
+							gs 'sweat', 'add', 10
+							*clr & cla
+							broom = 0
+							'I brought cleanliness'
+							cleaning_exp += rand (1,5)
+							act 'continue':  gs 'stat' & gt $loc, $loc_arg
+						end
+					end
+				else
+					act 'Take me handsome' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			act 'Silently suffer':
+				*clr & cla
+				'Soon he finished and put some money in my panties'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/sexstill (2).mp4"></video></center>'
+				spafinloc = 0
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				temp = rand(1,12)
+				money += rand (1,3)*100
+				act 'Finish cleaning':
+					*clr & cla
+					gs 'sweat', 'add', 10
+					broom = 0
+					'I brought cleanliness'
+					cleaning_exp += rand (1,5)
+					act 'continue':  gs 'stat' & gt $loc, $loc_arg
+				end
+			end
+		else
+			cla
+			gs 'sweat', 'add', 10
+			broom = 0
+			'I brought cleanliness'
+			cleaning_exp += rand (1,5)
+			act 'continue':  gs 'stat' & gt $loc, $loc_arg
+		end
+	end
+	act 'Just finish cleaning':
+		*clr & cla
+		gs 'sweat', 'add', 10
+		broom = 0
+		'I brought cleanliness'
+		cleaning_exp += rand (4,6)
+		act 'continue':  gs 'stat' & gt $loc, $loc_arg
+	end
+end
+
+--- mod_public_WC_rab_work_chystota ---------------------------------
+

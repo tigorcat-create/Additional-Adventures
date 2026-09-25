@@ -1,0 +1,241 @@
+# mod_public_WC_cabine_crime
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+	temp = crime * 30 / 100
+	crime -= temp
+	if crime < 0: crime = 0
+	'Someone hit me and I fell down.'
+	gs 'pain', rand(4,10), 'head', 'hit'
+	'"Too many crimes, Girl, someone wants to take revenge!"'
+	'He aims a gun on me…'
+	bcil = rand(60,120)
+	ecrime = 1
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/udar.jpg"></center>'
+
+	if gun = 1:
+		act 'Try to shoot him':
+			cla
+			temp=rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+			ammo -= 1
+			shoot_exp += rand(1,3)
+			if pcs_shoot >= rand(70,120):
+				'I hit him!'
+				temp = rand(1,10)
+				if temp <= 9:
+					'He scream and fall on the ground.'
+					pcs_mood -= 5
+					'He is bleading'
+
+					act 'Take his wallet and call an ambulance':
+						crime += 2
+						temp = rand(0,21)
+						if temp <= 6:
+							money += rand(0,100)
+							'This bastard wasn''t going to pay me, there are almost no money'
+						elseif temp <= 20:
+							money += rand(750,2500)
+							'Nice.'
+						else
+							money += rand(3000,7000)
+							'Woow, it''s a lot of money'
+						end
+						killvar 'ecrime'
+						gt $loc, $loc_arg
+					end
+
+					act 'run away':
+						crime += 1
+						minut += 15
+						killvar 'ecrime'
+						gt $loc, $loc_arg
+					end
+
+					act 'run away and call ambulance':
+						crime += 2
+						minut += 15
+						killvar 'ecrime'
+						gt $loc, $loc_arg
+					end
+					gs 'willpower', 'crime', 'self', 'medium'
+					if will_cost <= pcs_willpwr:
+						act 'Finish him' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+							temp=rand(1,2)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							killed +=1
+							ammo -= 1
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							shoot_exp += 1
+							'He even make no sound. The dead body fell on the ground'
+							crime += 5
+							'I take all his money and leave'
+							temp = rand(0,11)
+							if temp <= 3:
+								money += rand(0,100)
+								'This bastard wasn''t going to pay me, there are almost no money'
+							elseif temp <= 10:
+								money += rand(750,2500)
+								'Nice.'
+							else
+								money += rand(3000,7000)
+								'Woow, it''s a lot of money'
+							end
+							killvar 'ecrime'
+							act 'go away': gt $loc, $loc_arg
+						end
+					else
+						act 'Finish him' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+				else
+					'He stoped and fall on the ground in scilense.'
+					temp=rand(1,2)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+					killed +=1
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					shoot_exp += 1
+					crime += 5
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					killvar 'ecrime'
+					act 'run away': gt $loc, $loc_arg
+					act 'take the wallet and run away':
+						'I take all his money and leave'
+						temp = rand(0,21)
+						if temp <= 6:
+							money += rand(0,100)
+							'This bastard wasn''t going to pay me, there are almost no money'
+						elseif temp <= 20:
+							money += rand(750,2500)
+							'Nice.'
+						else
+							money += rand(3000,7000)
+							'Woow, it''s a lot of money'
+						end
+						gt $loc, $loc_arg
+					end
+				end
+			else
+				cla
+				'I have not enought time to aim and shoot somewhere. He hit me… hard, becouse of pain I dropped the gun.'
+				'he hit me one more time and I fall to the ground'
+				gs 'pain', 10, 'head', 'kick'
+				gs 'pain', 10, 'lips', 'kick'
+				gs 'pain', 10, 'nose', 'kick'
+				gs 'pain', 10, 'armR', 'kick'
+				gs 'pain', 10, 'tummy', 'kick'
+				gs 'stat'
+				gun = 0
+				killvar 'ecrime'
+				act 'try not to lose consciousness': gt 'mod_public_WC_rab_gun_rob', 'rape'
+			end
+		end
+	end
+	act 'try to run away': gt 'mod_public_WC_rab_gun_rob', 'runaway'
+	act 'surrender':
+		killvar 'ecrime'
+		gun = 0
+		gt 'mod_public_WC_rab_gun_rob', 'surrender'
+	end
+
+
+
+	temp3 = 50000 / pcs_persuas
+	temp2 = 250000 / pcs_persuas
+	temp1 = 500000 / pcs_persuas
+
+
+	if money + karta >= temp3:
+		act 'offer money':
+
+			if money + karta >= temp1:
+				act 'offer <<temp1>>':
+					cla
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+					'ok'
+					humint_exp += 3
+					money -= temp1
+					if money < 0: karta += money
+					if money < 0: money = 0
+					crime -= rand(100,200)
+					if crime < 0: crime = 0
+					gs 'stat'
+					'He takes the money and leave'
+					act 'continue': gt $loc, $loc_arg
+				end
+			end
+			if money + karta >= temp2:
+				act 'offer <<temp2>>':
+					cla
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+					if pcs_humint <= rand(25,75) or pcs_intel <= rand(45,95):
+						'ok'
+						humint_exp += 3
+						money -= temp2
+						if money < 0: karta += money
+						if money < 0: money = 0
+						crime -= rand(100,200)
+						if crime < 0: crime = 0
+						gs 'stat'
+						'He takes the money and leave'
+						act 'continue': gt $loc, $loc_arg
+					else
+						'"Pff, no. Don''t try to distract  me.'
+						if gun = 1:  'I see your gun'
+						act 'try to run away': gt 'mod_public_WC_rab_gun_rob', 'runaway'
+						act 'surrender':
+							killvar 'ecrime'
+							gun = 0
+							gt 'mod_public_WC_rab_gun_rob', 'surrender'
+						end
+					end
+				end
+			end
+			if money >= temp3:
+				act 'offer <<temp3>>':
+					cla
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+					if pcs_humint <= rand(45,75) or pcs_intel <= rand(70,90):
+						'ok'
+						humint_exp += 3
+						money -= temp3
+						if money < 0: karta += money
+						if money < 0: money = 0
+						crime -= rand(100,200)
+						if crime < 0: crime = 0
+						gs 'stat'
+						'He takes the money and leave'
+						act 'continue': gt $loc, $loc_arg
+					else
+						'"Pff, no. Don''t try to distract  me, I see your gun"'
+						if gun = 1:  'I see your gun'
+						act 'try to run away': gt 'mod_public_WC_rab_gun_rob', 'runaway'
+						act 'surrender':
+							killvar 'ecrime'
+							gun = 0
+							gt 'mod_public_WC_rab_gun_rob', 'surrender'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if   npc_loyality >= 70   and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+--- mod_public_WC_cabine_crime ---------------------------------
+

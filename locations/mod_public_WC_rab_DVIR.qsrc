@@ -1,0 +1,906 @@
+# mod_public_WC_rab_DVIR
+if $ARGS[0] = 'dvir':
+	CLOSE ALL
+	$loc = 'mod_public_WC_rab_DVIR'
+	$metka = 'dvir'
+	$menu_loc = 'mod_public_WC_rab_DVIR'
+	$menu_arg = 'dvir'
+	$location_type = 'secluded'
+	$loc_arg = $ARGS[0]
+	*clr & cla
+	menu_off = 0
+	gs 'stat'
+	$func('wrap', 'header center b', 'The yard where I''m being held')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/dim.jpg"></center>'
+
+
+	if vtecha = 2: gt 'mod_public_WC_rab_DVIR', 'rulesr'
+	menu_off = 0
+
+	if Aday ! daystart:
+		if hour >= 11 and hour <= 21 and Artem ! 2:
+			temp = rand(0,vlada)
+			if Alove <= 20 and temp <= shtraf:
+				Aday = daystart
+				gt 'mod_public_WC_rab_random_event', 'event10'
+			end
+		end
+	end
+
+	gs 'mod_public_WC_rab_Vania', 'start'
+	if Vania = 1:
+		if ktemp = 3657753:
+			'Vania come to me and take off the colar''s lock'
+			'"Betsi, nice ride. I hopes you appreciate it"'
+			vlada += 5
+			killvar 'ktemp'
+			zashmorg = 1
+		end
+		act 'Talk with Vania': gt 'mod_public_WC_rab_talk', 'Vania'
+	end
+
+	gs 'mod_public_WC_rab_Artem', 'start'
+	if Artem = 1:
+		act 'Talk with Artem': gt 'mod_public_WC_rab_talk', 'Artem'
+	end
+
+	gs 'mod_public_WC_rab_Tolik', 'start'
+	if Tolik = 1:
+		act 'Talk with Tolik': gt 'mod_public_WC_rab_talk', 'Tolik'
+	end
+
+	if $clothingworntype = 'nude':
+		If Tolik = 1:
+			gt 'mod_public_WC_rab_zashmorg', 'gola'
+		elseif Vania = 1:
+			gt 'mod_public_WC_rab_zashmorg', 'gola'
+		elseif Artem = 1:
+			if Alove >= 20:
+				*nl
+				'Nice, Betsi. I like what I see'
+				temp = rand (1, 10)
+				if temp = 1: Alove += 1
+			else
+				gt 'mod_public_WC_rab_zashmorg', 'gola'
+			end
+		end
+	end
+
+	if cumgame = 0: dvirstakan = 0
+
+	if cumgame = 1:
+		if dvirstakan = 1: 'Here I already took the glass'
+		if dvirstakan = 0:
+			if cumstakan > 0:
+				dvirstakan = 2
+				cumstakan -= 1
+			else
+				'There is no cum glass here'
+			end
+		end
+	end
+	if dvirstakan = 2:
+		'<b>Somewhere here must be a cum glass.</b>'
+		if pcs_intel >= rand(50,80) + brak or pcs_prcptn >= rand(40,70) + brak or pcs_observ >= rand(30,60) + brak or rand(1,100) <= 15:
+			'I see a glass full with cum!'
+			dvirstakan = 3
+			act 'Drink it and take empty glass':
+				*clr & cla
+				dvirstakan = 1
+				emptyglass += 1
+				findglass += 1
+
+				temp = rand(1,3)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/drink<<temp>>.mp4"></video></center>'
+				gs 'cum_call', 'mouth', 'redneck'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				temp = cumwin - findglass
+				'I have yet to find <<temp>> glasses'
+				act 'Continue': gt $loc, $loc_arg
+			end
+			act 'Don''t Drink it': gt $loc, $loc_arg
+		end
+		act 'Play cumgame':
+			minut += rand(10,20)
+			if pcs_intel >= rand(50,80) + brak or pcs_prcptn >= rand(40,70) + brak or pcs_observ >= rand(30,60) + brak or rand(1,100) <= 15:
+				'I see a glass full with cum!'
+				dvirstakan = 3
+				act 'Drink it and take empty glass':
+					*clr & cla
+					dvirstakan = 1
+					emptyglass += 1
+					findglass += 1
+
+					temp = rand(1,3)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/drink<<temp>>.mp4"></video></center>'
+					gs 'cum_call', 'mouth', 'redneck'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					temp = cumwin - findglass
+					'I have yet to find <<temp>> glasses'
+					act 'Continue': gt $loc, $loc_arg
+				end
+				act 'Don''t Drink it': gt $loc, $loc_arg
+			else
+				'I think the glass should be here somewhere!'
+				gs 'stat'
+			end
+		end
+	end
+	if dvirstakan = 3:
+		act 'Drink it and take empty glass':
+			*clr & cla
+			dvirstakan = 1
+			emptyglass += 1
+			findglass += 1
+
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/drink<<temp>>.mp4"></video></center>'
+			gs 'cum_call', 'mouth', 'redneck'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			temp = cumwin - findglass
+			'I have yet to find <<temp>> glasses'
+			act 'Continue': gt $loc, $loc_arg
+		end
+	end
+	'In the yard there is a wood table, a place for a fire, a well. A little further down is a small lodge. The main building is two storey ruins.'
+	act 'Sit down at the table':
+		*clr & cla
+		minut += 2
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/stil.jpg"></center>'
+		'You take a seat on one of the benches, relaxing a bit as you do.'
+		act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+
+		If Artem = 1:
+			if pcs_inhib >= 40:
+				act 'tease Artem':
+					*clr
+					minut += 5
+					gs 'exp_gain', 'inhib', rand(0,1)
+					gs 'flash', 'exhibitionism', 1
+					gs 'stat'
+					temp = rand(1,3)
+					if temp = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel1.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel<<temp>>.mp4"></video></center>'
+					end
+					if pcs_apprnc >= 120:
+						'Well, I like what I see'
+						mood += rand(0,1)
+						temp = rand(1,3)
+						if temp = 1: Alove += 1
+					else
+						'Cover up, women'
+						mood += rand(0,1)
+					end
+					If Alove >= 30 and Vania = 0 and Tolik = 0:
+						act 'Let''s fuck while nobody here!':
+							*clr & cla
+							minut += 10
+							Alove += rand(4,7)
+							dick = 18
+							npc_dick[$npclastgenerated] = dick
+							gs 'boyStat', 'A441'
+							temp = rand(1,10)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/lavka_sex.mp4"></video></center>'
+							'I''ll hop on Artem!'
+							stat['vaginal'] += 1
+
+							guy += 1
+							dick = 18
+							npc_dick[$npclastgenerated] = dick
+							gs 'boyStat', 'A441'
+
+							gs 'arousal', 'vaginal', rand(10,20)
+							gs 'stat'
+							temp = rand(1,4)
+							if temp = 1: Alove += 1
+							act 'Continue pleasure':
+								*clr & cla
+								temp = rand(1,10)
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+								'Oh yes!!! Artem, I''m so glad you decided!'
+								gs 'sweat', 'add', 15
+								spafinloc = 0
+								cumnostd = 1
+								cumarrkno =  1
+								sparrvol = 20
+								cumarrcpt = 20
+								gs 'cum_call', 'vaginal', 'Artem'
+								gs 'cuminsidereact', 'Artem'
+								gs 'cum_manage'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'Freshen up' : gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+			end
+		end
+		If Vania = 1:
+			if pcs_inhib >= 40:
+				act 'tease Vania':
+					*clr & cla
+					minut += 3
+					gs 'exp_gain', 'inhib', rand(0,1)
+					gs 'flash', 'exhibitionism', 1
+					gs 'stat'
+					temp = rand(1,3)
+					if temp = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel1.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel<<temp>>.mp4"></video></center>'
+					end
+					'"Ow, yes!" Vania jump on me and starts to undress me.'
+					act 'continue': gt 'mod_public_WC_rab_sex', 'Vaniasex'
+				end
+			end
+
+			if Cumsluttrain = 1 and rand(0,9) >= 8:
+				*clr & cla
+				'"Here, Betsi, Bon appetite"'
+				'Vania puts a cumed cookies on the table'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/sweet/sweet (2).jpg"></center>'
+
+				act 'eat it':
+					*clr & cla
+					VaniaMayster += 1
+					minut += rand(10,30)
+					if bimbolevel >= 2:
+						pcs_mood += 40
+						'Owww, yamy it''s good one and really tasty!!'
+					end
+					pcs_mood -= 20
+					gs 'cum_call', 'mouth', 'A441', 0
+					stat['swallow'] += 1
+					gs 'stat'
+					gs 'food', 'mush_soup_stats'
+					gs 'arousal', 'end'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/sweet/sweet (1).jpg"></center>'
+					act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+				end
+
+				act 'No!':
+					cla
+					slova -= 1
+					brak += 1
+					if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+					act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+				end
+
+
+				if VaniaMayster >= 100:
+					cla
+					'<i>I obey Vania for so long…</i>'
+					'<i>I can''t say "no" to Vania anymore</i>'
+					act 'eat it':
+						*clr & cla
+						minut += rand(10,30)
+						if bimbolevel >= 2:
+							pcs_mood += 40
+							'Owww, yamy it''s good one and really tasty!!'
+						end
+						pcs_mood -= 20
+						gs 'cum_call', 'mouth', 'A441', 0
+						stat['swallow'] += 1
+						gs 'stat'
+						gs 'food', 'mush_soup_stats'
+						gs 'arousal', 'end'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/food/sweet/sweet ('+rand(1,1)+').jpg"></center>'
+						act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+					end
+				end
+			end
+		end
+
+		if mc_inventory['cigarettes'] > 0:
+			act 'Smoke':
+				*clr & cla
+
+				minut += 5
+				gs 'drugs','smoke'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/events/benchsmoke.jpg"></center>'
+				'You take out a pack of smokes and light up one of your cigarettes. You take a long slow drag off it as you relax on the bench.'
+				act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+			end
+		end
+
+		if mc_inventory['cigarettes'] <= 0 and Vania = 1:
+			act 'Ask Vanya for a cigarette':
+				cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				'"Give me a cigarette?"'
+				slova -= 3
+				if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+				'Of course, but you need to pay. He gives a cigarette.'
+				act 'take it and smoke':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/take.jpg"></center>'
+					minut += 2
+					mc_inventory['cigarettes'] += 1
+					gs 'drugs','smoke'
+					gs 'stat'
+					'Vania undress his pants. Stroke his dick few times and say: "Suck it".'
+					act 'Start to suck':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/pay.mp4"></video></center>'
+						gs 'arousal', 'bj', rand(8,15), 'sub', 'rough'
+
+						stat['bj'] += 1
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/fin ('+rand(1,2)+').jpg"></center>'
+							gs 'cum_call', 'mouth', 'A441', 0
+							gs 'cum_call', 'face', 'A441', 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'finish my cigarette':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/smoke.jpg"></center>'
+								act 'continue': gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+				act 'leave it': gt $loc, $loc_arg
+			end
+		end
+
+
+
+
+
+
+		if mc_inventory['joints'] > 0 and jointhigh = 0:
+			act 'Smoke a joint':
+				*clr & cla
+
+				minut += 10
+				gs 'drugs', 'joint'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/events/benchsmoke.jpg"></center>'
+				'You pull a joint of your purse and light it up. Trying to act like you are just smoking a cigarette. You take a long slow drag off it as you relax on the bench, before long you are feeling the effects.'
+				act 'Get up': gt 'mod_public_WC_rab', 'dvir'
+			end
+		end
+		act 'Wait': gs 'obj_din', 'wait'
+		if edahot > 0:
+
+			'<a href="exec:dynamic $edahotd">A cooked meal is on the table (0:30).</a>'
+			'There are a lot alcohol on the table.'
+			act 'Drink some soft alcohol':
+
+				minut += 10
+				if pcs_humint <= 40 or pcs_intel <= 50:
+					act 'ask: Please, guys, can I drink?':
+						slova -= 5
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'beer', 1
+						gs 'stat'
+					end
+				elseif pcs_humint <= 60 or pcs_intel <= 70:
+					act 'ask: Please, want beer?':
+						slova -= 3
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'beer', 1
+						gs 'stat'
+					end
+				elseif pcs_humint <= 80 or pcs_intel <= 90:
+					act 'ask: Please, beer?':
+						slova -= 2
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'beer', 1
+						gs 'stat'
+					end
+				else
+					act 'Point your finger at the bottle of beer':
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'beer', 1
+						gs 'stat'
+					end
+				end
+			end
+			act 'Drink some samogon':
+
+				minut += 5
+				if pcs_humint <= 40 or pcs_intel <= 50:
+					act 'ask: Please, guys, can I drink?':
+						slova -= 5
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'vodka', 1
+						gs 'stat'
+					end
+				elseif pcs_humint <= 60 or pcs_intel <= 70:
+					act 'ask: Please, want samogon?':
+						slova -= 3
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'vodka', 1
+						gs 'stat'
+					end
+				elseif pcs_humint <= 80 or pcs_intel <= 90:
+					act 'ask: Please, vodka?':
+						slova -= 2
+						if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'vodka', 1
+						gs 'stat'
+					end
+				else
+					act 'Point your finger at the bottle of samogon':
+						'ok, girl.'
+						gs 'drugs', 'alcohol', 'vodka', 1
+						gs 'stat'
+					end
+				end
+			end
+		end
+	end
+	act '<b>Enter the main house</b>': minut += 1 & gt 'mod_public_WC_rab', 'vhid'
+	act '<b>Go closer to the lodge</b>': minut += 1 & gt 'mod_public_WC_rab', 'lisnyk'
+	act 'Come to fire': minut += 1 & gt 'mod_public_WC_rab', 'campfire'
+	act 'Get water from the well':
+		*clr & cla
+		gs 'sweat', 'add', 10
+		minut += 3
+		bucket += 1
+		temp = rand(1,5)
+		if temp = 1: pcs_stren += 1
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/voda.jpg"></center>'
+		act 'Continue': gt 'mod_public_WC_rab', 'dvir'
+	end
+
+	if Artem ! 2 and Tolik ! 2 and Vania ! 2:
+		act 'Try to escape!': gt 'mod_public_WC_rab_tryrun', 'start'
+	end
+	act 'Go to WC': minut += 1 & gt 'mod_public_WC_rab', 'wc'
+
+
+	if drabyna = 2:
+		act 'Climb the ladder to the window': minut += 1 & gt 'mod_public_WC_rab', 'vana2'
+		if pcs_intel >= rand(40,100):
+			act 'Move the ladder to the lodge':
+				drabyna = 1
+				minut += 1
+				gt  'mod_public_WC_rab', 'lisnyk'
+			end
+		end
+	end
+	if hour = 7 or hour = 3 or hour = 13 or hour = 20:
+		edahot = 1
+	else
+		edahot = 0
+	end
+	if hour = 6 and bigun = 0:
+		cla
+		bigun = 1
+		'Tolik waves his hand, "If you are already awake, then come run with me"'
+		if pcs_humint <= 40 or pcs_intel <= 50:
+			act 'I don''t want to?':
+				slova -= 3
+				brak += 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt 'mod_public_WC_rab', 'dvir'
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70:
+			act 'Please, no':
+				slova -= 2
+				brak += 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt 'mod_public_WC_rab', 'dvir'
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Nod "No"':
+				slova -= 0
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt 'mod_public_WC_rab', 'dvir'
+				end
+			end
+		end
+		if pcs_humint <= 40 or pcs_intel <= 50:
+			act 'Let''s run':
+				slova -= 2
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					cla
+					'I ran with Tolik'
+					vlada += rand(0,1)
+					gs 'exercise', 'tier1', 30, 'run_exp'
+					fat -= rand(0, 2)
+					gs 'sweat', 'add', 3
+					gs 'stat'
+					act 'Continue': gt 'mod_public_WC_rab','dvir'
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					cla
+					'I ran with Tolik'
+					vlada += rand(0,1)
+					gs 'exercise', 'tier1', 30, 'run_exp'
+					fat -= rand(0, 2)
+					gs 'sweat', 'add', 3
+					gs 'stat'
+					act 'Continue': gt 'mod_public_WC_rab','dvir'
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Nod "yes"':
+				slova -= 0
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					cla
+					'I ran with Tolik'
+					vlada += rand(0,1)
+					gs 'exercise', 'tier1', 30, 'run_exp'
+					fat -= rand(0, 2)
+					gs 'sweat', 'add', 3
+					gs 'stat'
+					act 'Continue': gt 'mod_public_WC_rab','dvir'
+				end
+			end
+		end
+	end
+	if hour >= 0 and hour < 6 and Vania ! 2 and Tolik ! 2 and Artem ! 2:
+		*clr & cla
+		ztemp += rand(1,2)
+		'What the fuck are you doing here? Went from here to the house until I beat you!'
+		act 'Run in the house': gt 'mod_public_WC_rab','vhid'
+		temp = rand(0,10)
+		if nightsexvania >= 4:
+			act 'Do you need me?':
+				cla
+				vlada += 1
+				VaniaMayster += 1
+				willpowermax -= rand(0,1)
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					cla
+					'Yes!'
+					Vlove += 1
+					act 'Go to him undressing on the way.': gt  'mod_public_WC_rab_sex', 'Vaniasex'
+				end
+			end
+		end
+		if pcs_humint <= 40 or pcs_intel <= 50:
+			act 'I really want to the toilet!':
+				cla
+				slova -= 4
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					if temp <= 3:
+						'Ok, go'
+						act 'Continue': gt 'mod_public_WC_rab', 'lisnyk'
+					elseif temp > 3 and temp <= 8:
+						'No, go to the house'
+						act 'Run in the house': gt 'mod_public_WC_rab','vhid'
+					else
+						*clr & cla
+						'Perfect, I need you'
+						nightsexvania += 1
+						act 'Continue': gt 'mod_public_WC_rab_sex', 'start'
+					end
+
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70:
+			act 'I want to pee!':
+				cla
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					if temp <= 3:
+						'Ok, go'
+						act 'Continue': gt 'mod_public_WC_rab', 'lisnyk'
+					elseif temp > 3 and temp <= 8:
+						'No, go to the house'
+						act 'Run in the house': gt 'mod_public_WC_rab','vhid'
+					else
+						*clr & cla
+						'Perfect, I need you'
+						nightsexvania += 1
+						act 'Continue': gt 'mod_public_WC_rab_sex', 'start'
+					end
+
+				end
+			end
+		end
+		if pcs_humint <= 80 or pcs_intel <= 90:
+			act 'Toilet':
+				cla
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					if temp <= 3:
+						'Ok, go'
+						act 'Continue': gt 'mod_public_WC_rab', 'lisnyk'
+					elseif temp > 3 and temp <= 8:
+						'No, go to the house'
+						act 'Run in the house': gt 'mod_public_WC_rab','vhid'
+					else
+						*clr & cla
+						'Perfect, I need you'
+						nightsexvania += 1
+						act 'Continue': gt 'mod_public_WC_rab_sex', 'start'
+					end
+
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Point on the toilet':
+				cla
+				if temp <= 3:
+					'Ok, go'
+					act 'Continue': gt 'mod_public_WC_rab', 'lisnyk'
+				end
+				if temp > 3 and temp <= 8:
+					'No, go to the house'
+					act 'Run in the house': gt 'mod_public_WC_rab','vhid'
+				end
+				if temp >= 9:
+					*clr & cla
+					'Perfect, I need you'
+					nightsexvania += 1
+					act 'Continue': gt 'mod_public_WC_rab_sex', 'start'
+				end
+			end
+		end
+	end
+	if dvirbrud > 0:
+		act 'Clean the yard from empty bottles and other trash.': gt 'mod_public_WC_rab_DVIR', 'clean'
+	elseif task6 = 1:
+		act 'Clean the yard from empty bottles and other trash.': gt 'mod_public_WC_rab_DVIR', 'clean'
+	end
+	if week = 6:
+		if hour >= 16 and hour <= 19:
+			dvirbrud += rand (2,6)
+			temp = rand (1,3)
+			if temp = 1:
+				'Rednecks drinking and, gladly, don''t pay attention to me.'
+			else
+				cla
+				'Betsy, you''re very on time!'
+				temp = 19 - hour
+				minut += temp*60 + 40
+				act 'Come to the table': gt 'mod_public_WC_rab_sex', '3sex'
+			end
+		end
+	end
+
+	if hour > 6:
+		dvirbrud += ztemp
+		ztemp = 0
+	end
+
+	if lis_Weekout >= 1 and hour = 21:
+		act 'Ask Vania to go to railway platform':
+			cla
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				if zashmorg ! 3:
+					zashmorg = 3
+					'Vania puts a lock on the collar and lock it on me.'
+				end
+				if Vurok >= 1: lis_Weekout = 2
+				zvit_Weekout = 1
+				day_Weekout = daystart
+				'Vania locked the leah to my collar and we go to the forest'
+				VaniaMayster += 1
+				willpowermax -= 1
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/colar.mp4"></video></center>'
+				act 'continue':
+					cla
+					'I tries to remember the path but we just walks un the deep forest…'
+					'When I seee the platform, Vania unleashed me'
+					'"See you soon, Betsi"'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go ('+rand(1,3)+').jpg"></center>'
+					minut += rand(30,90)
+					gs 'stat'
+
+					act 'continue': gt 'train', 'village'
+				end
+			end
+		end
+	elseif lis_Weekout >= 1 and hour ! 21:
+		act 'Ask Vania to go to railway platform':
+			*nl
+			'I can do this at 21 o''clock only.'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'clean':
+	CLOSE ALL
+	$loc = 'mod_public_WC_rab_DVIR'
+	$metka = 'dvir'
+	$menu_loc = 'mod_public_WC_rab_DVIR'
+	$menu_arg = 'clean'
+	$location_type = 'secluded'
+	$loc_arg = $ARGS[0]
+	*clr & cla
+
+
+	if task6 = 1: task6 = 2
+
+	vlada += 2
+
+	if firstclean = 0: firstclean = 1
+
+	mood -= 5
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tasks/yardclean1.jpg"></center>'
+
+
+
+
+	if dvirbrud < 10:
+		cleaning_exp += 1
+		minut += 60
+		gs 'sweat', 'add', 10
+		gs 'stat'
+		dvirbrud = 0
+		act 'Put the broom': gt 'mod_public_WC_rab_DVIR', 'dvir'
+	elseif dvirbrud < 20:
+		mood -= 5
+		cleaning_exp += rand(1,2)
+		minut += 120
+		gs 'sweat', 'add', 20
+		gs 'stat'
+		dvirbrud = 0
+		act 'Put the broom': gt 'mod_public_WC_rab_DVIR', 'dvir'
+	else
+		mood -= 10
+		cleaning_exp += rand(2,3)
+		minut += 180
+		gs 'sweat', 'add', 30
+		gs 'stat'
+		dvirbrud = 0
+		act 'Put the broom': gt 'mod_public_WC_rab', 'dvir'
+	end
+
+	if (hour <= 6 and hour ! 3) or (hour >= 19):
+		temp = rand(1,100)
+		if temp <= 18:
+			*clr & cla
+			'Vania comes to me, push me on the ground… "Take this and fuck yourself!". He gives me the broom'
+
+			if pcs_humint <= 40 or pcs_intel <= 50:
+				act 'NO, I willn''t do':
+					slova -= 3
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					else
+						gt 'mod_public_WC_rab_DVIR','broom'
+					end
+				end
+			end
+			if pcs_humint <= 60 or pcs_intel <= 70:
+				act 'no, I''ll not':
+					slova -= 3
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					else
+						gt 'mod_public_WC_rab_DVIR','broom'
+					end
+				end
+			end
+			if pcs_humint <= 80 or pcs_intel <= 90:
+				act 'no':
+					slova -= 1
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					else
+						gt 'mod_public_WC_rab_DVIR','broom'
+					end
+				end
+			end
+			if pcs_humint > 80 or pcs_intel > 90:
+				act 'Nod "no"':
+					slova -= 0
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					else
+						gt 'mod_public_WC_rab_DVIR','broom'
+					end
+				end
+			end
+
+			if VaniaMayster >= 100:
+				cla
+				'<i>I obey Vania for so long…</i>'
+				'<i>I can''t say "no" to Vania anymore</i>'
+			end
+
+			act 'take the broom and start to fuck myself':
+				cla
+				VaniaMayster += rand(0,1)
+				willpowermax -= rand(0,1)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/12/clean_broom.jpg"></center>'
+				gs 'arousal', 'vaginal_dildo', 15, 'sub', 'rough'
+				gs 'stat'
+				'In 10 minutes Vanias'' eyes becomes crazy, he threw out the broom and starts to fuck me'
+				act 'continue': gt  'mod_public_WC_rab_sex', 'Vaniasex'
+			end
+
+		elseif temp <= 50:
+			'I noticed Vania''s hungry look'
+		end
+	end
+end
+
+if npc_loyality >= 70   and npc_loyality   <   1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'broom':
+	'Vania look at me for some minute then hit me with leg and go away…'
+	gs 'pain', 7, 'hips', 'hit'
+	gs 'stat'
+	brak += rand(0,1)
+	act 'continue': gt 'mod_public_WC_rab_DVIR', 'dvir'
+end
+
+if $ARGS[0] = 'rulesr':
+	cla
+	'Hi, Betsi. nice to meet you again…'
+	'I want to remind our rules:'
+
+	'You have no right to speak. We will reward you with words. You now have <<slova>> words.'
+	'You have no right to refuse us anything.'
+	'You have no right to move away from your home'
+	'Everyday at 21:00 you must come to Me to report your day work. I''ll wait you on the first floor of main house. If you would be a good girl during day, you will have some words as a reward, otherwise you will be punished.'
+	'Each evening I will give you a task for next day… or you can ask for task during day.'
+	'I want you be sure, you must not be afraid. We still need women hands here. If you manage all stuff we need, no one will hurt you, and everyone will be happy.'
+	*nl
+	'And you know: I hate lie.'
+
+	act 'continue':
+		vtecha = 0
+		gt 'mod_public_WC_rab_DVIR', 'dvir'
+	end
+end
+--- mod_public_WC_rab_DVIR ---------------------------------
+

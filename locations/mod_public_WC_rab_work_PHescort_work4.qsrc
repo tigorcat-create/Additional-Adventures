@@ -1,0 +1,1308 @@
+# mod_public_WC_rab_work_PHescort_work4
+if $ARGS[0] = '9':
+	*clr & cla
+	!! 9 public	
+	if colir ! 2:
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		'Guy opens the door "I am waiting for you - come in"'	
+		colir = 1
+	else
+		phclientava = rand(1,3)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+	end
+	
+	'He dress up, grab the keys "Lets go to find some fun public place!".'
+	
+	act 'Go with him': gt 'mod_public_WC_rab_work_PHescort_work4', 'startgo'
+end
+
+if $ARGS[0] = 'startgo':
+	*clr & cla
+	!! 'He dress up, grab the keys "Lets go to find some fun public place!".'	act 'Go with him'
+	
+	PH_full_pay = 500*2
+	
+	if month >= 11 or month <= 3:
+		!! zyma
+		if hour <= 8 or hour >= 18:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	else
+		if hour <= 5 or hour >= 22:
+			!! nich
+			$phchas = 'nich'
+		else
+			!! den
+			$phchas = 'den'
+		end
+	end
+	
+	temp = rand(1,4)
+	if temp = 1:
+		!! dressing booth
+		'We enters some clothing store'
+		'"I will bring you clothes soon"'
+		minut += rand (1,5)
+		gs 'stat'
+		phdresstry = 1
+		'in a short time he with a dress enters the booth - "Try this" - he points on a bulb in his pants'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/prymirochna/heenter.jpg"></center>'
+		act 'continue':
+			*clr & cla
+			'He enters the booth and start to grope my ass'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/0 grope ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'foreplay', rand(5,5), 'prostitution', 'sub'
+			gs 'stat'
+			
+			phtemp = 0
+			act 'jerk him':		
+				if phtemp <= 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/1 hj.mp4"></video></center>'	
+					gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+					phshortescortfun += rand (10,10)
+				end
+				phtemp += 1
+			end	
+			
+			act 'blow him':
+				*clr & cla
+				phshortescortfun += 15
+				'I stand on my knees and start to suck his dick.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/1 bj ('+rand(1,3)+').mp4"></video></center>'	
+				gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+				gs 'stat'
+				
+				act 'Continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/1 bj ('+rand(1,3)+').mp4"></video></center>'	
+					gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub'
+					gs 'stat'
+					
+					act 'Continue':
+						*clr & cla
+						phshortescortfun += 50
+						if rand (1,3) = 1:
+							'He cums on my face and in my mouth'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/2 cumon.mp4"></video></center>'	
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+							gs 'cum_call','arms',$boy
+							gs 'stat'
+						else
+							'He fill my mouth with his hot sperm'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/2 cumin.mp4"></video></center>'	
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'swallow':
+							*clr & cla
+							phshortescortfun += 15
+							'I show him my empty mouth'
+							'"What a good girl" - he pets my head'							
+							'He gives money and exits the booth'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/2 bj/3 cumeat.mp4"></video></center>'	
+							
+							gs 'outfit', 'wear_last_worn'
+
+							money += phshortescortfun / 100 * PH_full_pay
+							gs 'stat'
+							gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+							killvar 'phshortescortfun'
+							killvar 'phclientava'
+							killvar 'PH_full_pay'
+							killvar 'phmarkshortescort'
+							act 'redress, take the money and go away': gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+			
+			if $clothingworntype ! 'nude':
+				act 'undress':			
+					minut += 3
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+					'I have undressed myself.'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/0 start/0 undress.mp4"></video></center>'
+					act 'sex':
+						*clr & cla
+						'I bends and press my butt to his dick'
+						'He diidn''t hesitate and start to fuck me'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'	
+						gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+						gs 'stat'
+						phshortescortfun += 7
+						
+						act 'sex':
+							*clr & cla
+							'I bends and press my butt to his dick'
+							phshortescortfun += 15
+							'He diidn''t hesitate and start to fuck me'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'	
+							gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+							gs 'stat'
+							
+							act 'Continue':
+								*clr & cla
+								'He cums on my ass.'
+								phshortescortfun += 50
+								'"It was fun" - he slaped my ass playfully'
+								'He gives money and exits the booth'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/2 cumon.mp4"></video></center>'	
+								gs 'cum_call','butt',$boy
+								gs 'stat'
+								gs 'cum_call','back',$boy
+								gs 'stat'					
+								gs 'outfit', 'wear_last_worn'
+								gs 'arousal', 'end'
+								gs 'stat'
+								money += phshortescortfun / 100 * PH_full_pay
+								gs 'stat'
+								gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+								killvar 'phshortescortfun'
+								killvar 'phclientava'
+								killvar 'PH_full_pay'
+								killvar 'phmarkshortescort'
+								act 'redress, take the money and go away': gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+			else
+				act 'sex':
+					*clr & cla
+					'I bends and press my butt to his dick'
+					phshortescortfun += 7
+					'He diidn''t hesitate and start to fuck me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'	
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+					gs 'stat'
+					
+					act 'sex':
+						*clr & cla
+						'I bends and press my butt to his dick'
+						'He diidn''t hesitate and start to fuck me'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/1 sex ('+rand(1,3)+').mp4"></video></center>'	
+						gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub'
+						gs 'stat'
+						phshortescortfun += 15
+						
+						act 'Continue':
+							*clr & cla
+							'He cums on my ass.'
+							phshortescortfun += 50
+							'"It was fun" - he slaped my ass playfully'
+							'He gives money and exits the booth'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/prymirochna/3 sex/2 cumon.mp4"></video></center>'	
+							gs 'cum_call','butt',$boy
+							gs 'stat'
+							gs 'cum_call','back',$boy
+							gs 'stat'					
+							gs 'outfit', 'wear_last_worn'
+							gs 'arousal', 'end'
+							gs 'stat'
+							money += phshortescortfun / 100 * PH_full_pay
+							gs 'stat'
+							gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+							killvar 'phshortescortfun'
+							killvar 'phclientava'
+							killvar 'PH_full_pay'
+							killvar 'phmarkshortescort'
+							act 'redress, take the money and go away': gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+		end
+	elseif temp = 2:
+		!! park
+		'We are walking the streets and talk'		
+		'He stoped me, turn me to him, face to face…'
+		if $phchas = 'nich':
+			gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+			minut += 15
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/kiss.mp4"></video></center>'
+			
+		else
+			gs 'arousal', 'kiss', 10, 'prostitution', 'sub'
+			minut += 15
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/4 street/day/kiss.jpg"></center>'			
+		end
+		gs 'stat'
+		'…We are kissing passionately'
+		phshortescortfun += rand(4,6)
+		
+		act 'continue':
+			*clr & cla
+			'He unzip his flly, bend me and penetrates'
+			
+			if $phchas = 'den':
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex (4).mp4"></video></center>'
+			elseif $phchas = 'nich':
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/1 bikini_start (2).mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', 10, 'prostitution', 'sub'
+			gs 'stat'
+			phshortescortfun += 7
+			
+			act 'continue':
+				*clr & cla
+				
+				if $phchas = 'den':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+				elseif $phchas = 'nich':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/3 sex ('+rand(1,4)+').mp4"></video></center>'
+				end
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				phshortescortfun += 15
+				
+				act 'continue':
+					*clr & cla
+					
+					if $phchas = 'den':
+						'He rotates me and push on my knees'
+						'He loads on my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/4 cumonface.mp4"></video></center>'
+					elseif $phchas = 'nich':
+						'He rotates me and push on my knees'
+						'"Jerk me!"'
+						'I start  to jerk himm and in a short time he start to shoot his cum all over my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/4 cumonface.mp4"></video></center>'
+					end
+					phshortescortfun += 50
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Prepare myself':
+						*clr & cla
+						
+						minut += rand(3,5)
+						gs 'stat'
+						
+						if $phchas = 'den':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/day/sex/5 go.mp4"></video></center>'
+						elseif $phchas = 'nich':
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/4 street/night/sex/5 go.mp4"></video></center>'
+						end
+						'He gives me money and go away'
+						
+						gs 'outfit', 'wear_last_worn'
+
+						money += phshortescortfun / 100 * PH_full_pay
+						gs 'stat'
+						gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+						killvar 'phshortescortfun'
+						killvar 'phclientava'
+						killvar 'PH_full_pay'
+						killvar 'phmarkshortescort'
+						act 'Take the money and go away': gt $loc, $loc_arg
+					end
+				end
+			end
+		end		
+	elseif temp = 3:
+		!! bridge
+		'"Finally we are here" - he said'
+		'There is a cinema in front of us'
+		'"Let''s go"'
+		act 'go with him': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema'		
+	elseif temp = 4:
+		!! roof
+		phmarkshortescort = 3		
+		gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+	elseif temp = 5:
+		!! elevator
+		!! NO need
+		
+		
+		
+	end
+end
+
+if $ARGS[0] = 'start':
+	*clr & cla	
+	
+	if phmarkshortescort = 3:		
+		'He brings me to the roof'
+		'He poors a glass of wine'
+	end
+	
+	if phwine = 1:		
+		gs 'drugs', 'alcohol', 'wine'
+		gs 'stat'
+		minut += 2
+		gs 'stat'
+		phshortescortfun += rand(1,5)		
+		
+		if phmarkshortescort = 1:
+			'we are drinking with a smal talk and a great view'
+			
+			if rand(1,3) = 1:
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+					phwine = 0
+				elseif alkowine = 0: 
+					alkowine = 1
+				end
+			end
+		end
+		phmarkshortescort = 1
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/drink.jpg"></center>'
+	elseif phsiga = 1:
+		mc_inventory['cigarettes'] -= 1
+		minut += rand(3,5)
+		gs 'drugs', 'smoke'
+		gs 'stat'	
+		phshortescortfun += rand(1,3)
+		'We are smoking and share our live experience.'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/smoke.jpg"></center>'
+	end
+	if phstrip >= 3:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 5 ('+rand(1,2)+').jpg"></center>'
+	end
+	itemp = 0
+	
+	if $clothingworntype ! 'nude':
+		act 'kiss him':
+			*clr
+			if itemp <= 2:
+				gs 'arousal', 'kiss', 5, 'prostitution'
+				gs 'stat'
+				phshortescortfun += rand(3,5)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/kiss.jpg"></center>'
+			end
+			itemp += 1
+		end
+	end
+	
+	phtemp = 0	
+	if $clothingworntype ! 'nude':
+		act 'tease him':
+			*clr
+			if phtemp <= 2:
+				gs 'arousal', 'flash', 5, 'prostitution'
+				gs 'stat'
+				phshortescortfun += rand(5,10)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/1 start/1 tease.mp4"></video></center>'
+			end
+			phtemp += 1
+		end
+	end
+	
+	if phstrip = 0:
+		act 'undress myself':
+			*clr & cla
+			killvar 'phtemp'
+			killvar 'temp'
+			phstrip += 1
+			gs 'clothing', 'strip'
+			gs 'stat'
+			phshortescortfun += rand(5,5)
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 1.jpg"></center>'
+			
+			if $pantyworntype ! 'none': phstrip = 2
+			if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+			
+			if mc_inventory['food_wine'] = 0 and mc_inventory['cigarettes'] <= 0:
+				act 'chat with him':
+					phsiga = 0
+					phwine = 0
+					gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+				end
+			end
+			
+			if mc_inventory['food_wine'] = 1: 
+				act 'keep drinking': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+				end
+			end
+			
+			if mc_inventory['cigarettes'] >= 1:
+				act 'Smoke': 
+					killvar 'phwine'
+					killvar 'phsiga'
+					phsiga = 1
+					gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+				end
+			end
+		end
+	elseif phstrip > 0 and phstrip < 3:			
+		if phstrip = 1:
+			act 'undress myself even more':
+				*clr & cla
+				killvar 'phtemp'
+				killvar 'temp'
+				phstrip += 1
+				gs 'bras', 'remove'
+				gs 'stat'
+				phshortescortfun += rand(5,5)
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 2 ('+rand(1,2)+').jpg"></center>'
+				
+				if $pantyworntype ! 'none': phstrip = 2
+				if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+				
+				if mc_inventory['food_wine'] = 0 and mc_inventory['cigarettes'] <= 0:
+					act 'chat with him':
+						phsiga = 0
+						phwine = 0
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+				
+				if mc_inventory['food_wine'] = 1: 
+					act 'keep drinking': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+				
+				if mc_inventory['cigarettes'] >= 1:
+					act 'Smoke': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						phsiga = 1
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+			end
+		elseif phstrip = 2:
+			act 'undress my panties':
+				*clr & cla
+				killvar 'phtemp'
+				killvar 'temp'
+				phstrip += 1
+				gs 'underwear', 'remove'
+				gs 'stat'
+				phshortescortfun += rand(1,5)
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/roof/1 start/undress 4.jpg"></center>'
+				
+				if $pantyworntype ! 'none': phstrip = 2
+				if $braworntype ! 'none' and $pantyworntype ! 'none': phstrip = 1
+				
+				if mc_inventory['food_wine'] = 0 and mc_inventory['cigarettes'] <= 0:
+					act 'chat with him':
+						phsiga = 0
+						phwine = 0
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+				
+				if mc_inventory['food_wine'] = 1: 
+					act 'keep drinking': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+				
+				if mc_inventory['cigarettes'] >= 1:
+					act 'Smoke': 
+						killvar 'phwine'
+						killvar 'phsiga'
+
+						phsiga = 1
+						gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 1:
+		act 'blow him':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			'I approache him, bare his dick and start to suck it'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/1 bj start.mp4"></video></center>'
+			gs 'arousal', 'bj', rand(1,5), 'prostitution'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+					
+					if rand (1,3) = 1:
+						*clr & cla
+						'He start to fuck my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/3 deep.mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onface (2).mp4"></video></center>'
+							'He loads on my face'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/ontits.mp4"></video></center>'
+							'As he ready to cum I point his dick on my tits'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+							gs 'cum_call','breasts',$boy
+							gs 'stat'	
+						end
+						phshortescortfun += 50
+						
+						gs 'outfit', 'wear_last_worn'
+						gs 'arousal', 'end'
+						gs 'stat'
+						money += phshortescortfun / 100 * PH_full_pay
+						gs 'stat'
+						gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+						killvar 'phshortescortfun'
+						killvar 'phclientava'
+						killvar 'PH_full_pay'
+						killvar 'phmarkshortescort'
+						act 'redress, take the money and go away': gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 2:		
+		act 'masturbate':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/1 start/2 masturb.mp4"></video></center>'
+			'I sit in front of him and start to masturbate'
+			gs 'arousal', 'masturbate', rand(10,10), 'prostitution'
+			gs 'stat'
+			phshortescortfun += rand(10,10)
+			
+			act 'continue':
+				*clr & cla				
+				'He unzip his fly approaches me - "Open your mouth"'
+				'As I open my mouth he fill it with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/2 bj.mp4"></video></center>'
+					
+					if rand (1,3) = 1:
+						*clr & cla
+						'He start to fuck my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/2 bj/3 deep.mp4"></video></center>'
+					end
+					gs 'arousal', 'bj', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onface (2).mp4"></video></center>'
+							'He loads on my face'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/ontits.mp4"></video></center>'
+							'As he ready to cum I point his dick on my tits'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+							gs 'cum_call','breasts',$boy
+							gs 'stat'	
+						end
+						phshortescortfun += 50
+						gs 'outfit', 'wear_last_worn'
+						gs 'arousal', 'end'
+						gs 'stat'
+						money += phshortescortfun / 100 * PH_full_pay
+						gs 'stat'
+						gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+						killvar 'phshortescortfun'
+						killvar 'phclientava'
+						killvar 'PH_full_pay'
+						killvar 'phmarkshortescort'
+						act 'take the money and go away': gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	end
+	
+	if phstrip >= 3:	
+		act 'spread my legs':
+			*clr & cla
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/1 start sex.mp4"></video></center>'
+			gs 'arousal', 'flash', rand(1,5), 'prostitution'
+			gs 'stat'
+			phshortescortfun += 10
+			
+			act 'continue':
+				*clr & cla
+				'He start to fuck me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/2 sex ('+rand(1,5)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,15), 'prostitution'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'He start to fuck me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/3 sex/2 sex ('+rand(1,5)+').mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(10,15), 'prostitution'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla						
+						if rand (1,3) ! 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/onbelly.mp4"></video></center>'
+							'At the end he pulls out and cum on my belly'
+							gs 'cum_call','stomach',$boy
+							gs 'stat'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/roof/4 cum/inpanties.mp4"></video></center>'
+							gs 'cum_call','pantyfront',$boy
+							gs 'stat'
+							gs 'cum_call','pantyrear',$boy
+							gs 'stat'
+							gs 'cum_call','labia',$boy
+							gs 'stat'
+						end
+						phshortescortfun += 50
+						gs 'outfit', 'wear_last_worn'
+						gs 'arousal', 'end'
+						gs 'stat'
+						money += phshortescortfun / 100 * PH_full_pay
+						gs 'stat'
+						gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+						killvar 'phshortescortfun'
+						killvar 'phclientava'
+						killvar 'PH_full_pay'
+						killvar 'phmarkshortescort'
+						act 'take the money and go away': gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	end
+	
+	if mc_inventory['food_wine'] = 0 and mc_inventory['cigarettes'] <= 0:
+		act 'chat with him':
+			phsiga = 0
+			phwine = 0
+			gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+		end
+	end
+	
+	if mc_inventory['food_wine'] = 1: 
+		act 'keep drinking': 
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+		end
+	end
+	
+	if mc_inventory['cigarettes'] >= 1:
+		act 'Smoke': 
+			killvar 'phwine'
+			killvar 'phsiga'
+			killvar 'phstrip'
+			phsiga = 1
+			gt 'mod_public_WC_rab_work_PHescort_work4', 'start'
+		end
+	end
+end
+
+if $ARGS[0] = 'cinema':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	!$loc = 'mod_public_WC_rab_work_PHescort_work4'
+	!$loc_arg = 'cinema'
+	'We enter the cinema. He bought some popcorn and soda'
+	if rand(1,5) = 1: 'While he is buyng the tickets I see he bought more than 2…'
+	'He take my hand and we go to our places'
+	'We sit on our places and despite a lot of people the are a empty spot around us.'
+	'In a short time a movie starts'
+	phmovietime = 0
+	phmovietimeend = rand(60,120)
+	act 'continue': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'
+end
+
+if $ARGS[0] = 'cinema2':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	!$loc = 'mod_public_WC_rab_work_PHescort_work4'
+	!$loc_arg = 'cinema2'
+	minut += 15
+	phmovietime += 15
+	gs 'stat'
+	gs 'kino', 'movie'	
+	phshortescortfun += rand(0,3)
+
+	if rand(1,4) = 1: 
+		'"Do you want some popcorn" - he points on the bucket of popcorn on his laps'
+		
+		act 'no thanks': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'
+		
+		act 'sure':
+			cla			
+			act 'eat the popcorn':
+				cla
+				pcs_health += 5
+				pcs_mood += 20
+				fat += 16
+				pcs_energy += 20
+				if pcs_hydra >= 100:
+					pcs_hydra -= 5
+				else
+					pcs_hydra -= 10
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				gs 'food', 'aftermeal'
+				'I enjoy the flavour of a popcorn.'
+				
+				
+				act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'
+			end
+			
+			act 'sit in front of him and move the bucket away':
+				cla	
+				+$OpenInnerThought+'His fly is closed… Well, now I can''t just go back!'+$CloseInnerThought
+				
+				act 'Blow him':
+					*clr & cla
+					'I have unzip his fly and start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					phshortescortfun += 15
+					gs 'stat'
+					
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'	
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'							
+							gs 'arousal', 'end'
+							gs 'stat'							
+							phshortescortfun += 50
+							
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+						end
+					end
+				end
+			end			
+		end
+		
+		if rand(1,100) + phshortescortfun >= 110:
+			*clr & cla
+			!! he strock
+			gs 'kino', 'movie'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/1.mp4"></video></center>'
+			'He unzip his fly… and start to strock his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> erected cock'
+			gs 'arousal', 'voyeur', rand(15,15), 'prostitution'
+			minut -= 15
+			gs 'stat'
+			itemp = 0
+			
+			act 'stroke the D':
+				*clr & cla
+				'I start to strok his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/2.mp4"></video></center>'
+				gs 'arousal', 'hj', 5								
+				gs 'stat'
+				phmovietime += 5
+				phshortescortfun += 5
+				
+				act 'Blow him':
+					*clr & cla
+					'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					phshortescortfun += 10
+					gs 'stat'
+					
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'	
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'							
+							gs 'arousal', 'end'
+							gs 'stat'							
+							phshortescortfun += 50
+							
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+						end
+					end
+				end
+				
+				act 'jerk and masturbate':
+					gs 'arousal', 'hj', 5
+					gs 'stat'
+					phmovietime += 5
+					itemp += 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/3.mp4"></video></center>'
+					phshortescortfun += 10
+					
+					gs 'arousal', 'masturbate', 5
+					minut -= 5
+					gs 'stat'
+					
+					if pcs_horny >= 90:
+						'Climax!!!'
+						pcs_mood += 15
+						phshortescortfun += 20
+						if pcs_inhib < 40: inhib_exp += rand(1,3)
+						
+						$orgasm_or = 'yes'						
+						gs 'arousal', 'end'
+						gs 'stat'
+						itemp = 500
+					end
+					
+					if itemp = 500:
+						cla
+						act 'Blow him':
+							*clr & cla
+							'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+							
+							act 'keep sucking him':
+								*clr & cla
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								phmovietime += 15
+								gs 'stat'
+								
+								act 'continue':
+									*clr & cla
+									'He cums in my mouth. I show him a result as a good girl.'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+									gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+									minut -= 15
+									gs 'stat'	
+									gs 'cum_call','face',$boy
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'							
+									gs 'arousal', 'end'
+									gs 'stat'									
+									phshortescortfun += 50
+									
+									phmovietime += 15
+									act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+								end
+							end
+						end
+					elseif itemp >= 5:
+						cla
+						'I see he is not happy about wat is going on… It''s better to start suck him'
+						act 'Blow him':
+							*clr & cla
+							'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+							phshortescortfun += 20
+							
+							act 'keep sucking him':
+								*clr & cla
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								phmovietime += 15
+								gs 'stat'
+								
+								act 'continue':
+									*clr & cla
+									'He cums in my mouth. I show him a result as a good girl.'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+									gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+									minut -= 15
+									gs 'stat'	
+									gs 'cum_call','face',$boy
+									gs 'stat'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'							
+									gs 'arousal', 'end'
+									gs 'stat'									
+									phshortescortfun += 50
+									
+									phmovietime += 15
+									act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+								end
+							end
+						end
+					end
+				end
+			end
+		elseif rand(1,100) + phshortescortfun >= 85:
+			cla
+			!! he put dickin
+			act 'no thanks': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'
+			
+			act 'sure':
+				cla			
+				act 'eat the popcorn':
+					cla
+					*clr
+					'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex2.jpg"></center>'
+					'Reaching into the bag, I quickly realize popcorn isn''t the only thing he''s offering, when my hand comes to rest on his erect penis.'
+					'"Go on baby, it''s already all buttered up", he says, grinning.'
+					act 'Stroke it':
+						cla
+						*clr
+						'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex3.jpg"></center>'
+						'I work my hand deeper down into the bag to get a firm grip on his buttery cock.'
+						'The client leans back with a smile. "That''s a good girl," he says, as I stroke my hand along his shaft.'
+						gs 'arousal', 'hj', 3								
+						gs 'stat'
+						phmovietime += 3
+						phshortescortfun += 10
+						
+						act 'Further':
+							cla
+							*clr		
+							'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex4.jpg"></center>'
+							'Feeling bold, I get him out of the bag. He groans loudly, when I begin to jerk him out in the open.'
+							'Realizing I may be drawing some unwanted attention he says: "Let''s move to the back, before I make a big mess."'
+							gs 'arousal', 'hj', 3								
+							gs 'stat'
+							phmovietime += 3
+							phshortescortfun += 5
+							
+							
+							act 'Move to the back':
+								cla
+								*clr
+								'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex5.jpg"></center>'
+								'I move to the back of the theater, trying to seem casual.'
+								'Nervously, I kneel before him, as I scan the crowd.'
+								'"Go on, baby, nobody is looking," he says.'
+								act 'Suck it':
+									cla
+									*clr
+									'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex6.jpg"></center>'
+									'I wrap my lips around his cock.'
+									'Soon all thoughts of the audience are gone, as I give myself over to pleasing him.'
+									gs 'arousal', 'bj', 5, 'exhibitionism'							
+									gs 'stat'
+									phmovietime += 5
+									phshortescortfun += 15
+									
+									
+									act 'Fuck him':
+										cla
+										*clr
+										'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex7.jpg"></center>'
+										'Throwing caution to the wind, I raise myself up to sit on his lap.'
+										'I moan softly, as I slowly bounce up and down on his cock.'
+										'After a few minutes of this, he says, "Lie down on the seat, someone is going to spot you."'
+										gs 'arousal', 'vaginal', 5, 'exhibitionism'							
+										gs 'stat'
+										phmovietime += 10
+										
+										act 'Lie down':
+											cls
+											'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex8.jpg"></center>'
+											'I lie back on the seats, and open my legs to the client. Now in charge, his thrusts come hard and fast. When he reaches a fever pitch, I cry out in pleasure, as he finishes inside me.'
+											gs 'arousal', 'vaginal', 10, 'exhibitionism'
+											$orgasm_or = 'yes'								
+											gs 'stat'
+											spafinloc = 0
+											gs 'cum_manage'
+											phmovietime += 30
+											gs 'stat'
+											
+											phshortescortfun += 50
+											gs 'arousal', 'end'
+											gs 'stat'	
+											act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'	
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+
+				act 'sit in front of him and move the bucket away':
+					cla	
+					+$OpenInnerThought+'Of course his <<npc_dick[$npclastgenerated]>>cm long dick was in the bucket'+$CloseInnerThought
+					'We gigled a little as I remove the D from the bucket'
+					
+					act 'Blow him':
+						*clr & cla
+						'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+						phshortescortfun += 15
+						
+						act 'keep sucking him':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							phmovietime += 15
+							gs 'stat'
+							
+							act 'continue':
+								*clr & cla
+								'He cums in my mouth. I show him a result as a good girl.'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+								gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+								minut -= 15
+								gs 'stat'	
+								gs 'cum_call','face',$boy
+								gs 'stat'
+								gs 'cum_call','mouth',$boy
+								gs 'stat'							
+								gs 'arousal', 'end'
+								gs 'stat'								
+								phshortescortfun += 50
+								
+								phmovietime += 15
+								act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+							end
+						end
+					end
+				end	
+			end
+		end
+	else
+		if phshortescortfun >= 30:
+			act 'seduce':
+				cla
+				*clr
+				'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kino1.jpg"></center>'
+				'I rest a hand on clients inner thigh, and begin to gently caress him. It''s not long before he is breathing heavy.'
+				'With my intentions made clear, I slowly unbutton my top.'
+				phmovietime += 5
+				phshortescortfun += 10
+				
+				
+				act 'Let''s move to the back, before we draw some unwanted attention':
+					cla
+					*clr
+					'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex5.jpg"></center>'
+					'I move to the back of the theater, trying to seem casual.'
+					'Nervously, I kneel before him, as I scan the crowd.'
+					'"Go on, baby, nobody is looking," he says.'
+					act 'Suck it':
+						cla
+						*clr
+						'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex6.jpg"></center>'
+						'I wrap my lips around his cock.'
+						'Soon all thoughts of the audience are gone, as I give myself over to pleasing him.'
+						gs 'arousal', 'bj', 5, 'exhibitionism'							
+						gs 'stat'
+						phmovietime += 5
+						phshortescortfun += 15
+						
+						
+						act 'Fuck him':
+							cla
+							*clr
+							'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex7.jpg"></center>'
+							'Throwing caution to the wind, I raise myself up to sit on his lap.'
+							'I moan softly, as I slowly bounce up and down on his cock.'
+							'After a few minutes of this, he says, "Lie down on the seat, someone is going to spot you."'
+							gs 'arousal', 'vaginal', 5, 'exhibitionism'							
+							gs 'stat'
+							phmovietime += 10
+							phshortescortfun += 15
+							
+							act 'Lie down':
+								cls
+								'<center><img <<$set_imgh>> src="images/locations/city/citycenter/mall/cinema/sex/kinosex8.jpg"></center>'
+								'I lie back on the seats, and open my legs to the client. Now in charge, his thrusts come hard and fast. When he reaches a fever pitch, I cry out in pleasure, as he finishes inside me.'
+								gs 'arousal', 'vaginal', 10, 'exhibitionism'
+								$orgasm_or = 'yes'								
+								gs 'stat'
+								spafinloc = 0
+								gs 'cum_manage'
+								phmovietime += 30
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'								
+								phshortescortfun += 50
+								
+								act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'	
+							end
+						end
+					end
+				end
+				
+				act 'Blow him':
+					*clr & cla
+					'I start to stroke and lick his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/4.mp4"></video></center>'
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+					phmovietime += 15
+					gs 'stat'
+					phshortescortfun += 15
+					
+					act 'keep sucking him':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/5 ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+						phmovietime += 15
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'He cums in my mouth. I show him a result as a good girl.'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/cinema/6 cum.mp4"></video></center>'
+							gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution'
+							minut -= 15
+							gs 'stat'	
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'							
+							gs 'arousal', 'end'
+							gs 'stat'							
+							phshortescortfun += 50
+							
+							phmovietime += 15
+							act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'							
+						end
+					end
+				end
+			end
+		else
+			+$OpenInnerThought+'I could try to seduce him, but he is not aroused at all'+$CloseInnerThought
+		end
+		
+		act 'snuggle up to him':
+			cla
+			'I squeeze my boobs to him… I want to remind him he is not alone here'
+			phshortescortfun += rand(3,7)
+			gs 'arousal', 'foreplay_give', rand(15,15), 'prostitution'
+			minut -= 10
+			gs 'stat'
+			phmovietime += 5
+			
+			act 'keep watching': gt 'mod_public_WC_rab_work_PHescort_work4', 'cinema2'
+		end
+	end
+	
+	if phmovietime >= phmovietimeend and phshortescortfun >= 50:
+		!! end
+		*clr & cla
+		gs 'stat'
+		gs 'kino', 'movie'
+		killvar 'phmovietime'
+		killvar 'phmovietimeend'
+		
+		'The movie have ended, he paid.'
+		
+		gs 'outfit', 'wear_last_worn'
+
+		money += phshortescortfun / 100 * PH_full_pay
+		gs 'stat'
+		gs 'mod_public_WC_rab_work_PHescort_work', 'rank'
+		killvar 'phshortescortfun'
+		killvar 'phclientava'
+		killvar 'PH_full_pay'
+		killvar 'phmarkshortescort'
+		act 'Take the money and go away': gt $loc, $loc_arg
+	end
+end
+
+
+
+
+	
+--- mod_public_WC_rab_work_PHescort_work4 ---------------------------------
+

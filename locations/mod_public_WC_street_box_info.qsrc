@@ -1,0 +1,318 @@
+# mod_public_WC_street_box_info
+if $ARGS[0] = 'boxid':
+	if $loc = 'pav_complex' and phBOXFiveEightEstate > 0 and menu_off = 0:
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 1	
+		!! phboxspace1 - skiky zaniato miscia	
+		phboxspace = phboxspace1
+		phBoxnumberhere = phBOXFiveEightEstate
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX1['shower']
+		phBOX['table'] = phBOX1['table']
+		phBOX['wc'] = phBOX1['wc']
+		phBOX['bed'] = phBOX1['bed']
+		
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '
+		
+	elseif $loc = 'pav_commercial' and phBOXCommercial > 0 and menu_off = 0:		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 2
+		phboxspace = phboxspace2
+		phBoxnumberhere = phBOXCommercial
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX2['shower']
+		phBOX['table'] = phBOX2['table']
+		phBOX['wc'] = phBOX2['wc']
+		phBOX['bed'] = phBOX2['bed']
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '
+		
+	elseif $loc = 'pav_park' and phBOXpark > 0 and menu_off = 0:		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 3
+		phboxspace = phboxspace3
+		phBoxnumberhere = phBOXpark
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX3['shower']
+		phBOX['table'] = phBOX3['table']
+		phBOX['wc'] = phBOX3['wc']
+		phBOX['bed'] = phBOX3['bed']
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '
+		
+	elseif $loc = 'pav_industrial' and phBOXIndustrial > 0 and menu_off = 0:		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 4
+		phboxspace = phboxspace4
+		phBoxnumberhere = phBOXIndustrial
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX4['shower']
+		phBOX['table'] = phBOX4['table']
+		phBOX['wc'] = phBOX4['wc']
+		phBOX['bed'] = phBOX4['bed']
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '
+		
+	elseif $loc = 'mod_public_WC_street' and phBOXsnoh > 0:		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 5
+		phboxspace = phboxspace5
+		phBoxnumberhere = phBOXsnoh
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX5['shower']
+		phBOX['table'] = phBOX5['table']
+		phBOX['wc'] = phBOX5['wc']
+		phBOX['bed'] = phBOX5['bed']
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '
+		
+		
+	elseif $loc = 'pav_residential' and phBOXresidential > 0 and menu_off = 0:		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 6	
+		!! phboxspace1 - skiky zaniato miscia	
+		phboxspace = phboxspace6
+		phBoxnumberhere = phBOXresidential
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX6['shower']
+		phBOX['table'] = phBOX6['table']
+		phBOX['wc'] = phBOX6['wc']
+		phBOX['bed'] = phBOX6['bed']
+		
+		$phsexstart_loc = $loc_arg
+		$phsexstart = $loc
+		$loc = 'mod_public_WC_street_box'
+		$loc_arg = 'start'
+		$phsexstart_arg = ' '		
+		
+	end
+
+	!! gs 'mod_public_WC_street_box', 'boxid'
+end
+
+
+
+if $ARGS[0] = 'furniture':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_info', 'furniture'
+	
+	if phBOX['wc'] > 0:
+		*clr
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/wc.jpg"></center>'
+	end				
+	
+
+	if phBOX['shower'] > 0:
+		*clr
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/dush.jpg"></center>'
+	end	
+
+
+	if phBOX['bed']	 > 0:
+		*clr
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/bed.jpg"></center>'
+	end	
+	
+	if phBOX['table'] > 0:
+		*clr
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/table.jpg"></center>'
+	end
+	
+	
+	
+	
+	
+	if phBOX['wc'] > 0:
+		if phBOX['wc'] = 1:
+			'There is a toilet'
+		else
+			'There are <<phBOX[''wc'']>> toilets installed'
+		end
+		
+		act 'use toilet':
+			cla
+			dynamic $tampon
+			dynamic $quickwash
+			dynamic $basin			
+		end
+	end				
+	
+
+	if phBOX['shower'] > 0:
+		if phBOX['shower'] = 1:
+			'There is a shower cabine'
+		else
+			'There are <<phBOX[''shower'']>> shower cabines installed'
+		end
+		
+		act 'use shower':
+			cla		
+			gs 'din_van', 'private'	
+		end
+	end	
+
+
+	if phBOX['bed']	 > 0:
+		if phBOX['bed'] = 1:
+			'There is a bed'
+		else
+			'There are <<phBOX[''bed'']>> beds installed'
+		end
+		
+		
+		act 'Relax on your bed': gt 'bed', 'start'
+		
+	end	
+	
+	if phBOX['table'] > 0:
+		if phBOX['table'] = 1:
+			'There is a table and my wardrobe'
+		else
+			'There are <<phBOX[''table'']>> tables and my wardrobe installed'
+		end
+		
+		'There is an <a href="exec:gt ''wardrobe'', ''start''">wardrobe</a>.'
+		'There''s a <a href="exec:gt ''mirror'',''start''">mirror</a> hanging on the wall.'
+		
+		
+	end
+end
+
+
+
+if $ARGS[0] = 'boxid2':
+	if $curloc = 'pav_complex' and phBOXFiveEightEstate > 0 and menu_off = 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 1	
+		!! phboxspace1 - skiky zaniato miscia	
+		phboxspace = phboxspace1
+		phBoxnumberhere = phBOXFiveEightEstate
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX1['shower']
+		phBOX['table'] = phBOX1['table']
+		phBOX['wc'] = phBOX1['wc']
+		phBOX['bed'] = phBOX1['bed']
+		
+		
+		
+	elseif $curloc = 'pav_commercial' and phBOXCommercial > 0 and menu_off = 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 2
+		phboxspace = phboxspace2
+		phBoxnumberhere = phBOXCommercial
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX2['shower']
+		phBOX['table'] = phBOX2['table']
+		phBOX['wc'] = phBOX2['wc']
+		phBOX['bed'] = phBOX2['bed']
+		
+	elseif $curloc = 'pav_park' and phBOXpark > 0 and menu_off = 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 3
+		phboxspace = phboxspace3
+		phBoxnumberhere = phBOXpark
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX3['shower']
+		phBOX['table'] = phBOX3['table']
+		phBOX['wc'] = phBOX3['wc']
+		phBOX['bed'] = phBOX3['bed']
+		
+	elseif $curloc = 'pav_industrial' and phBOXIndustrial > 0 and menu_off = 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 4
+		phboxspace = phboxspace4
+		phBoxnumberhere = phBOXIndustrial
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX4['shower']
+		phBOX['table'] = phBOX4['table']
+		phBOX['wc'] = phBOX4['wc']
+		phBOX['bed'] = phBOX4['bed']
+		
+	elseif $curloc = 'mod_public_WC_street' and phBOXsnoh > 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 5
+		phboxspace = phboxspace5
+		phBoxnumberhere = phBOXsnoh
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX5['shower']
+		phBOX['table'] = phBOX5['table']
+		phBOX['wc'] = phBOX5['wc']
+		phBOX['bed'] = phBOX5['bed']
+		
+	elseif $curloc = 'pav_residential' and phBOXresidential > 0 and menu_off = 0:		
+		!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/1 empty.jpg"></center>'
+		phBOXid = 6	
+		!! phboxspace1 - skiky zaniato miscia	
+		phboxspace = phboxspace6
+		phBoxnumberhere = phBOXresidential
+		if phBoxnumberhere > 1: '<<phBoxnumberhere>> box installed together'
+		
+		
+		
+		phBOX['shower'] = phBOX6['shower']
+		phBOX['table'] = phBOX6['table']
+		phBOX['wc'] = phBOX6['wc']
+		phBOX['bed'] = phBOX6['bed']
+		
+		
+		
+	end
+
+	!! gs 'mod_public_WC_street_box', 'boxid'
+end
+--- mod_public_WC_street_box_info ---------------------------------
+

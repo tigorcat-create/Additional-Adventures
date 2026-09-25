@@ -1,0 +1,651 @@
+# mod_public_WC_rab_sex
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	sexk = 0
+	If Artem = 3: Artem = 1
+	If Tolik = 3: Tolik = 1
+	If Vania = 3: Vania = 1
+	If Artem = 1: sexk += 1
+	If Tolik = 1: sexk += 1
+	If Vania = 1: sexk += 1
+	If sexk = 1:
+		if Artem = 1: gt 'mod_public_WC_rab_sex', 'Artemsex'
+		if Tolik = 1: gt 'mod_public_WC_rab_sex', 'Toliksex'
+		if Vania = 1: gt 'mod_public_WC_rab_sex', 'Vaniasex'
+	elseif sexk = 2:
+		If Artem ! 1:
+			gt 'mod_public_WC_rab_sex', 'TV'
+		else
+			if Tolik = 1:
+				gt 'mod_public_WC_rab_sex', 'TA'
+			else
+				gt 'mod_public_WC_rab_sex', 'VA'
+			end
+		end
+	else
+		gt 'mod_public_WC_rab_sex', '3sex'
+	end
+end
+
+
+if $ARGS[0] = 'Artemsex':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	dick = 18
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A441'
+	temp = rand (1,10)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/1/b<<temp>>.mp4"></video></center>'
+	'Artem starts fuck my mouth'
+
+	stat['bj'] += 2
+	gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation', 'rough', 'deepthroat'
+	gs 'stat'
+	temp = rand(1,3)
+	if temp = 1:
+		Alove += 1
+	end
+	act 'Continue suffering':
+		*clr & cla
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+		'Artem cums in my throat'
+		stat['swallow'] += 1
+		spafinloc = 12
+
+		gs 'sweat', 'add', 5
+
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'Artemsecretcuni':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	dick = 18
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A441'
+	temp = rand(1,10)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/kuni/k (<<temp>>).mp4"></video></center>'
+	'Artem starts to lick me'
+	gs 'arousal', 'cuni', rand(5,15)
+	gs 'stat'
+	temp = rand(1,4)
+	if temp = 1: Alove += 1
+	act 'Continue pleasure':
+		cla
+		'Oh, yes!'
+		if Alove >= 20:
+			$orgasm_txt = 'Artem already knows what I like!'
+			$orgasm_or = 'yes'
+			gs 'sweat', 'add', 10
+			gs 'stat'
+		end
+		gs 'sweat', 'add', 10
+		cumnostd = 1
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+if $ARGS[0] = 'Artemsecret69':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	dick = 18
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A441'
+	temp = rand(1,8)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/69/c (<<temp>>).mp4"></video></center>'
+	'Artem starts to lick me. And I suck his dick.'
+	gs 'arousal', 'cuni', rand(5,10)
+	stat['bj'] += 1
+	gs 'arousal', 'bj', rand(5,10)
+	gs 'stat'
+	temp = rand(1,5)
+	if temp = 1: Alove += 1
+	act 'Continue pleasure':
+		cla
+		'I swallowed every drop from Artem'
+		stat['swallow'] += 1
+		if Alove >= 20:
+			$orgasm_txt = 'Artem already knows what I like!'
+			$orgasm_or = 'yes'
+			gs 'sweat', 'add', 10
+			gs 'stat'
+		end
+		gs 'sweat', 'add', 10
+		spafinloc = 12
+		stat['swallow'] += 1
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'Artemsecretsex':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	dick = 18
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A441'
+	If Avirgin = 1:
+		'It''s first time for Artem, I''ll do almost all job for him.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/ftwa.mp4"></video></center>'
+	else
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/1/tolik<<temp>>.mp4"></video></center>'
+		'I''ll hop on Artem!'
+	end
+	If Avirgin = 1: Avirgin = 0
+	stat['vaginal'] += 1
+
+	guy += 1
+
+	gs 'arousal', 'vaginal', rand(10,20)
+	gs 'stat'
+	temp = rand(1,4)
+	if temp = 1: Alove += 1
+	act 'Continue pleasure':
+		*clr & cla
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+		'Oh yes!!! Artem, I''m so glad you decided!'
+		gs 'sweat', 'add', 15
+		spafinloc = 0
+		cumnostd = 1
+		cumarrkno =  1
+		sparrvol = 20
+		cumarrcpt = 20
+
+		gs 'cuminsidereact', 'Artem'
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+! gt 'mod_public_WC_rab_sex', 'Toliksex'
+if $ARGS[0] = 'Toliksex':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	dick = 25
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A443'
+	temp = rand(1,10)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/1/tolik<<temp>>.mp4"></video></center>'
+	'Tolik tilts me and roughly inserts, starts fucking'
+	stat['vaginal'] += 1
+
+	guy += 1
+
+	gs 'arousal', 'vaginal', rand(20,40)
+	gs 'pain', rand(2,4), 'vaginal', 'stretch'
+	gs 'pain', rand(0,2), 'vaginal', 'tear'
+	gs 'stat'
+	act 'Beg to be soft':
+		slova -= 2
+		if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+		temp = rand (1,5)
+		if temp = 1: brak += 1
+		*nl
+		'Silenc, bitch!'
+	end
+	act 'be silent':
+		*clr & cla
+		temp = rand(1,6)
+		if temp = 1: vlada += 1
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+		'Tolik always fucks for a long time and always completely pumps my vagina'
+		gs 'sweat', 'add', 15
+		spafinloc = 0
+		cumnostd = 1
+		cumarrkno =  1
+		cumarrdel = 0
+		sparrvol = 200
+		cumarrcpt = 200
+		gs 'cum_call', 'vaginal', 'Tolik'
+		gs 'cuminsidereact', 'Tolik'
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'Vaniasex':
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	Vlove =+ 1
+	if Vlove <= 15:
+		temp =rand(1,2)
+		if temp = 1:
+			temp = rand (1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/1/b<<temp>>.mp4"></video></center>'
+			'Vania grins, he begins to fuck my mouth'
+
+			stat['bj'] += 2
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'humiliation', 'rough', 'deepthroat'
+			gs 'stat'
+			act 'Continue sucking':
+				*clr & cla
+				temp = rand(1,2)
+				if temp = 1:
+					'Vania ends up in my throat'
+					temp = rand(1,10)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+					stat['swallow'] += 1
+					cumnostd = 1
+					spafinloc = 12
+					sparrvol = 120
+					cumarrcpt = 120
+					gs 'sweat', 'add', 5
+					gs 'cum_call', 'mouth', 'Vania'
+					gs 'stat'
+					act 'Freshen up' : gt $loc, $loc_arg
+				else
+					'Vania cums all over my face'
+					temp = rand(1,10)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/vania/2/c (<<temp>>).mp4"></video></center>'
+					facial  += 1
+
+					spafinloc = 11
+					gs 'sweat', 'add', 5
+
+					gs 'cum_manage'
+
+
+					gs 'cum_call', 'hair', 'A442', 0
+
+
+					gs 'cum_call', 'breasts', 'A442', 0
+					gs 'stat'
+					act 'Freshen up' : gt $loc, $loc_arg
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		else
+			temp = rand(1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/1/tolik<<temp>>.mp4"></video></center>'
+			'Vania with animal sounds fucks me'
+			stat['vaginal'] += 1
+
+			guy += 1
+
+			gs 'arousal', 'vaginal', rand(5,15)
+			gs 'stat'
+			act 'Continue':
+				*clr & cla
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+				'Vanya doesn''t fuck me, but jumps on my cunt and ends up in me'
+				gs 'sweat', 'add', 15
+				gs 'stat'
+				spafinloc = 0
+				cumnostd = 1
+				cumarrkno = 1
+				cumarrdel = 0
+				sparrvol = 120
+				cumarrcpt = 120
+				gs 'cum_call', 'vaginal', 'Vania'
+				gs 'cuminsidereact', 'Vania'
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Freshen up' : gt $loc, $loc_arg
+			end
+		end
+	else
+		'it''s boring to fuck you, I want to make it more fun. I have special tasks for you. Let''s go, Betsy.'
+		'A beastly grin appeared on Vania face. I''m afraid. The boundlessness of lust and madness I read in his eyes.'
+		mood -= rand(5,10)
+		gs 'stat'
+		act 'Follow Vania': gt 'mod_public_WC_rab_Mayster', 'urok'
+	end
+end
+
+if $ARGS[0] = 'TV':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	temp = rand(1,7)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/tv/tv (<<temp>>).mp4"></video></center>'
+	'Another redneck was near by and he joins. Tolik enters me, and Vania decided to fill my ass'
+	stat['vaginal'] += 1
+	stat['anal'] += 1
+
+	guy += 2
+	dick = 25
+	npc_dick[$npclastgenerated] = dick
+
+
+
+	gang += 1
+	gs 'arousal', 'vaginal', rand(20,40), 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'arousal', 'anal', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'pain', rand(2,4), 'vaginal', 'stretch'
+	gs 'pain', rand(0,2), 'vaginal', 'tear'
+	gs 'pain', rand(1,3), 'asshole', 'stretch'
+	gs 'stat'
+	act 'Continue':
+		*clr & cla
+		temp = rand(1,5)
+		if temp = 1: vlada += 1
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/tv/2/tv2_<<temp>>.mp4"></video></center>'
+		'Vania finished in my ass then Tolik in my pussy.'
+		gs 'sweat', 'add', 15
+
+		gs 'boyStat', 'A443'
+		spafinloc = 0
+		cumnostd = 1
+		cumarrkno =  1
+		cumarrdel = 0
+		sparrvol = 200
+		cumarrcpt = 200
+		gs 'cum_call', 'vaginal', 'Tolik'
+		gs 'cuminsidereact', 'Tolik'
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		gs 'boyStat', 'A442'
+		cumnostd = 1
+		spafinloc = 3
+		gs 'cum_call', 'anus', 'Vania'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+
+
+if $ARGS[0] = 'TA':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	temp = rand(1,7)
+	'<center><video autoplay loop <<$set_imgh>> src="  mod/public_WC/lisrab/fewgops/tva/ta/ta (<<temp>>).mp4"></video></center>'
+	'Another redneck was near by and he joins. Tolik enters my pussy while Artem fucks my mouth.'
+	stat['vaginal'] += 1
+	stat['bj'] += 1
+
+	guy += 2
+	dick = 25
+	npc_dick[$npclastgenerated] = dick
+
+
+	gang += 1
+	gs 'arousal', 'vaginal', rand(20,40), 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'arousal', 'bj', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'pain', rand(2,4), 'vaginal', 'stretch'
+	gs 'pain', rand(0,2), 'vaginal', 'tear'
+	gs 'stat'
+	act 'Continue':
+		*clr & cla
+		temp = rand(1,4)
+		if temp = 1: vlada += 1
+		temp = rand(1,7)
+		'<center><video autoplay loop <<$set_imgh>> src=" mod/public_WC/lisrab/fewgops/tva/ta/ta (<<temp>>).mp4"></video></center>'
+		'I filled with cum from both sides'
+		gs 'sweat', 'add', 10
+
+		gs 'boyStat', 'A443'
+		spafinloc = 0
+		cumnostd = 1
+		cumarrkno =  1
+		cumarrdel = 0
+		sparrvol = 200
+		cumarrcpt = 200
+		gs 'cum_call', 'vaginal', 'Tolik'
+		gs 'cuminsidereact', 'Tolik'
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'boyStat', 'A441'
+		stat['swallow'] += 1
+		cumnostd = 1
+		spafinloc = 12
+		gs 'cum_call', 'mouth', 'Artem'
+		gs 'stat'
+		cumnostd = 1
+		spafinloc = 11
+		gs 'cum_call', 'face', 'Artem'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' :
+			if $loc = 'mod_public_WC_rab_task':
+				gt 'mod_public_WC_rab', 'vhid'
+			else
+				gt $loc, $loc_arg
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'VA':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	temp = rand (1,8)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/tva/va/va (<<temp>>).mp4"></video></center>'
+	'Another redneck was near by and he joins. Artem as usual fucks my mouth and vania fill my ass.'
+	stat['vaginal'] += 1
+	stat['bj'] += 1
+	stat['anal'] += 1
+
+	guy += 3
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+
+
+
+	gang += 1
+	gs 'arousal', 'anal', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'arousal', 'bj', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'pain', rand(1,3), 'asshole', 'stretch'
+	gs 'stat'
+	act 'Continue':
+		*clr & cla
+		temp = rand(1,4)
+		if temp = 1: vlada += 1
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/tva/va/2/c1.mp4"></video></center>'
+		'I filled with cum from both sides'
+		gs 'sweat', 'add', 10
+
+		gs 'boyStat', 'A441'
+		stat['swallow'] += 1
+		cumnostd = 1
+		spafinloc = 12
+		gs 'cum_call', 'mouth', 'Artem'
+		gs 'stat'
+		cumnostd = 1
+		spafinloc = 11
+		gs 'cum_call', 'face', 'Artem'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'boyStat', 'A442'
+		cumnostd = 1
+		spafinloc = 3
+		gs 'cum_call', 'anus', 'Vania'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+
+
+if $ARGS[0] = '3sex':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab_sex'
+	*clr & cla
+	temp = rand(1,8)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/3/3s (<<temp>>).mp4"></video></center>'
+	'all redneck are here. They decided to fuck me together.'
+	stat['vaginal'] += 1
+	stat['bj'] += 1
+	stat['anal'] += 1
+
+	guy += 3
+	dick = 25
+
+	npc_dick[$npclastgenerated] = dick
+
+
+	gang += 1
+	gs 'arousal', 'vaginal', rand(20,40), 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'arousal', 'anal', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'arousal', 'bj', 1, 'rough', 'sub', 'group', 'gangbang', 'humiliation', 'deepthroat'
+	gs 'pain', rand(2,4), 'vaginal', 'stretch'
+	gs 'pain', rand(0,2), 'vaginal', 'tear'
+	gs 'pain', rand(1,3), 'asshole', 'stretch'
+	gs 'stat'
+	act 'Continue':
+		*clr & cla
+		temp = rand(1,4)
+		if temp = 1: vlada += 1
+		temp = rand (1,6)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/3/2/lv (<<temp>>).mp4"></video></center>'
+		'Everybody cums on me, Tolik as always pumped up the vagina'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/fewgops/3/2/pussy.mp4"></video></center>'
+		gs 'sweat', 'add', 30
+
+		gs 'boyStat', 'A443'
+		spafinloc = 0
+		cumnostd = 1
+		cumarrkno =  1
+		cumarrdel = 0
+		sparrvol = 200
+		cumarrcpt = 200
+		gs 'cum_call', 'vaginal', 'Tolik'
+		gs 'cuminsidereact', 'Tolik'
+		gs 'cum_manage'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'boyStat', 'A441'
+		stat['swallow'] += 1
+		cumnostd = 1
+		spafinloc = 12
+		gs 'cum_call', 'mouth', 'Artem'
+		gs 'stat'
+		cumnostd = 1
+		spafinloc = 11
+		gs 'cum_call', 'face', 'Artem'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'boyStat', 'A442'
+		cumnostd = 1
+		spafinloc = 3
+		gs 'cum_call', 'anus', 'Vania'
+		gs 'stat'
+		cumnostd = 1
+		spafinloc = 15
+		gs 'cum_call', 'breasts', 'Vania'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Freshen up' : gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'vanaT':
+	CLOSE ALL
+	*clr & cla
+	if $clothingworntype = 'nude' or pcs_horny >= 100:
+		gs 'flash', 'exhibitionism', 1
+		temp = rand(1,2)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tasks/1/work<<temp>>.mp4"></video></center>'
+		gs 'arousal', 'flash', rand(10,15), 'exhibitionism', 'sub'
+		gs 'arousal', 'hj', rand(10,15), 'bound', 'sub'
+		stat['hj'] += 2
+		gs 'stat'
+		'While I handing Tolik I am aroused a lot, and starting to rub my clit…'
+		gs 'arousal', 'masturbate', 7, 'exhibitionism'
+		selfplaytime += 7
+		$orgasm_or = 'yes'
+		gs 'stat'
+		'At last Tolik wealthy cums on my hands.'
+		dick = 25
+		npc_dick[$npclastgenerated] = dick
+		gs 'boyStat', 'A443'
+
+		gs 'cum_call', 'arms', 'A443', 0
+
+		gs 'cum_call', 'face', 'A443', 0
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Go away': gt 'mod_public_WC_rab', 'spat2'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tasks/1/clean1.jpg"></center>'
+		gs 'arousal', 'hj', 5, 'bound', 'sub'
+		stat['hj'] += 1
+		gs 'stat'
+		temp = rand(1,3)
+		if temp = 1:
+			cla
+			'In few minutes Tolik comands "Undress!"'
+			'I undress myself'
+			gs 'exp_gain', 'inhib', 2
+			gs 'flash', 'exhibitionism', 3
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			gs 'panties', 'remove'
+			gs 'stat'
+			$clothingworntype = 'nude'
+			act 'continue': gt 'mod_public_WC_rab_sex', 'vanaT'
+		else
+			'At last Tolik wealthy cums on my hands.'
+			gs 'arousal', 'hj', rand(15,25), 'bound', 'sub'
+			stat['hj'] += 1
+			gs 'stat'
+			dick = 25
+			npc_dick[$npclastgenerated] = dick
+			gs 'boyStat', 'A443'
+
+			gs 'cum_call', 'arms', 'A443', 0
+
+			gs 'cum_call', 'face', 'A443', 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Go away': gt 'mod_public_WC_rab', 'vhid'
+		end
+	end
+end
+
+--- mod_public_WC_rab_sex ---------------------------------
+

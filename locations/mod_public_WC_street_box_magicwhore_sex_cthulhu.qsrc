@@ -1,0 +1,1024 @@
+# mod_public_WC_street_box_magicwhore_sex_cthulhu
+if $ARGS[0] = 'start':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	!! PH_pay_PHmwrstat = rand(-17,-23)
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+	'CTHULHU CULTIEST: "Let''s start"'
+
+	vtide = 0
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+	act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'mp'
+end
+
+if $ARGS[0] = 'mp':
+	*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+	'"Wear this…"'
+	'He gives me a mouth ball gag.'
+
+
+	act 'No':
+		cla
+		'I would not be patient in this training'
+		'"Wear this…" - with frozen cold in voice said CTHULHU CULTIEST'
+		$cum1 += 3
+		gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+		act 'No':
+			willpowermax += rand(1,2)
+			gs 'stat'
+
+
+			gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+		end
+
+		act 'Yes': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'mbg4'
+
+		act 'Yes, master':
+			willpowermax -= 1
+			$cum1 += 3
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+			gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'mbg4'
+		end
+	end
+
+	act 'Yes': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'mbg4'
+
+	act 'Yes, master':
+		willpowermax -= 1
+		$cum1 += 3
+		gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+		gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'mbg4'
+	end
+
+end
+
+if $ARGS[0] = 'mbg4':
+	*clr & cla
+	'I wear the ball gag'
+
+	if rand (1,7) > 3:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+	end
+	'Nice… now take off all your clothes'
+
+
+	minut += 15
+	if stat['BDSM'] <= 15 and stat['BDSM'] ! 0:
+		'<i>I had some BDSM experience… It start to hurt in 15 minutes, but I can handle it</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(1,3), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] > 15:
+		'<i>With my BDSM experience it was casual waiting, even boring!</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(0,1), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] = 0:
+		'<i>In few minutes it starts to hurt, it''s very unpleasant feel</i>'
+		stat['BDSM'] += 1
+		gs 'pain', rand(3,5), 'mouth', 'freeze'
+		gs 'stat'
+	end
+
+	act 'No':
+		*clr & cla
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+		'I tierd of this shit.'
+		act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+	end
+
+	act 'undress':
+		*clr & cla
+		inhib_exp += rand(0,1)
+
+		minut += 5
+		willpowermax -= rand(0,1)
+		$cum1 += 3
+		gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+			gs 'pain', rand(1,3), 'mouth', 'freeze'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			gs 'pain', rand(0,1), 'mouth', 'freeze'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+			gs 'pain', rand(3,5), 'mouth', 'freeze'
+			gs 'stat'
+		end
+
+
+		if zashmorg = 3 or zashmorg = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/leash.jpg"></center>'
+		else
+			'He takes the collar and locks it on me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start ('+rand(1,2)+').mp4"></video></center>'
+			stat['BDSM'] += rand(0,1)
+			gs 'stat'
+		end
+		!! zashmorg = 3
+
+		'He takes a leash and lock it to the collar while I was undressing.'
+
+		'"Now, sit like a dog"'
+
+		if rand (1,7) > 3:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+		end
+
+		temp = 1
+		act 'Mghght (try to protest)':
+			willpowermax += 1
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			if temp = 1:
+				'Ha-ha-ha'
+				$cum1 += 3
+				gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+			else
+				cla
+				'I tierd of this shit.'
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+			end
+			temp += 1
+		end
+
+		act 'sit like a dog':
+			*clr & cla
+			stat['BDSM'] += rand(0,1)
+			gs 'stat'
+			$cum1 += 3
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+			minut += 30
+			if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+				'<i>I had some BDSM experience… Mouth hurts, but I can handle it</i>'
+				gs 'pain', rand(1,3), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] > 25:
+				gs 'pain', rand(0,1), 'mouth', 'freeze'
+				gs 'stat'
+			elseif stat['BDSM'] <= 10:
+				'<i><b>Mouth hurts! Mouth hurts! Mouth hurts!</b></i>'
+				gs 'pain', rand(3,5), 'mouth', 'freeze'
+				gs 'stat'
+			end
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/waitnakedv ('+rand(1,2)+').mp4"></video></center>'
+
+			if rand (1,7) > 3:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrainv ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/mouth/mtrain ('+rand(1,3)+').jpg"></center>'
+			end
+
+
+
+			if pirsf = 0:
+				act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu_s', 'shipka'
+			else
+				act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu_p', 'start'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'tied':
+	*clr & cla
+	'CTHULHU CULTIEST: "Now the intresting things starts"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+
+	temp = rand(1,3)
+	if temp = 1:
+		'CTHULHU CULTIEST takes a handcuff - "Show me your hands"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			'CTHULHU CULTIEST: "I tierd of this shit"'
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+		end
+
+		act 'stretch out my hands':
+			*clr & cla
+			'CTHULHU CULTIEST locks the handcuff on my hands.'
+			miut += 5
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/naruchi/naruchi ('+rand(1,5)+').jpg"></center>'
+
+
+			vtide = 1
+			act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'sex'
+
+		end
+	elseif temp = 2:
+		'CTHULHU CULTIEST takes a rope - "turn around"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			'CTHULHU CULTIEST: "I tierd of this shit."'
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+		end
+
+		act 'turn around':
+			*clr & cla
+			'I feel how CTHULHU CULTIEST tied my hands behind my back.'
+			miut += 5
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/hands behind/hb ('+rand(1,7)+').jpg"></center>'
+
+			vtide = 2
+			act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'sex'
+		end
+	elseif temp = 3:
+		'CTHULHU CULTIEST takes a rope - "lie down"'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			'CTHULHU CULTIEST: "I tierd of this shit."'
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'kara'
+		end
+
+		act 'lie down':
+			*clr & cla
+			'I feel how CTHULHU CULTIEST tied my hands, legs, everything!..'
+			miut += 5
+			gs 'stat'
+
+			if rand(1,16) <= 5:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/allv ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/all ('+rand(1,11)+').jpg"></center>'
+			end
+
+
+			vtide = 3
+			act 'wait': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'sex'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sex':
+	*clr & cla
+	if  pin1 + pin2 + pin3 > 0 :
+		pin1 = 0 and pin2 = 0 and pin3 = 0
+		'CTHULHU CULTIEST removes all the pins from me'
+	end
+
+	if vtide = 1:
+		temp = rand(1,3)
+		if temp = 1:
+			'CTHULHU CULTIEST undressed his pants, he stands in between my face and the handcuffs'
+			'I start to blow him'
+			'I can''t control the process, CTHULHU CULTIEST uses my hands to controlls me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bj_n (1).jpg"></center>'
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'I feel CULTIEST'' dick becomes hotter and hotter, CTHULHU CULTIEST pulled my hands and cums deeply in my throat, I can do nothing in this position except swallow everything!'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(6,7)+').mp4"></video></center>'
+
+
+				spafinloc = 12
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 2:
+			'CTHULHU CULTIEST pulls the handcuffs and stands me in the comfy pose for him…'
+			'CTHULHU CULTIEST is fucking me'
+			if rand(1,3) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag_n (1).jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv_n ('+rand(1,2)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/vag.jpg"></center>'
+
+
+				spafinloc = 0
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 3:
+			'CTHULHU CULTIEST pulls the handcuffs and stands me in the comfy pose for him…'
+			'CTHULHU CULTIEST is fucking my ass'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv_n (1).mp4"></video></center>'
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+
+				spafinloc = 3
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		end
+	elseif vtide = 2:
+		temp = rand(1,3)
+		if temp = 1:
+			'CTHULHU CULTIEST undressed his pants, grab my head and penetrates it'
+			'My hands tied behind me and I can''t push him when he is too deep'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bjv_b ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+
+				if rand (1,2) = 1:
+					'CTHULHU CULTIEST fills my whole mouth with his hot cum'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(1,7)+').mp4"></video></center>'
+
+
+					spafinloc = 12
+					gs 'cum_manage'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'When CTHULHU CULTIEST starts to cum he pulls out his dick and sprays over me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/faceon ('+rand(1,3)+').jpg"></center>'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'boyStat', 'A442'
+					gs 'cum_call', 'face', 'A442', 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'boyStat', 'A442'
+					gs 'cum_call', 'mouth', 'A442', 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'boyStat', 'A442'
+					gs 'cum_call', 'stomach', 'A442', 0
+					gs 'stat'
+					gs 'boyStat', $npclastgenerated
+					gs 'boyStat', 'A442'
+					gs 'cum_call', 'breasts', 'A442', 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 2:
+			'CTHULHU CULTIEST use me as a sex doll…'
+
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag_b (1).jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv_b (1).mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/vag.jpg"></center>'
+
+
+				gs 'cum_call', 'vagina', 'A442', 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 3:
+			'CTHULHU CULTIEST push me to the floor and starts to fuck my ass'
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/assv_b (1).mp4"></video></center>'
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+
+				gs 'cum_call', 'anus', 'A442', 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		end
+	elseif vtide = 3:
+		temp = rand(1,3)
+		if temp = 1:
+			'I tottaly tied and can do no resistance '
+			'CTHULHU CULTIEST is fucking my head'
+			if rand (1,5) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bj (1).jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/bj/bjv ('+rand(1,4)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue sucking':
+				*clr & cla
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+
+				if rand (1,2) = 1:
+					'CTHULHU CULTIEST fills my whole mouth with his hot cum'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/facein/faceinv ('+rand(1,7)+').mp4"></video></center>'
+
+
+					gs 'cum_call', 'mouth', 'A442', 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'When CTHULHU CULTIEST starts to cum he pulls out his dick and sprays over me'
+
+					if rand (1,5) <= 3:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/tied/facon ('+rand(1,3)+').jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/faceon/tied/faceonv ('+rand(1,2)+').mp4"></video></center>'
+					end
+
+
+					gs 'cum_call', 'face', 'A442', 0
+					gs 'stat'
+
+					gs 'cum_call', 'mouth', 'A442', 0
+					gs 'stat'
+
+					gs 'cum_call', 'stomach', 'A442', 0
+					gs 'stat'
+
+					gs 'cum_call', 'breasts', 'A442', 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 2:
+			'CTHULHU CULTIEST use me as a sex doll…'
+
+			if rand(1,9) <= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag ('+rand(1,4)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv ('+rand(1,5)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/vag/tied/vag.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'boyStat', 'A442'
+				gs 'cum_call', 'vagina', 'A442', 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		elseif temp = 3:
+			'CTHULHU CULTIEST push me to the floor and starts to fuck my ass'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/ass/ass.jpg"></center>'
+			gs 'arousal', 'anal', rand(10,15), 'sub', 'humiliation'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				gs 'arousal', 'anal', rand(10,15), 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'CTHULHU CULTIEST generously cumms in me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/ass/tied/ass.jpg"></center>'
+
+
+				gs 'cum_call', 'anus', 'A442', 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'CTHULHU CULTIEST: "Nice, but you are not good enough for me"'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				'He untied me'
+
+				gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+			end
+		end
+	end
+
+	$cum1 += 10
+	gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+end
+
+
+
+if $ARGS[0] = 'kara':
+	*clr & cla
+
+	'CTHULHU CULTIEST ties me.'
+	'CTHULHU CULTIEST: "Feel the result of your actions"'
+
+	if rand(1,16) <= 5:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/allv ('+rand(1,5)+').mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/tide/all/all ('+rand(1,11)+').jpg"></center>'
+	end
+
+	act 'wait':
+		*clr & cla
+
+		'CTHULHU CULTIEST: "You are a good pet. Let''s give you a warning at first"'
+
+		if pin2 > 0: pin2 = 0 & 'CTHULHU CULTIEST removes pins from my tits.'
+		if pin3 > 0: pin2 = 0 & 'CTHULHU CULTIEST removes pins from my pussy.'
+
+		$cum1 += 10
+		gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+
+		willpowermax += 2
+		gs 'stat'
+		'CTHULHU CULTIEST slaps me'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+		gs 'pain', rand(4,5), 'cheeks', 'slap'
+		gs 'stat'
+		'I fell on my knees.'
+		if zashmorg ! 1 or ashmorg ! 3 :
+			'He pulls out a collar and locked it on me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+		end
+		gs 'stat'
+
+
+		act 'continue':
+			*clr & cla
+			gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu_cycle', 'tied'
+		end
+	end
+end
+
+if $ARGS[0] = 'cultiestgood':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'cultiestgood'
+	if $cum1 >= 200: $zadovolennia1 = $func('wrap', 'accent', ' ████████████████████ ') + ' '
+	if $cum1 >= 190 and $cum1 < 200: $zadovolennia1 = $func('wrap', 'accent', ' █████████████████████████████_ ') + ' '
+	if $cum1 >= 180 and $cum1 < 190: $zadovolennia1 = $func('wrap', 'accent', ' ██████████████████__ ') + ' '
+	if $cum1 >= 170 and $cum1 < 180: $zadovolennia1 = $func('wrap', 'accent', ' █████████████████___ ') + ' '
+	if $cum1 >= 160 and $cum1 < 170: $zadovolennia1 = $func('wrap', 'accent', ' ████████████████____ ') + ' '
+	if $cum1 >= 150 and $cum1 < 160: $zadovolennia1 = $func('wrap', 'accent', ' ███████████████_____ ') + ' '
+	if $cum1 >= 140 and $cum1 < 150: $zadovolennia1 = '<font color = green	> ██████████████______ </font> '
+	if $cum1 >= 130 and $cum1 < 140: $zadovolennia1 = '<font color = green	> █████████████______ </font> '
+	if $cum1 >= 120 and $cum1 < 130: $zadovolennia1 = '<font color = green	> ████████████________ </font> '
+	if $cum1 >= 110 and $cum1 < 120: $zadovolennia1 = '<font color = green	> ███████████_________ </font> '
+	if $cum1 >= 100 and $cum1 < 110: $zadovolennia1 = '<font color = green	> ██████████__________ </font> '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> █████████___________ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = yellow	> ████████____________ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ███████_____________ </font> '
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ██████______________ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> █████_______________ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> ████________________ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ███________________ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = red	> ██__________________ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> █___________________ </font> '
+	if $cum1 < 10:
+		$zadovolennia1 = '<font color = red	> ____________________ </font> '
+	end
+	!! if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>CTHULHU CULTIEST satisfaction meter: <<$zadovolennia1>></center>'
+
+	act 'I am begging you to stop!!!':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+		'CTHULHU CULTIEST: "You are too weak!"'
+		'He released me'
+		PH_pay_PHmwrstat = PH_pay_PHmwrstat * $cum1 / 300
+		PH_full_pay = PH_full_pay/3
+
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	end
+
+
+	if $cum1 >= 75 or ($cum1 >= 30 and rand($cum1,100) >= 95):
+		*clr & cla
+		$cum1 += 100
+		'The CTHULHU CULTIEST generates a live shadows from himself…'
+		'He start screaming and transformating…'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/talk ('+rand(1,1)+').mp4"></video></center>'
+
+		act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', '1'
+	end
+end
+
+if $ARGS[0] = '1':
+	*clr & cla
+	!! start talk with new cultiest form
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/talk ('+rand(1,1)+').mp4"></video></center>'
+	'Cultiest transformed in some sorta CTHULHU-minion…'
+	'CTHULHU CULTIEST: "Perfect!!! You are good enough to unlock my true form!"'
+	'CTHULHU CULTIEST: "Are you ready for my cock?!"'
+	phi = 0
+	dick = rand(21, 33)
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+	if pcs_horny >=40 and phmasturb_me = 0:
+		act 'Caress Myself':
+			!*clr & cla
+			phi += 1
+			$cum1 -= rand(1,4)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+			*clr
+			if $clothingworntype = 'nude':
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/masturb_me ('+rand(1,1)+').mp4"></video></center>'
+				'Feeling turned on, I expose my pussy and begin to run my clit.'
+
+				gs 'arousal', 'masturbate', 4
+				gs 'stat'
+				minut -= 4
+				gs 'stat'
+			else
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/masturb_me ('+rand(1,1)+').mp4"></video></center>'
+				'Feeling a bit turned on, I reach down my underwear and start rubbing my clit.'
+
+				gs 'arousal', 'masturbate', 4
+				gs 'stat'
+			end
+		end
+	elseif pcs_horny < 40:
+		act 'Caress Myself':
+			'I am NOT horny enought to do this'
+		end
+	end
+
+	act 'Yes':
+		*clr & cla
+
+		if $clothingworntype ! 'nude':
+			'He quicly removed my cloth'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/he_undress ('+rand(1,1)+').mp4"></video></center>'
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			phi += 1
+		end
+
+		if rand(1,3) <= phi:
+			'He is checking my body'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/grope ('+rand(1,1)+').mp4"></video></center>'
+
+			$cum1 -= rand(1,2)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+		else
+			'He pushed me on some table and starts eating my pussy'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/cuni ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(10,15), 'rough', 'sub', 'beast', 'prostitution'
+			gs 'stat'
+
+			$cum1 -= rand(5,15)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+		end
+
+		act 'continue':
+			*clr & cla
+			'He pushed me on the floor'
+			phiphi = 0
+			phiphi -= phi
+			phi = 0
+			phsex = 102
+			phspeed = 1
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+		end
+	end
+end
+
+if $ARGS[0] = 'csex':
+	!*clr & cla
+	!! sex
+	!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/1 start/talk ('+rand(1,1)+').mp4"></video></center>'
+	gs 'sweat', 'add', 5
+	gs 'stat'
+
+	gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+	phkillaction = 0
+	phiphi += 1
+
+
+	if phsex = 102:
+		!! bj
+		if phspeed = 1:
+			temp = 3 + ( stat['bj'] / 10 )
+			$cum1 -= rand(8,temp)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+			'I am blowing <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/3 bj/start ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'beast', 'rough', 'prostitution', 'sub'
+			gs 'stat'
+			phspeed += 1
+		elseif phspeed = 2:
+			temp = 6 + ( stat['bj'] / 10 )
+			$cum1 -= rand(8,temp)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+			'I am blowing <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/3 bj/bj ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'beast', 'rough', 'prostitution', 'sub'
+			gs 'stat'
+
+			*nl
+			if stat['bj'] >= 150:
+				act 'Face fuck him':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+				end
+			else
+				act 'Face fuck him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		else
+			temp = 8 + ( stat['bj'] / 10 )
+			$cum1 -= rand(8,temp)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+			'I am sitting on the floor and facefucking him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/3 bj/ff ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'beast', 'rough', 'prostitution', 'sub', 'deepthroat'
+			gs 'stat'
+
+			*nl
+			act 'stop the facefucking':
+				*clr & cla
+				phspeed = 2
+				gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+			end
+		end
+	elseif phsex = 103:
+		!! vag
+		if phspeed = 1:
+			temp = 20 + ( stat['vaginal'] / 10 )
+			$cum1 -= rand(15,temp)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+			'He pushed me down and penetrates my pussy'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/4 vag/start ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'beast', 'rough', 'prostitution', 'sub'
+			gs 'stat'
+			phspeed += 1
+		else
+			temp = 20 + ( stat['vaginal'] / 10 ) + 0 * rand(5,15)
+			$cum1 -= rand(15,temp)
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+
+			'The cultiest is fucking me.'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/4 vag/vag ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'beast', 'rough', 'prostitution', 'sub'
+			gs 'stat'
+		end
+	end
+
+
+
+
+	if phkillaction = 0:
+		act 'Continue':
+			*clr & cla
+			gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+		end
+
+		if phsex ! 102:
+			if stat['bj'] >= 100:
+				act 'blow him':
+					phsex = 102
+					phspeed = 1
+					phiphi -= rand(1,3)
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+				end
+			else
+				act 'blow him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		end
+		if phsex ! 103:
+			act 'fuck him':
+				phsex = 103
+				phspeed = 1
+				phiphi -= rand(2,5)
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'csex'
+			end
+		end
+	end
+
+
+	if $cum1 < 10:
+		*clr & cla
+		!! he cums
+		sexvolume = rand(80,120)
+
+		'He pulls out and cumshoting me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/7 cthulhu/5 cum ('+rand(1,1)+').mp4"></video></center>'
+
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+		gs 'cum_call','arms',$boy
+		gs 'stat'
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+		gs 'cum_call','arms',$boy
+		gs 'stat'
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+
+		+$OpenInnerThought+'I smells like raped fish!..'+$CloseInnerThought
+
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	end
+end
+
+if $ARGS[0] = 'man':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_cthulhu', 'man'
+	if $cum1 >= 200: $zadovolennia1 = $func('wrap', 'accent', ' ████████████████████ ') + ' '
+	if $cum1 >= 190 and $cum1 < 200: $zadovolennia1 = $func('wrap', 'accent', ' █████████████████████████████_ ') + ' '
+	if $cum1 >= 180 and $cum1 < 190: $zadovolennia1 = $func('wrap', 'accent', ' ██████████████████__ ') + ' '
+	if $cum1 >= 170 and $cum1 < 180: $zadovolennia1 = $func('wrap', 'accent', ' █████████████████___ ') + ' '
+	if $cum1 >= 160 and $cum1 < 170: $zadovolennia1 = $func('wrap', 'accent', ' ████████████████____ ') + ' '
+	if $cum1 >= 150 and $cum1 < 160: $zadovolennia1 = $func('wrap', 'accent', ' ███████████████_____ ') + ' '
+	if $cum1 >= 140 and $cum1 < 150: $zadovolennia1 = '<font color = green	> ██████████████______ </font> '
+	if $cum1 >= 130 and $cum1 < 140: $zadovolennia1 = '<font color = green	> █████████████______ </font> '
+	if $cum1 >= 120 and $cum1 < 130: $zadovolennia1 = '<font color = green	> ████████████________ </font> '
+	if $cum1 >= 110 and $cum1 < 120: $zadovolennia1 = '<font color = green	> ███████████_________ </font> '
+	if $cum1 >= 100 and $cum1 < 110: $zadovolennia1 = '<font color = green	> ██████████__________ </font> '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> █████████___________ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = yellow	> ████████____________ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ███████_____________ </font> '
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ██████______________ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> █████_______________ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> ████________________ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ███________________ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = red	> ██__________________ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> █___________________ </font> '
+	if $cum1 < 10:
+		$zadovolennia1 = '<font color = red	>CTHULHU CULTIEST cums! </font> '
+	end
+	!! if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>CTHULHU CULTIEST endurance meter: <<$zadovolennia1>></center>'
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_sex_cthulhu ---------------------------------
+

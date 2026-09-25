@@ -1,0 +1,33 @@
+# mod_public_WC_fishing_game
+if $ARGS[0]='g1_0':
+	rand5=15
+	rand6=0
+	gt'mod_public_WC_fishing_game','g1_1'
+end
+
+if $ARGS[0]='g1_1':
+	cls
+	counter_g1 = 1
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/sea.wav',50
+	'<Body background="mod/public_WC/escort/2 place/2 yacht/sea_back.png">'
+	act 'Finish fishing': gt'mod_public_WC_fishing_game','g1_2'
+end
+
+if $ARGS[0]='g1_2':
+	'<Body background="">'
+	counter_g1 = 0
+	close'mod/public_WC/sound/sea.wav'
+
+	if phrod = 1:
+		act 'exit': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+	else
+		act 'exit': gt 'mod_public_WC_rab_btothel_escort_fly2', 'fishing'
+	end
+end
+
+
+
+
+
+--- mod_public_WC_fishing_game ---------------------------------
+

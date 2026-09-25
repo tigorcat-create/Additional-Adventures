@@ -1,0 +1,83 @@
+# mod_public_WC_rab_Mayster72
+if $ARGS[0] = 'tease':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	if onvelyk = 1:
+		if ztemp = 1:
+			'I stoped in front of a man… I am sure he see my pussy'
+			'I look at him with a seductive look.'			
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/pussy_show.jpg"></center>'
+			gs 'arousal', 'flash', 10
+			gs 'stat'
+			
+			act 'wait':
+				cla
+				temp = rand(1,10)
+				if temp <= 5:
+					'The guy just ignored me…'
+					pcs_mood -= rand(20,30)
+					minut += rand(0,3)
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+				elseif temp <= 8:
+					ztemp = 2
+					gt 'mod_public_WC_rab_Mayster71', 'tsex'
+				elseif temp <= 9:
+					ztemp = 1
+					gt 'mod_public_WC_rab_Mayster71', 'tsex'
+				elseif temp <= 10:
+					ztemp = 3
+					gt 'mod_public_WC_rab_Mayster71', 'tsex'
+				end
+			end
+		elseif ztemp = 2:
+			'I stoped in some 50 meters from the guy'
+			'I am showing him my blow skills'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/velo_bj.jpg"></center>'
+			gs 'arousal', 'bj', 10
+			gs 'stat'
+			
+			act 'wait':
+				cla
+				temp = rand(1,10)
+				if temp <= 3:
+					'The guy just ignored me…'
+					pcs_mood -= rand(20,30)
+					minut += rand(0,3)
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+				elseif temp <= 10:
+					ztemp = 2
+					gt 'mod_public_WC_rab_Mayster71', 'tsex'
+				end
+			end
+		end
+	else
+		'I stoped in some 50 meters from the guy'
+		'I stay on my four and tease him with my holes'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/tease_rakom ('+rand(1,2)+').jpg"></center>'
+		gs 'arousal', 'flash', 10
+		gs 'stat'
+		
+		act 'wait':
+			cla
+			temp = rand(1,10)
+			if temp <= 4:
+				'The guy just ignored me…'
+				pcs_mood -= rand(20,30)
+				minut += rand(0,3)
+				gs 'stat'
+				act 'continue': gt $loc, $loc_arg
+			elseif temp <= 7:
+				ztemp = 2
+				gt 'mod_public_WC_rab_Mayster71', 'tsex'
+			elseif temp <= 10:
+				ztemp = 3
+				gt 'mod_public_WC_rab_Mayster71', 'tsex'
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_Mayster72 ---------------------------------
+

@@ -1,0 +1,1098 @@
+# mod_public_WC_rab_talk
+if $ARGS[0] = 'Artem':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Artem/Artem.jpg"></center>'
+	act 'Leave': gt $loc, $loc_arg
+
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'ask: How can I help you?':
+			slova -= 5
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Artem_task'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'ask: Do you need something?':
+			slova -= 4
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Artem_task'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'ask: You need something?':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Artem_task'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'ask: What to do?':
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Artem_task'
+			end
+		end
+	end
+	If Alove >= 10 and Vania = 0 and Tolik = 0:
+		act 'Honey, if you can''t use your cock, use your toungue.':
+			minut += 10
+			slova -= 9
+			Alove += rand(1,5)
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				cla
+				temp = rand (0,100)
+				if temp + Alove >= 50:
+					'Yes, let''s do this!'
+					act 'Start undressing': gt 'mod_public_WC_rab_sex','Artemsecretcuni'
+				else
+					'No, I''m not sure I allowed to.'
+					act 'Make an upset expression' : gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+	If Alove >= 20 and Vania = 0 and Tolik = 0:
+		act 'Kiss him':
+			'He kisses me back'
+			Alove += rand(0,1)
+			gs 'arousal', 'kiss', 10
+			gs 'stat'
+			gt $loc, $loc_arg
+		end
+		act 'Honey, lets do 69.':
+			minut += 10
+			cla
+			temp = rand (0,100)
+			if temp + Alove >= 50:
+				Alove += rand(1,5)
+				'Yes, let''s do this'
+				act 'Start undressing Artem': gt 'mod_public_WC_rab_sex','Artemsecret69'
+			else
+				'No, I''m not sure I allowed to.'
+				act 'Make an upset expression' : gt $loc, $loc_arg
+			end
+		end
+	end
+
+	If Alove >= 30 and Vania = 0 and Tolik = 0:
+		act 'I don''t wanna hear anything, we will fuck!.':
+			minut += 10
+			Alove += rand(4,7)
+			act 'Pounce on Artem' : gt 'mod_public_WC_rab_sex','Artemsecretsex'
+		end
+
+	elseIf Alove >= 30 and Avirgin = 0:
+		If hour <= 10 or hour >= 19:
+			act 'I don''t wanna hear anything, we will fuck! Let''s go to the storage, nobody there now.':
+				minut += 10
+				Alove += rand(4,7)
+				*clr & cla
+				dick = 18
+				npc_dick[$npclastgenerated] = dick
+				gs 'boyStat', 'A441'
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/skladsex.mp4"></video></center>'
+				'I''ll hop on Artem!'
+				stat['vaginal'] += 1
+
+				guy += 1
+
+				gs 'arousal', 'vaginal', rand(10,20)
+				gs 'stat'
+				temp = rand(1,4)
+				if temp = 1: Alove += 1
+				act 'Continue pleasure':
+					*clr & cla
+					temp = rand(1,10)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+					'Oh yes!!! Artem, I''m so glad you decided!'
+					gs 'sweat', 'add', 15
+					spafinloc = 0
+					cumnostd = 1
+					cumarrkno =  1
+					sparrvol = 20
+					cumarrcpt = 20
+					gs 'cum_call', 'vaginal', 'Artem'
+					gs 'cuminsidereact', 'Artem'
+					gs 'cum_manage'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Freshen up' : gt 'mod_public_WC_rab', 'sklad'
+				end
+			end
+		end
+	end
+	If Alove >= 50 and Vania = 0 and Tolik = 0:
+		act 'Please make me free from this place.':
+			'Of course, my love.'
+			if week = 1 and hour > 6 and hour < 13:
+				'I will lead you to the end of the forest near village Gadukino!'
+				'Let''s go!'
+				act 'Let''s go, my love':
+					Alove -= 10
+					minut += rand(45,80)
+					if Tolik ! 4: Tolik = 0
+					if Vania ! 4: Vania = 0
+					if Artem ! 4: Artem  = 0
+					gt 'gad_forest', 'forest_outskirts'
+				end
+				act 'My love, we need some more time together':
+					Alove += rand(1,4)
+					'He kisses me back'
+					gs 'arousal', 'kiss', 20
+					gs 'stat'
+					gt $loc, $loc_arg
+				end
+			else
+				'Next monday you will be free.'
+				'I will lead you to the end of the forest near village Gadukino!'
+			end
+		end
+	end
+	if Artemsecret = 1 and Vania = 0 and Tolik = 0:
+		act 'Try to lure Artem to more than just a blow job.':
+			minut += 10
+			if succubusQW > 2:
+				cla
+				'He cannot resist my succubus spells. Artem rushes at me and undresses.'
+				Alove += 20
+				act 'continue': gt 'mod_public_WC_rab_sex','Artemsecretsex'
+			else
+				if trait_vars['exhibitionist'] > 1:
+					act 'Flash your pussy':
+						if pcs_apprnc >= 120: Alove += rand(2,3)
+						menu_off = 1
+						inhib_exp += 2
+						gs 'flash', 'pussy', 'outdoors', 5
+						gs 'stat'
+						'What is it, what is it for?'
+						act 'Smile' : gt $loc, $loc_arg
+					end
+				end
+				act 'Playfuly ask "Why are you ignoring my pussy?"':
+					slova -= 4
+					if pcs_apprnc >= 120: Alove += rand(1,2)
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					else
+						cla
+						'I do not ignore anything, you are not in my taste'
+						act 'Smile' : gt $loc, $loc_arg
+					end
+				end
+				if pcs_horny > 50 and pcs_inhib >= 60:
+					act 'Lower the pants. Wet your finger in your juices and lick your finger in front of Artem':
+						'Artem is confused'
+						gs 'flash', 'pussy', 'outdoors', 1
+						Alove += rand(0,1)
+						if pcs_apprnc >= 120: Alove += rand(0,3)
+						inhib_exp += 2
+						pcs_horny += 10
+						gs 'arousal', 'vaginal_finger', 3, 'exhibitionism', 'sub'
+						gs 'stat'
+						act 'Smile' : gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	end
+	if pcs_inhib >= 40:
+		act 'tease Artem':
+			minut += 3
+			gs 'exp_gain', 'inhib', rand(0,1)
+			gs 'flash', 'exhibitionism', 1
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/tease1.mp4"></video></center>'
+			if pcs_apprnc >= 120:
+				'Well, I like what I see'
+				mood += rand(0,1)
+				temp = rand(1,4)
+				if temp = 1: Alove += 1
+			else
+				'Cover up, women'
+				mood += rand(0,1)
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'Vania':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	act 'Leave': gt $loc, $loc_arg
+
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'ask: How can I help you?':
+			slova -= 5
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Vania_task'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'ask: Do you need something?':
+			slova -= 4
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Vania_task'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'ask: You need something?':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Vania_task'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'ask: What to do?':
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Vania_task'
+			end
+		end
+	end
+	if mc_inventory['cigarettes'] <= 0:
+		act 'Ask Vanya for a cigarette':
+			cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'"Give me a cigarette?"'
+			slova -= 3
+			if slova < 0: gt 'mod_public_WC_kara', '0sliv'
+			'Of course, but you need to pay. He gives a cigarette.'
+			act 'take it and smoke':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/take.jpg"></center>'
+				minut += 2
+				mc_inventory['cigarettes'] += 1
+				gs 'drugs','smoke'
+				gs 'stat'
+				'Vania undress his pants. Stroke his dick few times and say: "Suck it".'
+				act 'Start to suck':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/pay.mp4"></video></center>'
+					gs 'arousal', 'bj', rand(8,15), 'sub', 'rough'
+
+					stat['bj'] += 1
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/fin ('+rand(1,2)+').jpg"></center>'
+						gs 'cum_call', 'mouth', 'A441', 0
+						gs 'cum_call', 'face', 'A441', 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'finish my cigarette':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/13_smoke/smoke.jpg"></center>'
+							act 'continue': gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+			act 'leave it': gt $loc, $loc_arg
+		end
+	end
+	if pcs_inhib >= 40:
+		act 'tease Vania':
+			*clr & cla
+			minut += 3
+			gs 'exp_gain', 'inhib', rand(0,1)
+			gs 'flash', 'exhibitionism', 1
+			gs 'stat'
+			temp = rand(1,3)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel1.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teasel<<temp>>.mp4"></video></center>'
+			end
+			'"Ow, yes!" Vania jump on me and starts to undress me.'
+			act 'continue': gt 'mod_public_WC_rab_sex', 'Vaniasex'
+		end
+	end
+
+	if vurok = 0:
+		gs 'willpower', 'humiliation', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'I want you to be my master Master' + $func('willpower', 'get_willcost_string'):
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				'Vania greens and I see some evil flame in his eyes'
+				'"Betsi, I am going to make you a perfect woman!"'
+
+				act 'Go with Vania': gt 'mod_public_WC_rab_Mayster', 'start'
+			end
+		else
+			act 'I want you to be my master Master' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+
+	if week < 6:
+		act 'Can I go home?':
+			cla
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			end
+			if pregChem > 0: Tolik_know_preg = 1
+			if pregChem > 0: tkid = kid
+
+			if VaniaMayster >= 80:
+				cla
+				'"I think you can, cuz you are a good student. Are you sure you want to go?"'
+
+				act 'yes':
+					cla
+					if zashmorg = 3:
+						'"I see your collar is locked…"'
+						'"You can go, BUT…"'
+						'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+						'"ALSO You need to have my trainings at least two days per week"'
+						'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+						'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+						lis_Weekout = 1
+						act 'Leave': gt 'train', 'gadukino'
+					else
+						'Let''s go'
+						act 'go with Vania':
+							cla
+							if zashmorg = 1:
+								'Vania takes a lock and fixed it to the collar'
+								'"Now you can''t dress it off"'
+								zashmorg = 3
+								lis_Weekout = 1
+								'"You can go, BUT…"'
+								'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+								'"ALSO You need to have my trainings t least two days per week"'
+								'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+								'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+								act 'Leave': gt 'train', 'gadukino'
+							else
+								'Vania puts a collar on me'
+								'Vania takes a lock and fixed it to the collar'
+								'"Now you can''t dress it off"'
+								zashmorg = 3
+								lis_Weekout = 1
+								'"You can go, BUT…"'
+								'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+								'"ALSO You need to have my trainings t least two days per week"'
+								'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+								'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+								act 'Leave': gt 'train', 'gadukino'
+							end
+						end
+					end
+				end
+				act 'not now':
+					cla
+					'Vania just waves his hand, like "you can go now"'
+					act 'Leave': gt $loc, $loc_arg
+				end
+
+			elseif pregChem > 0:
+				'I see you are pregnant from some of us, and I think Tolik appreciates it.'
+				'Do you talk with Tolik about it?'
+				if knowpreg = 0:
+					+$OpenInnerThought+'I am pregnant?! OMG!!! and the father is some of this… this… guys.'+$CloseInnerThought
+					thinkpreg = 1
+					knowpreg = 1
+					unrelated_preg = 1
+				end
+
+				if moju_yty = 1:
+					'Yes, this is for you'
+
+					'I give a paper with "алатс юокмам" to him'
+
+					slova -= 2
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					end
+
+					'"Ok, it looks legit. Are you sure you want to go?"'
+
+					act 'yes':
+						cla
+
+						moju_yty = 0
+						if zashmorg = 3:
+							'"I see your collar is locked…"'
+							'"You can go, BUT…"'
+							'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+							'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+							'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+							lis_Weekout = 1
+							act 'Leave': gt 'train', 'gadukino'
+						else
+							'Let''s go'
+							act 'go with Vania':
+								cla
+								if zashmorg = 1:
+									'Vania takes a lock and fixed it to the collar'
+									'"Now you can''t dress it off"'
+									zashmorg = 3
+									lis_Weekout = 1
+									'"You can go, BUT…"'
+									'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+									'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+									'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+									act 'Leave': gt 'train', 'gadukino'
+								else
+									'Vania puts a collar on me'
+									'Vania takes a lock and fixed it to the collar'
+									'"Now you can''t dress it off"'
+									zashmorg = 3
+									lis_Weekout = 1
+									'"You can go, BUT…"'
+									'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+									'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+									'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+									act 'Leave': gt 'train', 'gadukino'
+								end
+							end
+						end
+					end
+
+					act 'not now':
+						cla
+						'Vania just waves his hand, like "you can go"'
+						act 'Leave': gt $loc, $loc_arg
+					end
+				else
+					'No, I''ll go to him'
+					'Vania just waves his hand, like "you can go"'
+					slova -= 2
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					end
+					act 'Leave': gt $loc, $loc_arg
+				end
+
+			elseif moju_yty_vlada = 1 or phobidient = 1:
+				'I give a paper with "АКУС АШАН" to him'
+
+				'"Ok, it looks legit. Are you sure you want to go?"'
+
+				act 'yes':
+					cla
+
+					phobidient = 0
+					moju_yty_vlada = 0
+					if zashmorg = 3:
+						'"I see your collar is locked…"'
+						'"You can go, BUT…"'
+						'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+						'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+						'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+						lis_Weekout = 1
+						act 'Leave': gt 'train', 'gadukino'
+					else
+						'Let''s go'
+						act 'go with Vania':
+							cla
+							if zashmorg = 1:
+								'Vania takes a lock and fixed it to the collar'
+								'"Now you can''t dress it off"'
+								zashmorg = 3
+								lis_Weekout = 1
+								'"You can go, BUT…"'
+								'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+								'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+								'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+								act 'Leave': gt 'train', 'gadukino'
+							else
+								'Vania puts a collar on me'
+								'Vania takes a lock and fixed it to the collar'
+								'"Now you can''t dress it off"'
+								zashmorg = 3
+								lis_Weekout = 1
+								'"You can go, BUT…"'
+								'"You need to come back each weekend, otherwise I will find you and lock you here forever!"'
+								'You can meet me each day on the Gaducino railway platform at 21:00. I''ll carry you here'
+								'"Ow, also! I''ll bring you to the forest if you ask me at 21:00"'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+								act 'Leave': gt 'train', 'gadukino'
+							end
+						end
+					end
+				end
+
+				act 'not now':
+					cla
+					'Vania just waves his hand, like "you can go"'
+					act 'Leave': gt $loc, $loc_arg
+				end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			elseif VaniaMayster > 0:
+				'You need to train better and I will think about it.'
+				act 'Leave': gt $loc, $loc_arg
+
+			elseif VaniaMayster <= 0:
+				'Only if you become my student and be good in my trainings… hmmm… or if you become pregnant.'
+				act 'Leave': gt $loc, $loc_arg
+
+			end
+		end
+	else
+		act 'Can I go home?':
+			cla
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			end
+			'"Don''t ask me such questions on a weekend!"'
+			'"Go away."'
+			act 'Leave': gt $loc, $loc_arg
+		end
+	end
+
+	if zashmorg = 3:
+		gs 'willpower', 'humiliation', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'I beg you to unlock the collar' + $func('willpower', 'get_willcost_string'):
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				VaniaMayster -= 5
+
+
+				'Vania looks at me from the top to the bottom… waits for a few minutes:'
+
+				slova -= 4
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				end
+
+
+				if rand (1,100) >= VaniaMayster:
+					'"Well, ok."'
+					'With a few easy moves he unlocks the collar'
+					zashmorg = 1
+				else
+					'"Nah, I don''t want to"'
+				end
+
+				act 'Leave': gt $loc, $loc_arg
+			end
+		else
+			act 'I beg you to unlock the collar' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'Tolik':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+	act 'Leave': gt $loc, $loc_arg
+
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'ask: How can I help you?':
+			slova -= 5
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Tolik_task'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'ask: Do you need something?':
+			slova -= 4
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Tolik_task'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'ask: You need something?':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Tolik_task'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'ask: What to do?':
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_talk', 'Tolik_task'
+			end
+		end
+	end
+	if pcs_inhib >= 40:
+		act 'tease Tolik':
+			minut += 3
+			gs 'exp_gain', 'inhib', rand(0,1)
+			gs 'flash', 'exhibitionism', 1
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/tease1.mp4"></video></center>'
+			'"Cover up, women! You aren''t whore!", Tolik slaps me.'
+			mood -= rand(5,10)
+			brak += 1
+			gs 'pain', 1, 'cheeks', 'slap'
+		end
+	end
+	if week < 6:
+		act 'Can I go home?':
+			cla
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			end
+
+			if pregChem > 0:
+				Tolik_know_preg = 1
+				tkid = kid
+				If brak <= 20:
+					'I see you are pregnant from some of us, and it''s make me happy. Now you need some rest and see your family…'
+					'Vania will give you a collar as a reminder of us and you can go.'
+					'But you MUST be here each weekend. And you better listen to me.'
+
+					if knowpreg = 0:
+						+$OpenInnerThought+'I am pregnant?! OMG!!! and the father is some of this… this… guys.'+$CloseInnerThought
+						thinkpreg = 1
+						knowpreg = 1
+						unrelated_preg = 1
+					end
+
+					act 'I''ll stay':
+						cla
+						slova -= 1
+						if slova < 0:
+							gt 'mod_public_WC_kara', '0sliv'
+						end
+						'Good, Betsi. It''s good for you to be here.'
+						vlada += rand(1,2)
+						act 'Leave': gt $loc, $loc_arg
+					end
+					act 'I''ll go but come back on the weekend':
+						cla
+						slova -= 4
+						if slova < 0:
+							gt 'mod_public_WC_kara', '0sliv'
+						end
+
+						'"Well, ok" - he write some symbols on the paper "алатс юокмам" and give it to me'
+						'"Give this to Vania"'
+						moju_yty = 1
+						act 'Leave': gt $loc, $loc_arg
+					end
+				else
+					'You are doing everything wrong!'
+					'We will think about it only if you start to listen!'
+					+$OpenInnerThought+'(I need the relationship more then 20 (my current relationship is <<vlada>>))'+$CloseInnerThought
+					act 'Leave': gt $loc, $loc_arg
+				end
+			elseif vlada >= 30 and brak < 10:
+				'Tolik: "You are very obitient. I trust you."'
+				'Vania will give you a collar as a reminder of us and you can go.'
+				'But you MUST be here each weekend. And you better listen to me.'
+				act 'I''ll stay':
+					cla
+					slova -= 1
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					end
+					'Good, Betsi. It''s good for you to be here.'
+					vlada += rand(1,2)
+					act 'Leave': gt $loc, $loc_arg
+				end
+				act 'I''ll go but come back on the weekend':
+					cla
+					slova -= 4
+					if slova < 0:
+						gt 'mod_public_WC_kara', '0sliv'
+					end
+
+					'Tolik: "Well, ok" - he write some symbols on the paper "АКУС АШАН" and give it to me'
+					'Tolik: "Give this to Vania"'
+					moju_yty = 1
+					phobidient = 1
+					act 'Leave': gt $loc, $loc_arg
+				end
+			else
+				'Only if Vania agree… hmmm… or if you become pregnant.'
+				*nl
+				+$OpenInnerThought+'Or I have 50%+ relationship ith them and less than 10% conflict'+$CloseInnerThought
+				act 'Leave': gt $loc, $loc_arg
+			end
+		end
+	else
+		act 'Can I go home?':
+			cla
+			slova -= 2
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			end
+			'"Don''t ask me such questions on a weekend!"'
+			'"Go away."'
+			act 'Leave': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'Artem_task':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	cla
+	temp = rand (1,3)
+	if temp = 1: pcs_humint += 1
+	temp = rand(0,100)
+	if temp >= 50:
+		*clr & cla
+		'Yes, I need help!'
+		temp= rand(1,6)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/need_help/c<<temp>>.mp4"></video></center>'
+		'I started to do what he needs.'
+		act 'Go further': gt 'mod_public_WC_rab_sex', 'start'
+	else
+		temp = rand (1,3)
+		if firstclean = 2: temp = rand (1,4)
+		if temp = 1:
+			if task1 < 1:
+				'Chopp some woods'
+				task1 = 1
+			else
+				temp += 1
+			end
+		end
+		if temp = 2:
+			if task2 < 1:
+				'Wash the dishes'
+				task2 = 1
+			else
+				temp += 1
+			end
+		end
+		if temp = 3:
+			if task3 < 1:
+				'Make something to eat today'
+				task3 = 1
+			else
+				temp += 1
+			end
+		end
+		if temp = 4:
+			if task6 < 1:
+				'Clean the yard'
+				task6 = 1
+			else
+				temp += 1
+			end
+		end
+		if temp = 5:
+			'I have no tasks for you'
+		end
+
+
+		if pcs_humint <= 40 or pcs_intel <= 50 and temp ! 5:
+			act 'Ok, I will do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70 and temp ! 5:
+			act 'Ok, I''ll do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 80 or pcs_intel <= 90:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		elseif temp = 5:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Nod "yes"':
+				slova -= 0
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'Vania_task':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	cla
+	temp = rand (1,3)
+	if temp = 1: pcs_humint += 1
+	temp = rand(0,100)
+	if temp >= 20:
+		*clr & cla
+		'Yes, I need help!'
+		temp= rand(1,6)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/need_help/c<<temp>>.mp4"></video></center>'
+		'I started to do what he needs.'
+		act 'Go further': gt 'mod_public_WC_rab_sex', 'start'
+	else
+		'Make something to eat'
+		if task3 = 0:
+			task3 = 1
+		end
+		if pcs_humint <= 40 or pcs_intel <= 50:
+			act 'Oh, I will do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70:
+			act 'Ok, I''ll do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 80 or pcs_intel <= 90:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Nod "yes"':
+				slova -= 0
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+
+	if pregChem > 0:
+		!! 'wip'
+	end
+
+	if moju_yty = 1:
+		!! 'wip'
+	end
+end
+
+if $ARGS[0] = 'Tolik_task':
+	CLOSE ALL
+	$menu_loc = 'mod_public_WC_rab'
+	cla
+	temp = rand (1,3)
+	if temp = 1: pcs_humint += 1
+	temp = rand(0,100)
+	if temp >= 80:
+		*clr & cla
+		'Yes, I need help!'
+		temp= rand(1,6)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/need_help/c<<temp>>.mp4"></video></center>'
+		'I started to do what he needs.'
+		act 'Go further': gt 'mod_public_WC_rab_sex', 'start'
+	else
+		temp = rand (1,6)
+		if temp = 6: temp = 7
+		if firstclean = 2: temp = rand (1,7)
+
+
+		if temp = 1:
+			if task1 >= 1: temp += 1
+		end
+		if temp = 2:
+			if task2 >= 1: temp += 1
+		end
+		if temp = 3:
+			if task3 >= 1: temp += 1
+		end
+		if temp = 4:
+			if task4 >= 1: temp += 1
+		end
+		if temp = 5:
+			if month >= 5 and month <= 9:
+				if task5 >= 1: temp += 1
+			else
+				temp += 1
+			end
+		end
+		if temp = 6:
+			if task6 >= 1: temp += 1
+		end
+		if temp = 7:
+			if task7 >= 1: temp += 1
+		end
+
+
+		if temp = 1:
+			'Chopp some woods'
+			task1 = 1
+		elseif temp = 2:
+			'Wash the dishes'
+			task2 = 1
+		elseif temp =3:
+			'Make something to eat today'
+			task3 = 1
+		elseif temp =4:
+			if pcs_sewng >= 55:
+				'Made a shirt for me'
+				tkan += 15
+				task4 = 1
+			else
+				'Make something to eat today'
+				task3 = 1
+			end
+		elseif temp =5:
+			'Gather grapes'
+			task5 = 1
+		elseif temp =6:
+			'Clean the yard'
+			task6 = 1
+		elseif temp =7:
+			'Wash our clothes'
+			task7 = 1
+		elseif temp = 8:
+			'I don''t know what task to give you right now, Betsi. But I like your effort.'
+			slova += 5
+		end
+
+		if pcs_humint <= 40 or pcs_intel <= 50 and temp ! 7:
+			act 'Oh, I will do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 60 or pcs_intel <= 70 and temp ! 7:
+			act 'Ok, I''ll do':
+				slova -= 3
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint <= 80 or pcs_intel <= 90:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		elseif temp = 7:
+			act 'Ok':
+				slova -= 1
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+		if pcs_humint > 80 or pcs_intel > 90:
+			act 'Nod "yes"':
+				slova -= 0
+				if slova < 0:
+					gt 'mod_public_WC_kara', '0sliv'
+				else
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+--- mod_public_WC_rab_talk ---------------------------------
+

@@ -1,0 +1,41 @@
+# sms
+gs 'telefon', 'add_sms', 'A1', 'Test message the text goes here', 'images/pc/activities/phone/selfies/bathroom/underwear/1.jpg', 'images/pc/activities/phone/selfies/school_bathroom/pussyflash/1.jpg'
+
+
+!!-----------------------------------start of sms------------------------------------------
+!{
+	Send SMS lists the current contacts, then clicking on a contact gives a list of messages that can be sent.
+	Receive messages lists the sms messages sent to the player, these can be deleted, they will be in bold until read.
+	
+	To add an incoming message 
+	gs 'telefon', 'add_sms', 'A1', 'Test message the text goes here', 'images/pc/activities/phone/selfies/bathroom/underwear/1.jpg', 'images/pc/activities/phone/selfies/school_bathroom/pussyflash/1.jpg'
+	A1 is the NPC code (A1 is Dmitriy Nosov "Dimka")
+	You can have up to 4 pictures attached to the message
+
+	To add an out going message that can be sent
+	gs 'telefon', 'add_sms_to_send', 'A1', 'Test message the text goes here'
+
+	To add a contact if it doesn't exist
+	if arrpos('$contact', 'A1') = -1: gs 'telefon', 'AddContact', 'A1', 'images/characters/shared/headshots_main/big1.jpg', "", "1 = 0", "", "", 0
+
+	SMS Arrays storing received messages and messages that can be sent
+
+	Received Messages
+	telefon['UnreadSMS'] = number of unread SMS messages
+	$SMSContact[] = NPC code for contact. ('A129', 'A29', 'B13', 'C14') that sent the sms
+	$SMSMessage[] = text for the sms message
+	$SMSTime[] = date time the message was received
+	$SMSPicture1[] = url for first picture sent as part of the message
+	$SMSPicture2[] = url for second picture sent as part of the message
+	$SMSPicture3[] = url for third picture sent as part of the message
+	$SMSPicture4[] = url for fourth picture sent as part of the message
+	SMSMessageRead[] = 0 unread, 1 read
+
+	Send Messages 
+	$SMSSendContact[] = NPC code for contact. ('A129', 'A29', 'B13', 'C14') that sent the sms
+	$SMSSendMessage[] = text for the sms message
+	$SMSSendCode[] = Code to execute for Incoming call
+	SMSSendRepeatable[] = 0 delete option after send, 1 don't delete option
+	$SMSSendDeleteId[] = id passed by the caller 
+--- sms ---------------------------------
+

@@ -1,0 +1,3502 @@
+# mod_public_WC_citybasement_bumsex
+if $ARGS[0] = 'rape':
+	CLOSE ALL
+
+
+
+	if urape >= eventtemp:
+		*clr & cla
+			urape = 0
+			ubomj -= 50
+			if ubomj < 0: ubomj = 0
+			ubomj2 = 0
+		bumevent = 1
+		'One of the shadows moves towards me.'
+		'This is a man "Undress, bitch!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/rapist.jpg"></center>'
+
+		if succubusQW = 5:
+			act 'Lure him in and feed (this can take a lot of time)':
+				gt 'succubus', 'RapistFight'
+			end
+		end
+
+		act 'Submit to the rape': gt 'mod_public_WC_citybasement_bumsex', 'rape_do'
+
+		act 'Fight':
+			bumevent = 1
+			gs 'fight_npcdata', 'rapist'
+			gt 'street_events_general', 'fight_rape'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rape_do':
+	*clr & cla
+	CLOSE ALL
+	bumevent = 1
+	gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	'He pushed me on the floor rips my clothes and…'
+	temp = rand(1,10)
+	if pcs_magik > 0 and temp >= 8 and WCzoo = 1:
+		gs 'npcgeneratec', 0, 'beast', rand(30,60)
+		gs 'boyStat', $npclastgenerated
+		'…and a lot of candles starts to shine around me!'
+		'The big beast''s paw holds my head.'
+		'OMG, the rapist becomes beast!'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/zoo/beast.mp4"></video></center>'
+		dick = 40
+		npc_dick[$npclastgenerated] = dick
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+
+		stat['vaginal'] += 1
+
+		if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+		HVag+=1
+
+		if HVag <= 9:
+			temp = 9 - HVag
+			gs 'pain', rand(temp,9),'vaginal', 'pierce'
+		else
+			gs 'pain', rand(1,4),'vaginal', 'pierce'
+		end
+
+		gs 'stat'
+
+		gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+
+		sexvolume = rand(100,250)
+		gs 'cum_manage'
+		gs 'stat'
+
+		gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+		minut += rand(10,45)
+		gs 'stat'
+
+		'In some time he groans and a lot of hot cum filled me…'
+
+		'In a moment all candles went out.. And I plunged into darkness in solitude.'
+		bumevent = 1
+		act 'stand up': gt $loc, $loc_arg
+
+	else
+		'…starts to fuck me!'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/rape/vag ('+rand(1,8)+').mp4"></video></center>'
+
+		gs 'arousal', 'vaginal', rand(5,15), 'unknown', 'sub', 'rape'
+		gs 'stat'
+
+		'In a short time he cums inside me…'
+		'He lost any interest. Pushed me and go away'
+
+		gs 'cuminsidereact', 'rapist'
+		gs 'arousal', 'vaginal', 10, 'unknown', 'sub', 'rape'
+		minut -= 9
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		bumevent = 1
+		act 'stand up': gt $loc, $loc_arg
+	end
+end
+
+if npc_loyality  >=  70 and npc_loyality < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'bomj':
+	CLOSE ALL
+	if ubomj >= eventtemp:
+		bumevent = 1
+		urape -= 50
+		if urape < 0: urape = 0
+		ubomj = 0
+		ubomj2 = 0
+		temp = rand(1,100)
+
+
+		if temp <=  ( 15 + bumfriend ):
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+			'Ow girl… I need… give me some blow for 100'
+
+			temp = rand(1,7)
+			if temp = 1: $namebum = 'Koliamba'
+			if temp = 2: $namebum = 'Suhoy'
+			if temp = 3: $namebum = 'Nikitych'
+			if temp = 4: $namebum = 'Shurik'
+			if temp = 5: $namebum = 'Jekich'
+			if temp = 6: $namebum = 'Lioha'
+			if temp = 7: $namebum = 'Genka'
+
+			act 'agree to blow':
+				bjbum = 1
+				money += 100
+				if rand (1,4) = 1: bumfriend += 1
+				gs 'stat'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+			end
+
+			act 'no':
+				gt $loc, $loc_arg
+			end
+		elseif temp <=  50:
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+			'Some drunk bum point on the bottle and asks "Will you be the third?"'
+
+
+			temp = rand(1,7)
+			if temp = 1: $namebum = 'Koliamba'
+			if temp = 2: $namebum = 'Suhoy'
+			if temp = 3: $namebum = 'Nikitych'
+			if temp = 4: $namebum = 'Shurik'
+			if temp = 5: $namebum = 'Jekich'
+			if temp = 6: $namebum = 'Lioha'
+			if temp = 7: $namebum = 'Genka'
+			act 'the third?':
+				minut += 1
+				gs 'stat'
+				'Yes, me and <<$namebum>> want to drink, but vodiara is expensive and the 3rd one needed'
+			end
+			if money >= 70:
+				act 'yes':
+					*clr & cla
+					money -= 70
+					minut += rand(5,15)
+					gs 'stat'
+					'You give him 70'
+					bumfriend += 1
+					'Cool, let''s go to <<$namebum>>'
+					'in a few minutes we come to some sort of a bum''s room-camp.'
+
+
+					temp = rand(1,4)
+
+					if pr = 101: temp = 5
+					if pr = 111: temp = 5
+					if pr = 121: temp = 5
+					if pr = 133: temp = 5
+
+					if temp = 1:
+						pr = 101
+						$loc_arg = '101'
+
+					elseif temp = 2:
+						pr = 111
+						$loc_arg = '111'
+
+					elseif temp = 3:
+						pr = 121
+						$loc_arg = '121'
+
+					elseif temp = 4:
+						pr = 133
+						$loc_arg = '133'
+
+					else
+						' '
+					end
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir ('+rand(1,4)+').jpg"></center>'
+					'Some other bums sit here'
+					'we sit around the table and start to drink'
+					gs 'drugs', 'alcohol', 'vodka', 1
+					gs 'stat'
+					act 'drink more':
+						cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+						if rand(1,5) = 1:
+							marshrutka = 1
+							'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house.'
+						end
+						gs 'drugs', 'alcohol', 'vodka', 1
+						gs 'stat'
+						'I feel bums'' hand on my leg.'
+
+						act 'drink more':
+							cla
+							'I feel myself too drunk'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+							if rand (1,5) = 1:
+								marshrutka = 1
+								'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house'
+							end
+							gs 'drugs', 'alcohol', 'vodka', 1
+							gs 'stat'
+							'I feel bums'' hand on my but.'
+
+							act 'drink more':
+								gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+							end
+
+							act 'go with bum in the dark korridor':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+
+							act 'go away': gt $loc, $loc_arg
+						end
+
+						act 'go with the bum in the dark korridor':
+							gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+						end
+
+						act 'go away': gt $loc, $loc_arg
+
+					end
+					act 'go away': gt $loc, $loc_arg
+				end
+			end
+			act 'no':
+				*clr & cla
+				'Well, ok'
+				'Staggering, he goes somewhere'
+				act 'continue': gt $loc, $loc_arg
+			end
+		elseif temp <= 80:
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+			'What are you doing here, cunt?!'
+			'Go away, now!'
+
+			temp = rand(1,7)
+			if temp = 1: $namebum = 'Koliamba'
+			if temp = 2: $namebum = 'Suhoy'
+			if temp = 3: $namebum = 'Nikitych'
+			if temp = 4: $namebum = 'Shurik'
+			if temp = 5: $namebum = 'Jekich'
+			if temp = 6: $namebum = 'Lioha'
+			if temp = 7: $namebum = 'Genka'
+
+			act 'go away':
+				temp = pr
+				pr = zt
+				if pr = 111: temp = 110
+				if pr = 121: temp = 120
+				gt 'mod_public_WC_citybasement', '<<temp>>'
+
+			end
+			act 'no':
+				ubomj2 = 1
+				gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+			end
+		else
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+			'What are you doing here, cunt?!'
+			'Give me your money! Now!'
+			act 'give the money':
+				cla
+				'Staggering, he goes away'
+				money -= money
+				gs 'stat'
+				act 'continue': gt $loc, $loc_arg
+			end
+			act 'no':
+				ubomj2 = 1
+				gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bomjsex':
+	*clr & cla
+	CLOSE ALL
+	bumevent = 1
+	gs 'npcgeneratec', 0, '<<$namebum>>', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'sweat', 'add', 5
+	gs 'stat'
+
+	gs 'stat'
+
+	if trahobomj <= 1:
+		'This is the best day for <<$namebum>> life, the bum said…'
+		trahobomj = 0
+		bjbum = 1
+	else
+		temp = rand(1,10)
+		if temp = 1: $namebum = 'Koliamba'
+		if temp = 2: $namebum = 'Suhoy'
+		if temp = 3: $namebum = 'Nikitych'
+		if temp = 4: $namebum = 'Shurik'
+		if temp = 5: $namebum = 'Jekich'
+		if temp = 6: $namebum = 'Lioha'
+		if temp = 7: $namebum = 'Genka'
+		if temp = 8: $namebum = 'Artem'
+		if temp = 9: $namebum = 'Arkasha'
+		if temp = 10: $namebum = 'Moksha'
+		trahobomj -= 1
+		'Now make good for <<$namebum>>, you slut!'
+		bjbum = 0
+		temp = trahobomj + rand(0,3)
+		'It looks like <<temp>> bums waiting for me'
+		if trahobomj = 2: 'I was wrong, there is only one awaits'
+
+	end
+
+	if bjbum = 1:
+		bjbum = 0
+		killvar 'bjbum'
+		act 'blow <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/bj_start'+rand(1,2)+'.mp4"></video></center>'
+			gs 'dinSex', 'std_trigger_oral'
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(3,7) * bimbolevel
+				'His dick smells bad but it tastes so manly… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'OMG, the smell! and the taste!!! I want to throw up…'
+				'What am I doing?! Is it worth doing it?!'
+				pcs_mood -= rand(3,30)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/bj'+rand(1,4)+'.mp4"></video></center>'
+				if bimbolevel >= 2:
+					'His cock is so hot right now. I am good girl, and make him cum!'
+				else
+					'I feel how his sperm fills his dick, he will cum in my mouth?!'
+				end
+				act 'Continue':
+					*clr & cla
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_bj.mp4"></video></center>'
+					'He poured semen in my throat, take out his dick and cums everywhere on me!'
+					facial += 1
+					stat['swallow'] += 1
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hair', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up': gt $loc, $loc_arg
+				end
+			end
+		end
+	elseif bjbum = 2:
+		*clr & cla
+		bjbum = 0
+		killvar 'bjbum'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag_start'+rand(1,2)+'.mp4"></video></center>'
+
+		gs 'dinSex', 'std_trigger'
+
+		if bimbolevel >= 2:
+			pcs_mood += rand(5,10) * bimbolevel
+			'This smelly bum entered my pussy… I am happy to make <<$namebum>> happy!'
+			gs 'stat'
+		else
+			'This smelly bum entered my pussy… how I feel about myself now?!'
+			pcs_mood -= rand(5,50)
+			gs 'stat'
+		end
+
+		act 'Continue':
+			*clr & cla
+			gs 'sweat', 'add', 20
+			gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'unknown', 'humiliation'
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag'+rand(1,5)+'.mp4"></video></center>'
+			'I feel, he is on the edge…'
+			'I lie on my back and he starts to stroke his cock'
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				minut += rand(3,10)
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_tits.mp4"></video></center>'
+				'<<$namebum>> cums on my tits and smears the sperm on them, then touch my face with his dirty hands…'
+				'That was great!'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'clothes', $npclastgenerated, 0
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'face', $npclastgenerated, 0
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'stand up': gt $loc, $loc_arg
+			end
+		end
+	else
+		act 'blow <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/bj_start'+rand(1,2)+'.mp4"></video></center>'
+			gs 'dinSex', 'std_trigger_oral'
+
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(3,7) * bimbolevel
+				'His dick smells bad but it tastes so manly… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'OMG, the smell! and the taste!!! I want to throw up…'
+				'What am I doing?! how I feel about myself now?!'
+				pcs_mood -= rand(3,30)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/bj'+rand(1,4)+'.mp4"></video></center>'
+				if bimbolevel >= 2:
+					'His cock is so hot right now. I am good girl, and make him cum!'
+				else
+					'I feel how his sperm fills his dick, he will cum in my mouth?!'
+				end
+				act 'Continue':
+					*clr & cla
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_bj.mp4"></video></center>'
+					'He poured semen in my throat, take out his dick and cums everywhere on me!'
+					facial += 1
+					stat['swallow'] += 1
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hair', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					if trahobomj = 0:
+						act 'stand up': gt $loc, $loc_arg
+					else
+						act 'call next one': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+					end
+				end
+			end
+		end
+
+		act 'have sex with <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag_start'+rand(1,2)+'.mp4"></video></center>'
+			gs 'dinSex', 'std_trigger'
+
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(5,10) * bimbolevel
+				'This smelly bum entered my pussy… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'This smelly bum entered my pussy… how I feel about myself now?!'
+				pcs_mood -= rand(5,50)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag'+rand(1,5)+'.mp4"></video></center>'
+				'I feel, he is on the edge…'
+				'I lie on my back and he starts to stroke his cock'
+				act 'Continue':
+					*clr & cla
+					gs 'sweat', 'add', 20
+					minut += rand(3,10)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_tits.mp4"></video></center>'
+					'He cums on my tits and smears the sperm on them, then touch my face with his dirty hands…'
+					'"That was great!"'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					if trahobomj = 0:
+						act 'stand up': gt $loc, $loc_arg
+					else
+						act 'call next one': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+					end
+				end
+			end
+		end
+
+		act 'Fuck my ass <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/anal.mp4"></video></center>'
+			gs 'dinSex', 'std_trigger'
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(5,10) * bimbolevel
+				'This smelly bum entered my ass… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'This smelly bum entered my ass… how I feel about myself now?!'
+				pcs_mood -= rand(5,50)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'anal', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/anal.mp4"></video></center>'
+				'I feel, he is on the edge…'
+				act 'Continue':
+					*clr & cla
+					gs 'sweat', 'add', 20
+					minut += rand(3,10)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_anal.mp4"></video></center>'
+					'His cum fills my ass…'
+					'"That was great!"'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'anus', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					if trahobomj = 0:
+						act 'stand up': gt $loc, $loc_arg
+					else
+						act 'call next one': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bomj2':
+	bumevent = 1
+	CLOSE ALL
+	if ubomj2 >= eventtemp:
+		*clr & cla
+		urape -= 100
+		ubomj -= 100
+		if urape < 0: urape = 0
+		if ubomj < 0: ubomj = 0
+		ubomj2 = 0
+		temp = rand(1,10)
+		bumevent = 1
+		ubomj2 = rand(1,4)
+		tabir = rand(1,4)
+
+		if temp <=  4:
+			'There are <<ubomj2>> bums in this "living" room.'
+			'few of bums are drinking.'
+			'All of them stop and look at me when I entered the room'
+			'After some pause, the on who is drinking suggeste to drink with them '
+
+			if ubomj2 >= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,3)+').jpg"></center>'
+			end
+			if ubomj2 >= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(4,6)+').jpg"></center>'
+			end
+			if ubomj2 >= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(7,8)+').jpg"></center>'
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+
+
+			act 'agree to drink':
+				cla
+				'They are very happy and joking about awkward pause wich as a moment ago'
+				pcs_mood += 10
+				gs 'stat'
+
+				act 'sit at the table': gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+
+			act 'run':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'stat'
+
+				if	$loc_arg = '101':
+					if vhid4 = 100:
+						minut += rand(1,2)
+						gs 'stat'
+						'I remember getting out of here, fortunately it is not far!'
+						'I do not hear footsteps behind, all is well '
+						act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+					else
+						if rand(1,10) >= 7:
+							if rand(1,2) = 1:
+								pr = 106
+								temp = 107
+								$loc_arg = '107'
+							else
+								pr = 112
+								temp = 113
+								$loc_arg = '113'
+							end
+
+							'I hear no footsteps behind me'
+							act 'look around': gt 'mod_public_WC_citybasement', '<<temp>>'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+
+
+							if rand(1,2) = 1:
+								pr = 106
+								temp = 107
+								$loc_arg = '107'
+							else
+								pr = 112
+								temp = 113
+								$loc_arg = '113'
+							end
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					end
+				elseif $loc_arg = '111':
+					if vhid5 = 2:
+						if rand(1,4) >= 2:
+							minut += rand(5,10)
+							gs 'stat'
+							'I remember getting out of here, fortunately it is not far!'
+							'I do not hear footsteps behind, all is well '
+							act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid5'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+
+
+							pr = 106
+							$loc_arg = '107'
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					else
+						if rand(1,10) >= 7:
+
+							if rand(1,2) = 1:
+								pr = 106
+								temp = 107
+								$loc_arg = '107'
+							else
+								pr = 116
+								temp = 117
+								$loc_arg = '117'
+							end
+
+							'I hear no footsteps behind me'
+							act 'look around': gt 'mod_public_WC_citybasement', '<<temp>>'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+
+
+							if rand(1,2) = 1:
+								pr = 106
+								$loc_arg = '107'
+							else
+								pr = 116
+								$loc_arg = '117'
+							end
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					end
+				elseif $loc_arg = '121':
+					if vhid1 = 100:
+						minut += rand(1,2)
+						gs 'stat'
+						'I remember getting out of here, fortunately it is not far!'
+						'I do not hear footsteps behind, all is well '
+						act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+					else
+						if rand(1,10) >= 4:
+
+							if rand(1,2) = 1:
+								pr = 119
+								temp = 118
+								$loc_arg = '118'
+							else
+								pr = 117
+								temp = 116
+								$loc_arg = '116'
+							end
+
+							'I hear no footsteps behind me'
+							act 'look around': gt 'mod_public_WC_citybasement', '<<temp>>'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+
+
+							if rand(1,2) = 1:
+								pr = 119
+								temp = 118
+								$loc_arg = '118'
+							else
+								pr = 117
+								temp = 116
+								$loc_arg = '116'
+							end
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					end
+				elseif $loc_arg = '133':
+					if vhid3 = 100:
+						if rand(1,5) ! 1:
+							'I remember getting out of here, fortunately it is not far!'
+							'I do not hear footsteps behind, all is well '
+							act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+							pr = 132
+							$loc_arg = '134'
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					else
+						if rand(1,10) >= 4:
+
+							if rand(1,2) = 1:
+								pr = 131
+								temp = 130
+								$loc_arg = '130'
+							else
+								pr = 125
+								temp = 125
+								$loc_arg = '124'
+							end
+
+							'I hear no footsteps behind me'
+							act 'look around': gt 'mod_public_WC_citybasement', '<<temp>>'
+						else
+							'In a panic, I did not notice someones step!'
+							'And fell to the floor, hitting hard'
+							gs 'pain', rand(2,5), 'head', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'ribs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'thighs', 'fall'
+							gs 'stat'
+							gs 'pain', rand(2,5), 'back', 'fall'
+							gs 'stat'
+							urape = 120
+							bumevent = 1
+
+
+							if rand(1,2) = 1:
+								pr = 131
+								temp = 130
+								$loc_arg = '130'
+							else
+								pr = 125
+								temp = 125
+								$loc_arg = '124'
+							end
+
+
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'rape'
+						end
+					end
+				end
+			end
+
+			act 'politely refuse':
+				cla
+				if pcs_humint <= rand(55,95) or pcs_intel <= rand(75,105):
+					'I see you good dirl, who made a mistake, well we are not a monsters, just go away as quickly as posiible.'
+					bumevent = 2
+
+					act 'ok, thank you sir': gt $loc, $loc_arg
+				else
+					'The bums stand up'
+					'they surrounded me'
+					'Girl, don''t be stupid…'
+
+					act 'but only for you':
+						cla
+						'well ok.'
+						act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+					end
+
+
+
+
+
+					act 'Pay me 100 and only for you':
+						cla
+						if pcs_humint <= rand(15,75) or pcs_intel <= rand(35,85):
+							'Well, I am ok with it'
+							money += 100
+							gs 'stat'
+							act 'to pleasure the bum': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+					act 'Pay me 200 and only for you':
+						cla
+						if pcs_humint <= rand(35,95) or pcs_intel <= rand(55,105):
+							'Well, I am ok with it'
+							money += 200
+							gs 'stat'
+							act 'to pleasure the bum': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+					act 'Pay me 500 and only for you':
+						cla
+						if pcs_humint <= rand(55,95) or pcs_intel <= rand(75,105):
+							'look at her, such a connoisseur.'
+							money += 500
+							gs 'stat'
+							act 'to pleasure the bum': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+
+
+					act 'Pay me 100 each':
+						cla
+						if pcs_humint <= rand(15,75) or pcs_intel <= rand(35,85):
+							'Well, it''s ok'
+							'<<ubomj2>> bums agree'
+							money += 100 * ubomj2
+							trahobomj = ubomj2
+							gs 'stat'
+							act 'I start to whoring with the bums': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+					act 'Pay me 200 each':
+						cla
+						if pcs_humint <= rand(35,95) or pcs_intel <= rand(55,105):
+							'Well, it''s ok'
+							'<<ubomj2>> bums agree'
+							money += 200 * ubomj2
+							trahobomj = ubomj2
+							gs 'stat'
+							act 'I start to whoring with the bums': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+					act 'Pay me 500 each':
+						cla
+						if pcs_humint <= rand(55,95) or pcs_intel <= rand(75,105):
+							'look at her, such a connoisseur.'
+							'<<ubomj2>> bums agree'
+							money += 500 * ubomj2
+							trahobomj = ubomj2
+							gs 'stat'
+							act 'I start to whoring with the bums': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+						else
+							'Are you fucking kidding?!'
+							act 'agree for free':
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+							act 'I will not do it': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+
+
+					act 'Pay me 1000 and I''ll do you all':
+						cla
+						if pcs_humint <= rand(35,75) or pcs_intel <= rand(55,85):
+							'You are a real slut'
+							'some other bums here that and come here to be a part of party'
+							ubomj2 += rand(2,5)
+							'<<ubomj2>> bums surrounded me'
+							money += 1000
+							trahobomj = ubomj2
+							gs 'stat'
+							act 'I start to whoring with the bums': gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+						else
+							'You are a real slut'
+							'but we can just take it for free'
+							act 'continue': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+
+					end
+
+
+					temp = rand(1,10)
+					if temp <= 3:
+						'…just a quick blowie and you are free'
+						temp = 1
+						bjbum = 1
+					elseif temp <= 5:
+						'…just a quick fuck and you are free'
+						temp = 2
+						bjbum = 2
+					else
+						cla
+						'…just give us your money and you are free'
+						act 'ok, take it':
+							money -= money
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					end
+
+					act 'no': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+				end
+			end
+
+			if gun = 1:
+				act 'Get the gun, aim at them and get out':
+					cla
+					'The bums stand still, "Girl, we have nothing exept maybe this bottle, please just go away."'
+					if	$loc_arg = '101':
+						if vhid4 = 100:
+							act 'go to the street': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+						else
+							act 'go out':
+								urape += 0 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '102'
+							end
+							act 'show me the way out':
+								*clr & cla
+								'one bum staggered, but led me to the exit'
+								vhid4 += 1
+								if vhid4 >= 2 and vhid4 <= 10: vhid4 = 2
+								act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid4'
+							end
+						end
+					elseif $loc_arg = '111':
+						act 'go out':
+							urape += 15 & ubomj += 25 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '110'
+						end
+						act 'show me the way out':
+							*clr & cla
+							'one bum staggered, but led me to the exit'
+								vhid5 += 1
+								if vhid5 >= 2 and vhid5 <= 10: vhid5 = 2
+							act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid5'
+						end
+					elseif $loc_arg = '121':
+						if vhid1 = 100:
+							act 'go to the street': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+						else
+							act 'go out':
+								urape += -30 & ubomj += 35 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '120'
+							end
+							act 'show me the way out':
+								*clr & cla
+								vhid1 += 1
+								if vhid1 >= 2 and vhid1 <= 10: vhid1 = 2
+								'one bum staggered, but led me to the exit'
+								act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid1'
+							end
+						end
+					elseif $loc_arg = '133':
+						if vhid3 = 100:
+							act 'go to the street': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+						else
+							act 'go out':
+								urape += 28 & ubomj += 38 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '132'
+							end
+							act 'show me the way out':
+								*clr & cla
+								vhid3 += 1
+								if vhid3 >= 2 and vhid3 <= 10: vhid3 = 2
+								'one bum staggered, but led me to the exit'
+								act 'continue': gt 'mod_public_WC_citybasement_enter', 'vhid3'
+							end
+						end
+					end
+				end
+			end
+
+		elseif temp <= 7:
+			'There are <<ubomj2>> bums in this "living" room.'
+			if ubomj2 >= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,3)+').jpg"></center>'
+			end
+			if ubomj2 >= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(4,6)+').jpg"></center>'
+			end
+			if ubomj2 >= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(7,8)+').jpg"></center>'
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+
+			'One of the smelly bums stands up'
+			'What are you doing here, cunt?!'
+			'Go away, now!'
+			act 'go away':
+				temp = pr
+				pr = zt
+
+				gt 'mod_public_WC_citybasement', '<<temp>>'
+			end
+
+			if mc_inventory['food_wine'] >= 1 or bumfriend >= 20:
+				act 'lets drink!':
+					cla
+					bumfriend += rand(1,2)
+					'They are very happy and joking about tension wich was a moment ago'
+					pcs_mood += 10
+					gs 'stat'
+
+					act 'drink with them': gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+				end
+			end
+
+
+			act 'no': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+		else
+			'There are <<ubomj2>> bums in this "living" room.'
+			if ubomj2 >= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,3)+').jpg"></center>'
+			end
+			if ubomj2 >= 3:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(4,6)+').jpg"></center>'
+			end
+			if ubomj2 >= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(7,8)+').jpg"></center>'
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+
+			'Hey! Girl, wrong place! Give me your money and your pussy will be safe'
+			act 'ok, take it':
+				money -= money
+				gs 'stat'
+				gt $loc, $loc_arg
+			end
+
+			if mc_inventory['food_wine'] >= 1:
+				act 'Better lets drink!':
+					cla
+					'They are very happy and joking about tension wich was a moment ago'
+					pcs_mood += 10
+					gs 'stat'
+
+					temp = rand(1,4)
+					if temp <= 3: grape = 1
+
+					act 'drink with them': gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+				end
+			end
+
+
+
+
+
+			act 'no': gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bomjfight':
+	cla
+	CLOSE ALL
+	trahobomj = ubomj2
+	'I see the situation…'
+
+	'There will be fight in few minutes… Can I win?'
+	if pr = 1201: pr = 120
+	if pr = 1231: pr = 123
+
+	if gun = 1:
+		round = 0
+		act 'point a gun on them':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+			temp = rand(1,10)
+
+			if temp <= 4:
+				'she wouldn''t do it, guys go!'
+				act 'Surrender':
+					gt 'mod_public_WC_citybasement_lose', 'lose'
+				end
+
+				gs 'willpower', 'crime', 'self', 'hard'
+				if will_cost <= pcs_willpwr and ammo > 0:
+					act 'kill the bum' + $func('willpower', 'get_willcost_string'):
+						round += 1
+						*clr & cla
+						ammo -= 1
+						shoot_exp += 1
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						if pcs_shoot > rand(10,30):
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+							killed +=1
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+
+							'The dead body fell on the ground'
+							crime += 5
+							trahobomj -= 1
+
+							temp1 = rand(0,3)
+							temp2 = rand(0,3)
+							temp3 = rand(0,3)
+							temp4 = rand(0,2)
+
+							if trahobomj = 0:
+								'there are no other bums here'
+								act 'look around': gt $loc, $loc_arg
+							elseif trahobomj = 1:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 2:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 3:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp3 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 4:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp3 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp4 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							end
+							if trahobomj = 0:
+								'there are no other bums here'
+								$loc_arg = '<<pr>>'
+								act 'look around': gt $loc, $loc_arg
+							else
+								act 'try to kill all of them!': gt 'mod_public_WC_citybasement_bumsex', 'shoot'
+								if trahobomj = 1:
+									'There is one bum furiously run to me with bottle in his hand'
+								else
+									'There are <<trahobomj>> bums furiously run to me!'
+								end
+							end
+						else
+							'I missed!'
+
+							temp1 = rand(0,2)
+							temp2 = rand(0,2)
+							temp3 = rand(0,2)
+							temp4 = rand(0,1)
+
+							if trahobomj = 0:
+								'there are no other bums here'
+								act 'look around': gt $loc, $loc_arg
+							elseif trahobomj = 1:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 2:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 3:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp3 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							elseif trahobomj = 4:
+								if temp1 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp2 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp3 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+								if temp4 = 0:
+									'bum run away'
+									trahobomj -= 1
+								end
+							end
+							if trahobomj = 0:
+								'there are no other bums here'
+								$loc_arg = '<<pr>>'
+								act 'look around': gt $loc, $loc_arg
+							else
+								act 'try to kill all of them!': gt 'mod_public_WC_citybasement_bumsex', 'shoot'
+								act 'Surrender':
+									gt 'mod_public_WC_citybasement_lose', 'lose'
+								end
+								if trahobomj = 1:
+									'There is one bum furiously run to me with bottle in his hand'
+								else
+									'There are <<trahobomj>> bums furiously run to me!'
+								end
+							end
+						end
+					end
+				else
+					act 'kill the bum' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			else
+				'ok, ok, girl, be cool…'
+				'…please, we just go away'
+				'They fall back with small steps'
+				act 'wait until they go away':
+					minut += rand(1,3) * ubomj2
+					gs 'stat'
+					$loc_arg = '<<pr>>'
+					gt $loc, $loc_arg
+				end
+			end
+		end
+
+		if ammo > 0:
+			act 'shoot up':
+				*clr & cla
+				ammo -= 1
+				shoot_exp += rand(0,1)
+				minut += 2
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot'+rand(1,2)+'.mp4"></video></center>'
+				'bums starts to run away, very quickly!'
+				$loc_arg = '<<pr>>'
+				act 'continue': gt $loc, $loc_arg
+			end
+		end
+
+		gs 'willpower', 'crime', 'self', 'hard'
+		if will_cost <= pcs_willpwr and ammo > 0:
+			act 'kill the bum' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				round += 1
+				ammo -= 1
+				shoot_exp += 1
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				if pcs_shoot > rand(10,30):
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+					killed +=1
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+
+					'The dead body fell on the ground'
+					crime += 5
+					trahobomj -= 1
+
+					temp1 = rand(0,3)
+					temp2 = rand(0,3)
+					temp3 = rand(0,3)
+					temp4 = rand(0,2)
+
+					if trahobomj = 0:
+						'there are no other bums here'
+						act 'look around': gt $loc, $loc_arg
+					elseif trahobomj = 1:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 2:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 3:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp3 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 4:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp3 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp4 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					end
+					if trahobomj = 0:
+						'there are no other bums here'
+						$loc_arg = '<<pr>>'
+						act 'look around': gt $loc, $loc_arg
+					else
+						act 'try to kill all of them!': gt 'mod_public_WC_citybasement_bumsex', 'shoot'
+						if trahobomj = 1:
+							'There is one bum furiously run to me with bottle in his hand'
+						else
+							'There are <<trahobomj>> bums furiously run to me!'
+						end
+					end
+				else
+					'I missed!'
+
+					temp1 = rand(0,2)
+					temp2 = rand(0,2)
+					temp3 = rand(0,2)
+					temp4 = rand(0,1)
+
+					if trahobomj = 0:
+						'there are no other bums here'
+						act 'look around': gt $loc, $loc_arg
+					elseif trahobomj = 1:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 2:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 3:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp3 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					elseif trahobomj = 4:
+						if temp1 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp2 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp3 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+						if temp4 = 0:
+							'bum run away'
+							trahobomj -= 1
+						end
+					end
+					if trahobomj = 0:
+						'there are no other bums here'
+						$loc_arg = '<<pr>>'
+						act 'look around': gt $loc, $loc_arg
+					else
+						act 'try to kill all of them!': gt 'mod_public_WC_citybasement_bumsex', 'shoot'
+						act 'Surrender':
+							gt 'mod_public_WC_citybasement_lose', 'lose'
+						end
+						if trahobomj = 1:
+							'There is one bum furiously run to me with bottle in his hand'
+						else
+							'There are <<trahobomj>> bums furiously run to me!'
+						end
+					end
+				end
+			end
+		else
+			act 'kill the bum' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+	if succubusQW = 5:
+		act 'Lure them in and feed (this can take a lot of time)':
+			*clr & cla
+			suceatinit = 0
+			cls
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="images/pc/body/succubusself.jpg"></center>'
+			'Instinctively, I am barely aware of what causes my power to reach out and take hold of my would-be rapist''s mind.'
+			'I see fear fill their eyes even as lust fills their loins, and you feel their mind fighting my hold.'
+			pcs_horny = 100
+			act 'Continue':
+				cla
+				scrand = rand(0,3)
+				if fightEnding = 8 and scfwon = 1:
+					scrand -= 1
+					scfwon = 0
+					fightEnding = 0
+					if rikudo > 10:rikudo += 100
+					Win += 1
+				elseif fightEnding = 8:
+					fightEnding = 0
+					SUB += 1
+					Loss += 1
+					if rikudo > 10:rikudo -= 10
+				else
+					scrand -= 1
+					scfwon = 0
+					fightEnding = 0
+				end
+
+				scfeed = succublvl + rand(1,4)
+				if scfeed = 2:
+					$scxcum = 'twice'
+				else
+					$scxcum = 'multiple times'
+				end
+				$orgasm_or = 'no'
+				gs 'arousal', 'vaginal', 10, 'dom'
+				gs 'arousal', 'end'
+				'I quickly drag one of them, then rip off his pants and expose my now hungry pussy.'
+
+				'I force him to the ground and immediately mount him, my now hair-trigger snatch sending me into orgasm.'
+				'Others came out of shock and ran away in panic '
+				''
+				'I ride him for some time, my power forcing him to cum <<$scxcum>> pulling every drop of energy out of each eruption, with the rush causing me to orgasm as he does…'
+				''
+				act 'Continue':
+					cla
+					'Finally, when my instincts tell me he has nothing left to give, I get off him and fix my clothes.'
+					'As I make ready to leave, I look down upon my would-be-rapist-turned-meal as he lies there utterly exhausted…'
+					guy += 1
+					pcs_horny = 0
+					orgasm += 1 + scfeed
+					! Seems appropriate. Reducing it, but leaving it in. Potentially worth revisiting
+					pcs_willpwr += scfeed
+					succubxp += 6
+					sexnutrition += 30 * scfeed
+					sucabscum = 1
+					minut += 15 + (20 * scfeed) / succublvl
+					killvar 'scfeed' & killvar 'scrand'
+					gs 'stat'
+					$loc_arg = '<<pr>>'
+					gs 'arousal', 'end'
+					act 'continue': gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+
+	act 'fight!':
+		*clr & cla
+		temp = rand(10,28) * ubomj2
+		if pcs_jab > ( temp + kazenka * 2 ) or pcs_punch > ( temp + kazenka * 2 ) or pcs_kick > ( temp + kazenka * 2 ) or pcs_def > ( temp + kazenka * 2 ):
+
+			'My tranings was good enough, my skills is very good'
+			'I win this fight!'
+			pcs_mood += 40 * trahobomj
+			gs 'exercise', 'tier3', 0, 'jab_exp', 'react_exp'
+			gs 'exercise', 'tier3', 0, 'stren_exp', 'punch_exp'
+			gs 'exercise', 'tier3', 0, 'stren_exp', 'kick_exp'
+			gs 'exercise', 'tier3', 0, 'def_exp', 'agil_exp'
+			gs 'stat'
+
+
+			gs 'pain', rand(0,2), 'tummy', 'kick'
+			gs 'pain', rand(0,2), 'cheeks', 'hit'
+			gs 'pain', rand(0,2), 'thighs', 'kick'
+			gs 'pain', rand(0,2), 'hair', 'stretch'
+			gs 'pain', rand(0,2), 'armL', 'twist'
+			gs 'pain', rand(0,2), 'armR', 'twist'
+			gs 'pain', rand(0,3), 'head', 'hit'
+			gs 'stat'
+
+
+			act 'continue': gt $loc, $loc_arg
+		else
+			'There are too many bums, I can''t win all of them'
+			'They hit me hard'
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/udar.jpg"></center>'
+
+			gs 'exercise', 'tier3', 0, 'jab_exp', 'react_exp'
+			gs 'exercise', 'tier3', 0, 'stren_exp', 'punch_exp'
+			gs 'exercise', 'tier3', 0, 'stren_exp', 'kick_exp'
+			gs 'exercise', 'tier3', 0, 'def_exp', 'agil_exp'
+			gs 'stat'
+
+
+			gs 'pain', rand(2,3), 'tummy', 'kick'
+			gs 'pain', rand(2,2), 'cheeks', 'hit'
+			gs 'pain', rand(2,4), 'thighs', 'kick'
+			gs 'pain', rand(2,3), 'hair', 'stretch'
+			gs 'pain', rand(2,5), 'armL', 'twist'
+			gs 'pain', rand(2,5), 'armR', 'twist'
+			gs 'pain', rand(2,6), 'head', 'hit'
+			gs 'stat'
+			act 'surrender': gt 'mod_public_WC_citybasement_lose', 'lose'
+		end
+	end
+
+	act 'I am to weak and have nothing to do except Surrender':
+		gt 'mod_public_WC_citybasement_lose', 'lose'
+	end
+end
+
+if $ARGS[0] = 'shoot':
+	*clr & cla
+	CLOSE ALL
+	if ammo > 0:
+		act 'kill the next one':
+			*clr & cla
+			ammo -= 1
+			shoot_exp += 1
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot<<temp>>.mp4"></video></center>'
+			gs 'stat'
+
+			if pcs_shoot > rand(10,30) + 15 * round:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+				killed +=1
+				willpowermax += 5
+				pcs_mood -= 40
+				pcs_mood += killed
+
+				'The dead body fell on the ground'
+				crime += 5
+				trahobomj -= 1
+
+				round += 1
+				temp1 = rand(0,3)
+				temp2 = rand(0,3)
+				temp3 = rand(0,3)
+				temp4 = rand(0,2)
+
+				if trahobomj = 0:
+					'there are no other bums here'
+					act 'look around': gt $loc, $loc_arg
+				elseif trahobomj = 1:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 2:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 3:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 4:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp4 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				end
+				if trahobomj = 0:
+					'there are no other bums here'
+					$loc_arg = '<<pr>>'
+					act 'look around': gt $loc, $loc_arg
+				else
+					act 'I have time for another shoot!': gt 'mod_public_WC_citybasement_bumsex', 'shoot'
+					if trahobomj = 1:
+						'There is one bum furiously run to me with bottle in his hand'
+					else
+						'There are <<trahobomj>> bums furiously run to me!'
+					end
+				end
+			else
+				'I missed!'
+
+				temp1 = rand(0,2)
+				temp2 = rand(0,2)
+				temp3 = rand(0,2)
+				temp4 = rand(0,1)
+
+				if trahobomj = 0:
+					'there are no other bums here'
+					act 'look around': gt $loc, $loc_arg
+				elseif trahobomj = 1:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 2:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 3:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 4:
+					if temp1 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+					if temp4 = 0:
+						'bum run away'
+						trahobomj -= 1
+					end
+				end
+				if trahobomj = 0:
+					'there are no other bums here'
+					$loc_arg = '<<pr>>'
+					act 'look around': gt $loc, $loc_arg
+				else
+					'I have no time for one more shoot!'
+					if trahobomj = 1:
+						'There is one bum furiously run to me with bottle in his hand'
+
+						act 'Fight':
+							gs 'fight_npcdata', 'rapist'
+							gt 'street_events_general', 'fight_rape'
+						end
+
+
+						act 'Surrender':
+							*clr & cla
+							'He hit me with something heavy and I lost consciousness…'
+
+
+							gs 'pain', 9, 'tummy', 'kick'
+							gs 'pain', 8, 'cheeks', 'hit'
+							gs 'pain', 8, 'thighs', 'kick'
+							gs 'pain', 7, 'hair', 'stretch'
+							gs 'pain', 6, 'armL', 'twist'
+							gs 'pain', 6, 'armR', 'twist'
+							gs 'stat'
+							rape += 1
+
+							guy += trahobomj
+							gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,trahobomj)
+							gs 'arousal_funcs', 'stretch', 'oral', rand(1,trahobomj)
+							gs 'arousal_funcs', 'stretch', 'anal', rand(0,trahobomj)
+							stat['swallow'] += rand(0,trahobomj)
+							facial += rand(0,trahobomj)
+							gs 'sweat', 'add', 100
+							gs 'cum_call', 'face'
+							gs 'cum_call', 'clothes'
+							gs 'cum_call', 'stomach'
+							gs 'cum_call', 'breasts'
+							gs 'cum_call', 'hair'
+							gs 'cum_call', 'labia'
+							gs 'cum_call', 'butt'
+							gs 'cum_call', 'anus'
+							cumarrcpt = 100
+							gs 'cum_call', 'vaginal', 'bum'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'clothing', 'swamp_clothes', 1
+							gs 'stat'
+
+							if Vania = 2 or Tolik = 2 or Artem = 2:
+								over = 6
+								gt 'gameover'
+							elseif vtecha = 1:
+								'I wake up'
+								temp = money
+								money -= temp
+								vtecha = 2
+								brak += 10
+								minut += 240
+								gs 'stat'
+								zvit = week
+								act 'look around': gt 'mod_public_WC_rab_DVIR', 'dvir'
+							else
+								'I wake up'
+								temp = money
+								money -= temp
+
+								brak += 10
+								minut += 240
+								gs 'stat'
+								act 'look around': gt 'mod_public_WC_rab', 'lis_start'
+							end
+						end
+					else
+						'There are <<trahobomj>> bums furiously run to me!'
+						act 'Oh no!':
+							*clr & cla
+							'They hit me with something heavy and I lost consciousness…'
+
+
+							gs 'pain', 9, 'tummy', 'kick'
+							gs 'pain', 8, 'cheeks', 'hit'
+							gs 'pain', 8, 'thighs', 'kick'
+							gs 'pain', 7, 'hair', 'stretch'
+							gs 'pain', 6, 'armL', 'twist'
+							gs 'pain', 6, 'armR', 'twist'
+							gs 'stat'
+							rape += 1
+
+							guy += trahobomj
+							gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,trahobomj)
+							gs 'arousal_funcs', 'stretch', 'oral', rand(1,trahobomj)
+							gs 'arousal_funcs', 'stretch', 'anal', rand(0,trahobomj)
+							stat['swallow'] += rand(0,trahobomj)
+							facial += rand(0,trahobomj)
+							gs 'sweat', 'add', 100
+							gs 'cum_call', 'face'
+							gs 'cum_call', 'clothes'
+							gs 'cum_call', 'stomach'
+							gs 'cum_call', 'breasts'
+							gs 'cum_call', 'hair'
+							gs 'cum_call', 'labia'
+							gs 'cum_call', 'butt'
+							gs 'cum_call', 'anus'
+							cumarrcpt = 100
+							gs 'cum_call', 'vaginal', 'bum'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'clothing', 'swamp_clothes', 1
+							gs 'stat'
+
+							if Vania = 2 or Tolik = 2 or Artem = 2:
+								over = 6
+								gt 'gameover'
+							elseif vtecha = 1:
+								'I wake up'
+								temp = money
+								money -= temp
+								vtecha = 2
+								brak += 10
+								minut += 240
+								gs 'stat'
+								zvit = week
+								act 'look around': gt 'mod_public_WC_rab_DVIR', 'dvir'
+							else
+								'I wake up'
+								temp = money
+								money -= temp
+
+								brak += 10
+								minut += 240
+								gs 'stat'
+								act 'look around': gt 'mod_public_WC_rab', 'lis_start'
+							end
+						end
+					end
+				end
+			end
+		end
+	else
+		act 'Oh no! I have no ammo… I am dead now…':
+			*clr & cla
+			'They hit me with something heavy and I lost consciousness…'
+
+
+			gs 'pain', 9, 'tummy', 'kick'
+			gs 'pain', 8, 'cheeks', 'hit'
+			gs 'pain', 8, 'thighs', 'kick'
+			gs 'pain', 7, 'hair', 'stretch'
+			gs 'pain', 6, 'armL', 'twist'
+			gs 'pain', 6, 'armR', 'twist'
+			gs 'stat'
+			rape += 1
+
+			guy += trahobomj
+			gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,trahobomj)
+			gs 'arousal_funcs', 'stretch', 'oral', rand(1,trahobomj)
+			gs 'arousal_funcs', 'stretch', 'anal', rand(0,trahobomj)
+			stat['swallow'] += rand(0,trahobomj)
+			facial += rand(0,trahobomj)
+			gs 'sweat', 'add', 100
+			gs 'cum_call', 'face'
+			gs 'cum_call', 'clothes'
+			gs 'cum_call', 'stomach'
+			gs 'cum_call', 'breasts'
+			gs 'cum_call', 'hair'
+			gs 'cum_call', 'labia'
+			gs 'cum_call', 'butt'
+			gs 'cum_call', 'anus'
+			cumarrcpt = 100
+			gs 'cum_call', 'vaginal', 'bum'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'clothing', 'swamp_clothes', 1
+			gs 'stat'
+
+			if Vania = 2 or Tolik = 2 or Artem = 2:
+				over = 6
+				gt 'gameover'
+			elseif vtecha = 1:
+				'I wake up'
+				temp = money
+				money -= temp
+				vtecha = 2
+				brak += 10
+				minut += 240
+				gs 'stat'
+				zvit = week
+				act 'look around': gt 'mod_public_WC_rab_DVIR', 'dvir'
+			else
+				'I wake up'
+				temp = money
+				money -= temp
+
+				brak += 10
+				minut += 240
+				gs 'stat'
+				act 'look around': gt 'mod_public_WC_rab', 'lis_start'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bomj2drink':
+	*clr & cla
+	CLOSE ALL
+	urape = 0
+	ubomj = 0
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+	if atemp = 1:
+		*clr & cla
+		atemp = 0
+		'in a few minutes we come to some sort of a bum''s room-camp.'
+		tabir = rand(1,4)
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+		'Some other bums sit here'
+		killvar 'atemp'
+	end
+	'we sit around the table and start to drink'
+
+	if rand(1,2) = 1:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/kazenka.jpg"></center>'
+	end
+	kazenka = 1
+	minut += rand(10,25)
+	gs 'drugs', 'alcohol', 'vodka', 1
+	gs 'stat'
+	act 'drink more': gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+end
+
+
+
+if $ARGS[0] = 'drink2':
+	*clr & cla
+	CLOSE ALL
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+
+	if rand(1,2) = 1:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/kazenka.jpg"></center>'
+	end
+	kazenka += 1
+	minut += rand(10,25)
+	gs 'drugs', 'alcohol', 'vodka', 1
+	gs 'stat'
+
+	trahobomj = ubomj2
+
+	if rand(1,6) = 1 and trahobomj >= 1:
+		if rand(1,3) <= 2:
+			if trahobomj ! 4:
+				trahobomj += 1
+				'Other bum comes here'
+			end
+		else
+			if trahobomj ! 1:
+				trahobomj -= 1
+				'One bum goes away'
+			end
+		end
+	end
+	if trahobomj = 0: trahobomj = 1
+	'I sit here with <<trahobomj>> bums'
+	'This drink taste is bad, but make me feel about life easier'
+
+	pcs_mood += rand(10,30)
+	gs 'stat'
+
+	if kazenka >= 3: 'I feel bum''s hand on my butt…'
+
+
+
+	act 'drink more':
+		gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+	end
+
+	act 'Guy, let''s fuck!':
+		cla
+		'Yeaaaaah! They all agree!'
+		act 'continue': gt 'mod_public_WC_citybasement_lose', 'bomjisex'
+	end
+
+	if rand(1,4) = 1:
+		'Bum start to smoke'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/smoke.mp4"></video></center>'
+	end
+
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			minut += 5
+			gs 'drugs','smoke'
+			gs 'stat'
+		end
+	end
+
+	act 'go away':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+		'The bum grap my hand. Wait girl, don''t leave, please.'
+		act 'Ok, let''s drink': gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+
+		act 'I want to leave':
+			cla
+			'Dont be so… there are much fun awaits us'
+
+			act 'pull out my hand ':
+				cla
+				grape = 1
+				'The bums look very angry'
+				act 'continue' : gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+			end
+			act 'Well, ok, let''s drink':
+				gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+			end
+		end
+		if bumfriend >= 20:
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+			'Ok, bye-bye!'
+			act 'continue': gt $loc, $loc_arg
+		end
+	end
+
+	act 'talk':
+		cla
+		temp = rand (1,9)
+		if temp = 1:
+			'We have a King, his name is Kolia. He lives in these tunnels, usually near the residential area basement'
+			*nl
+			if bum_kolia = 0: '"the king of bums!!! OMG lol" - I thought to myself '
+		end
+		if temp = 2:
+			'There is a room in this tunnels, where 3 guys rape girls… They call it "training for vip glory hole"… ANd the VIP glory hole is exist. There is a marshrutka for workers in a city park at 23:00. It brings girls to work in Pleasure house.'
+			marshrutka = 1
+		end
+		if temp = 3: 'There are 3 mens in the forst, such pretty girl need to avoid them'
+		if temp = 4: 'There are a lot of rapist in this tunnels, you need some protection, gun or something'
+		if temp = 5:
+			'Girl, I like you, take this key, you can open this basement, he show me location of the basement on the maps'
+			vid1 = 100
+		end
+		if temp = 6:
+			'Girl, I like you, take this key, you can open this basement, he show me location of the basement on the maps'
+			vid2 = 100
+		end
+		if temp = 7:
+			'Girl, I like you, take this key, you can open this basement, he show me location of the basement on the maps'
+			vid3 = 100
+		end
+		if temp = 8:
+			'Girl, I like you, take this key, you can open this basement, he show me location of the basement on the maps'
+			vid4 = 100
+		end
+		if temp = 9: 'this tunnels is ve-ery long, it conected all city areas'
+
+		act 'continue drinking': gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+	end
+
+	ktemp = rand(5,7)
+	if kazenka >= ktemp:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomj_more/sex/sleep/just sleep ('+rand(1,2)+').jpg"></center>'
+		'I am too drunk… the world is floating '
+		'I passed away'
+		act 'sleep': gt 'mod_public_WC_citybasement_lose', 'bomjisex'
+	end
+end
+
+
+
+if $ARGS[0] = 'bag':
+	observ_exp += 3
+	gs 'stat'
+	'There is bag hided in the wall'
+	'Should I look in it?'
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/bag.jpg"></center>'
+	urape -= 40
+	act 'open the bag':
+		cla
+		act 'throw the bag away': gt $loc, $loc_arg
+		if pcs_observ >= rand (1,50):
+
+			temp = rand(1,12)
+			if temp >= 12:
+				if gun ! 1:
+					'In a bag''s pad I find the gun!'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+					gun = 1
+					ammo += 1
+					gs 'stat'
+					temp = 1
+					ztemp = 10
+				else
+					'As I rummage in the bag, I find some drugs'
+					temp = rand(1,4)
+					if temp = 1:
+						mc_inventory['aphrodisiac'] += rand(1,4)
+					elseif temp = 2:
+						mc_inventory['mentats'] += rand(1,4)
+					elseif temp = 3:
+						mc_inventory['amphetamine'] += rand(1,4)
+					elseif temp = 4:
+						mc_inventory['mentats'] += rand(1,4)
+					end
+					gs 'stat'
+					crime += 1
+					act 'Took everything and throw the bag': gt $loc, $loc_arg
+				end
+			end
+			if temp >= 10:
+				'As I rummage in the bag, I find some drugs'
+				temp = rand(1,4)
+				if temp = 1:
+					mc_inventory['aphrodisiac'] += rand(1,4)
+				elseif temp = 2:
+					mc_inventory['mentats'] += rand(1,4)
+				elseif temp = 3:
+					mc_inventory['amphetamine'] += rand(1,4)
+				elseif temp = 4:
+					mc_inventory['mentats'] += rand(1,4)
+				end
+				gs 'stat'
+				crime += 1
+				act 'Took everything and throw the bag': gt $loc, $loc_arg
+			elseif temp >= 7:
+				'AS I pick up a bug the glass sound appears'
+				'Yup it''s a boose'
+				mc_inventory['food_wine'] += rand(1,2)
+				If mc_inventory['food_wine'] >= 2: mc_inventory['food_wine'] = 1
+				gs 'stat'
+				crime += 1
+				act 'Took everything and throw the bag': gt $loc, $loc_arg
+			elseif temp >= 4:
+				cla
+
+				temp = rand (1000,5000)
+				'there are <<temp>> cash in the bag'
+
+				act 'take the money':
+					crime += 20
+					money += temp
+					gs 'stat'
+					gt $loc, $loc_arg
+				end
+				act 'leave the money here': gt $loc, $loc_arg
+			elseif temp >= 1:
+				cla
+				temp = rand (20,50)*500
+				'There is a <<temp>> money covered in a someones blood.. and few bullets'
+				+$OpenInnerThought+'It looks dangerous…'+$CloseInnerThought
+
+				ztemp = rand(1,10)
+				if ztemp >= 10:
+					'…ow, and a gun also here'
+					+$OpenInnerThought+'…very, very dangerous…'+$CloseInnerThought
+				end
+
+
+				gs 'willpower', 'misc', 'self', 'hard'
+				if will_cost <= pcs_willpwr:
+					act 'Take everything' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						money += temp
+						ammo += rand(1,5)
+						crime += 100
+						if ztemp >= 10: gun = 1 & crime += 100
+						gs 'stat'
+						gt $loc, $loc_arg
+					end
+				else
+					act 'Take everything' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+
+				gs 'willpower', 'misc', 'self', 'easy'
+				if will_cost <= pcs_willpwr:
+					act 'Take the bullets only' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+
+						ammo += rand(1,5)
+
+
+						gs 'stat'
+						gt $loc, $loc_arg
+					end
+				else
+					act 'Take the bullets only' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+
+				if ztemp >= 10:
+					gs 'willpower', 'misc', 'self'
+					if will_cost <= pcs_willpwr:
+						act 'Take the money only' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+
+
+							money += temp
+							crime += 100
+
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					else
+						act 'Take the money only' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+					gs 'willpower', 'misc', 'self', 'hard'
+					if will_cost <= pcs_willpwr:
+						act 'Take the gun with bullets only' + $func('willpower', 'get_willcost_string'):
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+
+							ammo += rand(1,5)
+							gun = 1
+							crime += 100
+
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					else
+						act 'Take the gun with bullets only' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+				end
+
+				act 'throw the bag away': gt $loc, $loc_arg
+			end
+		else
+			cla
+			'I open the bag… but it''s nothing in it.'
+			minut += 5
+			gs 'stat'
+			act 'throw the bag away': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'body':
+	observ_exp += 2
+	urape -= 40
+	gs 'stat'
+	'There is a body on the floor…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/drunk_body.jpg"></center>'
+
+	act 'check is he alive':
+		cla
+		persuas_exp += 3
+		gs 'stat'
+		act 'leave': gt $loc, $loc_arg
+
+		temp = rand(1,10)
+		if temp >= 9:
+			cla
+			'He suddenly grab my leg!'
+			'"Well-well, what we got here, a nice fresh pussy…"'
+
+			if succubusQW = 5:
+				act 'Lure him in and feed (this can take a lot of time)':
+					gt 'succubus', 'RapistFight'
+				end
+			end
+
+			act 'Submit to the rape': gt 'mod_public_WC_citybasement_bumsex', 'rape_do'
+
+			act 'Fight':
+				bumevent = 1
+				gs 'fight_npcdata', 'rapist'
+				gt 'street_events_general', 'fight_rape'
+			end
+		elseif temp >= 6:
+			'He is alive but to drunk'
+			bodysleep = rand(50,90)
+		elseif temp >= 3:
+			'He is alive, but definitely under some drugs or smth'
+			bodysleep = rand(30,100)
+		elseif temp >= 1:
+			'He just sleeping'
+			bodysleep = rand(0,40)
+		end
+
+		gs 'willpower', 'crime', 'self', 'easy'
+		if will_cost <= pcs_willpwr and temp < 9:
+			act 'Rummage in the body pockets' + $func('willpower', 'get_willcost_string'):
+				cla
+				bodysleep = rand(0,100)
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				persuas_exp += 3
+				gs 'stat'
+
+				if rand(1,100) - pcs_persuas < bodysleep:
+					'I have successfully robbed his pockets'
+					act 'leave': gt $loc, $loc_arg
+
+					if pcs_observ >= rand (1,50):
+						temp = rand(1,10)
+						if temp >= 10:
+							if gun ! 1:
+								'I have stole a gun!'
+								crime += 100
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+								gun = 1
+								ammo += 1
+								gs 'stat'
+							else
+								'I have stole some drugs'
+								crime += 2
+								temp = rand(1,4)
+								if temp = 1:
+									mc_inventory['aphrodisiac'] += rand(1,4)
+								elseif temp = 2:
+									mc_inventory['mentats'] += rand(1,4)
+								elseif temp = 3:
+									mc_inventory['amphetamine'] += rand(1,4)
+								elseif temp = 4:
+									mc_inventory['mentats'] += rand(1,4)
+								end
+								gs 'stat'
+							end
+						elseif temp >= 9:
+							'I have stole some drugs'
+							crime += 2
+							temp = rand(1,4)
+							if temp = 1:
+								mc_inventory['aphrodisiac'] += rand(1,4)
+							elseif temp = 2:
+								mc_inventory['mentats'] += rand(1,4)
+							elseif temp = 3:
+								mc_inventory['amphetamine'] += rand(1,4)
+							elseif temp = 4:
+								mc_inventory['mentats'] += rand(1,4)
+							end
+							gs 'stat'
+						elseif temp >= 5:
+							'I have stole some boose'
+							crime += 1
+							mc_inventory['food_wine'] += rand(1,2)
+							If mc_inventory['food_wine'] >= 2: mc_inventory['food_wine'] = 1
+							gs 'stat'
+						elseif temp >= 2:
+							cla
+
+							temp = rand (100,1000)
+							'there are <<temp>> cash in his pockets'
+
+							act 'take the money':
+								crime += 2
+								money += temp
+								gs 'stat'
+								gt $loc, $loc_arg
+							end
+							act 'put the money back': gt $loc, $loc_arg
+						elseif temp >= 1:
+							cla
+							'I stole only the intresting business card "vic pleasure 1258".'
+							'There is a map of the city park and a way to smth like a busstop.'
+							vic_card = 1
+							marshrutka = 1
+							act 'leave': gt $loc, $loc_arg
+						end
+					else
+						'His pockets is empty'
+						crime += rand(0,1)
+					end
+				else
+					*clr & cla
+					if rand(1,2) = 1:
+						'He wakes up and look at me, like he doesn''t belive his eyes'
+						temp = rand(1,4)
+						if temp = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+							'"Ow girl… it''s good you are here… give me some blow"'
+							'He grab my hands'
+
+							temp = rand(1,7)
+							if temp = 1: $namebum = 'Koliamba'
+							if temp = 2: $namebum = 'Suhoy'
+							if temp = 3: $namebum = 'Nikitych'
+							if temp = 4: $namebum = 'Shurik'
+							if temp = 5: $namebum = 'Jekich'
+							if temp = 6: $namebum = 'Lioha'
+							if temp = 7: $namebum = 'Genka'
+
+							act 'agree to blow':
+								bjbum = 1
+								if rand (1,4) = 1: bumfriend += 1
+								gs 'stat'
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+							end
+
+							act 'no':
+								ubomj2 = 1
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+							end
+						elseif temp = 2:
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+							'"let''s go drink!"'
+
+							temp = rand(1,7)
+							if temp = 1: $namebum = 'Koliamba'
+							if temp = 2: $namebum = 'Suhoy'
+							if temp = 3: $namebum = 'Nikitych'
+							if temp = 4: $namebum = 'Shurik'
+							if temp = 5: $namebum = 'Jekich'
+							if temp = 6: $namebum = 'Lioha'
+							if temp = 7: $namebum = 'Genka'
+
+
+							act 'yes':
+								*clr & cla
+								minut += rand(5,15)
+								gs 'stat'
+								bumfriend += 1
+								'Cool, let''s go to <<$namebum>>'
+								'in a few minutes we come to some sort of a bum''s room-camp.'
+
+								temp = rand(1,4)
+
+								if pr = 101: temp = 5
+								if pr = 111: temp = 5
+								if pr = 121: temp = 5
+								if pr = 133: temp = 5
+
+								if temp = 1:
+									pr = 101
+									$loc_arg = '101'
+
+								elseif temp = 2:
+									pr = 111
+									$loc_arg = '111'
+
+								elseif temp = 3:
+									pr = 121
+									$loc_arg = '121'
+
+								elseif temp = 4:
+									pr = 133
+									$loc_arg = '133'
+
+								else
+									' '
+								end
+								'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir ('+rand(1,4)+').jpg"></center>'
+								'Some other bums sit here'
+								'we sit around the table and start to drink'
+								gs 'drugs', 'alcohol', 'vodka', 1
+								gs 'stat'
+								act 'drink more':
+									cla
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+									if rand(1,5) = 1:
+										marshrutka = 1
+										'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house.'
+									end
+									gs 'drugs', 'alcohol', 'vodka', 1
+									gs 'stat'
+									'I feel bums'' hand on my leg.'
+
+									act 'drink more':
+										cla
+										'I feel myself too drunk'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+										if rand (1,5) = 1:
+											marshrutka = 1
+											'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house'
+										end
+										gs 'drugs', 'alcohol', 'vodka', 1
+										gs 'stat'
+										'I feel bums'' hand on my but.'
+
+										act 'drink more':
+											gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+										end
+
+										act 'go with bum in the dark korridor':
+											gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+										end
+
+										act 'go away': gt $loc, $loc_arg
+									end
+
+									act 'go with the bum in the dark korridor':
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+									end
+
+									act 'go away': gt $loc, $loc_arg
+
+								end
+								act 'go away': gt $loc, $loc_arg
+							end
+
+							act 'no':
+								ubomj2 = 1
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+							end
+						elseif temp = 3:
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+							'What are you doing here, cunt?!'
+							'Go away, now!'
+
+							temp = rand(1,7)
+							if temp = 1: $namebum = 'Koliamba'
+							if temp = 2: $namebum = 'Suhoy'
+							if temp = 3: $namebum = 'Nikitych'
+							if temp = 4: $namebum = 'Shurik'
+							if temp = 5: $namebum = 'Jekich'
+							if temp = 6: $namebum = 'Lioha'
+							if temp = 7: $namebum = 'Genka'
+
+							act 'go away':
+								temp = pr
+								pr = zt
+								if pr = 111: temp = 110
+								if pr = 121: temp = 120
+								gt 'mod_public_WC_citybasement', '<<temp>>'
+							end
+						elseif temp = 4:
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+							'What are you doing here, cunt?!'
+							'Give me your money! Now!'
+							act 'give the money':
+								cla
+								'Staggering, he goes away'
+								money -= money
+								gs 'stat'
+								act 'continue': gt $loc, $loc_arg
+							end
+							act 'no':
+								ubomj2 = 1
+								gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+							end
+						end
+					else
+						'He start to rotate in a sleep'
+						bodysleep -= rand(0,40)
+						act 'Rummage in the body pockets':
+							cla
+							persuas_exp += 3
+							gs 'stat'
+							if rand(1,100) - pcs_persuas < bodysleep:
+								'I have successfully robbed his pockets'
+								act 'leave': gt $loc, $loc_arg
+
+								if pcs_observ >= rand (1,50):
+									temp = rand(1,10)
+									if temp >= 10:
+										if gun ! 1:
+											'I have stole a gun!'
+											crime += 100
+											'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+											gun = 1
+											ammo += 1
+											gs 'stat'
+										else
+											'I have stole some drugs'
+											crime += 2
+											temp = rand(1,4)
+											if temp = 1:
+												mc_inventory['aphrodisiac'] += rand(1,4)
+											elseif temp = 2:
+												mc_inventory['mentats'] += rand(1,4)
+											elseif temp = 3:
+												mc_inventory['amphetamine'] += rand(1,4)
+											elseif temp = 4:
+												mc_inventory['mentats'] += rand(1,4)
+											end
+											gs 'stat'
+										end
+									elseif temp >= 9:
+										'I have stole some drugs'
+										crime += 2
+										temp = rand(1,4)
+										if temp = 1:
+											mc_inventory['aphrodisiac'] += rand(1,4)
+										elseif temp = 2:
+											mc_inventory['mentats'] += rand(1,4)
+										elseif temp = 3:
+											mc_inventory['amphetamine'] += rand(1,4)
+										elseif temp = 4:
+											mc_inventory['mentats'] += rand(1,4)
+										end
+										gs 'stat'
+									elseif temp >= 5:
+										'I have stole some boose'
+										crime += 1
+										mc_inventory['food_wine'] += rand(1,2)
+										If mc_inventory['food_wine'] >= 2: mc_inventory['food_wine'] = 1
+										gs 'stat'
+									elseif temp >= 2:
+										cla
+
+										temp = rand (100,1000)
+										'there are <<temp>> cash in his pockets'
+
+										act 'take the money':
+											crime += 2
+											money += temp
+											gs 'stat'
+											gt $loc, $loc_arg
+										end
+										act 'put the money back': gt $loc, $loc_arg
+									elseif temp >= 1:
+										cla
+										'I stole only the intresting business card "vic pleasure 1258".'
+										vic_card = 1
+										act 'leave': gt $loc, $loc_arg
+									end
+								else
+									'His pockets is empty'
+									crime += rand(0,1)
+								end
+							else
+								*clr & cla
+								'He wakes up and look at me, like he doesn''t belive his eyes'
+								temp = rand(1,4)
+								if temp = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+									'"Ow girl… it''s good you are here… give me some blow"'
+									'He grab my hands'
+
+									temp = rand(1,7)
+									if temp = 1: $namebum = 'Koliamba'
+									if temp = 2: $namebum = 'Suhoy'
+									if temp = 3: $namebum = 'Nikitych'
+									if temp = 4: $namebum = 'Shurik'
+									if temp = 5: $namebum = 'Jekich'
+									if temp = 6: $namebum = 'Lioha'
+									if temp = 7: $namebum = 'Genka'
+
+									act 'agree to blow':
+										bjbum = 1
+										if rand (1,4) = 1: bumfriend += 1
+										gs 'stat'
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+									end
+
+									act 'no':
+										ubomj2 = 1
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+									end
+								elseif temp = 2:
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+									'"let''s go drink!"'
+
+									temp = rand(1,7)
+									if temp = 1: $namebum = 'Koliamba'
+									if temp = 2: $namebum = 'Suhoy'
+									if temp = 3: $namebum = 'Nikitych'
+									if temp = 4: $namebum = 'Shurik'
+									if temp = 5: $namebum = 'Jekich'
+									if temp = 6: $namebum = 'Lioha'
+									if temp = 7: $namebum = 'Genka'
+
+
+									act 'yes':
+										*clr & cla
+										minut += rand(5,15)
+										gs 'stat'
+										bumfriend += 1
+										'Cool, let''s go to <<$namebum>>'
+										'in a few minutes we come to some sort of a bum''s room-camp.'
+
+										temp = rand(1,4)
+
+										if pr = 101: temp = 5
+										if pr = 111: temp = 5
+										if pr = 121: temp = 5
+										if pr = 133: temp = 5
+
+										if temp = 1:
+											pr = 101
+											$loc_arg = '101'
+
+										elseif temp = 2:
+											pr = 111
+											$loc_arg = '111'
+
+										elseif temp = 3:
+											pr = 121
+											$loc_arg = '121'
+
+										elseif temp = 4:
+											pr = 133
+											$loc_arg = '133'
+
+										else
+											' '
+										end
+										'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir ('+rand(1,4)+').jpg"></center>'
+										'Some other bums sit here'
+										'we sit around the table and start to drink'
+										gs 'drugs', 'alcohol', 'vodka', 1
+										gs 'stat'
+										act 'drink more':
+											cla
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+											if rand(1,5) = 1:
+												marshrutka = 1
+												'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house.'
+											end
+											gs 'drugs', 'alcohol', 'vodka', 1
+											gs 'stat'
+											'I feel bums'' hand on my leg.'
+
+											act 'drink more':
+												cla
+												'I feel myself too drunk'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+												if rand (1,5) = 1:
+													marshrutka = 1
+													'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house'
+												end
+												gs 'drugs', 'alcohol', 'vodka', 1
+												gs 'stat'
+												'I feel bums'' hand on my but.'
+
+												act 'drink more':
+													gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+												end
+
+												act 'go with bum in the dark korridor':
+													gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+												end
+
+												act 'go away': gt $loc, $loc_arg
+											end
+
+											act 'go with the bum in the dark korridor':
+												gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+											end
+
+											act 'go away': gt $loc, $loc_arg
+
+										end
+										act 'go away': gt $loc, $loc_arg
+									end
+
+									act 'no':
+										ubomj2 = 1
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+									end
+								elseif temp = 3:
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+									'What are you doing here, cunt?!'
+									'Go away, now!'
+
+									temp = rand(1,7)
+									if temp = 1: $namebum = 'Koliamba'
+									if temp = 2: $namebum = 'Suhoy'
+									if temp = 3: $namebum = 'Nikitych'
+									if temp = 4: $namebum = 'Shurik'
+									if temp = 5: $namebum = 'Jekich'
+									if temp = 6: $namebum = 'Lioha'
+									if temp = 7: $namebum = 'Genka'
+
+									act 'go away':
+										temp = pr
+										pr = zt
+										if pr = 111: temp = 110
+										if pr = 121: temp = 120
+										gt 'mod_public_WC_citybasement', '<<temp>>'
+									end
+								elseif temp = 4:
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+									'What are you doing here, cunt?!'
+									'Give me your money! Now!'
+									act 'give the money':
+										cla
+										'Staggering, he goes away'
+										money -= money
+										gs 'stat'
+										act 'continue': gt $loc, $loc_arg
+									end
+									act 'no':
+										ubomj2 = 1
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'Rummage in the body pockets' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+	gs 'willpower', 'crime', 'self', 'easy'
+	if will_cost <= pcs_willpwr:
+		act 'Rummage in the body pockets' + $func('willpower', 'get_willcost_string'):
+			cla
+			bodysleep = rand(0,100)
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			persuas_exp += 3
+			gs 'stat'
+
+			if rand(1,100) - pcs_persuas < bodysleep:
+				'I have successfully robbed his pockets'
+				act 'leave': gt $loc, $loc_arg
+
+				if pcs_observ >= rand (1,50):
+					temp = rand(1,10)
+					if temp >= 10:
+						if gun ! 1:
+							'I have stole a gun!'
+							crime += 100
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+							gun = 1
+							ammo += 1
+							gs 'stat'
+						else
+							'I have stole some drugs'
+							crime += 2
+							temp = rand(1,4)
+							if temp = 1:
+								mc_inventory['aphrodisiac'] += rand(1,4)
+							elseif temp = 2:
+								mc_inventory['mentats'] += rand(1,4)
+							elseif temp = 3:
+								mc_inventory['amphetamine'] += rand(1,4)
+							elseif temp = 4:
+								mc_inventory['mentats'] += rand(1,4)
+							end
+							gs 'stat'
+						end
+					elseif temp >= 9:
+						'I have stole some drugs'
+						crime += 2
+						temp = rand(1,4)
+						if temp = 1:
+							mc_inventory['aphrodisiac'] += rand(1,4)
+						elseif temp = 2:
+							mc_inventory['mentats'] += rand(1,4)
+						elseif temp = 3:
+							mc_inventory['amphetamine'] += rand(1,4)
+						elseif temp = 4:
+							mc_inventory['mentats'] += rand(1,4)
+						end
+						gs 'stat'
+					elseif temp >= 5:
+						'I have stole some boose'
+						crime += 1
+						mc_inventory['food_wine'] += rand(1,2)
+						If mc_inventory['food_wine'] >= 2: mc_inventory['food_wine'] = 1
+						gs 'stat'
+					elseif temp >= 2:
+						cla
+
+						temp = rand (100,1000)
+						'there are <<temp>> cash in his pockets'
+
+						act 'take the money':
+							crime += 2
+							money += temp
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+						act 'put the money back': gt $loc, $loc_arg
+					elseif temp >= 1:
+						cla
+						'I stole only the intresting business card "vic pleasure 1258".'
+						vic_card = 1
+						act 'leave': gt $loc, $loc_arg
+					end
+				else
+					'His pockets is empty'
+					crime += rand(0,1)
+				end
+			else
+				*clr & cla
+				if rand(1,2) = 1:
+					'He wakes up and look at me, like he doesn''t belive his eyes'
+					temp = rand(1,4)
+					if temp = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+						'"Ow girl… it''s good you are here… give me some blow"'
+						'He grab my hands'
+
+						temp = rand(1,7)
+						if temp = 1: $namebum = 'Koliamba'
+						if temp = 2: $namebum = 'Suhoy'
+						if temp = 3: $namebum = 'Nikitych'
+						if temp = 4: $namebum = 'Shurik'
+						if temp = 5: $namebum = 'Jekich'
+						if temp = 6: $namebum = 'Lioha'
+						if temp = 7: $namebum = 'Genka'
+
+						act 'agree to blow':
+							bjbum = 1
+							if rand (1,4) = 1: bumfriend += 1
+							gs 'stat'
+							gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+						end
+
+						act 'no':
+							ubomj2 = 1
+							gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					elseif temp = 2:
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+						'"let''s go drink!"'
+
+						temp = rand(1,7)
+						if temp = 1: $namebum = 'Koliamba'
+						if temp = 2: $namebum = 'Suhoy'
+						if temp = 3: $namebum = 'Nikitych'
+						if temp = 4: $namebum = 'Shurik'
+						if temp = 5: $namebum = 'Jekich'
+						if temp = 6: $namebum = 'Lioha'
+						if temp = 7: $namebum = 'Genka'
+
+
+						act 'yes':
+							*clr & cla
+							minut += rand(5,15)
+							gs 'stat'
+							bumfriend += 1
+							'Cool, let''s go to <<$namebum>>'
+							'in a few minutes we come to some sort of a bum''s room-camp.'
+
+							temp = rand(1,4)
+
+							if pr = 101: temp = 5
+							if pr = 111: temp = 5
+							if pr = 121: temp = 5
+							if pr = 133: temp = 5
+
+							if temp = 1:
+								pr = 101
+								$loc_arg = '101'
+
+							elseif temp = 2:
+								pr = 111
+								$loc_arg = '111'
+
+							elseif temp = 3:
+								pr = 121
+								$loc_arg = '121'
+
+							elseif temp = 4:
+								pr = 133
+								$loc_arg = '133'
+
+							else
+								' '
+							end
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir ('+rand(1,4)+').jpg"></center>'
+							'Some other bums sit here'
+							'we sit around the table and start to drink'
+							gs 'drugs', 'alcohol', 'vodka', 1
+							gs 'stat'
+							act 'drink more':
+								cla
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+								if rand(1,5) = 1:
+									marshrutka = 1
+									'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house.'
+								end
+								gs 'drugs', 'alcohol', 'vodka', 1
+								gs 'stat'
+								'I feel bums'' hand on my leg.'
+
+								act 'drink more':
+									cla
+									'I feel myself too drunk'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+									if rand (1,5) = 1:
+										marshrutka = 1
+										'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house'
+									end
+									gs 'drugs', 'alcohol', 'vodka', 1
+									gs 'stat'
+									'I feel bums'' hand on my but.'
+
+									act 'drink more':
+										gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+									end
+
+									act 'go with bum in the dark korridor':
+										gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+									end
+
+									act 'go away': gt $loc, $loc_arg
+								end
+
+								act 'go with the bum in the dark korridor':
+									gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+								end
+
+								act 'go away': gt $loc, $loc_arg
+
+							end
+							act 'go away': gt $loc, $loc_arg
+						end
+
+						act 'no':
+							ubomj2 = 1
+							gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					elseif temp = 3:
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+						'What are you doing here, cunt?!'
+						'Go away, now!'
+
+						temp = rand(1,7)
+						if temp = 1: $namebum = 'Koliamba'
+						if temp = 2: $namebum = 'Suhoy'
+						if temp = 3: $namebum = 'Nikitych'
+						if temp = 4: $namebum = 'Shurik'
+						if temp = 5: $namebum = 'Jekich'
+						if temp = 6: $namebum = 'Lioha'
+						if temp = 7: $namebum = 'Genka'
+
+						act 'go away':
+							temp = pr
+							pr = zt
+							if pr = 111: temp = 110
+							if pr = 121: temp = 120
+							gt 'mod_public_WC_citybasement', '<<temp>>'
+						end
+					elseif temp = 4:
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+						'What are you doing here, cunt?!'
+						'Give me your money! Now!'
+						act 'give the money':
+							cla
+							'Staggering, he goes away'
+							money -= money
+							gs 'stat'
+							act 'continue': gt $loc, $loc_arg
+						end
+						act 'no':
+							ubomj2 = 1
+							gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+						end
+					end
+				else
+					'He start to rotate in a sleep'
+					bodysleep -= rand(0,40)
+					act 'Rummage in the body pockets':
+						cla
+						persuas_exp += 3
+						gs 'stat'
+						if rand(1,100) - pcs_persuas < bodysleep:
+							'I have successfully robbed his pockets'
+							act 'leave': gt $loc, $loc_arg
+
+							if pcs_observ >= rand (1,50):
+								temp = rand(1,10)
+								if temp >= 10:
+									if gun ! 1:
+										'I have stole a gun!'
+										crime += 100
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun.jpg"></center>'
+										gun = 1
+										ammo += 1
+										gs 'stat'
+									else
+										'I have stole some drugs'
+										crime += 2
+										temp = rand(1,4)
+										if temp = 1:
+											mc_inventory['aphrodisiac'] += rand(1,4)
+										elseif temp = 2:
+											mc_inventory['mentats'] += rand(1,4)
+										elseif temp = 3:
+											mc_inventory['amphetamine'] += rand(1,4)
+										elseif temp = 4:
+											mc_inventory['mentats'] += rand(1,4)
+										end
+										gs 'stat'
+									end
+								elseif temp >= 9:
+									'I have stole some drugs'
+									crime += 2
+									temp = rand(1,4)
+									if temp = 1:
+										mc_inventory['aphrodisiac'] += rand(1,4)
+									elseif temp = 2:
+										mc_inventory['mentats'] += rand(1,4)
+									elseif temp = 3:
+										mc_inventory['amphetamine'] += rand(1,4)
+									elseif temp = 4:
+										mc_inventory['mentats'] += rand(1,4)
+									end
+									gs 'stat'
+								elseif temp >= 5:
+									'I have stole some boose'
+									crime += 1
+									mc_inventory['food_wine'] += rand(1,2)
+									If mc_inventory['food_wine'] >= 2: mc_inventory['food_wine'] = 1
+									gs 'stat'
+								elseif temp >= 2:
+									cla
+
+									temp = rand (100,1000)
+									'there are <<temp>> cash in his pockets'
+
+									act 'take the money':
+										crime += 2
+										money += temp
+										gs 'stat'
+										gt $loc, $loc_arg
+									end
+									act 'put the money back': gt $loc, $loc_arg
+								elseif temp >= 1:
+									cla
+									'I stole only the intresting business card "vic pleasure 1258".'
+									vic_card = 1
+									act 'leave': gt $loc, $loc_arg
+								end
+							else
+								'His pockets is empty'
+								crime += rand(0,1)
+							end
+						else
+							*clr & cla
+							'He wakes up and look at me, like he doesn''t belive his eyes'
+							temp = rand(1,4)
+							if temp = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+								'"Ow girl… it''s good you are here… give me some blow"'
+								'He grab my hands'
+
+								temp = rand(1,7)
+								if temp = 1: $namebum = 'Koliamba'
+								if temp = 2: $namebum = 'Suhoy'
+								if temp = 3: $namebum = 'Nikitych'
+								if temp = 4: $namebum = 'Shurik'
+								if temp = 5: $namebum = 'Jekich'
+								if temp = 6: $namebum = 'Lioha'
+								if temp = 7: $namebum = 'Genka'
+
+								act 'agree to blow':
+									bjbum = 1
+									if rand (1,4) = 1: bumfriend += 1
+									gs 'stat'
+									gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+								end
+
+								act 'no':
+									ubomj2 = 1
+									gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+								end
+							elseif temp = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.jpg"></center>'
+								'"let''s go drink!"'
+
+								temp = rand(1,7)
+								if temp = 1: $namebum = 'Koliamba'
+								if temp = 2: $namebum = 'Suhoy'
+								if temp = 3: $namebum = 'Nikitych'
+								if temp = 4: $namebum = 'Shurik'
+								if temp = 5: $namebum = 'Jekich'
+								if temp = 6: $namebum = 'Lioha'
+								if temp = 7: $namebum = 'Genka'
+
+
+								act 'yes':
+									*clr & cla
+									minut += rand(5,15)
+									gs 'stat'
+									bumfriend += 1
+									'Cool, let''s go to <<$namebum>>'
+									'in a few minutes we come to some sort of a bum''s room-camp.'
+
+									temp = rand(1,4)
+
+									if pr = 101: temp = 5
+									if pr = 111: temp = 5
+									if pr = 121: temp = 5
+									if pr = 133: temp = 5
+
+									if temp = 1:
+										pr = 101
+										$loc_arg = '101'
+
+									elseif temp = 2:
+										pr = 111
+										$loc_arg = '111'
+
+									elseif temp = 3:
+										pr = 121
+										$loc_arg = '121'
+
+									elseif temp = 4:
+										pr = 133
+										$loc_arg = '133'
+
+									else
+										' '
+									end
+									'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir ('+rand(1,4)+').jpg"></center>'
+									'Some other bums sit here'
+									'we sit around the table and start to drink'
+									gs 'drugs', 'alcohol', 'vodka', 1
+									gs 'stat'
+									act 'drink more':
+										cla
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+										if rand(1,5) = 1:
+											marshrutka = 1
+											'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house.'
+										end
+										gs 'drugs', 'alcohol', 'vodka', 1
+										gs 'stat'
+										'I feel bums'' hand on my leg.'
+
+										act 'drink more':
+											cla
+											'I feel myself too drunk'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/drink.mp4"></video></center>'
+
+											if rand (1,5) = 1:
+												marshrutka = 1
+												'<<$namebum>> tell a story about vip gloryhole. There is a marshrutka for workers from city park at 23 to vip pleasure house'
+											end
+											gs 'drugs', 'alcohol', 'vodka', 1
+											gs 'stat'
+											'I feel bums'' hand on my but.'
+
+											act 'drink more':
+												gt 'mod_public_WC_citybasement_bumsex', 'drink2'
+											end
+
+											act 'go with bum in the dark korridor':
+												gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+											end
+
+											act 'go away': gt $loc, $loc_arg
+										end
+
+										act 'go with the bum in the dark korridor':
+											gt 'mod_public_WC_citybasement_bumsex', 'bomjsex'
+										end
+
+										act 'go away': gt $loc, $loc_arg
+
+									end
+									act 'go away': gt $loc, $loc_arg
+								end
+
+								act 'no':
+									ubomj2 = 1
+									gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+								end
+							elseif temp = 3:
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+								'What are you doing here, cunt?!'
+								'Go away, now!'
+
+								temp = rand(1,7)
+								if temp = 1: $namebum = 'Koliamba'
+								if temp = 2: $namebum = 'Suhoy'
+								if temp = 3: $namebum = 'Nikitych'
+								if temp = 4: $namebum = 'Shurik'
+								if temp = 5: $namebum = 'Jekich'
+								if temp = 6: $namebum = 'Lioha'
+								if temp = 7: $namebum = 'Genka'
+
+								act 'go away':
+									temp = pr
+									pr = zt
+									if pr = 111: temp = 110
+									if pr = 121: temp = 120
+									gt 'mod_public_WC_citybasement', '<<temp>>'
+								end
+							elseif temp = 4:
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/bezhatko ('+rand(1,8)+').jpg"></center>'
+								'What are you doing here, cunt?!'
+								'Give me your money! Now!'
+								act 'give the money':
+									cla
+									'Staggering, he goes away'
+									money -= money
+									gs 'stat'
+									act 'continue': gt $loc, $loc_arg
+								end
+								act 'no':
+									ubomj2 = 1
+									gt 'mod_public_WC_citybasement_bumsex', 'bomjfight'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	else
+		act 'Rummage in the body pockets' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+end
+--- mod_public_WC_citybasement_bumsex ---------------------------------
+

@@ -1,0 +1,1427 @@
+# mod_public_WC_cabine_ch
+if $ARGS[0] = 'start':
+	*clr & cla
+	gs 'stat'
+	$func('wrap', 'header center b', 'Toilet cabine')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/gh/sitting.jpg"></center>'
+	gs 'npcgeneratec', 0, 'Black Cat', rand(20,40)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,40)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+	if agreech = 1:
+		*clr & cla
+		killvar 'agreech'
+		afra += 1
+		'I see a black dick comes up'
+		'Ok, girl, I am ready.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/1 gh_show.mp4"></video></center>'
+		act 'Start to stroke the dick':
+			*clr & cla
+			'I stroke his cock'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/2 ghhj ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'hj', 10, 'gloryhole', 'sub'
+			gs 'stat'
+			act 'Start to blow':
+				*clr & cla
+				'I am gently start to blow him'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/3 ghstart ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'bj', 10, 'gloryhole', 'sub'
+				gs 'stat'
+				act 'continue sucking':
+					*clr & cla
+					'"Good girl, now give me some pussy…"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/4 ghbj ('+rand(1,3)+').mp4"></video></center>'
+					gs 'arousal', 'bj', 10, 'gloryhole', 'sub'
+					gs 'stat'
+
+
+					if pcs_vag = 0:
+						act 'please, sir, I am a virgin, I want to save myself':
+							cla
+							'"Well, I am not a monster, show me that pussy…"'
+							act 'Show him':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage0/' + rand(1,5) + '.jpg"></center>'
+								'Holy shit! you are really virgin!!!'
+								'Ok, keep sucking me!'
+								act 'continue sucking':
+									*clr & cla
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/4 ghbj ('+rand(1,3)+').mp4"></video></center>'
+									gs 'arousal', 'bj', 15, 'gloryhole', 'sub'
+									gs 'stat'
+
+									act 'continue':
+										*clr & cla
+										if gloryhole >= rand(30,80):
+											'"Girl, you are really god! I want to cum on your toungue"'
+											temp = 1
+										elseif gloryhole >= rand(0,30):
+											'"Not bad Girl, not bad, I am on the edge"'
+											temp = 2
+										else
+											'"Girl, do it harder!"'
+											temp = 3
+										end
+
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/4 ghbj ('+rand(1,3)+').mp4"></video></center>'
+										gs 'arousal', 'bj', 15, 'gloryhole', 'sub'
+										gs 'stat'
+
+										if temp = 3:
+											'I am doing my best'
+											'Ok, bitch, I am ready to cum on your toungue.'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+											gs 'arousal', 'bj', 10, 'gloryhole', 'sub'
+											gs 'stat'
+										end
+										act 'Catch his sperm':
+											*clr & cla
+											'He cums…'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/7 gh_cum.mp4"></video></center>'
+											gs 'boyStat', $npclastgenerated
+											gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+
+											if $clothingworntype = 'nude' and odianadveriah ! 0:
+												act 'Get dressed':
+													minut+=3
+													gs 'outfit', 'wear_last_worn'
+													'I dress up'
+													gs 'stat'
+												end
+											end
+											gs 'arousal', 'end'
+											gs 'stat'
+
+
+											if temp = 3:
+												act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+											else
+												'"Wow, you have a tallent, come here and please my guys!"'
+												act 'Say yes, and try to run':
+													*clr & cla
+													'I opens the dor and immediatelly start to run!'
+													'I run from the cabine and don''t stop until I am back in the residential area'
+													'<center><img <<$set_imgh>> src="images/locations/pavlovsk/gorodok.jpg"></center>'
+													act 'Catch my breath':
+														minut += 5
+														gt 'pav_residential'
+													end
+												end
+
+												act 'go and please the guys':
+													*clr & cla
+													gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,40)
+													gs 'boyStat', $npclastgenerated
+													dick = rand(20,40)
+													npc_dick[$npclastgenerated] = dick
+													gs 'stat'
+													'I go out from cabine and ready to met the guys'
+													'Ow, there they are.'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/1 friends_start.mp4"></video></center>'
+													act 'sit on the floor':
+														*clr & cla
+														'They rub my face with their big dicks'
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/2.mp4"></video></center>'
+														afra += 1
+														gs 'arousal', 'foreplay', 10, 'sub'
+														gs 'stat'
+														act 'suck them':
+															*clr & cla
+															'I suck their dicks'
+															'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/3 ('+rand(1,2)+').mp4"></video></center>'
+															gs 'arousal', 'bj', 10, 'sub','group', 'gangbang'
+															gs 'stat'
+															act 'first guy cums':
+																*clr & cla
+																'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/4 cum1.mp4"></video></center>'
+																gs 'cum_call', 'clothes', $npclastgenerated, 0
+																gs 'cum_call', 'hands', $npclastgenerated, 0
+																gs 'cum_call', 'face', $npclastgenerated, 0
+																gs 'arousal', 'end'
+																gs 'stat'
+																act 'second guy cums':
+																	*clr & cla
+																	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/5 cum2.mp4"></video></center>'
+																	gs 'cum_call', 'clothes', $npclastgenerated, 0
+																	gs 'cum_call', 'hands', $npclastgenerated, 0
+																	gs 'cum_call', 'face', $npclastgenerated, 0
+																	gs 'arousal', 'end'
+																	gs 'stat'
+																	act 'continue':
+																		*clr & cla
+																		if BlackCat = 1:
+																			'Girl, you better go to pleasure house, otherwise we will put you there by force'
+																		end
+																		if BlackCat = 0:
+																			'"Wow, this girl is really good…"'
+																			'"We need her?"'
+																			'"Ow yes"'
+																			'"Definitely!"'
+																			BlackCat = 1
+																			marshrutka = 1
+																			'Girl, There is a marshrutka in a city park at 23:00 it goes to pleasure house. It''s a something like a VIP brothel. You will have a good money there with your talents. When you will be there just ask about Black Cat, and tell them number 27629'
+																		end
+																		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/6 text.jpg"></center>'
+																		body_write = 1
+																		gs 'stat'
+																		if BlackCat = 2:
+																			'Girl see you in da pleasure house'
+																		end
+
+																		act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+
+						end
+					else
+						act 'please, sir, I am a virgin, I want to save myself (lie)':
+							cla
+							persuas_exp += rand(1,2)
+							'"Well, I am not a monster, show me that pussy…"'
+							act 'Show him':
+								*clr & cla
+								if pcs_vag = 0:
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage0/' + rand(1,5) + '.jpg"></center>'
+								elseif pcs_vag <= 5:
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage1/' + rand(1,5) + '.jpg"></center>'
+								elseif pcs_vag <= 10:
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage2/' + rand(1,5) + '.jpg"></center>'
+								elseif pcs_vag <= 15:
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage3/' + rand(1,5) + '.jpg"></center>'
+								elseif pcs_vag <= 25:
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage4/' + rand(1,5) + '.jpg"></center>'
+								else
+									'<center><img <<$set_imgh>> src="images/pc/body/pussy/stage5/' + rand(1,5) + '.jpg"></center>'
+								end
+
+								if pcs_vag <= 5 or (pcs_persuas - pcs_vag * 2) >= rand(5,30):
+									'Holy shit! you are really virgin!!!'
+									'Ok, keep sucking me!'
+									act 'continue sucking':
+										*clr & cla
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/4 ghbj ('+rand(1,3)+').mp4"></video></center>'
+										gs 'arousal', 'bj', 15, 'gloryhole', 'sub'
+										gs 'stat'
+
+										act 'continue':
+											*clr & cla
+											if gloryhole >= rand(30,80):
+												'"Girl, you are really god! I want to cum on your toungue"'
+												temp = 1
+											elseif gloryhole >= rand(0,30):
+												'"Not bad Girl, not bad, I am on the edge"'
+												temp = 2
+											else
+												'"Girl, do it harder!"'
+												temp = 3
+											end
+
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/4 ghbj ('+rand(1,3)+').mp4"></video></center>'
+											gs 'arousal', 'bj', 15, 'gloryhole', 'sub'
+											gs 'stat'
+
+											if temp = 3:
+												'I am doing my best'
+												'Ok, bitch, I am ready to cum on your toungue.'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+												gs 'arousal', 'bj', 10, 'gloryhole', 'sub'
+												gs 'stat'
+											end
+											act 'Catch his sperm':
+												*clr & cla
+												'He cums…'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/7 gh_cum.mp4"></video></center>'
+												gs 'boyStat', $npclastgenerated
+												gs 'cum_call', 'mouth', $npclastgenerated, 0
+												gs 'arousal', 'end'
+												gs 'stat'
+
+												if $clothingworntype = 'nude' and odianadveriah ! 0:
+													act 'Get dressed':
+														minut+=3
+														gs 'outfit', 'wear_last_worn'
+														'I dress up'
+														gs 'stat'
+													end
+												end
+
+
+
+												if temp = 3:
+													act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+												else
+													'"Wow, you have a tallent, come here and please my guys!"'
+													act 'Say yes, and try to run':
+														*clr & cla
+														'I opens the dor and immediatelly start to run!'
+														'I run from the cabine and don''t stop until I am back in the residential area'
+														'<center><img <<$set_imgh>> src="images/locations/pavlovsk/gorodok.jpg"></center>'
+														act 'Catch my breath':
+															 minut += 5
+															gt 'pav_residential'
+														end
+													end
+
+													act 'go and please the guys':
+														*clr & cla
+														gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,40)
+														gs 'boyStat', $npclastgenerated
+														dick = rand(20,40)
+														npc_dick[$npclastgenerated] = dick
+														gs 'stat'
+														'I go out from cabine and ready to met the guys'
+														'Ow, there they are.'
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/1 friends_start.mp4"></video></center>'
+														act 'sit on the floor':
+															*clr & cla
+															'They rub my face with their big dicks'
+															'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/2.mp4"></video></center>'
+															afra += 1
+															gs 'arousal', 'foreplay', 10, 'sub'
+															gs 'stat'
+															act 'suck them':
+																*clr & cla
+																'I suck their dicks'
+																'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/3 ('+rand(1,2)+').mp4"></video></center>'
+																gs 'arousal', 'bj', 10, 'sub','group', 'gangbang'
+																gs 'stat'
+																act 'first guy cums':
+																	*clr & cla
+																	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/4 cum1.mp4"></video></center>'
+																	gs 'cum_call', 'clothes', $npclastgenerated, 0
+																	gs 'cum_call', 'hands', $npclastgenerated, 0
+																	gs 'cum_call', 'face', $npclastgenerated, 0
+																	gs 'arousal', 'end'
+																	gs 'stat'
+																	act 'second guy cums':
+																		*clr & cla
+																		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/5 cum2.mp4"></video></center>'
+																		gs 'cum_call', 'clothes', $npclastgenerated, 0
+																		gs 'cum_call', 'hands', $npclastgenerated, 0
+																		gs 'cum_call', 'face', $npclastgenerated, 0
+																		gs 'arousal', 'end'
+																		gs 'stat'
+																		act 'continue':
+																			*clr & cla
+																			if BlackCat = 1:
+																				'Girl, you better go to pleasure house, otherwise we will put you there by force'
+																			end
+																			if BlackCat = 0:
+																				'"Wow, this girl is really good…"'
+																				'"We need her?"'
+																				'"Ow yes"'
+																				'"Definitely!"'
+																				BlackCat = 1
+																				marshrutka = 1
+																				'Girl, There is a marshrutka in a city park at 23:00 it goes to pleasure house. It''s a something like a VIP brothel. You will have a good money there with your talents. When you will be there just ask about Black Cat, and tell them number 27629'
+																			end
+																			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/6 text.jpg"></center>'
+																			body_write = 1
+																			gs 'stat'
+																			if BlackCat = 2:
+																				'Girl see you in da pleasure house'
+																			end
+
+																			act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								else
+									'Are you fucking kidding me?'
+									'Don''t fool with me!'
+									'Give me that pussy, bitch!'
+
+									act 'give him some pussy':
+										*clr & cla
+										'I put his dick in me'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/5 gh_vag_start.mp4"></video></center>'
+										gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+										gs 'stat'
+										act 'continue':
+											*clr & cla
+											if gloryhole >= rand(30,80):
+												'"Girl, you are really god! I want to cum on your toungue"'
+												temp = 1
+											elseif gloryhole >= rand(0,30):
+												'"Not bad Girl, not bad, I am on the edge"'
+												temp = 2
+											else
+												'"Girl, do it harder!"'
+												temp = 3
+											end
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+											gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+											gs 'stat'
+											if temp = 3:
+												'I am doing my best'
+												'Ok, bitch, I am ready to cum on  your toungue.'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+												gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+												gs 'stat'
+											end
+											act 'Catch his sperm':
+												*clr & cla
+												'He cums…'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/7 gh_cum.mp4"></video></center>'
+												gs 'boyStat', $npclastgenerated
+												gs 'cum_call', 'mouth', $npclastgenerated, 0
+												gs 'arousal', 'end'
+												gs 'stat'
+
+												if $clothingworntype = 'nude' and odianadveriah ! 0:
+													act 'Get dressed':
+														minut+=3
+														gs 'outfit', 'wear_last_worn'
+														'I dress up'
+														gs 'stat'
+													end
+												end
+
+
+
+												if temp = 3:
+													act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+												else
+													'"Wow, you have a tallent, come here and please my guys!"'
+													act 'Say yes, and try to run':
+														*clr & cla
+														'I opens the dor and immediatelly start to run!'
+														'I run from the cabine and don''t stop until I am back in the residential area'
+														'<center><img <<$set_imgh>> src="images/locations/pavlovsk/gorodok.jpg"></center>'
+														act 'Catch my breath':
+															 minut += 5
+															gt 'pav_residential'
+														end
+													end
+
+													act 'go and please the guys':
+														*clr & cla
+														gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,40)
+														gs 'boyStat', $npclastgenerated
+														dick = rand(20,40)
+														npc_dick[$npclastgenerated] = dick
+														gs 'stat'
+														'I go out from cabine and ready to met the guys'
+														'Ow, there they are.'
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/1 friends_start.mp4"></video></center>'
+														act 'sit on the floor':
+															*clr & cla
+															'They rub my face with their big dicks'
+															'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/2.mp4"></video></center>'
+															afra += 1
+															gs 'arousal', 'foreplay', 10, 'sub'
+															gs 'stat'
+															act 'suck them':
+																*clr & cla
+																'I suck their dicks'
+																'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/3 ('+rand(1,2)+').mp4"></video></center>'
+																gs 'arousal', 'bj', 10, 'sub','group', 'gangbang'
+																gs 'stat'
+																act 'first guy cums':
+																	*clr & cla
+																	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/4 cum1.mp4"></video></center>'
+																	gs 'cum_call', 'clothes', $npclastgenerated, 0
+																	gs 'cum_call', 'hands', $npclastgenerated, 0
+																	gs 'cum_call', 'face', $npclastgenerated, 0
+																	gs 'arousal', 'end'
+																	gs 'stat'
+																	act 'second guy cums':
+																		*clr & cla
+																		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/5 cum2.mp4"></video></center>'
+																		gs 'cum_call', 'clothes', $npclastgenerated, 0
+																		gs 'cum_call', 'hands', $npclastgenerated, 0
+																		gs 'cum_call', 'face', $npclastgenerated, 0
+																		gs 'arousal', 'end'
+																		gs 'stat'
+																		act 'continue':
+																			*clr & cla
+																			if BlackCat = 1:
+																				'Girl, you better go to pleasure house, otherwise we will put you there by force'
+																			end
+																			if BlackCat = 0:
+																				'"Wow, this girl is really good…"'
+																				'"We need her?"'
+																				'"Ow yes"'
+																				'"Definitely!"'
+																				BlackCat = 1
+																				marshrutka = 1
+																				'Girl, There is a marshrutka in a city park at 23:00 it goes to pleasure house. It''s a something like a VIP brothel. You will have a good money there with your talents. When you will be there just ask about Black Cat, and tell them number 27629'
+																			end
+																			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/6 text.jpg"></center>'
+																			body_write = 1
+																			gs 'stat'
+																			if BlackCat = 2:
+																				'Girl see you in da pleasure house'
+																			end
+
+																			act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+																		end
+																	end
+																end
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+									act 'No':
+										cla
+										'Well, you''ll regret that, cunt!'
+										agreech = 0
+										act 'continue': gt 'mod_public_WC_cabine_ch', 'start'
+									end
+								end
+							end
+						end
+					end
+
+					act 'give him some pussy':
+						*clr & cla
+						'I put his dick in me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/5 gh_vag_start.mp4"></video></center>'
+						gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							if gloryhole >= rand(30,80):
+								'"Girl, you are really god! I want to cum on your toungue"'
+								temp = 1
+							elseif gloryhole >= rand(0,30):
+								'"Not bad Girl, not bad, I am on the edge"'
+								temp = 2
+							else
+								'"Girl, do it harder!"'
+								temp = 3
+							end
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+							gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+							gs 'stat'
+							if temp = 3:
+								'I am doing my best'
+								'Ok, bitch, I am ready to cum on  your toungue.'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/6 ghvag ('+rand(1,5)+').mp4"></video></center>'
+								gs 'arousal', 'vaginal', 10, 'gloryhole', 'sub'
+								gs 'stat'
+							end
+							act 'Catch his sperm':
+								*clr & cla
+								'He cums…'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/1/7 gh_cum.mp4"></video></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								if $clothingworntype = 'nude' and odianadveriah ! 0:
+									act 'Get dressed':
+										minut+=3
+										gs 'outfit', 'wear_last_worn'
+										'I dress up'
+										gs 'stat'
+									end
+								end
+
+
+
+								if temp = 3:
+									act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+								else
+									'"Wow, you have a tallent, come here and please my guys!"'
+									act 'Say yes, and try to run':
+										*clr & cla
+										'I opens the dor and immediatelly start to run!'
+										'I run from the cabine and don''t stop until I am back in the residential area'
+										'<center><img <<$set_imgh>> src="images/locations/pavlovsk/gorodok.jpg"></center>'
+										act 'Catch my breath':
+											 minut += 5
+											gt 'pav_residential'
+										end
+									end
+
+									act 'go and please the guys':
+										*clr & cla
+										gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,40)
+										gs 'boyStat', $npclastgenerated
+										dick = rand(20,40)
+										npc_dick[$npclastgenerated] = dick
+										gs 'stat'
+										'I go out from cabine and ready to met the guys'
+										'Ow, there they are.'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/1 friends_start.mp4"></video></center>'
+										act 'sit on the floor':
+											*clr & cla
+											'They rub my face with their big dicks'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/2.mp4"></video></center>'
+											afra += 1
+											gs 'arousal', 'foreplay', 10, 'sub'
+											gs 'stat'
+											act 'suck them':
+												*clr & cla
+												'I suck their dicks'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/3 ('+rand(1,2)+').mp4"></video></center>'
+												gs 'arousal', 'bj', 10, 'sub','group', 'gangbang'
+												gs 'stat'
+												act 'first guy cums':
+													*clr & cla
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/4 cum1.mp4"></video></center>'
+													gs 'cum_call', 'clothes', $npclastgenerated, 0
+													gs 'cum_call', 'hands', $npclastgenerated, 0
+													gs 'cum_call', 'face', $npclastgenerated, 0
+													gs 'arousal', 'end'
+													gs 'stat'
+													act 'second guy cums':
+														*clr & cla
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/5 cum2.mp4"></video></center>'
+														gs 'cum_call', 'clothes', $npclastgenerated, 0
+														gs 'cum_call', 'hands', $npclastgenerated, 0
+														gs 'cum_call', 'face', $npclastgenerated, 0
+														gs 'arousal', 'end'
+														gs 'stat'
+														act 'continue':
+															*clr & cla
+															if BlackCat = 1:
+																'Girl, you better go to pleasure house, otherwise we will put you there by force'
+															end
+															if BlackCat = 0:
+																'"Wow, this girl is really good…"'
+																'"We need her?"'
+																'"Ow yes"'
+																'"Definitely!"'
+																BlackCat = 1
+																marshrutka = 1
+																'Girl, There is a marshrutka in a city park at 23:00 it goes to pleasure house. It''s a something like a VIP brothel. You will have a good money there with your talents. When you will be there just ask about Black Cat, and tell them number 27629'
+															end
+															'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if yes/2/6 text.jpg"></center>'
+															body_write = 1
+															gs 'stat'
+															if BlackCat = 2:
+																'Girl see you in da pleasure house'
+															end
+
+															act 'Get up': gt 'mod_public_WC_cabine', 'mod_public_WC_cabine_WORK'
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	elseif agreech = 0:
+		*clr & cla
+		$func('wrap', 'header center b', 'Toilet cabine')
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/gh/sitting.jpg"></center>'
+		if ytemp ! 27654: 'I hear screams of quarrel for a while, and then silence…'
+		ytemp = 27654
+
+
+		if ztemp = 2:
+			*clr
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_puss.jpg"></center>'
+			'No one want to buy, Really? Am I doing everything right?'
+		elseif ztemp = 3:
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_face_<<temp>>.mp4"></video></center>'
+			'The mouth begins to get tired, but nobody came. Am I do everything right?'
+		end
+		ztemp = 0
+
+
+		act 'Look at the Hole':
+			*clr & cla
+			gs 'stat'
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/GH/wait/work_face_<<temp>>.mp4"></video></center>'
+			'The mouth begins to get tired, but nobody came. Am I do everything right?'
+			act 'Leave': gt 'mod_public_WC_cabine_ch', 'start'
+			act 'Wait':
+				*clr & cla
+				'You decide stay and wait for someone to come.'
+				act 'Open your mouth wider': ztemp = 3 & gt 'mod_public_WC_cabine_ch', 'start'
+			end
+			if gloryhole >= 50:
+				act 'Try to sell my pussy':
+					ztemp = 2
+					gt 'mod_public_WC_cabine_ch', 'start'
+				end
+			end
+			if mc_inventory['cigarettes'] > 0:
+				act 'Smoke':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait.jpg"></center>'
+					minut += 5
+					gs 'drugs','smoke'
+					gs 'stat'
+					'You decide to kill some time with cigarette.'
+					act 'Open your mouth wider': ztemp = 3 & gt 'mod_public_WC_cabine_ch', 'start'
+					if gloryhole >= 50:
+						act 'Try to sell my pussy':
+							ztemp = 2
+							gt 'mod_public_WC_cabine', 'hole'
+						end
+					end
+				end
+			end
+		end
+
+
+		if $clothingworntype ! 'nude' and gloryhole >= 10:
+			act 'undress':
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/gh/undress.mp4"></video></center>'
+				minut += 3
+				inhib_exp += rand(0,1)
+				'Now they will see my naked body through the hole!'
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				odianadveriah = 1
+				act 'put clothes on a cabin''s door as a sign "I am going to be be here for a long time"':
+					odianadveriah = 3
+					'now my clothes are hanging on the door as a sign "I am going to be be here for a long time".'
+				end
+				act 'put clothes on a door knob':
+					odianadveriah = 2
+					'now my clothes are carefully hanging on the doorknob.'
+				end
+			end
+		end
+
+
+
+		if $clothingworntype = 'nude' and odianadveriah ! 0:
+			act 'Get dressed':
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'You put your clothes back on.'
+				gs 'stat'
+			end
+		end
+
+		if mc_inventory['cigarettes'] > 0:
+			act 'smoke':
+				if rand(1,4) = 1:
+					pcs_willpwr += rand(1,2)
+					if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+					if pcs_willpwr <= 0: pcs_willpwr = 0
+					gs 'stat'
+				end
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait.jpg"></center>'
+				minut += 5
+				gs 'drugs','smoke'
+				gs 'stat'
+				'You decide to kill some time with cigarette.'
+			end
+		end
+		act 'Get Up': gt 'mod_public_WC_cabine_ch', 'startrape'
+	end
+end
+
+if npc_loyality >= 70    and npc_loyality < 1000:   gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'startrape':
+	*clr & cla
+	gs 'stat'
+	killvar 'agreech'
+	killvar 'ytemp'
+	afra += rand(4,8)
+	guy += rand(4,8)
+	gang += 1
+	rape += 1
+	'I come out from the cabine…'
+	*nl
+	'OMG! They were waiting for me!!!'
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,40)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,40)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/grab 1.mp4"></video></center>'
+	act 'try to resist':
+		*clr & cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/grab 2.mp4"></video></center>'
+		act 'try to resist':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/grab 3.mp4"></video></center>'
+			gs 'arousal', 'flashlite', 5, 'rough', 'sub', 'group', 'gangbang', 'rape'
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'They rips my close'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/undress 1.mp4"></video></center>'
+				act 'continue':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/undress 2.mp4"></video></center>'
+					act 'continue':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/1 meet/undress 3.mp4"></video></center>'
+						gs 'arousal', 'flash', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+						gs 'clothing', 'strip'
+						gs 'underwear', 'remove'
+						gs 'stat'
+						gs 'arousal', 'foreplay', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+						gs 'stat'
+						killvar 'odianadveriah'
+						act 'continue':
+							*clr & cla
+							'the bend me and force to suck'
+							'And the other guy penetrates me!'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/2 start/1 start_start.mp4"></video></center>'
+							gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+							gs 'stat'
+							gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+							gs 'stat'
+							act 'continue':
+								*clr & cla
+
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/2 start/2 start5.mp4"></video></center>'
+								'After some time they put me on my knees in the middle of a mens'' circle'
+								gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+								gs 'stat'
+								gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									'I start to suck any dick they give…'
+									'one of them duck taped my hands'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/3 dtape.mp4"></video></center>'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/1/bj'+rand(1,3)+'.mp4"></video></center>'
+									gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+									gs 'stat'
+									act 'continue':
+										*clr & cla
+										'I suck them one by one'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/1/bj_next'+rand(1,4)+'.mp4"></video></center>'
+
+										gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+										minut -= 5
+										gs 'stat'
+										act 'continue':
+											*clr & cla
+											'I suck them one by one'
+
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/1/bj'+rand(1,3)+'.mp4"></video></center>'
+											gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+											minut -= 5
+											gs 'stat'
+											act 'continue':
+												*clr & cla
+												'I feel someones <<dick>> cm dick im my pussy'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/2/101 '+rand(1,4)+'.mp4"></video></center>'
+												gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+												gs 'stat'
+												minut -= 15
+												gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+												gs 'stat'
+												act 'continue':
+													*clr & cla
+													'time to time they chage each other'
+
+													if rand(1,2) = 1:
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/2/bj_next'+rand(1,2)+'.mp4"></video></center>'
+													else
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/2/vag_next1.mp4"></video></center>'
+													end
+													gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+													gs 'stat'
+													minut -= 15
+													gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+													gs 'stat'
+													act 'continue':
+														*clr & cla
+														'time to time they chage each other'
+														'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/4/2/101 '+rand(1,4)+'.mp4"></video></center>'
+
+														gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+														gs 'stat'
+														minut -= 15
+														gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+														gs 'stat'
+														act 'continue':
+															*clr & cla
+															'One man put a big box in the middle of the toilet'
+															'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/5 hereisbox.mp4"></video></center>'
+															act 'continue':
+																*clr & cla
+																'They put me on the box, and I see big dong threateningly sways near my pussy…'
+																'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/1 start/6 lie_on_box.mp4"></video></center>'
+																act 'continue': gt 'mod_public_WC_cabine_ch', '2'
+																act 'What a horror! To go through this I immerse myself…': gt 'mod_public_WC_cabine_ch', '5'
+															end
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2':
+	*clr & cla
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Black Cat', rand(40,50)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(40,50)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+	'OMG!!! This <<dick>> cm dong penetrates me!!!'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/vag0 ('+rand(1,2)+').mp4"></video></center>'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	minut -= 9
+	gs 'pain', rand(0,7), 'vaginal', 'stretch'
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'Aaaaaa, this monster fucks me!!!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/vag'+rand(1,7)+'.mp4"></video></center>'
+		gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+		minut -= 5
+		gs 'pain', rand(1,4), 'vaginal', 'stretch'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			gs 'npcgeneratec', 0, 'Black Cat', rand(20,40)
+			gs 'boyStat', $npclastgenerated
+			dick = rand(20,40)
+			npc_dick[$npclastgenerated] = dick
+			gs 'stat'
+			'In shor time other guys join'
+			'Time to time they change each other acording to queue or smth…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/110/110 ('+rand(1,11)+').mp4"></video></center>'
+
+			gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+			gs 'stat'
+			minut -= 15
+			gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+			gs 'stat'
+			if rand(1,5) = 1:
+				'some guy put hiss ass on my face "Lick, bitch!"'
+				*nl
+				'I licks his anus'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/asslick/asslick ('+rand(1,4)+').mp4"></video></center>'
+				gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+				pcs_mood -= rand(0,15)
+				stat['rimming_give'] += rand(0,1)
+				gs 'stat'
+			end
+			act 'continue':
+				*clr & cla
+				'Time to time they change each other acording to queue or smth…'
+
+				if rand(1,2) = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/next bj/next bj ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/next vag/next vag ('+rand(1,3)+').mp4"></video></center>'
+				end
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+				gs 'stat'
+				minut -= 15
+				gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+				gs 'stat'
+				if rand(1,5) = 1:
+					'some guy put hiss ass on my face "Lick, bitch!"'
+					*nl
+					'I licks his anus'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/asslick/asslick ('+rand(1,4)+').mp4"></video></center>'
+					gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+					pcs_mood -= rand(0,15)
+					stat['rimming_give'] += rand(0,1)
+					gs 'stat'
+				end
+				act 'continue':
+					*clr & cla
+					'Time to time they change each other acording to queue or smth…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/110/110 ('+rand(1,11)+').mp4"></video></center>'
+
+					gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+					gs 'stat'
+					minut -= 15
+					gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+					gs 'stat'
+					if rand(1,5) = 1:
+						'some guy put hiss ass on my face "Lick, bitch!"'
+						*nl
+						'I licks his anus'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/1/asslick/asslick ('+rand(1,4)+').mp4"></video></center>'
+						gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+						pcs_mood -= rand(0,15)
+						stat['rimming_give'] += rand(0,1)
+						gs 'stat'
+					end
+					act 'continue':
+						*clr & cla
+						gs 'npcgeneratec', 0, 'Black Cat', rand(40,50)
+						gs 'boyStat', $npclastgenerated
+						dick = rand(40,50)
+						npc_dick[$npclastgenerated] = dick
+						gs 'stat'
+						'The boys parted. And the monsterdong guy come again'
+						'He puts it in my ass!'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/2/ass0 ('+rand(1,2)+').mp4"></video></center>'
+						minut -= 9
+						gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+						gs 'pain', rand(0,7), 'asshole', 'stretch'
+
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'He ruins my ass!'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/2/ass1.mp4"></video></center>'
+							gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+							gs 'pain', rand(1,4), 'asshole', 'stretch'
+							gs 'stat'
+							act 'continue':
+								*clr & cla
+								'In shor time other guys join'
+								gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+								gs 'boyStat', $npclastgenerated
+								dick = rand(20,30)
+								npc_dick[$npclastgenerated] = dick
+								gs 'stat'
+								'Time to time they change the dicks in my ass'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/2/101/101 ('+rand(1,7)+').mp4"></video></center>'
+
+
+
+								gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+								gs 'stat'
+								minut -= 15
+								gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+								gs 'stat'
+
+								act 'continue':
+									*clr & cla
+
+									gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+									gs 'boyStat', $npclastgenerated
+									dick = rand(20,30)
+									npc_dick[$npclastgenerated] = dick
+									gs 'stat'
+									'Time to time they change the dicks in my ass'
+
+
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/2/next ass/next ass ('+rand(1,3)+').mp4"></video></center>'
+
+									gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+									gs 'stat'
+									minut -= 15
+									gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+									gs 'stat'
+									act 'continue':
+										*clr & cla
+										'At some point they stops to put dicks in my mouth…'
+										'They start to fuck my ass and pussy together!'
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/3/011.mp4"></video></center>'
+										minut -= 15
+										gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+										gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+										gs 'stat'
+										act 'continue':
+											*clr & cla
+											'All my holes filled…'
+											'Time to time they change each other'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/3/111/111 ('+rand(1,13)+').mp4"></video></center>'
+
+
+											minut -= 25
+											gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+											gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+											gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+											gs 'stat'
+											act 'continue':
+												*clr & cla
+												'All my holes filled…'
+												'Time to time they change each other'
+
+
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/3/next 111/next 111 ('+rand(1,8)+').mp4"></video></center>'
+												minut -= 25
+												gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+												gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+												gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+												gs 'stat'
+												act 'continue':
+													*clr & cla
+													'Yes, they cut the duck tape, Am I free?'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/4 dtape.mp4"></video></center>'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/2 bind/3/111/111 ('+rand(1,13)+').mp4"></video></center>'
+													minut -= 25
+													gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+													gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+													gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+													gs 'stat'
+													act 'continue': gt 'mod_public_WC_cabine_ch', '3'
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	act 'What a horror! To go through this I immerse myself…': gt 'mod_public_WC_cabine_ch', '5'
+end
+
+if $ARGS[0] = '3':
+	*clr & cla
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	clienty = rand(5,9)
+	gs 'stat'
+	'They relocate me to the urinal…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/3 relock.mp4"></video></center>'
+	act 'continue':
+		*clr & cla
+		'They are binding me to the urinal'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/1/dtape hands1.mp4"></video></center>'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/1/dtape leg1.mp4"></video></center>'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/1/dtape leg2.mp4"></video></center>'
+		act 'continue':
+			*clr & cla
+			'They bind me to the urinal'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/1/dtape legs+fin.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_cabine_ch', '4'
+		end
+	end
+end
+
+if $ARGS[0] = '4':
+	*clr & cla
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+	'They make a queue and come to me for blow'
+	clienty -= 1
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/2 bj.mp4"></video></center>'
+	act 'he cums in a short time':
+		*clr & cla
+		gs 'arousal', 'bj', 5, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound', 'humiliation'
+		temp = rand(1,7)
+		if temp = 1:
+			'He cums in my mouth'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/in1.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'swallow':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/end_swallow.mp4"></video></center>'
+
+
+				act 'wait':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+					act 'next': gt 'mod_public_WC_cabine_ch', '4'
+				end
+			end
+
+			if bimbolevel >= 2:
+				act 'play with cum':
+					'Yes, I am the best!'
+					minut += 5
+					pcs_mood += 10
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/end_cumplay.mp4"></video></center>'
+				end
+			end
+		elseif temp <= 4:
+			'He cums on my face'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/on'+rand(1,4)+'.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'face', $npclastgenerated, 0
+
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+				act 'next': gt 'mod_public_WC_cabine_ch', '4'
+			end
+		else
+			'he cuns on my tits'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/tits1.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+				act 'next': gt 'mod_public_WC_cabine_ch', '4'
+			end
+		end
+	end
+	if clienty <= 0:
+		*clr & cla
+		killvar 'clienty'
+		'Before leaving, the last black hung me on the toilet door and tied me more firmly.'
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/finish_round.jpg"></center>'
+		if hour <= 6 or hour >= 23:
+			act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slavenight'
+		else
+			act 'Disorderly hang': gt 'mod_public_WC_cabine', 'slaveday'
+		end
+	end
+end
+
+
+
+
+
+if $ARGS[0] = '5':
+
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Black Cat', rand(40,50)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(40,50)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	minut -= 9
+	gs 'pain', rand(0,7), 'vaginal', 'stretch'
+	gs 'stat'
+
+
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	minut -= 5
+	gs 'pain', rand(1,4), 'vaginal', 'stretch'
+	gs 'stat'
+
+	gs 'npcgeneratec', 0, 'Black Cat', rand(20,40)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,40)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	stat['rimming_give'] += rand(0,1)
+
+	gs 'stat'
+
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	stat['rimming_give'] += rand(0,1)
+
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	gs 'arousal', 'rimming_give', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	pcs_mood -= rand(0,15)
+	gs 'stat'
+
+	gs 'npcgeneratec', 0, 'Black Cat', rand(40,50)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(40,50)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+	minut -= 9
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'pain', rand(0,7), 'asshole', 'stretch'
+
+	gs 'stat'
+
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'pain', rand(1,4), 'asshole', 'stretch'
+	gs 'stat'
+
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	minut -= 15
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	minut -= 25
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	minut -= 25
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+	minut -= 25
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+
+
+
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	clienty = rand(5,9)
+	gs 'stat'
+
+	gs 'npcgeneratec', 0, 'Black Cat''s gangster', rand(20,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(20,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'stat'
+
+	'THROUGH A STRONG FEELING OF THE COLD FROM THE URINATOR, I regained consciousness…'
+
+	'The rapists make a queue and come to me for a blowjob'
+	clienty -= 1
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/2 bj.mp4"></video></center>'
+	act 'he cums in a short time':
+		*clr & cla
+		gs 'arousal', 'bj', 5, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound', 'humiliation'
+		temp = rand(1,7)
+		if temp = 1:
+			'He cums in my mouth'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/in1.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'swallow':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/end_swallow.mp4"></video></center>'
+
+
+				act 'wait':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+					act 'next': gt 'mod_public_WC_cabine_ch', '4'
+				end
+			end
+
+			if bimbolevel >= 2:
+				act 'play with cum':
+					'Yes, I am the best!'
+					minut += 5
+					pcs_mood += 10
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/end_cumplay.mp4"></video></center>'
+				end
+			end
+		elseif temp <= 4:
+			'He cums on my face'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/on'+rand(1,4)+'.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'face', $npclastgenerated, 0
+
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+				act 'next': gt 'mod_public_WC_cabine_ch', '4'
+			end
+		else
+			'he cuns on my tits'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/cum/tits1.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'wait':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/106 If black dick and out/if no/4 fin/5 wait'+rand(1,3)+'.mp4"></video></center>'
+				act 'next': gt 'mod_public_WC_cabine_ch', '4'
+			end
+		end
+	end
+end
+
+--- mod_public_WC_cabine_ch ---------------------------------
+

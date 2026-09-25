@@ -1,0 +1,1340 @@
+# mod_public_WC_PH_blackcat_daily_start
+if $ARGS[0] = 'start':
+	$metka = 'start'
+	$loc = 'mod_public_WC_PH_blackcat_daily_start'
+	$menu_loc = 'mod_public_WC_PH_blackcat_daily_start'
+	$menu_arg = 'start'
+	menu_off = 0
+	*clr & cla
+	gs 'stat'
+
+	if ztempdaily ! daystart:
+		ztemp = rand(3,12)
+		ztempdaily = daystart
+		happycats = 0
+	end
+
+	if blackcat ! 100:
+		catpay = 1
+		if rand(1,3) = 1 and ztemp > 2:
+			ztemp -= rand(1,2)
+		else
+			if ztemp > 2:
+				ztemp += rand(1,3)
+			end
+		end
+	end
+
+
+	$func('wrap', 'header center b', 'Black Cats room')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/room.jpg"></center>'
+	if hour >= 0 and hour <= 20:
+		'I see <<ztemp>> gang members here'
+		if happycats < ztemp:
+			'I have pleased <<happycats>> of them'
+		else
+			'I have pleased ALL of them'
+		end
+	end
+
+
+
+
+
+
+	if daystart - bossbjday > 1: ytemp = rand(1,10)
+	if bossbjday = daystart: ytemp = 10
+	if ytemp >=8 and ytemp <= 10: ytemp = 1
+	if ytemp >= 1:
+		'Big Black Cat is here'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/boss/smokes ('+rand(1,2)+').jpg"></center>'
+		ytemp = rand (1,4)
+	elseif ytemp >= 10:
+		'Big Black Cat is here'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/boss/smokes ('+rand(1,2)+').jpg"></center>'
+	end
+
+	if hour >= 9 and hour < 21 and blackcat ! 100:
+		cla
+		'My shift is over, I can go to Yana'
+		act 'Go to the girls preparation room':
+			catpay = 0
+			gt 'mod_public_WC_rab_work', 'room'
+		end
+	end
+
+
+
+	act 'Go to WC':
+		gt 'mod_public_WC_PH_blackcat_daily', 'wcr'
+	end
+
+	temp = rand(1,12)
+	if temp <= 1 and ztemp - happycats >= 2:
+		'I see few guys in a good fit. They dressed as sportsmans'
+		act 'Go to the "sportsmans"': gt 'mod_public_WC_PH_blackcat_daily', 'sport'
+
+	elseif temp <= 3 and ztemp - happycats >= 2:
+		'I see few guys at the table. They ignores everything around, even other girls'
+		act 'Go to the cold guys to warm they up': gt 'mod_public_WC_PH_blackcat_daily', 'table_tease'
+
+	elseif temp <= 4 and ztemp - happycats >= 1:
+		'OMG! I see a guy with unbelievable big, monstrosity dick!!!'
+		act 'Go to the monstrosity dick. I WANT it!':
+			sexcorrupt += 1
+			gt 'mod_public_WC_PH_blackcat_daily', 'big'
+		end
+	end
+
+	if asday ! 0:
+		'Ania is working in my room now'
+		if daystart > asday:
+			asminut = 0
+			ashour = 0
+			asday = 0
+			act 'I go to "my" room №<<roomtemp>> to hide from the clients': gt 'mod_public_WC_PH_blackcat_daily_start', 'start'
+		elseif daystart = asday:
+			if ashour > hour:
+				asminut = 0
+				ashour = 0
+				asday = 0
+				act 'I go to "my" room №<<roomtemp>> to hide from the clients': gt 'mod_public_WC_PH_blackcat_daily_start', 'start'
+			elseif ashour = hour:
+				if asminut >= minut:
+					asminut = 0
+					ashour = 0
+					asday = 0
+					act 'I go to "my" room №<<roomtemp>> to hide from the clients': gt 'mod_public_WC_PH_blackcat_daily_start', 'start'
+				end
+			end
+		end
+	else
+		act 'I go to "my" room №<<roomtemp>> to hide from the clients': gt 'mod_public_WC_PH_blackcat_daily_room', 'room'
+	end
+
+
+
+	act 'Come to the table and take a drink':
+		*clr & cla
+		'I pour a glass of alcohol, and start to drink'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink.jpg"></center>'
+		gs 'drugs', 'alcohol', 'whiskey'
+		minut += 10
+		gs 'stat'
+
+		'A moment of peace…'
+
+		if rand(1,4) = 1:
+			pcs_willpwr += rand(1,2)
+			if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+			if pcs_willpwr <= 0: pcs_willpwr = 0
+			gs 'stat'
+		end
+		act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+
+
+		temp = rand(1,15)
+		if temp <= 3:
+			cla
+			'Guy comes to me, undress  his pants and put his dong in front of my face'
+			'"Bitch, suck this!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/help 1.jpg"></center>'
+
+			act 'Ok, I''ll combine pleasant with useful':
+				*clr & cla
+				sexcorrupt += 1
+				'I decide to suck and drink at the same time'
+				gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+				gs 'boyStat', $npclastgenerated
+				$boy[0] = $boy
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/bj/1.mp4"></video></center>'
+
+				gs 'arousal', 'hj', rand(10,20), 'sub'
+				gs 'arousal', 'bj', 10, 'sub'
+				minut -= 10
+				gs 'stat'
+
+
+				act 'Glass is empty, time to make him empty to':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/bj/2.mp4"></video></center>'
+
+					gs 'arousal', 'hj', rand(1,5), 'sub'
+					gs 'arousal', 'bj', 5, 'sub'
+					minut -= 5
+					gs 'stat'
+
+					act 'finish him!':
+						*clr & cla
+						happycats += 1
+
+						sexcorrupt += rand(0,1)
+						if catpay = 1:
+							act 'ask about money':
+								cla
+								'"yes, sure, whore, here you go."'
+								money += 50*catpay*rand(1,3)
+								gs 'stat'
+								sexcorrupt -= 1
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+							end
+						end
+
+						'He wealthy speys cum all over my face.'
+						if rand(1,3) = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/cum/onface ('+rand(1,7)+').jpg"></center>'
+						else
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onface.mp4"></video></center>'
+						end
+						gs 'cum_call','face',$boy
+						gs 'cum_call','arms',$boy
+						gs 'cum_call','mouth',$boy
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					end
+				end
+			end
+
+			act 'ask to go to the room':
+				*clr & cla
+				sexcorrupt -= 1
+				'"Pfff, I have no time for this!"'
+				'He stroke his dick deep in my mouth'
+				'I have no choise and start to suck it.'
+				gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+				gs 'boyStat', $npclastgenerated
+				$boy[0] = $boy
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/1/bjv ('+rand(1,10)+').mp4"></video></center>'
+
+				gs 'arousal', 'hj', rand(10,20), 'sub'
+				gs 'arousal', 'bj', 10, 'sub'
+				minut -= 10
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					happycats += 1
+
+					sexcorrupt += 1
+					if catpay = 1:
+						act 'ask about money':
+							cla
+							'"yes, sure, whore, here you go."'
+							money += 50*catpay*rand(1,3)
+							gs 'stat'
+							sexcorrupt -= 1
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+						end
+					end
+
+					'He wealthy speys cum all over my face.'
+					if rand(1,3) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/cum/onface ('+rand(1,7)+').jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onface.mp4"></video></center>'
+					end
+					gs 'cum_call','face',$boy
+					gs 'cum_call','arms',$boy
+					gs 'cum_call','mouth',$boy
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		elseif temp <= 6:
+			cla
+			'Guy comes to me, undress  his pants and put his dong in front of my face'
+			'"Bitch, suck this!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/help 1.jpg"></center>'
+
+			act 'Ok, I''ll combine pleasant with useful':
+				*clr & cla
+				sexcorrupt += 1
+				'I decide to suck and drink at the same time'
+				gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+				gs 'boyStat', $npclastgenerated
+				$boy[0] = $boy
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/bj/1.mp4"></video></center>'
+
+				gs 'arousal', 'hj', rand(10,20), 'sub'
+				gs 'arousal', 'bj', 10, 'sub'
+				minut -= 10
+				gs 'stat'
+
+				act 'Glass is empty, time to make him empty to':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/bj/2.mp4"></video></center>'
+
+					gs 'arousal', 'hj', rand(1,5), 'sub'
+					gs 'arousal', 'bj', 5, 'sub'
+					minut -= 5
+					gs 'stat'
+
+					act 'finish him!':
+						*clr & cla
+
+						'He put his dick out and points it to my empty glass… The glass become full in a few moments'
+						'"I see you like dicks and drinks, special drink for you! Drink it."'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cumglass/3.jpg"></center>'
+
+
+						if trt_cumeater = 1:
+							act 'drink it':
+								*clr & cla
+								sexcorrupt += 1
+								blackcumglass += 1
+								if blackcumglass >= 5 and trt_cumeater ! 1:
+									trt_cumeater = 1
+									msg 'You have gained the trait "Cumeater"'
+								end
+
+								'I swallowed the hot salty cum with a pleasure'
+								'Good, girl!'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/cumglass/4.mp4"></video></center>'
+								gs 'cum_call', 'mouth_swallow', $boy
+								gs 'stat'
+								pcs_mood += 15
+								stat['swallow'] += 1
+								gs 'stat'
+
+								happycats += 1
+								gs 'arousal', 'end'
+								gs 'stat'
+								sexcorrupt += rand(0,1)
+								if catpay = 1:
+									act 'ask about money':
+										cla
+										'"yes, sure, whore, You earn it!"'
+										money += 100*catpay*rand(1,3)
+										gs 'stat'
+										sexcorrupt -= 1
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+									end
+								end
+
+								act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+							end
+						else
+							gs 'willpower', 'swallow', 'self'
+							temp = will_cost - sexcorrupt / 5
+							will_cost -= (sexcorrupt / 5)
+							if will_cost < 0: will_cost = 0
+							if will_cost <= pcs_willpwr:
+
+								act 'drink it (<<temp>> Willpower)':
+									*clr & cla
+									gs 'willpower', 'pay', 'self'
+									gs 'stat'
+									sexcorrupt += 1
+									blackcumglass += 1
+									if blackcumglass >= 5 and trt_cumeater ! 1:
+										trt_cumeater = 1
+										msg 'You have gained the trait "Cumeater"'
+									end
+
+									'I swallowed the hot salty cum with a disgust!'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/cumglass/4.mp4"></video></center>'
+									gs 'cum_call', 'mouth_swallow', $boy
+									gs 'stat'
+									pcs_mood += 15
+									stat['swallow'] += 1
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									happycats += 1
+
+									sexcorrupt += rand(0,1)
+									if catpay = 1:
+										act 'ask about money':
+											cla
+											'"yes, sure, whore, You earn it!"'
+											money += 100*catpay*rand(1,3)
+											gs 'stat'
+											sexcorrupt -= 1
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										end
+									end
+
+									act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+								end
+							else
+								act 'drink it ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+							end
+						end
+
+						act 'disagree':
+							*clr & cla
+							sexcorrupt -= 2
+							'"Worthless cunt!" - he screems and slurps the glass on me.'
+							'He goes away.'
+							happycats += 1
+
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cumglass/NOT '+rand(1,3)+'.jpg"></center>'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'arms', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+						end
+
+						if catpay ! 0:
+							gs 'willpower', 'prostitution', 'self'
+							temp = will_cost + (sexcorrupt / 3)
+							will_cost += (sexcorrupt / 3)
+							if will_cost <= pcs_willpwr:
+
+								act 'Ask for extra money (<<temp>> Willpower)':
+									*clr & cla
+									gs 'willpower', 'pay', 'self'
+									gs 'stat'
+
+									'"Hmm, ok, I give you extra money if you drink it."'
+
+									if trt_cumeater = 1:
+										act 'drink it':
+											*clr & cla
+											sexcorrupt += 1
+											blackcumglass += 1
+											if blackcumglass >= 5 and trt_cumeater ! 1:
+												trt_cumeater = 1
+												msg 'You have gained the trait "Cumeater"'
+											end
+
+											'I swallowed the hot salty cum with a pleasure'
+											'Good, girl!'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/cumglass/4.mp4"></video></center>'
+											gs 'cum_call', 'mouth_swallow', $boy
+											gs 'stat'
+											pcs_mood += 15
+											stat['swallow'] += 1
+											gs 'stat'
+
+											happycats += 1
+											gs 'arousal', 'end'
+											gs 'stat'
+											sexcorrupt += rand(0,1)
+											if catpay = 1:
+												act 'ask about money':
+													cla
+													'"yes, sure, whore, You earn it!"'
+													money += 100*catpay*rand(1,3) + 500
+													gs 'stat'
+													sexcorrupt -= 1
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												end
+											end
+
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										end
+									else
+										gs 'willpower', 'swallow', 'self'
+										temp = will_cost - sexcorrupt / 5
+										will_cost -= (sexcorrupt / 5)
+										if will_cost < 0: will_cost = 0
+										if will_cost <= pcs_willpwr:
+
+											act 'drink it (<<temp>> Willpower)':
+												*clr & cla
+												gs 'willpower', 'pay', 'self'
+												gs 'stat'
+												sexcorrupt += 1
+												blackcumglass += 1
+												if blackcumglass >= 5 and trt_cumeater ! 1:
+													trt_cumeater = 1
+													msg 'You have gained the trait "Cumeater"'
+												end
+
+												'I swallowed the hot salty cum with a disgust!'
+												'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/drink/cumglass/4.mp4"></video></center>'
+												gs 'cum_call', 'mouth_swallow', $boy
+												gs 'stat'
+												pcs_mood += 15
+												stat['swallow'] += 1
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												happycats += 1
+
+												sexcorrupt += rand(0,1)
+												if catpay = 1:
+													act 'ask about money':
+														cla
+														'"yes, sure, whore, You earn it!"'
+														money += 100*catpay*rand(1,3) + 300
+														gs 'stat'
+														sexcorrupt -= 1
+														act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													end
+												end
+
+												act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											end
+										else
+											act 'drink it ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+										end
+									end
+
+									act 'disagree':
+										*clr & cla
+										sexcorrupt -= 2
+										'"Worthless cunt!" - he screems and slurps the glass on me.'
+										'He goes away.'
+										happycats += 1
+
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cumglass/NOT '+rand(1,3)+'.jpg"></center>'
+
+										gs 'boyStat', $npclastgenerated
+										gs 'cum_call', 'clothes', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'arms', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'face', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'mouth', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'hands', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'stomach', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'breasts', $npclastgenerated, 0
+										gs 'stat'
+										gs 'cum_call', 'hair', $npclastgenerated, 0
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+									end
+								end
+							else
+								act 'Ask for extra money ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+							end
+						end
+					end
+				end
+
+
+				ktemp = ztemp - happycats
+				if ktemp > 11: ktemp = 11
+				if blackcumglass >= 5 and ktemp >= 2:
+					cla
+					'As I do my blow-drink procedure other Black cats gather around me'
+					'"Ow, it you! The whore, who likes drink cum!'
+					'The first guy gives a tray to me and put <<ktemp>> empty glasses on it'
+					'"The gurl want the COCKtails, guys! We don''t want to make her sad!!!"'
+					'"YEEEAH" - gangs screams'
+					'Guys unzip panth…'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cummgang/0.jpg"></center>'
+
+					act 'continue':
+						*clr & cla
+						'As I start to suck first dick, someone take the tray from me and put it nearby'
+						gs 'arousal', 'hj', rand(5,10), 'sub', 'group', 'gangbang', 'humiliation'
+						gs 'arousal', 'bj', 5, 'sub'
+						minut -= 5
+						gs 'stat'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cummgang/1.jpg"></center>'
+						act 'continue':
+							*clr & cla
+							'More and more dicks want my attention'
+							gs 'arousal', 'hj', rand(5,10), 'sub', 'group', 'gangbang', 'humiliation'
+							gs 'arousal', 'bj', 5, 'sub'
+							minut -= 5
+							gs 'stat'
+							gs 'arousal', 'bj', 5, 'sub'
+							minut -= 5
+							gs 'stat'
+							cumblackglass = 0
+
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink/cummgang/2.jpg"></center>'
+
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'cg'
+						end
+					end
+				end
+			end
+
+			act 'ask to go to the room':
+				*clr & cla
+				sexcorrupt -= 1
+				'"Pfff, I have no time for this!"'
+				'He stroke his dick deep in my mouth'
+				'I have no choise and start to suck it.'
+				gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+				gs 'boyStat', $npclastgenerated
+				$boy[0] = $boy
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/1/bjv ('+rand(1,10)+').mp4"></video></center>'
+
+				gs 'arousal', 'hj', rand(10,20), 'sub'
+				gs 'arousal', 'bj', 10, 'sub'
+				minut -= 10
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					happycats += 1
+
+					sexcorrupt += 1
+					if catpay = 1:
+						act 'ask about money':
+							cla
+							'"yes, sure, whore, here you go."'
+							money += 50*catpay*rand(1,3)
+							gs 'stat'
+							sexcorrupt -= 1
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+						end
+					end
+
+					'He wealthy speys cum all over my face.'
+					if rand(1,3) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/cum/onface ('+rand(1,7)+').jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onface.mp4"></video></center>'
+					end
+					gs 'cum_call','face',$boy
+					gs 'cum_call','arms',$boy
+					gs 'cum_call','mouth',$boy
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'sit and smoke':
+			*clr & cla
+			'I decide to kill some time with cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(5,10)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+
+			temp = rand(1,13)
+
+			if temp <= 2:
+				if rand(1,2) = 1:
+					'Guy sits close to me and show his looong dong'
+					'"Babe, need your help"'
+
+					temp = rand(1,4)
+					if temp = 1:
+						'I want hand job.'
+
+					elseif temp = 2:
+						'I want blow job.'
+
+					elseif temp = 3:
+						'I want your pussy.'
+
+					elseif temp = 4:
+						'I want your asshole.'
+					end
+
+					if catpay ! 0:
+						act 'Grab his dick, "Agree, cash only"':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/help 2.mp4"></video></center>'
+							'nice, lets go'
+							otemp = 1
+							act 'go with him': gt 'mod_public_WC_PH_blackcat_daily', '1'
+						end
+					end
+
+					act 'Grab his dick, "agree"':
+						*clr & cla
+						'nice, lets go'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/help 2.mp4"></video></center>'
+						otemp = 1
+						act 'go with him': gt 'mod_public_WC_PH_blackcat_daily', '1'
+					end
+				else
+					'Guy comes to me, undress  his pants and put his dong in front of my face'
+					'"Bitch, suck this!"'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/help 1.jpg"></center>'
+					act 'ok':
+						*clr & cla
+						'I have no choise and start to suck it.'
+						gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+						gs 'boyStat', $npclastgenerated
+						$boy[0] = $boy
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/bj/m/bjv.mp4"></video></center>'
+
+						gs 'arousal', 'hj', rand(10,20), 'sub'
+						gs 'arousal', 'bj', 10, 'sub'
+						minut -= 10
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							happycats += 1
+
+							sexcorrupt += rand(0,1)
+							if catpay = 1:
+								act 'ask about money':
+									cla
+									'"yes, sure, whore, here you go."'
+									money += 50*catpay*rand(1,3)
+									gs 'stat'
+									sexcorrupt -= 1
+									act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+								end
+							end
+
+							'He wealthy speys cum all over my face… now I can calmly finish my cigarette.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/cum/cumfacev (8).mp4"></video></center>'
+							gs 'cum_call','face',$boy
+							gs 'cum_call','arms',$boy
+							gs 'cum_call','mouth',$boy
+							gs 'cum_call','hair',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+						end
+					end
+
+
+					act 'ask to go to the room':
+						*clr & cla
+						sexcorrupt -= 1
+						if rand(1,10) <= 7:
+							'"Ok , but you own me!"'
+							act 'Go to the room with him':
+								*clr & cla
+								'I turn aroun to him.'
+								'"No, Bitch, now you own me!"'
+
+
+								if rand(1,2) = 1:
+									'He bends me over and start to fuck…'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/sex/sexv (4).mp4"></video></center>'
+									ktemp = 1
+								else
+									'He lay down on the bed, "Come on, use your pussy!"'
+									'I ride him'
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/sex/sexv (7).mp4"></video></center>'
+									ktemp = 2
+								end
+								gs 'arousal', 'vaginal', rand(5,15), 'sub', 'prostitution'
+								gs 'stat'
+
+								act 'contonue':
+									*clr & cla
+									if rand(1,3) = 1: ktemp = 3
+									happycats += 1
+
+									if ktemp = 2:
+										'He spreys sperm all over me'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onme.mp4"></video></center>'
+										gs 'cum_call','breasts',$boy
+										gs 'cum_call','stomach',$boy
+										gs 'cum_call','hair',$boy
+										gs 'cum_call','face',$boy
+										gs 'cum_call','arms',$boy
+										gs 'cum_call','mouth',$boy
+										gs 'cum_call','labia',$boy
+										gs 'stat'
+
+
+									elseif ktemp = 3:
+										'He cums deep inside my pussy'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+										gs 'cum_call','',$boy
+										gs 'cuminsidereact', $boydesc
+										gs 'stat'
+
+									elseif ktemp = 1:
+										if temp = 3: 'He suddenly puts his dick in my asshole'
+										'He cums deep in my ass'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/assv.mp4"></video></center>'
+										gs 'cum_call','anus',$boy
+										gs 'stat'
+									end
+									killvar 'ktemp'
+									act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+
+									gs 'arousal', 'end'
+									gs 'stat'
+									sexcorrupt += rand(0,1)
+									if catpay = 1:
+										act 'ask about money':
+											cla
+											'"yes, sure, whore, here you go."'
+											money += 50*catpay*rand(1,3)
+											gs 'stat'
+											sexcorrupt -= 1
+											act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										end
+									end
+								end
+							end
+						else
+							'"Yo, whore, you do what I want but otherwise!"'
+							'He stroke his dick deep in my mouth'
+							'I have no choise and start to suck it.'
+							gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+							gs 'boyStat', $npclastgenerated
+							$boy[0] = $boy
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/bj/m/bjv.mp4"></video></center>'
+
+							gs 'arousal', 'hj', rand(10,20), 'sub'
+							gs 'arousal', 'bj', 10, 'sub'
+							minut -= 10
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								happycats += 1
+
+								sexcorrupt += 1
+								if catpay = 1:
+									act 'ask about money':
+										cla
+										'"yes, sure, whore, here you go."'
+										money += 50*catpay*rand(1,3)
+										gs 'stat'
+										sexcorrupt -= 1
+										act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+									end
+								end
+
+								'He wealthy speys cum all over my face… now I can calmly finish my cigarette.'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/cum/cumfacev (8).mp4"></video></center>'
+								gs 'cum_call','face',$boy
+								gs 'cum_call','arms',$boy
+								gs 'cum_call','mouth',$boy
+								gs 'cum_call','hair',$boy
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+							end
+						end
+					end
+				end
+			elseif temp <= 4:
+				'I see some gangs are staring at me'
+
+				gs 'willpower', 'prostitution', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'Tease them (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						sexcorrupt += 1
+						gs 'flash', 'exhibitionism', 1
+						gs 'stat'
+						gs 'bras', 'remove'
+						gs 'stat'
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/show (1).mp4"></video></center>'
+
+						temp = rand(1,100)
+
+						if temp + pcs_photoskl or temp + pcs_artskls >= 80:
+							ktemp = ztemp - happycats
+							if ktemp < 1: ktemp = 1
+							temp = rand (1,ktemp)
+							killvar 'ktemp'
+
+
+							if temp = 1:
+								if rand(1,2) = 1:
+									'Guy sits close to me and show his looong dong.'
+									'"Babe, need your help"'
+
+									temp = rand(1,4)
+									if temp = 1:
+										'I want hand job.'
+
+									elseif temp = 2:
+										'I want blow job.'
+
+									elseif temp = 3:
+										'I want your pussy.'
+
+									elseif temp = 4:
+										'I want your asshole.'
+									end
+
+									if catpay ! 0:
+										act 'Grab his dick, "Agree, cash only"':
+											*clr & cla
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/help 2.mp4"></video></center>'
+											'nice, lets go'
+											otemp = 1
+											act 'go with him': gt 'mod_public_WC_PH_blackcat_daily', '1'
+										end
+									end
+
+									act 'Grab his dick, "agree"':
+										*clr & cla
+										'nice, lets go'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/help 2.mp4"></video></center>'
+										otemp = 1
+										act 'go with him': gt 'mod_public_WC_PH_blackcat_daily', '1'
+									end
+								else
+									'Guy comes to me, undress  his pants and put his dong in front of my face'
+									'"Bitch, suck this!"'
+
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/help 1.jpg"></center>'
+									act 'ok':
+										*clr & cla
+										'I have no choise and start to suck it.'
+										gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+										gs 'boyStat', $npclastgenerated
+										$boy[0] = $boy
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/bj/m/bjv.mp4"></video></center>'
+
+										gs 'arousal', 'hj', rand(10,20), 'sub'
+										gs 'arousal', 'bj', 10, 'sub'
+										minut -= 10
+										gs 'stat'
+
+										act 'continue':
+											*clr & cla
+											happycats += 1
+
+											sexcorrupt += rand(0,1)
+											if catpay = 1:
+												act 'ask about money':
+													cla
+													'"yes, sure, whore, here you go."'
+													money += 50*catpay*rand(1,3)
+													gs 'stat'
+													sexcorrupt -= 1
+													act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+												end
+											end
+
+											'He wealthy speys cum all over my face… now I can calmly finish my cigarette.'
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/cum/cumfacev (8).mp4"></video></center>'
+											gs 'cum_call','face',$boy
+											gs 'cum_call','arms',$boy
+											gs 'cum_call','mouth',$boy
+											gs 'cum_call','hair',$boy
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+											act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+										end
+									end
+
+
+									act 'ask to go to the room':
+										*clr & cla
+										sexcorrupt -= 1
+										if rand(1,10) <= 7:
+											'"Ok , but you own me!"'
+											act 'Go to the room with him':
+												*clr & cla
+												'I turn aroun to him.'
+												'"No, Bitch, now you own me!"'
+
+
+												if rand(1,2) = 1:
+													'He bends me over and start to fuck…'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/sex/sexv (4).mp4"></video></center>'
+													ktemp = 1
+												else
+													'He lay down on the bed, "Come on, use your pussy!"'
+													'I ride him'
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/sex/sexv (7).mp4"></video></center>'
+													ktemp = 2
+												end
+												gs 'arousal', 'vaginal', rand(5,15), 'sub', 'prostitution'
+												gs 'stat'
+
+												act 'contonue':
+													*clr & cla
+													if rand(1,3) = 1: ktemp = 3
+													happycats += 1
+
+													if ktemp = 2:
+														'He spreys sperm all over me'
+														'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/onme.mp4"></video></center>'
+														gs 'cum_call','breasts',$boy
+														gs 'cum_call','stomach',$boy
+														gs 'cum_call','hair',$boy
+														gs 'cum_call','face',$boy
+														gs 'cum_call','arms',$boy
+														gs 'cum_call','mouth',$boy
+														gs 'cum_call','labia',$boy
+														gs 'stat'
+
+
+													elseif ktemp = 3:
+														'He cums deep inside my pussy'
+														'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv ('+rand(1,7)+').mp4"></video></center>'
+														gs 'cum_call','',$boy
+														gs 'cuminsidereact', $boydesc
+														gs 'stat'
+
+													elseif ktemp = 1:
+														if temp = 3: 'He suddenly puts his dick in my asshole'
+														'He cums deep in my ass'
+														'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/assv.mp4"></video></center>'
+														gs 'cum_call','anus',$boy
+														gs 'stat'
+													end
+													killvar 'ktemp'
+													act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													gs 'arousal', 'end'
+													gs 'stat'
+
+													sexcorrupt += rand(0,1)
+													if catpay = 1:
+														act 'ask about money':
+															cla
+															'"yes, sure, whore, here you go."'
+															money += 50*catpay*rand(1,3)
+															gs 'stat'
+															sexcorrupt -= 1
+															act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+														end
+													end
+												end
+											end
+										else
+											'"Yo, whore, you do what I want but otherwise!"'
+											'He stroke his dick deep in my mouth'
+											'I have no choise and start to suck it.'
+											gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+											gs 'boyStat', $npclastgenerated
+											$boy[0] = $boy
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/bj/m/bjv.mp4"></video></center>'
+
+											gs 'arousal', 'hj', rand(10,20), 'sub'
+											gs 'arousal', 'bj', 10, 'sub'
+											minut -= 10
+											gs 'stat'
+
+											act 'continue':
+												*clr & cla
+												happycats += 1
+
+												sexcorrupt += 1
+												if catpay = 1:
+													act 'ask about money':
+														cla
+														'"yes, sure, whore, here you go."'
+														money += 50*catpay*rand(1,3)
+														gs 'stat'
+														sexcorrupt -= 1
+														act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+													end
+												end
+
+												'He wealthy speys cum all over my face… now I can calmly finish my cigarette.'
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/cum/cumfacev (8).mp4"></video></center>'
+												gs 'cum_call','face',$boy
+												gs 'cum_call','arms',$boy
+												gs 'cum_call','mouth',$boy
+												gs 'cum_call','hair',$boy
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+											end
+										end
+									end
+								end
+							elseif temp = 2:
+								'a couple of guys comes to me with hungre eyes'
+
+								'"Girl, we want some fun!"'
+								otemp = 1
+								act 'nod': gt 'mod_public_WC_PH_blackcat_daily', '2'
+
+								act 'ok, take them to the room': '2r'
+
+
+							elseif temp >= 3:
+								'Three Black cats come to me'
+								'"Well, girl, lets have some fun…"'
+								otemp = 1
+								act 'go with them': gt 'mod_public_WC_PH_blackcat_daily', '3'
+							end
+						else
+							'they just stare at me… and nothing.'
+							act 'end smoking': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+						end
+					end
+				else
+					act 'Tease them ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+			else
+				'A moment of peace…'
+
+				if rand(1,4) = 1:
+					pcs_willpwr += rand(1,2)
+					if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+					if pcs_willpwr <= 0: pcs_willpwr = 0
+					gs 'stat'
+				end
+				act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+			end
+		end
+	end
+
+
+	if ztemp - happycats >= 6:
+		act 'Seductively go to the centre of the room and say "hello big boys"':
+			sexcorrupt += 1
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/1 hello.mp4"></video></center>'
+
+			if rand(1,2) = 1:
+				'Guys with hunger eyes undressing on their way approach me…'
+				act 'smiling to them': gt 'mod_public_WC_PH_blackcat_daily', '4more_sp'
+			else
+				'Guys starts to undress and sit on the sofa'
+				'"Come here, Bitch!"'
+				act 'Go and please them': gt 'mod_public_WC_PH_blackcat_daily', '4more_line'
+			end
+		end
+	end
+
+	if ztemp - happycats >= 3 and rand(1,4) = 4:
+		'3 Black Cats joke and drink together'
+		act 'Go to 3 Black Cats who stands together':
+			cla
+
+			act 'Hi guys do you want some fun':
+				cla
+				sexcorrupt += rand(0,1)
+				minut += 10
+				gs 'stat'
+				if rand(1,100) >= 30:
+					'"Well, girl, lets have some fun…"'
+					act 'go with them': gt 'mod_public_WC_PH_blackcat_daily', '3'
+
+				else
+					'"Not now."'
+					'They just ignor me'
+					act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+
+			if catpay ! 0:
+				act 'Hi guys do you want some fun, but it''s not free':
+					cla
+					minut += 10
+					gs 'stat'
+					if rand(1,100) >= 50:
+						'"Well, girl, lets have some fun…"'
+						otemp = 1
+						act 'go with them': gt 'mod_public_WC_PH_blackcat_daily', '3'
+
+					else
+						'"Not now."'
+						'They just ignor me'
+						act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					end
+				end
+
+			end
+
+			if cumloc[6] = 1 or cumloc[7] = 1 or cumloc[11] = 1 or cumloc[13] = 1 or cumloc[16] = 1:
+				if rand(1,10) + cumloc[6] + cumloc[7] + cumloc[11] + cumloc[13] + cumloc[16] < 5:
+					cla
+					'Feee, whore, go wash yourself!'
+					act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	end
+
+
+	if ztemp - happycats >= 2 and rand(1,3) = 3:
+		'A couple Black Cats talks a little aside'
+		act 'Go to the aside couple':
+			cla
+
+			act 'Hi guys do you want some fun':
+				cla
+				if rand(1,3) = 1: sexcorrupt += 1
+				minut += 10
+				gs 'stat'
+				if rand(1,100) >= 30:
+					'"Well, girl, lets have some fun…"'
+					act 'wait': gt 'mod_public_WC_PH_blackcat_daily', '2'
+
+				else
+					'"Not now."'
+					'They just ignor me'
+					act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+
+			end
+
+			if catpay ! 0:
+				act 'Hi guys do you want some fun, but it''s not free':
+					cla
+					minut += 10
+					gs 'stat'
+					if rand(1,100) >= 50:
+						'"Well, girl, lets have some fun…"'
+						otemp = 1
+						act 'wait': gt 'mod_public_WC_PH_blackcat_daily', '2'
+
+					else
+						'"Not now."'
+						'They just ignor me'
+						act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					end
+				end
+			end
+
+			if cumloc[6] = 1 or cumloc[7] = 1 or cumloc[11] = 1 or cumloc[13] = 1 or cumloc[16] = 1:
+				if rand(1,10) + cumloc[6] + cumloc[7] + cumloc[11] + cumloc[13] + cumloc[16] < 5:
+					cla
+					'Feee, whore, go wash yourself!'
+					act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	end
+
+	if ztemp - happycats >= 1 and rand(1,5) ! 5:
+		act 'Ask a lonely guy "How can I serve you?"':
+			cla
+			temp = rand(1,4)
+			if temp = 1:
+				'I want hand job.'
+
+			elseif temp = 2:
+				'I want blow job.'
+
+			elseif temp = 3:
+				'I want your pussy.'
+
+			elseif temp = 4:
+				'I want your asshole.'
+			end
+
+			if catpay ! 0:
+				act '"Agree, cash only"':
+					cla
+					'nice, lets go'
+					otemp = 1
+					act 'go with him to my room': gt 'mod_public_WC_PH_blackcat_daily', '1'
+				end
+			end
+
+			act 'agree':
+				cla
+				'nice, lets go'
+				otemp = 0
+				act 'go with him to my room': gt 'mod_public_WC_PH_blackcat_daily', '1'
+			end
+
+			act 'ow, sorry I am out':
+				cla
+				'don''t waste my time than'
+				act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+			end
+
+
+			if cumloc[6] = 1 or cumloc[7] = 1 or cumloc[11] = 1 or cumloc[13] = 1 or cumloc[16] = 1:
+				if rand(1,10) + cumloc[6] + cumloc[7] + cumloc[11] + cumloc[13] + cumloc[16] < 5:
+					cla
+					'Feee, whore, go wash yourself!'
+					act 'go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	end
+
+	if bossbjday = daystart: ytemp = 10
+	if ytemp = 4:
+		'The boss wave to me. When I looked at him he points his finger to his groin'
+		cla
+		act 'blow Big Black Cat':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/2 bj.mp4"></video></center>'
+			'I blow his <<$npc_thdick>> dick with all my skills'
+			'He not even looked once at me'
+			gs 'boyStat', 'A491'
+			gs 'arousal', 'bj', rand(15,20), 'prostitution'
+			gs 'stat'
+			act 'make him cum':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/3 cum.jpg"></center>'
+				'He spays it all over my face and mouth…'
+				'He not even looked once at me, just pet my head when I am done'
+				if catpay ! 0: 'And give me few bills'
+				money += 500*catpay*rand(2,6)
+				sexcorrupt -= 1
+				ytemp = 12
+				gs 'stat'
+				bossbjday = daystart
+
+				gs 'cum_call','face', 'A491'
+				gs 'stat'
+
+				gs 'cum_call','mouth', 'A491'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'stand up': gt 'mod_public_WC_PH_blackcat_daily_start', 'start'
+			end
+		end
+	end
+
+	if ztemp - happycats <= 0 and blackcat = 100:
+		*clr & cla
+		'All the Black Cats gangs are happy… I can go for a work to Yana'
+		samawork = 1
+		act 'continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			'Yana meet me with a smile'
+			gs 'mod_public_WC_PH_come', 'worklist'
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality <   1000: cla
+--- mod_public_WC_PH_blackcat_daily_start ---------------------------------
+

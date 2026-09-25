@@ -1,0 +1,55 @@
+# mod_public_WC_rab_livesklad_run
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	*clr & cla
+	menu_off = 0
+	$location_type = 'secluded'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/hliv.jpg"></center>'
+	'I gather myself…'
+	'What to do next?'
+	act 'go out with no noise and run to the forest':
+		*clr & cla
+		if month <= 4 or month >= 10:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun10.mp4"></video></center>'
+		else
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun<<temp>>.mp4"></video></center>'
+		end
+
+		'It seems I ran away unnoticed'
+		minut += rand (10, 40)
+		vtecha = 1
+		Artem = 0 & Tolik = 0 & Vania = 0
+		brak += 10
+		ropeslack = 0
+		consent = 8
+		zgoda = 0
+		gs 'stat'
+		act 'Continue': gt 'gad_forest_lost', 'forest_center'
+	end
+
+	act 'Ask Tolik to stop the Vania''s training':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+		'I have found Tolik and beg him'
+		*nl
+		*nl
+		'"Bitch, how and why and WTF!!! I am tired of you."'
+		'I forcefully pour a huge dose of vodka and I lose consciousness.'
+		gs 'drugs', 'alcohol', 'vodka', 4
+		gs 'stat'
+		workDolg += rand(20000,40000)
+		brak = 0
+		vlada -= 15
+		zgoda = 100
+		ropeslack = 0
+		consent = 0
+		if vlada < 0: vlada = 0
+		'You are at the sauna. The brutes drag you into a room and start to explain. "You''re going to live here and work until you have cleared your debt. Got it? Try to contact the authorities or escape, we''ll put a bullet in your head and bury you in the woods, understand?"'
+		'You become frightened as they''re convincing, so you just nod.'
+		act 'Look around': gt 'city_sauna', 'saunaroom'
+	end
+end
+
+--- mod_public_WC_rab_livesklad_run ---------------------------------
+

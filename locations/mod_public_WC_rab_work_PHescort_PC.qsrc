@@ -1,0 +1,403 @@
+# mod_public_WC_rab_work_PHescort_PC
+if $ARGS[0] = 'test':	
+	*clr & cla
+	If PHsetup = 0:
+		'I see an empty profile, and this is first I need to fill'
+		'All the general lines: age, weight, breast size etc I have filled… Now I need to choose 3 or more interests'
+	end	
+	*nl
+	$func('wrap', 'header center b', '-=My profile=-')
+	
+	$img_temp = FUNC('$face_image')
+	'<center><img <<$set_imgh>> src="<<$img_temp>>"></a></center>'
+	killvar 'img_temp'
+	$func('wrap', 'header center b', '<<$pcs_firstname>>')
+	'<center><b><<vidage>> years old</b></center>'
+	
+	
+	if phecrortrank1 + phecrortrank2 = 0:
+		'<center><b>Unranked</b></center>'
+	else
+		'<center><b>My rank is <<phecrortrank1>>.<<phecrortrank2>></b></center>'
+	end
+	
+	if phtest1 = 1:
+		'<b>- I am into Gang bangs</b>'
+	end
+	if phtest2 = 1:
+		'<b>- I like few dongs in one hole</b>'
+	end
+	if phtest3 = 1:
+		'<b>- I like when you creampie my mouth-pussy</b>'
+	end
+	if phtest4 = 1:
+		'<b>- I am a cumslut!</b>'
+	end
+	if phtest5 = 1:
+		'<b>- If it not painfull, you make it wrong</b>'
+	end
+	if phtest6 = 1:
+		'<b>- i can be anyone you want</b>'
+	end
+	if phtest7 = 1:
+		'<b>- You wil listen.</b>'
+	end
+	if phtest8 = 1:
+		'<b>- I like ropes</b>'
+	end
+	if phtest9 = 1:
+		'<b>- I am into risk to be caught</b>'
+	end
+	if phtest10 = 1:
+		'<b>- Q</b>'
+	end
+	
+
+	if phtest1 ! 1:
+		act 'Mark the "gang bang"': 
+			phtest1 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "gang bang"</b>': 
+			phtest1 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest2 ! 1:
+		act 'Mark the "double penetration"': 
+			phtest2 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "double penetration"</b>': 
+			phtest2 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest3 ! 1:
+		act 'Mark the "face fuck"': 
+			phtest3 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "face fuck"</b>': 
+			phtest3 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest4 ! 1:
+		act 'Mark the "cumslut"': 
+			phtest4 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "cumslut"</b>': 
+			phtest4 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest5 ! 1:
+		act 'Mark the "rought"': 
+			phtest5 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "rought"</b>': 
+			phtest5 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest6 ! 1:
+		act 'Mark the "cosplay"': 
+			phtest6 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "cosplay"</b>': 
+			phtest6 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest7 ! 1:
+		act 'Mark the "mistress"': 
+			phtest7 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "mistress"</b>': 
+			phtest7 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest8 ! 1:
+		act 'Mark the "BDSM"': 
+			phtest8 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "BDSM"</b>': 
+			phtest8 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest9 ! 1:
+		act 'Mark the "public"': 
+			phtest9 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "public"</b>': 
+			phtest9 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+	if phtest10 ! 1:
+		act 'Mark the "bbc"': 
+			phtest10 = 1
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	else
+		act '<b>UNMark the "bbc"</b>': 
+			phtest10 = 0
+			gs 'mod_public_WC_rab_work_PHescort_PC', 'test'
+		end
+	end
+
+	if phmoneypaid > 0: 'The <<phmoneypaid>> money will be transferd to your banc account soon'
+	
+	if phtest1 + phtest2 + phtest3 + phtest4 + phtest5 + phtest6 + phtest7 + phtest8 + phtest9 + phtest10 >= 3:
+		'<i>I can tap the "save" button</i>'
+		act 'save':
+			PHsetup = 1
+			'My profile is ready'			
+			'<font color=red size=6>Wait an SMS with your next client info.</font>'			
+		end
+	else
+		'<i>the "save" button is grey</i>'
+	end
+	
+	if PHsetup = 1:
+		act 'hide the profile':
+			*clr & cla
+			PHsetup = 0
+			killvar 'phtest1'
+			killvar 'phtest2'
+			killvar 'phtest3'
+			killvar 'phtest4'
+			killvar 'phtest5'
+			killvar 'phtest6'
+			killvar 'phtest7'
+			killvar 'phtest8'
+			killvar 'phtest9'
+			killvar 'phtest10'
+			
+			'All my settenigs dissappears'
+			
+			act 'exit': gt 'komp', 'browse'
+		end
+	end
+	
+	act 'exit': gt 'komp', 'browse'
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = 'sms':
+	ShortescortH = rand(18,21)	
+	ShortescortD = daystart
+	phshortescortfun = 0
+	phclientava = rand(1,7)
+	phescortshorttask = 1
+	phshorttimer = daystart + phescortshorttaskconfig
+
+	temp = rand(1,30)
+	gs 'telefon', 'add_sms', ' ', 'ORDER FROM the PH. You need to be in St. Petersburg''s Residential Area, Caria Loha street, b. 4, appartment <<temp>>. today at <<ShortescortH>> o''clock. Paid time is 2 Hours.'
+
+	'I have received a new SMS… it''s from the Pleasure House.'
+end
+
+if $ARGS[0] = 'PHsetup':
+	if $loc = 'city_residential' and $location_type = 'public_outdoors' and menu_off = 0:
+		if phescort = 1 and phescortshorttask = 1 and ShortescortH = hour and ShortescortD = daystart:
+			act 'Find the client''s adress': gt 'mod_public_WC_rab_work_PHescort_PC', 'start'
+		end
+	elseif phescort = 1 and phescortshorttask = 1 and ((ShortescortD < daystart and phmoneypaidD ! 0) or (ShortescortD = daystart and ShortescortH < hour)) and phSHORTescortmeet ! 1:
+		gs 'telefon', 'add_sms', ' ', 'You did NOT meet your client on time! It is not proffessional!'
+		minut += 2
+		gs 'stat'
+		gs 'telefon', 'add_sms', ' ', 'Your BANK account fined on 2000.'
+		karta -= 2000
+		ryska -= 2
+		phescortshorttask = 0
+		killvar 'ShortescortD'
+		killvar 'ShortescortH'
+		killvar 'phSHORTescortmeet'
+	end
+end
+
+
+
+if $ARGS[0] = 'start':
+	*clr & cla
+	!! act 'Find the client''s adress'
+	'I stand in front of the client''s door'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/4 short/door.jpg"></center>'
+	
+	act 'knock the door': 
+		phSHORTescortmeet = 1
+		phshortescortfun = 0
+		colir = 1
+		killvar 'phescortshorttask'
+		killvar 'phSHORTescortmeet'
+		killvar 'ShortescortH'
+		killvar 'ShortescortD'	
+		
+		
+		i = 0
+		if phtest1 = 1: phtest1 = i + 1 & i += 1
+		if phtest2 = 1: phtest2 = i + 1 & i += 1
+		if phtest3 = 1: phtest3 = i + 1 & i += 1
+		if phtest4 = 1: phtest4 = i + 1 & i += 1
+		if phtest5 = 1: phtest5 = i + 1 & i += 1
+		if phtest6 = 1: phtest6 = i + 1 & i += 1
+		if phtest7 = 1: phtest7 = i + 1 & i += 1
+		if phtest8 = 1: phtest8 = i + 1 & i += 1
+		if phtest9 = 1: phtest9 = i + 1 & i += 1
+		if phtest10 = 1: phtest10 = i + 1 & i += 1
+		jobtemp = rand(1,i)
+		
+		if jobtemp = phtest1:
+			phtest1 = 100
+
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1
+		elseif jobtemp = phtest2:
+			phtest2 = 100
+			if phtest1 > 0: phtest1 = 1
+
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest3:
+			phtest3 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest4:
+			phtest4 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest5:
+			phtest5 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest6:
+			phtest6 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest7:
+			phtest7 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest8:
+			phtest8 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+
+			if phtest9 > 0: phtest9 = 1
+			if phtest10 > 0: phtest10 = 1	
+		elseif jobtemp = phtest9:
+			phtest9 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+
+			if phtest10 > 0: phtest10 = 1	
+		else
+			phtest10 = 100
+			if phtest1 > 0: phtest1 = 1
+			if phtest2 > 0: phtest2 = 1
+			if phtest3 > 0: phtest3 = 1
+			if phtest4 > 0: phtest4 = 1
+			if phtest5 > 0: phtest5 = 1
+			if phtest6 > 0: phtest6 = 1
+			if phtest7 > 0: phtest7 = 1
+			if phtest8 > 0: phtest8 = 1
+			if phtest9 > 0: phtest9 = 1
+
+		end
+		killvar 'jobtemp'
+		i = 0
+		
+		gt 'mod_public_WC_rab_work_PHescort_work', 'start14'
+	end
+	
+	act 'go away': gt $loc, $loc_arg
+end
+
+
+
+--- mod_public_WC_rab_work_PHescort_PC ---------------------------------
+

@@ -1,0 +1,719 @@
+# mod_public_WC_rab_Mayster5_piercetrain
+if $ARGS[0] = 'start':
+	*clr & cla
+	'Vania unlockes the gag ball'
+
+	if bdsmurok >= 8 and bdsmurok < 17:
+		'"Pain… i think you afraid this word"'
+		'"But it''s just a feel, and if you discavered it for yourself, you will live this world absoluly another."'
+		'"To do so you just need to totallt trust your master. Your master never make you feel bad or hurt, Your master only gives you all specter of live feelings"'
+		'"It cold be not so easy… at first… but I am a good teacher and you are a good pet…"'
+	else
+		temp = rand(1,3)
+		if temp = 1: '"Pain is not so bad, pain is different and pain is intresting"'
+		if temp = 2: '"If you feel the pain - you are alive and can feel pleasure too. You just need to combine it"'
+		if temp = 3: '"Just talk with your body"'
+	end
+
+	if bdsmurok <= 9:
+		gt 'mod_public_WC_rab_Mayster5_shipka', 'ya1'
+	elseif bdsmurok <=11:
+		gt 'mod_public_WC_rab_Mayster5_shipka', 'ya1'
+	elseif bdsmurok <=12:
+		gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piano'
+	elseif bdsmurok <=16:
+		if rand(1,2) = 1:
+			if pirsg ! 0:
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piercwalk'
+			else
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'ttrain'
+			end
+		else
+			gt 'mod_public_WC_rab_Mayster5_shipka', 'ya1'
+		end
+	elseif bdsmurok <=23:
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piano'
+		else
+			gt 'mod_public_WC_rab_Mayster5_shipka', 'ya1'
+		end
+	elseif bdsmurok >=24:
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster5_piercetrain', 'ttrain'
+		else
+			if pirsg ! 0:
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piercwalk'
+			else
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'ttrain'
+			end
+		end
+	end
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/waitnakedv ('+rand(1,2)+').mp4"></video></center>'
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'piano':
+	*clr & cla
+
+	'"Betsi, good pet can entertain his master without his body."'
+	'"Let''s go"'
+	'during his speach Vania locked the chains to each my nipple pircing.'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/odiagnuv ('+rand(1,3)+').jpg"></center>'
+
+	act 'walk with Vania':
+		*clr & cla
+		$func('wrap', 'header center b', 'Redneck''s bedroom')
+		*nl
+		'Vania walks me as a pet, uses the chains as a leash'
+
+		'Well, Betsi, show me how good you with the piano.'
+
+		minut += rand(5,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/go.mp4"></video></center>'
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			gs 'pain', rand(0,1), 'nipples', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'stretch'
+			gs 'stat'
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/HATA/spat1.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/hata/piano.jpg"></center>'
+
+		act 'No!':
+			*clr & cla
+			willpowermax += 1
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+		act 'play the piano':
+			*clr & cla
+			'It was hard to play, time to time Vania pulled the chains and I loose the rhythm in the pain'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/piano.mp4"></video></center>'
+
+			act 'continue playing':
+				gt 'mod_public_WC_rab_Mayster5_piercetrain', 'piano2'
+			end
+
+			instrmusic_exp += rand(0,3)
+			pcs_mood += 5
+			minut += rand(15,35)
+
+			if  pcs_instrmusic >= 100:
+				'despite everything I played wonderful melody!'
+				pcs_mood += 10
+				brak -= 3
+			elseif pcs_instrmusic >= 70:
+				'The melody I have played is good'
+				pcs_mood += 5
+				brak -= 2
+			elseif pcs_instrmusic >= 40:
+				'I yelled in pain more often than made a music'
+				brak -= 1
+			elseif pcs_instrmusic >= 20:
+				'That was a cacophony of sounds combined with my crying'
+			else
+				'that was not a music… Vania not looks very happy'
+				pcs_mood -= 3
+				brak += 1
+			end
+
+			if stat['BDSM'] <= 45 and stat['BDSM'] > 30:
+				'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+				gs 'pain', rand(3,4), 'nipples', 'stretch'
+				gs 'stat'
+			elseif stat['BDSM'] > 45:
+				gs 'pain', rand(2,3), 'nipples', 'stretch'
+				gs 'stat'
+			elseif stat['BDSM'] <= 30:
+				'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+				gs 'pain', rand(4,6), 'nipples', 'stretch'
+				gs 'stat'
+				'I can''t continue… I can only cry!'
+				cla
+				act 'beg to stop!':
+					ztemp = 3
+					gt 'mod_public_WC_rab_Mayster', 'end'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'piano2':
+	*clr & cla
+	'It was hard to play, time to time Vania pulled the chains and I loose the rhythm in the pain'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/piano.mp4"></video></center>'
+
+	act 'wait':
+		bdsmurok += 1
+		vurok += 1
+		if bdsmurok > 16:
+			gt 'mod_public_WC_rab_Mayster5', 'tied'
+		else
+			gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+	end
+
+	ztemp = 0
+	instrmusic_exp += rand(0,3)
+	pcs_mood += 5
+	minut += rand(15,35)
+
+	if  pcs_instrmusic >= 100:
+		'despite everything I played wonderful melody!'
+		pcs_mood += 10
+		brak -= 3
+		ztemp = rand(1,2)
+	elseif pcs_instrmusic >= 70:
+		'The melody I have played is good'
+		pcs_mood += 5
+		brak -= 2
+		ztemp = rand(1,2)
+	elseif pcs_instrmusic >= 40:
+		'I yelled in pain more often than made a music'
+		brak -= 1
+		ztemp = 4
+	elseif pcs_instrmusic >= 20:
+		'That was a cacophony of sounds combined with my crying'
+		ztemp = 3
+	else
+		'that was not a music… Vania not looks very happy'
+		pcs_mood -= 3
+		brak += 1
+		ztemp = 3
+	end
+
+	'After some time Vania stops me.'
+
+	if stat['BDSM'] <= 50 and stat['BDSM'] > 35:
+		'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+		gs 'pain', rand(3,4), 'nipples', 'stretch'
+		gs 'stat'
+	elseif stat['BDSM'] > 50:
+		gs 'pain', rand(2,3), 'nipples', 'stretch'
+		gs 'stat'
+	elseif stat['BDSM'] <= 35:
+		'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+		gs 'pain', rand(4,6), 'nipples', 'stretch'
+		gs 'stat'
+		'I can''t continue… I can only cry!'
+		cla
+		act 'beg to stop!':
+			ztemp = 3
+			gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'piercwalk':
+	*clr & cla
+
+	'"Today lesson we will do on a fresh air…"'
+	'"Betsi, let''s walk you out."'
+
+	'Vania locked the chains to each my nipple pircing, to my pussy pircing… also he pinch a chain to my nose.'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/pussy/train_walk.jpg"></center>'
+
+
+	if stat['BDSM'] <= 85 and stat['BDSM'] > 70:
+		gs 'pain', rand(4,5), 'clitoris', 'stretch'
+		gs 'stat'
+	elseif stat['BDSM'] > 85:
+		gs 'pain', rand(1,4), 'clitoris', 'stretch'
+		gs 'stat'
+	elseif stat['BDSM'] <= 70:
+		gs 'pain', rand(5,6), 'clitoris', 'stretch'
+		gs 'stat'
+	end
+
+	pin3 = 1
+
+
+	act 'AAA, I refuse to go anywhere!':
+		*clr & cla
+		pin1 = 0
+		pin2 = 0
+		pin3 = 0
+		willpowermax += 1
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'I tierd of this shit, Betsi.'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+
+	minut += rand(5,10)
+	stat['BDSM'] += rand(0,2)
+	if stat['BDSM'] <= 75 and stat['BDSM'] > 50:
+		'<i>I had some BDSM experience… nipples and pussy hurt, but I can handle it</i>'
+		gs 'pain', rand(4,5), 'nipples', 'stretch'
+		gs 'stat'
+		gs 'pain', rand(1,3), 'nose', 'pinch'
+		gs 'stat'
+	elseif stat['BDSM'] > 75:
+		'<i>Yeeees, it feels great!!!</i>'
+		gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+		gs 'stat'
+		gs 'pain', rand(1,3), 'nipples', 'stretch'
+		gs 'stat'
+		gs 'pain', rand(0,1), 'nose', 'pinch'
+		gs 'stat'
+	elseif stat['BDSM'] <= rand (30,50):
+		cla
+		'<i><b>AAAAAAAAAAAAAA PAIN! I can''t handle it more!</b></i>'
+		gs 'pain', rand(6,8), 'nipples', 'stretch'
+		gs 'stat'
+		gs 'pain', rand(3,5), 'nose', 'pinch'
+		gs 'stat'
+
+		'AAA, I take off the nose pin and grab the chains to make it inpossible for Vania to pull the chains!'
+		pin1 = 0
+		pin2 = 0
+		pin3 = 0
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'I tierd of this shit, Betsi, you just need to do what I said!'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	act 'go for a walk':
+		*clr & cla
+		minut += 30
+		gs 'stat'
+
+		'<i>It''s so humiliating, I go with Vania like a pet…</i>'
+		'<i>Each few steps Vania pulls the chain stretching my pussy and nipples… I try to walks faster, but Vania walk is quick and I can''t keep up with him</i>'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/pussy/train_walk.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/gonaked ('+rand(1,5)+').jpg"></center>'
+
+
+
+
+
+		minut += rand(10,20)
+		stat['BDSM'] += rand(1,2)
+
+		if stat['BDSM'] <= 99 and stat['BDSM'] > 69:
+			'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+			'We walk like half an hour and Vania happly said'
+			'"Perfect!!! Betsi, it''s enought for the lesson, let''s go back"'
+			Vlove += 1
+
+			pcs_mood += rand(10,30)
+			gs 'stat'
+
+			if bdsmurok > 16:
+				act 'go back': gt 'mod_public_WC_rab_Mayster5', 'tied'
+			elseif bdsmurok >= 27:
+				act 'go back': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+			else
+				act 'go back': ztemp = rand(1,2) & gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+
+
+			VaniaMayster += 1
+			gs 'pain', rand(4,5), 'nipples', 'stretch'
+			gs 'stat'
+			gs 'pain', rand(1,3), 'nose', 'pinch'
+			gs 'stat'
+			gs 'pain', rand(4,5), 'clitoris', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] > 99:
+			'<i>Yeeees, it feels great!!!</i>'
+			$orgasm_or = 'custom'
+			$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+			'We walk like half an hour and vania happly said'
+			'"Perfect!!! Betsi, it''s enought for the lesson, let''s go back"'
+			Vlove += 1
+
+			pcs_mood += rand(10,30)
+			gs 'stat'
+
+			if bdsmurok > 16:
+				act 'go back': gt 'mod_public_WC_rab_Mayster5', 'tied'
+			elseif bdsmurok >= 27:
+				act 'go back': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+			else
+				act 'go back': ztemp = rand(1,2) & gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+
+			VaniaMayster += 1
+
+			gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+			gs 'stat'
+			gs 'pain', rand(1,3), 'nipples', 'stretch'
+			gs 'stat'
+			gs 'pain', rand(0,1), 'nose', 'pinch'
+			gs 'stat'
+			gs 'pain', rand(1,4), 'clitoris', 'stretch'
+			gs 'stat'
+		elseif stat['BDSM'] <= rand (39,69):
+			cla
+			'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+			'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+			'AAA, I lie down and can only cry!'
+			pin1 = 0
+			pin2 = 0
+			pin3 = 0
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi, you just need to do what I said!'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+			gs 'pain', rand(6,8), 'nipples', 'stretch'
+			gs 'stat'
+			gs 'pain', rand(3,5), 'nose', 'pinch'
+			gs 'stat'
+			gs 'pain', rand(5,6), 'clitoris', 'stretch'
+			gs 'stat'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'ttrain':
+	*clr & cla
+	'Vania connects each my nipple pircing with a chain'
+	'then he connects the chains…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/odiagnuv ('+rand(1,3)+').jpg"></center>'
+
+	if turok = 0:
+		'This is a top level train, Betsi. It could be hard, but after this your tits will be ready for any mater''s requirment. And you will ready to make happy master with any desires.'
+	end
+
+	act 'wait':
+		*clr & cla
+		if turok <= 3:
+			temp = rand(1,1)
+			if temp = 1:
+				'Vania grabs the chain and pulls it up…'
+
+				'I stood on tiptoe by he is pulling higher and higher…'
+
+				if rand (1,5) = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vtv (2).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vt ('+rand(1,13)+').jpg"></center>'
+				end
+
+				act 'Try to explore the pain':
+					cla
+					'Vania releases the chain and pain go away…'
+					'<i>I feel nothing, there is no pain in the nipples, I feel no tension… just heat</i>'
+					stat['BDSM'] += rand(1,3)
+					gs 'stat'
+
+					if rand (1,5) = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vtv (2).mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vt ('+rand(1,13)+').jpg"></center>'
+					end
+
+					'I see Vania took something from his bookcase and turn back to me'
+					'"Betsi, I am impressed, each day you are closer to the perfect woman."'
+					pcs_mood += rand(20,40)
+					gs 'stat'
+					turok += 1
+					act 'wait…': gt 'mod_public_WC_rab_Mayster5', 'tied'
+				end
+
+				minut += rand(10,20)
+				if stat['BDSM'] <= 99 and stat['BDSM'] > 69:
+					'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+
+					gs 'pain', rand(5,8), 'nipples', 'stretch'
+					gs 'stat'
+				elseif stat['BDSM'] > 99:
+					'<i>Yeeees, it feels great!!!</i>'
+					$orgasm_or = 'custom'
+					$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+					gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+					gs 'stat'
+					gs 'pain', rand(0,5), 'nipples', 'stretch'
+					gs 'stat'
+				elseif stat['BDSM'] <= rand (39,69):
+					cla
+					'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+					'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+					'AAA, I grab the chain to stop this!'
+					pin1 = 0
+					pin2 = 0
+					pin3 = 0
+					VaniaMayster -= 3
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+					'I tierd of this shit, Betsi, you just need to do what I said!'
+					act 'continue': turok -= 1 & gt 'mod_public_WC_rab_Mayster5', 'kara'
+					gs 'pain', rand(6,9), 'nipples', 'stretch'
+					gs 'stat'
+				end
+			end
+		elseif turok <= 5:
+			temp = rand(1,1)
+			if temp = 1:
+				'Vania grabs the chain and pulls it up…'
+
+				'I stood on tiptoe by he is pulling higher and higher…'
+
+				if rand (1,5) = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vtv (2).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vt ('+rand(1,13)+').jpg"></center>'
+				end
+
+				act 'Try to explore the pain':
+					cla
+					'Vania releases the chain and pain go away…'
+					'<i>I feel nothing, there is no pain in the nipples, I feel no pins… just heat</i>'
+					stat['BDSM'] += rand(1,3)
+					gs 'stat'
+
+					if rand (1,5) = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vtv (2).mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/vt ('+rand(1,13)+').jpg"></center>'
+					end
+
+					'"Betsi, now you must do the train by your own."'
+					'"You need to train, and I don''t want to hear any refuses"'
+					'"He puts the chain in my mouth… Here you go… now, pull!!!"'
+
+
+					act 'I don''t want it! I spit out the chain!':
+						*clr & cla
+						pin1 = 0
+						pin2 = 0
+						pin3 = 0
+						willpowermax += 2
+						VaniaMayster -= 3
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+						'I tierd of this shit, Betsi.'
+						act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+					end
+
+					if VaniaMayster >= 100:
+						cla
+						'<i>I obey Vania for so long…</i>'
+						'<i>I can''t say "no" to Vania anymore</i>'
+					end
+
+					if stat['BDSM'] >= 85:
+
+
+						act 'pull the chain up':
+							*clr & cla
+							perfecttits = 1
+							turok += 1
+
+
+
+
+							if rand (1,2) = 1:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/stv.mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/st.jpg"></center>'
+							end
+
+
+
+							'"Perfect!!! Betsi, it''s enought for the lesson."'
+							Vlove += 1
+
+							pcs_mood += rand(10,30)
+							gs 'stat'
+
+							act 'wait': gt 'mod_public_WC_rab_Mayster5', 'tied'
+							VaniaMayster += 1
+							minut += rand(10,20)
+							stat['BDSM'] += rand(1,2)
+							if stat['BDSM'] <= 99 and stat['BDSM'] > 69:
+								'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+
+								gs 'pain', rand(5,8), 'nipples', 'stretch'
+								gs 'stat'
+							elseif stat['BDSM'] > 99:
+								'<i>Yeeees, it feels great!!!</i>'
+								$orgasm_or = 'custom'
+								$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+								gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+								gs 'stat'
+								gs 'pain', rand(0,5), 'nipples', 'stretch'
+								gs 'stat'
+							elseif stat['BDSM'] <= rand (39,69):
+								cla
+								'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+								'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+								'AAA, I take off all the pins!'
+								pin1 = 0
+								pin2 = 0
+								pin3 = 0
+								VaniaMayster -= 3
+								gs 'stat'
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+								'I tierd of this shit, Betsi, you just need to do what I said!'
+								act 'continue': turok -= 1 & gt 'mod_public_WC_rab_Mayster5', 'kara'
+								gs 'pain', rand(6,9), 'nipples', 'stretch'
+								gs 'stat'
+							end
+						end
+					else
+						temp = stat['BDSM']
+						act 'train myself  ' + $func('wrap', 'neg', '(<<temp>> BDSM expirience)'): $func('wrap', 'neg', '<br>I don''t have enough BDSM expirience to use this action.')
+
+					end
+				end
+
+				minut += rand(10,20)
+				if stat['BDSM'] <= 99 and stat['BDSM'] > 69:
+					'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+
+					gs 'pain', rand(5,8), 'nipples', 'stretch'
+					gs 'stat'
+				elseif stat['BDSM'] > 99:
+					'<i>Yeeees, it feels great!!!</i>'
+					$orgasm_or = 'custom'
+					$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+					gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+					gs 'stat'
+					gs 'pain', rand(0,5), 'nipples', 'stretch'
+					gs 'stat'
+				elseif stat['BDSM'] <= rand (39,69):
+					cla
+					'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+					'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+					'AAA, I grab the chain to stop this!'
+					pin1 = 0
+					pin2 = 0
+					pin3 = 0
+					VaniaMayster -= 3
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+					'I tierd of this shit, Betsi, you just need to do what I said!'
+					act 'continue': turok -= 1 & gt 'mod_public_WC_rab_Mayster5', 'kara'
+					gs 'pain', rand(6,9), 'nipples', 'stretch'
+					gs 'stat'
+				end
+			end
+		else
+			temp = rand(1,1)
+			if temp = 1:
+				'"Betsi, now you must do the train by your own."'
+				'"You need to train, and I don''t want to hear any refuses"'
+				'"He puts the chain in my mouth… Here you go… now, pull!!!"'
+
+				act 'I don''t want it! I spit out the chain!':
+					*clr & cla
+					pin1 = 0
+					pin2 = 0
+					pin3 = 0
+					willpowermax += 2
+					VaniaMayster -= 3
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+					'I tierd of this shit, Betsi.'
+					act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+				end
+
+				if VaniaMayster >= 100:
+					cla
+					'<i>I obey Vania for so long…</i>'
+					'<i>I can''t say "no" to Vania anymore</i>'
+				end
+
+				act 'pull the chain up':
+					*clr & cla
+					perfecttits = 1
+					turok += 1
+
+					if rand (1,2) = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/stv.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/pirsing/tits/train/st.jpg"></center>'
+					end
+
+
+
+					'"Perfect!!! Betsi, it''s enought for the lesson."'
+					Vlove += 1
+
+					pcs_mood += rand(10,30)
+					gs 'stat'
+
+
+					if bdsmurok >= 27:
+						act 'wait': gt 'mod_public_WC_rab_Mayster_cycle', 'tied'
+					else
+						act 'wait': gt 'mod_public_WC_rab_Mayster5', 'tied'
+					end
+
+					VaniaMayster += 1
+					minut += rand(10,20)
+					stat['BDSM'] += rand(1,2)
+					if stat['BDSM'] <= 99 and stat['BDSM'] > 69:
+						'<i>I try to explore the pain and opens to it but it''s so damn hard!</i>'
+
+						gs 'pain', rand(5,8), 'nipples', 'stretch'
+						gs 'stat'
+					elseif stat['BDSM'] > 99:
+						'<i>Yeeees, it feels great!!!</i>'
+						$orgasm_or = 'custom'
+						$orgasm_txt = 'I am incredibly turned on! I am overwhelmed with pleasure… I realize I am about to have an orgasm… I moan loudly as my whole body begins to tremble'
+						gs 'arousal', 'BDSM', 15, 'sub', 'unknown'
+						gs 'stat'
+						gs 'pain', rand(0,5), 'nipples', 'stretch'
+						gs 'stat'
+					elseif stat['BDSM'] <= rand (39,69):
+						cla
+						'<i><b>AAAAAAAAAAAAAA PAIN! I can''t stand it!!!</b></i>'
+						'<i><b>PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN! PAIN!!!</b></i>'
+						'AAA, I take off all the pins!'
+						pin1 = 0
+						pin2 = 0
+						pin3 = 0
+						VaniaMayster -= 3
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+						'I tierd of this shit, Betsi, you just need to do what I said!'
+						act 'continue': turok -= 1 & gt 'mod_public_WC_rab_Mayster5', 'kara'
+						gs 'pain', rand(6,9), 'nipples', 'stretch'
+						gs 'stat'
+					end
+				end
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_Mayster5_piercetrain ---------------------------------
+

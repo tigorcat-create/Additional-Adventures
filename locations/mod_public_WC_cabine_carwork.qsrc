@@ -1,0 +1,1754 @@
+# mod_public_WC_cabine_carwork
+if $ARGS[0] = 'start':
+	*clr & cla
+	dpussy = 0
+	Carslut = 0
+	boobssign = 0
+	gs 'npcgeneratec', 0, 'client', rand(15,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	'Thief are going to exit the car…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/rope.jpg"></center>'
+
+	if addictive_trait_lvl >= 1:
+		act 'Hey, mister, I really don''t want to be pregnant, please…':
+			cla
+			persuas_exp += rand(1,5)
+			if pcs_persuas >= rand(0,70):
+				if rand(1,2) = 1:
+					'Alright girl, I do what I can'
+					*nl
+					wait 1000
+					'In a moment he comes back and put a duck tape on my vagina. "Here you are, the best I can do"'
+					dpussy = 1
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/dtape/dpussy.jpg"></center>'
+					act 'Thank you':
+						gt 'mod_public_WC_cabine_carwork', 'work'
+					end
+				else
+					boobssign = 1
+
+					'Ooooh, well, I''ll untie you, because I feel sorry for you…'
+					'…but don''t even try to run away and everything will be fine '
+					'Here''s a sign for you, it can help '
+					'He gives me a "cum on my tits" sign'
+
+
+					gs 'willpower', 'prostitution', 'self', 'hard'
+					if will_cost <= pcs_willpwr:
+						act 'I will be good whore, I want 10%' + $func('willpower', 'get_willcost_string'):
+							cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+
+
+							persuas_exp += rand(1,3)
+							humint_exp += rand(1,3)
+							Carslut = 1
+							gs 'stat'
+
+							if pcs_humint >= rand (0,50) or pcs_persuas >= rand(30,100):
+								Carslut = 10
+								'Hmmm, ok, we''ll see…'
+								act 'continue': gt 'mod_public_WC_cabine_carwork', 'work'
+							else
+								'No, just be good and everything are going to be alright.'
+								act 'agree': gt 'mod_public_WC_cabine_carwork', 'work'
+							end
+						end
+					else
+						act 'I will be good whore, I want 10%' + $func('willpower', 'get_willcost_string'): $noWillpower
+					end
+					act 'Thank you':
+						gt 'mod_public_WC_cabine_carwork', 'work'
+					end
+				end
+			else
+				'He silently exit the car'
+				dpussy = 0
+				act 'continue': gt 'mod_public_WC_cabine_carwork', 'work'
+			end
+		end
+	end
+
+	if fame['pav_prostitute'] >= 200 or fame['city_prostitute'] >= 100 or fame['village_prostitute'] >= 300:
+		'…but he stoped'
+		'…'
+		*nl
+
+		if fame['pav_prostitute'] >= fame['city_prostitute']:
+			$vidoma = 'Pavlovsk'
+			temp = fame['pav_prostitute']
+		else
+			$vidoma = 'city'
+			temp = fame['city_prostitute']
+		end
+
+		if temp >= fame['village_prostitute']:
+			' '
+		else
+			$vidoma = 'village'
+		end
+
+
+		'Hey, Are you that famos <<$vidoma>> slut?'
+
+		killvar 'vidoma'
+		vidoma = temp
+
+		gs 'willpower', 'misc', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'yes, I am' + $func('willpower', 'get_willcost_string'):
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				'Hmmm, let''s make a deal: I will not add new doses of drugs, and untie you but you work until the last client. Agree?'
+				act 'yes':
+					cla
+					Carslut = 1
+					'Good, lte''s work'
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'work'
+				end
+
+				if pcs_humint >= rand (0,50) or pcs_persuas >= rand(30,100):
+					act 'yes, and 10% is mine':
+						persuas_exp += rand(1,3)
+						humint_exp += rand(1,3)
+						Carslut = 1
+						gs 'stat'
+						cla
+						if pcs_humint >= rand (0,50) or pcs_persuas >= rand(30,100):
+							Carslut = 10
+							'Hmmm, agree'
+							act 'continue': gt 'mod_public_WC_cabine_carwork', 'work'
+						else
+							'No, only 0%'
+							act 'agree': gt 'mod_public_WC_cabine_carwork', 'work'
+						end
+					end
+
+
+					act 'yes, and 20% is mine':
+						persuas_exp += rand(1,3)
+						humint_exp += rand(1,3)
+						Carslut = 1
+						gs 'stat'
+						cla
+						if pcs_humint >= rand (20,70) or pcs_persuas >= rand(50,120):
+							Carslut = 20
+							'Hmmm, you must be very good, agree.'
+							act 'continue': gt 'mod_public_WC_cabine_carwork', 'work'
+						else
+							'No, only 0%'
+							act 'agree': gt 'mod_public_WC_cabine_carwork', 'work'
+						end
+					end
+				end
+
+				act 'no': gt 'mod_public_WC_cabine_carwork', 'work'
+			end
+		else
+			act 'yes, I am' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+	act 'I am too stoned and can do nothing…': gt 'mod_public_WC_cabine_carwork', 'work'
+end
+
+
+
+if $ARGS[0] = 'work':
+	*clr & cla
+	'Thief came out and I heard that in a few minutes all the doors of the car opened'
+	if Carslut = 0 and boobssign = 0:
+		'He lifted me closer to the open back door '
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/rope.jpg"></center>'
+	end
+
+	vidoma = vidoma / 10
+	clienty = rand(1, vidoma)
+	killvar 'vidoma'
+
+	if clienty > 30: clienty = 30
+	if clienty < 10: clienty = 10
+
+	if dpussy = 1:
+		'the duck tape protects my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/dtape/dpussy.jpg"></center>'
+	end
+	if Carslut > 0: 'I think, I am a real slut…'
+	if boobssign = 1: 'I hope the sign works'
+
+	if clienty = 10:
+		'It''s hard to tell, but I see 10 men around'
+	elseif clienty < 20:
+		'It''s hard to tell, but I see 20 men around'
+	else
+		'It''s hard to tell, but I see a crowd!'
+	end
+
+	'first man in a line come to my "manager" pay, and now is going to me…'
+	groshi = 0
+	nomer = 0
+	hochyt = 100
+
+	if Carslut > 0 or boobssign = 1:
+		'I am ready to pleasure first client'
+	end
+	if boobssign = 1:
+		'Here is my sign I will use it and I hope it can protect me from pregnancy.'
+	end
+
+	if Carslut > 0 or boobssign = 1:
+		act 'wait for the client':	 gt 'mod_public_WC_cabine_carwork', 'cherga'
+	else
+		act 'it''s starts':	 gt 'mod_public_WC_cabine_carwork', 'chergabind'
+	end
+end
+
+if npc_loyality >= 70    and npc_loyality < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'cherga':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/wait/wait ('+rand(1,10)+').jpg"></center>'
+
+	menu_off = 0
+	slutty += rand(0,1)
+	guy += 1
+	gs 'npcgeneratec', 0, 'client', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	gs 'fame', 'pav', 'prostitute', rand(0,1)
+	gs 'fame', 'city', 'prostitute', rand(0,1)
+	gs 'fame', 'village', 'prostitute', rand(0,1)
+	gs 'stat'
+	clienty -= 1
+	groshi += rand(1,10)*hochyt
+	nomer += 1
+	gs 'stat'
+
+	temp = ( hochyt / 20 )
+	if rand (temp, 18) = 18 and nomer >= 5:
+		'I see a new man here'
+		clienty += 1
+	end
+
+	if pcs_mdlng >= 30 and nomer = 1:
+		act 'undress and pose before start to cheer up men':
+			*clr & cla
+			mdlng_exp += 3
+			minut += rand(3,6)
+			inhib_exp += rand(1,3)
+			gs 'clothing', 'strip'
+			gs 'stat'
+			hochyt += 50
+			guy -= 1
+			clienty += 1
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/ad_befor_start.mp4"></video></center>'
+			act 'they are ready… I remove my panties':
+				gs 'underwear', 'remove'
+				gs 'stat'
+				gt 'mod_public_WC_cabine_carwork', 'cherga'
+			end
+		end
+	end
+
+
+
+	act 'wait for a client':
+		cla
+		'He comes to me'
+		'He obviously wants…'
+		atemp = rand(1,3)
+		if atemp = 1:
+			'…to fuck me.'
+			act 'let him fuck me':
+				*clr & cla
+				'In a shor time he say he want to cum'
+				temp = rand (1,61)
+				if temp <= 39:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/vag/vagv ('+rand(1,10)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/vag/vag ('+rand(1,10)+').jpg"></center>'
+				end
+				gs 'arousal', 'vaginal', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				if boobssign = 1:
+					act 'show him the sign':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/sign/sign ('+rand(1,2)+').jpg"></center>'
+						temp = rand(nomer, 40)
+						if temp >= 35:
+							'"Pff, I don''t care"'
+							if rand (1,2) = 1:
+								temp = rand (1,12)
+								if temp <= 7:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/in/vagv ('+rand(1,7)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/in/vag ('+rand(1,5)+').jpg"></center>'
+								end
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								gs 'cuminsidereact', 'client'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								temp = rand (1,9)
+								if temp <= 6:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/on/vagv ('+rand(1,6)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/on/vag ('+rand(1,3)+').jpg"></center>'
+								end
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'labia', $npclastgenerated, 0
+								gs 'cum_call', 'stomach', $npclastgenerated, 0
+								if $clothingworntype ! 'nude':
+									gs 'cum_call', 'pantyfront', $npclastgenerated, 0
+									gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+									gs 'cum_call', 'clothes', $npclastgenerated, 0
+								end
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+
+						else
+							'"Well, ok…"'
+							'he cums on my tits'
+							if $clothingworntype = 'nude':
+								temp = rand (1,14)
+								if temp <= 4:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/vag/vagv ('+rand(1,4)+').mp4"></video></center>'
+								elseif temp <= 6:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/titsv ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/tits ('+rand(1,8)+').jpg"></center>'
+								end
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'stomach', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+						end
+						act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+					end
+				end
+				act 'let him cum':
+					*clr & cla
+					if rand (1,2) = 1:
+						temp = rand (1,12)
+						if temp <= 7:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/in/vagv ('+rand(1,7)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/in/vag ('+rand(1,5)+').jpg"></center>'
+						end
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'vagina', $npclastgenerated, 0
+						gs 'cuminsidereact', 'client'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						temp = rand (1,9)
+						if temp <= 6:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/on/vagv ('+rand(1,6)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/vag/on/vag ('+rand(1,3)+').jpg"></center>'
+						end
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'labia', $npclastgenerated, 0
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'pantyfront', $npclastgenerated, 0
+							gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+			end
+		elseif atemp = 2:
+			'…to fuck my ass.'
+			act 'let him fuck my ass':
+				*clr & cla
+				'In a shor time he say he want to cum'
+				temp = rand (1,9)
+				if temp <= 6:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ass/assv ('+rand(1,6)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ass/ass ('+rand(1,3)+').jpg"></center>'
+				end
+				gs 'arousal', 'anal', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				if boobssign = 1:
+					act 'show him the sign':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/sign/sign ('+rand(1,2)+').jpg"></center>'
+						temp = rand(nomer, 40)
+						if temp >= 35:
+							'"Pff, I don''t care"'
+							if rand (1,2) = 1:
+
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/in/assv ('+rand(1,3)+').mp4"></video></center>'
+
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'anus', $npclastgenerated, 0
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								if $clothingworntype = 'nude':
+									temp = rand (1,7)
+									if temp <= 2:
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/on/assv ('+rand(1,2)+').mp4"></video></center>'
+									else
+										'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/on/ass ('+rand(1,5)+').jpg"></center>'
+									end
+									gs 'boyStat', $npclastgenerated
+									gs 'cum_call', 'butt', $npclastgenerated, 0
+									gs 'cum_call', 'back', $npclastgenerated, 0
+									gs 'cum_call', 'legs', $npclastgenerated, 0
+									gs 'arousal', 'end'
+									gs 'stat'
+								else
+
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+
+									gs 'boyStat', $npclastgenerated
+									gs 'cum_call', 'butt', $npclastgenerated, 0
+									gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+									gs 'cum_call', 'clothes', $npclastgenerated, 0
+									gs 'cum_call', 'legs', $npclastgenerated, 0
+									gs 'arousal', 'end'
+									gs 'stat'
+								end
+							end
+						else
+							'"Well, ok…"'
+							'he cums on my tits'
+							if $clothingworntype = 'nude':
+								temp = rand (1,10)
+								if temp <= 2:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/titsv ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/tits ('+rand(1,8)+').jpg"></center>'
+								end
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'stomach', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+						end
+						act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+					end
+				end
+				act 'let him cum':
+					*clr & cla
+					if rand (1,2) = 1:
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/in/assv ('+rand(1,3)+').mp4"></video></center>'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'anus', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						if $clothingworntype = 'nude':
+							temp = rand (1,7)
+							if temp <= 2:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/on/assv ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/on/ass ('+rand(1,5)+').jpg"></center>'
+							end
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'back', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/ass/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+					end
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+			end
+		elseif atemp = 3:
+			'a blowjob.'
+			act 'suck his cock':
+				*clr & cla
+				'In a shor time he say he want to cum'
+				temp = rand (1,10)
+				if temp <= 3:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/bj/bjv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/bj/bj ('+rand(1,7)+').jpg"></center>'
+				end
+				gs 'arousal', 'bj', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				if boobssign = 1:
+					act 'show him the sign':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/sign/sign ('+rand(1,2)+').jpg"></center>'
+						temp = rand(nomer, 40)
+						if temp >= 35:
+							'"Pff, I don''t care"'
+							if rand (1,2) = 1:
+
+								temp = rand (1,22)
+								if temp <= 17:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bjv ('+rand(1,10)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bj ('+rand(1,5)+').jpg"></center>'
+								end
+
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								if $clothingworntype = 'nude':
+									temp = rand (1,17)
+									if temp <= 6:
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/bjv ('+rand(1,6)+').mp4"></video></center>'
+									else
+										'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/bj ('+rand(1,11)+').jpg"></center>'
+									end
+									gs 'boyStat', $npclastgenerated
+									gs 'cum_call', 'arms', $npclastgenerated, 0
+									gs 'cum_call', 'face', $npclastgenerated, 0
+									gs 'cum_call', 'hands', $npclastgenerated, 0
+									gs 'cum_call', 'breasts', $npclastgenerated, 0
+									gs 'cum_call', 'hair', $npclastgenerated, 0
+									gs 'arousal', 'end'
+									gs 'stat'
+								else
+
+									temp = rand (1,7)
+									if temp <= 4:
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bjv ('+rand(1,4)+').mp4"></video></center>'
+									else
+										'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bj ('+rand(1,3)+').jpg"></center>'
+									end
+
+									gs 'boyStat', $npclastgenerated
+									gs 'cum_call', 'clothes', $npclastgenerated, 0
+									gs 'cum_call', 'hands', $npclastgenerated, 0
+									gs 'cum_call', 'face', $npclastgenerated, 0
+									gs 'cum_call', 'hair', $npclastgenerated, 0
+									gs 'arousal', 'end'
+									gs 'stat'
+								end
+							end
+						else
+							'"Well, ok…"'
+							'he cums on my tits'
+							if $clothingworntype = 'nude':
+								temp = rand (1,3)
+								if temp <= 2:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/bj/bjv (2).mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/bj/bj.jpg"></center>'
+								end
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'stomach', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+								gs 'cum_call', 'breasts', $npclastgenerated, 0
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+					end
+				end
+				act 'let him cum':
+					*clr & cla
+					if rand (1,2) = 1:
+
+						temp = rand (1,22)
+						if temp <= 17:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bjv ('+rand(1,10)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bj ('+rand(1,5)+').jpg"></center>'
+						end
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						if $clothingworntype = 'nude':
+							temp = rand (1,17)
+							if temp <= 6:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/bjv ('+rand(1,6)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/bj ('+rand(1,11)+').jpg"></center>'
+							end
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'arms', $npclastgenerated, 0
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+						else
+							temp = rand (1,7)
+							if temp <= 4:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bjv ('+rand(1,4)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bj ('+rand(1,3)+').jpg"></center>'
+							end
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+			end
+		end
+	end
+
+	if bimbolevel >= 2 and clienty >= 1:
+		act 'ask who came with friend and want to cum with friend…':
+			cla
+			hochyt += 20
+			slutty += rand(0,1)
+			guy += 1
+			nomer += 1
+			clienty -= 1
+			groshi += rand(5,10)*hochyt
+			'one more man joins'
+			act 'suck the guys':
+				*clr & cla
+				'In 10 minuts they are ready to came…'
+				temp = rand (1,7)
+				if temp <= 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/2d/2dv.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/2d/2d ('+rand(1,6)+').jpg"></center>'
+				end
+				gs 'arousal', 'bj', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				gs 'arousal', 'hj', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				act 'show the sign':
+					*clr & cla
+					'"They gives five eachother and cums on my tits"'
+					if $clothingworntype = 'nude':
+						temp = rand (1,3)
+						if temp <= 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2dv.mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2d ('+rand(1,2)+').jpg"></center>'
+						end
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+
+				act 'let them cum':
+					*clr & cla
+					atemp = rand (1,3)
+
+					if atemp = 1:
+						if $clothingworntype ! 'nude':
+							'They ripped my top'
+							inhib_exp += rand(1,2)
+							gs 'clothing', 'strip'
+							gs 'stat'
+						end
+						'One of them fills my mouth while other spray my tummy'
+
+						temp = rand (1,8)
+						if temp <= 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/jyvit/jyvitv.mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/jyvit/jyvit ('+rand(1,7)+').jpg"></center>'
+						end
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'labia', $npclastgenerated, 0
+						gs 'cum_call', 'legs', $npclastgenerated, 0
+						gs 'cum_call', 'arms', $npclastgenerated, 0
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+
+						temp = rand (1,22)
+						if temp <= 17:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bjv ('+rand(1,10)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bj ('+rand(1,5)+').jpg"></center>'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					elseif atemp = 2:
+						'They flooded my face'
+						if $clothingworntype = 'nude':
+							temp = rand (1,5)
+							if temp <= 3:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/face/2dv ('+rand(1,3)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/face/2d ('+rand(1,2)+').jpg"></center>'
+							end
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+							temp = rand (1,7)
+							if temp <= 4:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bjv ('+rand(1,4)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/on/odiag/odiag_bj ('+rand(1,3)+').jpg"></center>'
+							end
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'hands', $npclastgenerated, 0
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'cum_call', 'hair', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+					else
+						'They finished on my tits'
+						if $clothingworntype = 'nude':
+							temp = rand (1,3)
+							if temp <= 1:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2dv.mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2d ('+rand(1,2)+').jpg"></center>'
+							end
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+							gs 'cum_call', 'breasts', $npclastgenerated, 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+					end
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+			end
+
+			act 'Guys, spitFork me!':
+				*clr & cla
+				'In 10 minuts they are ready to came…'
+				temp = rand (1,1)
+				if temp <= 3:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/split/splitv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/split/split ('+rand(1,8)+').jpg"></center>'
+				end
+				gs 'arousal', 'bj', 5, 'unknown', 'prostitution'
+				gs 'stat'
+				gs 'arousal', 'vaginal', 5, 'unknown', 'prostitution'
+				gs 'stat'
+
+				act 'show the sign':
+					*clr & cla
+					'"They gives five eachother and cums on my tits"'
+					if $clothingworntype = 'nude':
+						temp = rand (1,3)
+						if temp <= 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2dv.mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/2d/tits/2d ('+rand(1,2)+').jpg"></center>'
+						end
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/tits/odiag/odiag ('+rand(1,4)+').jpg"></center>'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+
+				act 'let them cum':
+					*clr & cla
+					act 'continue': gt 'mod_public_WC_cabine_carwork', 'next'
+					if $clothingworntype ! 'nude':
+						'They ripped my top'
+						inhib_exp += rand(1,2)
+						gs 'clothing', 'strip'
+						gs 'stat'
+					end
+					'One of them fills my mouth while other spray my tummy'
+
+					temp = rand (1,8)
+					if temp <= 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/jyvit/jyvitv.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/jyvit/jyvit ('+rand(1,7)+').jpg"></center>'
+					end
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'labia', $npclastgenerated, 0
+					gs 'cum_call', 'legs', $npclastgenerated, 0
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					temp = rand (1,22)
+					if temp <= 17:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bjv ('+rand(1,10)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/face/in/bj ('+rand(1,5)+').jpg"></center>'
+					end
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+		end
+	end
+
+
+	if nomer >= 3:
+		gs 'willpower', 'prostitution', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'advertise myself' + $func('willpower', 'get_willcost_string'):
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+
+				if strapNumber ! 0:
+					act 'use a <<(strapNumber +1)*5>>cm dildo':
+						*clr & cla
+						hochyt += rand(10,30)
+						gs 'npcgeneratec', 0, 'dildo', (strapNumber +1)*5
+						gs 'boyStat', $npclastgenerated
+						gs 'arousal', 'vaginal_dildo', 10, 'unknown', 'prostitution'
+						gs 'stat'
+						'I use a dildo to tease a public'
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/dildo/dildo ('+rand(1,4)+').jpg"></center>'
+						act 'Continue': gt 'mod_public_WC_cabine_carwork', 'next'
+					end
+				end
+
+				act 'tease guys':
+					*clr & cla
+					hochyt += rand(5,20)
+					gs 'arousal', 'flash', 10, 'prostitution'
+					gs 'stat'
+					gs 'arousal', 'masturbate', 10, 'prostitution'
+					gs 'stat'
+					'I flash in front of strangers'
+					temp = rand(1,10)
+					if temp <= 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/tease/teasev.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/tease/tease ('+rand(1,9)+').jpg"></center>'
+					end
+					act 'Continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+
+				act 'sit on a towbar':
+					*clr & cla
+					hochyt += rand(25,25)
+					gs 'npcgeneratec', 0, 'towbar', 30
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'vaginal_dildo', 10, 'exhibitionism', 'humiliation'
+					gs 'stat'
+					'I sit on the towbar…'
+					'I have sex with the car XD'
+					if rand(1,2) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/pricep/pricep.jpg"></center>'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/pricep/pricepv.mp4"></video></center>'
+					end
+					act 'Continue': gt 'mod_public_WC_cabine_carwork', 'next'
+				end
+			end
+		else
+			act 'advertise myself' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+
+
+	if nomer >= 10 and rand(1,5) = 1:
+		'I see a car stoppes not far. and the guy look at me with shocked eyes…'
+		act 'Come to that car and ask guy to join':
+			*clr & cla
+			hochyt += 30
+			minut += 5
+			'The guy can''t look away from my hot body and sluty tits…'
+			'"Hey, honey, want to join?"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/stopedcarask/join.jpg"></center>'
+			if pcs_humint >= rand(0,50) or pcs_persuas >= rand(30,70):
+				clienty += 1
+				'"Y-y-e-e-s"'
+				*nl
+				'Nice, come with me!'
+				humint_exp += 2
+				persuas_exp += 2
+				gs 'stat'
+				act 'go to "my" car': gt 'mod_public_WC_cabine_carwork', 'next'
+			else
+				'He look at me and "Hmmm…"'
+				act 'jingle my boobs':
+					cla
+					humint_exp += 1
+					minut += 3
+					gs 'stat'
+
+					if pcs_humint >= rand(0,50) or pcs_persuas >= rand(30,70):
+						clienty += 1
+						'"Y-y-e-e-s"'
+						*nl
+						'Nice, come with me!'
+						act 'go to "my" car': gt 'mod_public_WC_cabine_carwork', 'next'
+					else
+						'Naah, bye, slut.'
+						'He rides away'
+						act 'go to "my" car': gt 'mod_public_WC_cabine_carwork', 'next'
+					end
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/free/ad/stopedcarask/movetits.mp4"></video></center>'
+				end
+
+				act 'go to "my" car': gt 'mod_public_WC_cabine_carwork', 'next'
+			end
+		end
+	end
+
+	if hochyt <= 100:
+		' '
+	elseif hochyt < 200:
+		'The guys totally want me!'
+	elseif hochyt < 300:
+		'The guys absolutely crazy about me!'
+	elseif hochyt < 350 and clienty >= 3:
+		'I am afraid a little about this crowd.'
+	elseif hochyt >= 350 and clienty >= 3:
+		*clr & cla
+		'I heard a noise from the queue'
+		'The boys in the queue were tired of waiting'
+		'Few guy comes to me… One of the slightly pushed the curent client and wishper him something…'
+		*nl
+		'and the other come to me and rapidly grab me and pushed in the hands of other'
+		'Many-many hands starts to touch me anywhere… I feel kisses'
+		*nl
+		'The guys are too aroused… I need to listen them.'
+		act 'OMG! their eyes are crazy!': gt 'mod_public_WC_cabine_carwork', 'orgiya'
+	end
+end
+
+if $ARGS[0] = 'next':
+	*clr & cla
+	menu_off = 0
+	if nomer >= 10: hochyt -= rand(0,8)
+
+	if clienty < 10:
+		'It''s <<clienty>> clients around me.'
+	elseif clienty = 10:
+		'It''s hard to tell, but I see 10 men around'
+	elseif clienty < 20:
+		'It''s hard to tell, but I see 20 men around'
+	else
+		'It''s hard to tell, but I see a crowd!'
+	end
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			minut += 3
+			inhib_exp += rand(0,1)
+			'Now I am naked'
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'You put your clothes back on.'
+			gs 'stat'
+		end
+	end
+
+	'Next man in a line come to my "manager" pay, and now is going to me…'
+	act 'next':	 gt 'mod_public_WC_cabine_carwork', 'cherga'
+
+
+	if clienty <= 0:
+		*clr & cla
+		'There are no more clients here…'
+		temp = rand (1,6)
+		if temp <= 2:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/all/allv ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/cum/all/all ('+rand(1,4)+').jpg"></center>'
+		end
+
+
+		if $clothingworntype = 'nude':
+			act 'Get dressed':
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'You put your clothes back on.'
+				gs 'stat'
+			end
+		end
+
+
+
+		if Carslut >= 10:
+			act 'ask for money':
+				cla
+				'Ok girl, here is your part'
+				temp = groshi * Carslut/100
+				'He gives me <<temp>>'
+				money += groshi * Carslut/100
+				gs 'stat'
+				killvar 'Carslut'
+				killvar 'nomer'
+				killvar 'clienty'
+
+
+				act 'ask for a ride':
+					cla
+					'Ok girl, lets go'
+					wait 800
+					'He rides me to Pavlovsk'
+					minut += 40
+					gs 'stat'
+					act 'Exit the car': gt 'pav_commercial'
+				end
+				act 'go to the forest':
+					gt 'gad_forest', 'forest_center'
+				end
+			end
+		end
+
+		act 'ask for a ride':
+			cla
+			'Ok girl, lets go'
+			wait 800
+			'He rides me to Pavlovsk'
+			minut += 40
+			gs 'stat'
+			act 'Exit the car': gt 'pav_commercial'
+		end
+		act 'go to the forest':
+			gt 'gad_forest', 'forest_center'
+		end
+	end
+end
+
+if $ARGS[0] = 'chergabind':
+	*clr & cla
+	rape += 1
+	gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	'Then everything was like a dream. A group of men raped me. I noticed that they initially transfer money to the thief.'
+
+	'Apart from the incomprehensible gurgling, I couldn''t say anything to them, and my mouth was always full of dicks…'
+	'Time to time my manager add me more drugs…'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/bind/wait/wait ('+rand(1,3)+').jpg"></center>'
+
+	act 'Continue':
+		*clr & cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/wc/events/90/5carsoldevent/torgivlia.mp4"></video></center>'
+
+		minut += rand(15, 70)
+		temp = rand(1,3)
+		gs 'arousal_funcs', 'stretch', 'vaginal', rand(1, clienty)
+		gs 'arousal_funcs', 'stretch', 'oral', rand(1,clienty)
+		gs 'arousal_funcs', 'stretch', 'anal', rand(1, clienty)
+		stat['swallow'] += rand(1, clienty)
+		facial += rand(1, clienty)
+		sex += rand(1, clienty)
+		guy += rand(1, clienty)
+		gs 'fame', 'pav', 'prostitute', 3
+		gs 'fame', 'city', 'prostitute', 2
+		gs 'fame', 'village', 'prostitute', 5
+		gs 'arousal', 'bj', rand(15,15*temp), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+		gs 'arousal', 'vaginal', rand(15,15*temp), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+		gs 'arousal', 'anal', rand(15,15*temp), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+		gs 'stat'
+		if temp = 1:
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 20
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 60
+			gs 'cum_call', 'clothes', 'an unknown guy from the car', 0, 1, -1, 180
+			gs 'cum_call', 'stomach', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'breasts', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'hair', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'labia', 'an unknown guy from the car', 0, 1, -1, 40
+			gs 'cum_call', 'butt', 'an unknown guy from the car', 0, 1, -1, 40
+			gs 'stat'
+		elseif temp = 2:
+			gs 'arousal', 'anal', rand(1,15), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 20
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 60
+			gs 'cum_call', 'clothes', 'an unknown guy from the car', 0, 1, -1, 180
+			gs 'cum_call', 'back', 'an unknown guy from the car', 0, 1, -1, 70
+			gs 'cum_call', 'hair', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'butt', 'an unknown guy from the car', 0, 1, -1, 40
+			gs 'cum_call', 'anus', 'an unknown guy from the car', 0, 1, -1, 120
+			gs 'stat'
+		elseif temp = 3:
+			gs 'arousal', 'anal', rand(1,15), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+			gs 'arousal', 'hj', rand(1,15), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+			gs 'arousal', 'titjob', rand(1,15), 'rough', 'prostitution', 'group', 'unknown', 'gangbang'
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 20
+			gs 'cum_call', 'face', 'an unknown guy from the car', 0, 1, -1, 60
+			gs 'cum_call', 'clothes', 'an unknown guy from the car', 0, 1, -1, 180
+			gs 'cum_call', 'back', 'an unknown guy from the car', 0, 1, -1, 70
+			gs 'cum_call', 'arms', 'an unknown guy from the car', 0, 1, -1, 50
+			gs 'cum_call', 'hands', 'an unknown guy from the car', 0, 1, -1, 20
+			gs 'cum_call', 'stomach', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'breasts', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'hair', 'an unknown guy from the car', 0, 1, -1, 100
+			gs 'cum_call', 'labia', 'an unknown guy from the car', 0, 1, -1, 40
+			gs 'cum_call', 'butt', 'an unknown guy from the car', 0, 1, -1, 40
+			gs 'cum_call', 'anus', 'an unknown guy from the car', 0, 1, -1, 120
+			gs 'stat'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'drugs', 'aphrodisiac'
+		gs 'drugs', 'heroin'
+		mc_inventory['amphetamine'] += 1
+		mc_inventory['aphrodisiac'] += 1
+		gs 'stat'
+
+		gs 'drugs', 'aphrodisiac'
+		gs 'drugs', 'heroin'
+		mc_inventory['amphetamine'] += 1
+		mc_inventory['aphrodisiac'] += 1
+		gs 'stat'
+
+		gs 'drugs', 'aphrodisiac'
+		gs 'drugs', 'heroin'
+		mc_inventory['amphetamine'] += 1
+		mc_inventory['aphrodisiac'] += 1
+		gs 'stat'
+
+
+		if bimbolevel > 0:
+			'The Fuckparade is over. The guys were aggressive, but it''s always nice to please the man.'
+			mood += 10 * bimbolevel
+		else
+			mood -= 10 * temp
+			'Finally it''s over.'
+		end
+
+		act 'I remember only some fragments of what was going on':
+			clr & cla
+			'I can remember only some fragments of what was going on'
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/bind/wait/wait ('+rand(1,3)+').jpg"></center>'
+			act 'blurred memories':
+				gt 'mod_public_WC_cabine_carwork_blurred', 'start'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'orgiya':
+	*clr & cla
+	'In a short time they stoped to groped me and start to fuck me…'
+	gs 'arousal', 'kiss', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+	gs 'arousal', 'foreplay', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+	gs 'stat'
+	guy += clienty
+	gang += 1
+
+	gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/110 '+rand(1,10)+'.mp4"></video></center>'
+
+	act 'continue':
+		*clr & cla
+		'Men changes one by one, sometimes cuming on me'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/110 '+rand(1,10)+'.mp4"></video></center>'
+		gs 'arousal', 'vaginal', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+		gs 'arousal', 'bj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+		gs 'arousal', 'hj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+		minut -= 20
+		gs 'stat'
+
+
+		temp = rand(1,3)
+		if temp = 1:
+			gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+			gs 'boyStat', $npclastgenerated
+			gs 'stat'
+			temp = rand (1,3)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum back 1.mp4"></video></center>'
+				gs 'cum_call', 'butt', $npclastgenerated, 0
+				gs 'cum_call', 'back', $npclastgenerated, 0
+				gs 'cum_call', 'legs', $npclastgenerated, 0
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				if $clothingworntype ! 'nude':
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+				end
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			elseif temp = 2:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum bj '+rand(1,7)+'.mp4"></video></center>'
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'cum_call', 'hands', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'cum_call', 'hair', $npclastgenerated, 0
+				if $clothingworntype ! 'nude':
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+				end
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum hj '+rand(1,3)+'.mp4"></video></center>'
+				gs 'cum_call', 'hands', $npclastgenerated, 0
+				gs 'cum_call', 'legs', $npclastgenerated, 0
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				if $clothingworntype ! 'nude':
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+				end
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		end
+		act 'continue':
+			*clr & cla
+			'Wow, they starts to use my ass'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/101 '+rand(1,3)+'.mp4"></video></center>'
+			gs 'arousal', 'anal', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+			gs 'arousal', 'bj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+			gs 'arousal', 'hj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+			minut -= 20
+			gs 'stat'
+
+
+			temp = rand(1,3)
+			if temp = 1:
+				gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+				gs 'boyStat', $npclastgenerated
+				gs 'stat'
+				temp = rand (1,3)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum back 1.mp4"></video></center>'
+					gs 'cum_call', 'butt', $npclastgenerated, 0
+					gs 'cum_call', 'back', $npclastgenerated, 0
+					gs 'cum_call', 'legs', $npclastgenerated, 0
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					if $clothingworntype ! 'nude':
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+					end
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				elseif temp = 2:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum bj '+rand(1,7)+'.mp4"></video></center>'
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'cum_call', 'hair', $npclastgenerated, 0
+					if $clothingworntype ! 'nude':
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+					end
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum hj '+rand(1,3)+'.mp4"></video></center>'
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'cum_call', 'legs', $npclastgenerated, 0
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'stomach', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					if $clothingworntype ! 'nude':
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+					end
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+			act 'continue':
+				*clr & cla
+				'Aaaaaghhh, there are to many dicks in me'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/111 '+rand(1,7)+'.mp4"></video></center>'
+				gs 'arousal', 'anal', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+				gs 'arousal', 'vaginal', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+				gs 'arousal', 'bj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+				gs 'arousal', 'hj', 10, 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+				minut -= 20
+				gs 'stat'
+
+
+				temp = rand(1,3)
+				if temp = 1:
+					gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+					gs 'boyStat', $npclastgenerated
+					gs 'stat'
+					temp = rand (1,3)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum back 1.mp4"></video></center>'
+						gs 'cum_call', 'butt', $npclastgenerated, 0
+						gs 'cum_call', 'back', $npclastgenerated, 0
+						gs 'cum_call', 'legs', $npclastgenerated, 0
+						gs 'cum_call', 'arms', $npclastgenerated, 0
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+						end
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					elseif temp = 2:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum bj '+rand(1,7)+'.mp4"></video></center>'
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'cum_call', 'mouth', $npclastgenerated, 0
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						gs 'cum_call', 'hair', $npclastgenerated, 0
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+						end
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum hj '+rand(1,3)+'.mp4"></video></center>'
+						gs 'cum_call', 'hands', $npclastgenerated, 0
+						gs 'cum_call', 'legs', $npclastgenerated, 0
+						gs 'cum_call', 'arms', $npclastgenerated, 0
+						gs 'cum_call', 'face', $npclastgenerated, 0
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+						if $clothingworntype ! 'nude':
+							gs 'cum_call', 'clothes', $npclastgenerated, 0
+						end
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+				end
+
+				act 'continue':
+					*clr & cla
+					'they are lay me on my stomach and grabs my butt up.'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass ready.mp4"></video></center>'
+					gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+					gs 'stat'
+
+					act 'wait':
+						*clr & cla
+						'They cums on me one by one…'
+						temp = clienty
+						if clienty >= 11: temp = 11
+						if temp >= 3:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 1.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+							wait 200
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 2.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+							wait 200
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 3.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 4:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 4.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 5:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 5.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 6:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 6.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 7:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 7.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 8:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 8.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 9:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 9.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 10:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 10.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						if temp >= 11:
+							gs 'npcgeneratec', 0, 'rapist', rand(10,30)
+							gs 'boyStat', $npclastgenerated
+							gs 'stat'
+							gs 'arousal', 'rimming', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass 11.mp4"></video></center>'
+							gs 'cum_call', 'anus', $npclastgenerated, 0
+							gs 'cum_call', 'butt', $npclastgenerated, 0
+							gs 'cum_call', 'legs', $npclastgenerated, 0
+							gs 'cum_call', 'stomach', $npclastgenerated, 0
+							if $clothingworntype ! 'nude':
+								gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+								gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+								gs 'cum_call', 'clothes', $npclastgenerated, 0
+							end
+							wait 200
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						act 'show them my ass':
+							*clr & cla
+							gs 'arousal', 'flash', rand(1,10), 'sub', 'rough', 'prostitution', 'group', 'gangbang', 'unknown', 'rape'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/5carsoldevent/work/gbr/cum/cum ass last.mp4"></video></center>'
+							'The men began to leave…'
+							*nl
+							minut += 5
+							gs 'stat'
+							'in a 5 minutes I am finally allone…'
+
+							if rand (1,2) = 1:
+								'I found some money'
+								temp = rand(1,40)
+								money += groshi * temp/100
+								gs 'stat'
+							end
+
+							act 'look around where am I':
+								killvar 'Carslut'
+								killvar 'nomer'
+								killvar 'clienty'
+								if rand (1,2) = 1:
+									gt 'gad_forest', 'forest_center'
+								else
+									nroad = 11
+									gt 'road'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+--- mod_public_WC_cabine_carwork ---------------------------------
+

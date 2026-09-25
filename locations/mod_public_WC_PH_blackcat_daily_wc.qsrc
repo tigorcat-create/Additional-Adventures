@@ -1,0 +1,339 @@
+# mod_public_WC_PH_blackcat_daily_wc
+if $ARGS[0] = 'wcr':	
+	*clr & cla
+	$location_type = 'bathroom'
+	$locclass = 'restroom'
+	
+	$metka = 'wcr'
+	$loc = 'mod_public_WC_PH_blackcat_daily_wc'
+	$loc_arg = 'wcr'
+	
+	$menu_loc = 'mod_public_WC_PH_blackcat_daily_wc'
+	$menu_arg = 'wcr'
+	
+	menu_off = 0
+	
+	$locM = 'mod_public_WC_PH_blackcat_daily_wc'
+	$locM_arg = 'wcr'
+	
+	$func('wrap', 'header center b', 'WC')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/wc.jpg"></center>'
+
+	act 'Look in the mirror': gt 'mirror', 'start'
+	if pcs_hairbsh = 0: act 'Brush your hair': gt 'mirror', 'brush'
+
+	dynamic $tampon
+	dynamic $quickwash
+	dynamic $basin
+	dynamic $publicpan
+	
+	
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			cla
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			act 'continue': gt 'mod_public_WC_PH_blackcat_daily_wc', 'wcr'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			cla
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put your clothes back on.'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_PH_blackcat_daily_wc', 'wcr'
+		end
+	end	
+	
+	
+	if camwhore = 1:
+		act 'Make a stream on "Fansonly"':
+			cla
+			'I start a stream and explain what is going on:'
+			'"Hello, my fans! I have a surprise content for you!"'
+			'"today we will hunt for the big black  cock!"'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/stream/wc/wc_start.mp4"></video></center>'
+			CLOSE ALL
+			
+			act 'wait for the "prey"':
+				cla
+				minut += 15
+				gs 'stat'
+				
+				if camclients <= 0:camclients = 0
+				tokenpay = tokens * 2
+				'You have earned <<tokens>> tokens so far this session, which amounts to <<tokenpay>> <b>₽</b>.'
+				
+				gs 'mod_public_WC_PH_blackcat_daily_wc', 'cam'
+				
+				temp = rand(2,6)				
+				if temp = 6:
+					gt 'mod_public_WC_PH_blackcat_daily', 'streamwc'
+				else
+					act 'Leave': gt 'mod_public_WC_PH_blackcat_daily', 'wcr'
+					
+					act 'wait more':
+						cla
+						temp += 1
+						minut += 15
+						gs 'stat'
+						
+						if camclients <= 0:camclients = 0
+						tokenpay = tokens * 2
+						'You have earned <<tokens>> tokens so far this session, which amounts to <<tokenpay>> <b>₽</b>.'
+						
+						gs 'mod_public_WC_PH_blackcat_daily_wc', 'cam'					
+						
+						if temp = 6:
+							gt 'mod_public_WC_PH_blackcat_daily', 'streamwc'
+						else
+							act 'Leave': gt 'mod_public_WC_PH_blackcat_daily', 'wcr'							
+							
+							if $pantyworntype ! 'none':
+								act 'undress panties and put it on the door knob outside':									
+									minut += 3
+									inhib_exp += rand(0,1)
+									
+									gs 'panties', 'remove'
+									gs 'stat'
+									temp = 5
+									sexcorrupt += 1												
+								end
+							end
+							
+							act 'wait more':
+								cla
+								temp += 1
+								minut += 15
+								gs 'stat'
+								
+								if camclients <= 0:camclients = 0
+								tokenpay = tokens * 2
+								'You have earned <<tokens>> tokens so far this session, which amounts to <<tokenpay>> <b>₽</b>.'
+								
+								gs 'mod_public_WC_PH_blackcat_daily_wc', 'cam'
+								
+								if temp = 6:
+									gt 'mod_public_WC_PH_blackcat_daily', 'streamwc'
+								else
+									act 'Leave': gt 'mod_public_WC_PH_blackcat_daily', 'wcr'
+									
+									if $pantyworntype ! 'none':
+										act 'undress panties and put it on the door knob outside':									
+											minut += 3
+											inhib_exp += rand(0,1)
+											
+											gs 'panties', 'remove'
+											gs 'stat'
+											temp = 5
+											sexcorrupt += 1												
+										end
+									end									
+									
+									act 'wait more':
+										cla
+										temp += 1
+										minut += 15
+										gs 'stat'
+										
+										if camclients <= 0:camclients = 0
+										tokenpay = tokens * 2
+										'You have earned <<tokens>> tokens so far this session, which amounts to <<tokenpay>> <b>₽</b>.'
+										
+										gs 'mod_public_WC_PH_blackcat_daily_wc', 'cam'										
+										
+										if temp = 6:
+											gt 'mod_public_WC_PH_blackcat_daily', 'streamwc'
+										else
+											act 'Leave': gt 'mod_public_WC_PH_blackcat_daily', 'wcr'							
+											
+											if $pantyworntype ! 'none':
+												act 'undress panties and put it on the door knob outside':									
+													minut += 3
+													inhib_exp += rand(0,1)
+													
+													gs 'panties', 'remove'
+													gs 'stat'
+													temp = 5
+													sexcorrupt += 1												
+												end
+											end
+											
+											act 'wait more':
+												cla
+												temp += 1
+												minut += 15
+												gs 'stat'
+												
+												if camclients <= 0:camclients = 0
+												tokenpay = tokens * 2
+												'You have earned <<tokens>> tokens so far this session, which amounts to <<tokenpay>> <b>₽</b>.'
+												
+												gs 'mod_public_WC_PH_blackcat_daily_wc', 'cam'												
+												
+												gt 'mod_public_WC_PH_blackcat_daily', 'streamwc'
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end			
+		end
+	end
+	
+	
+	act 'Leave':
+		killvar 'ktemp'
+		gt 'mod_public_WC_PH_blackcat_daily', 'start'
+	end
+	
+	if rand (1,5) = 1 and ktemp ! 501:
+		cla
+		'There is a guy in here!'
+		'"Well-well, what do we got here)))" - he look at me from the bottom to the top. "Yup, bend over, I want to fuck you!"'
+		
+		if catpay ! 0: 
+			act '"Agree, cash only"':
+				cla
+				'"nice!"'
+				otemp = 1
+				act 'bend over': gt 'mod_public_WC_PH_blackcat_daily', 'wc'
+			end
+		end
+		
+		act 'agree':
+			cla
+			'"nice!"'				
+			act 'bend over': gt 'mod_public_WC_PH_blackcat_daily', 'wc'				
+		end
+	end
+end
+
+if $ARGS[0] = 'wc':
+	*clr & cla	
+	
+	'He fucks me from behind'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/WC '+rand(1,2)+'.mp4"></video></center>'
+	gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	$boy[0] = $boy
+	gs 'arousal', 'vaginal', rand(5,10), 'sub'
+	gs 'stat'
+	
+	act 'continue':
+		*clr & cla	
+		'And he cums in a short time…'
+		'…deep inside my pussy'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/cum/vagv (3).mp4"></video></center>'
+		gs 'cum_call','',$boy
+		gs 'cuminsidereact', $boydesc
+		gs 'stat'
+		
+		happycats += 1
+		gs 'arousal', 'end'
+		gs 'stat'		
+		if otemp ! 0: 'he gives few bills to me'
+		money += 50*catpay*rand(1,3)*otemp
+		gs 'stat'
+		if phwork = 7: phwhoreshift -= 1
+		
+		if $locM = 'mod_public_WC_rab_WC':
+			act 'continue':
+				ktemp = 501
+				gt 'mod_public_WC_rab_WC', 'start'
+			end
+		else		
+			act 'continue':
+				killvar 'otemp' 
+				killvar 'ktemp'
+				ktemp = 501
+				gt 'mod_public_WC_PH_blackcat_daily', 'wcr'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'cam':
+	if pcs_apprnc < 100:
+		if webpopular < 15:
+			if mfcclients > 5:
+				camclients -= rand(1,3)
+			else
+				camclients += rand(1,3)
+			end
+		elseif webpopular >= 15 and webpopular < 35:
+			if mfcclients > 3:
+				camclients -= rand(3,5)
+			else
+				camclients += rand(3,5)
+			end
+		elseif webpopular >= 35 and webpopular < 75:
+			if mfcclients > 3:
+				camclients -= rand(4,8)
+			else
+				camclients += rand(4,8)
+			end
+		elseif webpopular >= 75:
+			if mfcclients > 3:
+				camclients -= rand(5,15)
+			else
+				camclients += rand(5,15)
+			end
+		end
+		chancetips = rand(0,100)
+		clientask = rand(20,100)
+		if chancetips >= 95 and camclients >= 250:
+			if webpopular >= 50:
+				tokens += rand(10,30)
+			else
+				tokens += rand(1,20)
+			end
+		end
+	else
+		if webpopular < 15:
+			if mfcclients > 5:
+				camclients -= rand(1,3)
+			else
+				camclients += rand(3,5)
+			end
+		elseif webpopular >= 15 and webpopular < 35:
+			if mfcclients > 5:
+				camclients -= rand(3,5)
+			else
+				camclients += rand(5,8)
+			end
+		elseif webpopular >= 35 and webpopular < 75:
+			if mfcclients > 5:
+				camclients -= rand(5,8)
+			else
+				camclients += rand(5,12)
+			end
+		elseif webpopular >= 75:
+			if mfcclients > 5:
+				camclients -= rand(8,12)
+			else
+				camclients += rand(8,15)
+			end
+		end
+		chancetips = rand(5,100)
+		clientask = rand(30,100)
+		if chancetips >= 95 and camclients >= 200:
+			if webpopular >= 50:
+				tokens += rand(10,40)
+			else
+				tokens += rand(1,20)
+			end
+		end
+	end
+end
+--- mod_public_WC_PH_blackcat_daily_wc ---------------------------------
+

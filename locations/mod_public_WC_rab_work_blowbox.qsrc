@@ -1,0 +1,817 @@
+# mod_public_WC_rab_work_blowbox
+if $ARGS[0] = 'start':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_blowbox'
+	$metka = 'start'
+	gs 'stat'
+	*clr & cla
+	bglass = 0
+	bcilg = 0
+	bcil = 0
+	bminut = 0
+	bhour = hour + 2
+	if bhour >= 24:
+		bhour -= 24
+	else
+		bhour = 0
+	end
+
+	if vladajob12 = 1:
+		'I was met by a gloomy big bruiser and told to follow him. After walking through the shabby corridors for a few minutes, he led me into a hall with a box of holes in the middle. '
+		'Deftly opening the locks, he lifted the lid of the box and said "Climb" without fail.'
+		vladajob12 = 0
+	else
+		'I was met by the same gloomy Mordovorot and told to follow him. When he opened the box, he was too lazy to even say anything, he just started looking at me impatiently. '
+	end
+	act 'Refuse':
+		if bcilg > 3:
+			*clr & cla
+			'I''m tired of it'
+			shtraf += 1
+			'He grabbed me like a straw, broke me and chained me to the mounts in the box.'
+			'My mouth and ass are in front of the holes, and I can''t remove them because of the fasteners that hold me.'
+			'The lid on top closed me in a box'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/inbox_bb.jpg"></center>'
+			act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+		if bcilg > 0:
+			'My patience is not limitless'
+			bcilg += 1
+		else
+			'We can do it the easy way, or another way'
+			bcilg += 1
+		end
+	end
+	act 'Climb into the box':
+		*clr & cla
+		'I''m covered with a lid and I can hear the locks closing.'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/lie down.jpg"></center>'
+		act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bb'
+	end
+	act 'I changed my mind, take me back to Yana':
+		if bcilg > 3:
+			*clr & cla
+			'I''m tired of it'
+			shtraf += 1
+			'He grabbed me like a straw, broke me and chained me to the mounts in the box.'
+			'My mouth and ass are in front of the holes, and I can''t remove them because of the fasteners that hold me.'
+			'The lid on top closed me in a box'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/inbox_bb.jpg"></center>'
+			act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+		if bcilg > 0:
+			'I''ve already answered'
+			bcilg += 1
+		else
+			'Yana will not change purpose'
+			bcilg += 1
+		end
+	end
+	act 'Ask why the chains and fasteners are in the box.':
+		if bcilg > 3:
+			*clr & cla
+			'I''m tired of it'
+			shtraf += 1
+			'He grabbed me like a straw, broke me and chained me to the mounts in the box.'
+			'My mouth and ass are in front of the holes, and I can''t remove them because of the fasteners that hold me.'
+			'The lid on top closed me in a box'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/inbox_bb.jpg"></center>'
+			act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+		if bcilg > 0:
+			'I''ve already answered'
+			bcilg += 1
+		else
+			'for disobedience, climb already'
+			bcilg += 1
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bb_skuta':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_blowbox'
+	bminut = 1
+	gs 'stat'
+	*clr & cla
+
+	dick = rand(14,30)
+	npc_dick[$npclastgenerated] = dick
+
+	if temp = 12456:
+		'Big guy bring me to some hall with box.'
+
+		'He put me in the box and chained me.'
+		'My mouth and ass are in front of the holes, and I can''t remove them because of the fasteners that hold me.'
+		'The lid on top closed me in a box'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind_work2.jpg"></center>'
+		bglass = 0
+		bcilg = 4
+		bcil = 0
+		bminut = 0
+		bhour = hour + 2
+
+		if bhour >= 24:
+			bhour -= 24
+		else
+			bhour = 0
+		end
+	end
+
+
+	if hour >= bhour:
+		'Because of the awkward posture the body hurts'
+		gs 'pain', rand(0,1), 'back', 'labor'
+		gs 'pain', rand(0,1), 'hips', 'labor'
+		gs 'pain', rand(0,1), 'thighs', 'labor'
+		gs 'pain', rand(0,1), 'legL', 'labor'
+		gs 'pain', rand(0,1), 'legR', 'labor'
+		gs 'pain', rand(0,1), 'shoulders', 'labor'
+		gs 'pain', rand(0,1), 'armL', 'labor'
+		gs 'pain', rand(0,1), 'armr', 'labor'
+		gs 'pain', rand(0,1), 'chest', 'labor'
+		temp = bhour + 2
+		gs 'stat'
+		if hour >= temp:
+			'Because of the shackles the body hurts'
+			gs 'pain', rand(0,1), 'head', 'labor'
+			gs 'pain', rand(0,1), 'neck', 'labor'
+			gs 'pain', rand(0,1), 'feet', 'labor'
+			gs 'pain', rand(0,1), 'handR', 'labor'
+			gs 'pain', rand(0,1), 'handl', 'labor'
+			gs 'pain', rand(0,1), 'wrists', 'labor'
+			gs 'pain', rand(0,1), 'ankles', 'labor'
+			gs 'stat'
+		end
+	end
+
+	temp = rand(1,3)
+	if temp = 1: 'I hear the door open and someone walks up to me'
+	if temp = 2: 'A man''s voice, clearly annoyed, complains to himself about the lack of time.'
+	if temp = 3: 'I hear several people jokingly entering each other''s room'
+	minut += 5
+	temp = rand(1,8)
+
+	if temp = 3 or temp = 4:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_bj_enter.mp4"></video></center>'
+		wait 800
+	elseif temp < 3:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_wait'+rand(1,2)+'.mp4"></video></center>'
+	end
+
+
+	if temp < 3:
+		'The noise is moving away, it''s not up to me.'
+		minut += rand(5,15)
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+	elseif temp < 5:
+		'A member pushed into my mouth'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_bj_start1.mp4"></video></center>'
+
+		guy += 1
+		stat['bj'] += 1
+		gs 'arousal', 'bj', rand(5,15), 'bound', 'sub', 'gloryhole'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(3,20)
+			'After <<temp>> min he finished'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_bj'+rand(1,2)+'.mp4"></video></center>'
+			temp = rand(1,2)
+			if temp = 1:
+				spafinloc = 11
+				facial += 1
+			end
+			if temp = 2:
+				spafinloc = 12
+				stat['swallow'] += 1
+			end
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+	elseif temp < 7:
+		'I was implanted in the vagina'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_sex_sart'+rand(1,2)+'.mp4"></video></center>'
+
+
+		guy += 1
+		stat['vaginal'] += 1
+		gs 'arousal', 'vaginal', rand(5,15), 'bound', 'sub', 'gloryhole'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(5,20)
+			'After <<temp>> min he finished'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_sex'+rand(1,6)+'.mp4"></video></center>'
+			temp = rand(1,2)
+			if temp = 1: spafinloc = 0
+			if temp = 2: spafinloc = 4
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+	elseif temp = 7:
+		'I was inserted in the ass'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_sex1.mp4"></video></center>'
+
+
+		guy += 1
+		stat['anal'] += 1
+		gs 'arousal', 'anal', rand(5,15), 'bound', 'sub', 'gloryhole'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(5,15)
+			'After <<temp>> min he finished'
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/asscumv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/asscum ('+rand(1,2)+').jpg"></center>'
+			end
+			temp = rand(1,2)
+			if temp = 1: spafinloc = 3
+			if temp = 2: spafinloc = 4
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+	else
+		'I was inserted right in front and behind.'
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_2d.jpg"></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_2d_start'+rand(1,2)+'.mp4"></video></center>'
+		end
+
+		guy += 1
+		stat['bj'] += 1
+		gs 'arousal', 'bj', rand(2,8), 'bound', 'sub', 'gloryhole'
+
+
+		guy += 1
+		stat['vaginal'] += 1
+		gs 'arousal', 'vaginal', rand(3,7), 'bound', 'sub', 'gloryhole'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			temp = rand(10,15)
+			'After <<temp>> min they finished'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/bind_2d'+rand(1,2)+'.mp4"></video></center>'
+			if temp = 1:
+				spafinloc = 11
+				facial += 1
+			end
+			if temp = 2:
+				spafinloc = 12
+				stat['swallow'] += 1
+			end
+			gs 'cum_manage'
+			temp = rand(1,2)
+			if temp = 1: spafinloc = 0
+			if temp = 2: spafinloc = 4
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+		end
+	end
+	if hour >= 10 and hour < 21:
+		*clr & cla
+		'The lid opened, the bouncer unchained me. "You can go to Yana."'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/inbox.jpg"></center>'
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+	end
+	if hour >= 10 and hour < 21 and Yana = 3:
+		*clr & cla
+		'The lid opened, the mouthpiece unchained me.'
+		'There is Yana stands in front of me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/inbox.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+
+		if ryska >= 1:
+			cla
+			Yana = 2
+			'"I see a symbol on you. Yes you are skilled, I want to see you other day here"'
+			'"Now, you can go home"'
+			'Yana go away and the bruser helps me to dress up and sit in the marshrutka'
+			act 'Continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+				minut += rand(20,40)
+				gs 'stat'
+				'in a short time I come back to the park'
+				act 'continue': gt 'mod_public_WC_PH_come', 'start'
+			end
+		else
+			cla
+			Yana = 1
+			'"I see no symbols on you. You just waste our time."'
+			'"Vlad!"'
+			'Yana go away and the bruser helps me to dress up and sit in the marshrutka'
+			act 'Continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+				minut += rand(20,40)
+				gs 'stat'
+				'in a short time I come back to the park'
+				act 'continue': gt 'mod_public_WC_PH_come', 'start'
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'bb':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_blowbox'
+	bminut = 2
+	gs 'stat'
+	*clr & cla
+
+
+
+	bcilg = 0
+	bglass = 0
+
+
+	temp = bhour + 2
+	if hour >= temp:
+		act 'stretch muscles by changing posture':
+			bhour = hour
+			'now it''s much easier…'
+		end
+		'Because of the awkward posture the body hurts'
+		gs 'pain', rand(0,1), 'back', 'labor'
+		gs 'pain', rand(0,1), 'hips', 'labor'
+		gs 'pain', rand(0,1), 'thighs', 'labor'
+		gs 'pain', rand(0,1), 'legL', 'labor'
+		gs 'pain', rand(0,1), 'legR', 'labor'
+		gs 'pain', rand(0,1), 'shoulders', 'labor'
+		gs 'pain', rand(0,1), 'armL', 'labor'
+		gs 'pain', rand(0,1), 'armr', 'labor'
+		gs 'pain', rand(0,1), 'chest', 'labor'
+		gs 'stat'
+	end
+	minut += rand(5,15)
+	gs 'stat'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/lieinbox.jpg"></center>'
+
+	temp = rand(1,2)
+	if temp = 1: 'Dead silence in the hall'
+	if temp = 2: 'I hear someone come into the hall.'
+
+
+	if temp = 1:
+		act 'stretch muscles by changing posture':
+			'It became a little easier to grind muscles and if possible stretching'
+			bhour = hour
+		end
+		act 'wait':
+			minut += rand(5,15)
+			gs 'stat'
+			gt 'mod_public_WC_rab_work_blowbox', 'bb'
+		end
+	else
+		gs 'npcgeneratec', 0
+		act 'wait':
+			*clr & cla
+			minut += rand(1,5)
+			gs 'stat'
+			temp = rand(1,2)
+			if temp = 1:
+				'Through the hole in front  <<dick>> cm dick advanced'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/start (1).jpg"></center>'
+				act 'Start to work': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+				if pcs_agil >= rand(60,80):
+					act 'Try to turn around in the box and get to work': gt 'mod_public_WC_rab_work_blowbox', 'sex'
+				end
+			else
+				'Through the hole in the back  <<dick>> dick advanced'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/start_sex.jpg"></center>'
+				act 'Go to'' case ': gt 'mod_public_WC_rab_work_blowbox', 'sex'
+				if pcs_agil >= rand(60,80):
+					act 'Try to turn around in the box and get to work': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+				end
+			end
+		end
+		act 'look into the hole':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/look.jpg"></center>'
+			act	'Encourage him in a languid voice to insert in front':
+				*clr & cla
+				persuas_exp += rand(0,1)
+				pcs_humint += rand(0,1)
+				temp = rand(20,60)
+				if pcs_humint >= temp or pcs_persuas >= temp:
+					'He gladly agrees'
+					act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+				else
+					'He doesn''t pay any attention to my words'
+					temp = rand(1,2)
+					if temp = 1:
+						'He pushed from the front'
+						act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+					else
+						'He pushed from the back'
+						act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'sex'
+					end
+				end
+			end
+			act	'Encourage him in a languid voice to insert from behind':
+				*clr & cla
+				persuas_exp += rand(0,1)
+				pcs_humint += rand(0,1)
+				temp = rand(20,60)
+				if pcs_humint >= temp or pcs_persuas >= temp:
+					'He gladly agrees'
+					act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'sex'
+				else
+					'He doesn''t pay any attention to my words'
+					temp = rand(1,2)
+					if temp = 1:
+						'He pushed from the front'
+						act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+					else
+						'He pushed from the back'
+						act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'sex'
+					end
+				end
+			end
+			if guy >= 150 or bimbolevel >= 2 or stat['bj'] >= 100:
+				act 'push your mouth and tongue through the hole and salivate':
+					*clr & cla
+					temp = rand(1,4)
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/tongue (<<temp>>).jpg"></center>'
+					minut += 5
+					wait 500
+					'I tasted a dick in my mouth'
+					temp = rand(1,3)
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/start (<<temp>>).jpg"></center>'
+					act 'Continue': gt 'mod_public_WC_rab_work_blowbox', 'bj'
+				end
+			end
+			act 'Tell him how I want his <<dick>> cm dick':
+				minut += 5
+				temp = rand(20,60)
+				if dick >= 16 and pcs_persuas >= temp and bcil = 0:
+					'From the passion in his eyes, I knew he liked it'
+					bcil += 1
+				elseif dick >= 12:
+					'It looks like he give no attention to my words.'
+				end
+				if dick < 12:
+					'Don''t make fun of me'
+					bcil -= 1
+					if bcil < 0:
+						bcil = 0
+						shtraf += 1
+					end
+				end
+			end
+		end
+	end
+	if hour >= 10 and hour < 21:
+		*clr & cla
+		'The lid opened, the mouthpiece helped me out. "You can go to Yana."'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/box/lie down.jpg"></center>'
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+	end
+end
+
+
+
+if $ARGS[0] = 'bj':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_blowbox'
+	gs 'stat'
+	*clr & cla
+	temp = rand(1,4)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/start (<<temp>>).mp4"></video></center>'
+	if bcilg = 1: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/tits.mp4"></video></center>'
+	act 'suck':
+
+		guy += 1
+		stat['bj'] += 1
+		gs 'arousal', 'bj', rand(5,15), 'sub', 'gloryhole'
+		gs 'stat'
+		*clr & cla
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,2)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/bj (<<temp>>).mp4"></video></center>'
+		else
+			temp = rand(1,2)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bj (<<temp>>).jpg"></center>'
+		end
+		if stat['bj'] >= 70:
+			act 'Show your skills':
+				*clr & cla
+				gs 'arousal', 'bj', rand(5,15), 'sub', 'gloryhole'
+				gs 'stat'
+				'He sounds like on the edge'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/bjcool.mp4"></video></center>'
+				bcil += 1
+				temp = rand(3,10) + stat['bj']/10
+				if temp > 10: bcil += 1
+				act 'He cums':
+					*clr & cla
+					spafinloc = 12
+					stat['swallow'] += 1
+					gs 'cum_manage'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/cum.mp4"></video></center>'
+					if bcil >= 3 and ryska < 10:
+						ryska += 1
+						'Ow, sheet, it was good. He drew a symbol on my face '
+					end
+					if bcil > 0:
+						'Some money is moving into my box'
+						money += rand(1,3)*bcil*rand(50,100)
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Continue':
+						bcil = 0
+						bcilg = 0
+						if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+					end
+				end
+			end
+		end
+		act 'He cums':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/cum.mp4"></video></center>'
+			if bcil >= 3 and ryska < 10:
+				ryska += 1
+				'Ow, sheet, it was good. He drew a symbol on my face '
+			end
+			if bcil > 0:
+				'Some money is moving into my box'
+				money += rand(1,3)*bcil*rand(50,100)
+			end
+			spafinloc = 12
+			stat['swallow'] += 1
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Continue':
+				bcil = 0
+				bcilg = 0
+				if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+				if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+			end
+		end
+	end
+	if bcilg = 0:
+		act 'open gates and show my tits':
+			gs 'arousal', 'flash', 2, 'sub'
+			temp = rand(1,3)
+			if temp = 1: bcil += 1
+			bcilg = 1
+			gt 'mod_public_WC_rab_work_blowbox', 'bj'
+		end
+	end
+	if stat['bj'] >= 40:
+		act 'suck the head':
+			temp = rand(1,3)
+			bglass += temp
+
+			guy += 1
+			stat['bj'] += 1
+			gs 'arousal', 'bj', 5, 'sub', 'gloryhole'
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/head.mp4"></video></center>'
+			bcil += rand(0,1)
+			temp = rand(3,10) + stat['bj']/10
+			if temp > 10: bcil += rand(0,1)
+			if bglass > 4:
+				*clr & cla
+				bcil -= 2
+				'he cums'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/cum.mp4"></video></center>'
+				spafinloc = 12
+				stat['swallow'] += 1
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				if bcil >= 3:
+					if bcil > 0:
+						'Some money is moving into my box'
+						money += rand(1,3)*bcil*rand(50,100)
+					end
+					bcil = 0
+					bcilg = 0
+					bglass = 0
+					'Ow, sheet, it was good.'
+					if bcil >= 3 and ryska < 10:
+						ryska += 1
+						' He painted a symbol on my face'
+					end
+					act 'Continue':
+						if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+					end
+				elseif bcil > 0:
+					bcil = 0
+					bcilg = 0
+					bglass = 0
+					'Girl, I want blowjob but lickjob.'
+					shtraf += 1
+					act 'Continue':
+						if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+					end
+				else
+					bcil = 0
+					bcilg = 0
+					bglass = 0
+					'Stupid cunt! Learn how to blowjob, you just play with dick when I want god suck!'
+					shtraf += rand(2,6)
+					act 'Continue':
+						if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sex':
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_blowbox'
+	gs 'stat'
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/start_sex.jpg"></center>'
+	if bglass = 1: 'I beg him to fuck me like a meat'
+	if stat['anal'] >= 10:
+		act 'Change the hole (use my ass)':
+			*clr & cla
+			temp = rand(1,3)
+			if temp = 3: bcil += 1
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/sex1.mp4"></video></center>'
+
+
+			guy += 1
+			stat['anal'] += 1
+			gs 'arousal', 'anal', rand(5,15), 'sub', 'gloryhole'
+			gs 'stat'
+			if stat['anal'] >= 50:
+				act 'Show your skills':
+					*clr & cla
+					'He sounds like on the edge'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/sex1.mp4"></video></center>'
+					bcil += 1
+					temp = rand(3,10) + stat['anal']/10
+					if temp > 10: bcil += 1
+					act 'He cums':
+						*clr & cla
+						temp = rand(1,2)
+						if temp = 1: spafinloc = 3
+						if temp = 2: spafinloc = 4
+						gs 'cum_manage'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/asscumv ('+rand(1,2)+').mp4"></video></center>'
+						if bcil >= 3 and ryska < 10: ryska += 1 & 'Ow, sheet, it was good. He drew a symbol on my face '
+						if bcil > 0:
+							'Some money is moving into my box'
+							money += rand(1,3)*bcil*rand(50,100)
+						end
+						act 'Continue':
+							bglass = 0
+							bcil = 0
+							bcilg = 0
+							if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+							if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+						end
+					end
+				end
+			end
+			act 'Continue':
+				*clr & cla
+				'He cums'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/bind/asscumv ('+rand(1,2)+').mp4"></video></center>'
+				if bcil >= 3 and ryska < 10: ryska += 1 & 'Ow, sheet, it was good. He drew a symbol on my face '
+				if bcil > 0: 'Some money is moving into my box' & money += rand(1,3)*bcil*rand(50,100)
+				temp = rand(1,2)
+				if temp = 1: spafinloc = 3
+				if temp = 2: spafinloc = 4
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Continue':
+					bglass = 0
+					bcil = 0
+					bcilg = 0
+					if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+					if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+				end
+			end
+		end
+	end
+	act 'Move my hips to fuck':
+		*clr & cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/sex1.mp4"></video></center>'
+
+
+		guy += 1
+		stat['vaginal'] += 1
+		gs 'arousal', 'vaginal', rand(5,15), 'bound', 'sub', 'gloryhole'
+		gs 'stat'
+		if stat['vaginal'] >= 50:
+			act 'Show your skills':
+				*clr & cla
+				'He sounds like on the edge'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/sex1.mp4"></video></center>'
+				bcil += 1
+				temp = rand(3,10) + stat['bj']/10
+			if temp > 10: bcil += 1
+				act 'He cums':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/pie ('+rand(1,2)+').mp4"></video></center>'
+					if bcil >= 3 and ryska < 10: ryska += 1 & 'Ow, sheet, it was good. He drew a symbol on my face '
+					if bcil > 0: 'Some money is moving into my box' & money += rand(1,3)*bcil*rand(50,100)
+					temp = rand(1,2)
+					if temp = 1: spafinloc = 0
+					if temp = 2: spafinloc = 4
+					gs 'cum_manage'
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Continue':
+						bglass = 0
+						bcil = 0
+						bcilg = 0
+						if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+					end
+				end
+			end
+		end
+		act 'He cums':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/bb/v/pie ('+rand(1,2)+').mp4"></video></center>'
+			if bcil >= 3 and ryska < 10:
+				ryska += 1
+				'Ow, sheet, it was good. He drew a symbol on my face '
+			end
+			if bcil > 0:
+				'Some money is moving into my box'
+				money += rand(1,3)*bcil*rand(50,100)
+			end
+			temp = rand(1,2)
+			if temp = 1: spafinloc = 0
+			if temp = 2: spafinloc = 4
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Continue':
+				bglass = 0
+				bcil = 0
+				bcilg = 0
+				if bminut = 1: gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+				if bminut = 2: gt 'mod_public_WC_rab_work_blowbox', 'bb'
+			end
+		end
+	end
+	if rape >= 10 and bglass = 0:
+		act 'Remember how I was raped. Trying to awaken his beast instincts':
+			temp = rand(1,5) + rape/10
+			if temp < 5:
+				bcil += 1
+			else
+				bcil += 2
+			end
+			bglass = 1
+			gt 'mod_public_WC_rab_work_blowbox', 'sex'
+		end
+	end
+end
+
+--- mod_public_WC_rab_work_blowbox ---------------------------------
+

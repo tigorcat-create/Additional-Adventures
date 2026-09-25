@@ -1,0 +1,635 @@
+# mod_public_WC_street_box_magicwhore
+if $ARGS[0] = 'task_randomiser': 
+	!! gs 'mod_public_WC_street_box_magicwhore', 'task_randomiser'
+	
+	if otemp = 1325:
+		otemp += 1
+		act 'Open my eyes': gt 'mod_public_WC_street_box', 'start'
+	end
+	
+	if rand(1,2) = 1:
+		$PHtasktype = 'neutral'
+		PHneutral = 0
+		PHlight += 1
+		PHdark += 1
+	else
+		if rand(-100,100) + (PHmwrstat/2) > 0:
+			$PHtasktype = 'light'
+			PHneutral += 1
+			PHlight = 0
+			PHdark += 1
+		else
+			$PHtasktype = 'dark'
+			PHneutral += 1
+			PHlight += 1
+			PHdark = 0
+		end
+	end
+	
+	if PHneutral >= 5:
+		$PHtasktype = 'neutral'
+		PHneutral = 0
+		PHlight += 1
+		PHdark += 1
+	elseif PHlight >= 4:
+		$PHtasktype = 'light'
+		PHneutral += 1
+		PHlight = 0
+		PHdark += 1		
+	elseif PHdark >= 4:
+		$PHtasktype = 'dark'
+		PHneutral += 1
+		PHlight += 1
+		PHdark = 0		
+	end
+	
+	
+	!! if 1=1:
+		!$PHtasktype = 'neutral'	
+		!! PHtaskrand = 20
+	!! end
+	
+	
+	if $PHtasktype = 'neutral':
+		PHtaskrand = rand(1,100)
+		if PHtaskrand <= 20:
+			!! otherworld
+			$PHtargetloc = '1 otherworls'
+			PH_full_pay = 1000
+			
+			'Whoreweb: "The client founded (neutral): request: "threesome in the Avatar XV world". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_crazy_scientiest.jpg"></center>'
+			'CLIENT: "I own some fun to my friends from the Avatar XV world. Make the best moments for them!"'
+			'CLIENT: "You need to know, this species lost all muscle strenght just after orgasm, don''t worry about that."'
+			
+			
+			act 'Agree "threesome in the Avatar XV world"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '1 otherworls'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '1 otherworls'
+			end			
+		elseif PHtaskrand <= 75:
+			!! dolls
+			$PHtargetloc = '5 dolls'
+			PH_full_pay = rand(40,70)*10
+			
+			'Whoreweb: "The client founded (neutral): request: "Sexdoll". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_crazy_scientiest.jpg"></center>'
+			'CLIENT: "I have a bussiness with the best sex dolls in the Univers. But my secret is, there are not dolls, but vessel-portals. And I teleport whores to dolls, when clients use it"'
+			'CLIENT: "You need just to do nothing, till client uses you as the sex doll"'
+			
+			
+			act 'Agree "Sexdoll"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '5 dolls'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '5 dolls'
+			end	
+		elseif PHtaskrand <= 100:
+			!! clones
+			$PHtargetloc = '6 clones'
+			if rand(1,5) ! 1:				
+				if rand(1,3) ! 1:					
+					if rand(1,3) ! 1:
+						!! 1 guy
+						phtemp = 1
+						PH_full_pay = rand(90,160)*10
+						
+						'Whoreweb: "The client founded (neutral): request: "Whore-twins". Price is <<PH_full_pay>> "'
+						*nl
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_mage.jpg"></center>'
+						
+						'CLIENT: "I want twin-whores to pleasure me"'
+						!! 'CLIENT: ""'
+					else
+						!! old
+						phtemp = 2
+						PH_full_pay = rand(110,190)*10
+						
+						'Whoreweb: "The client founded (neutral): Whore-twins. Price is <<PH_full_pay>> "'
+						*nl
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_mage.jpg"></center>'
+						
+						'CLIENT: "I want twin-whores to pleasure me"'
+						!! 'CLIENT: ""'
+					end
+				else
+					!! 2 guys
+					phtemp = 3
+					PH_full_pay = rand(90,190)*10
+					
+					'Whoreweb: "The client founded (neutral): Whore-twins. Price is <<PH_full_pay>> "'
+					*nl
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+					!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_mage.jpg"></center>'
+					
+					'CLIENT: "I want twin-whores to pleasure me and my friend"'
+					!! 'CLIENT: ""'
+				end
+				
+				
+				if spellKnown['clone'] = 1:
+					act 'Agree "Whore-twins"':
+						magicwhore += 1
+						PHMAGICWORKNOW = 1
+						$PHtargetloc = '6 clones'
+						
+						gt 'mod_public_WC_street_box_magicwhore_sex', '6 clones'
+					end
+				else
+					act 'Agree': 'I need to learn the "clone" spell to make this request'
+				end
+			else				
+				!! 3 girls
+				phtemp = 4
+				PH_full_pay = rand(120,200)*10
+				
+				'Whoreweb: "The client founded (neutral): "Whore-triplets". Price is <<PH_full_pay>> "'
+				*nl
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+				!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_mage.jpg"></center>'
+				
+				'CLIENT: "I want triplets-whores to pleasure me"'
+				!! 'CLIENT: ""'
+				
+				
+				if spellKnown['multiclone'] = 1:
+					act 'Agree "Whore-triplets"':
+						magicwhore += 1
+						PHMAGICWORKNOW = 1
+						$PHtargetloc = '6 clones'
+						
+						gt 'mod_public_WC_street_box_magicwhore_sex', '6 clones'
+					end
+				else
+					act 'Agree': 'I need to learn the "multi-clone" spell to make this request'
+				end
+			end
+		end		
+	elseif $PHtasktype = 'light':		
+		if PH_consanguinity_L = 0:
+			temp = rand(1,10)
+		elseif PH_consanguinity_L = 1:
+			temp = rand(1,20)
+		elseif PH_consanguinity_L = 2:
+			temp = rand(1,70)
+		elseif PH_consanguinity_L = 3:
+			temp = rand(1,150)
+		elseif PH_consanguinity_L = 4:
+			if WCzoo > 0:
+				temp = rand(1,200)
+			else
+				temp = rand(1,150)
+			end
+		end
+		
+		if temp <= 10:
+			!! cultist
+			$PHtargetloc = '15 Сultist'
+			PH_full_pay = rand(20,50)*10
+			
+			'Whoreweb: "The client founded (light): request: "Overpersuasion". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CULTIST: "We have captured Evil forces young acolyte"'
+			'CULTIST: "You need just to use your sex weapon to Persuade him to switch sides"'
+			
+			
+			act 'Agree "Overpersuasion"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				phtemp = 1
+				$PHtargetloc = '15 Сultist'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '15 Сultist'
+			end
+		elseif temp <= 20:
+			!! mavka
+			$PHtargetloc = '14 Mavka'
+			PH_full_pay = rand(40,100)*10
+			
+			'Whoreweb: "The client founded (light): request: "Cultist Reward". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_nature_spirit.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'NATURE SPIRIT: "Sometimes our young cultist makes a rithual to lure a mavka to fuck her. It''s okey to do it. They are young…"'
+			'NATURE SPIRIT: "But our young cultists do not know, that the mavka they lured are whores from the Whoreweb."'
+			'NATURE SPIRIT: "You need to play drugged mavka role"'
+			
+			
+			act 'Agree "Cultist Reward"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1	
+				$PHtargetloc = '14 Mavka'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '14 Mavka'
+			end
+		elseif temp <= 50:
+			!! mermaid
+			$PHtargetloc = '13 Mermaid'
+			PH_full_pay = rand(48,120)*10
+			
+			'Whoreweb: "The client founded (light): request: "Remove guard". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_nature_spirit.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'NATURE SPIRIT: "We need to enter sucured camp of the Dark Forces. The camp is on the island. "'
+			'NATURE SPIRIT: "We will transform you into Mermaid, you need to distract the guard."'
+			!! 'NATURE SPIRIT: "You need to play drugged mavka role"'
+			
+			
+			act 'Agree "Remove guard"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1	
+				$PHtargetloc = '13 Mermaid'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '13 Mermaid'
+			end
+		elseif temp <= 80:
+			!! pixie
+			$PHtargetloc = '4 pixie'
+			PH_full_pay = rand(48,120)*10
+			
+			'Whoreweb: "The client founded (light): request: "Leader engage". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_nature_spirit.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'NATURE SPIRIT: "One of our Officers has low morale and curesed by disluck"'
+			'NATURE SPIRIT: "We will transform you into Pixie. All the Pixies, as you know, is enchanted with the powerfull magic."'
+			'NATURE SPIRIT: "You need to make as much pleaure to him as you can to dispel the curse and improve his morale."'
+			
+			
+			act 'Agree "Leader engage"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1				
+				$PHtargetloc = '4 pixie'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '4 pixie'
+			end
+		elseif temp <= 110:
+			!! lisovyk
+			$PHtargetloc = '16 Lisovyk'
+			PH_full_pay = rand(58,145)*10
+			
+			'Whoreweb: "The client founded (light): request: "Save". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_nature_spirit.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'NATURE SPIRIT: "One of our Officers lost in the magic forest"'
+			'NATURE SPIRIT: "We will transform you into Lisovyk. You will feel all the directions in the forest."'
+			'NATURE SPIRIT: "you need to find the officer, convince him you are Light Force soldier, and convoy him to the Portal stones."'
+			
+			
+			act 'Agree "Save"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1				
+				$PHtargetloc = '16 Lisovyk'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '16 Lisovyk'
+			end
+		elseif temp <= 150:
+			!! brothers
+			$PHtargetloc = '2 brothers'
+			PH_full_pay = rand(20,50)*10
+			
+			'Whoreweb: "The client founded (light): request: "Harvest rithual". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CULTIST: "One of our brotherhoods ends ther rithual of the collection"'
+			'CULTIST: "Now they need a virgin Queen-wife to start the Harvest rithual"'
+			'CULTIST: "You need to be their Queen-wife in the Harvest rithual"'
+			'CULTIST: All the collected powers must be inside you at the end of the rithual"'
+			
+			
+			act 'Agree "Harvest rithual"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				phtemp = 1
+				$PHtargetloc = '2 brothers'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '2 brothers'
+			end
+		elseif temp <= 200:			
+			!! minotavr
+			$PHtargetloc = '9 Minotauros'
+			if rand(1,3) ! 1:
+				PH_full_pay = rand(25,60)*10
+				
+				'Whoreweb: "The client founded (light): request: "Royal guard". Price is <<PH_full_pay>> "'
+				*nl
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'
+				'CULTIST: "This is easy one, just satisfy our Royal guard"'
+				
+				
+				act 'Agree "Royal guard"': 
+					magicwhore += 1
+					PHMAGICWORKNOW = 1
+					phtemp = 1
+					$PHtargetloc = '9 Minotauros'
+					
+					gt 'mod_public_WC_street_box_magicwhore_sex', '9 Minotauros'
+				end
+			else
+				PH_full_pay = rand(35,70)*10
+				
+				'Whoreweb: "The client founded (light): request: "Royal guards". Price is <<PH_full_pay>> "'
+				*nl
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'				
+				'CULTIST: "This is easy one, just satisfy few our Royal guards"'
+				
+				
+				act 'Agree "Royal guards"': 
+					magicwhore += 1
+					PHMAGICWORKNOW = 1
+					phtemp = 2
+					$PHtargetloc = '9 Minotauros'
+					
+					gt 'mod_public_WC_street_box_magicwhore_sex', '9 Minotauros'
+				end
+			end
+		end
+	elseif $PHtasktype = 'dark':		
+		if PH_consanguinity_D = 0:
+			temp = rand(1,10)
+		elseif PH_consanguinity_D = 1:
+			temp = rand(1,20)
+		elseif PH_consanguinity_D = 2:
+			temp = rand(1,70)
+		elseif PH_consanguinity_D = 3:
+			temp = rand(1,150)
+		elseif PH_consanguinity_D = 4:
+			temp = rand(1,200)
+		end
+		
+		if temp <= 10:
+			!! cultist
+			$PHtargetloc = '15 Сultist'
+			PH_full_pay = rand(20,50)*10
+			
+			'Whoreweb: "The client founded (dark): request: "Lust talk". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CULTIST: "We have captured Light Forces young acolyte"'
+			'CULTIST: "You need just to use your sex weapon to Persuade him to switch sides"'
+			
+			
+			act 'Agree "Lust talk."': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				phtemp = 2
+				$PHtargetloc = '15 Сultist'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '15 Сultist'
+			end			
+		elseif temp <= 20:
+			!! werewolf
+			$PHtargetloc = '8 werewolf'
+			PH_full_pay = rand(40,100)*10
+			
+			'Whoreweb: "The client founded (dark): request: "Doggy talk". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_he.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CULTIST: "You need to entertain the pet of an our Priest."'
+			!! 'CULTIST: "."'
+			
+			
+			act 'Agree "Doggy talk"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '8 werewolf'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '8 werewolf'
+			end
+		elseif temp <= 50:
+			!! catpriest
+			$PHtargetloc = '3 catpriest_Bastet'
+			PH_full_pay = rand(48,120)*10
+			
+			'Whoreweb: "The client founded (dark): request: "Cats problem". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cat.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CAT?: "I need to reword my acolyte."'
+			'CAT?: "I will transform you into cat-priest. Just make him well."'
+			
+			
+			act 'Agree "Cats problem"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				phtemp = 2
+				$PHtargetloc = '3 catpriest_Bastet'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '3 catpriest_Bastet'
+			end	
+		elseif temp <= 80:
+			!! tw_curse
+			$PHtargetloc = '12 tw_curse'
+			PH_full_pay = rand(48,120)*10
+			
+			'Whoreweb: "The client founded (dark): request: "Ghost". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'DARK CULTIST: "I cursed a Light Forces cultiest. You need to force him to switch sides"'
+			'DARK CULTIST: "I will link you to the curse, you will easely find him. He must swear to do that."'
+			
+			
+			act 'Agree "Ghost"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '12 tw_curse'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '12 tw_curse'
+			end	
+		elseif temp <= 110:
+			!! ctulhu
+			$PHtargetloc = '7 cthulhu'
+			PH_full_pay = rand(58,145)*10			
+			'Whoreweb: "The client founded (dark): request: "Deep Water creature". Price is <<PH_full_pay>> "'
+			*nl			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_gotic_mage.jpg"></center>'
+			'DARK CULTIST: "We have summoned a cthulhu cultiest…"'
+			'DARK CULTIST: "This creature very hungry in any ways. Sooooo, you need to entertain this thing"'
+			
+			
+			act 'Agree "Deep Water creature"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '7 cthulhu'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '7 cthulhu'
+			end	
+		elseif temp <= 150:
+			!! brothers
+			$PHtargetloc = '2 brothers'
+			PH_full_pay = rand(20,50)*10
+			
+			'Whoreweb: "The client founded (dark): request: "Harvest rithual". Price is <<PH_full_pay>> "'
+			*nl
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/client_cultist_she.jpg"></center>'
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/.mp4"></video></center>'
+			'CULTIST: "One of our brotherhoods ends ther rithual of the collection"'
+			'CULTIST: "Now they need a virgin Queen-wife to start the Harvest rithual"'
+			'CULTIST: "You need to be their Queen-wife in the Harvest rithual"'
+			'CULTIST: All the collected powers must be inside you at the end of the rithual"'
+			
+			
+			act 'Agree"Harvest rithual."': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				phtemp = 1
+				$PHtargetloc = '2 brothers'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '2 brothers'
+			end
+		elseif temp <= 200:
+			!! hentaied
+			$PHtargetloc = '10 hentaied'
+			PH_full_pay = rand(25,60)*10
+			'Whoreweb: "The client founded (dark): request: "Tentacles". Price is <<PH_full_pay>> "'
+			*nl			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_tentacle monster.mp4"></video></center>'
+			'THIS THING: "…we need… incubator…"'
+			'THIS THING: "…agree you do?…"'
+			
+			
+			act 'Agree "Tentacles"': 
+				magicwhore += 1
+				PHMAGICWORKNOW = 1
+				$PHtargetloc = '10 hentaied'
+				
+				gt 'mod_public_WC_street_box_magicwhore_sex', '10 hentaied'
+			end	
+		end
+	end
+	
+	if PHdeal[1] ! daystart:
+		PHdeal[1] = daystart
+		$PHdealtype[1] = $PHtasktype
+		$PHdealtemp[1] = PHtaskrand
+		$PHdealphtemp[1] = phtemp
+		$PHdealphpay[1] = PH_full_pay
+		$PHdealtargetlock[1] = $PHtargetloc
+		
+	elseif PHdeal[2] ! daystart:
+		PHdeal[2] = daystart
+		$PHdealtype[2] = $PHtasktype
+		$PHdealtemp[2] = PHtaskrand
+		$PHdealphtemp[2] = phtemp
+		$PHdealphpay[2] = PH_full_pay		
+		$PHdealtargetlock[2] = $PHtargetloc
+		
+	elseif PHdeal[3] ! daystart:
+		PHdeal[3] = daystart
+		$PHdealtype[3] = $PHtasktype
+		$PHdealtemp[3] = PHtaskrand
+		$PHdealphtemp[3] = phtemp		
+		$PHdealphpay[3] = PH_full_pay
+		$PHdealtargetlock[3] = $PHtargetloc
+		
+	elseif PHdeal[4] ! daystart:
+		PHdeal[4] = daystart
+		$PHdealtype[4] = $PHtasktype
+		$PHdealtemp[4] = PHtaskrand
+		$PHdealphtemp[4] = phtemp		
+		$PHdealphpay[4] = PH_full_pay
+		$PHdealtargetlock[4] = $PHtargetloc
+		
+	end
+
+	if ztemp = 12349:
+		ctemp = 0
+		act 'Refuse': gt 'mod_public_WC_street_box', 'start'	
+	end
+end
+
+
+
+if $ARGS[0] = 'relationship':
+	!! gs 'mod_public_WC_street_box_magicwhore', 'relationship'
+	if PHmwrstat >= 100: PHmwrstat = 100
+	if PHmwrstat <= -100: PHmwrstat = -100
+	if PHmwrstat >= 90 and PHmwrstat < 101: $PH_mwhore_relationship = '<font color = yellow	> __________██████████ </font> '
+	if PHmwrstat >= 80 and PHmwrstat < 90: $PH_mwhore_relationship = '<font color = yellow	> __________█████████_ </font> '
+	if PHmwrstat >= 70 and PHmwrstat < 80: $PH_mwhore_relationship = '<font color = yellow	> __________████████__ </font> '	
+	if PHmwrstat >= 60 and PHmwrstat < 70: $PH_mwhore_relationship = '<font color = yellow	> __________███████___ </font> '
+	if PHmwrstat >= 50 and PHmwrstat < 60: $PH_mwhore_relationship = '<font color = yellow	> __________██████____ </font> '
+	if PHmwrstat >= 40 and PHmwrstat < 50: $PH_mwhore_relationship = '<font color = yellow	> __________█████_____ </font> '
+	if PHmwrstat >= 30 and PHmwrstat < 40: $PH_mwhore_relationship = '<font color = yellow	> __________████______ </font> '
+	if PHmwrstat >= 20 and PHmwrstat < 30: $PH_mwhore_relationship = '<font color = yellow	> __________███_______ </font> '
+	if PHmwrstat >= 10 and PHmwrstat < 20: $PH_mwhore_relationship = '<font color = yellow	> __________██________ </font> '
+	if PHmwrstat >= 05 and PHmwrstat < 10: $PH_mwhore_relationship = '<font color = yellow	> __________█________ </font> '
+	if PHmwrstat >= -4 and PHmwrstat < 5: $PH_mwhore_relationship = $func('wrap', 'accent', ' ___________________ ') + ' '
+	if PHmwrstat > -10 and PHmwrstat <= -5: $PH_mwhore_relationship = '<font color = black	> _________█_________ </font> '
+	if PHmwrstat > -20 and PHmwrstat <= -10: $PH_mwhore_relationship = '<font color = black	> ________██_________ </font> '
+	if PHmwrstat > -30 and PHmwrstat <= -20: $PH_mwhore_relationship = '<font color = black	> _______███_________ </font> '
+	if PHmwrstat > -40 and PHmwrstat <= -30: $PH_mwhore_relationship = '<font color = black	> ______████_________ </font> '
+	if PHmwrstat > -50 and PHmwrstat <= -40: $PH_mwhore_relationship = '<font color = black	> _____█████_________ </font> '
+	if PHmwrstat > -60 and PHmwrstat <= -50: $PH_mwhore_relationship = '<font color = black	> ____██████_________ </font> '
+	if PHmwrstat > -70 and PHmwrstat <= -60: $PH_mwhore_relationship = '<font color = black	> ___███████_________ </font> '
+	if PHmwrstat > -80 and PHmwrstat <= -70: $PH_mwhore_relationship = '<font color = black	> __████████_________ </font> '
+	if PHmwrstat > -90 and PHmwrstat <= -80: $PH_mwhore_relationship = '<font color = black	> _█████████_________ </font> '
+	if PHmwrstat > -101 and PHmwrstat <= -90: $PH_mwhore_relationship = '<font color = black	> ██████████_________ </font> '
+
+	'<<$PH_mwhore_relationship>>'
+	if PHmwrstat > 0:
+		'Light Forces <<PHmwrstat>>% relationship'
+	elseif PHmwrstat < 0:
+		phitemp = PHmwrstat * (-1)
+		'Dark Forces <<phitemp>>% relationship'
+		killvar 'phitemp'
+	else
+		'Absolute neutral'
+	end
+end
+
+
+
+if $ARGS[0] = 'consanguinity':
+	!! gs 'mod_public_WC_street_box_magicwhore', 'consanguinity'
+	'Light Forces consanguinity level is <<PH_consanguinity_L>>/4'
+	'Dark Forces consanguinity level is <<PH_consanguinity_D>>/4'	
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore ---------------------------------
+

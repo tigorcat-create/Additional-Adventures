@@ -1,0 +1,507 @@
+# mod_public_WC_rab_zashmorg
+if $ARGS[0] = 'start':
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/items/zashmorg.jpg"></center>'
+
+	if zashmorg = 1:
+		act 'Take off the Whore collar':
+			supnatvnesh -= 12
+			minut += 3
+			zashmorg = 2
+			gs 'stat'
+			if realsucub >= 1:
+				succubusQW = realsucub
+			end
+			gt $loc, $loc_arg
+		end
+	end
+
+	if zashmorg = 2:
+		act 'Dress the Whore collar':
+			minut += 1
+			zashmorg = 1
+			willpowermax -= rand(2,4)
+			gs 'stat'
+			if succubusQW >= 1:
+				realsucub = succubusQW
+				succubusQW = 0
+			end
+			gt $loc, $loc_arg
+		end
+	end
+	act 'go back':
+		gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'gola':
+	If Tolik = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+		'You are women! You are not a blyad, go and dress yourself!'
+		brak += 1
+	else
+		If Vania = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'Betsi, Betsi. It''s cool you want to make me happy. But you need to be dressed. It''s a rule.'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Artem/Artem.jpg"></center>'
+			'Tolik sad you need to be dressed, go dress yourself!'
+
+		end
+	end
+
+	gs 'willpower', 'misc', 'self', 'hard'
+	if will_cost <= pcs_willpwr:
+		act 'No!' + $func('willpower', 'get_willcost_string'):
+			*clr & cla
+			willpowermax += rand(0,1)
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			brak += 1
+			'Shit you piss me off'
+			'Redneck started beating me.'
+			temp = 0
+			If Tolik = 1: temp += 4
+			If Vania = 1: temp += 2
+			If Artem = 1:
+				If Alove >= 20:
+					temp += 0
+				else
+					temp += 1
+				end
+			end
+
+			gs 'pain', rand(0,temp), 'neck', 'spank'
+			gs 'pain', rand(0,temp), 'ribs', 'kick'
+			gs 'pain', rand(0,temp), 'tummy', 'kick'
+			gs 'stat'
+
+			act 'Crawl to my room': gt 'mod_public_WC_rab', 'spat2'
+		end
+	else
+		act 'No!' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+
+
+	act 'shamefully run away':
+		willpowermax -= rand(1,2)
+		gs 'stat'
+		gt 'mod_public_WC_rab', 'spat2'
+	end
+
+
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'Ok, I will dress':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab', 'spat2'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'Ok, I''ll do':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab', 'spat2'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'Ok':
+			slova -= 1
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab', 'spat2'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'Nod "yes"':
+			slova -= 0
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab', 'spat2'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'zucchini':
+	*clr & cla
+	if zucchinilong >= 15 and zucchinilong <= 20:
+		gs 'boyStat', 'D3'
+	elseif zucchinilong > 20 and zucchinilong <= 25:
+		gs 'boyStat', 'D4'
+	elseif zucchinilong > 25 and zucchinilong <= 30:
+		gs 'boyStat', 'D5'
+	elseif zucchinilong > 30 and zucchinilong <= 35:
+		gs 'boyStat', 'D6'
+	elseif zucchinilong > 35 and zucchinilong <= 40:
+		gs 'boyStat', 'D7'
+	end
+
+
+
+	act 'Use the zucchini on your pussy':
+		cls
+		selfplaytime += 15
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/baklajan/puss_v.mp4"></video></center>'
+		else
+			temp = rand(1,6)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/baklajan/puss (<<temp>>).jpg"></center>'
+		end
+
+
+		frost = 0
+
+		if pcs_vag = 0 and dick >= 20:
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			pcs_horny = 0
+			pcs_mood -= 15
+			'You bite your lip in pain while tears stream from your eyes when the zucchini enters you, breaking your hymen. You cry out in pain and afterwards reveals a bloody bottle<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		else
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			if (vgrdif + vltdif) >= 30: 'You groan in pain when the <<zucchinilong>>cm zucchini enters your pussy. Tears flow from your eyes and between your legs feels as if you drove in a red-hot rod<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= 20 and (vgrdif + vltdif) < 30: 'You bite your lip in pain when the <<zucchinilong>> cm zucchini enters your pussy.  You feel pain between your legs<<$temp_mens>>.'
+			if cycle <= 0: $temp_mens = ', even though' + $temp_mens
+			if (vgrdif + vltdif) >= 12 and (vgrdif + vltdif) < 20: 'You flinch at the sudden pain when the <<zucchinilong>>cm zucchini enters your pussy, but the pain between your legs slowly calms down and becomes quite tolerable. You are trying to be excited while moving the <<zucchinilong>>cm zucchini inside your pussy <<$temp_mens>>, you don''t want it to go out.'
+			if (vgrdif + vltdif) >= 7 and (vgrdif + vltdif) < 12: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<zucchinilong>>cm zucchini. Between your legs feels a little nice, when you fuck yourself with the zucchini<<$temp_mens>>.'
+			if (vgrdif + vltdif) >=  2 and (vgrdif + vltdif) < 7: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<zucchinilong>>cm zucchini. Between your legs feels a little nice, when you fuck yourself with the zucchini. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling subsides and feels nice until the end of<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= -3 and (vgrdif + vltdif) < 2: 'You''re startled by a pleasant sensation, when your pussy ravishly starts taking the zucchini. Between your legs becomes very warm, and you feel a pleasant sensation, when a strong <<zucchinilong>>cm zucchini moves back and forth in your wet pussy<<$temp_mens>>. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling descends on you and your entire body is covered in hot waves of orgasm. You start giving out involuntarily shouts of pleasure while ravishing the zucchini.'
+			if (vgrdif + vltdif) <  -3: 'You feel the zucchini penetrating your pussy. Between your legs feels nice, but the <<zucchinilong>>cm zucchini is a bit too small for your pussy. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling slightly subsides and remains steady until the end of<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		end
+		killvar 'temp_mens'
+
+		gs 'stat'
+		act 'Stop using the zucchini': gt $loc, $loc_arg
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'ogirok':
+	*clr & cla
+	if ogiroklong >= 15 and ogiroklong <= 20:
+		gs 'boyStat', 'D3'
+	elseif ogiroklong > 20 and ogiroklong <= 25:
+		gs 'boyStat', 'D4'
+	elseif ogiroklong > 25 and ogiroklong <= 30:
+		gs 'boyStat', 'D5'
+	elseif ogiroklong > 30 and ogiroklong <= 35:
+		gs 'boyStat', 'D6'
+	elseif ogiroklong > 35 and ogiroklong <= 40:
+		gs 'boyStat', 'D7'
+	end
+
+
+
+	act 'Use the cucumber on your pussy':
+		cls
+		if ytemp = 2: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/2dv.mp4"></video></center>'
+		ytemp = 1
+
+		selfplaytime += 15
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/pussv ('+Rand(1,3)+').mp4"></video></center>'
+		else
+			temp = rand(1,6)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/puss (<<temp>>).jpg"></center>'
+		end
+
+
+		frost = 0
+
+		if pcs_vag = 0 and dick >= 20:
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			pcs_horny = 0
+			pcs_mood -= 15
+			'You bite your lip in pain while tears stream from your eyes when the cucumber enters you, breaking your hymen. You cry out in pain and afterwards reveals a bloody bottle<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		else
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			if (vgrdif + vltdif) >= 30: 'You groan in pain when the <<ogiroklong>>cm cucumber enters your pussy. Tears flow from your eyes and between your legs feels as if you drove in a red-hot rod<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= 20 and (vgrdif + vltdif) < 30: 'You bite your lip in pain when the <<ogiroklong>> cm cucumber enters your pussy.  You feel pain between your legs<<$temp_mens>>.'
+			if cycle <= 0: $temp_mens = ', even though' + $temp_mens
+			if (vgrdif + vltdif) >= 12 and (vgrdif + vltdif) < 20: 'You flinch at the sudden pain when the <<ogiroklong>>cm cucumber enters your pussy, but the pain between your legs slowly calms down and becomes quite tolerable. You are trying to be excited while moving the <<ogiroklong>>cm cucumber inside your pussy <<$temp_mens>>, you don''t want it to go out.'
+			if (vgrdif + vltdif) >= 7 and (vgrdif + vltdif) < 12: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber<<$temp_mens>>.'
+			if (vgrdif + vltdif) >=  2 and (vgrdif + vltdif) < 7: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling subsides and feels nice until the end of<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= -3 and (vgrdif + vltdif) < 2: 'You''re startled by a pleasant sensation, when your pussy ravishly starts taking the cucumber. Between your legs becomes very warm, and you feel a pleasant sensation, when a strong <<ogiroklong>>cm cucumber moves back and forth in your wet pussy<<$temp_mens>>. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling descends on you and your entire body is covered in hot waves of orgasm. You start giving out involuntarily shouts of pleasure while ravishing the cucumber.'
+			if (vgrdif + vltdif) <  -3: 'You feel the cucumber penetrating your pussy. Between your legs feels nice, but the <<ogiroklong>>cm cucumber is a bit too small for your pussy. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling slightly subsides and remains steady until the end of<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		end
+		killvar 'temp_mens'
+
+		gs 'stat'
+		act 'Add an cucumber to my ass':
+			gt 'mod_public_WC_rab_zashmorg','2o'
+		end
+		act 'Stop using the cucumber': gt $loc, $loc_arg
+	end
+
+	act 'Use the cucumber on your ass':
+		cls
+		if ytemp = 1: '<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/2dv.mp4"></video></center>'
+		ytemp = 2
+
+		selfplaytime += 15
+
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/ass ('+rand(1,2)+').jpg"></center>'
+
+
+		frost = 0
+		if analPlugIn = 1:
+			'You pull the plug out of your narrow and tight ass.'
+			analPlugIn = 0
+			analPlugOut = 1
+		end
+		if lubri = 0:
+			'You have no lube, so you spit on your fingers and use your saliva to lubricate your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		else
+			'You take a tube of lubricant and squeeze a little on your palm and rub your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		end
+
+		'You begin to massage your anus with your fingers.'
+
+		if pcs_ass < 10:'When you insert three fingers into your ass you groan in pain.'
+		if pcs_ass >= 10:'You start to stretch your anus using three fingers.'
+
+		'You pull your fingers out of your ass and place the cucumber near your hole.'
+
+		if (agrdif + altdif) >= 20:'You scream and bite your lip after a sharp pain when the <<ogiroklong>>cm cucumber enters your ass.'
+		if (agrdif + altdif) <  20:'You moan when the <<ogiroklong>>cm cucumber enters your ass.'
+
+		'You stop for a moment, giving your ass time to adjust to the cucumber inside it, and then start to slowly move, stretching your anus.'
+
+		if (agrdif + altdif) >= 30:
+			if pcs_makeup > 1:pcs_makeup = 0
+			'You feel like your anus is stretching when the cucumber enters you. You start to moan rhythmically in unison with the <<ogiroklong>>cm cucumber''s movements inside you.'
+		elseif (agrdif + altdif) >= 20 and (agrdif + altdif) < 30:
+			pcs_horny += 10
+			'You moan in pleasure while the cucumber moves inside your ass.'
+		end
+
+		gs 'arousal','anal_dildo', 15
+
+		act 'Add an cucumber to my pussy':
+			gt 'mod_public_WC_rab_zashmorg','2o'
+		end
+		act 'Stop using the cucumber': gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = '2o':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/ogirok/2d.jpg"></center>'
+	if ytemp = 1:
+		selfplaytime += 15
+
+		frost = 0
+		if analPlugIn = 1:
+			'You pull the plug out of your narrow and tight ass.'
+			analPlugIn = 0
+			analPlugOut = 1
+		end
+		if lubri = 0:
+			'You have no lube, so you spit on your fingers and use your saliva to lubricate your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		else
+			'You take a tube of lubricant and squeeze a little on your palm and rub your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		end
+
+		'You begin to massage your anus with your fingers.'
+
+		if pcs_ass < 10:'When you insert three fingers into your ass you groan in pain.'
+		if pcs_ass >= 10:'You start to stretch your anus using three fingers.'
+
+		'You pull your fingers out of your ass and place the cucumber near your hole.'
+
+		if (agrdif + altdif) >= 20:'You scream and bite your lip after a sharp pain when the <<ogiroklong>>cm cucumber enters your ass.'
+		if (agrdif + altdif) <  20:'You moan when the <<ogiroklong>>cm cucumber enters your ass.'
+
+		'You stop for a moment, giving your ass time to adjust to the cucumber inside it, and then start to slowly move, stretching your anus.'
+
+		if (agrdif + altdif) >= 30:
+			if pcs_makeup > 1:pcs_makeup = 0
+			'You feel like your anus is stretching when the cucumber enters you. You start to moan rhythmically in unison with the <<ogiroklong>>cm cucumber''s movements inside you.'
+		elseif (agrdif + altdif) >= 20 and (agrdif + altdif) < 30:
+			pcs_horny += 10
+			'You moan in pleasure while the cucumber moves inside your ass.'
+		end
+
+		gs 'arousal','anal_dildo', 15
+
+		act 'Stop using the cucumber': gt $loc, $loc_arg
+	elseif ytemp = 2:
+		selfplaytime += 15
+
+		frost = 0
+		if pcs_vag = 0 and dick >= 20:
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			pcs_horny = 0
+			pcs_mood -= 15
+			'You bite your lip in pain while tears stream from your eyes when the cucumber enters you, breaking your hymen. You cry out in pain and afterwards reveals a bloody bottle<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		else
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			if (vgrdif + vltdif) >= 30: 'You groan in pain when the <<ogiroklong>>cm cucumber enters your pussy. Tears flow from your eyes and between your legs feels as if you drove in a red-hot rod<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= 20 and (vgrdif + vltdif) < 30: 'You bite your lip in pain when the <<ogiroklong>> cm cucumber enters your pussy.  You feel pain between your legs<<$temp_mens>>.'
+			if cycle <= 0: $temp_mens = ', even though' + $temp_mens
+			if (vgrdif + vltdif) >= 12 and (vgrdif + vltdif) < 20: 'You flinch at the sudden pain when the <<ogiroklong>>cm cucumber enters your pussy, but the pain between your legs slowly calms down and becomes quite tolerable. You are trying to be excited while moving the <<ogiroklong>>cm cucumber inside your pussy <<$temp_mens>>, you don''t want it to go out.'
+			if (vgrdif + vltdif) >= 7 and (vgrdif + vltdif) < 12: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber<<$temp_mens>>.'
+			if (vgrdif + vltdif) >=  2 and (vgrdif + vltdif) < 7: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling subsides and feels nice until the end of<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= -3 and (vgrdif + vltdif) < 2: 'You''re startled by a pleasant sensation, when your pussy ravishly starts taking the cucumber. Between your legs becomes very warm, and you feel a pleasant sensation, when a strong <<ogiroklong>>cm cucumber moves back and forth in your wet pussy<<$temp_mens>>. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling descends on you and your entire body is covered in hot waves of orgasm. You start giving out involuntarily shouts of pleasure while ravishing the cucumber.'
+			if (vgrdif + vltdif) <  -3: 'You feel the cucumber penetrating your pussy. Between your legs feels nice, but the <<ogiroklong>>cm cucumber is a bit too small for your pussy. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling slightly subsides and remains steady until the end of<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		end
+		killvar 'temp_mens'
+
+		gs 'stat'
+
+		act 'Stop using the cucumber': gt $loc, $loc_arg
+	end
+	act 'use both cucumbers':
+		selfplaytime += 10
+		frost = 0
+
+		if (agrdif + altdif) >= 30:
+			if pcs_makeup > 1:pcs_makeup = 0
+			'You feel like your anus is stretching when the cucumber enters you. You start to moan rhythmically in unison with the <<ogiroklong>>cm cucumber''s movements inside you.'
+		elseif (agrdif + altdif) >= 20 and (agrdif + altdif) < 30:
+			pcs_horny += 10
+			'You moan in pleasure while the cucumber moves inside your ass.'
+		end
+		gs 'arousal','anal_dildo', 10
+
+
+		selfplaytime += 10
+		frost = 0
+		if pcs_vag = 0 and dick >= 20:
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			pcs_horny = 0
+			pcs_mood -= 15
+			'You bite your lip in pain while tears stream from your eyes when the cucumber enters you, breaking your hymen. You cry out in pain and afterwards reveals a bloody bottle<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		else
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			if (vgrdif + vltdif) >= 30: 'You groan in pain when the <<ogiroklong>>cm cucumber enters your pussy. Tears flow from your eyes and between your legs feels as if you drove in a red-hot rod<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= 20 and (vgrdif + vltdif) < 30: 'You bite your lip in pain when the <<ogiroklong>> cm cucumber enters your pussy.  You feel pain between your legs<<$temp_mens>>.'
+			if cycle <= 0: $temp_mens = ', even though' + $temp_mens
+			if (vgrdif + vltdif) >= 12 and (vgrdif + vltdif) < 20: 'You flinch at the sudden pain when the <<ogiroklong>>cm cucumber enters your pussy, but the pain between your legs slowly calms down and becomes quite tolerable. You are trying to be excited while moving the <<ogiroklong>>cm cucumber inside your pussy <<$temp_mens>>, you don''t want it to go out.'
+			if (vgrdif + vltdif) >= 7 and (vgrdif + vltdif) < 12: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber<<$temp_mens>>.'
+			if (vgrdif + vltdif) >=  2 and (vgrdif + vltdif) < 7: 'You flinch, from feeling your pussy being stretched, with a thrust from a <<ogiroklong>>cm cucumber. Between your legs feels a little nice, when you fuck yourself with the cucumber. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling subsides and feels nice until the end of<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= -3 and (vgrdif + vltdif) < 2: 'You''re startled by a pleasant sensation, when your pussy ravishly starts taking the cucumber. Between your legs becomes very warm, and you feel a pleasant sensation, when a strong <<ogiroklong>>cm cucumber moves back and forth in your wet pussy<<$temp_mens>>. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling descends on you and your entire body is covered in hot waves of orgasm. You start giving out involuntarily shouts of pleasure while ravishing the cucumber.'
+			if (vgrdif + vltdif) <  -3: 'You feel the cucumber penetrating your pussy. Between your legs feels nice, but the <<ogiroklong>>cm cucumber is a bit too small for your pussy. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling slightly subsides and remains steady until the end of<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		end
+		killvar 'temp_mens'
+		gs 'stat'
+		act 'Stop using the cucumbers': gt $loc, $loc_arg
+	end
+end
+
+
+
+
+if $ARGS[0] = 'apple':
+	*clr & cla
+	gs 'boyStat', 'D7'
+
+
+
+
+	act 'Use the apple on your pussy':
+		cls
+		selfplaytime += 15
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/apple/apple_puss.jpg"></center>'
+		frost = 0
+
+		if pcs_vag = 0 and dick >= 20:
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			pcs_horny = 0
+			pcs_mood -= 15
+			'You bite your lip in pain while tears stream from your eyes when the apple enters you, breaking your hymen. You cry out in pain and afterwards reveals a bloody bottle<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		else
+			$temp_mens = iif(cycle <= 0,' and menstruation blood leaks from your vagina','')
+			if (vgrdif + vltdif) >= 30: 'You groan in pain when the apple enters your pussy. Tears flow from your eyes and between your legs feels as if you drove in a red-hot rod<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= 20 and (vgrdif + vltdif) < 30: 'You bite your lip in pain when the apple enters your pussy.  You feel pain between your legs<<$temp_mens>>.'
+			if cycle <= 0: $temp_mens = ', even though' + $temp_mens
+			if (vgrdif + vltdif) >= 12 and (vgrdif + vltdif) < 20: 'You flinch at the sudden pain when the apple enters your pussy, but the pain between your legs slowly calms down and becomes quite tolerable. You are trying to be excited while moving the apple inside your pussy <<$temp_mens>>, you don''t want it to go out.'
+			if (vgrdif + vltdif) >= 7 and (vgrdif + vltdif) < 12: 'You flinch, from feeling your pussy being stretched, with a thrust from a apple. Between your legs feels a little nice, when you fuck yourself with the apple<<$temp_mens>>.'
+			if (vgrdif + vltdif) >=  2 and (vgrdif + vltdif) < 7: 'You flinch, from feeling your pussy being stretched, with a thrust from a apple. Between your legs feels a little nice, when you fuck yourself with the apple. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling subsides and feels nice until the end of<<$temp_mens>>.'
+			if (vgrdif + vltdif) >= -3 and (vgrdif + vltdif) < 2: 'You''re startled by a pleasant sensation, when your pussy ravishly starts taking the apple. Between your legs becomes very warm, and you feel a pleasant sensation, when a strong apple moves back and forth in your wet pussy<<$temp_mens>>. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling descends on you and your entire body is covered in hot waves of orgasm. You start giving out involuntarily shouts of pleasure while ravishing the apple.'
+			if (vgrdif + vltdif) <  -3: 'You feel the apple penetrating your pussy. Between your legs feels nice, but the apple is a bit too small for your pussy. Gradually, a warm and throbbing feeling grows in your lower abdomen, then the feeling slightly subsides and remains steady until the end of<<$temp_mens>>.'
+			gs 'arousal','vaginal_dildo',ARGS[1],$ARGS[2],$ARGS[3],$ARGS[4],$ARGS[5],$ARGS[6],$ARGS[7],$ARGS[8]
+		end
+		killvar 'temp_mens'
+
+		gs 'stat'
+
+		act 'Stop using the apple': gt $loc, $loc_arg
+	end
+
+	act 'Use the aple on your ass':
+		cls
+		selfplaytime += 15
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/fooddildo/apple/apple_ass ('+rand(1,3)+').jpg"></center>'
+
+
+		frost = 0
+		if analPlugIn = 1:
+			'You pull the plug out of your narrow and tight ass.'
+			analPlugIn = 0
+			analPlugOut = 1
+		end
+		if lubri = 0:
+			'You have no lube, so you spit on your fingers and use your saliva to lubricate your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		else
+			'You take a tube of lubricant and squeeze a little on your palm and rub your anus.'
+			gs 'arousal', 'anal_finger', 1,'lube'
+		end
+
+		'You begin to massage your anus with your fingers.'
+
+		if pcs_ass < 10:'When you insert three fingers into your ass you groan in pain.'
+		if pcs_ass >= 10:'You start to stretch your anus using three fingers.'
+
+		'You pull your fingers out of your ass and place the apple near your hole.'
+
+
+		if (agrdif + altdif) >= 10:'You scream and bite your lip after a sharp pain when the apple enters your ass.'
+		if (agrdif + altdif) <  10:'You moan when the apple enters your ass.'
+
+		'You stop for a moment, giving your ass time to adjust to the apple inside it, and then start to slowly move, stretching your anus.'
+
+		if (agrdif + altdif) >= 20:
+			if pcs_makeup > 1:pcs_makeup = 0
+			'You feel like your anus is stretching when the apple enters you. You start to moan rhythmically in unison with the apple''s movements inside you.'
+		elseif (agrdif + altdif) >= 20 and (agrdif + altdif) < 30:
+			pcs_horny += 10
+			'You moan in pleasure while the apple moves inside your ass.'
+		end
+
+		gs 'arousal','anal_dildo', 15
+
+		act 'Stop using the apple': gt $loc, $loc_arg
+	end
+end
+
+--- mod_public_WC_rab_zashmorg ---------------------------------
+

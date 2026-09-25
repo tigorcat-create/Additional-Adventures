@@ -1,0 +1,722 @@
+# mod_public_WC_street_box_brothel_actbuy
+if $ARGS[0] = 'actbuy':
+	if temp_girlnumber[i] = 1:
+		if karta + bankDebtLimit >= temp_price[1]:
+			act 'Hire Girl # 1 (<<temp_price[1]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 1
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' '
+		end
+	elseif temp_girlnumber[i] = 2:
+		if karta + bankDebtLimit >= temp_price[2]:
+			act 'Hire Girl # <<temp_girlnumber[i]>>  (<<temp_price[2]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 2
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' '
+		end
+	elseif temp_girlnumber[i] = 3:
+		if karta + bankDebtLimit >= temp_price[3]:
+			act 'Hire Girl # <<temp_girlnumber[i]>> (<<temp_price[3]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 3
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' '
+		end	
+	elseif temp_girlnumber[i] = 4:
+		if karta + bankDebtLimit >= temp_price[4]:
+			act 'Hire Girl # <<temp_girlnumber[i]>> (<<temp_price[4]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 4
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' '
+		end	
+	elseif temp_girlnumber[i] = 5:
+		if karta + bankDebtLimit >= temp_price[5]:
+			act 'Hire Girl # <<temp_girlnumber[i]>> (<<temp_price[5]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 5
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' '
+		end
+	elseif temp_girlnumber[i] = 6:
+		if karta + bankDebtLimit >= temp_price[6]:
+			act 'Hire Girl # <<temp_girlnumber[i]>> (<<temp_price[6]>>)':
+				*clr & cla
+				phwhores += 1				
+				i = phwhores
+				girlid[i] = phwhores
+				
+				temp = rand(1,15)
+				if temp = 1:
+					$phgirlname[i] = 'Vika'
+				elseif temp = 2:
+					$phgirlname[i] = 'Janna'
+				elseif temp = 3:
+					$phgirlname[i] = 'Oksana'
+				elseif temp = 4:
+					$phgirlname[i] = 'Sonja'
+				elseif temp = 5:
+					$phgirlname[i] = 'Stanislava'
+				elseif temp = 6:
+					$phgirlname[i] = 'Valentina'
+				elseif temp = 7:
+					$phgirlname[i] = 'Valeriya'
+				elseif temp = 8:
+					$phgirlname[i] = 'Zora'
+				elseif temp = 9:
+					$phgirlname[i] = 'Aleksandra'
+				elseif temp = 10:
+					$phgirlname[i] = 'Ivanka'
+				elseif temp = 11:
+					$phgirlname[i] = 'Katerina'
+				elseif temp = 12:
+					$phgirlname[i] = 'Marta'
+				elseif temp = 13:
+					$phgirlname[i] = 'Nadia'
+				elseif temp = 14:
+					$phgirlname[i] = 'Natalia'
+				elseif temp = 15:
+					$phgirlname[i] = 'Feodora'
+				end
+				
+				temp = 6
+				
+				phgirlstatHJ[i] = temp_phgirlstatHJ[temp]
+				phgirlstatBJ[i] = temp_phgirlstatBJ[temp]
+				phgirlstatFJ[i] = temp_phgirlstatFJ[temp]
+				phgirlstatVAG[i] = temp_phgirlstatVAG[temp]
+				phgirlstatASS[i] = temp_phgirlstatASS[temp]
+				
+				girltype[i] = temp_girltype[temp]
+				
+				$phgirlava[i] = $temp_phgirlava[temp]
+				'<center><img <<$set_imgh>> src="<<$phgirlava[i]>>.jpg"></center>'
+				karta -= temp_price[temp]
+				
+				act 'exit ': gt 'mod_public_WC_street_box', 'start'
+				
+				'<<$phgirlname[i]>>'
+				'Hand job stat = <<phgirlstatHJ[i]>>'
+				'Blow job stat = <<phgirlstatBJ[i]>>'
+				'Footjob job stat = <<phgirlstatFJ[i]>>'
+				'Vaginal stat = <<phgirlstatVAG[i]>>'
+				'Anal stat = <<phgirlstatASS[i]>>'
+				
+				temp_phgirlstatHJ[1] = 0
+				temp_phgirlstatBJ[1] = 0
+				temp_phgirlstatFJ[1] = 0
+				temp_phgirlstatVAG[1] = 0
+				temp_phgirlstatASS[1] = 0
+				$temp_phgirlava[1] = 0
+				temp_price[1] = 0
+				temp_girlnumber[1] = 0
+				temp_phgirlstatHJ[2] = 0
+				temp_phgirlstatBJ[2] = 0
+				temp_phgirlstatFJ[2] = 0
+				temp_phgirlstatVAG[2] = 0
+				temp_phgirlstatASS[2] = 0
+				$temp_phgirlava[2] = 0
+				temp_price[2] = 0
+				temp_girlnumber[2] = 0
+				temp_phgirlstatHJ[3] = 0
+				temp_phgirlstatBJ[3] = 0
+				temp_phgirlstatFJ[3] = 0
+				temp_phgirlstatVAG[3] = 0
+				temp_phgirlstatASS[3] = 0
+				$temp_phgirlava[3] = 0
+				temp_price[3] = 0
+				temp_girlnumber[3] = 0
+				temp_phgirlstatHJ[4] = 0
+				temp_phgirlstatBJ[4] = 0
+				temp_phgirlstatFJ[4] = 0
+				temp_phgirlstatVAG[4] = 0
+				temp_phgirlstatASS[4] = 0
+				$temp_phgirlava[4] = 0
+				temp_price[4] = 0
+				temp_girlnumber[4] = 0
+				temp_phgirlstatHJ[5] = 0
+				temp_phgirlstatBJ[5] = 0
+				temp_phgirlstatFJ[5] = 0
+				temp_phgirlstatVAG[5] = 0
+				temp_phgirlstatASS[5] = 0
+				$temp_phgirlava[5] = 0
+				temp_price[5] = 0
+				temp_girlnumber[5] = 0
+				temp_phgirlstatHJ[6] = 0
+				temp_phgirlstatBJ[6] = 0
+				temp_phgirlstatFJ[6] = 0
+				temp_phgirlstatVAG[6] = 0
+				temp_phgirlstatASS[6] = 0
+				$temp_phgirlava[6] = 0
+				temp_price[6] = 0
+				temp_girlnumber[6] = 0
+				gs 'stat'
+				
+				!! act 'exit ': gt 'mod_public_WC_street_box', 'start'
+			end
+		else
+			act 'I don''t have enough money in my bank to Hire Girl # <<i>>': ' ' 
+		end
+	else
+		' '
+	end
+end
+--- mod_public_WC_street_box_brothel_actbuy ---------------------------------
+

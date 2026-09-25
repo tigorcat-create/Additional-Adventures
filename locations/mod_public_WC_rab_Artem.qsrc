@@ -1,0 +1,268 @@
+# mod_public_WC_rab_Artem
+if $ARGS[0] = 'start':	
+	if week <= 5 and Artem ! 2:
+		Artem = 0 
+		if vtecha = 0:
+			if hour >= 14 and hour <= 19:
+				*nl
+				temp = rand(1,5)
+				if temp = 1:
+					'Artem here.'
+					Artem = 1
+				else
+					temp = rand(25,50)
+					if pcs_observ >= temp:
+						'I see Artem stalks me…'
+						'Intresting, how often do he do that?'
+						observ_exp += rand(1,2)
+						Artem = 1
+					elseif  Tolik ! 1 and Vania ! 1 and pcs_observ >= temp * 3 / 4:
+						'I feels like someone is watching me…'
+						observ_exp += rand(0,1)
+						Artem = 1
+						Ahide = 1
+					else						
+						Artem = 1 
+						Ahide = 1
+					end
+				end
+			end
+		end
+
+		if $metka = 'spat1':
+			if (hour >= 0 and hour <= 5) or (hour >= 23):
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if $metka = 'dvir':
+			if hour = 20:
+				*nl
+				'Artem eats'
+				Artem = 1
+			elseif hour = 13:
+				*nl
+				'Artem has dinner'
+				Artem = 1
+			elseif hour >= 8 and hour <= 9:
+				*nl
+				'The ax bangs near the forester''s house. Artem prepares firewood.'
+			elseif hour = 10:
+				*nl
+				'Artem sits on a bench and reads.'
+				Artem = 1
+			end
+		end
+		if $metka = 'lisnyk': 
+			if hour >= 8 and hour <= 9: 
+				*nl
+				'Artem cuts logs and stumps on firewood.'
+				Artem = 1
+			end
+		end
+		if $metka = 'lisnyk_dim':
+			if hour = 11:
+				*nl
+				if task2 = 2:
+					'Artem reads'
+				else
+					'Artem washes the dishes'
+				end
+				Artem = 1
+			elseif hour = 12:
+				*nl
+				'Artem do something for dinner'
+				Artem = 1
+			end
+		end
+		if $metka = 'vhid': 
+			if hour = 21: 
+				*nl
+				Artem = 1
+			end
+		end
+	end
+
+	if week = 6 and Artem ! 2:
+		Artem = 0 
+		if hour >= 0 and hour <= 5:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if hour = 7:
+			if $metka = 'dvir':
+				Artem = 1
+			end
+		end
+		if hour >= 23:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if hour = 11:
+			if $metka = 'lisnyk_dim': 
+				*nl
+				if task2 = 2:
+					'Artem reads'
+				else
+					'Artem washes the dishes'
+				end
+				Artem = 1
+			end
+		end
+		if hour = 12:
+			if $metka = 'lisnyk_dim': 
+				*nl
+				'Artem do something for dinner'
+				Artem = 1
+			end
+		end
+		if hour = 20:
+			if $metka = 'dvir':
+				Artem = 1
+			end
+		end
+		if hour = 21:
+			if $metka = 'vhid':
+				Artem = 1
+			end
+		end
+		if hour = 13:
+			if $metka = 'dvir': 
+				*nl
+				'Artem has a dinner'
+				Artem = 1
+			end
+		end
+		if hour = 6:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if hour >= 8 and hour <= 10:
+			if $metka = 'dvir': 
+				*nl
+				'Artem shoots the targets with a pistol.'
+				Artem = 1
+			end
+		end
+		if hour = 13:
+			if $metka = 'dvir': 
+				Artem = 1
+			end
+		end
+		if hour >= 14 and hour <= 15:
+			if $metka = 'spat1':
+				Artem = 1
+			end
+		end
+		if hour >= 16 and hour <= 19:
+			if $metka = 'dvir':
+				Artem = 1
+			end
+		end
+	end
+
+
+	if week = 7 and Artem ! 2:
+		Artem = 0
+		if hour >= 0 and hour <= 5:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if hour = 7:
+			if $metka = 'dvir':
+				Artem = 1
+			end
+		end
+		if hour >= 23:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+		if hour = 11:
+			if $metka = 'lisnyk_dim': 
+				*nl
+				if task2 = 2:
+					'Artem reads'
+				else
+					'Artem washes the dishes'
+				end
+				Artem = 1
+			end
+		end
+		if hour = 12:
+			if $metka = 'lisnyk_dim': 
+				*nl
+				'Artem do something for dinner'
+				Artem = 1
+			end
+		end
+		if hour = 20:
+			if $metka = 'dvir':
+				Artem = 1
+			end
+		end
+		if hour = 21:
+			if $metka = 'vhid':
+				Artem = 1
+			end
+		end
+		if hour = 13:
+			if $metka = 'dvir': 
+				*nl
+				'Artem has a dinner'
+				Artem = 1
+			end
+		end
+		if hour = 6:
+			if $metka = 'spat1': 
+				*nl
+				'Artem is sleeping'
+				Artem = 3
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'artem_setup':
+	npctemp = 441
+	npc_gender['A<<npctemp>>'] = 0
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Artem'
+	$npc_nickname['A<<npctemp>>'] = 'Artem'
+	$npc_lastname['A<<npctemp>>'] = ' '
+	$npc_usedname['A<<npctemp>>'] = 'Artem'
+	$npc_notes['A<<npctemp>>'] = 'the youngest redneck'
+	npc_intel['A<<npctemp>>'] = 20
+	npc_dob['A<<npctemp>>'] = 441
+	npc_spermpot['A<<npctemp>>'] = 10000	
+	npc_sexskill['A<<npctemp>>'] = 1
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0	
+	$npc_thdick['A<<npctemp>>'] = 'thicker than average'
+	npc_dick['A<<npctemp>>'] = 18
+	npc_sexskill['A<<npctemp>>'] = 1
+	npc_intel['A<<npctemp>>'] = 20
+end
+
+
+
+--- mod_public_WC_rab_Artem ---------------------------------
+

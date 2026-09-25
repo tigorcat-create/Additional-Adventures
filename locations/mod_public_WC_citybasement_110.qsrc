@@ -1,0 +1,1124 @@
+# mod_public_WC_citybasement_110
+if $ARGS[0] = '110':
+	*clr & cla
+	CLOSE ALL
+	menu_off = 0
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '110'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 110
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '110'
+	gs 'stat'
+	$func('wrap', 'header center b', 'fork in the tunnel')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p23.jpg"></center>'
+
+	act'Go to side way':
+		pr = 110
+		urape += -50 & ubomj += 20 & ubomj2 =150 & gt 'mod_public_WC_citybasement', '111'
+	end
+	if pr = 105:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 110 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '112'
+		act 'go back': pr = 110 & urape += 18 & ubomj += 15 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '105'
+	elseif pr = 111:
+		if vhid1 >= 1: 'to exit in the center go left'
+		if vhid2 >= 1: 'to exit in the industrial go left'
+		if vhid3 >= 1: 'to exit in the red light go left'
+		if vhid4 >= 1: 'to resident exit go right'
+		if vhid5 >= 1: 'to exit in the park go right'
+		act 'go left': pr = 110 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '112'
+		act 'go right': pr = 110 & urape += 18 & ubomj += 15 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '105'
+	elseif pr = 112:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 110 & urape += 18 & ubomj += 15 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '105'
+		act 'go back': pr = 110 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '112'
+	end
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+
+if $ARGS[0] = '111':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '111'
+	$loc = 'mod_public_WC_citybasement_110'
+	pr = 111
+	zt = 111
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '111'
+
+	gs 'stat'
+	$func('wrap', 'header center b', 'Dead end with a table and some boxes')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p1.jpg"></center>'
+	'I see some cigarets on the table'
+
+
+	act 'Go to the tunnel':
+		if vhid1 >= 1: 'to exit in the center go the tunnel'
+		if vhid2 >= 1: 'to exit in the industrial go the tunnel'
+		if vhid3 >= 1: 'to exit in the red light go the tunnel'
+		if vhid4 >= 1: 'to resident exit go the tunnel'
+		if vhid5 >= 1: 'to exit in the park go the tunnel'
+		urape += 15 & ubomj += 25 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '110'
+	end
+
+	act 'drink water from the tap':
+		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
+		minut += 3
+		pcs_health -= rand (0,70)
+
+		gs 'beverage', 'water_stats'
+		gs 'beverage', 'afterdrink'
+		gs 'stat'
+	end
+
+	act 'rummage in the boxes':
+		cla
+		observ_exp += 3
+		minut += 15
+		gs 'sweat', 'add', 10
+		gs 'stat'
+		temp = rand (1,100) + ( pcs_observ / 2 )
+		ztemp = 0
+		if temp >= 80 and ztemp ! 1 and maddildo ! 1:
+			ztemp = 1
+			mood += 3
+			maddildo = 1
+			'YES! I found a 40cm long dildo'
+		end
+		if temp >= 110 and gun = 0 and ztemp ! 1:
+			ztemp = 1
+			'I found an old gun!'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gun_found.mp4"></video></center>'
+			gun = 1
+		end
+		if temp >= 100 and ztemp ! 1:
+			ztemp = 1
+			mood += 2
+			temp = rand(1,2)
+			if temp = 1:
+				temp = rand (1,100) + ( pcs_observ / 2 )
+				money += temp
+				'I found <<temp>> money!'
+			else
+				ammo += rand(1,3)
+				'I found some ammo money!'
+			end
+		end
+		if temp >= 70 and ztemp ! 1:
+			minut += rand(10,20)
+			ztemp = 1
+			'I found some mushrooms,'
+			boletus += 2
+		end
+		if temp >= 80 and ztemp ! 1:
+			minut += rand(10,20)
+			ztemp = 1
+			'I found cigarets,'
+			mc_inventory['cigarettes'] += rand(1,5)
+		end
+		if ztemp ! 1:
+			'I have found nothing. Are there anything here?}'
+		end
+		act 'Continue': urape += -50 & ubomj += 20 & ubomj2 =150 & gt 'mod_public_WC_citybasement', '111'
+	end
+
+	act 'Smoke cigarets from the table':
+		cla
+		mc_inventory['cigarettes'] += 1
+		minut += 5
+		gs 'drugs','smoke'
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/events/benchsmoke.jpg"></center>'
+		'I light up one of the cigarettes. I take a long slow drag off it as I relax here.'
+		act 'Get up': urape += -50 & ubomj += 20 & ubomj2 =150 & gt 'mod_public_WC_citybasement', '111'
+	end
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '112':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '112'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 112
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '112'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Manhole')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p13.jpg"></center>'
+
+
+	if pr = 110:
+		if vhid1 >= 1: 'to exit in the center go up through manhole'
+		if vhid2 >= 1: 'to exit in the industrial go up through manhole'
+		if vhid3 >= 1: 'to exit in the red light go up through manhole'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go up through manhole': pr = 112 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '113'
+		act 'go back': pr = 112 & urape += 15 & ubomj += 25 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '110'
+	elseif pr = 113:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go down through manhole'
+		if vhid5 >= 1: 'to exit in the park go down through manhole'
+		act 'go down through manhole': pr = 112 & urape += 15 & ubomj += 25 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '110'
+		act 'go back': pr = 112 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '113'
+	end
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = '113':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '113'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 113
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '113'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Undercity tunnels')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p9.jpg"></center>'
+	temp = rand(1,5)
+	if temp = 1:
+		'It''s dark here'
+	elseif temp = 2:
+		'I am scared a little'
+	elseif temp = 3:
+		'I really don''t know this tunnels so long!'
+	elseif temp = 4:
+		'There must be many exits from the tunnel'
+	elseif temp = 5:
+		'Have this tunnels been used during the War?'
+	end
+
+
+	if pr = 112:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 113 & urape += -20 & ubomj += 5 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '114'
+		act 'go back': pr = 113 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '112'
+	elseif pr = 114:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 113 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '112'
+		act 'go back': pr = 113 & urape += -20 & ubomj += 5 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '114'
+	end
+
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '114':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '114'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 114
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '114'
+	gs 'stat'
+	$func('wrap', 'header center b', 'fork in the tunnel')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p22.jpg"></center>'
+	'There is a smaller tunnel here.'
+
+	if vhid1 >= 1: 'to exit in the center go the smaller tunnel'
+	act'Go to the smaller tunnel':
+		pr = 114
+		urape += 15 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '115'
+	end
+	if pr = 113:
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 114 & urape += 35 & ubomj += 45 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '122'
+		act 'go back': pr = 114 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '113'
+	elseif pr = 115:
+		if vhid2 >= 1: 'to exit in the industrial go right'
+		if vhid3 >= 1: 'to exit in the red light go right'
+		if vhid4 >= 1: 'to resident exit go left'
+		if vhid5 >= 1: 'to exit in the park go left'
+		act 'go left': pr = 114 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '113'
+		act 'go right': pr = 114 & urape += 35 & ubomj += 45 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '122'
+	elseif pr = 122:
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 114 & urape += 5 & ubomj += 10 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '113'
+		act 'go back': pr = 114 & urape += 35 & ubomj += 45 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '122'
+	end
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '115':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '115'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 115
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '115'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Undercity tunnels')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p26.jpg"></center>'
+	temp = rand(1,5)
+	if temp = 1:
+		'It''s dark here'
+	elseif temp = 2:
+		'I am scared a little'
+	elseif temp = 3:
+		'I really don''t know this tunnels so long!'
+	elseif temp = 4:
+		'There must be many exits from the tunnel'
+	elseif temp = 5:
+		'Have this tunnels been used during the War?'
+	end
+
+
+	if pr = 114:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 115 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '116'
+		act 'go back': pr = 115 & urape += -20 & ubomj += 5 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '114'
+	elseif pr = 116:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 115 & urape += -20 & ubomj += 5 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '114'
+		act 'go back': pr = 115 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '116'
+	end
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '116':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '116'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 116
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '116'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Dark korridor with a lot of dark rooms')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p25.jpg"></center>'
+	'I feel unsafe, anything can hide in the rooms…'
+	if pr = 115:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 116 & urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '117'
+		act 'go back': pr = 116 & urape += 15 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '115'
+	elseif pr = 117:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 116 & urape += 15 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '115'
+		act 'go back': pr = 116 & urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '117'
+	end
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '117':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '117'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 117
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '117'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Dark korridor with a lot of dark rooms')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p25.jpg"></center>'
+	'I feel unsafe, anything can hide in the rooms…'
+	if pr = 116:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 117 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '118'
+		act 'go back': pr = 117 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '116'
+	elseif pr = 118:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 117 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '116'
+		act 'go back': pr = 117 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '118'
+	end
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '118':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '118'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 118
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '118'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Dark korridor with a lot of dark rooms')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p25.jpg"></center>'
+	'I feel unsafe, anything can hide in the rooms…'
+
+	if pr = 117:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 118 & urape += 15 & ubomj += 20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '119'
+		act 'go back': pr = 118 & urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '117'
+	elseif pr = 119:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 118 & urape += 40 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '117'
+		act 'go back': pr = 118 & urape += 15 & ubomj += 20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '119'
+	end
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = '119':
+	*clr & cla
+	menu_off = 0
+	CLOSE ALL
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/walk.wav',60
+	minut += rand(0,3)
+	$loc_arg = '119'
+	$loc = 'mod_public_WC_citybasement_110'
+	zt = 119
+	$menu_loc = 'mod_public_WC_citybasement'
+	$menu_arg = '119'
+	gs 'stat'
+	$func('wrap', 'header center b', 'Undercity tunnels')
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p2.jpg"></center>'
+	temp = rand(1,5)
+	if temp = 1:
+		'It''s dark here'
+	elseif temp = 2:
+		'I am scared a little'
+	elseif temp = 3:
+		'I really don''t know this tunnels so long!'
+	elseif temp = 4:
+		'There must be many exits from the tunnel'
+	elseif temp = 5:
+		'Have this tunnels been used during the War?'
+	end
+
+
+	if pr = 118:
+		if vhid1 >= 1: 'to exit in the center go further'
+		if vhid2 >= 1: 'to exit in the industrial go back'
+		if vhid3 >= 1: 'to exit in the red light go back'
+		if vhid4 >= 1: 'to resident exit go back'
+		if vhid5 >= 1: 'to exit in the park go back'
+		act 'go further': pr = 119 & urape += -30 & ubomj += 35 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '120'
+		act 'go back': pr = 119 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '118'
+	elseif pr = 120:
+		if vhid1 >= 1: 'to exit in the center go back'
+		if vhid2 >= 1: 'to exit in the industrial go further'
+		if vhid3 >= 1: 'to exit in the red light go further'
+		if vhid4 >= 1: 'to resident exit go further'
+		if vhid5 >= 1: 'to exit in the park go further'
+		act 'go further': pr = 119 & urape += 35 & ubomj += -20 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '118'
+		act 'go back': pr = 119 & urape += -30 & ubomj += 35 & ubomj2 =0 & gt 'mod_public_WC_citybasement', '120'
+	end
+
+
+
+
+	if bumevent = 0:
+		eventtemp = rand (1,300)
+		if hour >= 5 and hour <= 21:
+			urape += 10
+		end
+		if hour >= 5 and hour <= 21:
+			ubomj -= 10
+		end
+		if hour < 5 or hour > 21:
+			ubomj2 += 10
+		end
+		ubomj2 -= bumfriend
+
+
+		if eventtemp >= 290:
+			gs 'mod_public_WC_citybasement_bumsex', 'body'
+		elseif eventtemp >= 270:
+			gs 'mod_public_WC_citybasement_bumsex', 'bag'
+		elseif urape >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'rape'
+		elseif ubomj >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj'
+		elseif bumfriend >= rand(15,30):
+			bumevent = 1
+			ubomj2 = rand(1,4)
+			tabir = rand(1,4)
+			'I see familiar bums here'
+			'some of them even say "hi" to me'
+			act 'ask to drink with them':
+				atemp = 0
+				tabir = rand(1,4)
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				killvar 'atemp'
+				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+			end
+		elseif ubomj2 >= eventtemp:
+			gs 'mod_public_WC_citybasement_bumsex', 'bomj2'
+		elseif ( eventtemp - urape) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - ubomj ) <= 15:
+			'I hear footsteps…'
+		elseif ( eventtemp - bomj2) <= 15:
+			'I hear footsteps…'
+		else
+			' '
+		end
+	elseif bumevent = 2:
+		bumevent = 0
+		*nl
+		'There are bums here.'
+		act 'drink with the bums':
+			bumevent = 1
+			gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
+		end
+	end
+	if bumevent >= 10:
+		bumevent = 0
+		gs 'stat'
+	elseif 	bumevent = 1:
+		bumevent += 10
+		gs 'stat'
+	end
+end
+
+--- mod_public_WC_citybasement_110 ---------------------------------
+

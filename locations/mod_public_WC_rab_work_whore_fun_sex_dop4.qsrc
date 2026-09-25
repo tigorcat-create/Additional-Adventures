@@ -1,0 +1,2891 @@
+# mod_public_WC_rab_work_whore_fun_sex_dop4
+if $ARGS[0] = 'start':
+	*clr & cla
+	colir = 2
+	$func('wrap', 'header center b', '"Party Room"')
+	if bcil >= 4 and bcil <= 20: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+	if bcil >= 21 and bcil <= 30: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+	if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'
+	gs 'npcgeneratec', 0, 'black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	killvar 'phmasturb'
+	menu_off = 0
+
+	otemp = 1
+	if ztemp = 232356:
+		'He opened the door and I come in'
+		roomtemp = rand(1,5)
+		$loc = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+		$loc_arg = 'start'
+		'There is a party here: loud music, boose'
+		'I have never though there are so many black in the ruSSia'
+		+$OpenInnerThought+'OMG! I am the only woman here'+$CloseInnerThought
+		'"Just relax and be fun… we are not beasts, we just need some woman company)" - the guy who bring me here told'
+		'"You can take anything you want. I have ppayed for 6 hours" - he slaped my ass and go to some other black dude'
+		phtemp = 0
+		ztemp = 0
+		ztemp = hour + 6
+		zzday = daystart
+		if ztemp >= 24:
+			ztemp -=24
+			zzday += 1
+		end
+
+		$PHloc = $loc
+		$PHloc_arg = $loc_arg
+
+		$phsexstart = $PHloc
+		$phsexstart_arg = $PHloc_arg
+
+		$loc = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+		$menu_loc = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+		$loc_arg = 'start'
+		$menu_arg = 'start'
+
+		if bcil >= 31 and bcil <= 37:
+			$metka = '4'
+		elseif bcil >= 21 and bcil <= 30:
+			$metka = '3'
+		elseif bcil >= 4 and bcil <= 20:
+			$metka = '2'
+		end
+	end
+	phtemp += 1
+	if $clothingworntype = 'nude' and $braworntype = 'none': phtemp += rand(1,2)
+	+$OpenInnerThought+'I have been payed till <<ztemp>> o''clock!'+$CloseInnerThought
+
+	act 'go to the bathroom': minut += 2 & gt 'mod_public_WC_rab_work_chystota_hotel','shower1'
+
+	act 'go to the bedroom': minut += 2 & gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+
+	act 'go to the bar': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+
+	act 'go dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+
+	gs 'willpower', 'gangbang', 'self'
+	temp = will_cost - (sexcorrupt / 3)
+	will_cost -= (sexcorrupt / 3)
+	if will_cost <= 0: will_cost = 0
+	if will_cost <= pcs_willpwr:
+		act 'Tease (<<temp>> Willpower)':
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			+$OpenInnerThought+'I think it''s a good idea'+$CloseInnerThought
+
+			gs 'willpower', 'gangbang', 'self'
+			temp = will_cost - (sexcorrupt / 3)
+			will_cost -= (sexcorrupt / 3)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+
+				act 'undress, lie down and prepare for breading':
+					*clr & cla
+					sexcorrupt += rand(1,2)
+					minut += 3
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+
+					'While I was undressing my self, some guys pointed on me'
+					phtemp += 10
+					'As I lie down, they start gathering around me'
+					'I start tease them… "This bich want BBC!" - they start to undress.'
+
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_naked_showoff.mp4"></video></center>'
+					gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+					gs 'stat'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+				end
+
+			else
+				act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+
+
+			act 'expose my tits':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I flashed my tits for a short time and hide them'
+				'I see sparkles in the guys eyes, who saw me teasing.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_tits.mp4"></video></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+
+				phtemp += rand(1,2)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+			end
+
+			act 'show my body':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I flashed myself for a short time'
+				'I see sparkles in the guys eyes, who saw me teasing.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_titts_ass.mp4"></video></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+
+				phtemp += rand(2,2)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+			end
+
+			act 'shake my ass':
+				*clr & cla
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				gs 'stat'
+
+				'I stand on my four and shake my ass'
+				'I know, they like it!'
+
+				if $pantyworntype = 'none':
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_ass_nopanties.mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_ass.mp4"></video></center>'
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+
+				phtemp += rand(1,3)
+				gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+			end
+
+
+
+			if rand(1,3) = 1:
+				act 'tease two guys, who talk on the sofa':
+					*clr & cla
+					sexcorrupt += rand(0,1)
+					gs 'clothing', 'strip'
+					gs 'stat'
+
+					'On my way to them I am undressing to my lingerie.'
+					'"Guys, let''s make some fun!"'
+
+					'"Yes, indeed" - he said running his eyes all over me'
+					'One of them stand up and gives me a hand'
+					'I take it and we go to the bedroom'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '21'
+				end
+			end
+		end
+	else
+		act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+	end
+
+	act 'hanging on the party':
+		cla
+		minut += rand(5,25)
+		gs 'stat'
+
+		'I spent my time chilling and talking with random people'
+		humint_exp += rand(1,3)
+		pcs_mood += rand(1,20)
+
+		if rand(1,2) = 1 and mc_inventory['cigarettes'] > 0:
+			if rand(1,3) = 1: mc_inventory['cigarettes'] += 1
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+
+		if rand(1,2) = 1:
+			gs 'drugs', 'alcohol', 'whiskey'
+			gs 'stat'
+
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+		end
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+	end
+
+
+
+	if mc_inventory['mentats'] > 0 and narkday ! daystart:
+		act 'Do a line of cocaine (0:05)':
+			*clr & cla
+			menu_off = 1
+			minut += 5
+			narkday = daystart
+			gs 'drugs', 'cocaine'
+			'<center><img <<$set_imgh>> src="images/shared/drugs/dur.jpg"></center>'
+			'You snort some cocaine, feeling dizzy for just a moment. After that I feel fantastic, and incredibly horny.'
+			act 'Continue': menu_off = 0 & gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			*clr & cla
+			'I decide to kill some time with cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(5,10)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+	end
+
+	if mc_inventory['food_wine'] = 1:
+		act 'drink a wine from the bottle':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_bottle.mp4"></video></center>'
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+			elseif alkowine = 0:
+				alkowine = 1
+			end
+			gs 'drugs', 'alcohol', 'wine'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+	end
+
+	act 'just wait (0:10)':
+		minut += 10
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+	end
+
+	act 'Go away':
+		if hour >= ztemp:
+			ztemp = 0
+		else
+			FUNJOBDONE -= 2000
+			if FUNJOBDONE <= 0: FUNJOBDONE = 0
+			shtraf += 20
+		end
+
+		if $metka = '4':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+		elseif $metka = '3':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		elseif $metka = '2':
+			gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+		else
+			gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+		end
+	end
+
+	gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+
+	if hour >= (ztemp + 3) and daystart >= zzday:
+		*clr & cla
+
+		'There are no many folks left here. All of them dressing up and gathering somewhere… I see one guy put a gun in his pants'
+		'"Girl, party ends"'
+		'"We will go to race, and you need to go now. - bye"'
+		'He pushes me from the room'
+
+		act 'continue':
+			if $metka = '4':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+			elseif $metka = '3':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			elseif $metka = '2':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+			else
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bedroom':
+	*clr & cla
+	colir = 2
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	$func('wrap', 'header center b', '"Bedroom"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/events/room/room<<roomtemp>>.jpg"></center>'
+	phtemp += 1
+
+	$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+	$phsexstart_arg = 'bedroom'
+
+	if otemp = 2 or otemp = 0: otemp = 3
+	if otemp = 1: otemp = 2
+
+
+
+	if pcs_horny >= 50:
+		act 'masturbate':
+			*clr & cla
+			phmasturb = 1
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/topless_masturbate_start.mp4"></video></center>'
+			gs 'arousal', 'masturbate', 10
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+		end
+	end
+
+	act 'wait here (0:10)':
+		minut += 10
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'sit and smoke':
+			*clr & cla
+			'I decide to kill some time with cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(10,15)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+		end
+	end
+
+	if rand(1,8) = 1:
+		'I see an openned bottle'
+		act 'Take a drink':
+			*clr & cla
+			'I take a sip, it''s an alcohol! Pour it in a glass, start to drink'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink.jpg"></center>'
+			gs 'drugs', 'alcohol', 'whiskey'
+			minut += 15
+			gs 'stat'
+
+			'A moment of peace…'
+
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+		end
+	elseif mc_inventory['food_wine'] = 1:
+		act 'drink my wine':
+			*clr & cla
+
+			if mc_inventory['food_wine'] = 1:
+				'I pour some wine from my purse'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0:
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'
+			end
+
+			+$OpenInnerThought+'Tasty…'+$CloseInnerThought
+
+			minut += 10
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/drink.jpg"></center>'
+
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+		end
+	end
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+			act 'I am dressed and can go away': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+	end
+
+	if $clothingworntype = 'nude':
+		'I can''t go away nude!'
+	elseif $clothingworntype ! 'nude':
+		act 'Go away': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+	end
+
+	if phmasturb = 1:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/topless_masturbate_goon.mp4"></video></center>'
+		gs 'arousal', 'masturbate', 10
+		minut -= 10
+		gs 'stat'
+	end
+
+	if phtemp >= 2 and phtemp < 9 and rand(1,4) = 1:
+		cla
+		'The guy entered the room and closed the door'
+		PH_full_pay = 200
+
+		if $clothingworntype = 'nude' or phmasturb = 1:
+			act 'lick my fingers':
+				*clr & cla
+				FUNJOBDONE += 30
+				sexcorrupt += rand(0,1)
+				if phmasturb = 1: 'I stop masturbating, stand up continiously looking in his eyes…'
+				'I lick my wet fingers'
+
+				'"Yo Bitch, yo are so hot" - he drop his pants'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_naked_liked_fingers.mp4"></video></center>'
+
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				minut -= 10
+				gs 'stat'
+				killvar 'phmasturb'
+				act 'continue': gt 'mod_public_WC_sex', '1'
+			end
+
+			act 'tease with my holes':
+				*clr & cla
+				FUNJOBDONE += 50
+				'"Yo Bitch, yo are so hot" - he drop his pants'
+				sexcorrupt += 1
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/tease_naked_showoff.mp4"></video></center>'
+				gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+				minut -= 10
+				gs 'stat'
+				killvar 'phmasturb'
+				act 'continue': gt 'mod_public_WC_sex', '1'
+			end
+		end
+
+		if phmasturb = 1:
+			act 'keep masturbate':
+				*clr & cla
+				FUNJOBDONE += 30
+				'He open his fly and start to stroke his dick on his way to me…'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/topless_masturbate_goon.mp4"></video></center>'
+				gs 'arousal', 'masturbate', 10
+				minut -= 10
+				gs 'stat'
+				killvar 'phmasturb'
+				act 'continue': gt 'mod_public_WC_sex', '1'
+			end
+		end
+
+		if phmasturb = 1:
+			act 'stop myself and talk with him':
+				*clr & cla
+				if rand(1,10) <= 6:
+					'He don''t want to talk, he groping me and it is clear what he want'
+					'I start to undressing him'
+
+					act 'continue': gt 'mod_public_WC_sex', '1'
+				else
+					'We chat and joke a little'
+					'He take my hand and we go to dance'
+					phman = 1
+					act 'go dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+				end
+			end
+		end
+
+		act 'talk with him':
+			*clr & cla
+			if rand(1,10) <= 3:
+				'we are talking and he start to kiss me  and grope me… It is clear what he want'
+				'I start to undressing him'
+
+				act 'continue': gt 'mod_public_WC_sex', '1'
+			else
+				'We chat and joke a little'
+				'He take my hand and we go to dance'
+
+				phman = 1
+				act 'go dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+			end
+		end
+
+
+	elseif phmasturb = 1:
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/ACTIONS/tease/topless_masturbate_goon.mp4"></video></center>'
+		$orgasm_or = 'yes'
+		gs 'stat'
+		gs 'arousal', 'end'
+		minut += 10
+		gs 'stat'
+		act 'I have finished': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bedroom'
+		killvar 'phmasturb'
+	end
+
+	if phmasturb ! 1:
+		gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+
+		if hour >= (ztemp + 3) and daystart >= zzday:
+			*clr & cla
+
+			'There are no many folks left here. All of them dressing up and gathering somewhere… I see one guy put a gun in his pants'
+			'"Girl, party ends"'
+			'"We will go to race, and you need to go now. - bye"'
+			'He pushes me from the room'
+
+			act 'continue':
+				if $metka = '4':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+				elseif $metka = '3':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+				elseif $metka = '2':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+				else
+					gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bar':
+	*clr & cla
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	if otemp ! 0:
+		'I sit at the bar, it''s self-service.'
+	end
+	if rand(1,3) = 1: phtemp += 1
+	if $clothingworntype = 'nude' and $braworntype = 'none': phtemp += rand(1,2)
+	minut += rand(5,10)
+	gs 'stat'
+
+	act 'go away from the bar':
+		killvar 'phman'
+		killvar 'phbar'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+	end
+
+	act 'drink a shot':
+		*clr & cla
+		minut += 3
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_shot.mp4"></video></center>'
+		gs 'drugs', 'alcohol', 'whiskey'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+	end
+
+	if mc_inventory['food_wine'] = 1:
+		act 'drink a wine from the bottle':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_bottle.mp4"></video></center>'
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+			elseif alkowine = 0:
+				alkowine = 1
+			end
+			gs 'drugs', 'alcohol', 'wine'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+	end
+
+	act 'wait here (0:30)':
+		minut += 30
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'sit and smoke':
+			*clr & cla
+			'I decide to kill some time with a cigarette.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+			minut += rand(10,15)
+			gs 'drugs','smoke'
+			gs 'stat'
+			if rand(1,4) = 1:
+				pcs_willpwr += rand(1,2)
+				if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+				if pcs_willpwr <= 0: pcs_willpwr = 0
+				gs 'stat'
+			end
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+	end
+
+	if rand(1,10) >=  8:
+		cla
+		'"Hello candy, lets go dance!" - handsome black asks me'
+		phman = 1
+		act 'Go dance with him':
+
+			killvar 'phbar'
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+		end
+
+		act 'sorry, need to barmaiding':
+			phman = 0
+			killvar 'phman'
+			+$OpenInnerThought+'I need to be a barmaid to NOT be a liar'+$CloseInnerThough
+			if phbar = 1: shtraf += 1 & gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+
+		act 'pour a bottle on my tits':
+			*clr & cla
+			'He is staring on my tits'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+			FUNJOBDONE += 10
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/puronme.mp4"></video></center>'
+
+
+			act 'lets better go fuck':
+				cla
+				phman = 0
+				killvar 'phbar'
+				killvar 'phman'
+				sexcorrupt += 1
+				'"Yea, it sound like a great idea" - he grab my hand and dragged me to the bedroom'
+				$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+				$phsexstart_arg = 'bedroom'
+				PH_full_pay = 250
+				act 'continue': gt 'mod_public_WC_sex', '1'
+			end
+
+			act 'I am sorry, cuty, I need to work':
+				cla
+				phman = 0
+				killvar 'phman'
+				'"Yes, I see" - he said slowly, keeping his gaze on my wet tits through the clothes'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+			end
+		end
+
+		if phbar = 1:
+			act 'make a cocktail to him as a sorry "no"':
+				*clr & cla
+				servng_exp += 3
+				minut += rand(3,7)
+				gs 'stat'
+				phman = 0
+				killvar 'phman'
+
+				'"Yes, I see. Party needs you))" - he take the cocktail and go away'
+				if rand(1,2) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).jpg"></center>'
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+			end
+		end
+	end
+
+	if phbar ! 1:
+		act 'become a barmaid':
+			phbar = 1
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+	end
+
+	if phbar = 1 and phman ! 1:
+
+		act 'take a bottle of boose':
+			if mc_inventory['food_wine'] ! 1:
+				'nice!'
+			else
+				'I already have one'
+			end
+			mc_inventory['food_wine'] = 1
+			alkowine = 0
+			minut += 1
+			gs 'stat'
+		end
+		act 'make a cocktail':
+			*clr & cla
+			servng_exp += 3
+			minut += rand(3,7)
+			gs 'stat'
+
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).jpg"></center>'
+			end
+
+
+			act 'drink the cocktail':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_glass.mp4"></video></center>'
+				gs 'drugs', 'alcohol', 'moonshine'
+				minut += 6
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+
+		act 'serv a line of shots':
+			*clr & cla
+			servng_exp += 2
+			minut += rand(1,3)
+			gs 'stat'
+
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).jpg"></center>'
+			end
+
+			act 'drink a shot':
+				*clr & cla
+				minut += 3
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/drink_shot.mp4"></video></center>'
+				gs 'drugs', 'alcohol', 'whiskey'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+		end
+
+		if rand(1,4) = 1:
+			cla
+			temp = rand(1,3)
+			if temp = 1:
+				'Some guy tapped my hand. I turn to him - "Make a cocktail to me"'
+			else
+				'Some guy tapped my hand. I turn to him - "Serve me some vodka"'
+			end
+
+			act 'make a cocktail':
+				*clr & cla
+				servng_exp += 3
+				minut += rand(3,7)
+				gs 'stat'
+
+				if rand(1,2) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).jpg"></center>'
+				end
+
+				if temp = 1:
+					'"Nice, thank you" - he put some tips'
+					money += rand(1,5) * 10
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+				else
+					shtraf += 1
+					'Are you dumb or smth? SERVE ME A SHOT OF VODKA!'
+					act 'do it':
+						*clr & cla
+						servng_exp += 2
+						minut += rand(1,3)
+						gs 'stat'
+
+						if rand(1,2) = 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).jpg"></center>'
+						end
+						'"finaly" - he drink the shot and go away'
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+					end
+				end
+
+			end
+
+			act 'serve a shot of vodka':
+				*clr & cla
+				servng_exp += 2
+				minut += rand(1,3)
+				gs 'stat'
+
+				if rand(1,2) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (1).jpg"></center>'
+				end
+
+				if temp ! 1:
+					'"Nice, thank you" - he put some tips'
+					money += rand(1,5) * 10
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+				else
+					shtraf += 1
+					'Are you dumb or smth? MAKE ME A COCKTAIL!'
+					act 'do it':
+						*clr & cla
+						servng_exp += 3
+						minut += rand(3,7)
+						gs 'stat'
+
+						if rand(1,2) = 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/drink/barwork (2).jpg"></center>'
+						end
+						'"finaly" - he drink the shot and go away'
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bar'
+					end
+				end
+			end
+		end
+	end
+
+	gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+
+	if hour >= (ztemp + 3) and daystart >= zzday:
+		*clr & cla
+
+		'There are no many folks left here. All of them dressing up and gathering somewhere… I see one guy put a gun in his pants'
+		'"Girl, party ends"'
+		'"We will go to race, and you need to go now. - bye"'
+		'He pushes me from the room'
+
+		act 'continue':
+			if $metka = '4':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+			elseif $metka = '3':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			elseif $metka = '2':
+				gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+			else
+				gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+			end
+		end
+	end
+	otemp = 4
+end
+
+if $ARGS[0] = 'dancing':
+	*clr & cla
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	phtemp += rand(1,2)
+	if $clothingworntype = 'nude' and $braworntype = 'none': phtemp += rand(1,2)
+	minut += rand(5,10)
+	gs 'stat'
+
+	'I am dancing alone'
+	'I am having fun!'
+	dancero_exp += rand(1,4)
+	gs 'stat'
+
+	act 'stop dancing':
+		killvar 'phman'
+		killvar 'phbar'
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+	end
+
+	act 'keep dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+
+
+	if $clothingworntype = 'nude' and $braworntype = 'none':
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance topless.mp4"></video></center>'
+
+		if mc_inventory['food_wine'] = 1:
+			act 'drink a wine from the bottle':
+				*clr & cla
+				dancero_exp += rand(1,4)
+				minut += 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle_drink.mp4"></video></center>'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0:
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+			end
+		end
+	elseif mc_inventory['food_wine'] = 1:
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle.mp4"></video></center>'
+
+		act 'drink a wine from the bottle':
+			*clr & cla
+			dancero_exp += rand(1,4)
+			minut += 5
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle_drink.mp4"></video></center>'
+			if alkowine = 1:
+				mc_inventory['food_wine'] = 0
+				alkowine = 0
+			elseif alkowine = 0:
+				alkowine = 1
+			end
+			gs 'drugs', 'alcohol', 'wine'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+		end
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance ('+rand(1,3)+').mp4"></video></center>'
+	end
+
+	if $clothingworntype ! 'nude' and $braworntype ! 'none':
+		gs 'willpower', 'gangbang', 'self'
+		temp = will_cost - (sexcorrupt / 5)
+		will_cost -= (sexcorrupt / 5)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			act 'Strip down to my panties and Keep dancing (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				sexcorrupt += 1
+
+				'Guys staring at me)))'
+				phtemp += rand(3,5)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance topless.mp4"></video></center>'
+				gs 'clothing', 'strip'
+				gs 'bras', 'remove'
+				gs 'arousal', 'foreplay', 5, 'exhibitionism'
+				gs 'stat'
+
+
+				minut += rand(5,10)
+				gs 'stat'
+
+				'I am dancing alone'
+				'I am having fun!'
+				dancero_exp += rand(1,4)
+				gs 'stat'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+			end
+		else
+			act 'Strip down to my panties and Keep dancing ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+
+	end
+
+	act 'teas the guys':
+		*clr & cla
+		sexcorrupt += rand(0,1)
+
+		phtemp += rand(1,3)
+		'I am showing my body intentionally-accidentally to tease the guys'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_tease.mp4"></video></center>'
+		gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+		minut -= 10
+		gs 'stat'
+		gs 'arousal', 'foreplay', 5, 'exhibitionism'
+		gs 'stat'
+
+
+		minut += rand(5,10)
+		gs 'stat'
+		'I am having fun!'
+		dancero_exp += rand(1,4)
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+	end
+
+	if phman = 1:
+		*clr & cla
+		'I am dancing with the guy'
+
+		if $clothingworntype = 'nude' and $braworntype = 'none':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/4_dance_halfnaked.mp4"></video></center>'
+
+			if mc_inventory['food_wine'] = 1:
+				act 'drink a wine from the bottle':
+					*clr & cla
+					dancero_exp += rand(1,4)
+					minut += 5
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle_drink.mp4"></video></center>'
+					if alkowine = 1:
+						mc_inventory['food_wine'] = 0
+						alkowine = 0
+					elseif alkowine = 0:
+						alkowine = 1
+					end
+					gs 'drugs', 'alcohol', 'wine'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+				end
+			end
+		elseif mc_inventory['food_wine'] = 1:
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/1_dance ('+rand(1,3)+').mp4"></video></center>'
+
+			act 'drink a wine from the bottle':
+				*clr & cla
+				dancero_exp += rand(1,4)
+				minut += 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle_drink.mp4"></video></center>'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0:
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+			end
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/1_dance ('+rand(1,3)+').mp4"></video></center>'
+		end
+
+
+		gs 'willpower', 'misc', 'self', 'hard'
+		temp = will_cost + (sexcorrupt / 3)
+		will_cost += (sexcorrupt / 3)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			act 'stop dancing':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				killvar 'phman'
+				killvar 'phbar'
+				gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+			end
+		elseif will_cost <= pcs_willpwr:
+			act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+		else
+			act 'stop dancing ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+
+		act 'keep dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+
+		act 'teas the guy':
+			*clr & cla
+			sexcorrupt += rand(0,1)
+
+			phtemp += rand(1,3)
+			'I am showing my body intentionally-accidentally to tease him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_tease.mp4"></video></center>'
+			gs 'arousal', 'flash', 10, 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+			gs 'arousal', 'foreplay', 5, 'exhibitionism'
+			gs 'stat'
+
+
+			minut += rand(5,10)
+			gs 'stat'
+			'I am having fun!'
+			dancero_exp += rand(1,4)
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+		end
+
+		act 'kiss the guy':
+			*clr & cla
+			phtemp += 1
+			gs 'arousal', 'kiss', 10, 'prostitution'
+			minut -= 7
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/kiss ('+rand(1,2)+').mp4"></video></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+		end
+
+		act 'lick the guy':
+			*clr & cla
+			phtemp += 2
+			gs 'arousal', 'kiss', 20, 'prostitution'
+			minut -= 17
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/lick_him.mp4"></video></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+		end
+
+		if phtemp >= 5 and phtemp < 8:
+			'Guys gathering around me… I am feeling like I am dancing with everybody… this somehow arounsing me'
+		elseif phtemp >= 8 and phtemp < 12 and $clothingworntype ! 'nude' and $braworntype ! 'none':
+			'He start gently undressing me while dancing'
+			gs 'clothing', 'strip'
+			gs 'bras', 'remove'
+			gs 'arousal', 'foreplay', 5, 'exhibitionism'
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/2_dance_undress.mp4"></video></center>'
+		elseif phtemp >= 8 and phtemp < 12:
+			'It''s very hot here…'
+		elseif phtemp >= 12:
+			if $clothingworntype ! 'nude' and $braworntype ! 'none':
+				'He start gently undressing me while dancing'
+				gs 'clothing', 'strip'
+				gs 'bras', 'remove'
+				gs 'arousal', 'foreplay', 5, 'exhibitionism'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/2_dance_undress.mp4"></video></center>'
+			end
+
+			'This dance feels so similar to sex…'
+			minut -= 40
+			gs 'arousal', 'foreplay', 40, 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+		end
+
+		if rand(1,10) = 1 or phtemp >= 15:
+			cla
+			'they are circled me, I think I lost the controll over the situation'
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancegb'
+		end
+
+		if sexcorrupt >= rand(50,80):
+			act 'I can''t resist. I want this guys in me… ALL of them!':
+				sexcorrupt += 2
+				gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancegb'
+			end
+		end
+
+
+	elseif (rand(1,5) * 10 + phtemp * 5) >=	70 and phman ! 1:
+		'Some guy come close to me and start dancing with me'
+		phman = 1
+
+		if mc_inventory['food_wine'] = 1:
+			act 'drink a wine from the bottle':
+				*clr & cla
+				dancero_exp += rand(1,4)
+				minut += 5
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/actions/dance/dance_bottle_drink.mp4"></video></center>'
+				if alkowine = 1:
+					mc_inventory['food_wine'] = 0
+					alkowine = 0
+				elseif alkowine = 0:
+					alkowine = 1
+				end
+				gs 'drugs', 'alcohol', 'wine'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+			end
+		end
+
+		act 'stop dancing':
+			killvar 'phman'
+			killvar 'phbar'
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+
+		act 'keep dancing': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'dancing'
+	else
+		gs 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'event'
+
+		if hour >= (ztemp + 3) and daystart >= zzday:
+			*clr & cla
+
+			'There are no many folks left here. All of them dressing up and gathering somewhere… I see one guy put a gun in his pants'
+			'"Girl, party ends"'
+			'"We will go to race, and you need to go now. - bye"'
+			'He pushes me from the room'
+
+			act 'continue':
+				if $metka = '4':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+				elseif $metka = '3':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+				elseif $metka = '2':
+					gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+				else
+					gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+				end
+			end
+		end
+	end
+	otemp = 1
+end
+
+if $ARGS[0] = 'dancegb':
+	*clr & cla
+	killvar 'phman'
+	killvar 'phbar'
+
+	if $clothingworntype ! 'nude' and $braworntype ! 'none':
+		'He start gently undressing me while dancing'
+		gs 'clothing', 'strip'
+		gs 'bras', 'remove'
+		gs 'arousal', 'foreplay', 5, 'exhibitionism'
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/2_dance_undress.mp4"></video></center>'
+	else
+		''
+	end
+
+	'I am so arounsed, I start to undress them'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/3_dance_undresshim.mp4"></video></center>'
+
+	gs 'willpower', 'misc', 'self', 'hard'
+	temp = will_cost + (sexcorrupt / 3) + phtemp
+	will_cost += (sexcorrupt / 3) + phtemp
+	if will_cost <= 0: will_cost = 0
+	if will_cost <= pcs_willpwr:
+		act 'stop dancing':
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			shtraf += 3
+			killvar 'phman'
+			killvar 'phbar'
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'start'
+		end
+	elseif will_cost <= pcs_willpwr:
+		act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+	else
+		act 'stop dancing ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+	end
+	dancero_exp += rand(1,4)
+	minut += rand(5,10)
+	gs 'stat'
+
+	act 'keep dancing':
+		*clr & cla
+		'I feel how BIG dicks are rubbing me… How their muscular bodies tensed with passion…'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/4_dance_halfnaked.mp4"></video></center>'
+		dancero_exp += rand(1,4)
+		minut += rand(5,10)
+		gs 'stat'
+
+		act 'keep dancing':
+			*clr & cla
+			'One of them suddenly put me on his shoulder… and carry me to the bedroom'
+			killvar 'phman'
+			killvar 'phbar'
+			$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+			$phsexstart_arg = 'bedroom'
+			PH_full_pay = 250
+			minut += 3
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/5 carry_me.mp4"></video></center>'
+
+			act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'event':
+	if phtemp >= rand(9,10):
+		cla
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+		phtemp -= 9
+
+		temp = rand(1,10)
+		if temp <= 1:
+			!! line
+			if otemp = 1:
+				!! otemp = 1 - main room
+				'The guys looking at me with hungry eyes more often with each minuts… I can feel the tension in the room'
+				'One of them suddenly put me on his shoulder… and carry me to the bedroom… all other just go with him'
+				$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+				$phsexstart_arg = 'bedroom'
+				PH_full_pay = 250
+				minut += 3
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/5 carry_me.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line'
+			elseif otemp = 2:
+				!! otemp = 2 - just enter the bedroom
+				PH_full_pay = 250
+				'I enter the room and try to close the door, but more and more blacks are coming'
+				'"We are tired to wait" - one of them said'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line'
+			elseif otemp = 3:
+				!! otemp = 3 - bedroom
+				PH_full_pay = 250
+				shtraf += 1
+				'The door is opened with a slam'
+				'"You whore, you need to work, NOT just chill here!"'
+				'Blacks just coming and coming to the room'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line'
+			elseif otemp = 4:
+				!! otemp = 4 - bar
+				'The guys looking at me with hungry eyes more often with each minuts… I can feel the tension in the room'
+				'One of them suddenly put me on his shoulder… and carry me to the bedroom… all other just go with him'
+				$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+				$phsexstart_arg = 'bedroom'
+				PH_full_pay = 250
+				minut += 3
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/5 carry_me.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line'
+			end
+		elseif temp <= 3:
+			!! bg
+			if otemp = 1:
+				!! otemp = 1 - main room
+				'Guy grab my head - "time to work, honey"'
+				'He pushed me on my knees'
+				'And push my face to his dick'
+				'Guy who saw this start to undress'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg'
+			elseif otemp = 2:
+				!! otemp = 2 - just enter the bedroom
+				'As I open the door I see two naked blacks… someone push me from behind "Come on whore!"  and slam the door'
+				'The moment later They undress me and push on my knees…'
+				'…I start to serve cocks'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg'
+			elseif otemp = 3:
+				!! otemp = 3 - bedroom
+				'5 guys entered the room. They talking and don''t see me. They are undressing…'
+				if sexcorrupt >= rand(50,80):
+					'I so want their dongs in me -"Hi guys, please use me as you want" - they starts laughing but…'
+				else
+					'I decide to go away from the room, while they can''t see me, but suddenly they run to me'
+				end
+				'The moment later They undress me and push on my knees…'
+				'…I start to serve cocks'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg'
+			elseif otemp = 4:
+				!! otemp = 4 - bar
+				'Guy grab my head - "time to work, honey"'
+				'He pushed me on my knees'
+				'And push my face to his dick'
+				'Guy who saw this start to undress'
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg'
+			end
+		elseif temp <= 6:
+			!! 2guys
+			if otemp = 1:
+				!! otemp = 1 - main room
+				'Two guys come close to me'
+				'"Honey, we want some fun"'
+				+$OpenInnerThought+'I know what this mean'+$CloseInnerThought
+				'I start going to the bedroom… one of them slap my ass'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '21'
+			elseif otemp = 2:
+				!! otemp = 2 - just enter the bedroom
+				'Two guys siting in the bedroom and talking'
+				'"You just in a time… come here"'
+				act 'serve them': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '22'
+			elseif otemp = 3:
+				!! otemp = 3 - bedroom
+				'Two guys enter the room'
+				'"Here you are! We want some fun, whore"'
+				act 'serve them': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '22'
+			elseif otemp = 4:
+				!! otemp = 4 - bar
+				'Two guys come close to me'
+				'"Honey, we want some fun"'
+				+$OpenInnerThought+'I know what this mean'+$CloseInnerThought
+				'I start going to the bedroom… one of them slap my ass'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '21'
+			end
+		elseif temp <= 9:
+			!! 3guys
+			if otemp = 1:
+				!! otemp = 1 - main room
+				'Some shy guy come to me'
+				'"You are so pretty, I need your caress" - he make a short pause: "Go with me"'
+				act 'Go with him': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '3'
+			elseif otemp = 2:
+				!! otemp = 2 - just enter the bedroom
+				gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '3'
+
+			elseif otemp = 3:
+				!! otemp = 3 - bedroom
+				gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '3'
+
+			elseif otemp = 4:
+				!! otemp = 4 - bar
+				'Some shy guy come to me'
+				'"You are so pretty, I need your caress" - he make a short pause: "Go with me"'
+				act 'Go with him': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '3'
+			end
+
+
+
+		elseif temp = 10:
+			!! gb
+			if otemp = 1:
+				!! otemp = 1 - main room
+				'The guys looking at me with hungry eyes more often with each minuts… I can feel the tension in the room'
+				'One of them suddenly put me on his shoulder… and carry me to the bedroom… all other just go with him'
+				$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+				$phsexstart_arg = 'bedroom'
+				PH_full_pay = 250
+				minut += 3
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/5 carry_me.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+			elseif otemp = 2:
+				!! otemp = 2 - just enter the bedroom
+				PH_full_pay = 250
+				'I enter the room and try to close the door, but more and more blacks are coming'
+				'"We are tired to wait" - one of them said'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+			elseif otemp = 3:
+				!! otemp = 3 - bedroom
+				PH_full_pay = 250
+				shtraf += 1
+				'The door is opened with a slam'
+				'"You whore, you need to work, NOT just chill here!"'
+				'Blacks just coming and coming to the room'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+			elseif otemp = 4:
+				!! otemp = 4 - bar
+				'The guys looking at me with hungry eyes more often with each minuts… I can feel the tension in the room'
+				'One of them suddenly put me on his shoulder… and carry me to the bedroom… all other just go with him'
+				$phsexstart = 'mod_public_WC_rab_work_whore_fun_sex_dop4'
+				$phsexstart_arg = 'bedroom'
+				PH_full_pay = 250
+				minut += 3
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/0 dance/5 carry_me.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb'
+			end
+		end
+	else
+		''
+		if phtemp <= 3:
+			if otemp = 2 or otemp = 3:
+				+$OpenInnerThought+'It''s quietly here'+$CloseInnerThought
+			else
+				+$OpenInnerThought+'noone gives extra attention to me'+$CloseInnerThought
+			end
+		elseif phtemp <= 6:
+			if otemp = 2 or otemp = 3:
+				+$OpenInnerThought+'I hear noise from the party room - I think, someone mention me'+$CloseInnerThought
+			else
+				+$OpenInnerThought+'guys glance at me from time to time'+$CloseInnerThought
+			end
+		else
+			+$OpenInnerThought+'I feel smth will start soon'+$CloseInnerThought
+		end
+
+		'<i>event trigger progress:</i>'
+		if phtemp <= 0:
+			$func('wrap', 'accent', ' _____ ') + ' '
+		elseif phtemp = 1:
+			$func('wrap', 'accent', ' _____ ') + ' '
+		elseif phtemp = 2:
+			$func('wrap', 'accent', ' █____ ') + ' '
+		elseif phtemp = 3:
+			$func('wrap', 'accent', ' █____ ') + ' '
+		elseif phtemp = 4:
+			$func('wrap', 'accent', ' ██___ ') + ' '
+		elseif phtemp = 5:
+			$func('wrap', 'accent', ' ██___ ') + ' '
+		elseif phtemp = 6:
+			$func('wrap', 'accent', ' ███__ ') + ' '
+		elseif phtemp = 7:
+			$func('wrap', 'accent', ' ███__ ') + ' '
+		elseif phtemp = 8:
+			$func('wrap', 'accent', ' ████_ ') + ' '
+		elseif phtemp = 9:
+			$func('wrap', 'accent', ' ████_ ') + ' '
+		else
+			$func('wrap', 'accent', ' █████ ') + ' '
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '21':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	gs 'arousal', 'foreplay', 10, 'prostitution', 'group'
+	minut -= 10
+	gs 'stat'
+	phtemp += rand(0,1)
+	'As we enter the bedroom they start to grope my tits, while I grope their groins'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/1 start/2 ('+rand(1,2)+').mp4"></video></center>'
+
+	PHclientFUNJOBDONE += 5
+
+	act 'continue':
+		*clr & cla
+		'They push me on my knees and bare their shlongs'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/1 start/3.mp4"></video></center>'
+		gs 'arousal', 'foreplay', 5, 'prostitution', 'group'
+		gs 'stat'
+		PHclientFUNJOBDONE += 5
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '22'
+	end
+end
+
+if $ARGS[0] = '22':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	'I am jorking both of them'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/2 bhj/1.mp4"></video></center>'
+	gs 'arousal', 'hj', rand(3,5), 'prostitution', 'group'
+	gs 'stat'
+	gs 'arousal', 'hj', rand(3,5), 'prostitution', 'group'
+	gs 'stat'
+	PHclientFUNJOBDONE += 10
+
+
+	act 'start sucking':
+		*clr & cla
+		phtemp += rand(0,1)
+
+		'I start to suck the <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/2 bhj/2.mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,5), 'prostitution', 'group'
+		gs 'stat'
+		PHclientFUNJOBDONE += 5
+
+		act 'keep sucking':
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2suck'
+		end
+
+
+		act 'change to spit roast':
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2sr'
+		end
+	end
+
+	act 'change to spit roast':
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2sr'
+	end
+end
+
+if $ARGS[0] = '2suck':
+	*clr & cla
+
+	PHclientFUNJOBDONE += 10
+	phtemp += rand(1,2)
+	'I suck the dick while warming another'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/2 bhj/3 ('+rand(1,2)+').mp4"></video></center>'
+	if PHclientFUNJOBDONE >= 35:
+		+$OpenInnerThought+'I think guys warmed up enought and are ready to spit roast me'+$CloseInnerThought
+	end
+	gs 'arousal', 'bj', rand(5,5), 'prostitution', 'group'
+	gs 'stat'
+	gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+	gs 'stat'
+
+	act 'change the D':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/2 bhj/change.mp4"></video></center>'
+		*nl
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/2 bhj/3 ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,5), 'prostitution', 'group'
+		gs 'stat'
+		gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+		gs 'stat'
+
+		act 'keep sucking':
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2suck'
+		end
+
+		act 'change to spit roast':
+			gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2sr'
+		end
+
+		if phtemp >= rand(9,12):
+			cla
+			phtemp = 0
+
+			FUNJOBDONE += 500 * PHclientFUNJOBDONE / 100
+			PHclientFUNJOBDONE = 0
+
+			'Guys start cumming and make a loads on my face'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/cum/face.mp4"></video></center>'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','hands',$boy
+			gs 'stat'
+			gs 'cum_call','stomach',$boy
+			gs 'stat'
+			gs 'cum_call','breasts',$boy
+			gs 'stat'
+			gs 'cum_call','hair',$boy
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			if ztemp = 1256:
+				ztemp = 0
+				phtempttemp -= 2
+				phwhoreshift -= 1
+				phwhoreshift -= 1
+				'"Nice girl… you can go now"'
+				'I dress up and go away'
+				act 'Go away':
+					temp = rand(1,3)
+					if temp = 1:
+						$metka = '2'
+					elseif temp = 2:
+						$metka = '3'
+					elseif temp = 3:
+						$metka = '4'
+					end
+					if $metka = '4': gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+					if $metka = '3': gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+					if $metka = '2': gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+				end
+			else
+				'I dress up and go to the main room'
+				act 'go': gt $phsexstart, $phsexstart_arg
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2sr':
+	*clr & cla
+	phtemp += rand(1,3)
+	if PHclientFUNJOBDONE >= 35:
+		PHclientFUNJOBDONE += 25
+	else
+		PHclientFUNJOBDONE += 5
+	end
+	'The guy fucking me from both sides'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/3 sr/2 ('+rand(1,4)+').mp4"></video></center>'
+	if PHclientFUNJOBDONE >= 60:
+		+$OpenInnerThought+'I think guys wold be happy to try my ass'+$CloseInnerThought
+	end
+	gs 'arousal', 'bj', rand(5,10), 'prostitution', 'group'
+	gs 'stat'
+	gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group'
+	gs 'stat'
+
+
+	act 'keep the spit roasting':
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2sr'
+	end
+
+	act 'my ass is lonely':
+		sexcorrupt += 1
+		temp = 1
+		gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2av'
+	end
+
+	if phtemp >= rand(9,12):
+		cla
+		phtemp = 0
+
+		FUNJOBDONE += 500 * PHclientFUNJOBDONE / 100
+		PHclientFUNJOBDONE = 0
+
+		'Guys start cumming'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/cum/sr.mp4"></video></center>'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','',$boy
+		gs 'cuminsidereact', $boydesc
+		gs 'arousal', 'end'
+		gs 'stat'
+		if ztemp = 1256:
+			ztemp = 0
+			phtempttemp -= 2
+			phwhoreshift -= 1
+			phwhoreshift -= 1
+			'"Nice girl… you can go now"'
+			'I dress up and go away'
+			act 'Go away':
+				temp = rand(1,3)
+				if temp = 1:
+					$metka = '2'
+				elseif temp = 2:
+					$metka = '3'
+				elseif temp = 3:
+					$metka = '4'
+				end
+				if $metka = '4': gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+				if $metka = '3': gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+				if $metka = '2': gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+			end
+		else
+			'I dress up and go to the main room'
+			act 'go': gt $phsexstart, $phsexstart_arg
+		end
+	end
+end
+
+if $ARGS[0] = '2av':
+	*clr & cla
+	phtemp += rand(2,4)
+	if PHclientFUNJOBDONE >= 60:
+		PHclientFUNJOBDONE += 35
+	else
+		PHclientFUNJOBDONE += 5
+	end
+	If analPlugIn = 1:
+		analPlugIn = 0
+		'"Yo! She is pluged!"'
+		'"Daaamn, I like you, gurl!"'
+		'He unpluged me with one quick move'
+		PHclientFUNJOBDONE += 5
+	end
+
+	if temp <= 1:
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+		'"You are nasty whore!"'
+		temp += 10
+		'The guy penetrates my anus… I see the other <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> dick is preparating to fuck me more.'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/4 av/1.mp4"></video></center>'
+		gs 'arousal', 'anal', rand(5,5), 'prostitution', 'group'
+		gs 'stat'
+		gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'group'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2av'
+	else
+		'They fill my both holes… I feel they dicks rubbing each other inside me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/2/4 av/2 ('+rand(1,11)+').mp4"></video></center>'
+		gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group'
+		gs 'stat'
+		gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group'
+		gs 'stat'
+
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', '2av'
+
+		if phtemp >= rand(9,12):
+			cla
+			phtemp = 0
+
+			FUNJOBDONE += 500 * PHclientFUNJOBDONE / 100
+			PHclientFUNJOBDONE = 0
+
+			'Guys start cumming… they fill my belly…'
+			gs 'cum_call','anus',$boy
+			gs 'stat'
+			gs 'cum_call','',$boy
+			gs 'cuminsidereact', $boydesc
+			gs 'arousal', 'end'
+			gs 'stat'
+			if ztemp = 1256:
+				ztemp = 0
+				phtempttemp -= 2
+				phwhoreshift -= 1
+				phwhoreshift -= 1
+				'"Nice girl… you can go now"'
+				'I dress up and go away'
+				act 'Go away':
+					temp = rand(1,3)
+					if temp = 1:
+						$metka = '2'
+					elseif temp = 2:
+						$metka = '3'
+					elseif temp = 3:
+						$metka = '4'
+					end
+					if $metka = '4': gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+					if $metka = '3': gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+					if $metka = '2': gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+				end
+			else
+				'I dress up and go to the main room'
+				act 'go': gt $phsexstart, $phsexstart_arg
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = '3':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	FUNJOBDONE += PHclientFUNJOBDONE
+	PHclientFUNJOBDONE = 0
+
+	'As I enter the room he pushed me to the two naked blacks and slam the door'
+
+	if otemp = 2:
+		*clr & cla
+		'As I open the door I see two naked blacks… someone push me from behind "Come on whore!"  and slam the door'
+	elseif otemp = 3:
+		*clr & cla
+		'3 guys entered the room. They talking and don''t see me. They are undressing…'
+		if sexcorrupt >= rand(50,80):
+			'I so want their dongs in me -"Hi guys, please use me as you want" - they starts laughing but…'
+		else
+			'I decide to go away from the room, while they can''t see me, but suddenly they run to me'
+		end
+	end
+
+
+	'The moment later They undress me and push on my knees…'
+	'…I start to serve 3 cocks'
+	gs 'arousal', 'bj', rand(5,5), 'prostitution', 'group'
+	gs 'stat'
+	gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+	gs 'stat'
+	minut -= 5
+	gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+	gs 'stat'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/2 ('+rand(1,2)+').mp4"></video></center>'
+
+	phtempttemp -= 3
+	phwhoreshift -= 1
+	phwhoreshift -= 1
+	phwhoreshift -= 1
+
+	act 'continue':
+		*clr & cla
+
+		'One of them rotates me and impale on his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/3 ('+rand(1,4)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,10), 'prostitution', 'group'
+		gs 'stat'
+		gs 'arousal', 'hj', rand(5,10), 'prostitution', 'group'
+		gs 'stat'
+		minut -= 10
+		gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group'
+		gs 'stat'
+
+
+		act 'continue':
+			*clr & cla
+			'They filled all my holes'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/4 ('+rand(1,6)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'group'
+			gs 'stat'
+			gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group'
+			gs 'stat'
+			minut -= 10
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+
+				if rand(1,3) = 1:
+					temp = 2
+					'"Such nice ass"'
+					'"Let me try"'
+					'"Naah, I won''t"'
+					'"Well, then just share"'
+					'The other guy penetrates my ass!!!… two dick is my ass!!!'
+					gs 'arousal_funcs', 'stretch', 'anal', 1
+					FUNJOBDONE += 100
+					gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group'
+					gs 'stat'
+					minut -= 10
+					gs 'arousal', 'anal', 10, 'prostitution', 'group'
+					gs 'stat'
+					gs 'pain', rand(2,3), 'asshole', 'pierce'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/4 2ass.mp4"></video></center>'
+				elseif rand(1,3) = 1:
+					temp = 1
+					'My body spasms… I am in euphoria…'
+					$orgasm_or = 'yes'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/4 orgasm.mp4"></video></center>'
+				else
+					temp = 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/3/4 ('+rand(1,6)+').mp4"></video></center>'
+					gs 'arousal', 'bj', rand(5,10), 'prostitution', 'group'
+					gs 'stat'
+					gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group'
+					gs 'stat'
+					minut -= 10
+					gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group'
+					gs 'stat'
+				end
+
+
+				act 'continue':
+					*clr & cla
+					FUNJOBDONE += 220 * 3
+
+					if temp = 2:
+						'Guys start cumming… they fill my gut…'
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						'The las guy just cums on my face while I am gooing the cum from my ass'
+						gs 'arousal', 'end'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/ass/ass ('+rand(1,5)+').mp4"></video></center>'
+						*nl
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on (1).mp4"></video></center>'
+
+
+						if ztemp = 1256:
+							ztemp = 0
+							'"Nice girl… you can go now"'
+							'I dress up and go away'
+							act 'Go away':
+								temp = rand(1,3)
+								if temp = 1:
+									$metka = '2'
+								elseif temp = 2:
+									$metka = '3'
+								elseif temp = 3:
+									$metka = '4'
+								end
+								if $metka = '4': gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+								if $metka = '3': gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+								if $metka = '2': gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+							end
+						else
+							'I dress up and go to the main room'
+							act 'go': gt $phsexstart, $phsexstart_arg
+						end
+					else
+
+						'Guys start cumming… they fill all my holes…'
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/vag (1).mp4"></video></center>'
+						*nl
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/ass/ass ('+rand(1,5)+').mp4"></video></center>'
+						*nl
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on (1).mp4"></video></center>'
+
+						if ztemp = 1256:
+							ztemp = 0
+							'"Nice girl… you can go now"'
+							'I dress up and go away'
+							act 'Go away':
+								temp = rand(1,3)
+								if temp = 1:
+									$metka = '2'
+								elseif temp = 2:
+									$metka = '3'
+								elseif temp = 3:
+									$metka = '4'
+								end
+								if $metka = '4': gt 'mod_public_WC_rab_work_chystota_hotel', '4'
+								if $metka = '3': gt 'mod_public_WC_rab_work_chystota_hotel', '3'
+								if $metka = '2': gt 'mod_public_WC_rab_work_chystota_hotel', '2'
+							end
+						else
+							'I dress up and go to the main room'
+							act 'go': gt $phsexstart, $phsexstart_arg
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bg':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	PH_full_pay = 100
+	'So much dicks… '
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/bg/1.mp4"></video></center>'
+	gs 'arousal', 'hj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+	minut -= 10
+	gs 'stat'
+	PHclientFUNJOBDONE += 10
+	temp = rand(5,10)
+	if phbcil > phtempttemp: phbcil = phtempttemp
+
+
+	act 'continue':
+		*clr & cla
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+		'They rub my face…'
+		'"Come on bitch, don''t be shy" - he grab my head and push his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock deep in my mouth'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/bg/2.mp4"></video></center>'
+		gs 'arousal', 'bj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+		gs 'arousal', 'hj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+		minut -= 20
+		gs 'stat'
+		PHclientFUNJOBDONE += 10
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg_cycle'
+	end
+end
+
+if $ARGS[0] = 'bg_cycle':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	'I try to serv as much dicks at once as I can'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/bg/3 ('+rand(1,3)+').mp4"></video></center>'
+	gs 'arousal', 'bj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+	gs 'arousal', 'hj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+	gs 'arousal', 'hj', 15, 'sub', 'prostitution', 'group', 'gangbang'
+	minut -= rand(20,35)
+	gs 'stat'
+	PHclientFUNJOBDONE += 20
+
+	if rand(1,3) = 1:
+		'Some guy pour the beer on his dick - "Drink, whore"'
+		gs 'drugs', 'alcohol', 'beer'
+		gs 'stat'
+		PHclientFUNJOBDONE += 10
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/bg/3 drink.mp4"></video></center>'
+	end
+
+	act	'continue':
+		*clr & cla
+		phbcil -= 1
+		PHclientFUNJOBDONE += 30
+
+		'Hot cum slaps my face… '
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		if rand(1,3) = 1:
+			gs 'cum_call','stomach',$boy
+			gs 'stat'
+			gs 'cum_call','breasts',$boy
+			gs 'stat'
+		end
+		if rand(1,3) = 1:
+			gs 'cum_call','hair',$boy
+			gs 'stat'
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/bg/4 cum.mp4"></video></center>'
+
+		if phbcil > 0: act 'keep sucking dicks': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg_cycle'
+
+		if phbcil <= 0: act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'bg_cycle'
+	end
+
+	if phbcil <= 0:
+		*clr & cla
+		killvar 'phbcil'
+		phtemp -= 10
+		if phtemp <= -5: phtemp = -5
+
+		'The last guy cums on my face… no more dicks around'
+		FUNJOBDONE += PH_full_pay * PHclientFUNJOBDONE / 100
+		PHclientFUNJOBDONE = 0
+		act 'stand up': gt $phsexstart, $phsexstart_arg
+	end
+end
+
+if $ARGS[0] = 'gb':
+	*clr & cla
+	itemp = 1
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	PH_full_pay = 250
+	'They put me on the ground and start to grope me'
+	'I grope them back'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/1/1 grope start ('+rand(1,2)+').mp4"></video></center>'
+
+
+	act 'lick a finger of a guy':
+		if itemp = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/1/1 lick finger.mp4"></video></center>'
+			minut += 2
+			gs 'stat'
+			FUNJOBDONE += 10
+			itemp += 1
+		end
+	end
+
+	minut -= 10
+	gs 'arousal', 'foreplay', 10, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+	gs 'arousal', 'foreplay_give', 10, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+
+		'Guy bring me up on his shoulder, and other start to eating my pussy'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/1/2 lick.mp4"></video></center>'
+		gs 'arousal', 'cuni', rand(3,5), 'prostitution', 'sub', 'group', 'gangbang'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+			gs 'boyStat', $npclastgenerated
+
+			'Guy start fingering me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/1/3 lick finger 0.mp4"></video></center>'
+			gs 'arousal', 'cuni', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			minut -= 5
+			gs 'arousal', 'vaginal_finger', rand(3,5), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+				gs 'boyStat', $npclastgenerated
+
+				'He keep eating me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/1/4 lick finger ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'cuni', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+				minut -= 5
+				gs 'arousal', 'vaginal_finger', rand(3,5), 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+					gs 'boyStat', $npclastgenerated
+
+					'They put me on my legs'
+					'I have started to stroke the dicks'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/2/hj.mp4"></video></center>'
+					gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+						gs 'boyStat', $npclastgenerated
+
+						'I bended and start to suck all the dicks around.'
+						''
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/2/bg '+rand(1,4)+'.mp4"></video></center>'
+						gs 'arousal', 'bj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+							gs 'boyStat', $npclastgenerated
+
+							'I am sucking dick after dick'
+							'Some guy start to grope my pussy'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/2/bg grope.mp4"></video></center>'
+							gs 'arousal', 'bj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+							gs 'stat'
+							minut -= 10
+							gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang'
+							gs 'stat'
+
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb2'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'gb2':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	'The guy, who groped me penetrates me'
+	'I start moaning loudly'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/3/v 1.mp4"></video></center>'
+	gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+
+		'"There-there Honey, keep your mouth  busy"'
+		'He put his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/3/vm start.mp4"></video></center>'
+		gs 'arousal', 'bj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+		gs 'stat'
+		minut -= rand(5,15)
+		gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+			gs 'boyStat', $npclastgenerated
+
+			''
+			'They are spit roasting me, changing the dicks time to time'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/3/vm '+rand(1,2)+'.mp4"></video></center>'
+			gs 'arousal', 'bj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			minut -= rand(5,15)
+			gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+				gs 'boyStat', $npclastgenerated
+
+				'They rotate me and penetrates my anus too'
+				''
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/4/va start.mp4"></video></center>'
+				gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+				minut -= rand(5,15)
+				gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+					gs 'boyStat', $npclastgenerated
+
+					'They are drilling both my holes'
+					'I feel their long dong rubbing each other inside me.'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/4/va 3.mp4"></video></center>'
+					gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+					gs 'stat'
+					minut -= rand(5,15)
+					gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+						gs 'boyStat', $npclastgenerated
+
+						'"Bitch, don''t be lasy! Keep your hands busy"'
+						'I start to stroke all the cocks I can wind with my hands'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/4/va hj '+rand(1,3)+'.mp4"></video></center>'
+						gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+						minut -= rand(25,35)
+						gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+						gs 'arousal', 'hj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+						gs 'arousal', 'hj', 10, 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+						phbcil = rand(4,8)
+						temp = 0
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb3'
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'gb3':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	'They keep fucking me'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/5/cum '+rand(1,2)+'.mp4"></video></center>'
+	gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+	minut -= rand(10,15)
+	gs 'arousal', 'vaginal', 10, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+		if temp = 0:
+			'First shot of cum lands on my face'
+		else
+			'Another shot of cum lands on my face'
+		end
+		temp += 1
+
+
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/5/cum '+rand(1,2)+'.mp4"></video></center>'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'gb3'
+	end
+
+	if phbcil - temp <= 2:
+		*clr & cla
+		'Last two guys cum on my face'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/gb/5/cum one by one.mp4"></video></center>'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		phtemp -= 10
+		if phtemp <= -5: phtemp = -5
+		FUNJOBDONE += PH_full_pay * phbcil
+		PHclientFUNJOBDONE = 0
+		killvar 'phbcil'
+		killvar 'phsex'
+
+		act 'stand up': gt $phsexstart, $phsexstart_arg
+	end
+end
+
+
+
+if $ARGS[0] = 'line':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+	PH_full_pay = 100
+	'Guy pushed me on the bed and comand to strip the panties'
+	'My holes staring on the gang'
+	'"He slap my ass, guys just keep the line, dibs I am first"'
+	gs 'pain', rand(1,2), 'asscheeks', 'slap'
+	gs 'stat'
+	gs 'arousal', 'flash', 10, 'prostitution', 'sub', 'group'
+	minut -= 7
+	gs 'stat'
+	phsex = 0
+
+	phbcil = rand (8,13)
+	if phbcil >= phtempttemp: phbcil = phtempttemp
+	if phbcil < 8: phbcil = 8
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/0 START.mp4"></video></center>'
+
+	act 'continue':
+		*clr & cla
+		if rand(1,2) = 1:
+			'The guy start to fuck me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/1 vag ('+rand(1,2)+').mp4"></video></center>'
+
+			PHclientFUNJOBDONE += 20
+
+			act 'seductive talk with the next guy in line':
+				*clr & cla
+				PHclientFUNJOBDONE += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vagtalk.mp4"></video></center>'
+				'"I bet you want to try my holes… it''s a puty your gorgeous cock need to wait his turn"'
+				'I see it''s turn him even more…'
+				phsex += 1
+
+				act 'continue':
+					*clr & cla
+					phbcil -= 1
+					PHclientFUNJOBDONE += 30
+
+					'he cum deep inside me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/vag/vag ('+rand(1,3)+').mp4"></video></center>'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+				end
+			end
+
+			if rand(1,3) = 1:
+				*clr & cla
+
+				if rand(1,3) ! 1:
+					'He pushed me to the bed - "Shut your mouth, bitch!"'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vagpush.mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'group'
+					gs 'stat'
+					phsex += rand(0,2)
+				else
+					'He put his fingers in my vagina and grabs it from inside'
+					'Then he pushe my anus on his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+					PHclientFUNJOBDONE += 10
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vaghold.mp4"></video></center>'
+					gs 'arousal', 'vaginal_finger_give', 10, 'prostitution', 'sub', 'group'
+					gs 'stat'
+					gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group'
+					minut -= rand(5,15)
+					gs 'stat'
+				end
+			end
+
+			act 'continue':
+				*clr & cla
+				phbcil -= 1
+				PHclientFUNJOBDONE += 30
+
+				'he cum deep inside me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/vag/vag ('+rand(1,3)+').mp4"></video></center>'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+			end
+		else
+			'The guy sits on the bed - "Suck me"'
+			'I start to suck him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/1 bj ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub', 'group'
+			gs 'stat'
+			PHclientFUNJOBDONE += 15
+
+			act 'lick his balls':
+				*clr & cla
+				phsex += rand(0,1)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 bj balls.mp4"></video></center>'
+				PHclientFUNJOBDONE += 15
+
+				act 'keep sucking':
+					*clr & cla
+					phbcil -= 1
+					PHclientFUNJOBDONE += 30
+
+					temp = rand(1,5)
+					if temp <= 2:
+						'He cum on my face'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on ('+rand(1,9)+').mp4"></video></center>'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+					elseif temp <= 4:
+						'He cum in my mouth'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/in ('+rand(1,4)+').mp4"></video></center>'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+					else
+						'He cum on my tits'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/tits.mp4"></video></center>'
+						gs 'cum_call','stomach',$boy
+						gs 'stat'
+						gs 'cum_call','breasts',$boy
+						gs 'stat'
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+				end
+			end
+
+			if rand(1,3) = 1:
+				*clr & cla
+				'He is fingering me, while push his enormus dick deep to my throat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 bj masturbate.mp4"></video></center>'
+				phsex += rand(0,1)
+				gs 'arousal', 'vaginal_finger_give', 10, 'prostitution', 'sub', 'group'
+				minut -= 10
+				gs 'stat'
+			end
+
+			act 'keep sucking':
+				*clr & cla
+				phbcil -= 1
+				PHclientFUNJOBDONE += 30
+
+				temp = rand(1,5)
+				if temp <= 2:
+					'He cum on my face'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on ('+rand(1,9)+').mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+				elseif temp <= 4:
+					'He cum in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/in ('+rand(1,4)+').mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+				else
+					'He cum on my tits'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/tits.mp4"></video></center>'
+					gs 'cum_call','stomach',$boy
+					gs 'stat'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'line_cycle':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	if rand(1,2) = 1:
+		'The guy start to fuck me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/1 vag ('+rand(1,2)+').mp4"></video></center>'
+
+		PHclientFUNJOBDONE += 20
+
+		act 'seductive talk with the next guy in line':
+			*clr & cla
+			PHclientFUNJOBDONE += 5
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vagtalk.mp4"></video></center>'
+			'"I bet you want to try my holes… it''s a puty your gorgeous cock need to wait his turn"'
+			'I see it''s turn him even more…'
+			phsex += 1
+
+			act 'continue':
+				*clr & cla
+				phbcil -= 1
+				PHclientFUNJOBDONE += 30
+
+				'he cum deep inside me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/vag/vag ('+rand(1,3)+').mp4"></video></center>'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+			end
+		end
+
+		if rand(1,3) = 1:
+			*clr & cla
+
+			if rand(1,3) ! 1:
+				'He pushed me to the bed - "Shut your mouth, bitch!"'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vagpush.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'group'
+				gs 'stat'
+				phsex += rand(0,2)
+			else
+				'He put his fingers in my vagina and grabs it from inside'
+				'Then he pushe my anus on his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				PHclientFUNJOBDONE += 10
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 vaghold.mp4"></video></center>'
+				gs 'arousal', 'vaginal_finger_give', 10, 'prostitution', 'sub', 'group'
+				gs 'stat'
+				gs 'arousal', 'anal', 10, 'prostitution', 'sub', 'group'
+				minut -= rand(5,15)
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					phbcil -= 1
+					PHclientFUNJOBDONE += 30
+					'he cum deep inside me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/ass/ass ('+rand(1,5)+').mp4"></video></center>'
+
+					'he cum deep in my ass'
+					gs 'cum_call','anus',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+				end
+			end
+		end
+
+		act 'continue':
+			*clr & cla
+			phbcil -= 1
+			PHclientFUNJOBDONE += 30
+
+			'he cum deep inside me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/vag/vag ('+rand(1,3)+').mp4"></video></center>'
+			gs 'cum_call','',$boy
+			gs 'cuminsidereact', $boydesc
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+		end
+	else
+		'The guy sits on the bed - "Suck me"'
+		'I start to suck him'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/1 bj ('+rand(1,4)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub', 'group'
+		gs 'stat'
+		PHclientFUNJOBDONE += 15
+
+		act 'lick his balls':
+			*clr & cla
+			phsex += rand(0,1)
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 bj balls.mp4"></video></center>'
+			PHclientFUNJOBDONE += 15
+
+			act 'keep sucking':
+				*clr & cla
+				phbcil -= 1
+				PHclientFUNJOBDONE += 30
+
+				temp = rand(1,5)
+				if temp <= 2:
+					'He cum on my face'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on ('+rand(1,9)+').mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','hair',$boy
+					gs 'stat'
+				elseif temp <= 4:
+					'He cum in my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/in ('+rand(1,4)+').mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+				else
+					'He cum on my tits'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/tits.mp4"></video></center>'
+					gs 'cum_call','stomach',$boy
+					gs 'stat'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+				end
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+			end
+		end
+
+		if rand(1,3) = 1:
+			*clr & cla
+			'He is fingering me, while push his enormus dick deep to my throat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/2 bj masturbate.mp4"></video></center>'
+			phsex += rand(0,1)
+			gs 'arousal', 'vaginal_finger_give', 10, 'prostitution', 'sub', 'group'
+			minut -= 10
+			gs 'stat'
+		end
+
+		act 'keep sucking':
+			*clr & cla
+			phbcil -= 1
+			PHclientFUNJOBDONE += 30
+
+			temp = rand(1,5)
+			if temp <= 2:
+				'He cum on my face'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/on ('+rand(1,9)+').mp4"></video></center>'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','hair',$boy
+				gs 'stat'
+			elseif temp <= 4:
+				'He cum in my mouth'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/in ('+rand(1,4)+').mp4"></video></center>'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+			else
+				'He cum on my tits'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/tits.mp4"></video></center>'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','breasts',$boy
+				gs 'stat'
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'line_cycle'
+		end
+
+		if phsex >= rand(9,10):
+			*clr & cla
+			!! line_broke
+			'The guy sits on the bed - "Suck me"'
+			'I start to suck him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/1 bj ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(5,15), 'prostitution', 'sub', 'group'
+			gs 'stat'
+			PHclientFUNJOBDONE += 15
+
+			'While I am blowing the guy: "I am tired of this line"'
+			'The guy enters my pussy from behind.'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/3.mp4"></video></center>'
+
+			act 'continue':
+				!! spitroast
+				*clr & cla
+				PHclientFUNJOBDONE += 15
+				PHclientFUNJOBDONE += 20
+
+				'They are spit roasting me'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/4 ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', 15, 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+				minut -= rand (25,15)
+				gs 'arousal', 'bj', 15, 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+
+				act 'continue':
+					gt 'mod_public_WC_rab_work_whore_fun_sex_dop4','srcycle'
+				end
+			end
+		end
+	end
+
+	if phbcil <= 0:
+		*clr & cla
+		killvar 'phbcil'
+		killvar 'phsex'
+		phtemp -= 10
+		if phtemp <= -5: phtemp = -5
+
+		'The line is empty… I have served all of them'
+		FUNJOBDONE += PH_full_pay * PHclientFUNJOBDONE / 100
+		PHclientFUNJOBDONE = 0
+		act 'stand up': gt $phsexstart, $phsexstart_arg
+	end
+end
+
+if $ARGS[0] = 'srcycle':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Black client from Pleasure House', rand(18,35)
+	gs 'boyStat', $npclastgenerated
+
+	PHclientFUNJOBDONE += 50
+
+	'They are spit roasting me'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/4+/line/4 ('+rand(1,2)+').mp4"></video></center>'
+	gs 'arousal', 'vaginal', 15, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+	minut -= rand (25,15)
+	gs 'arousal', 'bj', 15, 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+
+	if rand(1,2) = 1:
+		!! bjcum
+		phbcil -= 1
+		PHclientFUNJOBDONE += 30
+		'Guy filled my mouth with cum'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/bj/in ('+rand(1,4)+').mp4"></video></center>'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'srcycle'
+	else
+		!! vagcum
+		phbcil -= 1
+		PHclientFUNJOBDONE += 30
+		'he cum deep inside me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/black/cum/vag/vag ('+rand(1,3)+').mp4"></video></center>'
+		gs 'cum_call','',$boy
+		gs 'cuminsidereact', $boydesc
+		gs 'stat'
+		act 'next?': gt 'mod_public_WC_rab_work_whore_fun_sex_dop4', 'srcycle'
+	end
+	gs 'arousal', 'end'
+	gs 'stat'
+
+	if phbcil <= 0:
+		*clr & cla
+		killvar 'phbcil'
+		killvar 'phsex'
+		phtemp -= 10
+		if phtemp <= -5: phtemp = -5
+
+		'The line is empty… I have served all of them'
+		FUNJOBDONE += PH_full_pay * PHclientFUNJOBDONE / 100
+		PHclientFUNJOBDONE = 0
+		act 'stand up': gt $phsexstart, $phsexstart_arg
+	end
+end
+
+
+--- mod_public_WC_rab_work_whore_fun_sex_dop4 ---------------------------------
+

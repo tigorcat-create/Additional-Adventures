@@ -1,0 +1,796 @@
+# mod_public_WC_rab_btothel_escort_villa_chess
+
+menu_off = 1
+
+if $ARGS[0] = '':
+	if $chess_name='':$chess_name='Boy'
+	gs'stat'
+	chess_GG = 20
+	chess_com = 20
+	chess_ind = chessV - pcs_chess
+
+	if chess_ind < 0:
+		chess_diff = (chess_ind/2)*-1
+	else
+		chess_diff = (chess_ind/2)
+	end
+
+	chess_move_limit = 60/2
+	chess_time_limit = 120/2
+
+	chess_move = 0
+	total_chess_time = 0
+	gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+end
+
+if $ARGS[0] = 'game':
+	gs 'exp_gain', 'chess', rand(0,1)
+	gs 'exp_gain', 'intel', rand(0,1)
+	chess_move += 1
+	chess_time = rand(0,2)
+	minut += chess_time
+	total_chess_time += chess_time
+	gs 'stat'
+	
+	if chess_move = 1:
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/board' + rand(1,1) + '.jpg"></center>'
+		*nl
+		if chess_ind > 5:
+			'I am less skilled at chess than '+$chess_name+'. He will play more aggressively to try and defeat me.'
+			'I might want to play more conservatively and wear down his attacks.'
+		elseif chess_ind < -5:
+			'I am more skilled at chess than '+$chess_name+'. He will play more conservatively to try and defeat me.'
+			'I might want to play more aggressively and wear down his defenses.'
+		else
+			'I am about equally skilled at chess as '+$chess_name+'. He will use a wide range of moves to try and defeat me.'
+			'I might want to try different types of moves to keep my opponent off balance.'
+		end
+	end
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/wait ('+rand(1,2)+').mp4"></video></center>'
+
+	if chess_GG <= 0 and chess_com <= 0:
+		*clr & cla
+		phescortfunDONE = 1
+		temptemp -= 1
+		phescortfun += 20
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/stalemate' + rand(1,1) + '.jpg"></center>'
+		*nl
+		'Stalemate! I have drawn the match against '+$chess_name+'!'
+		'I and '+$chess_name+' could not find a way to win the match.'
+		'"Well, at least my 1000 stays with me.)) It was fun!"'
+		
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	elseif chess_GG <= 0:
+		*clr & cla
+		phescortfunDONE = 1
+		temptemp -= 1
+		phescortfun += 20
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/lose' + rand(1,1) + '.jpg"></center>'
+		*nl
+		'Checkmate! I have lost the match against '+$chess_name+'!'
+		'I have paid a 1000 to him'
+		if money <= 1000:
+			karta -= 1000
+		else
+			money -= 1000
+		end		
+		gs 'stat'
+		
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	elseif chess_com <= 0:
+		*clr & cla
+		phescortfunDONE = 1
+		temptemp -= 1
+		phescortfun += 20
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/win' + rand(1,1) + '.jpg"></center>'
+		*nl
+		'Checkmate! I have won the match against '+$chess_name+'!'
+		'"Well, it was good game"'
+		'"Here is your money"'
+		
+		money += 1000
+		gs 'stat'
+
+		if $clothingworntype = 'nude'and $braworntype = 'none'and $pantyworntype = 'none':
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/naked__end_game.mp4"></video></center>'
+		end
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	elseif chess_moves >= chess_move_limit:
+		*clr & cla
+		phescortfunDONE = 1
+		temptemp -= 1
+		phescortfun += 20
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/stalemate' + rand(1,1) + '.jpg"></center>'
+		*nl
+		'Draw! I agree to end the match with '+$chess_name+'.'
+		'Me and '+$chess_name+' have both used too many moves and neither could find a way to win the match.'
+		'"Well, at least my 1000 stays with me.)) It was fun!"'
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	elseif total_chess_time >= chess_time_limit:
+		*clr & cla
+		phescortfunDONE = 1
+		temptemp -= 1
+		phescortfun += 20
+		'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/stalemate' + rand(1,1) + '.jpg"></center>'
+		*nl
+		'Draw! I agree to end the match with '+$chess_name+'.'
+		'Me and '+$chess_name+' have both used too much time and neither could find a way to win the match.'
+		'"Well, at least my 1000 stays with me.)) It was fun!"'
+		
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	else
+		gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'moves'
+	end
+end
+
+if $ARGS[0] = 'moves':
+	if chess_ind > 5:
+		chessM = rand(4,11)
+	elseif chess_ind < -5:
+		chessM = rand(0,7)
+	else
+		chessM = rand(2,9)
+	end
+	phescortfun += rand(0,2)
+	if $clothingworntype = 'nude': 'I see he has some difficulties to concentrate'
+	if $braworntype = 'none': 'I think my bare tits distract him'
+	if $pantyworntype = 'none': 'I think my naked pussy distracts him'
+
+	act 'Play conservatively':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also plays conservatively.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays defensively and is now in a better position than me.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'conservative', 'bad'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays tactically and is able to deftly pick apart my conservative defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'conservative', 'bad'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' tries to trap me, but I encircle it with my defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'conservative', 'good'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays offensively, but my defense repulses his attacks.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'conservative', 'good'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays aggressively, but my defense manages to hold him off.'
+			'Neither of us gain an advantage from this move.'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+
+	act 'Play defensively':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays very conservatively and does not threaten my defenses at all.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'defense', 'good'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also plays defensively.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays tactically and is able to deftly pick apart my defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'defense', 'bad'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' tries to trap me, but you avoid it with my defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'defense', 'good'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays offensively, but my defense absorbs his attacks.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays aggressively and overwhelms my defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'defense', 'bad'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+		
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+
+	act 'Play tactically':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays very conservatively and my tactical moves leave you in a better position.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'tactical', 'good'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays defensively allowing you to pick apart their defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'tactical', 'good'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also plays tactically.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' tries to trap me, but you avoid it with my tactical movements.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays offensively, and some of my pieces are caught out of position.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'tactical', 'bad'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays aggressively and rushes past my unprepared defenses.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'tactical', 'bad'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+
+	act 'Bait a trap for my opponent':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays very conservatively and their defenses are now very well prepared.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'trap', 'bad'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays defensively and my bait is now out of position.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'trap', 'bad'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays tactically and avoids my trap.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also tries to trap me.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays offensively, and a couple of their pieces are caught out of position.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'trap', 'good'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays aggressively and many of their pieces fall into my trap.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'trap', 'good'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+
+	act 'Play offensively':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays very conservatively and repulses all my attacks.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'offense', 'bad'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays defensively and manages to absorb all my attacks.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays tactically, but my offense is able to outmaneuver them.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'offense', 'good'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' traps some of my pieces. You should think more carefully next time.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'offense', 'bad'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also plays offensively.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays aggressively and overextends themselves.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'offense', 'good'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+
+	act 'Play aggressively':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/my_turn.mp4"></video></center>'
+		if chessM <= 1:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/conservative' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays conservatively and their defenses manage to hold you off.'
+			'Neither of us gain an advantage from this move.'
+		elseif chessM <= 3:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/defensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays defensively and I overwhelm a few of their pieces.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'aggressive', 'good'
+		elseif chessM <= 5:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/tactical' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays tactically and cannot cope with my aggressive moves.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'aggressive', 'good'
+		elseif chessM <= 7:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/trap' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' tries to trap me, but some of my pieces fall for it.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'aggressive', 'bad'
+		elseif chessM <= 9:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/offensive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' plays offensively, leaving some of my pieces exposed.'
+			gs 'mod_public_WC_rab_btothel_escort_villa_chess', 'advantage', 'aggressive', 'bad'
+		elseif chessM <= 11:
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/community/chess/aggressive' + rand(1,1) + '.jpg"></center>'
+			*nl
+			$chess_name+' also plays aggressively.'
+			'Neither of us gain an advantage from this move.'
+		end
+		*nl
+		'I am on move '+str(chess_move)+' out of '+str(chess_move_limit)
+		'I am on minute '+str(total_chess_time)+' out of '+str(chess_time_limit)
+
+		chess_GG -= 1
+		chess_com -= 1
+
+		act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'game'
+	end
+	
+	
+	if $clothingworntype ! 'nude' or $braworntype ! 'none' or $pantyworntype ! 'none':
+		abra = 1
+		apenties = 1
+		temp = 1
+		act 'undress myself while he is thinking':		
+			if $clothingworntype ! 'nude':
+				act 'strip my clothing':
+					minut += 3
+					phescortfun += 1
+					gs 'clothing', 'strip'
+					gs 'stat'
+					if temp = 1: chess_ind -= rand(2,3)
+					temp += 1
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/dress.mp4"></video></center>'
+					if $pantyworntype ! 'none':
+						act 'Remove panties (0:02)':
+							minut += 2
+							phescortfun += 6
+							gs 'stat'
+							gs 'panties', 'remove'
+							if apenties = 1: chess_ind -= rand(2,3)
+							apenties += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/pantie.mp4"></video></center>'
+						end
+					end
+
+					if $braworntype ! 'none':
+						act 'Remove bra (0:02)':
+							minut += 2
+							phescortfun += 6
+							gs 'stat'
+							gs 'bras', 'remove'
+							if abra = 1: chess_ind -= rand(2,3)
+							abra += 1
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/bra.mp4"></video></center>'
+						end
+					end
+				end
+			else
+				if $pantyworntype ! 'none':
+					act 'Remove panties (0:02)':
+						minut += 2
+						gs 'stat'
+						gs 'panties', 'remove'
+						if apenties = 1: chess_ind -= rand(2,3)
+						apenties += 1
+						phescortfun += 6
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/pantie.mp4"></video></center>'
+					end
+				end
+
+				if $braworntype ! 'none':
+					act 'Remove bra (0:02)':
+						minut += 2
+						gs 'stat'
+						gs 'bras', 'remove'
+						if abra = 1: chess_ind -= rand(2,3)
+						abra += 1
+						phescortfun += 6
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/bra.mp4"></video></center>'
+					end
+				end
+			end
+		end
+	end
+	
+	if chess_ind < 5 or chess_ind >= chess_pos:
+		!! try to seduse	
+		+$OpenInnerThought+'I think I can''t win this… Maybe I can find other way to NOT loose my 1000'+$CloseInnerThought
+		gs 'willpower', 'misc', 'self'
+		temp = will_cost - (sexcorrupt / 3)
+		will_cost -= (sexcorrupt / 3)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:			
+			act 'seduce the nerd (<<temp>> Willpower)':
+				cla
+				sexcorrupt += 1
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				!! seduce	
+				
+				if $pantyworntype ! 'none':					
+					act 'Tease him':
+						*clr & cla
+						!! 2 show pussy and sex
+						
+						'I removed my panties and tease him with my bare pussy'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/2 show pussy/2 tease_pussy.mp4"></video></center>'
+						minut += 2
+						gs 'stat'
+						gs 'panties', 'remove'
+						if apenties = 1: chess_ind -= rand(2,3)
+						apenties += 1
+						phescortfun += 6
+						
+						act 'wait':
+							*clr & cla
+							'He can''t stand for long and just jump on my like a hungry beast'
+							'He akwardly bend me and start to fuck me'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/2 show pussy/3 sex.mp4"></video></center>'
+							gs 'arousal', 'vaginal', rand(5,10), 'prostitution'
+							gs 'stat'
+							
+							phescortfunDONE = 1
+							phescortfunSexDONE += 1
+							phescortfun -= 50
+							if phescortfun <= 0: phescortfun = 0
+							act 'continue':
+								*clr & cla
+								'He cums in me'	
+								temptemp -= 1
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/vag (1).mp4"></video></center>'
+								gs 'cum_call','',$boy
+								gs 'cuminsidereact', $boydesc
+								gs 'arousal', 'end'
+								gs 'stat'								
+								if rand(1,4) = 1:
+									'"Well, you defenitelly won this… But I have won too"'
+									'He put the monye on the table, dress up'
+									money += 1000
+									gs 'stat'
+								else
+									'"Okey, it seems lika a draw - haha"'
+									'He dress up'
+								end
+								
+								act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+							end
+						end
+					end
+				end
+				
+				if $clothingworntype = 'nude' and $braworntype = 'none' and $pantyworntype = 'none':
+					act 'Rub my naked body against nerd':
+						*clr & cla
+						!! tease_naked (if naked)
+						phescortfun += 6
+						
+						'He is strugling to concentrate on the game'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/tease_naked.mp4"></video></center>'
+						
+						act 'Make a wrong but Checkmate move':
+							*clr & cla
+							phshesswon = 1
+							'"Ok, you won…"'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/1 play/naked__end_game.mp4"></video></center>'
+							minut += 3
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'sextable'
+						end
+						
+						act 'continue rubbing':
+							*clr & cla
+							phshesswon = 0
+							
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/4 undress/tease_naked.mp4"></video></center>'
+							minut += 3
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'sextable'
+						end
+					end
+				end
+				
+				if $clothingworntype ! 'nude':
+					act 'sneak under the table and suck him':
+						*clr & cla
+						!! 2 under_table -> bj	
+						phescortfun += 6
+						
+						'I successfully sneaked under the table'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/2 under_table/2 1.mp4"></video></center>'
+						
+						act 'rub his froin':
+							*clr & cla
+							'He shocked and just freez and don''t know what to do'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/2 under_table/2 3.mp4"></video></center>'
+							
+							act 'remove his pants and suck him':
+								gt 'mod_public_WC_rab_btothel_escort_villa_chess', 'bjtable'
+							end
+						end
+					end
+				end
+			end
+		else
+			act 'seduce the nerd ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+	end
+end
+
+
+if $ARGS[0] = 'advantage':
+	if $ARGS[1] = 'conservative' or $ARGS[1] = 'aggressive':
+		chess_pos = 4
+		chess_neg = -4
+		chess_adv = 4
+	elseif $ARGS[1] = 'defense' or $ARGS[1] = 'offense':
+		chess_pos = 2
+		chess_neg = -2
+		chess_adv = 2
+	elseif $ARGS[1] = 'tactical' or $ARGS[1] = 'trap':
+		chess_pos = 1
+		chess_neg = -1
+		chess_adv = 1	
+	end
+
+	if $ARGS[2] = 'good':
+		if chess_ind > chess_pos:
+			'I am less skilled than my opponent and cannot capitalize on my advantage.'
+			
+		elseif chess_ind < chess_neg:
+			'I am more skilled than my opponent and gain a major advantage.'
+			chess_GG = chess_GG + chess_adv + chess_diff
+			chess_com = chess_com - chess_adv - chess_diff
+		else
+			'I am about equally skilled as my opponent and gain some advantage.'
+			chess_GG = chess_GG + chess_adv/2 + chess_diff/2
+			chess_com = chess_com - chess_adv/2 - chess_diff/2
+		end
+	elseif $ARGS[2] = 'bad':
+		if chess_ind > chess_pos:
+			'I am less skilled than my opponent and I lose a major advantage.'
+			chess_GG = chess_GG - chess_adv - chess_diff
+			chess_com = chess_com + chess_adv + chess_diff
+		elseif chess_ind < chess_neg:
+			'I am more skilled than my opponent and prevent him from capitalizing on his advantage.'			
+		else
+			'I am about equally skilled as my opponent and I lose some advantage.'
+			chess_GG = chess_GG - chess_adv/2 - chess_diff/2
+			chess_com = chess_com + chess_adv/2 + chess_diff/2
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sextable':
+	*clr & cla	
+	'Suddenly he grabs me and puts me on the table'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/5 sex/1.mp4"></video></center>'	
+	gs 'arousal', 'voyeur', 11, 'prostitution', 'sub'
+	minut -= 10
+	gs 'stat'
+
+	
+	act 'wait':
+		*clr & cla		
+		if rand(1,3) = 1:
+			'He start to licking me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/5 sex/2 '+rand(1,2)+'.mp4"></video></center>'
+			gs 'arousal', 'cuni', rand(2,5), 'prostitution', 'sub'
+			gs 'stat'
+			FUNJOBDONE += 40
+			'when he was enought'
+		end
+		
+		'He enters my vagina'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/5 sex/3.mp4"></video></center>'
+		gs 'arousal', 'vaginal', rand(2,5), 'prostitution', 'sub'
+		gs 'stat'
+		
+		act 'continue':
+			*clr & cla
+			'He is fucking me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/5 sex/4 ('+rand(1,3)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'He loads on my face'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/5 sex/5 cum_on_face.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(1,5), 'prostitution'
+				gs 'stat'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','breasts',$boy
+				gs 'stat'
+				phescortfunDONE = 1
+				phescortfunSexDONE += 1
+				phescortfun -= 50
+				if phescortfun <= 0: phescortfun = 0	
+				gs 'arousal', 'end'
+				gs 'stat'				
+				temptemp -= 1
+				if phshesswon = 1: 
+					'"Well, you defenitelly won this… But I have won too)))"'
+					'He put the monye on the table, dress up'
+					money += 1000
+					gs 'stat'
+					killvar 'phshesswon'
+				else
+					'"Okey, it seems lika a draw - haha"'
+					'He dress up'
+					killvar 'phshesswon'
+				end
+				
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bjtable':
+	*clr & cla	
+	'I start to stroke his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/3 bj/2 hj.mp4"></video></center>'
+	gs 'arousal', 'hj', rand(5,10), 'prostitution'
+	gs 'stat'
+	
+	
+	act 'continue':
+		cla
+		'He is trying to ignor me and is thinking his next turn…'
+		
+		act 'Start to suck him':
+			*clr & cla
+			'I hear he moans'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/3 bj/1.mp4"></video></center>'
+			gs 'arousal', 'bj', rand(1,5), 'prostitution'
+			gs 'stat'	
+			
+			act 'keep sucking':
+				*clr & cla
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/3 bj/3bj ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'bj', rand(5,5), 'prostitution'
+				gs 'stat'	
+				
+				act 'do my best':
+					*clr & cla
+					'I hear he droped the figures'
+					+$OpenInnerThought+'He-he, I won'+$CloseInnerThought
+					phshesswon = 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/nerds/chess/3 bj/3 his_turn_failed.mp4"></video></center>'
+					gs 'arousal', 'bj', rand(5,5), 'prostitution'
+					gs 'stat'	
+					
+					act 'finish him':
+						*clr & cla
+						'I keep sucking him, even after he load my mouth with hot cum'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/swallow.mp4"></video></center>'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'						
+						phescortfunDONE = 1
+						phescortfunSexDONE += 1
+						phescortfun -= 50
+						if phescortfun <= 0: phescortfun = 0	
+						temptemp -= 1
+						
+						if phshesswon = 1: 
+							'"Well, you defenitelly won this… But I have won too)))"'
+							'He put the monye on the table, dress up'
+							money += 1000
+							gs 'stat'
+							killvar 'phshesswon'
+						else
+							'"Okey, it seems lika a draw - haha"'
+							'He dress up'
+							killvar 'phshesswon'
+						end
+						
+						act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_villa_chess ---------------------------------
+

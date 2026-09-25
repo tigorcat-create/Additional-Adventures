@@ -1,0 +1,613 @@
+# mod_public_WC_cabine_street
+if $ARGS[0] = 'start':
+	*clr & cla
+	gs 'stat'
+	gang += 1
+	rape += 1
+
+	if $clothingworntype ! 'nude':
+		'A man quickly and roughly undress me'
+		gs 'bras', 'remove'
+		gs 'clothing', 'strip'
+		gs 'panties', 'remove'
+		gs 'stat'
+	end
+
+	'The man penetrates my ass while carry me from the cabin.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/0.jpg"></center>'
+	gs 'npcgeneratec', 0, 'unknown man from the toilet', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	dick = rand(10,30)
+	npc_dick[$npclastgenerated] = dick
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'"Come on guys, join to fuck this whore!"'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/1.mp4"></video></center>'
+		gs 'arousal', 'vaginal', 5, 'rough', 'sub', 'group', 'gangbang', 'rape'
+		gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+		minut -= 5
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'Time to time man changes…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/2.mp4"></video></center>'
+			gs 'arousal', 'vaginal', 5, 'rough', 'sub', 'group', 'gangbang', 'rape'
+			gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+			minut -= 5
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/1.mp4"></video></center>'
+				gs 'arousal', 'vaginal', 5, 'rough', 'sub', 'group', 'gangbang', 'rape'
+				gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape'
+				minut -= 5
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'Guys, I have perfec idea! Let''s take this bliad'' somewhere and do whateveer we want!'
+					'Guys agree with cheerful noise!'
+					'They carry me somewhere!'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/3 ('+rand(1,3)+').jpg"></center>'
+					gs 'flash', 'exhibitionism', 3
+					gs 'fame', 'pav', 'prostitute', rand(1,5)
+					gs 'stat'
+					act 'continue':
+						if rand(1,5) <= 2:
+							gt 'mod_public_WC_cabine_street', '1'
+						else
+							gt 'mod_public_WC_cabine_street', '2'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70  and npc_loyality  < 1000:  gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = '1':
+	*clr & cla
+	gs 'stat'
+	gang += 1
+	rape += 1
+	'They brought me to an abandoned part of the park'
+	'I was tied with a pair of branches and a rope'
+	'they fucks me'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/ifshibari/gangbang ('+rand(1,3)+').mp4"></video></center>'
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'They sprey sperm all over me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/cum/onme ('+rand(1,4)+').jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/cum/onme ('+rand(5,6)+').jpg"></center>'
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'clothes', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'legs', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'arms', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hands', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'stomach', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'breasts', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		'We need to make this slut famos!'
+		act 'What are they going to do?':
+			gt 'mod_public_WC_cabine_street', 'slava'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'slava':
+	*clr & cla
+	gs 'stat'
+	temp = rand (1,7)
+	if temp <= 3:
+		'"say cheese!"'
+		'They make a few photo of me, unbind me and go away…'
+		'I think, I will be famos slut…'
+		body_write = 1
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/walk/foto.jpg"></center>'
+		gs 'fame', 'pav', 'prostitute', rand(1,10)
+		gs 'fame', 'city', 'prostitute', rand(1,10)
+		gs 'fame', 'village', 'prostitute', rand(1,10)
+		gs 'stat'
+		act 'go to park': gt 'pav_park', 'start'
+	elseif temp <= 6:
+		'Girl take this sign and go for a walk'
+		'Don''t even think to throw it, I am watching you!'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/walk/signwalk ('+rand(1,2)+').jpg"></center>'
+		act 'go':
+			*clr & cla
+			'I walk closer to peopled part of park, someone see me, but there was not a lot of people…'
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/walk/signwalk ('+rand(1,2)+').jpg"></center>'
+			gs 'fame', 'pav', 'prostitute', rand(1,10)
+			gs 'fame', 'city', 'prostitute', rand(1,10)
+			gs 'fame', 'village', 'prostitute', rand(1,10)
+			gs 'flash', 'exhibitionism', 3
+			gs 'stat'
+			minut += rand(5,10)
+			gs 'stat'
+			act 'go to peopled part the park':
+				*clr & cla
+				'A lot of people start to make photos and laught!'
+				'But "a lot of people" means I am safe now.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/walk/signwalk ('+rand(1,2)+').jpg"></center>'
+				gs 'flash', 'exhibitionism', 3
+				gs 'stat'
+				gs 'fame', 'pav', 'prostitute', rand(10,20)
+				gs 'fame', 'city', 'prostitute', rand(10,20)
+				gs 'fame', 'village', 'prostitute', rand(10,20)
+
+				act 'thorow the sign': gt 'pav_park', 'start'
+			end
+
+			act 'throw the sign':
+				cla
+				if rand(1,3) = 1:
+					'nothing happens, it was bluff'
+					humint_exp += 2
+					gs 'stat'
+					act 'go to park': gt 'pav_park', 'start'
+				else
+					humint_exp += 2
+					gs 'stat'
+					'From the shadow of the tree, a guy walks out…'
+					'WTF Girl!!! I told you!'
+
+					gs 'npcgeneratec', 0, 'Rapist', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					dick = rand(18,40)
+					npc_dick[$npclastgenerated] = dick
+					act 'Fight him':
+						$loc = 'pav_park'
+						$loc_arg = 'start'
+						$location_type = 'public_outdoors'
+						$menu_loc = 'pav_park'
+						$menu_arg = 'start'
+						$locclass = 'city_park'
+						menu_off = 0
+						*clr & cla
+
+						gs 'fight','initFight'
+
+						gs 'fight_npcdata', 'rapist'
+
+						gt 'fight', 'start'
+					end
+				end
+			end
+		end
+	else
+		cla
+		'I know where this cunt lives.'
+		'Let''s show this princess to her parents!'
+		*nl
+		*nl
+		'They bring me to my parents flat and bind to the door…'
+		body_write = 1
+		minut += 20
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/walk/near_home.jpg"></center>'
+		act 'wait':
+			cla
+			if hour <= 6 or hour >= 23:
+				temp = rand(1,10)
+				if temp <= 3:
+					*clr & cla
+					'Unkle Misha finds me…'
+					menu_off = 1
+					gs 'stat'
+					if dyadyamishaevent = 0: dyadyamishaevent = 1
+					gs 'themes', 'indoors'
+					gs 'boyStat', 'A54'
+
+
+
+
+
+					'<center><img <<$set_imgh>> src="images/characters/pavlovsk/resident/misha/sex/rape.jpg"></center>'
+					'Uncle Misha takes me by the binded hands and pulls me to his flat and to his bedroom, locking the door with a key behind him and unbind me. Roughly grabbing me by my hair, he pulls me down to my knees and unbuttons his pants with his other hand.'
+					act 'Continue':
+						*clr & cla
+						'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/misha/sex/bj.mp4"></video></center>'
+						'His erect cock springs to life, which he impatiently pushes against my pursed lips.'
+						'"Open your mouth, whore. You know who you are. ", he commands, slapping my cheeks with his hand.'
+						'As I try to resist and keep my mouth shut, he starts rubbing the head of his engorged dick against my lips, spreading his precum over it with a lewd grin on his face. When he realizes I have no intentions of opening my mouth he slaps me harder and harder. After one particularly hard slap he leans over and snarls menacingly: "Stop testing my patience and open up, bitch. I''m not going to ask again."'
+						'Reluctantly I open my mouth, allowing his vile smelling dick access past my lips. He places the head of his dick firmly inside my mouth and continues to pressure me: "Go on bitch, suck it. You''ll regret it if you make me do all the work."'
+						'Thoroughly intimidated by his demands, I begin to suck him off obediently. He can tell my heart is not really into it and decides to help out, shoving his cock further and further down my throat until I am nuzzling his hairy crotch. He leaves it in a few seconds more than I am comfortable with, making me gag. Watching my struggle puts an evil grin on his face and after a while he pulls his dick out of my mouth, a thick strand of saliva slowly dripping off it.'
+						'"Not bad <<$pcs_nickname>>, not bad. Lie down, I''m going to have some fun with you."'
+						gs 'arousal', 'bj', 25, 'rough', 'rape'
+
+						act 'Lie down on the bed':
+							*clr & cla
+							'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/misha/sex/sex.mp4"></video></center>'
+							'I am no longer resisting, having lost all hope of getting myself out of this situation. Lying wearily on the bed, he quickly takes my clothes off and sits down at my feet, examining my pussy with his fingers as much as his eyes.'
+
+
+							cumprecheck = 1
+							gs 'cum_manage'
+							'"No longer a virgin, eh? No need for me to take it slow, then!"'
+							'He mounts mr and guides the head of his cock towards my pussy, rubbing it against my opening for a little while before slamming his cock in all the way. He begins to fuck me with short, intense strokes.'
+
+							if dick - pcs_vag > 10 and dick - pcs_vag <= 7:'The rough handling uncle Misha gives me is feeling quite good, and I wish he''d fuck me even harder.'
+							if dick - pcs_vag > 6 and dick - pcs_vag <= 3:'Uncle Misha''s thrusts hurt a lot, and I wish for it to be over soon.'
+							gs 'arousal', 'vaginal', 25, 'rough', 'rape'
+
+							'After raping my pussy for a few minutes, he pulls his dick out and forcibly thrusts it down my throat. I no longer have the strength to even fight it and just go along with whatever he wants to do, trying to appease him so he doesn''t think of anything worse to try instead. When he cums he pulls back just a bit, and I can feel it spasm as a warm liquid hits my tongue.'
+
+
+							act 'Swallow his cum':
+								*clr & cla
+								gs 'cum_call', 'mouth_swallow', 'A54'
+								minut += 5
+								money += 500
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/misha/sex/cum.mp4"></video></center>'
+								'His sperm tastes quite bitter as it hits my tongue. Nevertheless, knowing it is what he expects me to do, I swallow it and lick my lips clean like an obedient girl.'
+								'"You swallowed it, girl?" he asks, melodramatically patting your head as a sign of approval. He continues: "Very nice. I''ll give you a present for your efforts."'
+								'Uncle Misha leaves the room, but quickly vones back, his present is actually a bank note worth 500 <b>₽</b>.'
+								'"Go on child, go buy yourself some ice cream. I know you''re from a poor family, so if you''re ever in need of money you can come pay me a visit. There''s more where that came from."'
+								'Having had his fun, he gestures that I should get lost now. I quietly take the money from uncle Misha''s hand, and leave as he says.'
+
+								act 'Leave uncle Misha''s apartment':gt 'pod_ezd','etaj_2'
+							end
+						end
+					end
+				else
+					*clr & cla
+					'My sister finds me…'
+					if sisterknowslut = 0:
+						sisterknowslut = 1
+						'OMG! OMG!'
+						'"You are totally covered in jizz!"'
+						'"<<$pcs_nickname>>, the rumors is true, isn''t it?"'
+						'"You are lucky i come here for a minut"'
+						'She unbinds me and help to stand up'
+						act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+					else
+						'"Wow! This time it looks dangerous…"'
+						'"<<$pcs_nickname>>, you need to stop whoring around!"'
+						'"You are lucky i come here for a minut"'
+						'She unbind me and help to stand up'
+						act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+					end
+				end
+			else
+				if hour >= 14 and hour <= 18:
+					*clr & cla
+					'My brother finds me…'
+					'Holy shit!!!'
+					if brotherknowslut > 0:
+						'"<<$pcs_nickname>>, you need to stop whoring around!"'
+						'"You are lucky that I found you"'
+						'He unbinds me and help to stand up'
+						act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+					else
+						brotherknowslut = 1
+						'"How many men cumed on you?"'
+						'"Eeeem, sorry, stupid question"'
+						'"You are lucky that I found you"'
+						'He unbinds me and help to stand up'
+						act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+					end
+				else
+					temp = rand(1,10)
+					if temp <= 6:
+						*clr & cla
+						'My sister finds me…'
+
+
+						if sisterknowslut = 0:
+							sisterknowslut = 1
+							'OMG! OMG!'
+							'"You are totally covered in jizz!"'
+							'"<<$pcs_nickname>>, the rumors is true, isn''t it?"'
+							'"You are lucky i come here for a minut"'
+							'She unbinds me and help to stand up'
+							act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+						else
+							'"Wow! This time it looks dangerous…"'
+							'"<<$pcs_nickname>>, you need to stop whoring around!"'
+							'"You are lucky i come here for a minut"'
+							'She unbind me and help to stand up'
+							act '"Thank you, I am alright"': gt 'pod_ezd','etaj_2'
+						end
+					elseif temp <= 7:
+						*clr & cla
+						'My mother finds me…'
+
+
+
+
+						if motherKnowWhore = 0 and motherKnowSpravka = 0 and npc_QW['A29'] = 0:
+							gs 'npc_relationship', 'set', 'A29', 0
+							motherKnowWhore = 1
+							motherKnowSpravka = 1
+
+							if momslut < 2:
+								delin_beh += 1
+								'When she approach me, my <<$npc_nickname[''A29'']>> looks concerned at me and then sighs exasperatedly, rolling her eyes in disgust.'
+								'"I tell everyone my daughter is decent, and meanwhile it turns out she fucks around like a common whore and then proudly displays the stains for the whole town to see. Slut!" You can tell your <<$npc_nickname[''A29'']>> is struggling to resist the urge to slap you.'
+								'I am to tired to say something'
+								'In silence she inbind me'
+								act 'stand up': gt 'pod_ezd','etaj_2'
+							else
+								'When she approachs me, my <<$npc_nickname[''A29'']>> looks concerned at me. "Come on <<$pcs_nickname>>, at least be a little discrete about your sexual activities, will you?"'
+								'Deeply embarrassed, you apologize to your <<$npc_nickname[''A29'']>>'
+								'she helps me'
+
+								cumspclnt = 6
+								gs 'cum_cleanup'
+								cumspclnt = 9
+								gs 'cum_cleanup'
+								cumspclnt = 13
+								gs 'cum_cleanup'
+								minut += 5
+								gs 'stat'
+
+								act 'stand up': gt 'pod_ezd','etaj_2'
+							end
+						elseif (motherKnowWhore > 0 or motherKnowSpravka > 0) and npc_QW['A29'] = 1:
+							gs 'npc_relationship', 'modify', 'A29', -20
+
+							if motherKnowWhore = 0:motherKnowWhore = 1
+							if motherKnowSpravka = 0: motherKnowSpravka = 1
+
+							if momslut < 2:
+								delin_beh += 1
+								'My <<$npc_nickname[''A29'']>> glares at you. I feels terrible.'
+								'"Again, you fucking little whore? I was already so ashamed of you!"'
+								'Knowing there is nothing I can say to make it better right now, you simply mumble an apology and ask for help.'
+								'She helps me'
+								act 'stand up': gt 'pod_ezd','etaj_2'
+							else
+								'My <<$npc_nickname[''A29'']>> shakes her head sadly and says: "Come on <<$pcs_nickname>>, we''ve talked about this. The whole town will know you''re a whore. Have some decency, I''m begging you."'
+								'She unbind me'
+								act 'stand up': gt 'pod_ezd','etaj_2'
+							end
+
+
+						else
+							gs 'npc_relationship', 'modify', 'A29', -20
+
+							if motherKnowWhore = 0:motherKnowWhore = 1
+							if motherKnowSpravka = 0: motherKnowSpravka = 1
+
+							'My <<$npc_nickname[''A29'']>> looks at me with a tinge of concern.'
+							'"<<$pcs_nickname>>, why?! Quickly, go wash up in the bathroom, hopefully no one has seen you like this!'
+							'She unbinds me'
+							'My face turns beet red, and I quietly nod and mumble an apology as you head for the bathroom.'
+
+							act 'Go to the bathroom':gt 'vanrPar'
+						end
+
+					elseif temp <= 10:
+						*clr & cla
+						'My father finds me…'
+
+
+						if npc_sex['A28'] = 0 and stepdadqw < 5:
+							'OMG!!!'
+							stepdadqw = 5
+							'"Don''t worry, we will not tell your mother, he mumbles"'
+							act 'stand up': gt 'pod_ezd','etaj_2'
+
+
+						else
+							*clr & cla
+							'He is standing shocked, devouring your naked body with his eyes. In that instant, all the little moments the two of you have shared flash through your mind, while it dawns on you that your <<$npc_nickname[''A29'']>> is at work… '
+							'You feel your core tighten with desire, and smirk.'
+							'"Daddy, do you want me?"'
+							'"Yes, but let''s clean you"'
+							act 'Daddy wants to join?':
+								body_write = 0
+								menu_off = 1
+								*clr & cla
+								gs 'boyStat', 'A28'
+								'<center><img <<$set_imgh>> src="images/characters/pavlovsk/resident/vladimir/sex/bath_voyer_5.jpg"></center>'
+								'I quickly wash myself removing all marks from my adventure.'
+
+
+
+
+								'My father steps inside - crossing the line that''s always separated me up until now - and locks the door behind him.'
+								'Because he''s a large man and the bathroom is quite small, the room suddenly feels crowded, but the obvious size difference between the two of you makes you feel excited.'
+								'"You drive me crazy," he mutters, voice rough and a manic look in his eyes. Then he''s frantically undressing.'
+
+								'Giggling, I decide to use the opportunity to tease him - leaning back against the wall and thrusting my hips in a slow, provocative manner. I know I look like a horny little imp, all wet and willing, but I get a rush from it.'
+								'As soon as he''s undressed, my stepfather climbs in the shower with me. He wastes no time in feeling me up - tracing my curves and molding my breasts with his large, rough hands.'
+								'Then he turns me around, forcing me against the cold, tiled wall. I spread my legs a little wider when I feel his hands grope over my ass and between my thighs, briefly teasing my asshole on their way to my pussy.'
+								'At this point, I am already dripping wet, and I bite my lip to stop myself from moaning loudly when his fingers find my pussy.'
+								stepdadqw += 1
+
+								gs 'arousal', 'foreplay', 5
+								gs 'arousal', 'vaginal_finger', 5
+								minut -= 5
+								gs 'stat'
+								gs 'willpower', 'cum_inside', 'resist'
+								if will_cost <= pcs_willpwr:
+									act 'Hey, can you put on a condom?' + $func('willpower', 'get_willcost_string'):
+										*clr & cla
+										gs 'willpower', 'cum_inside', 'resist'
+										gs 'willpower', 'pay', 'resist'
+										gs 'arousal', 'vaginal', 5, 'rough'
+										gs 'stat'
+										'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/vladimir/sex/bath_voyer_9.mp4"></video></center>'
+										'Thankfully, my mind is still clear enough to remember protection. I know I''ll probably pay the price if my stepfather doesn''t wear a condom.'
+										'"Hey, can you put on a condom?" I ask, glancing at him anxiously.'
+										'My stepfather pauses for a moment. Though he probably doesn''t want to impregnate his teenage stepdaughter, there are no condoms in the bathroom, and he''s far too excited to step away from this.'
+										'"<i>Shhhh,</i> Sunshine," he whispers soothingly, kissing my ear, "Everything will be fine. I''ll pull out in time."'
+										'<i>But pulling out doesn''t work all the time…</i>'
+										'While I am still worrying over this, I suddenly feel my stepfather''s hot, hard dick enter your my, and then nothing else seems to matter.'
+										'He moves slowly and gently at first, but after a few moments of this, he abruptly shuttles forward and buries himself balls-deep. My eyes roll back into my head from the sharp spike of pleasure.'
+										'<i>Looks like my constant teasing has finally payed off.</i>'
+										act 'I giggle deliriously.':gs 'vanrPar', 'stepdad_sex2'
+									end
+								else
+									act 'Hey, can you put on a condom?' + $func('willpower', 'get_willcost_string'): $noWillpower
+								end
+
+								gs 'willpower', 'cum_inside', 'resist', 'easy'
+								if will_cost <= pcs_willpwr:
+									act 'Just don''t come inside me!' + $func('willpower', 'get_willcost_string'):
+										*clr & cla
+										gs 'willpower', 'cum_inside', 'resist', 'easy'
+										gs 'willpower', 'pay', 'resist'
+										gs 'arousal', 'vaginal', 10, 'rough'
+										gs 'stat'
+										'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/vladimir/sex/bath_voyer_7.mp4"></video></center>'
+										'At this point, I am so horny that checking for protection is the last thing on my mind. My stepfather is in a similar condition, all he cares about is getting his dick inside my pussy as soon as possible.'
+										'"Just don''t cum inside me, please," you breathe. It''s my final moment of clarity before his hard, unprotected dick enters me. Then the sensation of skin-on-skin sweeps me away.'
+										'He moves slowly and gently at first, but after a few moments of this, he abruptly shuttles forward and buries himself balls-deep, making my eyes roll back into my head from the sharp spike of pleasure. It''s not his style to be so rough, but when he forcefully enters me, it feels so good that I don''t even think of protesting.'
+										'He begins to fuck me at a punishing pace, and I moan wildly, dominated by his strong hands and heavy body. I feel his hot breath on the back of my neck as he continues at this brutal pace, and it''s clear he intends for me to understand who the boss is here.'
+										'As it turns out, I am only too happy to be his little bitch. I move my hips frantically, desperately seeking every bit of pleasure he''ll give me. With the intense pounding me stepfather is giving me, I doubt I''ll last much longer.'
+										'As I near orgasm, I register that my stepfather is too. I can feel his unprotected dick throbbing inside me, and the realisation sends a warning flashing through my mind.'
+										act '<i>At this rate, will he even have time to pull out?</i>':gs 'vanrPar', 'stepdad_sex3'
+									end
+								else
+									act 'Just don''t come inside me!' + $func('willpower', 'get_willcost_string'): $noWillpower
+								end
+
+								act 'Fuck me!':
+									*clr & cla
+									gs 'arousal', 'vaginal', 5, 'gentle'
+									gs 'cum_call', 'butt', 'A28', 1
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									'<center><video autoplay loop <<$set_imgh>> src="images/characters/pavlovsk/resident/vladimir/sex/bath_voyer_8.mp4"></video></center>'
+									'At this point, I am so horny for his dick inside me that I can''t think straight. My stepfather is obviously in a similar condition. Gone is the careful family man, right now he''s just a dog who sees a bitch in heat and wants to mount her.'
+									'I wiggle my ass invitingly, and that''s all it takes for him to step forward and guide himself inside me - slowly filling my pussy with his hot, hard dick.'
+									'You moan with satisfaction, and lustily beg, "Fuck me hard, Daddy!"'
+									'But my stepfather is in no hurry. He thrusts into me with slow, measured strokes, savouring every inch of my tight little pussy, making me impatiently beg for it.'
+									'"Please, Daddy! <i>Please!</i>"'
+									'"You want it that badly, Sunshine?" he pants, grinning.'
+									act 'I desperate expression tells him everything.':gs 'vanrPar', 'stepdad_sex4'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = '2':
+	*clr & cla
+	gs 'stat'
+	gang += 1
+	rape += 1
+	'They brought me to some forsaken garage or smth…'
+
+
+
+	'they fucks me in all ways'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/sex/1 ('+rand(1,3)+').jpg"></center>'
+	gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	gs 'arousal', 'hj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+	minut -= 15
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'they fucks me in all ways'
+
+		if rand(1,3) >= 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/sex/2 ('+rand(1,4)+').jpg"></center>'
+			gs 'arousal', 'anal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+			gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+			gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+			gs 'arousal', 'hj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+			minut -= 15
+		else
+
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/sex/b.mp4"></video></center>'
+			gs 'arousal', 'bj', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+			gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'group', 'gangbang', 'rape', 'bound'
+		end
+		gs 'stat'
+
+		if rand(1,3) = 1:
+			'some guys cums in me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/cum/vagv ('+rand(1,2)+').mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			temp = rand(1,3)
+			if temp <= 1:
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+				gs 'cuminsidereact', 'rapist'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+			if temp <= 2:
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+				gs 'cuminsidereact', 'rapist'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+			if temp <= 3:
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+				gs 'cuminsidereact', 'rapist'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		end
+
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'They sprey sperm all over me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/cum/onme ('+rand(1,4)+').jpg"></center>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/107 took to the street/cum/onme ('+rand(5,6)+').jpg"></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'clothes', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'legs', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'arms', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'hands', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'hair', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			'We need to make this slut famos!'
+			act 'What are they going to do?':
+				gt 'mod_public_WC_cabine_street', 'slava'
+			end
+		end
+	end
+end
+
+--- mod_public_WC_cabine_street ---------------------------------
+

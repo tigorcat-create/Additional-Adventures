@@ -1,0 +1,957 @@
+# mod_public_WC_rab_Task
+if $ARGS[0] = 'start2':
+	$loc_arg = $ARGS[0]
+	CLOSE ALL
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_task'
+	$metka = 'start2'
+	*clr & cla
+
+	if zvit_Weekout = 1:
+		zvit_Weekout = 0
+		if Tolik_know_preg = 1 and preg = 0 and kid = tkid: gt 'mod_public_WC_rab_Task', 'abort'
+		gt 'mod_public_WC_rab_Task', 'strt'
+	end
+
+
+	act 'Continue to Tolik': gt 'mod_public_WC_rab_Task', 'start'
+	'What the hell didn''t you come to Anatoly! Every day at nine you have to be in Anatoly !!!'
+	'I was hit and dragged to Tolik'
+	temp = rand(1,2)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik_zvit/idem_<<temp>>.mp4"></video></center>'
+	brak += 5
+	gs 'pain', 4, 'tummy', 'kick'
+	gs 'stat'
+end
+
+if $ARGS[0] = 'abort':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+	'"Betsi, I knew everything about abortion"'
+	'This is horrible mistake!'
+	'You will pay for this kill!'
+	Tolik_know_preg = 0
+
+	killvar 'tkid'
+
+	'I forcefully poured a huge dose of vodka and I lose consciousness.'
+	gs 'drugs', 'alcohol', 'vodka', 8
+	gs 'stat'
+	workDolg += rand(50000,70000)
+	brak = 0
+	vlada = 0
+
+	act 'continue':
+		*clr & cla
+		'I am at the sauna. The brutes in a room start to explain. "You''re going to live here and work until you have cleared your debt. Got it? Try to contact the authorities or escape, we''ll put a bullet in your head and bury you in the woods, understand?"'
+		'I become frightened as they''re convincing, so you just nod.'
+		act 'Look around': gt 'city_sauna', 'saunaroom'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'start':
+	$loc_arg = $ARGS[0]
+	CLOSE ALL
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_task'
+	$metka = 'start'
+	bigun = 0
+	vana = 0
+	minut += 60
+	*clr & cla
+	Vania = 0
+	Artem = 1
+	Tolik = 1
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+	'"Every day at this time we will speak. You are not confined to words during this hour. Now you have <<slova>> words."'
+	'"if you help us, I will give you some words"'
+	'"As always, I remind you, we want to have the perfect housewife, and you must be her."'
+
+	if vlada >= 30:
+		'"You are very good housewife"'
+		vlada += rand(1,2)
+	elseif vlada >= 20:
+		'"We are happy about your behaviour, soon you become a perfect housewife we want"'
+		vlada += rand(0,1)
+	elseif vlada >= 10:
+		'"Keep going. Soon I could show you my work and you could help me there"'
+	elseif vlada >= 1:
+		'"I see you hear our wanties, and it''s very good for you"'
+	end
+	if vlada >= 10 and preg = 0:
+		'"Betsi, you are good wife, and the good wife need to birth kids to her man."'
+	end
+
+	dc = 0
+	if firstclean = 1:
+		'When I saw clean yard I was shoked! It wasn''t your task, but it pleased me much. That is why I give you 4 words.'
+		slova += 4
+	end
+	if task1 = 2: slova += 7
+	if task2 = 2: slova += 6
+	if task3 = 2: slova += 7
+	if task4 = 2: slova += 10
+	if task5 = 2: slova += 8
+	if task6 = 2: slova += 8
+	if task7 = 2: slova += 10
+	if task7 = 3 and task70 = 1: slova += 3
+	'Were you helpful today?'
+
+	act 'No':
+		Zvit = week + 1
+		if Zvit = 8: zvit = 1
+		cla
+		temp = 0
+		if task1 = 1 or task1 = 3: temp += 1
+		if task2 = 1: temp += 1
+		if task3 = 1: temp += 1
+		if task4 = 1: temp += 1
+		if task5 = 1: temp += 1
+		if task6 = 1: temp += 1
+		if  task7 = 1 or  ( task7 = 3 and task70 ! 1 ): temp += 1
+		task70 = 0
+		if firstclean = 1:
+			temp = 0
+		end
+		if temp > 0:
+			'At least you say true, I want to hear more true words. You receive extra 4 from me!'
+			slova += 4
+			brak += temp
+			vlada += rand(0,1)
+			'But anyway, I need to punish you'
+			act 'Continue':
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				gt 'mod_public_WC_kara', 'vtecha'
+			end
+		else
+			cla
+			'Ok, you are lasy, but it''s not so bad.'
+			'At least you say true, I want to hear more true words. You receive extra 3 from me!'
+			'I want to give you few task.'
+			slova += 3
+			if firstclean = 1:
+				'Ow, also clean yard - it''s something'
+				firstclean = 2
+			end
+			'This is first task, bend ower… '
+			if vlada >= 15 and askTolik > 0 and pcs_humint >= rand(40,70):
+				act 'Maybe I satisfy you better on the night job?':
+					prcptn_exp += rand(0,1)
+					cla
+					willpowermax -= rand(0,2)
+					'I have a small business, and you can help. Follow me'
+					act 'Follow':
+						minut += rand (20,40)
+						gs 'stat'
+						if askTolik = 1:  gt  'mod_public_WC_rab_work', 'wstart'
+						if askTolik = 2:  gt  'mod_public_WC_rab_work', 'start'
+					end
+				end
+			end
+			act 'I have no choise. Continue':
+				*clr & cla
+				temp = rand(1,3)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik_zvit/tolik_trah (<<temp>>).mp4"></video></center>'
+				dick = 25
+				npc_dick[$npclastgenerated] = dick
+				stat['vaginal'] += 1
+
+				guy += 1
+
+				gs 'arousal', 'vaginal', rand(20,40)
+				gs 'pain', rand(2,4), 'vaginal', 'stretch'
+				gs 'pain', rand(0,2), 'vaginal', 'tear'
+				gs 'stat'
+				'Tolik always fucks for a long time and always completely pumps my vagina.'
+				gs 'sweat', 'add', 15
+				gs 'boyStat', 'A443'
+				spafinloc = 0
+				cumnostd = 1
+				cumarrkno =  1
+				cumarrdel = 0
+				gs 'cum_manage'
+				gs 'cuminsidereact', 'Tolik'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Listen secon task': gt 'mod_public_WC_rab_Task', 'Tolik_task'
+			end
+		end
+	end
+
+	act 'Yes':
+		Zvit = week + 1
+		if zvit = 8: zvit = 1
+		cla
+		temp = 0
+		if task1 = 1 or task1 = 3: temp += 1
+		if task2 = 1: temp += 1
+		if task3 = 1: temp += 1
+		if task4 = 1: temp += 1
+		if task5 = 1: temp += 1
+		if task6 = 1: temp += 1
+		if  task7 = 1 or  ( task7 = 3 and task70 ! 1 ): temp += 1
+		task70 = 0
+		brak += temp
+		if firstclean = 1:
+			firstclean = 2
+			temp = 0
+			task6 = 2
+		end
+		if temp > 0:
+			'You''re a little liar, I hate liars!'
+			'You need to be punished!'
+			brak += 5
+			act 'Continue':
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				gt 'mod_public_WC_kara', 'vtecha'
+			end
+		else
+			if task1 = 2: temp += 1
+			if task2 = 2: temp += 1
+			if task3 = 2: temp += 1
+			if task4 = 2: temp += 1
+			if task5 = 2: temp += 1
+			if task6 = 2: temp += 1
+			if task7 = 2: temp += 1
+			if temp > 0:
+				if task1 = 2:
+					'Not quite a woman''s business, but it''s good, you chopped the firewood'
+					vlada += rand(0,1)
+					dtask1 = daystart
+				end
+				if task2 = 2:
+					'Good girl, well done the dishes'
+					vlada += rand(0,1)
+					dtask2 = daystart
+				end
+				if task3 = 2:
+					dtask3 = daystart
+					if pcs_servng <= 10:
+						'It was a trash, but not food'
+						vlada -= rand(0,1)
+					elseif pcs_servng <= 30:
+						'The food was not bad'
+
+					elseif pcs_servng <= 50:
+						'The food was good'
+						vlada += rand(0,1)
+					elseif pcs_servng <= 80:
+						'The food was wonderful'
+						vlada += 1
+					elseif pcs_servng <= 90:
+						'The food was unbelievably good'
+						vlada += 1
+						slova += 1
+					else
+						'Till today I have never eat something so good!'
+						vlada += 1
+						slova += 3
+					end
+
+					vlada += rand(1,2)
+				end
+				if task4 = 2:
+					'Lovely shirt, good girl!'
+					dtask4 = daystart
+					vlada += rand(3,5)
+				end
+				if task5 = 2:
+					'I see those basket of grapes, good job.'
+					dtask5 = daystart
+					vlada += rand(1,2)
+				end
+				if task6 = 2:
+					'Yard is perfectly clean, good job.'
+					dtask6 = daystart
+					vlada += rand(1,2)
+				end
+				if task7 = 2:
+					dtask7 = daystart
+					if pcs_cleaning <= 30:
+						'Our clothes is not clean, but they better then was.'
+						vlada += rand(0,1)
+					elseif pcs_cleaning <= 50:
+						'Our clothes clean, good job.'
+						vlada += rand(1,2)
+					else
+						'Our clothes perfectly clean, good job.'
+						vlada += rand(1,3)
+					end
+				end
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				'We are pleased with you, go away.'
+				if vlada >= 15 and askTolik > 0:
+					act 'Is there a job for me to satisfy you?':
+						prcptn_exp += rand(0,1)
+						cla
+						willpowermax -= rand(0,2)
+						'I have a small business, and you can help. Follow me'
+						act 'Follow':
+							minut += rand (20,40)
+							gs 'stat'
+							if askTolik = 1:  gt  'mod_public_WC_rab_work', 'wstart'
+							if askTolik = 2:  gt  'mod_public_WC_rab_work', 'start'
+						end
+					end
+				end
+				act 'go away': gt 'mod_public_WC_rab', 'vhid'
+			else
+				'You are lasy lier, I hate liers!'
+				'You need to be punished!'
+				brak += 5
+				act 'Continue':
+					task1 = 0
+					task2 = 0
+					task3 = 0
+					task4 = 0
+					task5 = 0
+					task6 = 0
+					task7 = 0
+					gt 'mod_public_WC_kara', 'vtecha'
+				end
+			end
+		end
+	end
+	if vlada >= 15 and askTolik = 0:
+		act 'Sir, I want to fulfill your desires, be your toy. I deserve, not just be useful.':
+			cla
+			askTolik = 1
+			willpowermax -= 15
+			'Do you thik so?'
+			'Bend over'
+			act 'Bend over':
+				*clr & cla
+				'This is first task, bend ower… I have no choise'
+				temp = rand (1,3)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik_zvit/tolik_trah (<<temp>>).mp4"></video></center>'
+				dick = 25
+				npc_dick[$npclastgenerated] = dick
+				gs 'boyStat', 'A443'
+				stat['vaginal'] += 1
+
+				guy += 1
+
+				gs 'arousal', 'vaginal', rand(20,40)
+				gs 'pain', rand(2,4), 'vaginal', 'stretch'
+				gs 'pain', rand(0,2), 'vaginal', 'tear'
+				gs 'stat'
+				'Tolik always fucks for a long time and always completely pumps my vagina'
+				gs 'sweat', 'add', 15
+				spafinloc = 0
+				cumnostd = 1
+				cumarrkno =  1
+				cumarrdel = 0
+				sparrvol = 200
+				cumarrcpt = 200
+				gs 'cum_call', 'vaginal', $boy
+				gs 'cuminsidereact', 'Tolik'
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+			end
+		end
+	end
+
+
+	if vlada - zayzav >= rand(4,6):
+		'"You complete some chores well, and deserve some reward. Ask what you want. But don''t be greedy."'
+		+$OpenInnerThought+'I see… The better relationship I have, the more I can ask…'+$CloseInnerThought
+		+$OpenInnerThought+'…maybe they will give me a day off sometime?'+$CloseInnerThought
+
+
+
+		act 'please forgive me some of my mistakes':
+			cla
+			zayzav += 5
+			brak -= rand(8,16)
+			if brak <= 0: brak = 0
+			'"Betsi, it''s so sweet, of course we forgive you."'
+			act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+		end
+		act 'Please give me some cigarettes':
+			zayzav += 5
+			cla
+			'"Pff, easy, take pack block"'
+			'He gives me a pack of cigarettes '
+			mc_inventory['cigarettes'] += 20*10
+			gs 'stat'
+			act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+		end
+		act 'Please give me more words':
+			zayzav += 5
+			cla
+			'"Ok, but don''t be annoying"'
+
+			slova += rand (20,40)
+			'"Now you have <<slova>> words"'
+			gs 'stat'
+			act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+		end
+		if vlada >= 10:
+			act 'I want new clothes':
+				zayzav += 5
+				cla
+				'"Ok, I expected this )) All womans like warm cozy coats"'
+				i = rand(1,20)
+				if moncheri_coats_s[i] ! 1:
+					moncheri_coats_s[i] = 1
+				else
+					i = rand(1,20)
+					moncheri_coats_s[i] = 1
+				end
+
+				'<center><img <<$set_imgh>>  src="images/pc/items/moncheri/coats/<<i>>.jpg"></center>'
+
+				act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+			end
+		end
+		if vlada >= 20:
+			act 'Can I go home?':
+				if week >= 6:
+					'"Don''t ask me such questions on a weekend!"'
+				else
+					zayzav += 5
+					cla
+					if pregChem > 0: Tolik_know_preg = 1
+					if pregChem > 0: tkid = kid
+					'I think we can trust you.'
+					'You can go, but!'
+					'You need to be here all each and all the weekends'
+					'and'
+					'Only if Vania agree…'
+					'He write some symbols on the paper "нилатс хол" and give it to me'
+					'"Give this to Vania"'
+					moju_yty_vlada = 1
+
+					act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+				end
+			end
+		end
+	end
+
+
+	if week ! finishcumgame and cumgame = 1:
+		if finishcumgame = 1:  'Also remember cumgame will end on  Monday'
+		if finishcumgame = 2:  'Also remember cumgame will end on  Tuesday'
+		if finishcumgame = 3:  'Also remember cumgame will end on  Wednesday'
+		if finishcumgame = 4:  'Also remember cumgame will end on  Thursday'
+		if finishcumgame = 5:  'Also remember cumgame will end on  Friday'
+		if finishcumgame = 6:  'Also remember cumgame will end on  Saturday'
+		if finishcumgame = 7:  'Also remember cumgame will end on  Sunday'
+
+	end
+
+	if week = finishcumgame and cumgame = 1:
+		cla
+		if findglass = cumwin:
+			'You found all the glasses, and even in time, good girl.'
+			cumgame = 0
+			vlada += rand(0,1) + findglass/2
+			findglass = 0
+			cumwin = 0
+			brak -= 2
+			'I hope there will be no more misunderstandings between us.'
+			act 'Yes': gt 'mod_public_WC_rab_Task', 'start'
+		else
+			'You can''t do even this task (he hits me hard). You will be punished!'
+			Zvit = week + 1
+			if zvit = 8: zvit = 1
+			cumgame = 0
+			findglass = 0
+			cumwin = 0
+			brak += 2
+			gs 'pain', 6, 'tummy', 'kick'
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+if $ARGS[0] = 'Tolik_task':
+	CLOSE ALL
+	$menu_loc = 'rabtabir'
+	cla
+	temp = rand (1,3)
+	if temp = 1: pcs_humint += 1
+	temp = rand(0,100)
+	if temp >= 80: gt 'mod_public_WC_rab_sex', 'start'
+	if firstclean = 2:
+		temp = rand (1,7)
+	else
+		temp = rand(1,6)
+		if temp = 6: temp = 7
+	end
+	if temp = 1:
+		'You need to prepare firewoods'
+		task1 = 1
+	elseif temp = 2:
+		'You need to wash dishes'
+		task2 = 1
+	elseif temp =3:
+		'You need to prepare food'
+		task3 = 1
+	elseif temp =4:
+		if pcs_sewng >= 55:
+			'You need to make me a shirt'
+			tkan += 10
+			task4 = 1
+		else
+			'You need to prepare food '
+			task3 = 1
+		end
+	elseif temp = 5:
+		if month < 5 or month > 9:
+			task5 = 0
+			'You need to wash dishes'
+			task2 = 1
+		else
+			'You need to gather grape'
+			task5 = 1
+		end
+	elseif temp = 6:
+		'You need to clean our yard'
+		task6 = 1
+	elseif temp = 7:
+		'You need to wash our clothes. You can find it in our room.'
+		task7 = 1
+	end
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'Oh, I will do':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'Ok, I''ll do':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'Ok':
+			slova -= 1
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'Nod "yes"':
+			slova -= 0
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'taskdo':
+	CLOSE ALL
+	$menu_loc = 'rabtabir'
+	gt 'mod_public_WC_rab','vhid'
+end
+
+
+
+if $ARGS[0] = 'strt':
+	$loc_arg = $ARGS[0]
+	CLOSE ALL
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_task'
+	$metka = 'start'
+	bigun = 0
+	vana = 0
+	minut += 60
+	*clr & cla
+	Vania = 0
+	Artem = 1
+	Tolik = 1
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+	'Betsi, nice to see you here, I missed you'
+	'Just to remind: You are not confined to words during this hour. Now you have <<slova>> words.'
+	'if you help us, I will give you some words'
+	dc = 0
+	if firstclean = 1:
+		'When I saw clean yard I was shoked! It wasn''t your task, but it pleased me much. That is why I give you 4 words.'
+		slova += 4
+	end
+	if task1 = 2: slova += 7
+	if task2 = 2: slova += 6
+	if task3 = 2: slova += 7
+	if task4 = 2: slova += 10
+	if task5 = 2: slova += 8
+	if task6 = 2: slova += 8
+	if task7 = 2: slova += 10
+	if task7 = 3 and task70 = 1: slova += 3
+	'Were you helpful today?'
+
+	act 'No':
+		Zvit = week + 1
+		if Zvit = 8: zvit = 1
+		cla
+		temp = 0
+		if task1 = 1 or task1 = 3: temp += 1
+		if task2 = 1: temp += 1
+		if task3 = 1: temp += 1
+		if task4 = 1: temp += 1
+		if task5 = 1: temp += 1
+		if task6 = 1: temp += 1
+		if  task7 = 1 or  ( task7 = 3 and task70 ! 1 ): temp += 1
+		task70 = 0
+		if firstclean = 1:
+			temp = 0
+		end
+		if temp > 0:
+			'At least you say true, I want to hear more true words. You receive extra 4 from me!'
+			slova += 4
+			brak += temp
+			vlada += rand(0,1)
+			'But anyway, I need to punish you'
+			act 'Continue':
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				gt 'mod_public_WC_kara', 'vtecha'
+			end
+		else
+			cla
+			'Ok, you are lasy, but it''s not so bad.'
+			'At least you say true, I want to hear more true words. You receive extra 3 from me!'
+			'I want to give you few task.'
+			slova += 3
+			if firstclean = 1:
+				'Ow, also clean yard - it''s something'
+				firstclean = 2
+			end
+			'This is first task, bend ower… '
+			if vlada >= 15 and askTolik > 0 and pcs_humint >= rand(40,70):
+				act 'Maybe I satisfy you better on the night job?':
+					prcptn_exp += rand(0,1)
+					cla
+					willpowermax -= rand(0,2)
+					'I have a small business, and you can help. Follow me'
+					act 'Follow':
+						minut += rand (20,40)
+						gs 'stat'
+						if askTolik = 1:  gt  'mod_public_WC_rab_work', 'wstart'
+						if askTolik = 2:  gt  'mod_public_WC_rab_work', 'start'
+					end
+				end
+			end
+			act 'I have no choise. Continue':
+				*clr & cla
+				temp = rand(1,3)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik_zvit/tolik_trah (<<temp>>).mp4"></video></center>'
+				dick = 25
+				npc_dick[$npclastgenerated] = dick
+				stat['vaginal'] += 1
+
+				guy += 1
+
+				gs 'arousal', 'vaginal', rand(20,40)
+				gs 'pain', rand(2,4), 'vaginal', 'stretch'
+				gs 'pain', rand(0,2), 'vaginal', 'tear'
+				gs 'stat'
+				'Tolik always fucks for a long time and always completely pumps my vagina.'
+				gs 'sweat', 'add', 15
+				gs 'boyStat', 'A443'
+				spafinloc = 0
+				cumnostd = 1
+				cumarrkno =  1
+				cumarrdel = 0
+				gs 'cum_manage'
+				gs 'cuminsidereact', 'Tolik'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Listen secon task': gt 'mod_public_WC_rab_Task', 'Tolik_task'
+			end
+		end
+	end
+
+	act 'Yes':
+		Zvit = week + 1
+		if zvit = 8: zvit = 1
+		cla
+		temp = 0
+		if task1 = 1 or task1 = 3: temp += 1
+		if task2 = 1: temp += 1
+		if task3 = 1: temp += 1
+		if task4 = 1: temp += 1
+		if task5 = 1: temp += 1
+		if task6 = 1: temp += 1
+		if  task7 = 1 or  ( task7 = 3 and task70 ! 1 ): temp += 1
+		task70 = 0
+		brak += temp
+		if firstclean = 1:
+			firstclean = 2
+			temp = 0
+			task6 = 2
+		end
+		if temp > 0:
+			'You''re a little liar, I hate liars!'
+			'You need to be punished!'
+			brak += 5
+			act 'Continue':
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				gt 'mod_public_WC_kara', 'vtecha'
+			end
+		else
+			if task1 = 2: temp += 1
+			if task2 = 2: temp += 1
+			if task3 = 2: temp += 1
+			if task4 = 2: temp += 1
+			if task5 = 2: temp += 1
+			if task6 = 2: temp += 1
+			if task7 = 2: temp += 1
+			if temp > 0:
+				if task1 = 2:
+					'Not quite a woman''s business, but it''s good, you chopped the firewood'
+					vlada += rand(0,1)
+				end
+				if task2 = 2:
+					'Good girl, well done the dishes'
+					vlada += rand(0,1)
+				end
+				if task3 = 2:
+					if pcs_servng <= 10:
+						'It was a trash, but not food'
+						vlada -= 2
+					elseif pcs_servng <= 30:
+						'The food was not bad'
+						vlada -= 1
+					elseif pcs_servng <= 50:
+						'The food was good'
+					elseif pcs_servng <= 80:
+						'The food was wonderful'
+						vlada += 1
+					elseif pcs_servng <= 90:
+						'The food was unbelievably good'
+						vlada += 1
+						slova += 1
+					else
+						'Till today I have never eat something so good!'
+						vlada += 1
+						slova += 3
+					end
+
+					vlada += rand(1,2)
+				end
+				if task4 = 2:
+					'Lovely shirt, good girl!'
+					vlada += rand(3,5)
+				end
+				if task5 = 2:
+					'I see those basket of grapes, good job.'
+					vlada += rand(1,2)
+				end
+				if task6 = 2:
+					'Yard is perfectly clean, good job.'
+					vlada += rand(1,2)
+				end
+				if task7 = 2:
+					if pcs_cleaning <= 30:
+						'Our clothes is not clean, but they better then was.'
+						vlada += rand(0,1)
+					elseif pcs_cleaning <= 50:
+						'Our clothes clean, good job.'
+						vlada += rand(1,2)
+					else
+						'Our clothes perfectly clean, good job.'
+						vlada += rand(1,3)
+					end
+				end
+				task1 = 0
+				task2 = 0
+				task3 = 0
+				task4 = 0
+				task5 = 0
+				task6 = 0
+				task7 = 0
+				'We are pleased with you, go away.'
+				if vlada >= 15 and askTolik > 0:
+					act 'Is there a job for me to satisfy you?':
+						prcptn_exp += rand(0,1)
+						cla
+						willpowermax -= rand(0,2)
+						'I have a small business, and you can help. Follow me'
+						act 'Follow':
+							minut += rand (20,40)
+							gs 'stat'
+							if askTolik = 1:  gt  'mod_public_WC_rab_work', 'wstart'
+							if askTolik = 2:  gt  'mod_public_WC_rab_work', 'start'
+						end
+					end
+				end
+				act 'go away': gt 'mod_public_WC_rab', 'vhid'
+			else
+				'You are lasy lier, I hate liers!'
+				'You need to be punished!'
+				brak += 5
+				act 'Continue':
+					task1 = 0
+					task2 = 0
+					task3 = 0
+					task4 = 0
+					task5 = 0
+					task6 = 0
+					task7 = 0
+					gt 'mod_public_WC_kara', 'vtecha'
+				end
+			end
+		end
+	end
+	if vlada >= 15 and askTolik = 0:
+		act 'Sir, I want to fulfill your desires, be your toy. I deserve, not just be useful.':
+			cla
+			askTolik = 1
+			willpowermax -= 15
+			'Do you thik so?'
+			'Bend over'
+			act 'Bend over':
+				*clr & cla
+				'This is first task, bend ower… I have no choise'
+				temp = rand (1,3)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik_zvit/tolik_trah (<<temp>>).mp4"></video></center>'
+				dick = 25
+				npc_dick[$npclastgenerated] = dick
+				gs 'boyStat', 'A443'
+				stat['vaginal'] += 1
+
+				guy += 1
+
+				gs 'arousal', 'vaginal', rand(20,40)
+				gs 'pain', rand(2,4), 'vaginal', 'stretch'
+				gs 'pain', rand(0,2), 'vaginal', 'tear'
+				gs 'stat'
+				'Tolik always fucks for a long time and always completely pumps my vagina'
+				gs 'sweat', 'add', 15
+				spafinloc = 0
+				cumnostd = 1
+				cumarrkno =  1
+				cumarrdel = 0
+				sparrvol = 200
+				cumarrcpt = 200
+				gs 'cum_call', 'vaginal', 'Tolik'
+				gs 'cuminsidereact', 'Tolik'
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Continue': gt  'mod_public_WC_rab_Task', 'start'
+			end
+		end
+	end
+
+
+	if week ! finishcumgame and cumgame = 1:
+		if finishcumgame = 1:  'Also remember cumgame will end on  Monday'
+		if finishcumgame = 2:  'Also remember cumgame will end on  Tuesday'
+		if finishcumgame = 3:  'Also remember cumgame will end on  Wednesday'
+		if finishcumgame = 4:  'Also remember cumgame will end on  Thursday'
+		if finishcumgame = 5:  'Also remember cumgame will end on  Friday'
+		if finishcumgame = 6:  'Also remember cumgame will end on  Saturday'
+		if finishcumgame = 7:  'Also remember cumgame will end on  Sunday'
+
+	end
+
+	if week = finishcumgame and cumgame = 1:
+		cla
+		if findglass = cumwin:
+			'You found all the glasses, and even in time, good girl.'
+			cumgame = 0
+			vlada += rand(0,1) + findglass/2
+			findglass = 0
+			cumwin = 0
+			brak -= 2
+			'I hope there will be no more misunderstandings between us.'
+			act 'Yes': gt 'mod_public_WC_rab_Task', 'start'
+		else
+			'You can''t do even this task (he hits me hard). You will be punished!'
+			Zvit = week + 1
+			if zvit = 8: zvit = 1
+			cumgame = 0
+			findglass = 0
+			cumwin = 0
+			brak += 2
+			gs 'pain', 6, 'tummy', 'kick'
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'shopyly':
+	$loc_arg = $ARGS[0]
+	*clr & cla
+	zvit_Weekout = 0
+	brak += 10
+	vlada -= 10
+	lis_Weekout = 0
+	moju_yty = 0
+	'Suddenly someone put a bag on my head and kick hardly in my chest'
+	gs 'pain', 5, 'chest', 'hit'
+	minut += rand(60,120)
+	gs 'stat'
+	'I can''t inhale enought air to skream…'
+	'I hear familiar voice: "You are lier, You must be home!"'
+	'I feel Vania puts me in the car trunk… and the car moves.'
+	'In a some time the car stops'
+	'Vania took me from the Trunk, dress off the bag and lock the leash to my collar'
+	'"Lets go home, Betsi! There you will meet your punishment"'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go ('+rand(1,3)+').jpg"></center>'
+	act 'Walk home for the punishment':
+		minut += rand(20,40)
+		gs 'stat'
+		gt 'mod_public_WC_kara', 'vtecha'
+	end
+end
+--- mod_public_WC_rab_Task ---------------------------------
+

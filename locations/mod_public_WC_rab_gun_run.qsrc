@@ -1,0 +1,378 @@
+# mod_public_WC_rab_gun_run
+if $ARGS[0] = 'run':
+
+	'I hear someone running after me!!!'
+	if month <= 4 or month >= 10:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun10.mp4"></video></center>'
+	else
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun<<temp>>.mp4"></video></center>'
+	end
+
+	act 'try to aim during run and shoot':
+		cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+		if ammo > 0:
+			ammo -= 1
+			shoot_exp += 1
+			if pcs_shoot >= 95:
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+				if ktemp = 105:
+					'I see Vania'
+					Vania = 3
+					killvar 'ktemp'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				elseif hour >= 7 and hour <= 20:
+					'I see Artem'
+					Artem = 3
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Artem/Artem.jpg"></center>'
+				else
+					'I see Vania'
+					Vania = 3
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				end
+				act	'try to kill':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					If Artem = 3:
+						Artem = 2
+						Vania = 0
+					end
+					If Vania = 3:
+						Vania = 2
+						Artem = 0
+					end
+					If Artem = 2:
+						'I have killed Artem'
+						pcs_mood -= Alove
+					end
+					If Vania = 2: 'I have killed Vania'
+					pcs_mood -= 50
+					willpowermax += 5
+					gs 'stat'
+
+					act 'Run away':
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'throw the gun and run away':
+						gun = 0
+						crime -= 100
+						if crime <= 0: crime = 0
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				end
+				act 'try to injure':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					If Artem = 3: Artem = 3 and Vania = 0
+					If Vania = 3: Vania = 3 and Artem = 0
+					If Artem = 3:
+						'I hit Artems'' leg'
+						'I hear Artem voice full of pain…'
+						act 'Come to Artem': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+					If Vania = 3:
+						'I hit Vanias'' leg'
+						'I hear Vania voice full of pain…'
+						act 'Come to Vania': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+					act 'Run away':
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'throw the gun and run away':
+						gun = 0
+						crime -= 100
+						if crime <= 0: crime = 0
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+				end
+			elseif pcs_shoot >= rand(50,100):
+				gs 'mod_public_WC_rab_gun', 'damage'
+				if Artem = 2:
+					'I have killed Artem'
+					pcs_mood -= 50
+					pcs_mood -= Alove
+					willpowermax += 5
+					gs 'stat'
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				else
+					act 'Come to Artem': gt 'mod_public_WC_rab_gun', 'kill'
+				end
+				If Vania = 2:
+					'I have killed Vania'
+					pcs_mood -= 50
+					willpowermax += 5
+					gs 'stat'
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				else
+					act 'Come to Vania': gt 'mod_public_WC_rab_gun', 'kill'
+				end
+				act 'Run away':
+					minut += rand (10, 40)
+					brak += 70
+					vtecha = 1
+					if Vania ! 2: Vania = 0
+					If Artem ! 2: Artem = 0
+					Tolik = 0
+					gt 'gad_forest_lost', 'forest_center'
+				end
+				act 'throw the gun and run away':
+					gun = 0
+					crime -= 100
+					if crime <= 0: crime = 0
+					minut += rand (10, 40)
+					brak += 70
+					vtecha = 1
+					if Vania ! 2: Vania = 0
+					If Artem ! 2: Artem = 0
+					Tolik = 0
+					gt 'gad_forest_lost', 'forest_center'
+				end
+			else
+				if ztemp >= rand(1,3):
+					*clr & cla
+					'I have mised!'
+					'I was caught and broke. And they take the gun from me and fuck me with it.'
+					brak += 30
+					vlada -= 10
+					if vlada < 0: vlada = 0
+					gun = 0
+					ammo = 0
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunass.mp4"></video></center>'
+					gs 'pain', 10, 'asshole', 'break'
+					gs 'arousal_funcs', 'stretch', 'anal', 3
+					rape += 1
+					stat['anal'] += 3
+					stat['anal_strap'] += 3
+					gs 'stat'
+					act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+				else
+					ztemp += 1
+					'I missed'
+					'He aproches me!'
+					act 'keep running': gt 'mod_public_WC_rab_gun', 'run'
+				end
+			end
+		else
+			*clr & cla
+			'I have no ammo'
+			'I was caught and broke. And they take the gun from me and fuck me with it.'
+			brak += 30
+			vlada -= 10
+			if vlada < 0: vlada = 0
+			gun = 0
+			ammo = 0
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunass.mp4"></video></center>'
+			gs 'pain', 10, 'asshole', 'break'
+			gs 'arousal_funcs', 'stretch', 'anal', 3
+			rape += 1
+			stat['anal'] += 3
+			stat['anal_strap'] += 3
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+
+	act 'Stop and shoot at the pursuer':
+		cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+		if ammo > 0:
+			ammo -= 1
+			shoot_exp += 1
+			if pcs_shoot >= 80:
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+				if ktemp = 105:
+					'I see Vania'
+					Vania = 3
+					killvar 'ktemp'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				elseif hour >= 7 and hour <= 20:
+					'I see Artem'
+					Artem = 3
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Artem/Artem.jpg"></center>'
+				else
+					'I see Vania'
+					Vania = 3
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+				end
+
+				act	'try to kill':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					If Artem = 3: Artem = 2 and Vania = 0
+					If Vania = 3: Vania = 2 and Artem = 0
+					If Artem = 2:
+						'I have killed Artem'
+						pcs_mood -= Alove
+					end
+					If Vania = 2: 'I have killed Vania'
+					pcs_mood -= 40
+					willpowermax += 5
+					gs 'stat'
+
+					act 'Run away':
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'throw the gun and run away':
+						gun = 0
+						crime -= 100
+						if crime <= 0: crime = 0
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				end
+				act 'try to injure':
+					*clr & cla
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunshoot_main.mp4"></video></center>'
+					If Artem = 3: Artem = 3 and Vania = 0
+					If Vania = 3: Vania = 3 and Artem = 0
+					If Artem = 3:
+						'I hit Artems'' leg'
+						'I hear Artem voice full of pain…'
+						act 'Come to Artem': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+					If Vamnia = 3:
+						'I hit Vanias'' leg'
+						'I hear Vania voice full of pain…'
+						act 'Come to Vania': gt 'mod_public_WC_rab_gun', 'kill'
+					end
+					act 'Run away':
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+					act 'throw the gun and run away':
+						gun = 0
+						crime -= 100
+						if crime <= 0: crime = 0
+						minut += rand (10, 40)
+						brak += 70
+						vtecha = 1
+						if Vania ! 2: Vania = 0
+						If Artem ! 2: Artem = 0
+						Tolik = 0
+						gt 'gad_forest_lost', 'forest_center'
+					end
+				end
+			elseif pcs_shoot >= rand(30,80):
+				gs 'mod_public_WC_rab_gun', 'damage'
+				if Artem = 2:
+					'I have killed Artem'
+					pcs_mood -= 50
+					pcs_mood -= Alove
+					willpowermax += 5
+					gs 'stat'
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				else
+					act 'Come to Artem': gt 'mod_public_WC_rab_gun', 'kill'
+				end
+				If Vania = 2:
+					'I have killed Vania'
+					pcs_mood -= 50
+					willpowermax += 5
+					gs 'stat'
+					act 'go to the house and kill other': gt 'mod_public_WC_rab_gun', 'killall'
+				else
+					act 'Come to Vania': gt 'mod_public_WC_rab_gun', 'kill'
+				end
+				act 'Run away':
+					minut += rand (10, 40)
+					brak += 70
+					vtecha = 1
+					if Vania ! 2: Vania = 0
+					If Artem ! 2: Artem = 0
+					Tolik = 0
+					gt 'gad_forest_lost', 'forest_center'
+				end
+				act 'throw the gun and run away':
+					gun = 0
+					crime -= 100
+					if crime <= 0: crime = 0
+					minut += rand (10, 40)
+					brak += 70
+					vtecha = 1
+					if Vania ! 2: Vania = 0
+					If Artem ! 2: Artem = 0
+					Tolik = 0
+					gt 'gad_forest_lost', 'forest_center'
+				end
+			else
+				*clr & cla
+				'I have mised!'
+				'I was caught and broke. And they take the gun from me and fuck me with it.'
+				brak += 30
+				vlada -= 10
+				if vlada < 0: vlada = 0
+				gun = 0
+				ammo = 0
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunass.mp4"></video></center>'
+				gs 'pain', 10, 'asshole', 'break'
+				gs 'arousal_funcs', 'stretch', 'anal', 3
+				rape += 1
+				stat['anal'] += 3
+				stat['anal_strap'] += 3
+				gs 'stat'
+				act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+			end
+		else
+			*clr & cla
+			'I have no ammo'
+			'I was caught and broke. And they take the gun from me and fuck me with it.'
+			brak += 30
+			vlada -= 10
+			if vlada < 0: vlada = 0
+			gun = 0
+			ammo = 0
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/gunass.mp4"></video></center>'
+			gs 'pain', 10, 'asshole', 'break'
+			gs 'arousal_funcs', 'stretch', 'anal', 3
+			rape += 1
+			stat['anal'] += 3
+			stat['anal_strap'] += 3
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+--- mod_public_WC_rab_gun_run ---------------------------------
+

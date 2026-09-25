@@ -1,0 +1,141 @@
+# mod_public_WC_rab_phslaveship_3_fishing
+if $ARGS[0] = 'start':
+	*clr & cla
+	phslaveship = 3
+	!! '-=wip=-'
+
+
+
+
+
+
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/2 other ships/3 fishing ship (<<shiptype>>).jpg"></center>'
+	'The fishers bring me to the local police'
+	
+	act 'continue':
+		*clr & cla
+		'I tell police the whole story, they do nothing, except put me on the train to my city'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/run from the ship/7 cop.jpg"></center>'
+		
+		act 'arrive to the pavlovsk':
+			minut += rand(9,12)*60
+			gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+			gs 'stat'								
+			gt 'pav_train_hall'									
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'deck':
+	*clr & cla
+	!! '-=wip=-'
+
+
+
+
+
+
+
+
+
+
+end
+
+
+
+if $ARGS[0] = 'bridge':
+	*clr & cla
+	!! '-=wip=-'
+
+
+
+
+
+
+
+
+
+
+end
+
+
+
+if $ARGS[0] = 'cargo hold':
+	*clr & cla
+	!! '-=wip=-'
+
+
+
+
+
+
+
+
+
+
+end
+
+
+
+if $ARGS[0] = 'crews accommodations':
+	*clr & cla
+	!! '-=wip=-'
+
+
+
+
+
+
+
+
+
+
+end
+
+
+
+if $ARGS[0] = 'motor': 
+	*clr & cla
+	!! '-=wip=-'
+
+
+
+
+
+
+
+
+
+
+end
+
+
+
+
+
+
+!'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/.jpg"></center>'
+!'+rand(1,)+'
+
+!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/.mp4"></video></center>'
+!'+rand(1,)+'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_rab_phslaveship_3_fishing ---------------------------------
+

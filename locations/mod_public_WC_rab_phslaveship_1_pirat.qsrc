@@ -1,0 +1,1973 @@
+# mod_public_WC_rab_phslaveship_1_pirat
+if $ARGS[0] = 'deck':
+	*clr & cla
+	if rand(1,3) ! 1: phsail += 1
+	if rand(1,20) = 1 and phcoast ! 3:
+		phcoast = 3
+		phcoastnear = phsail + 3
+	end
+
+	gs 'npcgeneratec', 0, 'pirate', rand(16,35)
+	gs 'boyStat', $npclastgenerated
+
+	if phfoodhere <= 0: phboatfood = 0
+	if phboatfood = 3: phboatfood = 2
+
+	if phfoodhere > 0:
+		if rand(1,3) = 1: phfoodhere -= 1
+		if rand(1,4) = 1: phpiratefriend += 1
+	end
+
+	if phsail >= phcoastnear and phcoastnear ! 0:
+		phcoastnear = 0
+		phcoast = 0
+		killvar 'phcoastnear'
+		killvar 'phcoast'
+	end
+
+	acil += 10
+
+	if $clothingworntype ! 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/bikini_wait ('+rand(1,2)+').jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/naked_wait ('+rand(1,3)+').jpg"></center>'
+		phescortfun += rand(1,1)
+	end
+
+	phescortfun += rand(1,3)
+
+	gs 'mod_public_WC_rab_phslaveship_1_pirat', 'phescortfun'
+
+	$loc = 'mod_public_WC_rab_phslaveship_1_pirat'
+	$loc_arg = 'deck'
+	$menu_loc = 'mod_public_WC_rab_phslaveship_1_pirat'
+	$menu_arg = 'deck'
+
+
+	act 'go to the capitan':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+		'The local king turns to me: "What?"'
+
+		if phfoodhere > 0:
+			'Capitan: "My guys has a full belly thanks to you, keep their balls empty and I will reward you"'
+		end
+
+		if phcaplove >= 10:
+			act 'ask the key to my cabin''s WC':
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+				'Capitan: "My guys are very happy about your work, I think you well-deserved this reward"'
+				'He gives a key to me'
+				phcapkey = 1
+			end
+		else
+			act 'ask the key to my cabin''s WC':
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+				'Capitan: "SHow me a good work and I will give it to you."'
+				'Capitan: "You are a crew entertainer, Entertain my guys!"'
+			end
+		end
+
+		if phcaplove >= 20:
+			!-=wip=-
+			!можу гуляти в гаванях
+
+		end
+
+		act 'Go to the deck': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+	end
+
+	if rand(1,5) = 1:
+		'I see the "capitan" resting.'
+		act 'fuck the capitan':
+			*clr & cla
+			!! sex cap
+
+			'I sneak up to the capitan and start to unzip his pants'
+			'He scares a little, but when he saw it''s me, he relax'
+			phcaplove += 1
+			phescortfun += 2
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cap/2.jpg"></center>'
+
+			act 'Suck his dick':
+				*clr & cla
+				phescortfun += rand(4,8)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cap/3.jpg"></center>'
+				gs 'arousal', 'bj', 15, 'exhibitionism', 'prostitution', 'sub'
+				gs 'stat'
+
+				act 'Continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'capsex'
+			end
+		end
+	end
+
+	act 'wait (0:30)':
+		*clr & cla
+		'I just find a moment for myself to look on the ocean'
+		pcs_mood += rand(0,5)
+		minut += 15
+		gs 'stat'
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/bikini_wait2 ('+rand(1,3)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/naked_wait ('+rand(1,3)+').jpg"></center>'
+		end
+		act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'Smoking':
+			minut += rand(3,5)
+			gs 'drugs', 'smoke'
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/smoke.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/smoke.jpg"></center>'
+			end
+		end
+	end
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			cla
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/undress.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+			cla
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put your clothes back on.'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		end
+	end
+
+	act 'Go down to the cabin':
+		gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'start'
+	end
+
+	if sunWeather = 1:
+		act 'sunbathing (1:00)':
+			*clr & cla
+			minut += 60
+			menu_off = 0
+			if pcs_inhib < 50:inhib_exp += rand(1,2)
+			if pcs_sweat < 35 : gs 'sweat', 'add', 5
+			if pcs_hydra >= 100:
+				pcs_hydra -= 10
+			else
+				pcs_hydra -= 20
+			end
+			pcs_mood += 5
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/sunbathing/bikini ('+rand(1,3)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/sunbathing/naked ('+rand(1,2)+').jpg"></center>'
+			end
+			phescortfun += rand(1,3)
+
+			if krem = 0:
+				pcs_tan += 1
+				'I lie on the boat and sunbathe for an hour.'
+			else
+				krem -= 1
+				pcs_tan += 3
+				'I apply sunblock to my body before sunbathing for an hour.'
+			end
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+
+
+			if rand(1,5) = 1:
+				cla
+				!! capitan event
+				act 'Continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'capsex'
+			end
+		end
+	end
+
+	act 'Meditation(0:30) (Willpower training)':
+		*clr & cla
+		if phescortfun <= 30:
+			minut += 30
+			pcs_mood += 10
+			if rand(1,3) = 1: willpowermax += 1
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			end
+			'I sit in the lotus pose and begin a series of breathing exercises to the sound of the waves, the salt ocean smell filling my lungs.'
+			'In-Out'
+			'Wave-Wave'
+			'In'
+			'Wave…'
+			'Out'
+			'…Wave'
+			'My soul is relaxed, my mind is clear… There is no problem, no stress, no me… just ocean and my breathing…'
+			act 'Woke up': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		elseif phescortfun >= 60:
+			minut += 30
+			pcs_mood += 1
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			end
+			'I sit in the lotus pose and begin a series of breathing exercises to the sound of the waves, the salt ocean smell filling my lungs.'
+			'Some pirate grope my ass and go away… and again… and again… and again, and again, and again!!!'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 start undress.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 15, 'exhibitionism', 'prostitution', 'sub'
+			minut -= 15
+			gs 'stat'
+
+			act 'Stop trying':
+				*clr & cla
+				'The pirat stop groping me and start kissing. I feal his ercted cock points me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 kiss ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'kiss', 15, 'exhibitionism', 'prostitution', 'sub'
+				minut -= 10
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cuni/cuni ('+rand(1,4)+').jpg"></center>'
+					'He pushed me and goes to my pussy. He starts eating me.'
+					gs 'arousal', 'cuni', rand(10,15), 'exhibitionism', 'prostitution', 'sub'
+					gs 'stat'
+					phescortfun += rand(3,6)
+
+					act 'pleasure him':
+						$cum1 = rand(80,120)
+						phsex = 206
+						gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+					end
+				end
+			end
+		else
+			minut += 30
+			pcs_mood += 1
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/meditation.jpg"></center>'
+			end
+			'I sit in the lotus pose and begin a series of breathing exercises to the sound of the waves, the salt ocean smell filling my lungs.'
+			'Some pirate grope my ass and go away… and again… and again… and again, and again, and again!!!'
+			'I need to make the crew less horny to meditate in a peace'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 start_groope.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 15, 'exhibitionism', 'prostitution', 'sub'
+			minut -= 15
+			gs 'stat'
+
+			act 'Stop trying': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		end
+	end
+
+	act 'tease':
+		if $clothingworntype ! 'nude':
+			act 'show my ass':
+				*clr & cla
+				acil += 10
+				'I see Pirates likes my buns'
+				phescortfun += rand(0,12)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/tease/bikini ass ('+rand(1,2)+').jpg"></center>'
+				act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			end
+
+			act 'show my tits':
+				*clr & cla
+				acil += 10
+				'I see they likes my boobs'
+				phescortfun += rand(4,8)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/tease/bikini_show_tits (1).mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			end
+
+			act 'flash my pussy':
+				*clr & cla
+				acil += 10
+				'I make it just for a short time, but to be sure the pirat saw. Now I see a smile on his face.'
+				phescortfun += rand(1,15)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/tease/bikini_tease pussy.jpg"></center>'
+				act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			end
+		else
+			act 'stretch':
+				*clr & cla
+				acil += 10
+				'I bends over the railing and flashs my pussy'
+				'I am looking in the pirates eyes with all innocent I have'
+
+				gs 'arousal', 'flash', rand(10,10), 'exhibitionism'
+				minut -= 5
+				gs 'stat'
+				phescortfun += rand(8,8)
+				gs 'stat'
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/tease/naked_tease.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/tease/naked_tease.jpg"></center>'
+				end
+				act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			end
+		end
+
+		act 'Cat in Heat':
+			*clr & cla
+			acil += 10
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/2 other ships/deck/prepared/prepared (2).jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/2 other ships/deck/prepared/prepared (1).jpg"></center>'
+			end
+			'I stand on my four and put my ass up top'
+			'My holes glase on the crew'
+			'Me: "Kitty want some pies, the creampies!"'
+			phescortfun += rand(8,8)
+			minut += 10
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+
+			temp = rand(1,300) - acil - phescortfun
+			if temp <= 50:
+				acil = 0
+				cla
+				'The pirate come to me and start stretching my holes'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/1 look.jpg"></center>'
+				gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'rape', 'humiliation'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'He choose a hole and penetrates me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/2 start.mp4"></video></center>'
+					!! '<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/1 look.jpg"></center>'
+					gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'rape', 'humiliation'
+					gs 'stat'
+
+					act 'continue':
+
+						*clr & cla
+						'He choose a hole and penetrates me'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/2 start.mp4"></video></center>'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/1 look.jpg"></center>'
+						gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'rape', 'humiliation'
+						gs 'stat'
+						!! phescortfun += rand(3,6)
+
+						act 'continue':
+							*clr & cla
+							'He is fucking me'
+							if rand(1,7) <= 2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/3 sexv ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/3 sex ('+rand(1,5)+').jpg"></center>'
+							end
+							gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'rape', 'humiliation'
+							gs 'stat'
+							phescortfun += rand(2,6)
+
+							if rand(1,3) = 1:
+								'He is slaping my ass'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/4 slap.mp4"></video></center>'
+								gs 'pain', rand(1,4), 'cheeks', 'slap'
+								gs 'stat'
+							end
+
+							act 'continue':
+								*clr & cla
+								'He is fucking me'
+								if rand(1,7) <= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/3 sexv ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/3 sex ('+rand(1,5)+').jpg"></center>'
+								end
+								gs 'arousal', 'vaginal', rand(5,15), 'prostitution', 'sub', 'rape', 'humiliation'
+								gs 'stat'
+								phescortfun += rand(2,6)
+
+								if rand(1,3) = 1:
+									'He is slaping my ass'
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/prepared/4 slap.mp4"></video></center>'
+									gs 'pain', rand(1,4), 'cheeks', 'slap'
+									gs 'stat'
+								end
+								act 'continue':
+									*clr & cla
+									phsex = 3
+									gs 'mod_public_WC_rab_phslaveship_1_pirat', 'cumup1'
+
+									act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	act 'fishing':
+		gt 'mod_public_WC_rab_btothel_escort_fly2', 'fishing'
+	end
+
+	act 'Use binoculars':
+		*clr & cla
+		minut += 10
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/bikini_binokle.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/naked_binokle.jpg"></center>'
+		end
+		gs 'stat'
+
+
+		if rand(1,8) = 1 or phcoast = 3:
+			phcoast = 3
+			phcoastnear = phsail + 3
+			'I see some island'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/island.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/ocean.jpg"></center>'
+		end
+		act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+	end
+
+	if phboatfood >= 2:
+		gs 'mod_public_WC_rab_phslaveship_1_pirat', 'foodup'
+	end
+
+	if phcoast = 3:
+		'There is island nearby'
+		+$OpenInnerThought+'I could swim there and figure out how to come home'+$CloseInnerThought
+		act 'Try to escape':
+			*clr & cla
+			'I found the place on the ship, where noone see me'
+			phslaveship = 0
+			killvar 'phslaveship'
+			killvar 'phboatend'
+			act 'jump from the yacht':
+				*clr & cla
+				minut += rand(10,15)
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht2/run from the ship/2 jump.mp4"></video></center>'
+
+				act 'Swim to the island':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/run from the ship/4 swim.jpg"></center>'
+					'I use all my force to be as quick as I could to reach the island fast and hide on it!'
+
+					minut += rand(20,40)
+					gs 'stat'
+					gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+
+					act 'continue':	gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+				end
+			end
+		end
+	end
+
+	temp = rand(30,300) - acil - phescortfun
+	if temp <= 80:
+		if rand(1,10) >= 8:
+			*clr
+			!! kiss
+			'A pirate aproaches me and start kissing'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 kiss ('+rand(1,2)+').jpg"></center>'
+			gs 'arousal', 'kiss', 15, 'exhibitionism', 'prostitution', 'sub'
+			minut -= 10
+			gs 'stat'
+
+			if rand (1,10) = 1:
+				cla
+				!! cuni
+				act 'continue':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cuni/cuni ('+rand(1,4)+').jpg"></center>'
+					'He pushed me and goes to my pussy. He starts eating me.'
+					gs 'arousal', 'cuni', rand(10,15), 'exhibitionism', 'prostitution', 'sub'
+					gs 'stat'
+					phescortfun += rand(3,6)
+
+					act 'pleasure him':
+						$cum1 = rand(80,120)
+						phsex = 206
+						gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+					end
+				end
+			end
+		else
+			*clr
+			!! grope
+			'Some pirate decided to increase his mood: grope me a little'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 start_groope.mp4"></video></center>'
+			gs 'arousal', 'foreplay', 15, 'exhibitionism', 'prostitution', 'sub'
+			gs 'stat'
+
+			if rand (1,10) = 1 and $clothingworntype ! 'nude':
+				!! undress
+				'A pirate undress me…'
+				minut += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/1 start undress.mp4"></video></center>'
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+			end
+		end
+	end
+
+
+
+	temp = rand(30,300) - acil - phescortfun
+	if temp <= 30:
+		acil = 0
+
+		if phescortfun >= 60 or (rand(1,10) = 1 and phescortfun >= 30):
+			*clr & cla
+			!! group-sex
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/0 start '+rand(1,2)+'.jpg"></center>'
+			'Few pirates sit by me - "Girl, it''s time to make your duty"'
+
+			act 'be a good whore, serve them':
+				phpiratefriend += 3
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', 'group'
+			end
+
+			act 'I feels bad':
+				cla
+				'ME: "Sorry, I really can''t right now"'
+				'Pirates: "It is your duty!'
+				minut += 10
+				gs 'stat'
+				phescortfun += 5
+				phpiratefriend -= 2
+
+				act 'One at a time only':
+					phline = 2
+					phpiratefriend += 1
+					phescortfun -= rand(10,13)
+					phescortfun -= rand(10,13)
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+
+				act 'agree':
+					phpiratefriend += 2
+					phescortfun -= rand(25,39)
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'group'
+				end
+			end
+		else
+			*clr & cla
+			!! myproblem -> show dick
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/0 start ('+rand(1,1)+').jpg"></center>'
+			'The pirate approached me - "You see? I need your help"'
+
+
+			act 'be a good whore, serve him':
+				$cum1 = rand(80,120)
+				phsex = 206
+				phpiratefriend += 1
+				phsex = 206
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+			end
+
+			act 'I feels bad':
+				cla
+				'ME: "Sorry, I really can''t right now"'
+				'Pirate: "It is bad!" - he goes away mumbling something'
+				minut += 10
+				gs 'stat'
+				phescortfun += 5
+				phpiratefriend -= 1
+
+				act 'wait':
+					minut += 60
+					gs 'stat'
+					gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'start'
+				end
+			end
+		end
+	end
+
+	if hour >= 20 or hour <= 8:
+		*clr & cla
+		!! Force me to go to my cabin
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/4 pirates.jpg"></center>'
+		'Pirate: "Girl, it is dark, go to your room! NOW!"'
+		if rand(1,3) = 1: phpiratefriend -= 1
+
+		act 'Go down to my cabin':
+			gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'start'
+		end
+	end
+	menu_off = 0
+end
+
+
+
+if $ARGS[0] = 'capsex':
+	*clr & cla
+	menu_off = 1
+	'Suddenly capitan put his dick between my tits and start to titsfuck me'
+	gs 'npcgeneratec', 0, 'Pirates capitan', rand(35,55)
+	gs 'boyStat', $npclastgenerated
+
+	phescortfun += rand(4,8)
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cap/4.jpg"></center>'
+	gs 'arousal', 'titjob', 15, 'exhibitionism', 'prostitution', 'sub'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		phescortfun += rand(4,8)
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cap/5.jpg"></center>'
+		'As he ready to cum he pushed his dick deep in my mouth'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+		'Capitan: "I have work to do" - he goes somewhere.'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+	end
+end
+
+
+
+if $ARGS[0] = 'foodup':
+	!! act eat 1, 2, 3 or drink
+	if phmyfood < 0: phmyfood = 0
+	if phmyfood > 0:
+		act 'Eat smth':
+			act 'Eat fish (0:40)':
+				frost = 0
+				minut += 40
+				phmyfood -= 1
+
+				pcs_health += 20
+				pcs_mood += 20
+				fat += 12
+				pcs_energy += 80
+				if pcs_hydra >= 100:
+					pcs_hydra -= 5
+				else
+					pcs_hydra -= 10
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				gs 'food', 'aftermeal'
+				'<center><img <<$set_imgh>> src="images/shared/food/salmonfancy.jpg"></center>'
+				'I thoroughly enjoy the massive fresh salmon steak. The meal was simply colossal'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_eat'
+
+				!! '<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/eat.png"></center>'
+			end
+
+			act 'Eat mushrooms (0:15)':
+				frost = 0
+				minut += 20
+				phmyfood -= 1
+
+				pcs_health += 20
+				pcs_mood += 10
+				fat += 8
+				pcs_energy += 60
+				if pcs_hydra >= 100:
+					pcs_hydra -= 5
+				else
+					pcs_hydra -= 10
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				gs 'food', 'aftermeal'
+
+				'I eat some cooked mushrooms. It is pretty tasty.'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_eat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/eat.png"></center>'
+			end
+
+			act 'Eat meat stew (0:30)':
+				frost = 0
+				minut += 30
+				phmyfood -= 1
+
+				pcs_health += 10
+				fat += 3
+				pcs_energy += 50
+				if pcs_hydra >= 100:
+					pcs_hydra += 10
+				else
+					pcs_hydra += 20
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				gs 'food', 'aftermeal'
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/soup.jpg"></center>'
+				'I thoroughly enjoy the nicely cooked meat stew'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_eat'
+			end
+
+			act 'Eat mushroom soup (0:30)':
+				frost = 0
+				minut += 30
+				phmyfood -= 1
+
+				pcs_health += 10
+				fat += 3
+				pcs_energy += 40
+				if pcs_hydra >= 100:
+					pcs_hydra += 20
+				else
+					pcs_hydra += 30
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				gs 'food', 'aftermeal'
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/soup.jpg"></center>'
+				'I thoroughly enjoy some warm mushroom soup'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_eat'
+			end
+
+			act 'Eat berries (0:15)':
+				gs 'stat'
+				minut += 15
+
+				pcs_health += pcs_health/10
+				pcs_mood += 10
+				fat += 1
+				pcs_energy += 10
+				pcs_hydra += 10
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/eat.png"></center>'
+				'I ate a few berries'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_eat'
+			end
+
+			act 'drink coffe (0:10)':
+				frost = 0
+				if alko > 0: alko -= 1
+				minut += 10
+
+				pcs_health += 5
+				pcs_mood += 20
+				if pcs_hydra >= 100:
+					pcs_hydra += 20
+				else
+					pcs_hydra += 40
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				teeth['caffe_or_tea'] += 5
+				gs 'beverage', 'afterdrink'
+				if phboatfood ! 2:
+					'<center><img <<$set_imgh>> src="images/shared/drinks/coffee.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/drink.jpg"></center>'
+				end
+				'I enjoy a hot coffee'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_drink'
+			end
+
+			act 'drink tea (0:10)':
+				frost = 0
+				if alko > 0: alko -= 1
+				minut += 10
+
+				pcs_health += 10
+				pcs_mood += 20
+				if pcs_hydra >= 100:
+					pcs_hydra += 25
+				else
+					pcs_hydra += 50
+				end
+				cumspclnt = 2
+				gs 'cum_cleanup'
+				pcs_breath = 0
+				teeth['caffe_or_tea'] += 2
+				gs 'beverage', 'afterdrink'
+				if phboatfood ! 2:
+					'<center><img <<$set_imgh>> src="images/shared/drinks/tea.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/drink.jpg"></center>'
+				end
+				'I enjoy a relaxing cup of tea'
+				phfoodhere -= 1
+				gs 'stat'
+				killvar '_drink'
+			end
+
+			act 'drink wine (0:15)':
+				if pcs_health > 20:
+					minut += 15
+
+					gs 'drugs', 'alcohol', 'wine'
+					gs 'beverage', 'afteralcohol'
+					if phboatfood ! 2:
+						'<center><img <<$set_imgh>> src="images/shared/drinks/redwine.jpg"></center>'
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/bikini_drink_alko.jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/naked_drink_alko.jpg"></center>'
+						end
+					end
+					'I drink some wine'
+					phfoodhere -= 1
+					gs 'stat'
+					killvar '_drink'
+					$boozeVar = 'wine'
+				else
+					msg 'I don''t feel well enough to drink alcohol.'
+					gt $loc, $loc_arg
+				end
+			end
+
+			act 'drink beer (0:10)':
+				if pcs_health > 20:
+					minut += 10
+
+					gs 'drugs', 'alcohol', 'beer'
+					gs 'beverage', 'afteralcohol'
+					if phboatfood ! 2:
+						'<center><img <<$set_imgh>> src="images/shared/drinks/darkbeer.jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/drink_alkoV.mp4"></video></center>'
+					end
+					'I drink the beer, enjoying the fresh, mildly bitter taste'
+					phfoodhere -= 1
+					gs 'stat'
+					killvar '_drink'
+					$boozeVar = 'beer'
+				else
+					msg 'I don''t feel well enough to drink alcohol.'
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+
+	if phboatfood = 2:
+		act 'serve wine to capitan':
+			*clr & cla
+			phpiratefriend += 1
+			minut += 10
+			if pcs_servng < 100:servng_exp += rand (0,2)
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/wine.jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/serve_wineV.mp4"></video></center>'
+			end
+			phescortfun += rand(1,3)
+			phfoodhere -= 1
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		end
+
+		act 'Pour wine on myself':
+			*clr & cla
+			minut += 10
+			phpiratefriend += rand(0,1)
+			phfoodhere -= 1
+			gs 'stat'
+			gs 'arousal', 'flash', rand(5,15), 'prostitution', 'sub'
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/pour wine.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/food/naked_pour_drink.jpg"></center>'
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+		end
+	end
+end
+
+if $ARGS[0] = 'phescortfun':
+	if phescortfun <= -10: phescortfun = -10
+
+	if phescortfun >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if phescortfun >= 90 and phescortfun < 100: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if phescortfun >= 80 and phescortfun < 90: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+	if phescortfun >= 70 and phescortfun < 80: $zadovolennia1 = '<font color = green	> ███████___ </font> '
+	if phescortfun >= 60 and phescortfun < 70: $zadovolennia1 = '<font color = green	> ██████____ </font> '
+	if phescortfun >= 50 and phescortfun < 60: $zadovolennia1 = '<font color = green	> █████_____ </font> '
+	if phescortfun >= 40 and phescortfun < 50: $zadovolennia1 = '<font color = green	> ████______ </font> '
+	if phescortfun >= 30 and phescortfun < 40: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+	if phescortfun >= 20 and phescortfun < 30: $zadovolennia1 = '<font color = yellow	> ██________ </font> '
+	if phescortfun >= 10 and phescortfun < 20: $zadovolennia1 = '<font color = yellow	> █_________ </font> '
+	if phescortfun < 10 and phescortfun > 0:
+		$zadovolennia1 = '<font color = red	> █_________ </font> '
+	end
+	if phescortfun <= 0:
+		$zadovolennia1 = '<font color = red	> __________ </font> '
+	end
+
+	if phescortfun < 0:
+		phcaplove += 2
+	elseif phescortfun < 10:
+		phcaplove += rand(0,1)
+	end
+
+	'<center>The Crew sexneedess: <<$zadovolennia1>></center>'
+
+	'<center>The Crew friendship level: <<phpiratefriend>>%</center>'
+end
+
+
+
+if $ARGS[0] = 'sexcycl':
+	cla
+	menu_off = 1
+	colir = 2
+	phescortfun += rand(0,2)
+
+	if phsex = 206:
+		phsex = 0
+
+		act 'jerk him':
+			*clr & cla
+			temp = 10 + ( stat['hj'] / 10 )
+			$cum1 -= rand(0,temp)
+			phtemp = 4
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(10,15)
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/hj/start ('+rand(1,1)+').mp4"></video></center>'
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+
+		act 'point his dick to my asshole':
+			*clr & cla
+			temp = 20 + ( stat['anal'] / 10 )
+			$cum1 -= rand(15,temp)
+			phtemp = 1
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			gs 'arousal', 'anal', rand(10,15)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/ass/start ('+rand(1,1)+').jpg"></center>'
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+
+		act 'sit on his dick':
+			*clr & cla
+			temp = 20 + ( stat['vaginal'] / 10 )
+			$cum1 -= rand(15,temp)
+			phtemp = 3
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			gs 'arousal', 'vaginal', rand(10,15)
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/vag/start_vagv ('+rand(1,1)+').mp4"></video></center>'
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+	else
+		act 'jerk him':
+			*clr & cla
+			temp = 10 + ( stat['hj'] / 10 )
+			$cum1 -= rand(0,temp)
+			phtemp = 4
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(10,15)
+			gs 'stat'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/hj/hj ('+rand(1,1)+').mp4"></video></center>'
+
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+		act 'blow him':
+			*clr & cla
+			temp = 10 + ( stat['bj'] / 10 )
+			$cum1 -= rand(5,temp)
+			phtemp = 2
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			'I am sucking him'
+			gs 'arousal', 'bj', rand(10,15)
+			gs 'stat'
+			if rand(1,11) <= 9:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/bj/bj ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+			end
+
+			if rand(1,3) = 1 and $cum1 <= 35:
+				*clr
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/bj/ff ('+rand(1,1)+').mp4"></video></center>'
+				'He grab my head and start litterally is fucking my face'
+				gs 'arousal', 'bj', 15
+				minut -= 15
+				gs 'stat'
+			end
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+		act 'fuck him':
+			*clr & cla
+			temp = 20 + ( stat['vaginal'] / 10 )
+			$cum1 -= rand(15,temp)
+			phtemp = 3
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(10,15)
+			gs 'stat'
+			if rand(1,15) <= 10:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/vag/vag ('+rand(1,10)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/vag/vagv ('+rand(1,5)+').mp4"></video></center>'
+			end
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+		act 'do anal':
+			*clr & cla
+			temp = 20 + ( stat['anal'] / 10 )
+			$cum1 -= rand(15,temp)
+			phtemp = 1
+			gs 'mod_public_WC_rab_btothel_escort_fly_pirat', 'man'
+			'he is fucking my ass'
+			gs 'arousal', 'anal', rand(10,15)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/ass/ass ('+rand(1,7)+').jpg"></center>'
+
+			act 'continue': gs 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+		end
+	end
+
+	if $cum1 < 20:
+		*clr & cla
+
+		if phtemp = 1: phsex = 4
+		if phtemp = 2: phsex = 2
+		if phtemp = 3: phsex = 3
+		if phtemp = 4: phsex = 1
+
+		gt 'mod_public_WC_rab_phslaveship_1_pirat', 'cumup1'
+	end
+end
+
+if $ARGS[0] = 'cumup1':
+	!! NO clear actions here!
+	!! gs 'mod_public_WC_rab_phslaveship_1_pirat', 'cumup1'
+	if phsex <= 0: phsex = rand(1,4)
+	phescortfun -= rand(11,23)
+
+	if phsex = 1:
+		!! hj
+		if stat['hj'] >= 50:
+			act 'jerk till the pirate almost, 99% finished ':
+				*clr & cla
+				if phad > 0: phad += 2
+				'I feel how his dick temperature rised to max'
+				gs 'arousal', 'hj', 5
+				gs 'stat'
+				phpiratefriend += 1
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/hj/ch ('+rand(1,11)+').mp4"></video></center>'
+
+				act 'keep him a moment on the edge and make a last touch':
+					*clr & cla
+					gs 'arousal', 'hj', rand(10,15), 'exhibitionism'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/hj/last_touch ('+rand(1,2)+').mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					phescortfun -= rand(5,10)
+
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up':
+						killvar 'otemp'
+						killvar 'ktemp'
+						killvar 'phsex'
+						killvar 'haktemp'
+						phline -= 1
+						if phline <= 0:
+							gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+						else
+							$cum1 = rand(80,120)
+							phsex = 206
+							gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+						end
+					end
+				end
+			end
+		end
+
+		act 'jerk till the end':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/hj.mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'arms', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+		end
+
+		act 'Point the cock on my tits':
+			*clr & cla
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+
+			'He make his deposite on my brests…'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/tits.jpg"></center>'
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone tits.mp4"></video></center>'
+					if otemp <= 3: otemp += 1
+					minut += 5
+					gs 'stat'
+					fame['pav_prostitute'] += 1
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					phpiratefriend += rand(0,1)
+				end
+			else
+				act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+			act 'clean his dick':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/clean.jpg"></center>'
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				phpiratefriend += rand(0,1)
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		end
+	elseif phsex = 2:
+		!! bj
+		'I feel how his dick temperature increasing'
+		i = 1
+		act 'swallow it all':
+			*clr & cla
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+
+			'I feel every splash of his cum in my throat'
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'arms', $npclastgenerated, 0
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+
+			gs 'arousal', 'end'
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/inv.mp4"></video></center>'
+
+			i = 1
+			act 'play with cum for him':
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/face_cumplay ('+rand(1,2)+').mp4"></video></center>'
+				minut += 5
+				gs 'stat'
+
+				if i = 1:
+					i = 2
+					otemp += 1
+					phpiratefriend += rand(0,1)
+				end
+			end
+
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'took the pirate phone from his pants and make a selfie (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone bj.mp4"></video></center>'
+					if otemp <= 3: otemp += 1
+					minut += 5
+					gs 'stat'
+					fame['pav_prostitute'] += 1
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					phpiratefriend += rand(0,1)
+				end
+			else
+				act 'took the pirate phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+		end
+
+		act 'take it on my face':
+			*clr & cla
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+
+
+			'He make his deposite on my face…'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/onface.mp4"></video></center>'
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'cum_call', 'hair', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'thanks him to make me pretty (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/face/thanks.mp4"></video></center>'
+					if otemp <= 2: otemp += 1
+					minut += 5
+					sexcorrupt += 1
+					gs 'stat'
+					fame['pav_prostitute'] += 1
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					phpiratefriend += rand(0,1)
+				end
+			else
+				act 'thanks him to make me pretty ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone face.mp4"></video></center>'
+					if otemp <= 3: otemp += 1
+					minut += 5
+					gs 'stat'
+					fame['pav_prostitute'] += 1
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					phpiratefriend += rand(0,1)
+				end
+			else
+				act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+			act 'clean his dick':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/clean.jpg"></center>'
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				phpiratefriend += rand(0,1)
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		end
+
+		act 'aim it to my brests':
+			*clr & cla
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+
+
+			'He make his deposite on my brests…'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/tits.jpg"></center>'
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'willpower', 'misc', 'self'
+			temp = will_cost - sexcorrupt / 5
+			will_cost -= (sexcorrupt / 5)
+			if will_cost <= 0: will_cost = 0
+			if will_cost <= pcs_willpwr:
+				act 'took the guy phone from his pants and make a selfie (<<temp>> Willpower)':
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/photo_his_phone tits.mp4"></video></center>'
+					if otemp <= 3: otemp += 1
+					minut += 5
+					gs 'stat'
+					fame['pav_prostitute'] += 1
+					slutty += 2
+					pav_media += rand(0,1)
+					gs 'exp_gain', 'inhib', rand(1,2)
+					gs 'flash', 'exhibitionism', 2
+					gs 'stat'
+					phpiratefriend += rand(0,1)
+				end
+			else
+				act 'took the guy phone from his pants and make a selfie ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+			end
+
+			act 'clean his dick':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/clean.jpg"></center>'
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				phpiratefriend += rand(0,1)
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+		end
+	elseif phsex = 3:
+		!! vag
+		if rand(1,15) <= 10:
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/vag/vag ('+rand(1,10)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/vag/vagv ('+rand(1,5)+').mp4"></video></center>'
+		end
+
+
+		gs 'willpower', 'cum_inside', 'self'
+		temp = will_cost + (sexcorrupt / 3)
+		will_cost += (sexcorrupt / 3)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			act 'Please not cum in me (<<temp>> Willpower)':
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				sexcorrupt -= 1
+				phpiratefriend -= rand (0,1)
+				cumtemp = rand(1,4)
+				if rand(1,3) = 1: 'He look at me with a disappoint'
+				if cumtemp = 1:
+					'"It''s up to me"'
+				elseif cumtemp = 2:
+					'"Ok, ok…"'
+				else
+					'"Ok, ok…"'
+				end
+			end
+		elseif will_cost <= pcs_willpwr:
+			act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+		else
+			act 'Please not cum in me ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+
+		act 'continue':
+			*clr & cla
+			if otemp = 0: otemp = 1
+			if cumtemp < 1: cumtemp = rand(1,4)
+
+			if cumtemp = 1:
+				'He cums deep in my pussy'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/vagv (1).mp4"></video></center>'
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'cuminsidereact', $boydesc
+			elseif cumtemp = 2:
+				'He take of his dick and spreys my belly with sperm'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/naked_sex/cum/vag/pullout-in.mp4"></video></center>'
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'vagina', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+			elseif cumtemp = 3:
+				'He aimed for a moment and cumshot my body'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/ch ('+rand(1,2)+').mp4"></video></center>'
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+			elseif cumtemp = 4:
+				'He make a load on my pubic'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/body/ch_labia ('+rand(1,4)+').mp4"></video></center>'
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'labia', $npclastgenerated, 0
+			end
+			killvar 'cumtemp'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'haktemp'
+				phline -= 1
+				if phline <= 0:
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+				else
+					$cum1 = rand(80,120)
+					phsex = 206
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+				end
+			end
+		end
+	elseif phsex = 4:
+		!! ass
+		'his speed increasing'
+
+		temp = rand(1,5)
+		if temp <= 2:
+			'He cum deep in my ass'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/nude/cum/ass/ch ('+rand(1,4)+').mp4"></video></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'anus', $npclastgenerated, 0
+			gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+		else
+			'He take of his dick and spreys my butt with sperm'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/onass ('+rand(1,1)+').jpg"></center>'
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'butt', $npclastgenerated, 0
+			gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'stand up':
+			killvar 'otemp'
+			killvar 'ktemp'
+			killvar 'phsex'
+			killvar 'haktemp'
+			phline -= 1
+			if phline <= 0:
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			else
+				$cum1 = rand(80,120)
+				phsex = 206
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', 'sexcycl'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'group':
+	*clr & cla
+	menu_off = 1
+	'they pull down their pants'
+	'I start to suck one, while warming up the other'
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/1.mp4"></video></center>'
+	gs 'arousal', 'bj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+	minut -= 15
+	gs 'arousal', 'hj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'They stand up, I keep doing my best'
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/2.mp4"></video></center>'
+		gs 'arousal', 'bj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+		gs 'stat'
+		minut -= 15
+		gs 'arousal', 'hj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'I try to keep both cock hard and pleased'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/3 ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			minut -= 15
+			gs 'arousal', 'hj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+
+			if rand(1,3) = 1:
+				'The pirate grab my head and drilling my mouth'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/3 ff.mp4"></video></center>'
+
+			end
+
+			act 'continue':
+				*clr & cla
+				'I lick both cocks at the same time'
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/4 ('+rand(1,3)+').mp4"></video></center>'
+				gs 'arousal', 'bj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+				minut -= 15
+				gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+				gs 'stat'
+
+				if rand(1,3) = 1:
+					'The pirate grab my head and drilling my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/1 bb/3 ff.mp4"></video></center>'
+
+				end
+
+
+				if phescortfun >= rand(30,60):
+					phline = rand(5,10)
+					act 'continue': gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+				else
+					act 'continue':
+						*clr & cla
+						'They are splitroasting me'
+
+						if rand(1,15) <= 5:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/3 sr/9v ('+rand(1,5)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/3 sr/9 ('+rand(1,10)+').jpg"></center>'
+						end
+						gs 'arousal', 'vaginal', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+						minut -= 15
+						gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+						gs 'stat'
+
+						act 'continue':
+							*clr & cla
+							'they sit me on the once dick…'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/4dp/10.jpg"></center>'
+
+							gs 'arousal', 'vaginal', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+							gs 'stat'
+							minut -= 15
+							!! gs 'arousal', 'bj', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+							gs 'stat'
+
+							act 'continue':
+								*clr & cla
+								'the other one penetrates my anus'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/4dp/11.jpg"></center>'
+
+								gs 'arousal', 'vaginal', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+								gs 'stat'
+								minut -= 15
+								gs 'arousal', 'anal', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+								gs 'stat'
+
+								act 'continue':
+									*clr & cla
+									if rand(1,2) = 1:
+										'They are load their cum on my face'
+										if rand(1,2) <= 1:
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/12v.mp4"></video></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/12.jpg"></center>'
+										end
+										gs 'cum_call','hair',$boy
+										gs 'stat'
+										gs 'cum_call','face',$boy
+										gs 'stat'
+										gs 'cum_call','mouth',$boy
+										gs 'stat'
+										gs 'cum_call','mouth_swallow',$boy
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										gs 'npcgeneratec', 0, 'pirate', rand(16,35)
+										gs 'boyStat', $npclastgenerated
+										gs 'cum_call','hair',$boy
+										gs 'stat'
+										gs 'cum_call','face',$boy
+										gs 'stat'
+										gs 'cum_call','mouth',$boy
+										gs 'stat'
+										gs 'cum_call','mouth_swallow',$boy
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+
+										act 'stand up':
+											killvar 'otemp'
+											killvar 'ktemp'
+											killvar 'phsex'
+											killvar 'haktemp'
+											gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+										end
+									else
+
+										'One of them cums deep in my pussy'
+										'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/vagv (1).mp4"></video></center>'
+										gs 'boyStat', $npclastgenerated
+										gs 'cum_call', 'vagina', $npclastgenerated, 0
+										gs 'cuminsidereact', $boydesc
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'continue':
+											*clr
+											'Other takes his place and fill me up even more'
+											'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/invag 2+.mp4"></video></center>'
+											gs 'npcgeneratec', 0, 'pirate', rand(16,35)
+											gs 'boyStat', $npclastgenerated
+
+											gs 'cum_call', 'vagina', $npclastgenerated, 0
+											gs 'cuminsidereact', $boydesc
+											gs 'arousal', 'end'
+											gs 'stat'
+											act 'stand up':
+												killvar 'otemp'
+												killvar 'ktemp'
+												killvar 'phsex'
+												killvar 'haktemp'
+												gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2line':
+	*clr & cla
+	menu_off = 1
+	if phsex ! 122456:
+		'One of them cums on my face'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/12.jpg"></center>'
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		phsex = 122456
+		gs 'npcgeneratec', 0, 'pirate', rand(16,35)
+		gs 'boyStat', $npclastgenerated
+
+		act 'continue':
+			*clr & cla
+			'The other push me on his dick'
+			'As the satisfied guys go away, the other one sit behind me'
+			'He just polishing his dick'
+			phpiratefriend += 1
+			phescortfun -= rand(10,15)
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/2 line/6.jpg"></center>'
+			gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			phline -= 1
+			phlinecum = rand(1,3)
+
+			act 'jerk new guy':
+				phtemp = 2
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+			end
+
+			act 'blow new guy':
+				phtemp = 1
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+			end
+		end
+	else
+		if phtemp = 2:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/2 line/7 ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'hj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			minut -= 15
+			gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/3 sr/9v ('+rand(2,5)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(15,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+			minut -= 15
+			gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'sub', 'group', 'gangbang'
+			gs 'stat'
+		end
+
+
+		if phline <= 1:
+			!! end
+			*clr & cla
+			phpiratefriend += 1
+			phescortfun -= rand(10,15)
+			phline -= 1
+			phlinecum = rand(1,3)
+
+
+			'There is NO "next". The last guy is cuming'
+			if otemp = 1:
+				if phtemp = 1:
+					!! face
+					'I feel every splash of his cum in my throat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/inv.mp4"></video></center>'
+					gs 'arousal', 'end'
+					gs 'stat'
+					i = 1
+					act 'cumshow for the pirates in line':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/face_cumplay ('+rand(1,2)+').mp4"></video></center>'
+						minut += 5
+						gs 'stat'
+
+						if i = 1:
+							i = 2
+							otemp += 1
+							phpiratefriend += rand(0,1)
+						end
+					end
+				else
+					!! hj
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/hj.mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			else
+				if cumloc[1] = 0:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/vagv (1).mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/invag 2+.mp4"></video></center>'
+				end
+				otemp = 1
+				!! vag
+				spafinloc = 0
+				'He cums deep in me'
+				gs 'cum_manage'
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+			end
+
+			act 'stand up':
+				killvar 'otemp'
+				killvar 'ktemp'
+				killvar 'phsex'
+				killvar 'phtemp'
+				killvar 'haktemp'
+				killvar 'phlinecum'
+				killvar 'phline'
+				killvar 'phlinecum'
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', 'deck'
+			end
+		elseif phlinecum <= 0:
+			cla
+			phpiratefriend += 1
+			phescortfun -= rand(10,15)
+			phline -= 1
+			phlinecum = rand(1,3)
+
+			if rand (1,2) = 1:
+				if cumloc[1] = 0:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/vagv (1).mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/5 cum/invag 2+.mp4"></video></center>'
+				end
+				otemp = 1
+				!! vag
+				spafinloc = 0
+				'He cums deep in me'
+				gs 'cum_manage'
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+			else
+				otemp = 2
+				if phtemp = 1:
+					!! face
+					'I feel every splash of his cum in my throat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/inv.mp4"></video></center>'
+					gs 'arousal', 'end'
+					gs 'stat'
+					i = 1
+					act 'cumshow for the pirates in line':
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/face_cumplay ('+rand(1,2)+').mp4"></video></center>'
+						minut += 5
+						gs 'stat'
+
+						if i = 1:
+							i = 2
+							otemp += 1
+							phpiratefriend += rand(0,1)
+						end
+					end
+				else
+					!! hj
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/1/cum/hj.mp4"></video></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'arms', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+			gs 'npcgeneratec', 0, 'pirate', rand(16,35)
+			gs 'boyStat', $npclastgenerated
+
+			act 'next?':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/up/2+/2 line/6.jpg"></center>'
+
+				if phline <= 1: gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+
+				if otemp = 2:
+					act 'jerk him':
+						phtemp = 2
+						gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+					end
+
+					act 'blow him':
+						phtemp = 1
+						gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+					end
+				else
+					gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+				end
+			end
+		else
+			cla
+			if phtemp = 1:
+				phlinecum -= rand(1,2)
+			else
+				phlinecum -= rand(0,1)
+			end
+
+			act 'keep jerk him':
+				phtemp = 2
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+			end
+
+			act 'blow him':
+				phtemp = 1
+				gt 'mod_public_WC_rab_phslaveship_1_pirat', '2line'
+			end
+		end
+	end
+end
+
+!'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/.jpg"></center>'
+!'+rand(1,)+'
+
+!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht3/1 pirate/black sex/.mp4"></video></center>'
+!'+rand(1,)+'
+
+
+
+
+--- mod_public_WC_rab_phslaveship_1_pirat ---------------------------------
+

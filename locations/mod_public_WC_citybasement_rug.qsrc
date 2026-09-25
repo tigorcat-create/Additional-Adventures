@@ -1,0 +1,850 @@
+# mod_public_WC_citybasement_rug
+if $ARGS[0] = 'dog':
+	*clr & cla
+	CLOSE ALL
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+	'I have no choice… I need to fuck with <<$dogimya>>…'
+	killvar 'doggvalt'
+	atemp = 0
+
+	gs 'npcgeneratec', 0, '<<dogimya>>', rand(25,35)
+	gs 'boyStat', $npclastgenerated
+
+	act 'stand on my four':
+		*clr & cla
+		zoo += 1
+
+		*clr & cla
+		gs 'sweat', 'add', 10
+		'I stand on my four'
+
+
+		act 'wait':
+			*clr & cla
+			'The guy helps the dog. And all begins'
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/start.jpg"></center>'
+
+			gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+			stat['vaginal'] += 1
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'The <<dogimya>> starts to penetrates me!'
+				temp = rand (1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/pussv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/puss ('+rand(1,10)+').jpg"></center>'
+				end
+
+
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+				DogVag += 1
+
+
+				gs 'stat'
+
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+					gs 'stat'
+
+					temp = rand (1,2)
+
+					'<<dogimya>> knots me… I just have no more str…'
+					killvar 'dogimya'
+
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+					end
+
+
+					gs 'arousal', 'vaginal', 15, 'sub', 'beast', 'rough'
+					gs 'arousal', 'end'
+					gs 'stat'
+					banditboggle = RAND(0,5)
+					if banditboggle <= 3:
+						if pcs_vag < 10:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 4
+							vgape = 3
+							pcs_horny = 0
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'arousal', 'vaginal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						elseif pcs_vag < 25:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 3
+							vgape = 2
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,50)
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						elseif pcs_vag < 35:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 2
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						else
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						end
+					else
+						if pcs_vag < 10:
+							minut += 20
+							gs 'arousal_funcs', 'stretch', 'vaginal', 4
+							vgape = 3
+							pcs_horny = 0
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						elseif pcs_vag >= 10:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 3
+							vgape = 1
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'pass out': gt 'mod_public_WC_citybasement_rug', 'endrape'
+							exit
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bottle':
+	*clr & cla
+	CLOSE ALL
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+	'I have no choice…'
+	gs 'npcgeneratec', 0, 'bottle', rand(8,15)
+	gs 'boyStat', $npclastgenerated
+
+	act 'put a tip of the bottle in…':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/1bottle.jpg"></center>'
+		gs 'arousal', 'vaginal_dildo', 5, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+		gs 'stat'
+		'Somehow it''s not so bad…'
+		act 'continue':
+			cla
+			atemp = rand (1,4)
+
+			if atemp = 1:
+				'deeper!'
+			elseif atemp = 2:
+				'put it in your ass!'
+			elseif atemp = 3:
+				'lay on your tummy. I will show you.'
+			else
+				'Now suck me and jump on the bottle!'
+			end
+
+			act 'agree':
+				*clr & cla
+
+				if atemp = 1:
+					'Fine… you are just a toy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/2bottle ('+rand(1,2)+').jpg"></center>'
+					gs 'npcgeneratec', 0, 'bottle', rand(25,30)
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'vaginal_dildo', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+					gs 'stat'
+					minut -= 5
+					gs 'stat'
+				elseif atemp = 2:
+					'Fine… you are just a toy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/3bottle.jpg"></center>'
+					gs 'npcgeneratec', 0, 'bottle', rand(25,30)
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'anal_dildo', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+					gs 'stat'
+					minut -= 5
+					gs 'stat'
+				elseif atemp = 3:
+					'I feel the bottle in my ass'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/4bottle.jpg"></center>'
+					gs 'npcgeneratec', 0, 'bottle', rand(35,40)
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'anal_dildo', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+					gs 'stat'
+					minut -= 5
+					gs 'stat'
+				else
+					'In a short time he cums'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/rape/bottle/5bottle.jpg"></center>'
+					gs 'npcgeneratec', 0, 'bottle', rand(25,30)
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'vaginal_dildo', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+					gs 'stat'
+					minut -= 5
+					gs 'stat'
+					gs 'npcgeneratec', 0, 'a bum', rand(15,25)
+					gs 'boyStat', $npclastgenerated
+					gs 'arousal', 'bj', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+					gs 'stat'
+					minut -= 5
+					gs 'stat'
+
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					'After that he tied up me with duck tape and my riped clothes.'
+					'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/sliozy (1).jpg"></center>'
+					'then he put something on my eyes, I can see nothing'
+					'he carries me somewhere'
+					act 'continue': gt 'mod_public_WC_citybasement_rug', 'endrape'
+				end
+			end
+			act 'disagree':
+				cla
+				'At the last moment, I saw him kick the bottom of the bottle…'
+				'…SHARP PAIN!!! and I passed out'
+				gs 'npcgeneratec', 0, 'bottle', rand(15,25)
+				gs 'boyStat', $npclastgenerated
+				gs 'arousal', 'vaginal_dildo', 15, 'exhibitionism', 'rough', 'sub', 'humiliation', 'rape'
+				minut -= 15
+				gs 'arousal_funcs', 'stretch', 'vaginal', 3
+				gs 'stat'
+				gs 'pain', 9, 'vaginal', 'stretch'
+				gs 'stat'
+
+				pliashka = 1
+				act 'continue': gt 'mod_public_WC_citybasement_rug', 'endrape'
+			end
+		end
+	end
+end
+
+if   npc_loyality   >=   70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'endrape':
+	*clr & cla
+	CLOSE ALL
+	temp = rand(1,3)
+	if pliashka = 1: temp = 2
+	rope = 100
+	if ranok = 1:
+		temp = 1
+		rope += 25
+	end
+
+	if temp = 1:
+		killvar 'pliashka'
+		*clr & cla
+		'I wake up un some garbage dump, I am bind and can''t move'
+		if ranok = 1:
+			*clr & cla
+			'I am on some garbage dump, I am bind and can''t move'
+			killvar 'ranok'
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/smittia ('+rand(1,2)+').jpg"></center>'
+		gun = 0
+		money = 0
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+		gs 'sweat', 'add', 100
+		gs 'stat'
+
+		minut += rand (180, 360)
+		pcs_sleep += rand (26,60)
+		gs 'stat'
+
+		rope += 25
+		znaydut = 0
+		act 'try to untie myself': gt 'mod_public_WC_citybasement_rug', 'rope'
+
+
+	elseif temp = 2:
+
+		*clr & cla
+		'I wake up un some garbage dump, I am bind and can''t move'
+		*nl
+		'I feel something in my pussy and pain…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/freeuse (1).jpg"></center>'
+		gun = 0
+		money = 0
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+		gs 'sweat', 'add', 100
+		gs 'stat'
+
+		minut += rand (180, 360)
+		pcs_sleep += rand (26,60)
+		gs 'stat'
+		gs 'pain', rand(2,6), 'vaginal', 'stretch'
+		gs 'stat'
+
+		act 'try to untie myself': gt 'mod_public_WC_citybasement_rug', 'rope'
+
+		rope -= 25
+		znaydut = 0
+	else
+		killvar 'pliashka'
+		killvar 'rope'
+		*clr & cla
+		'I wake up on some street'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/byta (2).jpg"></center>'
+		gun = 0
+		money = 0
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+		gs 'sweat', 'add', 100
+		gs 'stat'
+
+		minut += rand (180, 360)
+		pcs_sleep += rand (26,60)
+		gs 'stat'
+
+		act 'look around':
+			if $loc_arg = '101':
+				gt 'city_residential'
+			elseif $loc_arg = '111':
+				gt 'city_park', 'start'
+			elseif $loc_arg = '133':
+				gt 'city_industrial'
+			else
+				gt 'city_center'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'rope':
+	cla
+	CLOSE ALL
+	if pliashka = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/freeuse (1).jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/smittia ('+rand(1,2)+').jpg"></center>'
+	end
+	act 'Try to break the ropes':
+		if pcs_stren >= 90:
+			cla
+			'Under my power, all the ropes broke through with a loud sound'
+			rope = 0
+			gs 'mod_public_WC_cabine', 'motuzka'
+			wait 500
+			act 'look around':
+				killvar 'pliashka'
+				if $loc_arg = '101':
+					gt 'city_residential'
+				elseif $loc_arg = '111':
+					gt 'city_park', 'start'
+				elseif $loc_arg = '133':
+					gt 'city_industrial'
+				else
+					gt 'city_center'
+				end
+			end
+		elseif pcs_stren >= 50:
+			cla
+			'I hear the rope crackle, but the rope does not lend itself.'
+			rope -= pcs_stren * 3 / 10 + 2
+			gs 'mod_public_WC_cabine', 'motuzka'
+			if rope > 0:
+				act 'continue':
+					znaydut += 1
+					gt 'mod_public_WC_citybasement_rug', 'rope'
+				end
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				wait 500
+
+
+				act 'look around':
+					killvar 'pliashka'
+					if $loc_arg = '101':
+						gt 'city_residential'
+					elseif $loc_arg = '111':
+						gt 'city_park', 'start'
+					elseif $loc_arg = '133':
+						gt 'city_industrial'
+					else
+						gt 'city_center'
+					end
+				end
+			end
+		else
+			cla
+			'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+			rope -= 15
+			gs 'mod_public_WC_cabine', 'motuzka'
+			if rope > 0:
+				act 'continue':
+					znaydut += 1
+					gt 'mod_public_WC_citybasement_rug', 'rope'
+				end
+			else
+				cla
+				'With the loud sound of the rope, it finally bursts.'
+				wait 500
+
+				act 'look around':
+					killvar 'pliashka'
+					if $loc_arg = '101':
+						gt 'city_residential'
+					elseif $loc_arg = '111':
+						gt 'city_park', 'start'
+					elseif $loc_arg = '133':
+						gt 'city_industrial'
+					else
+						gt 'city_center'
+					end
+				end
+			end
+		end
+	end
+	act 'Try to get out of the ropes':
+		if pcs_agil >= 80:
+			cla
+			rope = 0
+			gs 'mod_public_WC_cabine', 'motuzka'
+			'Turning my hands from behind my back to the front, I find how to turn my hand and slip through the knots.'
+			wait 500
+			act 'look around':
+				killvar 'pliashka'
+				if $loc_arg = '101':
+					gt 'city_residential'
+				elseif $loc_arg = '111':
+					gt 'city_park', 'start'
+				elseif $loc_arg = '133':
+					gt 'city_industrial'
+				else
+					gt 'city_center'
+				end
+			end
+		elseif pcs_agil >= 50 and pcs_agil < 80:
+			cla
+			'I move my hands, looking for a way to slip out of the shackles.'
+			rope -= pcs_agil * 3 / 10 + 5
+			gs 'mod_public_WC_cabine', 'motuzka'
+			if rope > 0:
+				act 'continue':
+					znaydut += 1
+					gt 'mod_public_WC_citybasement_rug', 'rope'
+				end
+			else
+				cla
+				'Finally I find how to wrap my hand and slip through the knots.'
+				wait 500
+				act 'look around':
+					killvar 'pliashka'
+					if $loc_arg = '101':
+						gt 'city_residential'
+					elseif $loc_arg = '111':
+						gt 'city_park', 'start'
+					elseif $loc_arg = '133':
+						gt 'city_industrial'
+					else
+						gt 'city_center'
+					end
+				end
+			end
+		else
+			cla
+			'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+			rope -= 15
+			gs 'mod_public_WC_cabine', 'motuzka'
+			if rope > 0:
+				act 'continue':
+					znaydut += 1
+					gt 'mod_public_WC_citybasement_rug', 'rope'
+				end
+			else
+				cla
+				'Finally I find how to wrap my hand and slip through the knots.'
+				wait 500
+				act 'look around':
+					killvar 'pliashka'
+					if $loc_arg = '101':
+						gt 'city_residential'
+					elseif $loc_arg = '111':
+						gt 'city_park', 'start'
+					elseif $loc_arg = '133':
+						gt 'city_industrial'
+					else
+						gt 'city_center'
+					end
+				end
+			end
+		end
+	end
+	act 'Expand the knots to slip out of the ropes':
+		if pcs_agil + pcs_stren >= rand (120, 200):
+			cla
+			rope = 0
+			gs 'mod_public_WC_cabine', 'motuzka'
+			'Finally, the ropes don''t hold me.'
+			wait 500
+
+			act 'look around':
+				killvar 'pliashka'
+				if $loc_arg = '101':
+					gt 'city_residential'
+				elseif $loc_arg = '111':
+					gt 'city_park', 'start'
+				elseif $loc_arg = '133':
+					gt 'city_industrial'
+				else
+					gt 'city_center'
+				end
+			end
+		else
+			cla
+			gs 'mod_public_WC_cabine', 'motuzka'
+			'The nodes became lighter, but not enough.'
+			act 'continue':
+				znaydut += 1
+				gt 'mod_public_WC_citybasement_rug', 'rope'
+			end
+		end
+	end
+
+
+	if znaydut >= rand (2,5):
+		cla
+		killvar 'pliashka'
+		killvar 'znaydut'
+		'Look what we have here!'
+		*nl
+		'Some bum talk to me…'
+		*nl
+		'A sex toy!'
+		'You know, I''ll take you'
+		*nl
+		'He put me on his shoulder and we go somewhere.'
+		act 'continue': gt 'mod_public_WC_citybasement_rug', 'find'
+	end
+end
+
+if $ARGS[0] = 'find':
+	*clr & cla
+	CLOSE ALL
+
+	temp = rand(1,10)
+	if temp = 1: $namebum = 'Koliamba'
+	if temp = 2: $namebum = 'Suhoy'
+	if temp = 3: $namebum = 'Nikitych'
+	if temp = 4: $namebum = 'Shurik'
+	if temp = 5: $namebum = 'Jekich'
+	if temp = 6: $namebum = 'Lioha'
+	if temp = 7: $namebum = 'Genka'
+	if temp = 8: $namebum = 'Artem'
+	if temp = 9: $namebum = 'Arkasha'
+	if temp = 10: $namebum = 'Moksha'
+
+	$loc = 'mod_public_WC_citybasement'
+
+	temp = rand (1,3)
+	if temp = 1:
+		$loc_arg = 103
+	elseif temp = 2:
+		$loc_arg = 126
+	else
+		$loc_arg = 129
+	end
+
+	'I am somewhere in undercity tunnels…'
+	'Ok, girl, just a quick sex for <<$namebum>> and <<$namebum>> will free you'
+	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p3.jpg"></center>'
+
+	gs 'npcgeneratec', 0, 'a bum', rand(10,30)
+	gs 'boyStat', $npclastgenerated
+	gs 'sweat', 'add', 5
+	gs 'stat'
+	act 'ok':
+		*clr & cla
+		'He unbinds me… I have no strenght to run and I just decide what to do whis him…'
+		act 'blow <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista//pidval//bomji/sex/bj_start'+rand(1,2)+'.mp4"></video></center>'
+
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(3,7) * bimbolevel
+				'His dick smells bad but it tastes so manly… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'OMG, the smell! and the taste!!! I want to throw up…'
+
+				pcs_mood -= rand(3,30)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'bj', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/bj'+rand(1,4)+'.mp4"></video></center>'
+				if bimbolevel >= 2:
+					'His cock is so hot right now. I am good girl, and make him cum!'
+				else
+					'I feel how his sperm fills his dick, he will cum in my mouth?!'
+				end
+				act 'Continue':
+					*clr & cla
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_bj.mp4"></video></center>'
+					'He poured semen in my throat, take out his dick and cums everywhere on me!'
+					facial += 1
+					stat['swallow'] += 1
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'mouth', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hands', $npclastgenerated, 0
+					gs 'stat'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'hair', $npclastgenerated, 0
+					gs 'stat'
+
+					temp = rand (1,3)
+					if temp = 1:
+						$loc_arg = 103
+					elseif temp = 2:
+						$loc_arg = 126
+					else
+						$loc_arg = 129
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up': gt $loc, $loc_arg
+				end
+			end
+		end
+
+		act 'have sex with <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag_start'+rand(1,2)+'.mp4"></video></center>'
+
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(5,10) * bimbolevel
+				'This smelly bum entered my pussy… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'This smelly bum entered my pussy…'
+				pcs_mood -= rand(5,50)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/vag'+rand(1,5)+'.mp4"></video></center>'
+				'I feel, he is on the edge…'
+				'I lie on my back and he starts to stroke his cock'
+				act 'Continue':
+					*clr & cla
+					gs 'sweat', 'add', 20
+					minut += rand(3,10)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_tits.mp4"></video></center>'
+					'He cums on my tits and smears the sperm on them, then touch my face with his dirty hands…'
+					'"That was great!"'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes', $npclastgenerated, 0
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+					temp = rand (1,3)
+					if temp = 1:
+						$loc_arg = 103
+					elseif temp = 2:
+						$loc_arg = 126
+					else
+						$loc_arg = 129
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up': gt $loc, $loc_arg
+				end
+			end
+		end
+
+		act 'Fuck my ass <<$namebum>>':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/anal.mp4"></video></center>'
+
+
+			if bimbolevel >= 2:
+				pcs_mood += rand(5,10) * bimbolevel
+				'This smelly bum entered my ass… I am happy to make this man happy!'
+				gs 'stat'
+			else
+				'This smelly bum entered my ass…'
+				pcs_mood -= rand(5,50)
+				gs 'stat'
+			end
+
+			act 'Continue':
+				*clr & cla
+				gs 'sweat', 'add', 20
+				gs 'arousal', 'anal', 10, 'rough', 'sub', 'unknown', 'humiliation'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/anal.mp4"></video></center>'
+				'I feel, he is on the edge…'
+				act 'Continue':
+					*clr & cla
+					gs 'sweat', 'add', 20
+					minut += rand(3,10)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/sex/cum_anal.mp4"></video></center>'
+					'His cum fills my ass…'
+					'"That was great!"'
+
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'anus', $npclastgenerated, 0
+
+					temp = rand (1,3)
+					if temp = 1:
+						$loc_arg = 103
+					elseif temp = 2:
+						$loc_arg = 126
+					else
+						$loc_arg = 129
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up': gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+--- mod_public_WC_citybasement_rug ---------------------------------
+

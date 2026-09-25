@@ -1,0 +1,2010 @@
+# mod_public_WC_robed_live
+if $ARGS[0] = 'start':
+	*clr & cla
+	killvar 'screemtemp'
+
+
+	$loc = 'mod_public_WC_robed_live'
+	$menu_loc = 'mod_public_WC_robed_live'
+	$loc_arg = 'start2'
+	$menu_arg = 'start2'
+	$locM = 'mod_public_WC_robed_live'
+	$locM_arg = 'start2'
+	$PHloc = $loc
+	$PHloc_arg = $loc_arg
+
+
+
+	killvar 'zzphday'
+	killvar 'phendescort'
+	phescortfunNEED = 0
+	phescortfunSexDONE -= 1
+	if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+	phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+	if rand(1,3) = 1: phmoneypaid = 1000
+	temp = phmoneypaid * 100
+	phmoneypaid = temp
+	phmoneypaidH = rand(11,17)
+	phmoneypaidD = daystart + rand(1,2)
+	phescortfun = 0
+	killvar 'phclientava'
+	killvar 'phdog'
+	phescorttask = 0
+	killvar 'phescortD'
+	killvar 'phescortH'
+	money = 0
+	gun = 0
+	ammo = 0
+	$rope = rand(100,200)
+
+	menu_off = 0
+	$location_type = 'secluded'
+
+
+	$loc = 'mod_public_WC_robed_live'
+	$metka = 'start2'
+	$menu_loc = 'mod_public_WC_robed_live'
+	$menu_arg = 'start2'
+	$loc_arg = 'start2'
+
+	killvar 'phbosshappy'
+
+	!! 'Robber: "You will take care of us, otherwise…"'
+
+	pheventstartlive = rand(6,10)
+
+	'<img Height = 300 src="mod/public_WC/escort/3 event/try to rob/live/myroom.jpg">'
+
+	if phroberkilled > 0 or rand(1,5) = 1:
+		!! tied her
+		phrobtied = 1
+		'Robber: "You are danger one, and it is better to tied you"'
+		'He tied me up'
+		minut += 5
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 bind/bind ('+rand(1,3)+').jpg"></center>'
+	else
+		' '
+	end
+
+	if phrobbos >= 1:
+		pduck = 1
+		if pin3 = 2:
+			pin3 = 0
+			'he removed the pins from my pussy'
+		end
+		'Robber: "You will be the boss toy, boss likes his toys fresh from the gang. To be sure noone rapes you before the Boss" - he ducktaped my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 ass only ('+rand(1,2)+').jpg"></center>'
+		minut += 3
+		gs 'stat'
+
+		if rand (1,3) = 1:
+			'Robber: "And this is just a present from me" - he puts a butplug in my ass'
+			analPlugIn = 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 assonly butplug.jpg"></center>'
+		end
+	end
+
+	'Robber: "You must stay here until someone come for you. No need to talk, just nod if you understand"'
+
+	act 'nod':
+		cla
+		'Robber: "Nice."'
+		if phrobtied = 1:
+			temp = rand(1,3)
+			if temp = 1:
+				phrobtiedwhere = 1
+				'He puts me on the bed'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed ('+rand(1,2)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed_n ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape ('+rand(1,4)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+					end
+				end
+			elseif temp = 2:
+				phrobtiedwhere = 2
+				'He left me on the floor'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room ('+rand(1,2)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room_n ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,6)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+					end
+				end
+			else
+				phrobtiedwhere = 3
+				'He puts me on the radiator'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape ('+rand(1,1)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape_n ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			end
+		end
+		'He left the room'
+
+		act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+	end
+
+	act 'yes. I understood':
+		cla
+		'Robber: "OMG.Why YOU so STUPID!"'
+		'he approaches me and put his gun in my mouth'
+		'Robber: "YOU NEED TO LISTEN CAREFULLY! IF I SAID "NOD" IT IS JUST THE "NOD"!!!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/gun_mouth ('+rand(1,2)+').jpg"></center>'
+
+		phdtape = 1
+		if rand (1,3) = 1 or phrobtied = 1:
+			'He put a ducktape on my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 tape/tape ('+rand(1,3)+').jpg"></center>'
+		else
+			'he throw me a duck tape - "Quick tape your FUCKING mouth!!!"'
+			'I did it.'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/self tape.mp4"></video></center>'
+		end
+
+		if phrobtied = 1:
+			temp = rand(1,3)
+			if temp = 1:
+				phrobtiedwhere = 1
+				'He puts me on the bed'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed ('+rand(1,2)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed_n ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape ('+rand(1,4)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+					end
+				end
+			elseif temp = 2:
+				phrobtiedwhere = 2
+				'He left me on the floor'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room ('+rand(1,2)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room_n ('+rand(1,1)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,6)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+					end
+				end
+			else
+				phrobtiedwhere = 3
+				'He puts me on the radiator'
+				if phdtape ! 1:
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+					end
+				else
+					if $clothingworntype ! 'nude':
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape ('+rand(1,1)+').jpg"></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape_n ('+rand(1,1)+').jpg"></center>'
+					end
+				end
+			end
+		end
+		'He left the room'
+
+		act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+	end
+end
+
+if $ARGS[0] = 'start2':
+	*clr & cla
+	killvar 'phapronon'
+	killvar 'phkitchennow'
+	killvar 'atemp'
+	killvar 'hecontrolled'
+	killvar 'meblow'
+	killvar 'phsex'
+	killvar 'hehappy'
+	killvar 'phrobersbos'
+	killvar 'phblowline'
+	killvar 'phtemp'
+	$func('wrap', 'header center b', 'My room or smth')
+	'<img Height = 300 src="mod/public_WC/escort/3 event/try to rob/live/myroom.jpg">'
+	minut += 10
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Robber', rand(25,55)
+	gs 'boyStat', $npclastgenerated
+
+	pheventstartlive -= 1
+	if $rope <= 0: phrobtied = 0
+
+	if phrobtied = 1:
+		menu_off = 1
+		if phrobtiedwhere = 0: phrobtiedwhere = 1
+		if phrobtiedwhere = 1:
+			if phdtape ! 1:
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed_n ('+rand(1,1)+').jpg"></center>'
+				end
+			else
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape ('+rand(1,4)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+				end
+			end
+		elseif phrobtiedwhere = 2:
+			if phdtape ! 1:
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room_n ('+rand(1,1)+').jpg"></center>'
+				end
+			else
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,6)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+				end
+			end
+		elseif phrobtiedwhere = 3:
+			if phdtape ! 1:
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+				end
+			else
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape ('+rand(1,1)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape_n ('+rand(1,1)+').jpg"></center>'
+				end
+			end
+		end
+	else
+		' '
+		menu_off = 0
+		phrobtiedwhere = 0
+	end
+
+	if pduck = 1 and analPlugIn = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 assonly butplug.jpg"></center>'
+		pin3 = 0
+	elseif pduck = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 ass only ('+rand(1,2)+').jpg"></center>'
+		pin3 = 0
+	end
+	if pin3 > 0: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/puss/2.jpg"></center>'
+	if pin2 = 2: '<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/3.jpg"></center>'
+
+	if phrobtied = 1:
+		gs 'mod_public_WC_robed_live_robtied', 'start'
+	else
+		act 'wait (0:30)':
+			minut += 20
+			gs 'stat'
+			pheventstartlive -= rand(0,1)
+			gt 'mod_public_WC_robed_live', 'start2'
+		end
+
+		act 'Read': gt 'mod_public_WC_robed_live', 'stackmagazines'
+
+		act 'exercise':
+			pheventstartlive -= rand(2,5)
+			gt 'exercise', 'workout'
+		end
+
+		act 'Go to the bathroom':
+
+			gt 'mod_public_WC_robed_live', 'shower1'
+		end
+
+		temp = 0
+		act 'knock the door':
+			minut += 3
+			gs 'stat'
+
+			if rand(1,3) = 1: pheventstartlive -= 1
+			if rand(1,4) + screemtemp >= 6:
+				*clr & cla
+				killvar 'screemtemp'
+				gs 'mod_public_WC_robed_live', 'talk'
+			else
+				cla
+				'There is no reaction'
+				screemtemp += rand(1,2)
+				act 'continue':gt 'mod_public_WC_robed_live', 'start2'
+			end
+		end
+
+		if $clothingworntype = 'nude':
+			act 'Get dressed':
+				minut+=3
+				gs 'outfit', 'wear_last_worn'
+				'I dress up'
+				gs 'stat'
+			end
+		end
+		if $clothingworntype ! 'nude':
+			act 'undress':
+				minut+=3
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				'I am naked'
+				gs 'stat'
+			end
+		end
+
+		if pcs_sleep <= 30:
+			act 'sleep':
+				phsleep = 13
+				gt 'bed', 'start'
+			end
+		end
+
+		if pin2 < 2 and phrobbos ! 0 and stat['BDSM'] >= 5:
+			act 'add a pin to my tit':
+				*clr & cla
+				pin2 += 1
+				if pin2 = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/selfpin1.jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/selfpin2.jpg"></center>'
+				end
+
+
+				minut += rand(5,5)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+					gs 'pain', rand(0,1), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				end
+
+				act 'continue': gt 'mod_public_WC_robed_live', 'start2'
+			end
+		elseif pin2 < 2 and stat['BDSM'] < 5 and phrobbos ! 0:
+			act 'add a pin to my tit':
+				'I have no courage to do this'
+			end
+		end
+
+		if pin3 < 2 and phrobbos ! 0 and stat['BDSM'] >= 5:
+			act 'add a pin to my clit':
+				*clr & cla
+				pin3 += 1
+				minut += rand(5,5)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… clitoris hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'clitoris', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+					gs 'pain', rand(0,1), 'clitoris', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! clitoris hurts!</b></i>'
+					gs 'pain', rand(2,4), 'clitoris', 'pinch'
+					gs 'stat'
+				end
+
+				act 'continue': gt 'mod_public_WC_robed_live', 'start2'
+			end
+		elseif pin2 < 2 and stat['BDSM'] < 5 and phrobbos ! 0:
+			act 'add a pin to my tit':
+				'I have no courage to do this'
+			end
+		end
+
+		if phwindow = 0:
+			act 'explore the window':
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/lockedwindow.jpg"></center>'
+				minut += 15
+				gs 'stat'
+				'the window is locked… and there is no keys around'
+				pheventstartlive -= 1
+
+				act 'brake the window with something at hand':
+					*clr & cla
+					'I have broke the window!'
+					'I hear Robbers screaming smth'
+					'I need to decide fast!'
+					phwindow = 1
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/crushedwindow.jpg"></center>'
+
+					act 'wait':
+						*clr & cla
+						'The Robber run in - "WTF? Are you trying to escape?"'
+						'Robber: "I though you are smarter… We have no other room for you, So, CONGRATULATIONS!!! You win the "always tided" award!"'
+						$rope = rand(100,200)*(phwindow+2)
+						phrobtied = 1
+						'He tied me up and go away'
+						minut += 5
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 bind/bind ('+rand(1,3)+').jpg"></center>'
+
+						act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+					end
+
+					act 'push the crushed window out and try to escape':
+						*clr & cla
+						'I do everything as fast as I could'
+						'As a Robber enter the room, I am full body out the window - "WTF? Are you trying to escape? Come back!" - he points his gun on me!'
+
+						act 'go back':
+							*clr & cla
+							phwindow += 1
+							'Robber: "Nice girl, I though you are smarter… We have no other room for you, So, CONGRATULATIONS!!! You win the "always tided" award!"'
+							$rope = rand(100,200)*(phwindow+2)
+							phrobtied = 1
+							'He tied me up and go away'
+							minut += 5
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 bind/bind ('+rand(1,3)+').jpg"></center>'
+
+							act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+						end
+
+						act 'JUMP':
+							*clr & cla
+							bcil = rand(25,150)
+							temp = rand(500,1000) - pcs_agil*5
+							pcs_health -= temp
+							if pcs_health <= 0: pcs_health = 10
+							gs 'stat'
+
+							if pcs_health >= 100:
+								!! run from shoots
+								'My landing was NOT the best…'
+								'But I can stand on my legs…'
+
+								act 'Run!!!':
+									*clr & cla
+									agil_exp += rand(0, 2)
+									gs 'sweat', 'add', 30
+									run_exp += rand(0, 2)
+									fat -= rand(2, 7)
+									gs 'stat'
+									'I run with all my force!'
+									minut += 5
+									gs 'stat'
+									wait 1500
+									'I hear a shoot'
+
+									temp = rand(1,100)
+									if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2:
+										'I feel sharp pain'
+										gs 'pain', 10, 'shoulders', 'pierce'
+										gs 'stat'
+										act 'is it bad?':
+											cla
+											pcs_health -= rand(350,1000)
+											gs 'stat'
+											act 'Keep running':
+												*clr & cla
+												ammo -= 1
+												'I hear a shoot'
+												temp = rand(1,100)
+												if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2:
+													'I feel sharp pain'
+													gs 'pain', 10, 'shoulders', 'pierce'
+													gs 'stat'
+													act 'is it bad?':
+														cla
+														pcs_health -= rand(350,1000)
+														gs 'stat'
+														act 'Keep running': gt 'city_residential'
+													end
+												else
+													'He missed'
+													act 'Keep running': gt 'city_residential'
+												end
+											end
+										end
+									else
+										'He missed'
+										act 'Keep running':
+											*clr & cla
+											'I hear a shoot'
+											temp = rand(1,100)
+											if (temp + bcil/10) >= pcs_agil or (temp + bcil/10) >= pcs_run*2:
+												'I feel sharp pain'
+												gs 'pain', 10, 'shoulders', 'pierce'
+												gs 'stat'
+												act 'is it bad?':
+													cla
+													pcs_health -= rand(350,1000)
+													gs 'stat'
+													act 'Keep running': gt 'city_residential'
+												end
+											else
+												'He missed'
+												act 'Keep running': gt 'city_residential'
+											end
+										end
+									end
+								end
+							else
+								!! hospital
+								'My landing was very bed… I barely feel my legs…'
+								gs 'pain', rand(3,5), 'tummy', 'hit'
+								gs 'stat'
+								gs 'pain', rand(5,8), 'legL', 'hit'
+								gs 'stat'
+								gs 'pain', rand(5,8), 'legR', 'hit'
+								gs 'stat'
+
+								'rober come to me… and looking at me'
+								'"It is sad to waste such Bliad''"'
+
+								act 'lose consciousness':
+									*clr & cla
+									'I wake up in the clinic'
+									minut += rand(8,12)*60
+									gs 'stat'
+									pcs_health += rand(400,1400)
+									money = 0
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="images/locations/shared/clinic/wakeup.jpg"></center>'
+									'The medical staff that helps me to get up and dress. After a last medical examination - that leaves a baffling physician assuming that my wounds were misdiagnosed - I am escorted to the hospital''s exit.'
+									act 'Leave': gt 'city_residential'
+								end
+							end
+						end
+					end
+				end
+			end
+		elseif phwindow >= 1:
+			act 'explore the window':
+				*clr
+				pheventstartlive -= 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/crushedwindow.jpg"></center>'
+
+				act 'take the window part out of the window frame':
+					*clr & cla
+					'One by one I cleared my way through the window'
+					'I slowly go out… I climb down the wall'
+					'I am on the ground…'
+
+					act 'RUN!!!':
+						*clr & cla
+						gt 'city_residential'
+					end
+				end
+			end
+		end
+
+		if pin1 + pin2 + pin3 > 0:
+			act 'remove pins':
+				cla
+				pin1 = 0
+				pin2 = 0
+				pin3 = 0
+				minut += 10
+				gs 'stat'
+				'I removed all the pins from myself'
+				act 'continue':gt 'mod_public_WC_robed_live', 'start2'
+			end
+		end
+
+		if pduck + phdtape > 0:
+			act 'Remove the ducktape':
+				if pduck > 0:
+					act 'Remove the ducktape from my pussy':
+						*clr & cla
+						pduck = 0
+						minut += 5
+						'I removed the ducktape from my pussy in a one move'
+						gs 'pain', rand(1,3), 'clitoris', 'pull'
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/2 remove tape.jpg"></center>'
+
+						act 'continue':gt 'mod_public_WC_robed_live', 'start2'
+					end
+				end
+
+				if phdtape > 0:
+					act 'Remove the ducktape from my mouth':
+						cla
+						phdtape = 0
+						minut += 5
+						'I removed the ducktape from my mouth in a one move'
+						gs 'pain', rand(1,3), 'lips', 'pull'
+						gs 'stat'
+
+						act 'continue':gt 'mod_public_WC_robed_live', 'start2'
+					end
+				end
+			end
+		end
+	end
+
+	if phdtape ! 1:
+		act 'Call robbers (scream)':
+			*clr & cla
+			minut += 3
+			gs 'stat'
+			if rand(1,3) = 1: pheventstartlive -= 1
+			if rand(1,4) + screemtemp >= 6:
+				*clr & cla
+				killvar 'screemtemp'
+				gs 'mod_public_WC_robed_live', 'talk'
+			else
+				cla
+				'There is no reaction'
+				screemtemp += rand(1,2)
+				act 'continue':gt 'mod_public_WC_robed_live', 'start2'
+			end
+		end
+	end
+
+
+
+	if pheventstartlive <= 0:
+		*clr & cla
+		pheventstartlive = rand(4,12)
+
+		if PHbossevent = 1:
+			PHbossevent = 2
+		elseif hour >= rand(10,14) and phrobbos > 0 and daystart > PHbossevent:
+			PHbossevent = 1
+		end
+
+		temp = rand(1,10)
+		if temp <= 8:
+			if rand(1,2) = 1:
+				'Robber enters the room.'
+				phrobers = 1
+				!! 'Robber: "I need some fun"'
+				act 'continue': gt 'mod_public_WC_robed_live', 'insex'
+			else
+				'Few robbers enter the room.'
+				phrobers = 2
+				!! 'Robber: "WE need to relax, prepare your pussy!"'
+				act 'continue': gt 'mod_public_WC_robed_live', 'insex'
+			end
+		else
+			'Robber enters the room.'
+			'Robber: "Girl, you go to the kitchen and do smth to eat for us, NOW!"'
+			if phrobtied = 1:
+				'he untied me'
+				phrobtied = 0
+			end
+
+			'"Come on, let''s go to the kitchen."'
+
+			if $clothingworntype = 'nude':
+				act 'Get dressed':
+					minut+=3
+					gs 'outfit', 'wear_last_worn'
+					'I dress up'
+					gs 'stat'
+				end
+			end
+			if $clothingworntype ! 'nude':
+				act 'undress':
+					minut+=3
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+					'I am naked'
+					gs 'stat'
+				end
+			end
+
+			act 'Go to the kitchen': gt 'mod_public_WC_robed_live', 'cook'
+		end
+
+		if PHbossevent = 1: 'Robber: "Ow, while I am not forget: the Boss asked to tell you, he will come soon, be prepared."'
+
+		if PHbossevent = 2 and phrobbos > 0:
+			killvar 'PHbossevent'
+			*clr & cla
+			if phrobbos = 1:
+				gt 'mod_public_WC_robed_live_BOSS', 'start'
+			elseif phrobbos = 2:
+				gt 'mod_public_WC_robed_live_BOSS', 'startbosses'
+			end
+		end
+	end
+
+	if (daystart >= phrobday and hour > phrobh) or (daystart > phrobday):
+		*clr & cla
+		'Robber suddenly enters my room'
+		'Robber: "It''s time to say goodbuy."'
+		'ME: "At last, You will free me?"'
+		'Robber: "I am not in charge…"'
+
+		if phrobtied = 1:
+			''
+		else
+			'He tied me'
+		end
+		'He put me on his shoulder.'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/4 took/1 end 1.mp4"></video></center>'
+
+		act 'continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/4 took/2 took.jpg"></center>'
+			minut += 10
+			gs 'stat'
+			'He put me in the trunk and blind my eyes.'
+
+			act 'wait':
+				*clr & cla
+				minut += rand(45,190)
+				gs 'stat'
+				'It passed a lot of time… he opened the trunk and I feel he is bringing me somewhere'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/4 took/1 end 1.mp4"></video></center>'
+
+				act 'continue':
+					*clr & cla
+					temp = rand(1,30)
+					if phroberkilled > 0: temp = rand(1,6)
+					if phiamhome = 2: temp = 1
+					if phroberkilled <= 0 and phbosshappy >= 10: gt 'mod_public_WC_robed_live_BOSS', 'fly'
+					if temp <= 4 or phrobbos = 1:
+						gt 'mod_public_WC_rab_SHIPOWNED', 'start'
+					elseif temp <= 6:
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/4 took/2 took.jpg"></center>'
+						minut += 10
+						gs 'stat'
+						'He put me in the trunk and blind my eyes.'
+						gs 'outfit', 'wear_last_worn'
+						gs 'stat'
+
+						act 'wait':
+							*clr & cla
+							minut += rand(45,190)
+							gs 'stat'
+							'It passed a lot of time… he opened the trunk and I feel he is bringing me somewhere'
+							'He brings me to some warehouse'
+							'A pack of bums gather around the other robber. They are talking about smth…'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/bum_gb/1 start/1.jpg"></center>'
+
+							act 'wait':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/bum_gb/1 start/2.jpg"></center>'
+								'ME: "What is going on?"'
+								'Robber: "shut up bitch. You will pay extra to us"'
+
+								act 'wait':
+									*clr & cla
+									minut += 15
+									gs 'stat'
+									'The robber comes back with the bums. He push me to them with a force "Have fun!"'
+									'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/bum_gb/1 start/3.jpg"></center>'
+
+									act 'continue': gt 'mod_public_WC_robed', 'bumsgb'
+								end
+							end
+						end
+					else
+						'He put me on a cold land'
+						'"Okey, girl, now you are free. If you feel some need to thank me, look up for the Panteleymon"'
+						'He slap my ass and go away.'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/4 took/2 throw.jpg"></center>'
+						act 'continue':
+							*clr & cla
+
+							$loc_arg = '133'
+							$rope = rand(100,200)
+
+							'I am on some garbage dump, I am bind and can''t move'
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomj_more/fin/rape/smittia ('+rand(1,2)+').jpg"></center>'
+							gs 'clothing', 'strip'
+							gs 'stat'
+							gs 'sweat', 'add', 100
+							gs 'stat'
+							znaydut = 0
+							act 'try to untie myself': gt 'mod_public_WC_citybasement_rug', 'rope'
+						end
+					end
+				end
+			end
+		end
+	end
+	if phsleep = 13 and rand(1,2) = 1 and pduck = 0 and phrobtied = 0:
+		killvar 'phsleep'
+		gt 'mod_public_WC_robed_live_sex', 'phsleep'
+	elseif phsleep = 13:
+		killvar 'phsleep'
+	end
+end
+
+if $ARGS[0] = 'talk':
+	'I hear stomps on the stairs - soon the Rober enters the room'
+
+	'"What?! What are you want?"'
+
+	if phdtape = 1:
+		'"Mh-mmm" - I said'
+		'"Yes, right" - he half-remove the ducktape from my mouth'
+		gs 'pain', rand(1,3), 'lips', 'pull'
+		gs 'stat'
+	end
+
+
+	if pcs_energy < 30:
+		act 'I am hungry':
+			cla
+
+			'"Well, me too. Go do smth"'
+			phdtape = 0
+
+			if phrobtied = 1:
+				'he untied me'
+				phrobtied = 0
+			else
+				' '
+			end
+			'"Come on, let''s go to the kitchen."'
+
+			if $clothingworntype = 'nude':
+				act 'Get dressed':
+					minut+=3
+					gs 'outfit', 'wear_last_worn'
+					'I dress up'
+					gs 'stat'
+				end
+			end
+			if $clothingworntype ! 'nude':
+				act 'undress':
+					minut+=3
+					gs 'clothing', 'strip'
+					gs 'underwear', 'remove'
+					gs 'stat'
+					'I am naked'
+					gs 'stat'
+				end
+			end
+
+			act 'Go to the kitchen': gt 'mod_public_WC_robed_live', 'cook'
+		end
+	end
+
+
+	act 'I am thirsty':
+		cla
+		if phrobtied = 1:
+			'He pour some water from the water to my mouth'
+			if phdtape = 1 and rand(1,3) ! 1:
+				'He fix the duck tape on my face'
+			elseif phdtape = 1:
+				phdtape = 0
+				+$OpenInnerThought+'He forgot about the duck tape!'+$CloseInnerThought
+			end
+			frost = 1
+			pcs_health += 10
+			pcs_mood += 10
+			if pcs_hydra >= 100:
+				pcs_hydra += 50
+			else
+				pcs_hydra += 100
+			end
+			cumspclnt = 2
+			gs 'cum_cleanup'
+			gs 'stat'
+		else
+			if bottle <= 0:
+				'He gives me a bottle of water'
+				if phdtape = 1 and rand(1,3) ! 1:
+					'He fix the duck tape on my face'
+				elseif phdtape = 1:
+					phdtape = 0
+					+$OpenInnerThought+'He forgot about the duck tape!'+$CloseInnerThought
+				end
+
+				bottle += 1
+			else
+				'"Don''t mess with me, there is a bottle of water on the table!"'
+				if phdtape = 1 and rand(1,3) ! 1:
+					'He fix the duck tape on my face'
+				elseif phdtape = 1:
+					phdtape = 0
+					+$OpenInnerThought+'He forgot about the duck tape!'+$CloseInnerThought
+				end
+				'He slamed the door and go away'
+			end
+		end
+
+		act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+	end
+
+
+	if pcs_health <= 200:
+		act 'I feel sick':
+			cla
+			'"Hmm, you really look bad… I will call a "nurse" for you"'
+			if phdtape = 1 and rand(1,3) ! 1:
+				'He fix the duck tape on my face'
+			elseif phdtape = 1:
+				phdtape = 0
+				+$OpenInnerThought+'He forgot about the duck tape!'+$CloseInnerThought
+			end
+			'he closed the door and go somewhere'
+			act 'wait':
+				*clr & cla
+				minut += rand(10,15)
+				gs 'stat'
+				'Soon another robber with the syringe comes'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/other/injection.jpg"></center>'
+				'He demands my bared arm. I present my arm as required.'
+				'Robber: "Sit still, I''ll give you a shot now and it will make you feel like normal again."'
+				gs 'drugs', 'heroin'
+				minut += 10
+				pcs_health += rand(200,400)
+				gs 'stat'
+				'He goes away'
+
+				act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'cook':
+	*clr & cla
+	$func('wrap', 'header center b', 'kitchen')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/kitchen.jpg"></center>'
+	phrobwatme = 0
+
+	act 'start cooking':
+		*clr & cla
+		$func('wrap', 'header center b', 'kitchen')
+		'I am preparing some food for me and the robbers'
+
+		gs 'exp_gain', 'servng', 2
+		gs 'stat'
+
+		if $clothingworntype = 'nude' and phapronon = 1:
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_apron ('+rand(1,3)+').jpg"></center>'
+			gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+			phrobwatme += rand(1,5)
+		elseif $clothingworntype = 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_naked ('+rand(1,3)+').jpg"></center>'
+			gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+			phrobwatme += rand(0,4)
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing (1).jpg"></center>'
+			minut += 20
+			phrobwatme += rand(0,1)
+		end
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			$func('wrap', 'header center b', 'kitchen')
+			'I am preparing some food for me and the robbers'
+
+			gs 'exp_gain', 'servng', 2
+			gs 'stat'
+
+			if $clothingworntype = 'nude' and phapronon = 1:
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_apron ('+rand(1,3)+').jpg"></center>'
+				gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+				phrobwatme += rand(1,5)
+			elseif $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_naked ('+rand(1,3)+').jpg"></center>'
+				gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+				phrobwatme += rand(0,4)
+
+				gs 'willpower', 'prostitution', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					act 'Tease (<<temp>> Willpower)':
+						*clr
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						sexcorrupt += 1
+						gs 'flash', 'exhibitionism', 1
+						gs 'stat'
+						phrobwatme += rand(2,3)
+
+						'I see a fire in the robbers eyes :-)'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_tease_naked ('+rand(1,2)+').jpg"></center>'
+					end
+				else
+					act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing (1).jpg"></center>'
+				minut += 20
+				phrobwatme += rand(0,1)
+			end
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				$func('wrap', 'header center b', 'kitchen')
+				'I am preparing some food for me and the robbers'
+
+				gs 'exp_gain', 'servng', 2
+				gs 'stat'
+
+				if $clothingworntype = 'nude' and phapronon = 1:
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_apron ('+rand(1,3)+').jpg"></center>'
+					gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+					phrobwatme += rand(1,5)
+				elseif $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_naked ('+rand(1,3)+').jpg"></center>'
+					gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+					phrobwatme += rand(0,4)
+
+					gs 'willpower', 'prostitution', 'self'
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost < 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'Tease (<<temp>> Willpower)':
+							*clr
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							sexcorrupt += 1
+							gs 'flash', 'exhibitionism', 1
+							gs 'stat'
+							phrobwatme += rand(2,3)
+
+							'I see a fire in the robbers eyes :-)'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_tease_naked ('+rand(1,2)+').jpg"></center>'
+						end
+					else
+						act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing (1).jpg"></center>'
+					minut += 20
+					phrobwatme += rand(0,1)
+				end
+				gs 'stat'
+
+				if $clothingworntype ! 'nude':
+					act 'steal a knife':
+						phknife = 1
+						'I hide a knide in my pocket'
+					end
+				elseif $clothingworntype = 'nude':
+					+$OpenInnerThought+'I could steal a knife, but I have nowhere to hide it!'+$CloseInnerThought
+				end
+
+				act 'Everything is ready':
+					*clr & cla
+					'I call the robbers to eat'
+					'We gather at the table and eat'
+					'They even thanks me for the food'
+					'Then one of them walk me back to my room'
+					phapronon = 0
+
+					frost = 0
+					minut += 30
+
+					pcs_health += 10
+					fat += 3
+					pcs_energy += 50
+					if pcs_hydra >= 100:
+						pcs_hydra += 10
+					else
+						pcs_hydra += 20
+					end
+					cumspclnt = 2
+					gs 'cum_cleanup'
+					pcs_breath = 0
+					gs 'food', 'aftermeal'
+					gs 'stat'
+					killvar '_eat'
+					pcs_health += 10
+					fat += 3
+					pcs_energy += 50
+					if pcs_hydra >= 100:
+						pcs_hydra += 10
+					else
+						pcs_hydra += 20
+					end
+					cumspclnt = 2
+					gs 'cum_cleanup'
+					pcs_breath = 0
+					gs 'food', 'aftermeal'
+					gs 'stat'
+					killvar '_eat'
+					gs 'mod_public_WC_robed_live', 'walkroom'
+				end
+
+				gs 'mod_public_WC_robed_live', 'apron'
+
+				if phrobwatme >= 9:
+					cla
+					'Robber comes to me and grab my ass: "You, slut, want YOU NOW!" - we run up stairs to my room'
+					phrobwatme -= 6
+					phkitchennow = 1
+
+					act 'continue': gt 'mod_public_WC_robed_live', 'insex'
+				end
+			end
+
+			gs 'mod_public_WC_robed_live', 'apron'
+
+			if phrobwatme >= 9:
+				cla
+				'Robber comes to me and grab my ass: "You, slut, want YOU NOW!" - we run up stairs to my room'
+				phrobwatme -= 6
+				phkitchennow = 1
+
+				act 'continue': gt 'mod_public_WC_robed_live', 'insex'
+			end
+		end
+
+		gs 'mod_public_WC_robed_live', 'apron'
+	end
+
+	act 'drink some water':
+		minut += 5
+		frost = 1
+		pcs_health += 10
+		pcs_mood += 10
+		if pcs_hydra >= 100:
+			pcs_hydra += 50
+		else
+			pcs_hydra += 100
+		end
+		cumspclnt = 2
+		gs 'cum_cleanup'
+		gs 'stat'
+	end
+
+	gs 'mod_public_WC_robed_live', 'apron'
+end
+
+if $ARGS[0] = 'apron':
+	if $clothingworntype = 'nude' and phapronon = 0:
+		+$OpenInnerThought+'I see an apron.'+$CloseInnerThought
+		act 'dress the apron':
+			phapronon = 1
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'walkroom':
+	if phrobersbos <= 0:
+		if phrobbos = 1 and pduck < 1 and rand(1,3) = 1 and cumloc[0] = 0:
+			pduck = 1
+			if pin3 > 0:
+				pin3 = 0
+				'he removed the pins from my pussy'
+			end
+			'Robber: "You are the boss toy, boss likes his toys fresh from the gang. To be sure noone rapes you before the Boss" - he ducktaped my pussy'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 ass only ('+rand(1,2)+').jpg"></center>'
+			minut += 3
+			gs 'stat'
+
+			if rand (1,3) = 1:
+				'Robber: "And this is just a present from me" - he puts a butplug in my ass'
+				analPlugIn = 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 assonly butplug.jpg"></center>'
+			end
+		end
+
+		if rand (1,4) = 1 and phdtape ! 1:
+			phdtape = 1
+			if rand(1,3) ! 1:
+				'He put a ducktape on my mouth'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 tape/tape ('+rand(1,3)+').jpg"></center>'
+			else
+				'he throw me a duck tape - "Quick tape your FUCKING mouth!!!"'
+				'I do it.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/self tape.mp4"></video></center>'
+			end
+		end
+
+		if phwindow > 0:
+			if $rope > 0:
+				$rope += rand(0,50)*(phwindow+2)
+			else
+				$rope = rand(100,200)*(phwindow+2)
+			end
+
+			phrobtied = 1
+			'Robber: "I need to tied you, cuz you broke the window!"'
+			'He tied me up'
+			minut += 5
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 bind/bind ('+rand(1,3)+').jpg"></center>'
+
+			if phrobtied = 1:
+				temp = rand(1,3)
+				if temp = 1:
+					phrobtiedwhere = 1
+					'He puts me on the bed'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed ('+rand(1,2)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed_n ('+rand(1,1)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape ('+rand(1,4)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+						end
+					end
+				elseif temp = 2:
+					phrobtiedwhere = 2
+					'He left me on the floor'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room ('+rand(1,2)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room_n ('+rand(1,1)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,6)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+						end
+					end
+				else
+					phrobtiedwhere = 3
+					'He puts me on the radiator'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape ('+rand(1,1)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape_n ('+rand(1,1)+').jpg"></center>'
+						end
+					end
+				end
+			end
+			'He left the room'
+
+			act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+		else
+			if rand(1,3) = 1:
+				'Robber: "I need to tied you!"'
+				phrobtied = 1
+				'He tied me up'
+				minut += 5
+				gs 'stat'
+				if $rope = 0:
+					$rope = rand(100,200)
+				else
+					$rope += rand(20,70)
+				end
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 bind/bind ('+rand(1,3)+').jpg"></center>'
+			end
+
+			if phrobtied = 1:
+				temp = rand(1,3)
+				if temp = 1:
+					phrobtiedwhere = 1
+					'He puts me on the bed'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed ('+rand(1,2)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/bed_n ('+rand(1,1)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape ('+rand(1,4)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/1 bed/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+						end
+					end
+				elseif temp = 2:
+					phrobtiedwhere = 2
+					'He left me on the floor'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room ('+rand(1,2)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/room_n ('+rand(1,1)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,6)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape_n ('+rand(1,4)+').jpg"></center>'
+						end
+					end
+				else
+					phrobtiedwhere = 3
+					'He puts me on the radiator'
+					if phdtape ! 1:
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/radiator ('+rand(1,3)+').jpg"></center>'
+						end
+					else
+						if $clothingworntype ! 'nude':
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape ('+rand(1,1)+').jpg"></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/3 radiator/tape/tape_n ('+rand(1,1)+').jpg"></center>'
+						end
+					end
+				end
+			end
+			'He left the room'
+
+			act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+		end
+	else
+		if phblowline <= 0:
+			phsex = 3
+			'Other robber awaits his turn'
+			act 'continue': gs 'mod_public_WC_robed_live_sex', 'tied1sex'
+		else
+			'Robber just left me here'
+			phsex = 2
+			act 'continue': gs 'mod_public_WC_robed_live_sex', 'blowline2'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'stackmagazines':
+	cla
+	*clr
+	minut += 1
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/stackmagazines.jpg"></center>'
+	*nl
+	'A stack of all kinds of magazines, there''s even one with "interesting" pictures.'
+
+	act 'Read the scientific journal (1:00)':
+		cla
+		*clr
+		phexitread = 1
+		pheventstartlive -= rand(2,6)
+		if trait_vars['bookworm'] > 0:
+			lastread = totminut
+			lastreadday = daystart
+			trait_vars['bookworm_exp'] += 10
+		end
+		temp = rand(1,4)
+		if temp = 1:
+			intel_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'event7'
+		end
+		temp = rand(1,5)
+		if temp = 1:
+			intel_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'teaseread'
+		end
+		intel_exp += 4
+		blizoruk+=1
+		pcs_mood += 10
+		minut += 60
+		gs 'stat'
+
+		gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+		'You decide to look through the scientific journal, trying to understand all sorts of clever things written in the magazine.'
+
+		act 'Continue': gs 'mod_public_WC_robed_live', 'stackmagazines'
+	end
+	act 'Read the literary magazine (1:00)':
+		cla
+		*clr
+		phexitread = 1
+		pheventstartlive -= rand(2,6)
+		if trait_vars['bookworm_exp'] > 0:
+			lastread = totminut
+			lastreadday = daystart
+			trait_vars['bookworm_exp'] += 10
+		end
+		temp = rand(1,4)
+		if temp = 1:
+			intel_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			pcs_grades+=rand(0,1)
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'event7'
+		end
+		temp = rand(1,5)
+		if temp = 1:
+			intel_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			pcs_grades+=rand(0,1)
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'teaseread'
+		end
+		intel_exp += 4
+		blizoruk+=1
+		pcs_mood += 10
+		minut += 60
+		pcs_grades+=1
+		gs 'stat'
+
+		gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+		'You decided to look through the literary magazine… It''s a real drag, you almost fall asleep several times while reading it.'
+
+		act 'Continue': gs 'mod_public_WC_robed_live', 'stackmagazines'
+	end
+	act 'Read the entertainment magazine (1:00)':
+		cla
+		*clr
+		phexitread = 1
+		pheventstartlive -= rand(2,6)
+		if trait_vars['bookworm_exp'] > 0:
+			lastread = totminut
+			lastreadday = daystart
+			trait_vars['bookworm_exp'] += 10
+		end
+		temp = rand(1,4)
+		if temp = 1:
+			sprt_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'event7'
+		end
+		temp = rand(1,5)
+		if temp = 1:
+			sprt_exp += 2
+			blizoruk+=1
+			pcs_mood += 5
+			minut += 30
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'teaseread'
+		end
+		sprt_exp += 4
+		blizoruk+=1
+		pcs_mood += 10
+		minut += 60
+		gs 'stat'
+
+		gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+		'You flick entertainment magazine, you delve into the world of the rich and famous.'
+
+		act 'Continue': gs 'mod_public_WC_robed_live', 'stackmagazines'
+	end
+	act 'Read the porn magazine (1:00)':
+		cla
+		*clr
+		phexitread = 1
+		pheventstartlive -= rand(2,6)
+		blizoruk+=1
+		temp = rand(1,4)
+		if temp = 1:
+			pcs_mood += 5
+			gs 'stat'
+
+			gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+			*nl
+			'You''re flipping through a porn magazine, reading the stories and looking at pictures, when all of a sudden you realize you''ve started touching yourself.'
+			gs 'arousal', 'voyeur', 30
+			gs 'arousal', 'end'
+			gs 'stat'
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'event7'
+		end
+		temp = rand(1,5)
+		if temp = 1:
+			pcs_mood += 5
+			gs 'stat'
+
+			gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+			*nl
+			'You''re flipping through a porn magazine, reading the stories and looking at pictures, when all of a sudden you realize you''ve started touching yourself.'
+			gs 'arousal', 'voyeur', 30
+			gs 'arousal', 'end'
+			gs 'stat'
+			if phescortfun > 30: gt 'mod_public_WC_robed_live', 'teaseread'
+		end
+		pcs_mood += 10
+		gs 'stat'
+
+		gs 'mod_public_WC_robed_live', 'clothes_read_magazines'
+		*nl
+		'You''re flipping through a porn magazine, reading the stories and looking at pictures, when all of a sudden you realize you''ve started touching yourself.'
+		gs 'arousal', 'voyeur', 60
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Continue': gs 'mod_public_WC_robed_live', 'stackmagazines'
+	end
+	act 'Move away':
+		minut += 1
+		gt 'mod_public_WC_robed_live', 'start2'
+	end
+
+	if phexitread = 1:
+		phexitread = 0
+		killvar 'phexitread'
+		minut += 1
+		gt 'mod_public_WC_robed_live', 'start2'
+	end
+end
+
+if $ARGS[0] = 'clothes_read_magazines':
+	if $clothingworntype ! 'nude': '<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht/kayuta/bikini_read.png"></center>'
+	if $clothingworntype = 'nude' and $pantyworntype ! 'none':'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/readmagazines_tanga.jpg"></center>'
+	if $clothingworntype = 'nude' and $pantyworntype = 'none':'<center><img <<$set_imgh>> src="images/locations/gadukino/hunters/readmagazines_nude.jpg"></center>'
+end
+
+if $ARGS[0] = 'event7':
+	CLOSE ALL
+	*clr & cla
+	temp = rand(1,10)
+	if phrobbos = 1: temp = rand(1,7)
+	if temp <= 4:
+		'Robber with laugting runs to me and comes over me.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/cumread1.mp4"></video></center>'
+		npc_dick[$npclastgenerated] = dick
+		gs 'arousal', 'voyeur', rand(2,5), 'sub', 'humiliation'
+		gs 'stat'
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'clothes', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'arms', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hands', $npclastgenerated, 0
+		gs 'boyStat', $npclastgenerated
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+		if phescortfun <= 0: phescortfun = 0
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Continue': gt 'mod_public_WC_robed_live', 'start2'
+	elseif temp <= 7:
+		'Robber comes to me with unzip panth and gives me his dick. I started to stroke it…'
+		if phdtape = 1:
+			phdtape = 0
+			'He removed the ducktape from my mouth'
+		end
+		'…and blow while reading.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/blowread1.mp4"></video></center>'
+
+		gs 'arousal_funcs', 'stretch', 'oral', rand(0,1)
+		stat['bj'] += rand(0,1)
+		stat['hj'] += rand(0,1)
+		gs 'arousal', 'bj', rand(5,8), 'sub'
+		gs 'arousal', 'hj', rand(5,8), 'sub'
+		gs 'stat'
+		act 'Continue "reading"':
+			*clr & cla
+			temp = rand(1,2)
+			if temp = 1:
+				'<<$phclientname>> ends up in my throat. I haven''t read to the end'
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+				stat['swallow'] += 1
+				spafinloc = 12
+
+				gs 'sweat', 'add', 5
+
+				gs 'cum_manage'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Freshen up' : gt 'mod_public_WC_robed_live', 'start2'
+			else
+				'<<$phclientname>> cums all over my face. I haven''t read to the end'
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/vania/2/c (<<temp>>).mp4"></video></center>'
+				facial  += 1
+
+				spafinloc = 11
+				gs 'sweat', 'add', 5
+
+				gs 'cum_manage'
+
+
+				gs 'cum_call', 'hair', $npclastgenerated, 0
+
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Freshen up' : gt 'mod_public_WC_robed_live', 'start2'
+			end
+		end
+	else
+		'Robber comes to me and without any talk just seat me on him… Anyway I want to read!.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/r_events/sexread1.mp4"></video></center>'
+		stat['vaginal'] += 1
+
+		guy += 1
+
+		gs 'arousal', 'vaginal', rand(20,40)
+		act 'Continue "reading"':
+			*clr & cla
+			temp = rand(1,10)
+			phescortfunSexDONE += 1
+			phescortfun -= 50
+			if phescortfun <= 0: phescortfun = 0
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+			'<<$phclientname>> doesn''t fuck me, but jumps on my cunt and ends up in me'
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			spafinloc = 0
+			cumnostd = 1
+			cumarrkno = 1
+			cumarrdel = 0
+			sparrvol = 120
+			cumarrcpt = 120
+
+			gs 'cuminsidereact', 'Robber'
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Freshen up' : gt 'mod_public_WC_robed_live', 'start2'
+		end
+	end
+end
+
+if $ARGS[0] = 'teaseread':
+	CLOSE ALL
+	*clr & cla
+	'While I am reading Robber enters the room. He silently comes closer and put his hand into my panty, then starts to rub my clit.'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/alove/tease/teaseread.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5
+	gs 'stat'
+	'Obviously he wants more'
+
+	i = 1
+	act 'Kiss him':
+		'He kisses me back'
+		gs 'arousal', 'kiss', 4
+		gs 'stat'
+		if i > 3: minut -= 4
+		gs 'stat'
+		i += 1
+	end
+
+	+$OpenInnerThought+'I see he really wants to fuck'+$CloseInnerThought
+
+	act 'sex':
+		$cum1 = rand (80,120)
+		gt 'mod_public_WC_robed_live', 'insex'
+	end
+end
+
+
+
+if $ARGS[0] = 'insex':
+	if phkitchennow = 1: phrobers = 1
+
+	gs 'npcgeneratec', 0, 'Robber', rand(25,55)
+	gs 'boyStat', $npclastgenerated
+
+	if pduck = 1 and phrobers = 1:
+		!! anal
+		gt 'mod_public_WC_robed_live', 'pduck2'
+	elseif phrobtied = 1:
+		!! tied sex
+		if phrobers = 1:
+			gt 'mod_public_WC_robed_live_sex', 'tied1'
+		else
+			if pduck = 1:
+
+				gt 'mod_public_WC_robed_live_sex', 'tied2'
+
+			else
+
+				gt 'mod_public_WC_robed_live_sex', 'tied2'
+
+			end
+		end
+	else
+		!! just sex
+		if phrobers = 1:
+			gt 'mod_public_WC_robed_live_sex', 'sex1'
+		else
+			if pduck = 1:
+
+				gt 'mod_public_WC_robed_live_sex', 'sex2'
+
+			else
+
+				gt 'mod_public_WC_robed_live_sex', 'sex2'
+
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'pduck2':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'Robber', rand(25,55)
+	gs 'boyStat', $npclastgenerated
+	pduck += 1
+	!! 'He took a rope from the desk and tied me.'
+	!! sex
+	if $clothingworntype ! 'nude':
+		'Robber: "I will destroy yur guts! You will scream…" - he talks while undresing me, but stoped as he see ducktape on my pussy'
+		'Robber: "Well, we will se your ass"'
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+	else
+		'Robber: "My balls are full but the Boss will kill me. I just use your ass a bit…"'
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+	end
+
+	if analPlugIn = 1:
+		analPlugIn = 0
+		'He removes the plug and say "Good evening…"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 assonly butplug.jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 ass only ('+rand(1,2)+').jpg"></center>'
+	end
+
+	act 'continue':
+		*clr & cla
+
+		if rand (1,3) = 1:
+			'he is playing with my pussy and lick my tits'
+			minut -= 20
+			phtemp += 10
+			gs 'arousal', 'foreplay', rand(30,30)
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/2 pussyplay.mp4"></video></center>'
+		else
+			'He penetrates my asshole'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/3 sex (1).mp4"></video></center>'
+			phtemp += 10
+			gs 'arousal', 'anal', rand(10,10), 'rape'
+			gs 'stat'
+		end
+
+		act 'continue':
+			*clr & cla
+			'He is fucking my ass'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/3 sex (1).mp4"></video></center>'
+			phtemp += 10
+			gs 'arousal', 'anal', rand(10,10), 'rape'
+			gs 'stat'
+
+			act 'continue':
+				cla
+				'He cums deep in my ass'
+				gs 'cum_call','anus',$boy
+				gs 'stat'
+				gs 'cum_call','butt',$boy
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'He zip his pants'
+
+				if phkitchennow = 1:
+					'He grab my ass and we go back to the kitchen'
+					act 'continue': gt 'mod_public_WC_robed_live', 'cook2'
+				else
+					if rand(1,3) = 1:
+						'He tape a ducktape on my mouth - "Don''t tell anybody"'
+						phdtape = 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/binding/1 tape/tape ('+rand(2,3)+').jpg"></center>'
+					end
+					gs 'mod_public_WC_robed_live', 'walkroom'
+					act 'wait': gt 'mod_public_WC_robed_live', 'start2'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'cook2':
+	*clr & cla
+	$func('wrap', 'header center b', 'kitchen')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/kitchen.jpg"></center>'
+	phcooktemp += 1
+
+	act 'keep coocking':
+		gt 'mod_public_WC_robed_live', 'cook2'
+	end
+
+	$func('wrap', 'header center b', 'kitchen')
+	'I am preparing some food for me and the robbers'
+
+	gs 'exp_gain', 'servng', 2
+	gs 'stat'
+
+	if $clothingworntype = 'nude' and phapronon = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_naked ('+rand(1,3)+').jpg"></center>'
+		gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+		phrobwatme += rand(1,5)
+	elseif $clothingworntype = 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_apron ('+rand(1,3)+').jpg"></center>'
+		gs 'arousal', 'flash', 20, 'prostitution', 'sub'
+		phrobwatme += rand(0,4)
+
+		gs 'willpower', 'prostitution', 'self'
+		temp = will_cost - sexcorrupt / 5
+		will_cost -= (sexcorrupt / 5)
+		if will_cost < 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			act 'Tease (<<temp>> Willpower)':
+				*clr
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				sexcorrupt += 1
+				gs 'flash', 'exhibitionism', 1
+				gs 'stat'
+				phrobwatme += rand(2,3)
+
+				'I see a fire in the robbers eyes :-)'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing_tease_naked ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			act 'Tease ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/live/coocing (1).jpg"></center>'
+		minut += 20
+		phrobwatme += rand(0,1)
+	end
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		act 'steal a knife':
+			phknife = 1
+			'I hide a knide in my pocket'
+		end
+	elseif $clothingworntype = 'nude':
+		+$OpenInnerThought+'I could steal a knife, but I have nowhere to hide it!'+$CloseInnerThought
+	end
+
+	act 'drink some water':
+		minut += 5
+		frost = 1
+		pcs_health += 10
+		pcs_mood += 10
+		if pcs_hydra >= 100:
+			pcs_hydra += 50
+		else
+			pcs_hydra += 100
+		end
+		cumspclnt = 2
+		gs 'cum_cleanup'
+		gs 'stat'
+	end
+
+	gs 'mod_public_WC_robed_live', 'apron'
+
+	if phrobwatme >= 9:
+		cla
+		'Robber comes to me and grab my ass: "You, slut, want YOU NOW!" - we run up stairs to my room'
+		phrobwatme -= 6
+		phkitchennow = 1
+
+		act 'continue': gt 'mod_public_WC_robed_live', 'insex'
+	end
+
+
+	if phcooktemp >= 3:
+		*clr & cla
+		killvar 'phcooktemp'
+		killvar 'phrobwatme'
+		'Everything is ready'
+		'I call the robbers to eat'
+		'We gather at the table and eat'
+		'They even thanks me for the food'
+		'Then one of them walk me back to my room'
+		phapronon = 0
+
+		frost = 0
+		minut += 30
+
+		pcs_health += 10
+		fat += 3
+		pcs_energy += 50
+		if pcs_hydra >= 100:
+			pcs_hydra += 10
+		else
+			pcs_hydra += 20
+		end
+		cumspclnt = 2
+		gs 'cum_cleanup'
+		pcs_breath = 0
+		gs 'food', 'aftermeal'
+		gs 'stat'
+		killvar '_eat'
+		pcs_health += 10
+		fat += 3
+		pcs_energy += 50
+		if pcs_hydra >= 100:
+			pcs_hydra += 10
+		else
+			pcs_hydra += 20
+		end
+		cumspclnt = 2
+		gs 'cum_cleanup'
+		pcs_breath = 0
+		gs 'food', 'aftermeal'
+		gs 'stat'
+		killvar '_eat'
+
+		gs 'mod_public_WC_robed_live', 'walkroom'
+	end
+end
+
+if $ARGS[0] = 'shower1':
+	*clr & cla
+	minut += 1
+	hotelShampoo = 1
+	$locM_arg = 'shower1'
+	$locM = 'HotelRoom'
+	$location_type = 'bathroom'
+	gs 'themes', 'indoors'
+	gs'stat'
+
+	$func('wrap', 'header center b', 'The bathroom')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/1/wc.jpg"></center>'
+
+	act 'Return to the room':
+		gt 'mod_public_WC_robed_live', 'start2'
+	end
+
+	gs 'din_van', 'private', 'HotelRoom', iif(HotelRoom = 1, '', 'bath')
+end
+--- mod_public_WC_robed_live ---------------------------------
+

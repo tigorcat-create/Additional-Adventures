@@ -1,0 +1,798 @@
+# mod_public_WC_street_sex_corner_drugs
+if $ARGS[0] = 'start':
+	*clr & cla	
+	!! we both here drugged	
+	phdrugged = 0
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'start'
+	
+	phsextimes = 0
+	
+	if phsex >= 100:
+		!! countdown
+		phsextimer = daystart * 24 * 60 + hour * 60 + minut	
+		!! gs 'mod_public_WC_street_sex', 'timer'
+	end
+	
+	temp = rand(1,10)
+	minut += temp
+	'We come to some secluded corner'	
+
+
+	'It is one of my regular work spots'
+
+	if phclient['pay'] = 4:
+		'We stoped for the moment.'
+		'He counts few bills and pay me.'		
+		money += PH_full_pay
+		minut += 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'		
+	else
+		if month >= 11 or month <= 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+		end		
+	end
+	gs 'stat'
+	
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/event/undress_me.mp4"></video></center>'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':			
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'			
+		end
+	end
+	
+	act 'continue':
+		PHMAGICWORKNOW = 0
+		gt 'mod_public_WC_street_sex_corner_drugs', 'sexstart'
+	end
+	
+	gs 'mod_public_WC_street_sex', 'timer'
+end
+
+
+if $ARGS[0] = 'sexstart':
+	!*clr & cla	
+	minut += 5
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'sexstart'
+
+	'The drugs start working…'
+	
+	temp = rand(1,100)
+	
+	if temp <= 100:
+		
+		
+		gt 'mod_public_WC_street_sex_corner_drugs', '1'
+	else
+		
+		
+		
+	end
+	
+	gs 'mod_public_WC_street_sex', 'timer'
+end
+
+
+
+if $ARGS[0] = '1':
+	*clr & cla	
+	if PHMAGICWORKNOW = 0: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+	
+	minut += 3
+	gs 'clothing', 'strip'
+	gs 'underwear', 'remove'
+	gs 'stat'	
+	
+	if PHMAGICWORKNOW = 0:
+		+$OpenInnerThought+'The world is wrong… and… and… where is the client. Client? What am I talking about?'+$CloseInnerThought
+	else
+		+$OpenInnerThought+'The world is wrong… and… and… where is the clients?'+$CloseInnerThought
+	end
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/0 START ('+rand(1,1)+').jpg"></center>'
+	
+	!! aliens
+	act 'continue':
+		*clr & cla
+		$zadovolennia1 = '<font color = green	> ██████████ </font> '
+		$zadovolennia2 = '<font color = green	> ██████████ </font> '
+		$zadovolennia3 = '<font color = green	> ██████████ </font> '
+		
+		gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+		if PHMAGICWORKNOW = 0: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+		'Sudenly some blue-faced creatures appears!'
+		'They are naked with long dongs'
+		'They pushed me to the floor and circled me with cocks'
+		'I feel once long cold fingers rubbing my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/1 bb ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'foreplay', rand(5,5), 'prostitution', 'sub', 'unknown'
+		gs 'stat'		
+		
+		
+		act 'working their dongs':
+			*clr & cla
+			$zadovolennia1 = '<font color = green	> █████████_ </font> '
+			$zadovolennia2 = '<font color = green	> █████████_ </font> '
+			$zadovolennia3 = '<font color = green	> ██████████ </font> '
+			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+			if PHMAGICWORKNOW = 0: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+			gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'unknown'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(10,10), 'prostitution', 'sub', 'unknown'
+			gs 'stat'
+			gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'unknown'
+			minut -= 20
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/1 bb ('+rand(1,4)+').jpg"></center>'
+			act 'continue':
+				*clr & cla
+				$zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+				$zadovolennia2 = '<font color = green	> █████████_ </font> '
+				$zadovolennia3 = '<font color = green	> ██████████ </font> '
+				
+				gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+				if PHMAGICWORKNOW = 0: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+				'One of them sits on the floor, the other help me to impale his thick cock'
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/2.jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'unknown'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					$zadovolennia1 = '<font color = yellow	> ████______ </font> '
+					$zadovolennia2 = '<font color = green	> ████████__ </font> '
+					$zadovolennia3 = '<font color = green	> █████████_ </font> '					
+					
+					gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+					if PHMAGICWORKNOW = 0 and  rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'					
+					'They are filled all my holes'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/3 ('+rand(1,4)+').jpg"></center>'
+					gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+					gs 'stat'
+					gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+					gs 'stat'
+					gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'unknown'
+					minut -= 20
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla
+						$zadovolennia1 = '<font color = red	> █________ </font> '
+						$zadovolennia2 = '<font color = yellow	> ███████___ </font> '
+						$zadovolennia3 = '<font color = yellow	> ███████___ </font> '
+						
+						gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+						if rand(1,2) = 1 and PHMAGICWORKNOW = 0: gs 'mod_public_WC_street_sex_corner_drugs', 'text'					
+						'OMG…'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/3 ('+rand(1,4)+').jpg"></center>'
+						gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+						gs 'stat'
+						gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+						gs 'stat'
+						gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'unknown'
+						minut -= 20
+						gs 'stat'
+						
+						act 'continue': gt 'mod_public_WC_street_sex_corner_drugs', '11'
+					end	
+				end	
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '11':
+	*clr & cla
+	$zadovolennia1 = '<font color = red	> It cums! </font> '
+	$zadovolennia2 = '<font color = yellow	> ███████___ </font> '
+	$zadovolennia3 = '<font color = yellow	> ███████___ </font> '	
+	
+	phspeed = 1
+	phsex = 102
+	gs 'arousal', 'end'
+	gs 'stat'
+
+	
+	gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+	if PHMAGICWORKNOW = 0 and  rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'					
+	'The client…'	
+	if PHMAGICWORKNOW = 0: +$OpenInnerThought+'WHO?'+$CloseInnerThought
+	
+	'…shoots cum inside my mouth.'
+	
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/4.jpg"></center>'
+	gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+	gs 'stat'
+	gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+	gs 'stat'
+	gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'unknown'
+	minut -= 20
+	gs 'stat'
+	
+	act 'continue':
+		*clr & cla
+		$zadovolennia1 = ' '
+		$zadovolennia2 = '<font color = yellow	> ███████___ </font> '
+		$zadovolennia3 = '<font color = yellow	> ███████___ </font> '
+		
+		gs 'mod_public_WC_street_sex_corner_drugs', 'text2'		
+		
+		if PHMAGICWORKNOW = 0 and  rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+		
+		'I swalowed his load and he just fall off as he K.O.'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/1 all/5.jpg"></center>'
+		
+		act 'continue':
+			*clr & cla
+			$cum1 = 70
+			$cum2 = 70
+			
+			$zadovolennia2 = '<font color = yellow	> ███████___ </font> '
+			$zadovolennia3 = '<font color = yellow	> ███████___ </font> '
+			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+			if PHMAGICWORKNOW = 0 and rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'					
+			''
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/1 ('+rand(1,1)+').jpg"></center>'
+			gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+			gs 'stat'
+			gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+			gs 'stat'
+			minut -= 15
+			gs 'stat'
+			
+			'The left 2 aliens changes position and start to spit roast me'
+			
+			act 'Better work hips':
+				*clr
+				!! a
+				$cum1 -= 15
+				$cum2 -= 5
+				
+				gs 'mod_public_WC_street_sex_corner_drugs', 'man2'
+				gs 'mod_public_WC_street_sex_corner_drugs', 'man3'
+				
+				if PHMAGICWORKNOW = 0 and rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/2-a ('+rand(1,4)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+				gs 'stat'
+				gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+				gs 'stat'
+				minut -= 15
+				gs 'stat'				
+				
+				if $cum1 <= 0 or $cum2 <= 0:
+					cla
+					*clr
+					
+					'It cums inside me!'					
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/3-a.jpg"></center>'
+					
+					
+					act 'continue': 
+						*clr & cla
+						
+						if $cum1 > 0: 
+							' '
+						else
+							$cum1 = $cum2 + 5
+						end
+	gs 'arousal', 'end'
+	gs 'stat'
+
+						'It falls down as a previous one… Aga, I need to pleaseed the last client…'
+						if PHMAGICWORKNOW = 0: +$OpenInnerThought+'Why I named it the "client"??'+$CloseInnerThought
+						if PHMAGICWORKNOW = 0: '…and I could run this place!'
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/4-a.jpg"></center>'
+						
+						act 'continue': gs 'mod_public_WC_street_sex_corner_drugs', 'sex'
+					end
+				end
+			end
+			
+			act 'Concentrate on sucking':
+				*clr
+				!! a
+				$cum1 -= 5
+				$cum2 -= 15
+				
+				gs 'mod_public_WC_street_sex_corner_drugs', 'man2'
+				gs 'mod_public_WC_street_sex_corner_drugs', 'man3'
+				
+				if PHMAGICWORKNOW = 0 and rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/2-b ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+				gs 'stat'
+				gs 'arousal', 'anal', rand(10,10), 'prostitution', 'sub', 'unknown'
+				gs 'stat'
+				minut -= 15
+				gs 'stat'				
+				
+				if $cum1 <= 0 or $cum2 <= 0:
+					cla
+					*clr
+					
+					'It cums in my mouth!'					
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/3-b.jpg"></center>'
+					
+					
+					act 'continue': 
+						*clr & cla
+						
+						if $cum1 > 0: 
+							' '
+						else
+							$cum1 = $cum2 + 5
+						end
+						
+						'It falls down as a previous one… Aga, I need to pleaseed the last client…'
+						if PHMAGICWORKNOW = 0: +$OpenInnerThought+'Why I named it the "client"??'+$CloseInnerThought
+						if PHMAGICWORKNOW = 0: '…and I could run this place!'
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/2 half/4-b.jpg"></center>'
+	gs 'arousal', 'end'
+	gs 'stat'
+
+						act 'continue': gs 'mod_public_WC_street_sex_corner_drugs', 'sex'
+					end
+				end
+			end
+		end	
+	end
+end
+
+if $ARGS[0] = 'sex':
+	cla
+	gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+	
+	if PHMAGICWORKNOW = 0 and rand(1,2) = 1: gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+	!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/2-a ('+rand(1,3)+').jpg"></center>'
+	!! gs 'arousal', 'vaginal', rand(10,10), 'prostitution', 'sub', 'unknown'
+	!! gs 'stat'
+	
+	if phsex = 2 or phsex = 102:
+		$phsexfolder1 = 'bj'
+		if phspeed = 1:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) - phmasturb_me * 2 + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'I am sucking him'
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/0 ('+rand(1,1)+').jpg"></center>'
+			
+			if stat['bj'] >= 50:
+				act 'increase speed':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner_drugs', 'sex'				
+				end
+			else
+				act 'increase speed': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		elseif phspeed = 2:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) - phmasturb_me * 2 + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'I am sucking him like a vacuum machine'
+			
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/1 ('+rand(1,4)+').jpg"></center>'
+			
+			if stat['bj'] >= 100:
+				act 'Balls deep blow job':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner_drugs', 'sex'				
+				end
+			else
+				act 'Balls deep blow job': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			act 'blow slower':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		elseif phspeed = 3:	
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'I am sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock balls deep'	
+			fame['pav_prostitute'] += rand(0,1)	
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/1 ('+rand(1,4)+').jpg"></center>'
+			
+			if stat['bj'] >= 150:
+				act 'Face fuck him':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner_drugs', 'sex'				
+				end
+			else
+				act 'Face fuck him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			act 'blow not so deep':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		elseif phspeed = 4:	
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'I am beeing face fucked'	
+			fame['pav_prostitute'] += rand(1,1)
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/ff/2 ('+rand(1,4)+').jpg"></center>'
+			
+			
+			act 'stop the facefucking':
+				*clr & cla
+				phspeed = 2
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		end		
+	elseif phsex = 3 or phsex = 103:
+		$phsexfolder1 = 'vag'
+		if phspeed = 1:
+			!! Doggy
+			otemp = 2
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			phspeed += 1
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'He penetrates my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/vag/1 ('+rand(1,1)+').jpg"></center>'			
+		else
+			otemp = 2
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/vag/2 ('+rand(1,3)+').jpg"></center>'			
+		end
+	elseif phsex = 4 or phsex = 104: 
+		$phsexfolder1 = 'ass'
+		if phspeed = 1:
+			!! Doggy
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 20 + ( stat['anal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'he pushed in my ass'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'
+			phspeed += 1
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/ass/1 ('+rand(1,2)+').jpg"></center>'
+		else
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 20 + ( stat['anal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex_corner_drugs', 'man'
+			'he is fucking my ass'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'			
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/ass/2 ('+rand(1,5)+').jpg"></center>'
+		end	
+	end	
+	
+	if phsex > 100:
+		if phsex ! 102:			
+			act 'blow him':
+				*clr & cla
+				phsex = 102
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		end
+		if phsex ! 103:			
+			act 'fuck him':
+				*clr & cla
+				phsex = 103
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		end
+		if phsex ! 104:			
+			act 'assfuck him':
+				*clr & cla
+				phsex = 104
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner_drugs', 'sex'
+			end
+		end
+	end
+	
+	if $cum1 <= 0:
+		*clr & cla
+	gs 'arousal', 'end'
+	gs 'stat'
+
+		if phsex = 102:
+			if phspeed < 3:				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/2 ('+rand(1,2)+').jpg"></center>'
+				'He cums in my mouth'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'	
+			elseif phspeed >= 3:				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/bj/ff/3.jpg"></center>'
+				'He cums deep to my throat… He stands smiling at me'
+				+$OpenInnerThought+'Would he become K.O.?'+$CloseInnerThought
+				'In a second he falls like a bag of potato, like other two'
+				
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+			end
+		elseif phsex = 103:			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/vag/3.jpg"></center>'
+			+$OpenInnerThought+'Can I get pregnant from alien?'+$CloseInnerThought			
+			gs 'cum_call','',$boy
+			gs 'cuminsidereact', $boydesc
+			
+		elseif phsex = 104:			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/3 lastone/ass/3 ('+rand(1,3)+').jpg"></center>'
+			'He loads deep in my ass'
+			gs 'cum_call','anus',$boy
+			gs 'stat'
+		end
+		
+		act 'continue':
+			*clr & cla			
+			'All three aliens K.O.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/4 END ('+rand(1,2)+').jpg"></center>'			
+			fame['pav_prostitute'] += rand(1,5)			
+			
+			if PHMAGICWORKNOW = 0:
+				act 'Run away':				
+					killvar 'zadovolennia2'
+					killvar 'zadovolennia3'
+					fame['pav_prostitute'] += rand(1,2)
+					gt 'mod_public_WC_street_sex_corner_drugs', 'end'
+				end
+				
+				gs 'willpower', 'misc', 'self', 'hard'
+				temp = will_cost
+				
+				if will_cost <= 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+					
+					act 'Search the aliens (<<temp>> Willpower)':
+						cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						
+						'I find some cosmocredits in their inner pockets'
+						
+						
+						act 'Take all the cosmocredits':
+							cla						
+							temp = rand(5,20) * 100						
+							'I take <<temp>> cosmocredits'
+							fame['pav_prostitute'] -= rand(2,7)
+							crime += 3
+							money += temp 
+							minut += 5
+							gs 'stat'
+							
+							act 'Run away':				
+								killvar 'zadovolennia2'
+								killvar 'zadovolennia3'
+								fame['pav_prostitute'] += rand(1,2)
+								gt 'mod_public_WC_street_sex_corner_drugs', 'end'
+							end
+						end
+						
+						act 'Take my salary?':
+							cla
+							If phclient['pay'] = 4:					
+								'I think I am paid, and I take NO more cosmocredits'
+							else
+								'I take <<PH_full_pay>> cosmocredits'
+								money += PH_full_pay
+							end
+							minut += 5
+							gs 'stat'
+							
+							act 'Run away':				
+								killvar 'zadovolennia2'
+								killvar 'zadovolennia3'
+								fame['pav_prostitute'] += rand(1,2)
+								gt 'mod_public_WC_street_sex_corner_drugs', 'end'
+							end
+						end
+					end
+				else
+					act 'Search the aliens ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+				end
+			else
+				'The stack of bills appears in the middle of the room'
+				money += PH_full_pay
+				
+				act 'take the money':
+					money += PH_full_pay
+					gs 'stat'
+					killvar 'zadovolennia2'
+					killvar 'zadovolennia3'
+					fame['pav_prostitute'] += rand(1,2)
+					gt 'mod_public_WC_street_sex_corner_drugs', 'end'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'man':
+	if $cum1 >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> ██████████ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = green	> ████████__ </font> '	
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> ██________ </font> '
+	if $cum1 < 10: $zadovolennia1 = '<font color = red	> █________ </font> '
+	if $cum1 >= -100 and $cum1 <= 0: $zadovolennia1 = '<font color = red	> Client cums! </font> '
+	
+
+	'It''s endurance meter: <<$zadovolennia1>>'
+	*nl
+end
+
+if $ARGS[0] = 'text':
+	!*clr & cla	
+	!! gs 'mod_public_WC_street_sex_corner_drugs', 'text'
+	+$OpenInnerThought+'"AM I galucinating?,"'+$CloseInnerThought+' I ask myself.'	
+end
+
+if $ARGS[0] = 'text2':
+	!! gs 'mod_public_WC_street_sex_corner_drugs', 'text2'
+	'It''s endurance meter:'
+	'<<$zadovolennia1>>'
+	'<<$zadovolennia2>>'
+	'<<$zadovolennia3>>'
+	*nl
+end
+
+if $ARGS[0] = 'man2':
+	if $cum1 >= 100: $zadovolennia2 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia2 = '<font color = green	> ██████████ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia2 = '<font color = green	> █████████_ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia2 = '<font color = green	> ████████__ </font> '	
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia2 = '<font color = yellow	> ███████___ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia2 = '<font color = yellow	> ██████____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia2 = '<font color = yellow	> █████_____ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia2 = '<font color = yellow	> ████______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia2 = '<font color = yellow	> ███_______ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia2 = '<font color = red	> ██________ </font> '
+	if $cum1 < 10: $zadovolennia2 = '<font color = red	> █________ </font> '
+	if $cum1 >= -100 and $cum1 <= 0: $zadovolennia2 = '<font color = red	> It cums! </font> '
+	
+
+	'It''s endurance meter:'
+	'<<$zadovolennia2>>'
+	*nl
+end
+
+if $ARGS[0] = 'man3':
+	if $cum2 >= 100: $zadovolennia3 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $cum2 >= 90 and $cum2 < 100: $zadovolennia3 = '<font color = green	> ██████████ </font> '
+	if $cum2 >= 80 and $cum2 < 90: $zadovolennia3 = '<font color = green	> █████████_ </font> '
+	if $cum2 >= 70 and $cum2 < 80: $zadovolennia3 = '<font color = green	> ████████__ </font> '	
+	if $cum2 >= 60 and $cum2 < 70: $zadovolennia3 = '<font color = yellow	> ███████___ </font> '
+	if $cum2 >= 50 and $cum2 < 60: $zadovolennia3 = '<font color = yellow	> ██████____ </font> '
+	if $cum2 >= 40 and $cum2 < 50: $zadovolennia3 = '<font color = yellow	> █████_____ </font> '
+	if $cum2 >= 30 and $cum2 < 40: $zadovolennia3 = '<font color = yellow	> ████______ </font> '
+	if $cum2 >= 20 and $cum2 < 30: $zadovolennia3 = '<font color = yellow	> ███_______ </font> '
+	if $cum2 >= 10 and $cum2 < 20: $zadovolennia3 = '<font color = red	> ██________ </font> '
+	if $cum2 < 10: $zadovolennia3 = '<font color = red	> █________ </font> '
+	if $cum2 >= -100 and $cum2 <= 0: $zadovolennia3 = '<font color = red	> It cums! </font> '
+	
+
+	'It''s endurance meter:'
+	'<<$zadovolennia3>>'
+	*nl
+end
+
+if $ARGS[0] = 'end':
+	*clr & cla
+	!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/1 otherworls/4 END ('+rand(1,2)+').jpg"></center>'
+	
+	minut += rand(20,70)
+	gs 'stat'
+	
+	if PHMAGICWORKNOW = 0:
+		'After some time I start to see the world the right way… The drugs effect ends… That was something unbelievable'
+	else
+		'The clients are satisfied'
+		'I can go back home for now.'
+	end
+	
+	if PHMAGICWORKNOW = 0:
+		act 'looking for the next client':
+			gs 'mod_public_WC_street','prostitutesearch'
+		end
+		act 'go away': 
+			gt $loc, $loc_arg
+		end
+	else
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	end
+end
+
+--- mod_public_WC_street_sex_corner_drugs ---------------------------------
+

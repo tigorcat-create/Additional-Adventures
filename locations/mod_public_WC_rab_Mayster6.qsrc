@@ -1,0 +1,2226 @@
+# mod_public_WC_rab_Mayster6
+if $ARGS[0] = 'start':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'"You never know what your master like"'
+	'"But anyway the good girl is needed to be good in this!"'
+	'"That is why you need this train."'
+	Vania = 0
+	Artem = 0
+	Tolik = 0
+
+	if bm_hren_setup ! 1: bm_hren_setup = 1 & gs 'mod_public_WC_rab_Mayster6', 'hren_setup'
+	if bm_Razvratnik_setup ! 1: bm_Razvratnik_setup = 1 & gs 'mod_public_WC_rab_Mayster6', 'Razvratnik_setup'
+
+	ztemp = 0
+	ytemp = hour
+
+	if $clothingworntype ! 'nude': '"Undress…"'
+	'"At first, and wear this collar only"'
+
+	act 'No':
+		*clr & cla
+		willpowermax += rand(1,2)
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'I tierd of this shit, Betsi.'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'Agree':
+		*clr & cla
+		'"I have friends: Hren and Razvratnik, they will help us."'
+		willpowermax -= rand(1,2)
+		VaniaMayster += 5
+
+		minut += 5
+		$lastwornclothingtype['swim'] = $clothingworntype
+		lastwornclothingnumber['swim'] = clothingwornnumber
+		$lastwornpantytype['swim'] = $pantyworntype
+		lastwornpantynumber['swim'] = pantywornnumber
+		$lastwornbratype['swim'] = $braworntype
+		lastwornbranumber['swim'] = brawornnumber
+		gs 'clothing', 'strip_all', 'VillageRiver'
+
+		gs 'stat'
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/selfcollar.mp4"></video></center>'
+		'"Who you want to play with?"'
+
+		act 'Hren':
+			gt 'mod_public_WC_rab_Mayster6', 'h'
+		end
+
+		act 'Razvratnik':
+			*clr & cla
+			gt 'mod_public_WC_rab_Mayster6', 'd'
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'h':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+
+	'I walk with Vania to the street, where the Horse stands'
+	'"Play with Hren, I''ll come here soon"'
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+
+	act 'pet Hren':
+		*clr & cla
+		npc_QW['A231'] += 1
+		minut += 15
+		pcs_mood += rand(1,3)
+		gs 'stat'
+		'I pet the Hren for some time, it seems he likes it'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/meandhren ('+rand(1,4)+').jpg"></center>'
+		act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+	end
+
+	act 'ride Hren':
+		if npc_QW['A231'] <= 30:
+			*clr & cla
+			'When I try to mounted it, it gives me no chance to do it and tries to bite me'
+			ztemp += rand(0,1)
+			minut += 5
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+			if ztemp >= 5:
+				*clr
+				'It bites me!'
+				npc_QW['A231'] -= 1
+
+				pcs_mood -= rand(10,30)
+
+				if npc_QW['A231'] < 0: npc_QW['A231'] = 0
+
+				if rand(1,2) = 1:
+					gs 'pain', rand(2,3), 'armL', 'bite'
+				else
+					gs 'pain', rand(2,3), 'armR', 'bite'
+				end
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+			end
+		else
+			*clr & cla
+			'I spend some time riding  Hren'
+			npc_QW['A231'] += rand(1,2)
+			minut += rand(20,40)
+			gs 'stat'
+			pcs_mood += rand(10,30)
+
+			if month > 4 and month < 10:
+				if rand(1,2) = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/ridehorse.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/verhy ('+rand(1,3)+').jpg"></center>'
+				end
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/verhyz (1).jpg"></center>'
+			end
+
+			if npc_QW['A231'] >= 65:
+				act 'ride away on Hren':
+					*clr & cla
+					'Hren is very quick and he runs me somewhere into the forest'
+					'I think I recognise this forest…'
+					'In some time Hren stops.'
+					'I get out from Hren'
+					'We are lookng at each other for few minuts… Than Hren nods and runs away'
+					pcs_mood += rand(10,30)
+
+					minut = rand(20,40)
+					if month > 4 and month < 10:
+						if rand(1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/ridehorse.mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/verhy ('+rand(1,3)+').jpg"></center>'
+						end
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/verhyz (1).jpg"></center>'
+					end
+
+					vtecha = 1
+					Artem = 0 & Tolik = 0 & Vania = 0
+					brak += 10
+					gs 'stat'
+					act 'look around': gt 'gad_forest_lost',  'forest_center'
+				end
+
+				if VaniaMayster >= 100:
+					cla
+					'<i>I obey Vania for so long…</i>'
+					'<i>I can''t ride away</i>'
+				end
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+		end
+	end
+
+	act 'wait (00:30)':
+		minut += 30
+		gs 'stat'
+		gt 'mod_public_WC_rab_Mayster6', 'h'
+	end
+
+	if temper >= 20:
+		act 'wash Hren':
+			*clr & cla
+			minut += rand(10,15)
+			npc_QW['A231'] += rand(1,2)
+			'I wash the Hren, it seems he likes it'
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/wash/wash (1).jpg"></center>'
+			pcs_mood += rand(1,3)
+
+			act 'wash myself too':
+				*clr & cla
+				minut += rand(5,10)
+				pcs_mood += rand(10,15)
+				pcs_sweat = 0
+				if deodorant_on = 1: gs 'sweat', 'remove_deo' and '<br>My deodorant gets washed away.</br>'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/wash/washselftoo ('+rand(1,2)+').jpg"></center>'
+
+				act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+			end
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'h'
+		end
+	end
+
+	if hour > ( ytemp + 2 ):
+		*clr & cla
+		killvar 'ytemp'
+		'Vania comes here'
+		'"Good you have such good time together"'
+		'"Let''s continue the training"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'Agree': gt 'mod_public_WC_rab_Mayster6', 'hpussy'
+	end
+end
+
+if $ARGS[0] = 'hpussy':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'"Betsi lie down… You need to be at least wet, it wood be easier for you"'
+
+	act 'No':
+		*clr & cla
+		willpowermax += rand(1,2)
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'"I tierd of this shit, Betsi."'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'Agree':
+		*clr & cla
+		'Vania arouses me with some handle?'
+		gs 'arousal', 'vaginal_vibe', rand(10,20), 'sub', 'rough', 'humiliation'
+		gs 'stat'
+		'"Now you are ready…"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/pussready.jpg"></center>'
+
+		act 'continue': gt 'mod_public_WC_rab_Mayster6', 'hsex'
+	end
+end
+
+if $ARGS[0] = 'hsex':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	Vurok += 1
+	sexpartkno = 1
+	gs 'boyStat', 'A231'
+	if npc_QW['A231'] <= 10:
+		gt 'mod_public_WC_rab_Mayster6', 'hbj'
+	elseif npc_QW['A231'] <= 30:
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster6', 'hbj'
+		else
+			gt 'mod_public_WC_rab_Mayster6', 'hs'
+		end
+	else
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster6', 'hbj'
+		else
+			gt 'mod_public_WC_rab_Mayster6', 'hs'
+		end
+	end
+end
+
+if $ARGS[0] = 'hbj':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	gs 'boyStat', 'A231'
+	'"Betsi, now make this day even better for Hren. Blow him!"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+
+	act 'No':
+		*clr & cla
+		willpowermax += rand(1,2)
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'I tierd of this shit, Betsi.'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'Starts to suck it':
+		*clr & cla
+		npc_QW['A231'] += 2
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/bj/bj ('+rand(1,3)+').jpg"></center>'
+
+		HBJ+=1
+		gs 'stat'
+		gs 'arousal', 'bj', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		if HBJ <= 9:
+			temp = 9 - HBJ
+			gs 'pain', rand(temp,9),'mouth', 'pierce'
+		else
+			gs 'pain', rand(1,4),'mouth', 'pierce'
+		end
+		pcs_stam -= 30
+		gs 'stat'
+		act 'Horse cums':
+			*clr & cla
+			gs 'boyStat', 'A231'
+			sexvolume = rand(100,250)
+
+
+			'Hren cums in my mouth, I do my best to swallow everything but it''s to much for me! Cums goes over my mouth to my face and on my tits.'
+
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/bj ('+rand(1,10)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/bjv.mp4"></video></center>'
+			end
+
+			gs 'cum_call', 'face', 'A231', 0
+
+
+			gs 'cum_call', 'stomach', 'A231', 0
+			gs 'cum_call', 'breasts', 'A231', 0
+			gs 'cum_call', 'hair', 'A231', 0
+
+			gs 'stat'
+			gs 'arousal', 'hj', 5, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'boyStat', 'A231'
+			gs 'cum_call', 'mouth', 'A231', 0, '', '', rand(100,250)
+			gs 'stat'
+			gs 'arousal', 'bj', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			npc_horny['A231'] = 0
+			gs 'stat'
+
+			ztemp = rand(4,4)
+			'"Good, Betsi."'
+			'"The lesson is end."'
+			pcs_mood += rand(0,20)
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			'"Betsi sit here…"'
+			act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+
+		if rand(1,4) = 1:
+			cla
+			'"Ok, Betsi, Razvratnik wants to join!"'
+			act 'Pleasure him too': gt 'mod_public_WC_rab_Mayster6', 'dh'
+		end
+
+	end
+end
+
+if $ARGS[0] = 'hs':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+
+	gs 'boyStat', 'A231'
+	if npc_QW['A231'] <= 30:
+		'"Betsi, now bend over! I will help Hren to fuck you for first few times, cuz you are not very god know each other."'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'bend over':
+			*clr & cla
+			npc_QW['A231'] += rand(2,4)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/h_Vaniahelp (2).mp4"></video></center>'
+			gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 4
+			stat['vaginal'] += 1
+			gs 'stat'
+
+			act 'lie down and make horse cum':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/assv.mp4"></video></center>'
+				npc_horny['A231'] = 0
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+				HVag+=1
+
+				if HVag <= 9:
+					temp = 9 - HVag
+					gs 'pain', rand(temp,9),'vaginal', 'pierce'
+				else
+					gs 'pain', rand(1,4),'vaginal', 'pierce'
+				end
+
+				pcs_stam -= 40
+
+				gs 'stat'
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'arousal_funcs', 'stretch', 'vaginal', 4
+				gs 'boyStat', 'A231'
+				gs 'cum_call', 'vagina', 'A231', 0, '', '', rand(100,250)
+				gs 'stat'
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				ztemp = rand(4,4)
+				'"Good, Betsi."'
+				'"The lesson is end."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'"Betsi sit here…"'
+				act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+		end
+
+	else
+		'"Betsi, now make this day even better for Hren. Fuck him!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/h/Hren.jpg"></center>'
+
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'bend over':
+			*clr & cla
+			npc_QW['A231'] += rand(2,4)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/sex/sex ('+rand(1,2)+').mp4"></video></center>'
+			gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 4
+			stat['vaginal'] += 1
+			gs 'stat'
+
+			act 'lie down and make horse cum':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/assv.mp4"></video></center>'
+				npc_horny['A231'] = 0
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+				HVag+=1
+
+				if HVag <= 9:
+					temp = 9 - HVag
+					gs 'pain', rand(temp,9),'vaginal', 'pierce'
+				else
+					gs 'pain', rand(1,4),'vaginal', 'pierce'
+				end
+
+				pcs_stam -= 40
+
+				gs 'stat'
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'arousal_funcs', 'stretch', 'vaginal', 4
+				gs 'boyStat', 'A231'
+				sexvolume = rand(100,250)
+				gs 'cum_call', 'vagina', 'A231', 0
+				gs 'stat'
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				ztemp = rand(4,4)
+				'"Good, Betsi."'
+				'"The lesson is end."'
+				pcs_mood += rand(0,20)
+				gs 'stat'
+
+				'"Betsi sit here…"'
+				act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+			end
+
+			if rand(1,4) = 1:
+				cla
+				'"Ok, Betsi, I want to join!"'
+				act 'Pleasure Vania too': gt 'mod_public_WC_rab_Mayster6', 'vh'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'd':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'I walk with Vania to the street, where the dog stands'
+	'"I want you to be a dog for the next few hours and get acquainted with Razvratnik."'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+
+	act 'No':
+		*clr & cla
+		willpowermax += rand(1,2)
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'"I tierd of this shit, Betsi."'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'stand on my four and be like a dog':
+		bimbo += 5
+		willpowermax -= 3
+		VaniaMayster += 2
+		gs 'stat'
+		gt 'mod_public_WC_rab_Mayster6', 'd2'
+	end
+end
+
+if $ARGS[0] = 'd2':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+
+	act 'ask to play':
+		*clr & cla
+		bimbo += 2
+		willpowermax -= 1
+		VaniaMayster += 2
+		minut += 5
+		gs 'stat'
+
+		'Vania smiles widely and throws a ball witch he tooks from his pants pocket'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/ask.mp4"></video></center>'
+
+		act 'play with a ball':
+			*clr & cla
+			minut += 20
+			bimbo += 2
+			pcs_mood += 40
+			VaniaMayster += 1
+			gs 'stat'
+			'I run for the ball, take it and with a little gog play give it to Vania'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/play.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'd2'
+		end
+	end
+
+	act 'ask to go for a walk':
+		*clr & cla
+		bimbo += 2
+		willpowermax -= 1
+		VaniaMayster += 2
+		minut += 5
+		gs 'stat'
+
+		'I took a leash witch was near Vania and show him my desire to go for a walk.'
+		'"Ok, ok))) Betsi, Razvratnik! KO MNE! GULIAT''!"'
+		'Razvratnik comes to Vania and waits to lock the leash to his collar, I do the same'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/askwalk.jpg"></center>'
+
+		act 'wait':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+
+			'vania locks the leashes on me and Razvratnik'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/colar.mp4"></video></center>'
+			act 'continue':
+				*clr & cla
+
+				if rand(1,2) = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/walkv.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/walk ('+rand(1,3)+').jpg"></center>'
+				end
+
+				'We walks some time together in the fealds nearby and then come back'
+				'<i>Razvratnik see how Vania pet me and I think he develope some trust to me.</i>'
+
+
+				bimbo += 5
+				willpowermax -= 5
+				VaniaMayster += 3
+				npc_QW['A230'] += rand(1,3)
+				minut += 50
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_Mayster6', 'd2'
+			end
+		end
+	end
+
+	act 'pet a dog':
+		*clr & cla
+		npc_QW['A230'] += 1
+		pcs_mood += 5
+		minut += 15
+		pcs_mood += rand(1,3)
+		gs 'stat'
+		'I pet the Razvratnik for some time, it seems he likes it'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/petdog.jpg"></center>'
+		act 'continue': gt 'mod_public_WC_rab_Mayster6', 'd2'
+	end
+
+
+	if rand (1,7) = 1:
+		*clr & cla
+		'Vania calls my name and gives me a treat'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/good girl.mp4"></video></center>'
+		bimbo += 1
+		willpowermax -= 1
+		VaniaMayster += 1
+		pcs_mood += rand(5,15)
+		minut += 5
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_rab_Mayster6', 'd2'
+	end
+
+
+	if hour > ( ytemp + 2 ):
+		*clr & cla
+		killvar 'ytemp'
+		'Vania calls my name and gives me a treat'
+		'"Let''s give you another treat"'
+
+		bimbo += 1
+		willpowermax -= 1
+		VaniaMayster += 1
+		pcs_mood += rand(5,15)
+		minut += 5
+		gs 'stat'
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/good girl.mp4"></video></center>'
+
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+
+		if VaniaMayster >= 100:
+			cla
+			'<i>I obey Vania for so long…</i>'
+			'<i>I can''t say "no" to Vania anymore</i>'
+		end
+
+		act 'Agree': gt 'mod_public_WC_rab_Mayster6', 'dpussy'
+	end
+end
+
+if $ARGS[0] = 'dpussy':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+
+	'"Betsi lie down… You need to be wet, it wood be easier for you"'
+
+	act 'No':
+		*clr & cla
+		willpowermax += rand(1,2)
+		VaniaMayster -= 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		'"I tierd of this shit, Betsi."'
+		act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+	act 'Agree':
+		*clr & cla
+		'Vania arouses me with his dick'
+		gs 'arousal', 'vaginal', rand(10,20), 'sub', 'rough', 'humiliation'
+		gs 'stat'
+		'"Now you are ready…"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/vania start.jpg"></center>'
+
+		act 'continue': gt 'mod_public_WC_rab_Mayster6', 'dsex'
+	end
+end
+
+if $ARGS[0] = 'dsex':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	ztemp = 0
+	Vurok += 1
+	gs 'boyStat', 'A230'
+	if npc_QW['A230'] <= 10:
+		gt 'mod_public_WC_rab_Mayster6', 'dlick'
+	elseif npc_QW['A231'] <= 30:
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster6', 'dbj'
+		else
+			gt 'mod_public_WC_rab_Mayster6', 'ds'
+		end
+	else
+		if rand(1,2) = 1:
+			gt 'mod_public_WC_rab_Mayster6', 'dbj'
+		else
+			gt 'mod_public_WC_rab_Mayster6', 'ds'
+		end
+	end
+end
+
+if $ARGS[0] = 'dlick':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	gs 'boyStat', 'A231'
+	'"Come here good boy, come here"'
+
+	'The dog licks my pussy'
+	gs 'arousal', 'cuni', rand(10,30), 'sub', 'beast', 'humiliation'
+	gs 'stat'
+
+	$orgasm_txt = 'The beast tongue rhythm make me soooo good, I blow up in incredible orgasm!'
+	$orgasm_or = 'custom'
+	zoo += 1
+	gs 'stat'
+
+
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/doglick.mp4"></video></center>'
+
+	ztemp = rand(4,4)
+	'"Good, Betsi."'
+	'"The lesson is end."'
+	pcs_mood += rand(0,20)
+	gs 'stat'
+
+	npc_QW['A230'] += rand(1,2)
+
+	'"Betsi sit here…"'
+	act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+end
+
+if $ARGS[0] = 'dbj':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	gs 'boyStat', 'A230'
+	'"Betsi, now make this day even better for Razvratnik. Blow him!"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+
+	if ztemp = 0:
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+
+	if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+		act 'kiss the dog':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+			minut += 5
+			npc_QW['A230'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 1
+			gs 'arousal', 'kiss', rand(5,10), 'beast'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'dbj'
+		end
+	end
+	if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15) :
+		act 'play with dog''s dick':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+			minut += 5
+			npc_QW['A230'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 2
+			gs 'arousal', 'bj', rand(5,10), 'beast'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'dbj'
+		end
+	end
+	act 'I started to blow its dong.':
+		*clr & cla
+		gs 'sweat', 'add', 5
+		'I started to blow it.'
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bjv ('+rand(1,10)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bj ('+rand(1,10)+').jpg"></center>'
+		end
+
+		DogBJ+=1
+		gs 'arousal', 'bj', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		act 'On me':
+			*clr & cla
+			gs 'boyStat', 'A230'
+			sexvolume = rand(20,50)
+
+			temp = rand(1,2)
+			if temp = 1:
+				'Dog cums on my face'
+				gs 'cum_call', 'face', 'A230', 0
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+			else
+				'Dog cums on me'
+				gs 'cum_call', 'stomach', 'A230', 0
+				gs 'cum_call', 'breasts', 'A230', 0
+				gs 'cum_call', 'hair', 'A230', 0
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+			end
+
+			gs 'stat'
+			gs 'arousal', 'hj', 5, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			ztemp = rand(4,4)
+			'"Good, Betsi."'
+			'"The lesson is end."'
+			pcs_mood += rand(0,20)
+			gs 'stat'
+
+			npc_QW['A230'] += rand(2,4)
+			gs 'arousal', 'end'
+			gs 'stat'
+			'"Betsi sit here…"'
+			act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+
+		act 'In the mouth':
+			*clr & cla
+
+
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+			end
+
+
+			gs 'boyStat', 'A230'
+			gs 'cum_call', 'mouth', 'A230', 0, '', '', rand(20,50)
+			gs 'stat'
+			gs 'arousal', 'bj', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			ztemp = rand(4,4)
+			'"Good, Betsi."'
+			'"The lesson is end."'
+			pcs_mood += rand(0,20)
+			gs 'stat'
+
+			npc_QW['A230'] += rand(2,4)
+			gs 'arousal', 'end'
+			gs 'stat'
+			'"Betsi sit here…"'
+			act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+		end
+	end
+end
+
+if $ARGS[0] = 'ds':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	gs 'boyStat', 'A230'
+	'"Betsi, now make this day even better for Razvratnik. Stand on your four!"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+
+	if ztemp = 0:
+		act 'No':
+			*clr & cla
+			willpowermax += rand(1,2)
+			VaniaMayster -= 3
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+			'I tierd of this shit, Betsi.'
+			act 'continue': gt 'mod_public_WC_rab_Mayster5', 'kara'
+		end
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t say "no" to Vania anymore</i>'
+	end
+
+
+	if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+		act 'kiss the dog':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+			minut += 5
+			npc_QW['A230'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 1
+			gs 'arousal', 'kiss', rand(5,10), 'beast'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'ds'
+		end
+	end
+	if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15) :
+		act 'play with dog''s dick':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+			minut += 5
+			npc_QW['A230'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 2
+			gs 'arousal', 'bj', rand(5,10), 'beast'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_Mayster6', 'ds'
+		end
+	end
+
+	act 'I stand on my four.':
+		*clr & cla
+		if npc_QW['A230'] <= 30:
+			'Vania guides the Razvratnik dong to help him.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/start_help.mp4"></video></center>'
+
+			gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+			stat['vaginal'] += 1
+			gs 'stat'
+
+			ztemp = 100
+		end
+		if npc_QW['A230'] <= 50:
+			ztemp = rand(1,2) * 100
+		end
+
+		if ztemp = 100:
+			'The dog starts to penetrates me!'
+			temp = rand (1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/pussv ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/puss ('+rand(1,10)+').jpg"></center>'
+			end
+
+			npc_horny['A230'] = 0
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+			DogVag+=1
+
+			npc_QW['A230'] += 1
+			gs 'stat'
+
+			gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Allow to knot me':
+				*clr & cla
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+				gs 'stat'
+
+				temp = rand (1,2)
+
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+				end
+
+				if rand(1,5) = 1:
+					'Vania teases me with Razvratnik''s dick in me'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/d/vania_teasev ('+rand(1,2)+').mp4"></video></center>'
+					gs 'arousal', 'foreplay', 5, 'sub', 'beast', 'rough'
+					gs 'arousal', 'end'
+				end
+
+
+				gs 'arousal', 'vaginal', 15, 'sub', 'beast', 'rough'
+				gs 'arousal', 'end'
+				gs 'stat'
+				banditboggle = RAND(0,5)
+				if banditboggle <= 3:
+					if pcs_vag < 10:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 4
+						vgape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,590)
+						gs 'arousal', 'vaginal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+						gs 'arousal', 'end'
+						gs 'stat'
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+						exit
+					elseif pcs_vag < 25:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 3
+						vgape = 2
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,50)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag < 35:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 2
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					else
+						gs 'arousal_funcs', 'stretch', 'vaginal', 1
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+				else
+					if pcs_vag < 10:
+						minut += 20
+						gs 'arousal_funcs', 'stretch', 'vaginal', 4
+						vgape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 10:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 3
+						vgape = 1
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+
+			act 'Prevent':
+				*clr & cla
+				minut += 2
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+
+
+				temp = rand (1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/pv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/p.jpg"></center>'
+				end
+
+				gs 'stat'
+				banditboggle = RAND(0,5)
+				if banditboggle <= 1:
+					if pcs_vag < 15:
+						minut += 10
+						gs 'arousal_funcs', 'stretch', 'vaginal', 1
+						vgape = 1
+						pcs_horny -= RAND(10,20)
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'labia', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 15 and pcs_vag < 25:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 1
+						gs 'boyStat', 'A230'
+						gs 'stat'
+						if pcs_horny >= 100:
+							minut += 10
+
+							pcs_mood = 100
+							gs 'stat'
+
+							sexvolume = rand(20,500)
+							gs 'cum_manage'
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+							sexvolume = rand(20,150)
+							gs 'cum_manage'
+							gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 25 and pcs_vag < 35:
+						gs 'boyStat', 'A230'
+						sexvolume = rand(20,590)
+						gs 'cum_manage'
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 35:
+						gs 'boyStat', 'A230'
+						sexvolume = rand(20,590)
+						gs 'cum_manage'
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						else
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+
+					if pcs_vag < 15:
+						minut += 10
+						gs 'arousal_funcs', 'stretch', 'vaginal', 1
+						if vgape < 3: vgape += 1
+						pcs_horny -= RAND(10,20)
+						gs 'stat'
+
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 15 and pcs_vag < 25:
+						gs 'arousal_funcs', 'stretch', 'vaginal', 1
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'vagina', 'A230', 0, '', '', rand(20,50)
+						gs 'stat'
+
+						gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 25 and pcs_vag < 35:
+						gs 'boyStat', 'A230'
+						sexvolume = rand(20,300)
+						gs 'cum_manage'
+						gs 'stat'
+
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_vag >= 35:
+						gs 'boyStat', 'A230'
+						sexvolume = rand(20,300)
+						gs 'cum_manage'
+						gs 'stat'
+
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+
+			if rand(1,6) = 1:
+				cla
+				'"Ok, Betsi, I want to join!"'
+				act 'Pleasure Vania too': gt 'mod_public_WC_rab_Mayster6', 'vd'
+			end
+			if rand(1,4) = 1:
+				cla
+				'"Ok, Betsi, Hren wants to join!"'
+				act 'Pleasure Hren too': gt 'mod_public_WC_rab_Mayster6', 'dh'
+			end
+		else
+			npc_QW['A230'] += 1
+			npc_horny['A230'] = 0
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood/2
+			DogAnal+=1
+			gs 'stat'
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/ass/ass.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/ass/assv'+rand(1,2)+'.mp4"></video></center>'
+			end
+
+			gs 'arousal', 'anal', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'pain', 2, 'asshole', 'stretch'
+			gs 'stat'
+
+			act 'Let the dog knot my ass':
+				*clr & cla
+				if alko < 6 and zoo < 20: pcs_mood = pcs_mood/2
+				gs 'stat'
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/ass/kv.mp4"></video></center>'
+				$orgasm_or = 'yes'
+				gs 'arousal', 'anal', 15, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'pain', 'asshole', 'stretch'
+				gs 'stat'
+				banditboggle = RAND(0,5)
+				if banditboggle <= 4:
+					if pcs_ass < 15:
+						gs 'arousal_funcs', 'stretch', 'anal', 4
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_ass < 25:
+						gs 'arousal_funcs', 'stretch', 'anal', 3
+						agape = 2
+						pcs_horny -= RAND(15,30)
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_ass < 35:
+						gs 'arousal_funcs', 'stretch', 'anal', 2
+						agape = 1
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							ztemp = rand(4,4)
+							'"Good, Betsi."'
+							'"The lesson is end."'
+							pcs_mood += rand(0,20)
+							gs 'stat'
+
+							npc_QW['A230'] += rand(2,4)
+
+							'"Betsi sit here…"'
+							act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+							exit
+						else
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							ztemp = rand(4,4)
+							'"Good, Betsi."'
+							'"The lesson is end."'
+							pcs_mood += rand(0,20)
+							gs 'stat'
+
+							npc_QW['A230'] += rand(2,4)
+
+							'"Betsi sit here…"'
+							act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+							exit
+						end
+					else
+
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+							$orgasm_or = 'yes'
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							ztemp = rand(4,4)
+							'"Good, Betsi."'
+							'"The lesson is end."'
+							pcs_mood += rand(0,20)
+							gs 'stat'
+
+							npc_QW['A230'] += rand(2,4)
+
+							'"Betsi sit here…"'
+							act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+							exit
+						else
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							ztemp = rand(4,4)
+							'"Good, Betsi."'
+							'"The lesson is end."'
+							pcs_mood += rand(0,20)
+							gs 'stat'
+
+							npc_QW['A230'] += rand(2,4)
+
+							'"Betsi sit here…"'
+							act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+							exit
+						end
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+				else
+
+					if pcs_ass < 15:
+						gs 'arousal_funcs', 'stretch', 'anal', 5
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_ass < 25:
+						gs 'arousal_funcs', 'stretch', 'anal', 5
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					elseif pcs_ass < 35:
+						gs 'arousal_funcs', 'stretch', 'anal', 4
+						agape = 2
+						pcs_horny -= RAND(40,60)
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					else
+						gs 'arousal_funcs', 'stretch', 'anal', 3
+						agape = 1
+						gs 'boyStat', 'A230'
+						gs 'cum_call', 'anus', 'A230', 0, '', '', rand(5,50)
+						gs 'stat'
+						gs 'arousal', 'anal', 5, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+				end
+			end
+
+			act 'Prevent':
+				*clr & cla
+				minut += 2
+				if alko < 6 and zoo < 20: pcs_mood = pcs_mood/2
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/ass/ass.jpg"></center>'
+				if pcs_ass < 15:
+
+					agape = 2
+					pcs_horny -= RAND(15,30)
+					gs 'boyStat', 'A230'
+					gs 'cum_call', 'butt', 'A230', 0, '', '', rand(20,590)
+					gs 'arousal', 'anal', 10, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					ztemp = rand(4,4)
+					'"Good, Betsi."'
+					'"The lesson is end."'
+					pcs_mood += rand(0,20)
+					gs 'stat'
+
+					npc_QW['A230'] += rand(2,4)
+
+					'"Betsi sit here…"'
+					act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+					exit
+				elseif pcs_ass < 25:
+
+					gs 'boyStat', 'A230'
+					gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+
+				elseif pcs_ass < 35:
+					gs 'boyStat', 'A230'
+					gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+				else
+					gs 'boyStat', 'A230'
+					gs 'cum_call', 'anus', 'A230', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						ztemp = rand(4,4)
+						'"Good, Betsi."'
+						'"The lesson is end."'
+						pcs_mood += rand(0,20)
+						gs 'stat'
+
+						npc_QW['A230'] += rand(2,4)
+
+						'"Betsi sit here…"'
+						act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+
+						exit
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'Razvratnik_setup':
+	npctemp = 230
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Razvratnik'
+	$npc_nickname['A<<npctemp>>'] = 'Razvratnik'
+	$npc_lastname['A<<npctemp>>'] = 'The Dog'
+	$npc_usedname['A<<npctemp>>'] = 'Razvratnik'
+	$npc_notes['A<<npctemp>>'] = 'Vania''s dog.'
+	npc_cyc['A<<npctemp>>'] = -1
+	npc_fert['A<<npctemp>>'] = -1
+	$npc_firstpart['A<<npctemp>>'] = 'U'
+	$npc_lastpart['A<<npctemp>>'] = 'U'
+	$npc_kidpater['A<<npctemp>>'] = 'N'
+	npc_spermpot['A<<npctemp>>'] = -1
+	npc_vag['A<<npctemp>>'] = -1
+	npc_hymen['A<<npctemp>>'] = -1
+	npc_nips['A<<npctemp>>'] = 1
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_thdick['A<<npctemp>>'] = 'knotted'
+	npc_dick['A<<npctemp>>'] = 0
+end
+
+if $ARGS[0] = 'hren_setup':
+	npctemp = 231
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Hren'
+	$npc_nickname['A<<npctemp>>'] = 'Hren'
+	$npc_lastname['A<<npctemp>>'] = 'The Hren'
+	$npc_usedname['A<<npctemp>>'] = 'Hren'
+	$npc_notes['A<<npctemp>>'] = 'Vania''s horse.'
+	npc_cyc['A<<npctemp>>'] = -1
+	npc_fert['A<<npctemp>>'] = -1
+	$npc_firstpart['A<<npctemp>>'] = 'U'
+	$npc_lastpart['A<<npctemp>>'] = 'U'
+	$npc_kidpater['A<<npctemp>>'] = 'N'
+	npc_spermpot['A<<npctemp>>'] = -1
+	npc_vag['A<<npctemp>>'] = -1
+	npc_hymen['A<<npctemp>>'] = -1
+	npc_nips['A<<npctemp>>'] = 1
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_thdick['A<<npctemp>>'] = 'knotted'
+	npc_dick['A<<npctemp>>'] = 0
+end
+
+if $ARGS[0] = 'dh':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	npc_QW['A230'] += 1
+	npc_QW['A231'] += 1
+
+	'<i>I am the beast whore!!!</i>'
+
+	gs 'boyStat', 'A231'
+	gs 'arousal', 'vaginal', 8, 'sub', 'beast'
+	gs 'stat'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 4
+	stat['vaginal'] += 1
+	gs 'stat'
+
+	gs 'boyStat', 'A230'
+	gs 'sweat', 'add', 5
+	HVag+=1
+	DogBJ+=1
+	gs 'arousal', 'bj', 8, 'sub', 'beast'
+	gs 'stat'
+
+
+	'I feel how the dongs becomes hot as a fire and fill me up from all sides!'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/train/dh/d_h ('+rand(1,2)+').mp4"></video></center>'
+
+	gs 'boyStat', 'A231'
+	npc_horny['A231'] = 0
+	if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+	HVag+=1
+
+	if HVag <= 9:
+		temp = 9 - HVag
+		gs 'pain', rand(temp,9),'vaginal', 'pierce'
+	else
+		gs 'pain', rand(1,4),'vaginal', 'pierce'
+	end
+
+	pcs_stam -= 40
+
+	gs 'stat'
+	gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+	gs 'stat'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 4
+	gs 'boyStat', 'A231'
+	gs 'cum_call', 'vagina', 'A231', 0, '', '', rand(100,250)
+	gs 'stat'
+	gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+	gs 'arousal', 'end'
+	gs 'stat'
+
+	gs 'boyStat', 'A230'
+	gs 'cum_call', 'mouth', 'A230', 0, '', '', rand(20,50)
+	gs 'stat'
+	gs 'arousal', 'bj', 15, 'sub', 'beast'
+	gs 'arousal', 'end'
+	gs 'stat'
+	ztemp = rand(1,2)
+
+	'"Fantastic show, Betsi!"'
+
+	pcs_mood += rand(0,20)
+	gs 'stat'
+
+	npc_QW['A230'] += rand(2,4)
+
+	'"sit here…"'
+	vurok += 1
+	act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+end
+
+if $ARGS[0] = 'vh':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	npc_QW['A231'] += 1
+
+	'Hren'' and Vania'' dicks fuck me in the same rhythm'
+
+	gs 'sweat', 'add', 10
+	gs 'stat'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 4
+
+	stat['vaginal'] += 1
+	HVag+=1
+
+
+	gs 'stat'
+
+	gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+	gs 'arousal', 'end'
+	gs 'stat'
+
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/man/manbj.mp4"></video></center>'
+
+	act 'continue':
+		*clr & cla
+		$orgasm_or = 'yes'
+		gs 'stat'
+		'I loose my mind in orgasm becaus of the RHYTHM!!'
+
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+		stat['swallow'] += 1
+		spafinloc = 12
+		sparrvol = 20
+		cumarrcpt = 20
+		gs 'cum_call', 'mouth'
+		gs 'stat'
+
+		temp = rand (1,2)
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/assv.mp4"></video></center>'
+
+		npc_horny['A231'] = 0
+		if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+
+
+		if HVag <= 9:
+			temp = 9 - HVag
+			gs 'pain', rand(temp,9),'vaginal', 'pierce'
+		else
+			gs 'pain', rand(1,4),'vaginal', 'pierce'
+		end
+
+		pcs_stam -= 40
+
+		gs 'stat'
+		gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+		gs 'boyStat', 'A231'
+		gs 'cum_call', 'vagina', 'A231', 0, '', '', rand(100,250)
+		gs 'stat'
+		gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		pcs_mood = 100
+		gs 'stat'
+
+		'"Betsi, very good lesson"'
+
+		ztemp = rand(1,2)
+		pcs_mood += rand(0,20)
+		gs 'stat'
+
+		npc_QW['A231'] += rand(2,4)
+
+		'"Betsi sit here…"'
+		act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+	end
+end
+
+if $ARGS[0] = 'vd':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	sexpartkno = 1
+	npc_QW['A230'] += 1
+
+	'Razvratnik'' and Vania'' dicks fuck me in the same rhythm'
+
+	gs 'sweat', 'add', 10
+	gs 'stat'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+	stat['vaginal'] += 1
+	DogVag+=1
+
+
+	gs 'stat'
+
+	gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+	gs 'arousal', 'end'
+	gs 'stat'
+
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/man/manbj.mp4"></video></center>'
+
+	act 'continue':
+		*clr & cla
+		$orgasm_or = 'yes'
+		gs 'stat'
+		'I loose my mind in orgasm becaus of the RHYTHM!!'
+
+		temp = rand(1,10)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+		stat['swallow'] += 1
+		spafinloc = 12
+		sparrvol = 20
+		cumarrcpt = 20
+		gs 'cum_call', 'mouth'
+		gs 'stat'
+
+		temp = rand (1,2)
+
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+		end
+
+
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+		gs 'boyStat', 'A220'
+		gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+		gs 'stat'
+
+
+		pcs_mood = 100
+		gs 'stat'
+
+
+		gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		'"Betsi, very good lesson"'
+
+		ztemp = rand(1,2)
+		pcs_mood += rand(0,20)
+		gs 'stat'
+
+		npc_QW['A230'] += rand(2,4)
+
+		'"Betsi sit here…"'
+		act 'sit and wait': gt 'mod_public_WC_rab_Mayster', 'end'
+	end
+end
+
+--- mod_public_WC_rab_Mayster6 ---------------------------------
+

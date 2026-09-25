@@ -1,0 +1,1613 @@
+# mod_public_WC_street_events
+if $ARGS[0] = 'rape':
+	*clr & cla
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/0 grab ('+rand(1,2)+').jpg"></center>'
+	if phwalk = 1:
+		'As I walk down the street, a man jumps out of the shadows and suddenly grabs me. As I am caught off-guard, he manages to breake me. I try to scream but his strong hand covers my mouth. I attempt to get free, but his other arm firmly wraps around my waist.'
+	else
+		'As I stand in the corner of the street, a man jumps out of the shadows and suddenly grabs me. As I am caught off-guard, he manages to breake me. I try to scream but his strong hand covers my mouth. I attempt to get free, but his other arm firmly wraps around my waist.'
+	end
+
+	gs 'npcgeneratec', 0, 'Rapist', rand(18,45)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	act 'Attempt to escape':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/1 start/1 ('+rand(1,1)+').jpg"></center>'
+		if pcs_run < 10:
+			peshimraperand = rand(0, 11)
+		elseif pcs_run < 30:
+			peshimraperand = rand(0, 20)
+		elseif pcs_run < 50:
+			peshimraperand = rand(0, 30)
+		elseif pcs_run < 70:
+			peshimraperand = rand(0, 40)
+		elseif pcs_run < 90:
+			peshimraperand = rand(0, 50)
+		elseif pcs_run < 110:
+			peshimraperand = rand(0, 60)
+		elseif pcs_run < 130:
+			peshimraperand = rand(0, 70)
+		elseif pcs_run < 150:
+			peshimraperand = rand(0, 80)
+		elseif pcs_run < 170:
+			peshimraperand = rand(0, 90)
+		else
+			peshimraperand = 11
+		end
+
+		if peshimraperand <= 10:
+			cla
+			'I try to run away, but I am not quick enough. He places a hand over my mouth so I can''t scream and drags me deeper to the alleyway'
+			act 'Struggle': gt 'mod_public_WC_street_events', 'rape2'
+		else
+			cla
+			'I manage to lose him and get to a safer well lit area.'
+			act 'Continue':gt $loc, $loc_arg
+		end
+	end
+	if succubusQW = 5:
+		!!Used if this was a random encounter instead of active hunting
+		act 'Lure him in and feed (this can take a lot of time)':
+			cla
+			'You wait until he has dragged you into the alley before turning on him.'
+			act 'Continue': gt 'succubus', 'RapistFight'
+		end
+	end
+	act 'Struggle': gt 'mod_public_WC_street_events', 'rape2'
+end
+
+if $ARGS[0] = 'rape2':
+	*clr & cla
+
+	if phassonly = 1:
+		phassonly = 0
+		'He removes the duck tape from my vagina'
+		gs 'pain', rand(0,2), 'clitoris', 'pull'
+		gs 'stat'
+	end
+
+	'He quicly tied me'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/1 start/2 ('+rand(1,1)+').jpg"></center>'
+	minut +=3
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'And tied my hands to something'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/1 start/2 ('+rand(2,2)+').jpg"></center>'
+
+		if rand(1,4) = 1:
+			phdtape = 1
+			'he ducktaped my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/1 start/4 ducktape ('+rand(1,1)+').jpg"></center>'
+		end
+		act 'continue':
+			*clr & cla
+			'He is cheking my holes'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/1 start/3 ('+rand(1,1)+').jpg"></center>'
+			gs 'arousal', 'vaginal_finger', rand(5,5), 'sub', 'rape', 'humiliation'
+			gs 'stat'
+			gs 'arousal', 'anal_finger', rand(5,5), 'sub', 'rape', 'humiliation'
+			gs 'stat'
+
+			act 'continue':
+				!*clr & cla
+				if phdtape = 1:
+					gt 'mod_public_WC_street_events', '5fuck'
+				else
+					gt 'mod_public_WC_street_events', '4bj'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '4bj':
+	*clr & cla
+	'As he played enough with my holes, he rotates me.'
+	'his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock just infront of me'
+	'RAPIST: "SUCK!"'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/4 bj/1.jpg"></center>'
+	phi = 1
+	phthrowup = 0
+
+
+	act 'suck':
+		*clr
+		if stat['bj'] < 100: phthrowup += 1
+		if phi = 1:
+			'As I oppened my mouth he push his cock to the end with all the strength he has'
+		else
+			'He is fucking my face'
+			if phthrowup >= 4:
+				'I started to throw up'
+				'He DOES NOT CARE AT ALL!!!'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/holestrain/m/deep/sex/ryg.mp4"></video></center>'
+				!! 'I throw up even few times more.'
+				pcs_mood -= rand(30,70)
+				stat['bj'] += 1
+			end
+		end
+		phi += 1
+
+		if stat['bj'] < 100:
+			'<i>He goes very deep… to deep… I am on the edge to puke</i>'
+		end
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/4 bj/2 ('+rand(1,4)+').jpg"></center>'
+		gs 'arousal', 'bj', rand(3,5), 'sub', 'rape', 'humiliation', 'rough'
+		gs 'stat'
+
+		if phi >= rand(3,5):
+			cla
+			phi = 1
+			act 'continue':
+				*clr & cla
+				gt 'mod_public_WC_street_events', '5fuck'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '5fuck':
+	*clr & cla
+	if phdtape = 1:
+		'As he played enough with my holes he penetrates my ass'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 d.jpg"></center>'
+		gs 'arousal', 'anal', rand(5,10), 'sub', 'rape', 'humiliation', 'rough'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'<i><b>"MMMMMRRMMPH-!!!"</b></i>'
+			'Your eyes go wide in pain as your ass is impaled by your attacker''s cock. You try to scream but the hand clamped firmly over your mouth prevents anything more than a muffled groan. Your muscles go taut and your asshole feels like it''s on fire as your attacker thrusts into you again and again and again with great self indulgence. You try to crawl away, but his weight and your position leaves your efforts futile. All you can do is endure, tears streaming down your face, your anus being violently stretched out by a stranger.'
+			act'The end…':
+				cla & *clr
+				gs 'cum_call','anus', 'rapist'
+				gs'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="images/locations/shared/street/sex/rape_cum.mp4"></video></center>'
+				'After what feels like an eternity, the man thrusts into you several times, much harder than before before completely burying his cock inside you.'
+				'"Mmmmph-!" You feel him pulsing inside you and you groan uselessly into his hand. The stranger climbs off of you and his cock withdraws from your ass, eliciting a whimper from your lips. With that final act, you''re left quivering on the ground, completely spent, not even enough strength left to belatedly cry out for help. You hear the clinking of metal behind you again and you feel something trickle out of your ruined asshole.'
+				'"You''re a real buttslut, girlie. Maybe we can have another ''date'' like this again some time." Even though you can''t see his face, you can hear the smile in his voice. Moments later, you hear footsteps sound in the alley, slowly fading away until you''re left in silence.'
+				act'Cry':
+					cla & *clr
+					gs'stat'
+					minut += 3
+					'<center><video autoplay loop <<$set_imgh>> src="images/locations/shared/street/sex/rape_after1.mp4"></video></center>'
+					if $pantyworntype ! 'none':
+						'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the wet spot you feel soaking through the back of your panties.'
+					else
+						if PCloSkirt > 0:
+							'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the thick liquid you feel leaking from between your cheeks and dribbling down your leg.'
+						else
+							'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the wet spot you feel spreading through the crack of your pants.'
+						end
+					end
+					act'Go to the police station':
+						cla & *clr
+						'<center><img <<$set_imgh>> src="images/locations/shared/street/alleynight.jpg"></center>'
+						if $loc = 'pav_commercial' or $loc = 'pav_residential':
+							'You decide you need to file a report, in hopes that someone will catch the monster that did this to you. Slowly limping your way towards the train depot, you make your way to the police station that resides next to it.'
+						else
+							'You decide you need to file a report, in hopes that someone will catch the monster that did this to you. Slowly limping your way towards the city center, you make your way to the police station that resides there.'
+						end
+						act'Continue':gt'police_station','rape_report'
+					end
+
+					act'Don''t go':
+						cla & *clr
+						killvar 'phdtape'
+						'<center><img <<$set_imgh>> src="images/locations/shared/street/alleynight.jpg"></center>'
+						'For a brief moment you consider telling the police what happened, but emotion wells up inside you and you''re immediately filled with thoughts of disgust and shame. It doesn''t make sense. It''s not like you wanted this to happen. But still. The idea of sharing what happened to you to the police… You already feel filthy from what happened tonight. You don''t want to feel even worse. The only thing you want is to go home.'
+						*nl
+						'You slowly limp away, clutching your arms around your belly, trying your best to leave the events of tonight in the alley behind you…'
+						act'Leave':gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	else
+		'At last he stoped face fucking me'
+
+		if rand(1,3) = 1:
+			'He pushed me down and penetrates my pussy'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 behind ('+rand(1,4)+').jpg"></center>'
+			phsex = 1
+		elseif rand (1,2) = 1:
+			'He pushed me down and penetrates my pussy'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 missionary ('+rand(1,4)+').jpg"></center>'
+			phsex = 2
+		else
+			'He lies down and inpale me on his dick'
+			'RAPIST: "RIDE if you want to live!"'
+			'I am riding him'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 cowgirl ('+rand(1,2)+').jpg"></center>'
+			phsex = 3
+		end
+		gs 'arousal', 'vaginal', rand(5,10), 'sub', 'rape', 'humiliation', 'rough'
+		gs 'stat'
+
+
+		if rand(1,3) ! 1 or (hour > 4 or hour < 22):
+			act'The end…':
+				cla & *clr
+				gs 'cum_call','', 'rapist'
+				gs'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="images/locations/shared/street/sex/rape_cum.mp4"></video></center>'
+				'After what feels like an eternity, the man thrusts into you several times, much harder than before before completely burying his cock inside you.'
+				'"Mmmmph-!" You feel him pulsing inside you and you groan uselessly into his hand. The stranger climbs off of you and his cock withdraws from inside you, eliciting a whimper from your lips. With that final act, you''re left quivering on the ground, completely spent, not even enough strength left to belatedly cry out for help. You hear the clinking of metal behind you again and you feel something leak from your pussy.'
+				'"You''re a pretty good fuck girlie. Maybe we can have another ''date'' like this again some time." Even though you can''t see his face, you can hear the smile in his voice. Moments later, you hear footsteps sound in the alley, slowly fading away until you''re left in silence.'
+				act'Cry':
+					cla & *clr
+					gs'stat'
+					minut += rand(3,10)
+					'<center><video autoplay loop <<$set_imgh>> src="images/locations/shared/street/sex/rape_after1.mp4"></video></center>'
+					if $pantyworntype ! 'none':
+						'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the wet spot you feel soaking through your panties.'
+					else
+						if PCloSkirt > 0:
+							'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the liquid you feel dribbling down your leg.'
+						else
+							'Once you realize you''re alone, your emotions completely break through. Sobs rack your body and you writhe on the ground, shuddering as you grit your teeth. Slowly… very slowly… you pull yourself together, tugging your clothes back into place and stumbling to your feet, trying not to think about the wet spot you feel spreading through your pants.'
+						end
+					end
+					act'Go to the police station':
+						minut += rand(30,60)
+						gs'stat'
+						cla & *clr
+						'<center><img <<$set_imgh>> src="images/locations/shared/street/alleynight.jpg"></center>'
+						if $loc = 'pav_commercial' or $loc = 'pav_residential':
+							'You decide you need to file a report, in hopes that someone will catch the monster that did this to you. You slowly limp your way towards the train depot and the police station that resides next to it.'
+						else
+							'You decide you need to file a report, in hopes that someone will catch the monster that did this to you. You slowly limp your way towards the city center and the police station that resides in it.'
+						end
+						act'Continue':gt'police_station','rape_report'
+					end
+
+					act'Don''t go':
+						minut += 2
+						gs'stat'
+						cla & *clr
+						'<center><img <<$set_imgh>> src="images/locations/shared/street/alleynight.jpg"></center>'
+						'For a brief moment you consider telling the police what happened, but emotion wells up inside you and you''re immediately filled with thoughts of disgust and shame. It doesn''t make sense. It''s not like you wanted this to happen. But still. The idea of sharing what happened to you, even to the police… You already feel filthy from what happened tonight. You don''t want to feel even worse. The only thing you want is to go home.'
+						*nl
+						'You slowly limp away, clutching your arms around your belly, trying your best to leave the events of tonight in the alley behind you…'
+						act'Leave':gt $loc, $loc_arg
+					end
+				end
+			end
+		else
+			act 'Continue':
+				cla & *clr
+				'I am silently waiting this nightmare ends'
+				if phsex = 1:
+					!! 'He pushed me down and penetrates my pussy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 behind ('+rand(1,4)+').jpg"></center>'
+
+				elseif phsex = 2:
+					!! 'He pushed me down and penetrates my pussy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 missionary ('+rand(1,4)+').jpg"></center>'
+
+				else
+					!! 'He lies down and inpale me on his dick'
+					!! 'RAPIST: "RIDE if you want to live!"'
+					!! 'I am riding him'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/5 fuck/5 cowgirl ('+rand(1,2)+').jpg"></center>'
+				end
+
+				'RAPIST: "It is boaring… I have an idea"'
+				'He pushed me on the ground'
+				'He tied me and check the knots.. and go somewhere'
+				gs 'arousal', 'vaginal', rand(5,10), 'sub', 'rape', 'humiliation', 'rough'
+				gs 'stat'
+
+				act 'wait':
+					*clr & cla
+					minut += 5
+					gs 'stat'
+					'He comes back'
+					'RAPIST: "The street is empty - hohoho"'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/'+rand(6,7)+'.jpg"></center>'
+
+					act 'continue':
+						*clr & cla
+						'He draged me to the street and throw me to the lamppost'
+						'RAPITS: "Suck!"'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/8 ('+rand(1,1)+').jpg"></center>'
+
+						act 'suck':
+							*clr & cla
+							gs 'arousal', 'bj', rand(5,10), 'sub', 'rape', 'humiliation', 'rough'
+							gs 'stat'
+							'i am sucking his dick to make him cum as best as I can'
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/8 ('+rand(1,1)+').jpg"></center>'
+							'Several minutes later I feel his cock pulsing and then feel the hot jet of sperm shooting into my mouth. Several spurts of seman fills my mouth up, I immediately swallowed it and continued to suck his dick until I feel it start to go soft.'
+
+							'RAPITS: "Good whore. And only few saw us"'
+							'RAPIST: "But this is not the end. Let''s make social experiment what that "few" do with you?"'
+							fame['pav_prostitute'] += 3
+							gs 'cum_call', 'mouth_swallow'
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+
+							act 'WHAT?':
+								*clr & cla
+
+								'He pushed me to the lamppost'
+								'he tied my hands to it'
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/9.jpg"></center>'
+
+								'And check, if I can untied myself'
+
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/10.jpg"></center>'
+
+								if $clothingworntype ! 'nude':
+									'he undress me'
+									'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/11.jpg"></center>'
+									gs 'clothing', 'strip'
+									gs 'underwear', 'remove'
+									gs 'stat'
+								end
+
+								'He just go away…'
+
+								act 'wait':
+									timebind = rand(10,20)
+									rapesearch = 0
+
+									gt 'mod_public_WC_street_events', 'rapecycle'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'rapecycle':
+	*clr & cla
+	timebind -= 1
+	rapesearch += 1
+
+	'I am just hanging…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/wait.jpg"></center>'
+	minut += rand(5,10)
+	gs 'stat'
+
+	act 'wait':
+		gt 'mod_public_WC_street_events', 'rapecycle'
+	end
+
+	if timebind <= 0 or hour >= 6:
+		!! help
+		cla
+		'FINALY! Some woman finds me and helps me…'
+
+		act'Leave':gt $loc, $loc_arg
+	elseif rapesearch >= rand(4,6):
+		!! rape
+		*clr & cla
+		temp = rand(1,5)
+		if temp = 1:
+			'Some wasted man decided to use my situation'
+			gs 'npcgeneratec', 0, 'drunk', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+		elseif temp = 2:
+			'Some bum decided to use my situation'
+			gs 'npcgeneratec', 0, 'bum', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+		elseif temp = 3:
+			*clr
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/couple.jpg"></center>'
+			'Some couple see me'
+			'GIRL: "Look, look, it is that whore! she think she is the best, cuz she is so pretty and rich. Rape her!!!"'
+			'The guy was happy to fullfill his girlfriend wish'
+			gs 'npcgeneratec', 0, 'man', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+		elseif temp = 4:
+			'Some young guy decided to use my situation'
+			gs 'npcgeneratec', 0, 'young guy', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+		else
+			'Some old fart decided to use my situation'
+			gs 'npcgeneratec', 0, 'old guy', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+		end
+
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/12 behind ('+rand(1,4)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/rape/8 tied/12 stand ('+rand(1,4)+').jpg"></center>'
+		end
+		gs 'arousal', 'vaginal', rand(10,25), 'sub', 'rape', 'humiliation', 'rough'
+		gs 'stat'
+
+		gs 'cum_call','',$boy
+		gs 'cuminsidereact', $boydesc
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		'He dress up and go away.'
+
+		act 'wait':
+			gt 'mod_public_WC_street_events', 'rapecycle'
+		end
+		rapesearch = 0
+		timebind -= rand(0,2)
+	end
+end
+
+
+
+if $ARGS[0] = 'cop1':
+	*clr & cla
+	killvar 'PH_full_pay'
+	if phclientfunnow >= 300:
+		fame['pav_prostitute'] += 5
+	elseif phclientfunnow >= 200:
+		fame['pav_prostitute'] += 3
+	elseif phclientfunnow > 150:
+		fame['pav_prostitute'] += 1
+	end
+	gs 'stat'
+	killvar 'carclient'
+	phclient_mood = 0
+	killvar 'phbjlick'
+	phsex = 0
+	phspeed = 0
+	phclientforce = 0
+	phclientfunnow = 100
+
+	'Suddenly the cops car approaches'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/1.mp4"></video></center>'
+
+	act 'run to the cops car, to win a time for clients run':
+		*clr & cla
+		fame['pav_prostitute'] += 3
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/2 hide client.mp4"></video></center>'
+		'Cops was to interested in you to run the client'
+
+		gs 'mod_public_WC_street_events', 'cop11'
+	end
+
+	act 'wait':
+		cla
+		minut += 5
+		gs 'stat'
+		'Cops separated you from client for questioning'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/1.jpg"></center>'
+
+		gs 'mod_public_WC_street_events', 'cop11'
+	end
+end
+
+if $ARGS[0] = 'cop11':
+	'COP: "What do we get here?! A nice whore. Do you have our agree to work here? - I DON''t think so."'
+	'COP: "Give us 5000"'
+
+
+	act 'pay':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/1.jpg"></center>'
+
+		if money <= 5000:
+			'ME: "IT is all I have!!!"'
+			if money >= rand(1000,4000):
+				'COP: "Okey, okey. See you."'
+
+				act'Leave':gt $loc, $loc_arg
+			else
+				'COP: "Ow, you don''t have money, well I have cum in my balls. As a good worker, you need to mine it."'
+
+				act 'serve him': gt 'mod_public_WC_street_events', 'cop12'
+			end
+			money = 0
+		else
+			''
+			money -= 5000
+
+			'COP: "See you."'
+
+			act'Leave':gt $loc, $loc_arg
+		end
+		minut += 10
+		gs 'stat'
+	end
+
+	act 'Bribe him with service':
+		cla
+
+		'COP: "Hmm, fine, let''s do that"'
+
+		act 'serve him': gt 'mod_public_WC_street_events', 'cop12'
+	end
+end
+
+if $ARGS[0] = 'cop12':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'a cop', rand(18,45)
+	gs 'boyStat', $npclastgenerated
+
+	if rand(1,2) = 1:
+		!! bj
+		'COP: "Suck me"'
+		'I am sucking him'
+
+		if rand(1,3) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/3 bj ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/3 bj ('+rand(1,2)+').mp4"></video></center>'
+		end
+
+
+		act 'continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 face/face (2).mp4"></video></center>'
+			'He loads on my face'
+			'COP: "Now, you even cutier."'
+
+			gs 'cum_call','hair',$boy
+			gs 'stat'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+
+			gs 'arousal', 'bj', 10, 'rough', 'sub', 'prostitute'
+			!! minut -= 10
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'Walk away': gt $loc, $loc_arg
+		end
+	else
+		!! sex
+		if phassonly = 1:
+			phassonly = 0
+			'He removes the duck tape from my vagina'
+			gs 'pain', rand(0,2), 'clitoris', 'pull'
+			gs 'stat'
+		end
+
+		protect = 1
+		'COP: "Bend over"'
+		'He is fucking me from behind'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/4 sex ('+rand(1,2)+').mp4"></video></center>'
+
+
+		act 'continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/event/cop/1 while_serve/4 sex ('+rand(1,2)+').mp4"></video></center>'
+			'COP: "Alright."'
+			'He pulls the used condom off with a rubbery snap before tying it up neatly.'
+			'COP: "You can go now, whore." - He snickers as he watches I pull my panties back up and re-adjust my clothes. Sore and humiliated, I stagger back to the streets.'
+			!! gs 'arousal', 'foreplay', 10, 'prostitution', 'rough', 'sub'
+			gs 'arousal', 'vaginal', 10, 'rough', 'sub', 'prostitute'
+			!! minut -= 10
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'Walk away': gt $loc, $loc_arg
+		end
+	end
+end
+
+
+if $ARGS[0] = 'cop2':
+	*clr & cla
+	if phwalk = 1:
+		'As I walk down the street, a cop car stops near me. The cops approached me.'
+	else
+		'As I wait, a cop car stops near me. The cops approached me.'
+	end
+	'COP: "What do we get here?! A nice whore. Do you have our agree to work here? - I DON''t think so."'
+	'COP: "Give us 5000"'
+
+	phi = 1
+	act 'I am not a whore':
+		phi += 1
+		'COP: "You want to be beaten up, whore? No JOCKES WITH ME!"'
+
+		if phi >= rand(2,5):
+			'He slaps me'
+			gs 'pain', rand(3,5), 'cheeks', 'slap'
+			gs 'stat'
+		end
+	end
+
+	gs 'npcgeneratec', 0, 'a cop', rand(18,45)
+	gs 'boyStat', $npclastgenerated
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/7.jpg"></center>'
+
+	act 'pay':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/1.jpg"></center>'
+
+		if money <= 5000:
+			'ME: "IT is all I have!!!"'
+			if money >= rand(1000,4000):
+				'COP: "Okey, okey. See you."'
+
+				act'Leave':gt $loc, $loc_arg
+			else
+				'COP: "Ow, you don''t have money, well I have cum in my balls. As a good worker, you need to mine it."'
+
+				act 'serve him': gt 'mod_public_WC_street_events', 'cop21'
+			end
+			money = 0
+		else
+			''
+			money -= 5000
+
+			'COP: "See you."'
+
+			act'Leave':gt $loc, $loc_arg
+		end
+		minut += 10
+		gs 'stat'
+	end
+
+	act 'Bribe him with service':
+		cla
+
+		'COP: "Hmm, fine, let''s do that"'
+
+		act 'serve him': gt 'mod_public_WC_street_events', 'cop21'
+	end
+end
+
+if $ARGS[0] = 'cop21':
+	*clr & cla
+	'Cop pushed me to the ground and order to jerk him'
+	gs 'arousal', 'hj', 5, 'prostitution'
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/3 ('+rand(1,4)+').jpg"></center>'
+
+	act 'continue':
+		*clr & cla
+		'he guide me and lie me on his car'
+		'He took the condom and put it on his dick'
+		if phassonly = 1:
+			phassonly = 0
+			'He removes the duck tape from my vagina'
+			gs 'pain', rand(0,2), 'clitoris', 'pull'
+			gs 'stat'
+		end
+
+		protect = 1
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/4.jpg"></center>'
+
+		act 'continue':
+			*clr & cla
+			'In one violent thrust, he''s buried deep inside my pussy, stretching my walls and filling my completely. I wince and grit my teeth as he fucks me fast and hard.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/5.jpg"></center>'
+
+			gs 'arousal', 'vaginal', 15, 'rough', 'sub', 'prostitute'
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He fucks me fast and hard. His labored breathing picks up, and with a grunt he pushed me to the ground. He strips the condom from his dick and blows a lot of cum all over my face'
+				'COP: "Now, you even cutier."'
+
+				gs 'cum_call','hair',$boy
+				gs 'stat'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/6.jpg"></center>'
+
+				act 'Walk away': gt $loc, $loc_arg
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'pid2':
+	*clr & cla
+	!! pid 2+
+	!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/guy ('+rand(1,1)+').jpg"></center>'
+
+	phspeed = 0
+
+	if protect = 1:
+		'Client remove the condom'
+	end
+
+	if phsex = 1 or phsex = 101:
+		'The guy pull down his pants and come closer.'
+		'He is jerking to be hard for me :-) . What a good man.'
+		'I start to suck the client'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/1 bj/0 ('+rand(1,1)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,10)
+		gs 'stat'
+
+		act 'grab the second dick': gt 'mod_public_WC_street_events', 'pid2bb'
+	elseif phsex = 2 or phsex = 102:
+		'The guy pull down his pants and come closer.'
+		'He is jerking to be hard for me :-) . What a good man.'
+		'I keep suck the client'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/1 bj/0 ('+rand(1,1)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,10)
+		gs 'stat'
+
+		act 'grab the second dick': gt 'mod_public_WC_street_events', 'pid2bb'
+	elseif phsex = 3 or phsex = 103:
+		'The guy pull down his pants and come closer.'
+		'he push his cock to my face'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/2 sr/1 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'vaginal', rand(5,10)
+		gs 'stat'
+
+		act 'blow the second dick': gt 'mod_public_WC_street_events', 'pid2sr'
+	elseif phsex = 4 or phsex = 104:
+		'The guy pull down his pants and come closer.'
+		'he push his cock to my face'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/2 sr/1 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'anal', rand(5,10)
+		gs 'stat'
+
+		act 'blow the second dick': gt 'mod_public_WC_street_events', 'pid2sr'
+	end
+end
+
+if $ARGS[0] = 'pid2bb':
+	*clr & cla
+	'I am sucking both dicks one by one'
+
+	if rand(1,3) = 1:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/1 bj/1 ('+rand(1,1)+').mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/1 bj/1 ('+rand(1,2)+').jpg"></center>'
+	end
+	gs 'arousal', 'bj', rand(5,10)
+	gs 'stat'
+	minut -= 10
+	gs 'arousal', 'hj', rand(10,10)
+	gs 'stat'
+
+	phspeed += 1
+
+
+	if phspeed >= rand(2,4):
+		if phsex = 1 or phsex = 2 or phsex = 101 or phsex = 102:
+			!! theyarecuming
+			gt 'mod_public_WC_street_events', 'pid2cum'
+		else
+			'They are bend me to spit roast'
+			act 'continue':	gt 'mod_public_WC_street_events', 'pid2sr'
+		end
+	else
+		act 'continue': gt 'mod_public_WC_street_events', 'pid2bb'
+	end
+end
+
+if $ARGS[0] = 'pid2sr':
+	*clr & cla
+	if phsex = 3 or phsex = 103:
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/2 sr/1 ('+rand(2,2)+').jpg"></center>'
+		gs 'arousal', 'vaginal', rand(10,15)
+		gs 'stat'
+	elseif phsex = 4 or phsex = 104:
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/2 sr/1 ('+rand(2,2)+').jpg"></center>'
+		gs 'arousal', 'anal', rand(10,15)
+		gs 'stat'
+	end
+	minut -= 10
+	gs 'arousal', 'bj', rand(10,10)
+	gs 'stat'
+
+	'they push me sit between them and preparing to cum'
+
+	act 'continue': gt 'mod_public_WC_street_events', 'pid2cum'
+end
+
+if $ARGS[0] = 'pid2cum':
+	*clr & cla
+	phclientfunnow += 50
+	fame['pav_prostitute'] += 5
+
+	if phsex = 1 or phsex = 2:
+		!! onebyone
+
+		'Client cums on my face'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/cum/1.mp4"></video></center>'
+
+		act 'continue':
+			*clr & cla
+
+			'The jerking his dick aims to me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/cum/2.mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+
+				gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'face', $npclastgenerated, 0
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/cum/3.mp4"></video></center>'
+				'Guy spreys his sperm on me'
+				'The guy dress up his pants and go away'
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'mod_public_WC_street_sex_pidizd', 'cleandick'
+
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_pidizd', 'endservice'
+				end
+			end
+		end
+	else
+		!! both in or on
+		if rand(1,3) = 1:
+			'Client cums on my face'
+			'Guy spreys his sperm on my face too'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/cum/bothcumface.jpg"></center>'
+
+			'The guy dress up his pants and go away'
+
+			gs 'mod_public_WC_street_sex_pidizd', 'cleandick'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_pidizd', 'endservice'
+			end
+		else
+			'Guy one by one load in my mouth'
+			'The guy dress up his pants and go away'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/2/cum/bothcumin.jpg"></center>'
+
+
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'npcgeneratec', 0, 'a random man', rand(18,45)
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'mod_public_WC_street_sex_pidizd', 'swallowORnot'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'pidcop':
+	*clr & cla
+	!! exit the pidizd cop catch me
+	'As I exit the building, The cops approached me.'
+	'they are definitelly are waiting for me'
+
+	'COP: "What do we get here?! A nice whore. Do you have our agree to work here? - I DON''t think so."'
+	'COP: "Give us 5000"'
+
+	phi = 1
+	act 'I am not a whore':
+		phi += 1
+		'COP: "You want to be beaten up whore, whore? No JOCKES WITH ME!"'
+
+		if phi >= rand(2,5):
+			'He slaps me'
+			gs 'pain', rand(3,5), 'cheeks', 'slap'
+			gs 'stat'
+		end
+	end
+
+	gs 'npcgeneratec', 0, 'a cop', rand(18,45)
+	gs 'boyStat', $npclastgenerated
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/7.jpg"></center>'
+
+	act 'pay':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/event/cop/2 walk+wait/1.jpg"></center>'
+
+		if money <= 5000:
+			'ME: "IT is all I have!!!"'
+			if money >= rand(1000,4000):
+				'COP: "Okey, okey. See you."'
+
+				act'Leave':gt $loc, $loc_arg
+			else
+				'COP: "Ow, you don''t have money, well I have cum in my balls. As a good worker, you need to mine it."'
+
+				act 'serve him': gt 'mod_public_WC_street_events', 'cop21'
+			end
+			money = 0
+		else
+			''
+			money -= 5000
+
+			'COP: "See you."'
+
+			act'Leave':gt $loc, $loc_arg
+		end
+		minut += 10
+		gs 'stat'
+	end
+
+	act 'Bribe him with service':
+		cla
+
+		'COP: "Hmm, fine, let''s do that"'
+
+		act 'serve him': gt 'mod_public_WC_street_events', 'cop21'
+	end
+end
+
+
+
+
+if $ARGS[0] = 'car2':
+	gs 'mod_public_WC_street_events_3', 'car2'
+end
+
+if $ARGS[0] = 'thinktopay':
+	cla
+	!! client think to pay or not
+
+	gs 'npcgeneratec', 0, 'a street client', rand(18,55)
+	gs 'boyStat', $npclastgenerated
+
+	if phsex = 1 or phsex = 101:
+		phclientwantprice = 25 * 2 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 2 or phsex = 102:
+		phclientwantprice = 75 * 2 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 3 or phsex = 103:
+		phclientwantprice = 100 * 2 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 4 or phsex = 104:
+		phclientwantprice = 110 * 2 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 100:
+		phclientwantprice = rand(100,200) * 2 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	end
+
+	if pcs_apprnc >= 100 and pcs_apprnc < 120:
+		'"You are partly good looking"'
+		temp = phclientwantprice * 80/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 120 and pcs_apprnc < 140:
+		'"and you are nothing special"'
+		temp = phclientwantprice * 100/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 140 and pcs_apprnc < 160:
+		'"and you are nothing special"'
+		temp = phclientwantprice * rand(100,120)/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 160 and pcs_apprnc < 180:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 180 and pcs_apprnc < 190:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 190 and pcs_apprnc <= 200:
+		'"you are hot as fuck!"'
+		temp = phclientwantprice * 160/100
+		phclientwantprice = temp
+	elseif pcs_apprnc > 200:
+		'"But I never saw such beauty… you are a godess or smth…"'
+		temp = phclientwantprice * 180/100
+		phclientwantprice = temp
+	else
+		'"…and you are not looking good"'
+		temp = phclientwantprice * 60/100
+		phclientwantprice = temp
+	end
+
+	if phtemp3 <= 6:
+		temp = phclientwantprice * rand(30,50)/100
+		phclientwantprice = temp
+	elseif phtemp3 <= 9:
+		temp = phclientwantprice * rand(90,110)/100
+		phclientwantprice = temp
+	else
+		temp = phclientwantprice * rand(100,150)/100
+		phclientwantprice = temp
+	end
+	phclientwantprice4 = temp
+
+	if fame['pav_prostitute'] <= 50:
+		temp = PH_full_pay * 120/100
+	elseif fame['pav_prostitute'] <= 100:
+		temp = PH_full_pay * 100/100
+	elseif fame['pav_prostitute'] <= 150:
+		temp = PH_full_pay * 90/100
+		'"Are you that whore?"'
+	elseif fame['pav_prostitute'] <= 200:
+		temp = PH_full_pay * 80/100
+		'"I think I saw you"'
+	elseif fame['pav_prostitute'] <= 250:
+		temp = PH_full_pay * 70/100
+		'"OMG! It is you, that famos whore!"'
+	else
+		temp = PH_full_pay * 60/100
+		'"OMG! It is you, is it? You are <<$pcs_firstname>> - that famos whore!"'
+	end
+
+	if phclientfunnow <= 100: phclientfunnow = 100
+	if phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100) < phclientwantprice4:
+		'"Hah, I am good, goodbye"'
+		phclient_mood -= 1
+
+		act 'try to bargain':
+			*clr & cla
+			if carclient = 1:
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+				end
+			else
+				if month >= 11 or month <= 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+				end
+			end
+
+
+			act '10% discount':
+				temp = PH_full_pay * 90 / 100
+				PH_full_pay = temp
+				cla
+				gt 'mod_public_WC_street_events', 'bargain'
+
+			end
+
+			act '30% discount':
+				temp = PH_full_pay * 70 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += rand(0,1)
+				gt 'mod_public_WC_street_events', 'bargain'
+
+			end
+
+			act '50% discount':
+				temp = PH_full_pay * 50 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 1
+				gt 'mod_public_WC_street_events', 'bargain'
+
+			end
+
+			act '90% discount':
+				temp = PH_full_pay * 10 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 2
+				gt 'mod_public_WC_street_events', 'bargain'
+
+			end
+		end
+
+		act 'bye':
+			cla
+			gs 'mod_public_WC_street_sex', 'clientaway'
+		end
+	else
+		'"Deal!"'
+		phclient_mood += rand(0,2)
+
+		temp = rand(1,10)
+		if temp <= 2:
+			phclient['condom'] = 1
+		elseif temp <= 7:
+			phclient['condom'] = 2
+		else
+			phclient['condom'] = 3
+		end
+		!! 1,3 - use, ok with it, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['pay'] = 1
+		elseif temp <= 9:
+			phclient['pay'] = 2
+		else
+			phclient['pay'] = 3
+		end
+		!! 1,3 - anywhere, attheend, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['cuminside'] = 1
+		elseif temp <= 8:
+			phclient['cuminside'] = 2
+		else
+			phclient['cuminside'] = 3
+		end
+		!! 1,3 - NOKIDS, whatever, must
+
+		if phsex ! 1:
+			act 'condom only':
+				cla
+				'CLIENT: "No, We want you to have sex with US, not with some rubber"'
+
+				act 'it costs 10% more':
+					cla
+					if rand(1,3) ! 1:
+						'CLIENT: "Okey"'
+						temp = PH_full_pay*110/100
+						PH_full_pay = temp
+
+						phclient_mood -= rand(0,1)
+						gs 'mod_public_WC_street_events', 'moneyfirst'
+						gs 'mod_public_WC_street_events', 'placetalk'
+					else
+						'CLIENT: "Ow, just fuck off"'
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+
+				act 'okey':
+					cla
+					gs 'mod_public_WC_street_events', 'moneyfirst'
+					gs 'mod_public_WC_street_events', 'placetalk'
+
+				end
+
+				act 'Condom only':
+					cla
+					'CLIENT: "Ow, just fuck off"'
+					gs 'mod_public_WC_street_sex', 'clientaway'
+				end
+
+			end
+		end
+
+		gs 'mod_public_WC_street_events', 'moneyfirst'
+		gs 'mod_public_WC_street_events', 'placetalk'
+	end
+end
+
+if $ARGS[0] = 'bargain':
+	gs 'mod_public_WC_street_events_2', 'bargain'
+end
+
+if $ARGS[0] = 'moneyfirst':
+	!! gs 'mod_public_WC_street_sex', 'moneyfirst'
+	!! gs 'mod_public_WC_street_sex', 'placetalk'
+	act 'money first':
+		cla
+
+		if phclient['pay'] = 1:
+			'CLIENT: "Okey"'
+			phclient['pay'] = 4
+			phclient_mood -= rand(0,1)
+
+			gs 'mod_public_WC_street_events', 'placetalk'
+		elseif phclient['pay'] = 2:
+			'CLIENT: "I will pay at the end only"'
+			phclient_mood -= rand(0,1)
+			if rand(1,3) = 1:
+				'He shows the money - "Don''t worry I want some fun, not some problems from your Pimp"'
+			else
+				act 'Show me the money':
+					cla
+					'He shows the money - "Don''t worry I want some fun, not some problems from your Pimp"'
+
+					gs 'mod_public_WC_street_events', 'placetalk'
+				end
+			end
+
+			gs 'mod_public_WC_street_events', 'placetalk'
+		else
+			'CLIENT: "I will pay at the end only"'
+			phclient_mood -= rand(0,1)
+
+			act 'Show me the money':
+				cla
+				gs 'mod_public_WC_street_sex', 'clientaway'
+			end
+
+			gs 'mod_public_WC_street_events', 'placetalk'
+		end
+	end
+end
+
+if $ARGS[0] = 'placetalk':
+	if phclient['pay'] = 1: phclient['pay'] = 2
+
+	if $clothingworntype = 'nude':
+		minut+=3
+		gs 'outfit', 'wear_last_worn'
+		'I put my clothes back on. I do not want to attract unwanted attention'
+		gs 'stat'
+	end
+
+
+	act 'talk about the place':
+		cla
+		'CLIENT: "Ok, sit up in my car"'
+		act 'agree':
+			cla
+			!! in the car
+			*clr & cla
+			minut += rand(5,10)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/HEshowtheway.jpg"></center>'
+
+			act 'continue': gt 'mod_public_WC_street_events', 'car22'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'car22':
+	*clr & cla
+	temp = rand(5,15)
+	minut += temp
+	'We ride for a few minutes to some secluded place'
+
+	if temp >= 5:
+		'I don''t know this place'
+	else
+		'It is one of my regular work spots'
+	end
+
+	if phclient['pay'] = 4:
+		'He counts few bills and pay me.'
+		money += PH_full_pay
+		minut += 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/paid/car_paid_naked (1).jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/1.jpg"></center>'
+	end
+
+	if rand(1,2) = 1:
+		act 'start service':
+			*clr & cla
+			'First guy unzip his pants.'
+			'I start sucking his dick while other just stand behind'
+			'CLIENT1: "COME ON, GOSHA!"'
+			'Gosha unzip his pants to and push his dick to my face'
+			gs 'arousal', 'bj', rand(5,5), 'prostitution', 'group'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/2.jpg"></center>'
+
+			act 'continue':
+				*clr & cla
+				'I do my best to pleased them both. Jerk the one while sucking the other'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution', 'group'
+				gs 'stat'
+				gs 'arousal', 'hj', rand(10,15), 'prostitution', 'group'
+				gs 'stat'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/3 ('+rand(1,2)+').jpg"></center>'
+
+				act 'continue':
+					*clr & cla
+					'One of them cums in my mouth'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/4.jpg"></center>'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					minut += 5
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'show the load':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/5.jpg"></center>'
+						minut += 3
+						gs 'stat'
+						'While the client enjoy his sperm in my mouth, Gosha furiously jeerking'
+						'GOSHA: "I want to wash your pretty face with my semen"'
+
+						act 'wait':
+							*clr & cla
+							'Gosha released pretty huge load on my face'
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/1 bb/6.jpg"></center>'
+							gs 'npcgeneratec', 0, 'a random Gosha', rand(18,45)
+							gs 'boyStat', $npclastgenerated
+
+							gs 'cum_call','hair',$boy
+							gs 'stat'
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+
+							act 'end the service':
+								gs 'mod_public_WC_street_events', 'endservice'
+
+								cla
+								act 'go away': gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+			end
+		end
+	else
+		act 'start service':
+			*clr & cla
+			'Guys unzip pants.'
+			'I start jerking them both'
+			'Gosha unzip his pants to and push his dick to my face'
+			gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(5,5), 'prostitution', 'group'
+			minut -= 5
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/2/1 ('+rand(1,2)+').jpg"></center>'
+
+			act 'continue':
+				*clr & cla
+				'I do my best to pleased them both. Jerk the one while sucking the other'
+				gs 'arousal', 'bj', rand(10,15), 'prostitution', 'group'
+				gs 'stat'
+				gs 'arousal', 'hj', rand(10,15), 'prostitution', 'group'
+				gs 'stat'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/2/2 ('+rand(1,4)+').jpg"></center>'
+
+				act 'continue':
+					*clr & cla
+					'They changed position to spit roast me'
+
+					if phassonly >= 1:
+						'CLIENT: "Hah, your pussy is taped! That''s intresting, well then I''ll fuck your ass"'
+						gs 'arousal', 'bj', rand(10,15), 'prostitution', 'group'
+						gs 'stat'
+						gs 'arousal', 'anal', rand(10,15), 'prostitution', 'group'
+						minut -= 15
+						gs 'stat'
+					else
+						' '
+						gs 'arousal', 'bj', rand(10,15), 'prostitution', 'group'
+						gs 'stat'
+						gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'group'
+						minut -= 15
+						gs 'stat'
+					end
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/2/3.jpg"></center>'
+
+					act 'continue':
+						cla
+
+						'Client put out the dick from my mouth'
+						'CLIENT2: "I want her pussy!"'
+
+						if phassonly >= 1:
+							'CLIENT1: "It seems like she is not in mood for that, aren''t you?"'
+
+							act 'No pussyfucking':
+								cla
+								'CLIENT1: "See!"'
+								'CLIENT2: "Then give her ass!"'
+								'CLIENT1: "Sounds reasonable."'
+								'They switches'
+								'The test of my ass is in my mouth'
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/2/3.jpg"></center>'
+
+								gs 'arousal', 'bj', rand(10,15), 'prostitution', 'group'
+								gs 'stat'
+								gs 'arousal', 'anal', rand(10,15), 'prostitution', 'group'
+								minut -= 15
+								gs 'stat'
+
+								act 'continue':
+									cla
+									'They cums simultaiously, fill me with cum from both sides'
+
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'cum_call','mouth_swallow',$boy
+									gs 'stat'
+									gs 'cum_call','anus',$boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+
+									act 'end the service':
+										gs 'mod_public_WC_street_events', 'endservice'
+									end
+								end
+							end
+
+							act 'You can untaped me':
+								cla
+								phassonly = 0
+
+								gt 'mod_public_WC_street_events', '2allholes'
+							end
+						else
+							'CLIENT1: "Okey, I''ll take her ass then :-)"'
+
+							act 'continue': gt 'mod_public_WC_street_events', '2allholes'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = '2allholes':
+	*clr & cla
+	'I fill ther dick rubbing closely inside me…'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 car/2/2/4.jpg"></center>'
+	gs 'arousal', 'vaginal', rand(10,15), 'prostitution', 'group'
+	gs 'stat'
+	gs 'arousal', 'anal', rand(10,15), 'prostitution', 'group'
+	minut -= 15
+	gs 'stat'
+
+
+	act 'continue':
+		cla
+		'I feel how one by one, but almost simultaniously their cum fills my insides'
+		gs 'cum_call','anus',$boy
+		gs 'stat'
+		gs 'cum_call','',$boy
+		gs 'cuminsidereact', $boydesc
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		act 'end the service':
+			gs 'mod_public_WC_street_events', 'endservice'
+
+			cla
+			act 'go away': gt $loc, $loc_arg
+		end
+	end
+end
+
+
+if $ARGS[0] = 'endservice':
+	cla
+	carclient = 1
+	phclientfunnow += 60
+	protect = 0
+	If phclient['pay'] = 4:
+		'Okey, it was fun!'
+
+		if phclientfunnow >= 300:
+			'CLIENT: "UNBELIEVABLE!!! You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell everybody about you!"'
+
+			temp = (PH_full_pay / 100 ) * 10
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/paid.jpg"></center>'
+			fame['pav_prostitute'] += 5
+		elseif phclientfunnow >= 200:
+			'CLIENT: "You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell my friends about you"'
+
+			temp = (PH_full_pay / 100 ) * 5
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/paid.jpg"></center>'
+
+			fame['pav_prostitute'] += 3
+		elseif phclientfunnow > 150:
+			fame['pav_prostitute'] += 1
+
+		end
+		gs 'stat'
+
+		killvar 'PH_full_pay'
+		gs 'mod_public_WC_street_sex', 'clientaway'
+	elseIf phclient['pay'] <= 3 or phclient['pay'] = 5 or carclient > 0:
+		'He dress up and give me my cash (<<PH_full_pay>>)'
+		money += PH_full_pay
+
+		if phclientfunnow >= 300:
+			'CLIENT: "UNBELIEVABLE!!! You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell everybody about you!"'
+
+			temp = (PH_full_pay / 100 ) * 10
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/paid.jpg"></center>'
+			fame['pav_prostitute'] += 5
+		elseif phclientfunnow >= 200:
+			'CLIENT: "You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell my friends about you"'
+
+			temp = (PH_full_pay / 100 ) * 5
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/paid.jpg"></center>'
+
+			fame['pav_prostitute'] += 3
+		elseif phclientfunnow > 150:
+			fame['pav_prostitute'] += 1
+
+		end
+		gs 'stat'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/paid.jpg"></center>'
+		gs 'stat'
+		killvar 'PH_full_pay'
+		gs 'mod_public_WC_street_sex', 'clientaway'
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_events ---------------------------------
+

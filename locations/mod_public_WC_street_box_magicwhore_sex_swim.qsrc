@@ -1,0 +1,1893 @@
+# mod_public_WC_street_box_magicwhore_sex_swim
+if $ARGS[0] = 'swim':
+	*clr & cla
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_swim'
+	$loc_arg = 'swim'
+	cumspclnt = 4
+	gs 'cum_cleanup'
+	minut += 5
+	
+	heswim = 0
+	if phsex ! 100 and phsex ! -100 and phsex > 0: phsex -= rand(0,1)
+	!! if phsex < 0: phsex = 0	
+	
+	phiphi += 1
+	if phiphi > 5: phiphi = 1
+
+	pcs_sweat = 0	
+	if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+	gs 'stat'
+	
+	act 'Find the portal to go back':
+		cla
+		if phsex = 100:
+			'Task is completed'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		else
+			'I don''t want to help LIGHT FORCES'
+			
+			PH_pay_PHmwrstat = -5
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end
+	
+	
+	'the Land is nearby, I suppose my target is on the shore'
+	
+	if phtemp >= 3:	
+		act 'swim to the shore (0:10)':
+			*clr
+			if phtemp <= 5:
+				if phiphi >= 3 and phiphi <= 4:
+					'I see a guard walking the beach…'
+					'VOICE FROM NOWHERE: "IT IS YOUR TARGET!!!"'
+				else
+					'VOICE FROM NOWHERE: "The target will come soon, hurry up"'
+				end
+			end
+			
+			if phtemp >= 3:
+				phtemp -= rand(1,2)
+			else
+				phtemp -= 1
+				phpoolswim = 0
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/swim swim ('+rand(1,1)+').jpg"></center>'
+			minut += 10
+			gs 'exercise', 'tier1', 1, 'stren_exp'
+			gs 'stat'
+		end	
+	elseif phtemp < 3 and phsex ! 100 and phsex ! -100:	
+		'I am at the shore'		
+		
+		if phiphi >= 3 and phiphi <= 4:
+			
+			act 'crawl to the land':
+				phiphi = 3
+				minut += 5
+				'He noticed me!!!'
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+			end
+			
+			act 'sit at the shore':
+				phiphi = 3
+				minut += 5
+				'He noticed me!!!'
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+			end 
+			
+			act 'climb on the cliff':
+				phiphi = 3
+				minut += 5
+				'He noticed me!!!'
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+			end
+		else
+			
+			act 'crawl to the land':
+				phiphi += 1
+				minut += 10
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'land'
+			end
+			
+			act 'sit at the shore':
+				phiphi += 1
+				minut += 10
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shore'
+			end 
+			
+			act 'climb on the cliff':
+				phiphi += 1
+				minut += 10				
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'cliff'
+			end
+		end
+		
+		act 'sing (0:15)':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/1 shore ('+rand(1,1)+').jpg"></center>'
+			gs 'exp_gain', 'vokal', rand(5,10)
+			minut += 15
+			gs 'stat'
+			
+			if phiphi >= 3 and phiphi <= 4:
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+			else
+				phiphi += 1
+			end
+			
+			if phiphi >= 3 and phiphi <= 4:
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+			end
+			
+			'I hear the guard running the beatch, but I can''t see him'
+			act 'continue':
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+		end
+	else
+		'I am at the shore'
+	end
+	
+	if phtemp <= 5:
+		if phiphi >= 3 and phiphi <= 4:
+			'I see a guard walking the beach…'
+			if phsex ! 100 and phsex ! -100: 'VOICE FROM NOWHERE: "IT IS YOUR TARGET!!!"'
+		else
+			if phsex ! 100 and phsex ! -100: 'VOICE FROM NOWHERE: "The target will come soon, hurry up"'
+		end
+	end
+
+	if phtemp = 1:
+		act 'dive to research a bottom':
+			'I can''t it is too close to the shore'
+		end
+	else
+		act 'dive to research a bottom':			
+			*clr & cla
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 3
+			pcs_sweat = 0
+			pcs_mood += 5
+			
+			phkysen = 1000
+
+			if pcs_stren < 30 and rand(1,10) = 1: stren_exp += 1
+			phpoolswim = 0
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/dive ('+rand(1,1)+').jpg"></center>'
+			
+			phkysen -= rand(20,30)
+			
+			act 'Ascend':
+				*clr & cla
+				temp_gr = rand(0,15)
+				phkysen = 1000
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/up ('+rand(1,1)+').jpg"></center>'
+				killvar 'phbottomsearch'
+				wait 1000
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+			
+			if phtemp >= 3:	
+				act 'swim to the shore (0:10)':
+					*clr
+					phkysen -= rand(00,30)
+					if phtemp >= 3:
+						phtemp -= rand(1,2)
+					else
+						phtemp -= 1
+						phpoolswim = 0
+						'I am at the shore'
+						cla
+						act 'Ascend':
+							*clr & cla
+							temp_gr = rand(0,15)
+							phkysen = 1000
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/up ('+rand(1,1)+').jpg"></center>'
+							killvar 'phbottomsearch'
+							wait 1000
+							gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+						end
+					end
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/dive wait ('+rand(1,1)+').jpg"></center>'
+					minut += 10
+					gs 'exercise', 'tier1', 1, 'stren_exp'
+					gs 'stat'
+				end
+			else				
+				'I am at the shore'				
+			end
+			
+			act 'swim':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/dive wait ('+rand(1,1)+').jpg"></center>'
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'deepaction'
+			end
+			
+			act 'Search something on the bottom':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/bottom ('+rand(1,1)+').jpg"></center>'
+				
+				temp_gr = rand(0,15)
+				cumspclnt = 4
+				gs 'cum_cleanup'
+				minut += rand(1,3)
+				pcs_sweat = 0
+				pcs_mood += rand(0,1)
+				
+				temp = rand(1,100)
+				if temp <= 5:
+					'I have found a gold coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 500
+				elseif temp <= 10:
+					'I have found a silver coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 100
+				else
+					'I have found nothing'
+				end
+				gs 'stat'
+				phkysen -= rand(00,30)
+				phbottomsearch = 1
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'deepaction'
+			end
+		end
+	end
+	
+	if phpoolswim = 1:		
+		minut += 10
+		gs 'exercise', 'tier1', 1, 'stren_exp'
+		gs 'stat'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/swim swim ('+rand(1,1)+').jpg"></center>'
+		
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		if rand(1,4) = 1: gs 'exercise', 'tier1', 1, 'stren_exp'
+
+		pcs_sweat = 0	
+		if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+		gs 'stat'
+			
+		act 'keep swimming (0:10)': gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			
+		act 'rest (0:05)':
+			*clr & cla
+			!! 'I rest a bit and go back to swim'
+			phpoolswim = 0			
+
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+		end
+	else
+		'I am resting.'
+		pcs_health += 300
+		gs 'stat'
+		phpoolswim = 0
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/swim wait ('+rand(1,1)+').jpg"></center>'
+		
+		minut += 5		
+		pcs_mood += rand(0,20)
+		gs 'stat'
+		
+		act 'Go swim (0:10)':
+			*clr & cla
+			'The water is warm'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/swim swim ('+rand(1,1)+').jpg"></center>'
+			minut += 10
+			phiphi += 1
+			gs 'exercise', 'tier1', 1, 'stren_exp'
+			gs 'stat'
+			
+			act 'swim (0:10)':
+				phpoolswim = 1
+				!! minut += 10
+				!! gs 'exercise', 'tier1', 1, 'stren_exp'
+				!! gs 'stat'				
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+			
+			act 'Change my mind':
+				phpoolswim = 0
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+		end
+		
+		act 'keep resting (0:05)': gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+	end
+	
+	if phtemp <= 1 and phiphi = 4 and rand(1,4) = 1:
+		cla
+		phiphi = 3
+		minut += 5
+		'Guard noticed me!!!'
+		gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+	elseif (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		*clr & cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+		
+		if phsex = -100:
+			!! 'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+			PH_pay_PHmwrstat = -20
+			'VOICE FROM NOWHERE: "IT IS DISASTER. You sabotaged on purpose?!"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		elseif phsex = 100:
+			!! completed
+			PH_pay_PHmwrstat = 15	
+			!! 'VOICE FROM NOWHERE: "Time is up"'
+			'VOICE FROM NOWHERE: "Task is completed"'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		else
+			!! failed
+			PH_pay_PHmwrstat = 0
+			'VOICE FROM NOWHERE: "Time is up"'
+			PH_full_pay = 0
+			'VOICE FROM NOWHERE: "TASK FAILED"'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'				
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end
+end
+
+if $ARGS[0] = 'deepaction':
+	phkysen -= rand(20,40)
+	minut += 1
+	gs 'stat'
+	
+	act 'Ascend':
+		*clr & cla
+		temp_gr = rand(0,15)
+		phkysen = 1000
+		killvar 'phbottomsearch'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/up ('+rand(1,1)+').jpg"></center>'
+		wait 1000
+		gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+	end
+	
+	if phtemp >= 3:	
+		act 'swim to the shore (0:10)':
+			*clr
+			phkysen -= rand(30,30)
+			if phtemp >= 3:
+				phtemp -= rand(1,2)
+			else
+				phtemp -= 1
+				phpoolswim = 0
+				'I am at the shore'
+				cla
+				act 'Ascend':
+					*clr & cla
+					temp_gr = rand(0,15)
+					phkysen = 1000
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/up ('+rand(1,1)+').jpg"></center>'
+					killvar 'phbottomsearch'
+					wait 1000
+					gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+				end
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/dive wait ('+rand(1,1)+').jpg"></center>'
+			minut += 10
+			gs 'exercise', 'tier1', 1, 'stren_exp'
+			gs 'stat'
+		end
+	else				
+		'I am at the shore'				
+	end
+	
+	act 'swim':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/dive wait ('+rand(1,1)+').jpg"></center>'
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'deepaction'
+	end
+	
+	if phbottomsearch = 1:
+		act 'Search something on the bottom':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/bottom ('+rand(1,1)+').jpg"></center>'
+			
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += rand(1,3)
+			pcs_sweat = 0
+			pcs_mood += rand(0,1)
+			
+			temp = rand(1,100)
+			if temp <= 5:
+				'I have found a gold coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 500
+			elseif temp <= 15:
+				'I have found a silver coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 100
+			else
+				'I have found nothing'
+			end
+			gs 'stat'
+			phkysen -= rand(0,30)
+			phbottomsearch = 1
+			gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'deepaction'
+		end
+	end
+	
+	if phkysen <= 0:
+		cla
+		'I need air!!!'
+		act 'Ascend':
+			*clr & cla
+			killvar 'phbottomsearch'
+			temp_gr = rand(0,15)
+			phkysen = 1000
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/swim/up ('+rand(1,1)+').jpg"></center>'
+			wait 1000
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+		end		
+	end
+end
+
+
+
+if $ARGS[0] = 'shoot':
+	cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/1 shore ('+rand(1,1)+').jpg"></center>'
+	if phsex = 0: 
+		'He aims at me and start shooting'
+		+$OpenInnerThought+'Why my magic voice is not WORKING?!!'+$CloseInnerThought
+	else
+		'He is shooting at me'
+	end
+	
+	temp = rand(1,10)
+	phdamage = 6 - temp - ((pcs_agil/rand(20,30)) - 4)
+	if phdamage < 0: phdamage = 0
+	if phdamage > 0: 'few bullets hit me!!!'
+	if (temp-10)*(-1) - phdamage >= 0: 'some bullets missed me'
+	pcs_health -= phdamage * 750
+	killvar 'phdamage'
+	
+	!! if pcs_health <= 0: pcs_health = 10
+	gs 'stat'
+	phsex += 1
+	
+	if phsex = 100:
+		'VOICE FROM NOWHERE: "You can to stop the distraction."'
+	elseif phsex >= rand(4,8):
+		'VOICE FROM NOWHERE: "IT IS CRAZY, but it worked!!! You can to stop the distraction"'
+		phsex = 100
+	elseif phsex > 2 and phsex <= 4:
+		'VOICE FROM NOWHERE: "We are on the way, keep doing it!"'
+	elseif phsex > 1:
+		'VOICE FROM NOWHERE: "Ok, it workes, we are going, keep doing it!"'
+	END
+	
+	act 'dodge the bullets':
+		*clr & cla
+		minut += rand(3,5)
+		gs 'stat'
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'shoot'
+	end
+	
+	act 'swim away':		
+		if phsex > 1 and phsex <= 4:
+			'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+			
+			act 'Anyway… swim away':
+				phsex = -100
+				PH_pay_PHmwrstat = -20
+				phiphi = 2
+				phtemp = 3
+				phpoolswim = 1
+				minut += 10
+				phquestD -= 100
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+		else
+			phiphi = 2
+			phtemp = 3
+			phpoolswim = 1
+			minut += 10
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+		end
+	end
+	
+	if phsex = 100:
+		act 'Find the portal to go back':
+			cla
+			'Task is completed'
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end
+	
+	if pcs_health <= 30:
+		cla
+		gs 'stat'
+		'I am almost dead! I NEED TO RUN!!!'
+		
+		act 'swim away':		
+			if phsex > 1 and phsex <= 4:
+				'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+				
+				act 'Anyway… swim away':
+					phsex = -100
+					PH_pay_PHmwrstat = -20
+					phiphi = 2
+					phtemp = 3
+					phpoolswim = 1
+					minut += 10
+					phquestD -= 100
+					gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+				end
+			else
+				phiphi = 2
+				phtemp = 3
+				phpoolswim = 1
+				minut += 10
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sing':
+	!*clr & cla
+	act 'Sing':
+		cla
+		gs 'exp_gain', 'vokal', rand(5,10)
+		minut += 15
+		gs 'stat'	
+		'He aims at me and… nothing'
+		
+		act 'keep singing':
+			cla
+			gs 'exp_gain', 'vokal', rand(2,3)
+			minut += 5
+			gs 'stat'	
+			'He start slowly waling to me, but the weapon still points on me…'
+			
+			'VOICE FROM NOWHERE: "Ok, it workes, we are going, keep doing it!"'
+			phsex = 3
+			*nl
+			'He stoped and throw the weapon…'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/3 he_approaches ('+rand(1,1)+').jpg"></center>'			
+			
+			gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'actions'
+			
+			
+			if rand(1,6) = 1:
+				cla 
+				!! he can take me
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme'
+			end
+		end
+		
+		act 'stop':
+			gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'actions':
+	!*clr & cla
+	if $loc_arg = 'land':
+		act 'crawl to him':
+			*clr & cla
+			minut += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/2 shore_crawl ('+rand(1,1)+').mp4"></video></center>'
+			gs 'stat'
+			phsex = 100
+			
+			act 'pull down his pants':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 undress_him ('+rand(1,1)+').mp4"></video></center>'
+				
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'bj'				
+			end
+		end
+	elseif $loc_arg = 'shore':
+		if phsex = 3:			
+			act 'drag him to the water':
+				*clr & cla
+				'I am kissing him and draged under the water'
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 he_underwater_kiss ('+rand(1,1)+').jpg"></center>'
+				gs 'arousal', 'kiss', rand(5,10), 'prostitution' 
+				gs 'stat'
+				
+				act 'drag him to the bottom':
+					*clr & cla
+					'At the bottom I let him go'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 he_try_to_swim ('+rand(1,1)+').jpg"></center>'
+					'He was trying to reach the surface…'
+					act 'wait':
+						*clr & cla
+						minut += 3
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/5 drowned ('+rand(1,1)+').jpg"></center>'
+						'He did not succeed…'
+						phsex = 100
+						PH_pay_PHmwrstat += rand(14,16)
+						PH_pay_PHmwrstat -= 3
+						
+						act 'wait':
+							cla
+							phtemp = 3
+							
+							temp_gr = rand(0,15)
+							cumspclnt = 4
+							gs 'cum_cleanup'
+							minut += rand(1,3)
+							pcs_sweat = 0
+							pcs_mood += rand(0,1)
+							
+							gs 'stat'
+							phkysen = rand(100,300)
+							phbottomsearch = 1
+							gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'deepaction'							
+						end
+					end
+				end
+			end
+			
+			act 'pull down his pants':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 undress_him ('+rand(1,1)+').mp4"></video></center>'
+				phsex = 100
+				
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'bj'				
+			end
+		end	
+	elseif $loc_arg = 'cliff':
+		act 'jump to the shore and crawl to him':
+			*clr & cla
+			$loc_arg = 'shore'
+			minut += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/2 shore_crawl ('+rand(1,1)+').mp4"></video></center>'
+			gs 'stat'
+			phsex = 100
+			
+			act 'pull down his pants':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 undress_him ('+rand(1,1)+').mp4"></video></center>'
+				
+				gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'bj'				
+			end
+		end
+		
+		if phsex = 3:
+			act 'push him down with my tail':
+				!*clr & cla
+				cla
+				'He fell down from the cliff'
+				'As I crawl to him, I hear he is breathing'
+				
+				phsex = 100
+				PH_pay_PHmwrstat += rand(14,16)
+				'VOICE FROM NOWHERE: "Good job."'				
+				
+				act 'swim away':
+					phiphi = 2
+					phtemp = 3
+					phpoolswim = 1
+					minut += 10
+					gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bj':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'bj'
+	gs 'npcgeneratec', 0, 'DARK FORCE guard', rand(18,30)
+	gs 'boyStat', $npclastgenerated
+	
+	act 'Suck his dick':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/4 start ('+rand(1,1)+').mp4"></video></center>'
+		gs 'arousal', 'bj', rand(5,5), 'prostitution' 
+		gs 'stat'
+		
+		temp = 0
+		act 'keep sucking':
+			!*clr & cla
+			*clr
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/5 bj ('+rand(1,4)+').mp4"></video></center>'
+			gs 'arousal', 'bj', rand(10,15), 'prostitution' 
+			gs 'stat'
+			temp += 1
+			
+			if temp >= rand(2,5):
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/6 cum inmouth ('+rand(1,1)+').mp4"></video></center>'
+				'He loads in my mouth and looking nowhere…'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				phsex = 100
+				PH_pay_PHmwrstat += rand(14,16)
+				
+				act 'swim away':
+					phiphi = 2
+					phtemp = 3
+					phpoolswim = 1
+					minut += 10
+					gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+				end
+				
+				if rand(1,4) = 1:
+					cla 
+					!! he can take me
+					gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'takeme':
+	!*clr & cla
+	!! trigger to take
+	'Suddenly he focused on me, threw the weapon and takes me'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/7 moveme ('+rand(1,1)+').mp4"></video></center>'
+	killvar 'phrazom[1]'
+	killvar 'phrazom[2]'
+	killvar 'phrazom[3]'
+	killvar 'phrazom[4]'
+	killvar 'phrazom[5]'
+	killvar 'phrazom[6]'
+	killvar 'phrazom[7]'
+	killvar 'phrazom[8]'
+	killvar 'phrazom[9]'
+	killvar 'phrazom[10]'
+	
+	act 'wait':
+		cla
+		minut += 15
+		gs 'stat'
+		gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme2'
+	end
+	
+	act 'try to escape':
+		cla		
+		temp = rand(0,200)
+		if pcs_stren >= temp or pcs_agil >= temp - 20:
+			'Turning out of his grip, I jumped sharply, pushing the GUARD.'
+			'I reached the water quickly and swim away'
+			act 'to Flee':
+				phiphi = 2
+				phtemp = 3
+				phpoolswim = 1
+				minut += 10
+				gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+			end
+		else
+			'I tried to jump out of his grip, but he just grab me tighter'
+			'GUARD "Don''t be so, You blowed me good, I want to share you with my friends!"'
+			minut += 20
+			gs 'stat'			
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme2'
+		end
+	end
+end
+
+if $ARGS[0] = 'takeme2':
+	*clr & cla
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/7 moveme ('+rand(1,1)+').mp4"></video></center>'
+	'I see a group of armed men, GUARD: "Look, look! I bring mermaid to fuck!!!" - guys start chearing'
+	gs 'npcgeneratec', 0, 'DARK FORCE armed guard', rand(18,45)
+	gs 'boyStat', $npclastgenerated
+	
+	phrazom = rand(6,10)
+	
+
+	
+	act 'wait':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/1 start ('+rand(1,1)+').mp4"></video></center>'
+		'He put me on the ground and I start pleasuring guys around me'
+		
+		phrighthand = 1
+		phmouth = 2
+		phlefthand = 3
+		
+	
+		
+		gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape' 
+		gs 'stat'
+		minut -= 10
+		gs 'arousal', 'bj', rand(10,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape' 
+		gs 'stat'
+		minut -= 10
+		gs 'arousal', 'hj', rand(10,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape' 
+		gs 'stat'
+		minut -= 10
+		gs 'arousal', 'hj', rand(10,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape' 
+		gs 'stat'
+		
+		temp = 6 + ( stat['hj'] / 10 ) + rand(2,5)
+		$cum[1] -= rand(0,temp)
+		temp = 6 + ( stat['bj'] / 10 ) + rand(3,8)
+		$cum[2] -= rand(5,temp)
+		temp = 6 + ( stat['hj'] / 10 ) + rand(2,5)
+		$cum[3] -= rand(0,temp)
+		
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man'
+		
+		act 'continue':
+			gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	
+	!! act 'loop':
+		!-=wip=-
+		i = 1
+		:loopdarkguardscum
+		$cum[i] = rand(60,100)
+		phrazom[i] = 1	
+		i += 1
+		if i <= phrazom: jump 'loopdarkguardscum'
+	!! end	
+end
+
+
+if $ARGS[0] = 'actions':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[1] = 1:
+		act 'Use right hand to jerk Guard #1':
+			*clr & cla
+			
+			'I am jerking Guard #1 with right hand'
+			phrighthand = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[1] = 1:
+		act 'Use left hand to jerk Guard #1':
+			*clr & cla
+			
+			'I am jerking Guard #1 with left hand'
+			phlefthand = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[1] = 1:
+		act 'suck Guard''s #1 cock':
+			*clr & cla
+			
+			'I am blowing Guard #1'
+			phmouth = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[2] = 1:
+		act 'Use right hand to jerk Guard #2':
+			*clr & cla
+			
+			'I am jerking Guard #2 with right hand'
+			phrighthand = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[2] = 1:
+		act 'Use left hand to jerk Guard #2':
+			*clr & cla
+			
+			'I am jerking Guard #2 with left hand'
+			phlefthand = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[2] = 1:
+		act 'suck Guard''s #2 cock':
+			*clr & cla
+			
+			'I am blowing Guard #2'
+			phmouth = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[3] = 1:
+		act 'Use right hand to jerk Guard #3':
+			*clr & cla
+			
+			'I am jerking Guard #3 with right hand'
+			phrighthand = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[3] = 1:
+		act 'Use left hand to jerk Guard #3':
+			*clr & cla
+			
+			'I am jerking Guard #3 with left hand'
+			phlefthand = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[3] = 1:
+		act 'suck Guard''s #3 cock':
+			*clr & cla
+			
+			'I am blowing Guard #3'
+			phmouth = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[4] = 1:
+		act 'Use right hand to jerk Guard #4':
+			*clr & cla
+			
+			'I am jerking Guard #4 with right hand'
+			phrighthand = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[4] = 1:
+		act 'Use left hand to jerk Guard #4':
+			*clr & cla
+			
+			'I am jerking Guard #4 with left hand'
+			phlefthand = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[4] = 1:
+		act 'suck Guard''s #4 cock':
+			*clr & cla
+			
+			'I am blowing Guard #4'
+			phmouth = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[5] = 1:
+		act 'Use right hand to jerk Guard #5':
+			*clr & cla
+			
+			'I am jerking Guard #5 with right hand'
+			phrighthand = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[5] = 1:
+		act 'Use left hand to jerk Guard #5':
+			*clr & cla
+			
+			'I am jerking Guard #5 with left hand'
+			phlefthand = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[5] = 1:
+		act 'suck Guard''s #5 cock':
+			*clr & cla
+			
+			'I am blowing Guard #5'
+			phmouth = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[6] = 1:
+		act 'Use right hand to jerk Guard #6':
+			*clr & cla
+			
+			'I am jerking Guard #6 with right hand'
+			phrighthand = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[6] = 1:
+		act 'Use left hand to jerk Guard #6':
+			*clr & cla
+			
+			'I am jerking Guard #6 with left hand'
+			phlefthand = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[6] = 1:
+		act 'suck Guard''s #6 cock':
+			*clr & cla
+			
+			'I am blowing Guard #6'
+			phmouth = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[7] = 1:
+		act 'Use right hand to jerk Guard #7':
+			*clr & cla
+			
+			'I am jerking Guard #7 with right hand'
+			phrighthand = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[7] = 1:
+		act 'Use left hand to jerk Guard #7':
+			*clr & cla
+			
+			'I am jerking Guard #7 with left hand'
+			phlefthand = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[7] = 1:
+		act 'suck Guard''s #7 cock':
+			*clr & cla
+			
+			'I am blowing Guard #7'
+			phmouth = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[8] = 1:
+		act 'Use right hand to jerk Guard #8':
+			*clr & cla
+			
+			'I am jerking Guard #8 with right hand'
+			phrighthand = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[8] = 1:
+		act 'Use left hand to jerk Guard #8':
+			*clr & cla
+			
+			'I am jerking Guard #8 with left hand'
+			phlefthand = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[8] = 1:
+		act 'suck Guard''s #8 cock':
+			*clr & cla
+			
+			'I am blowing Guard #8'
+			phmouth = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[9] = 1:
+		act 'Use right hand to jerk Guard #9':
+			*clr & cla
+			
+			'I am jerking Guard #9 with right hand'
+			phrighthand = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[9] = 1:
+		act 'Use left hand to jerk Guard #9':
+			*clr & cla
+			
+			'I am jerking Guard #9 with left hand'
+			phlefthand = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[9] = 1:
+		act 'suck Guard''s #9 cock':
+			*clr & cla
+			
+			'I am blowing Guard #9'
+			phmouth = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[10] = 1:
+		act 'Use right hand to jerk Guard #10':
+			*clr & cla
+			
+			'I am jerking Guard #10 with right hand'
+			phrighthand = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[10] = 1:
+		act 'Use left hand to jerk Guard #10':
+			*clr & cla
+			
+			'I am jerking Guard #10 with left hand'
+			phlefthand = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[10] = 1:
+		act 'suck Guard''s #10 cock':
+			*clr & cla
+			
+			'I am blowing Guard #10'
+			phmouth = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sex3':
+	*clr & cla
+	
+	!! decrease cum values here!
+	i = phrighthand
+	temp = 6 + ( stat['hj'] / 10 ) + rand(2,5)
+	$cum[i] -= rand(0,temp)	
+
+	i = phlefthand
+	temp = rand(3,6) + ( stat['hj'] / 10 ) + rand(0,7)
+	$cum[i] -= rand(0,temp)
+	
+	i = phmouth
+	temp = 6 + ( stat['bj'] / 10 ) + rand(3,8)
+	$cum[i] -= rand(5,temp)
+	
+	if phrighthand = phmouth or phlefthand = phmouth:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/bj ('+rand(1,4)+').mp4"></video></center>'
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/bjj ('+rand(1,2)+').mp4"></video></center>'
+	end
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man'
+	
+	wait 200
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'actions'
+	
+	
+	if phrighthand ! 0 and phmouth ! 0 and phlefthand ! 0:
+		act 'continue':
+			*clr & cla
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	
+
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'mancum'
+end
+
+
+if $ARGS[0] = 'man[1]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[1] = 1:
+		act 'Use right hand to jerk Guard #1':
+			*clr & cla
+			
+			'I am jerking Guard #1 with right hand'
+			phrighthand = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[1] = 1:
+		act 'Use left hand to jerk Guard #1':
+			*clr & cla
+			
+			'I am jerking Guard #1 with left hand'
+			phlefthand = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[1] = 1:
+		act 'suck Guard''s #1 cock':
+			*clr & cla
+			
+			'I am blowing Guard #1'
+			phmouth = 1
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[2]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[2] = 1:
+		act 'Use right hand to jerk Guard #2':
+			*clr & cla
+			
+			'I am jerking Guard #2 with right hand'
+			phrighthand = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[2] = 1:
+		act 'Use left hand to jerk Guard #2':
+			*clr & cla
+			
+			'I am jerking Guard #2 with left hand'
+			phlefthand = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[2] = 1:
+		act 'suck Guard''s #2 cock':
+			*clr & cla
+			
+			'I am blowing Guard #2'
+			phmouth = 2
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[3]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[3] = 1:
+		act 'Use right hand to jerk Guard #3':
+			*clr & cla
+			
+			'I am jerking Guard #3 with right hand'
+			phrighthand = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[3] = 1:
+		act 'Use left hand to jerk Guard #3':
+			*clr & cla
+			
+			'I am jerking Guard #3 with left hand'
+			phlefthand = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[3] = 1:
+		act 'suck Guard''s #3 cock':
+			*clr & cla
+			
+			'I am blowing Guard #3'
+			phmouth = 3
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[4]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[4] = 1:
+		act 'Use right hand to jerk Guard #4':
+			*clr & cla
+			
+			'I am jerking Guard #4 with right hand'
+			phrighthand = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[4] = 1:
+		act 'Use left hand to jerk Guard #4':
+			*clr & cla
+			
+			'I am jerking Guard #4 with left hand'
+			phlefthand = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[4] = 1:
+		act 'suck Guard''s #4 cock':
+			*clr & cla
+			
+			'I am blowing Guard #4'
+			phmouth = 4
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[5]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[5] = 1:
+		act 'Use right hand to jerk Guard #5':
+			*clr & cla
+			
+			'I am jerking Guard #5 with right hand'
+			phrighthand = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[5] = 1:
+		act 'Use left hand to jerk Guard #5':
+			*clr & cla
+			
+			'I am jerking Guard #5 with left hand'
+			phlefthand = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[5] = 1:
+		act 'suck Guard''s #5 cock':
+			*clr & cla
+			
+			'I am blowing Guard #5'
+			phmouth = 5
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[6]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[6] = 1:
+		act 'Use right hand to jerk Guard #6':
+			*clr & cla
+			
+			'I am jerking Guard #6 with right hand'
+			phrighthand = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[6] = 1:
+		act 'Use left hand to jerk Guard #6':
+			*clr & cla
+			
+			'I am jerking Guard #6 with left hand'
+			phlefthand = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[6] = 1:
+		act 'suck Guard''s #6 cock':
+			*clr & cla
+			
+			'I am blowing Guard #6'
+			phmouth = 6
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[7]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[7] = 1:
+		act 'Use right hand to jerk Guard #7':
+			*clr & cla
+			
+			'I am jerking Guard #7 with right hand'
+			phrighthand = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[7] = 1:
+		act 'Use left hand to jerk Guard #7':
+			*clr & cla
+			
+			'I am jerking Guard #7 with left hand'
+			phlefthand = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[7] = 1:
+		act 'suck Guard''s #7 cock':
+			*clr & cla
+			
+			'I am blowing Guard #7'
+			phmouth = 7
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[8]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[8] = 1:
+		act 'Use right hand to jerk Guard #8':
+			*clr & cla
+			
+			'I am jerking Guard #8 with right hand'
+			phrighthand = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[8] = 1:
+		act 'Use left hand to jerk Guard #8':
+			*clr & cla
+			
+			'I am jerking Guard #8 with left hand'
+			phlefthand = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[8] = 1:
+		act 'suck Guard''s #8 cock':
+			*clr & cla
+			
+			'I am blowing Guard #8'
+			phmouth = 8
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[9]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[9] = 1:
+		act 'Use right hand to jerk Guard #9':
+			*clr & cla
+			
+			'I am jerking Guard #9 with right hand'
+			phrighthand = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[9] = 1:
+		act 'Use left hand to jerk Guard #9':
+			*clr & cla
+			
+			'I am jerking Guard #9 with left hand'
+			phlefthand = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[9] = 1:
+		act 'suck Guard''s #9 cock':
+			*clr & cla
+			
+			'I am blowing Guard #9'
+			phmouth = 9
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+if $ARGS[0] = 'man[10]':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man[i]'
+	if phrighthand = 0 and phrazom[10] = 1:
+		act 'Use right hand to jerk Guard #10':
+			*clr & cla
+			
+			'I am jerking Guard #10 with right hand'
+			phrighthand = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phlefthand = 0 and phrazom[10] = 1:
+		act 'Use left hand to jerk Guard #10':
+			*clr & cla
+			
+			'I am jerking Guard #10 with left hand'
+			phlefthand = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+	if phmouth = 0 and phrazom[10] = 1:
+		act 'suck Guard''s #10 cock':
+			*clr & cla
+			
+			'I am blowing Guard #10'
+			phmouth = 10
+			
+			gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'sex3'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'land':
+	*clr & cla
+	$loc_arg = 'land'
+	
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/1 land ('+rand(1,1)+').jpg"></center>'
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'sing'
+	
+	act 'tease':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/2 tease ('+rand(1,1)+').jpg"></center>'
+		
+		phsex = 3	
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'actions'		
+		
+		if rand(1,3) = 1:
+			cla 
+			!! he can take me
+			gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme'
+		end
+	end	
+	
+	if (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		*clr & cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+		
+		if phsex = -100:
+			!! 'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+			PH_pay_PHmwrstat = -20
+			'VOICE FROM NOWHERE: "IT IS DISASTER. You sabotaged on purpose?!"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		elseif phsex = 100:
+			!! completed
+			PH_pay_PHmwrstat = 15	
+			'VOICE FROM NOWHERE: "Time is up"'
+			'Task is completed'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		else
+			!! failed
+			PH_pay_PHmwrstat = 0
+			'VOICE FROM NOWHERE: "Time is up"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'				
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end	
+end
+
+if $ARGS[0] = 'shore':
+	*clr & cla
+	$loc_arg = 'shore'
+	
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/1 shore ('+rand(1,1)+').jpg"></center>'
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'sing'
+	
+	act 'seduce':
+		*clr & cla
+		'He charmed…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/2 seduce ('+rand(1,1)+').jpg"></center>'		
+		
+		phsex = 3		
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'actions'		
+	end
+	
+	
+	if (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		*clr & cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+		
+		if phsex = -100:
+			!! 'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+			PH_pay_PHmwrstat = -20
+			'VOICE FROM NOWHERE: "IT IS DISASTER. You sabotaged on purpose?!"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		elseif phsex = 100:
+			!! completed
+			PH_pay_PHmwrstat = 15	
+			'VOICE FROM NOWHERE: "Time is up"'
+			'Task is completed'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		else
+			!! failed
+			PH_pay_PHmwrstat = 0
+			'VOICE FROM NOWHERE: "Time is up"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'				
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end	
+end
+
+if $ARGS[0] = 'cliff':
+	*clr & cla
+	$loc_arg = 'cliff'
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/1 cliff ('+rand(1,1)+').mp4"></video></center>'
+	
+	gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'sing'
+	
+	act 'tease':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/2 tease ('+rand(1,1)+').jpg"></center>'
+		
+		phsex = 3	
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'actions'
+		
+		if rand(1,3) = 1:
+			cla 
+			!! he can take me
+			gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'takeme'
+		end
+	end
+	
+	if (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		*clr & cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+		
+		if phsex = -100:
+			!! 'VOICE FROM NOWHERE: "YOU can''t do that, they will busted us!!!"'
+			PH_pay_PHmwrstat = -20
+			'VOICE FROM NOWHERE: "IT IS DISASTER. You sabotaged on purpose?!"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		elseif phsex = 100:
+			!! completed
+			PH_pay_PHmwrstat = 15	
+			'VOICE FROM NOWHERE: "Time is up"'
+			'Task is completed'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		else
+			!! failed
+			PH_pay_PHmwrstat = 0
+			'VOICE FROM NOWHERE: "Time is up"'
+			PH_full_pay = 0
+			'TASK FAILED'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/spell_change_form ('+rand(1,1)+').mp4"></video></center>'				
+			
+			gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'man':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'man'
+	i = 1
+	:loopdarkguards
+	*nl
+	phcurrentnumber = i
+	
+	if phrazom[i] = 0:
+		' '
+	elseif phrazom[i] = 1:	
+		if $cum[i] >= 100: $zadovolennia[i] = $func('wrap', 'accent', ' ██████████ ') + ' '
+		if $cum[i] >= 90 and $cum[i] < 100: $zadovolennia[i] = '<font color = green	> █████████_ </font> '
+		if $cum[i] >= 80 and $cum[i] < 90: $zadovolennia[i] = '<font color = green	> ████████__ </font> '
+		if $cum[i] >= 70 and $cum[i] < 80: $zadovolennia[i] = '<font color = yellow	> ███████___ </font> '
+		if $cum[i] >= 60 and $cum[i] < 70: $zadovolennia[i] = '<font color = yellow	> ██████____ </font> '
+		if $cum[i] >= 50 and $cum[i] < 60: $zadovolennia[i] = '<font color = yellow	> █████_____ </font> '
+		if $cum[i] >= 40 and $cum[i] < 50: $zadovolennia[i] = '<font color = yellow	> ████______ </font> '
+		if $cum[i] >= 30 and $cum[i] < 40: $zadovolennia[i] = '<font color = yellow	> ███______ </font> '
+		if $cum[i] >= 20 and $cum[i] < 30: $zadovolennia[i] = '<font color = red	> ██________ </font> '
+		if $cum[i] >= 10 and $cum[i] < 20: $zadovolennia[i] = '<font color = red	> █_________ </font> '
+		if $cum[i] < 10:
+			phrazom[i] = 100
+			$cum[i] = 0
+			'<font color = red	> Armed Guard#<<phcurrentnumber>> cums! </font> '
+			
+			phcumvideoshow += 1
+			
+			
+			if phrighthand = phcurrentnumber:
+				cumphrighthand = phcurrentnumber
+				phrighthand = 0
+			end
+			if phmouth = phcurrentnumber: 
+				cumphmouth = phcurrentnumber
+				phmouth = 0
+			end
+			if phlefthand = phcurrentnumber: 
+				cumphlefthand = phcurrentnumber
+				phlefthand = 0
+			end
+		end
+		
+		if phrazom[i] ! 100: '<center>Armed Guard#<<phcurrentnumber>> endurance meter: <<$zadovolennia[i]>></center>'
+	elseif phrazom[i] = 100:
+		'Armed Guard#<<phcurrentnumber>> balls are empty'
+	end
+	
+	if phcumvideoshow > 0:
+		killvar 'phcumvideoshow'
+		gs 'mod_public_WC_street_box_magicwhore_sex_swim','cumvideo'
+	end
+	
+	i += 1
+	if i <= phrazom: jump 'loopdarkguards'	
+	killvar 'phcurrentnumber'
+end
+
+if $ARGS[0] = 'mancum':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_swim', 'mancum'
+
+	temp = phrazom[1]+phrazom[2]+phrazom[3]+phrazom[4]+phrazom[5]+phrazom[6]+phrazom[7]+phrazom[8]+phrazom[9]+phrazom[10]
+	
+	if phrazom*100 <= temp:
+		cla
+		'All Guards balls are empty…'
+		'GUARD: "It was fun, whore, take this" - he put a pack of cash in my mouth'
+		money += phrazom * rand(100,300)
+		gs 'stat'
+		act 'wait':
+			*clr & cla
+			'he grabs me and walk back to the shore'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/4 moveback ('+rand(1,1)+').mp4"></video></center>'
+			act 'wait':
+				cla
+				'He throw me into the water. GUARD: "Come back some times!!!"'
+				act 'swim away':
+					phiphi = 0
+					phtemp = 3
+					phpoolswim = 1
+					minut += 10
+					gt 'mod_public_WC_street_box_magicwhore_sex_swim', 'swim'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'cumvideo':
+	gs 'npcgeneratec', 0, 'DARK FORCE armed guard', rand(18,45)
+	gs 'boyStat', $npclastgenerated	
+	
+	if cumphmouth = phcurrentnumber:		
+		if cumphmouth = cumphrighthand or cumphmouth = cumphlefthand:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/hj inmouth ('+rand(1,2)+').mp4"></video></center>'
+			'Jerk his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock till he loads in my mouth'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'			
+		else
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/theyjerk face ('+rand(1,1)+').mp4"></video></center>'
+				'Guard #<<phcurrentnumber>> pulls out from my mouth and loads on my face'
+				gs 'cum_call','hair',$boy
+				gs 'stat'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/theyjerk mouthontits ('+rand(1,1)+').mp4"></video></center>'
+				'Guard #<<phcurrentnumber>> pulls out and spreys in my open mouth… cum flow down on my breasts'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','breasts',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+			end
+		end
+	elseif cumphrighthand = phcurrentnumber:
+		if rand(1,4) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/hj inmouth ('+rand(1,2)+').mp4"></video></center>'
+			'Put his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'		
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/theyjerk ('+rand(1,4)+').mp4"></video></center>'
+			'He cums on me'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'
+		end
+	elseif cumphlefthand = phcurrentnumber:
+		if rand(1,4) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/hj inmouth ('+rand(1,2)+').mp4"></video></center>'
+			'Put his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'		
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/13 Mermaid/group/3 cum/theyjerk ('+rand(1,4)+').mp4"></video></center>'
+			'He cums on me'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'
+		end
+	end	
+	
+	killvar 'cumphmouth'
+	killvar 'cumphrighthand'
+	killvar 'cumphlefthand'
+	
+	gs 'arousal', 'end'
+	gs 'stat'
+end
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_sex_swim ---------------------------------
+

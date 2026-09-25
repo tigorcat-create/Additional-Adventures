@@ -1,0 +1,1784 @@
+# mod_public_WC_street_sex
+if $ARGS[0] = 'start':
+	cla
+
+	'Client is…'
+	if phtemp3 <= 6:
+		'poor'
+	elseif phtemp3 <= 9:
+		'casual dressed'
+	else
+		'fancy'
+	end
+
+	if phtemp1 = 1:
+		'stuffy'
+	elseif phtemp1 = 2:
+		'average'
+	else
+		'brutal'
+	end
+
+	if phtemp2 = 1:
+		'weak man'
+	elseif phtemp2 = 2:
+		'man'
+	else
+		'strong man'
+	end
+
+	if rand (1,100) + pcs_humint >= 100:
+		if phclient_mood <= 2:
+			'His mood is obviously terrible'
+		elseif phclient_mood <= 3:
+			'His is not in a good mood'
+		elseif phclient_mood <= 7:
+			'I can''t understand his mood'
+		else
+			'He seems happy'
+		end
+	else
+		'I can''t understand his mood'
+	end
+
+
+
+
+	$cum1 = rand(80,120)
+	killvar 'phsextimer'
+	killvar 'phspeed'
+	killvar 'phbjforce'
+	killvar 'phmasturb_me'
+	killvar 'phclientforce'
+	killvar 'phthrowup'
+	killvar 'phbjlick'
+	killvar 'phasktonotcuminside'
+	colir = 1
+	protect = 0
+	phclientdrugs = rand(1,4)
+
+
+	if carclient = 1:
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+		end
+	else
+		if month >= 11 or month <= 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+		end
+	end
+
+
+	'CLIENT: "Niiice"'
+	if phsex = 0:
+		if rand(0,3) = 0:
+			'CLIENT: "How much per hour?"'
+			phsex = 100
+		elseif rand(0,1) = 0:
+			'CLIENT: "How much the blowjob?"'
+			phsex = 2
+		elseif rand(0,1) = 0:
+			'CLIENT: "How much to fuck?"'
+			phsex = 3
+		elseif rand(0,1) = 0:
+			'CLIENT: "How much the buttsex?"'
+			phsex = 4
+		else
+			'CLIENT: "How much the handjob?"'
+			phsex = 1
+		end
+	else
+		if phsex = 1 or phsex = 101: 'CLIENT: "How much the handjob?"'
+		if phsex = 2 or phsex = 102: 'CLIENT: "How much the blowjob?"'
+		if phsex = 3 or phsex = 103: 'CLIENT: "How much to fuck?"'
+		if phsex = 4 or phsex = 104: 'CLIENT: "How much the buttsex?"'
+		if phsex = 100: 'CLIENT: "How much per hour?"'
+	end
+
+	act 'FREE service for you, honey!':
+		PH_full_pay = 0
+		phclient_mood += rand(0,2)
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 25 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 25 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 50 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 50 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 100 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 100 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 150 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 150 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 250 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 250 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	temp = 500 * phwhorepay
+	act 'It costs <<temp>>':
+		PH_full_pay = 500 * phwhorepay
+		gs 'mod_public_WC_street_sex', 'thinktopay'
+	end
+
+	if phsex = 3 and phassonly = 1:
+		cla
+		'ME: "Sorry no fucking, you want butt stuff?"'
+
+		if rand(1,3) = 1:
+			'CLIENT: "Well, okey"'
+			phsex = 4
+			'CLIENT: "How much the buttsex?"'
+
+			act 'FREE service for you, honey!':
+				PH_full_pay = 0
+				phclient_mood += rand(0,2)
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 25 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 25 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 50 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 50 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 100 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 100 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 150 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 150 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 250 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 250 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+			temp = 500 * phwhorepay
+			act 'It costs <<temp>>':
+				PH_full_pay = 500 * phwhorepay
+				gs 'mod_public_WC_street_sex', 'thinktopay'
+			end
+
+		else
+			'CLIENT: "Naah, goodbye"'
+			cla
+			gs 'mod_public_WC_street_sex', 'clientaway'
+		end
+	end
+
+
+	gs 'willpower', 'crime', 'self', 'medium'
+	if will_cost <= pcs_willpwr and gun = 1:
+		act 'It costs 100 *I am going to rob him!*' + $func('willpower', 'get_willcost_string'):
+			cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+
+			'He agreed'
+			phclient_mood += rand(0,2)
+
+			act 'continue': gt 'mod_public_WC_rab_gun_rob', 'rob'
+		end
+	elseif gun ! 1:
+		+$OpenInnerThought+'I could rob him If I have a gun'+$CloseInnerThought
+	else
+		act 'It costs 100 *I am going to rob him!*' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+end
+
+if $ARGS[0] = 'thinktopay':
+	cla
+	!! client think to pay or not
+
+	gs 'npcgeneratec', 0, 'a street client', rand(18,55)
+	gs 'boyStat', $npclastgenerated
+
+	if phsex = 1 or phsex = 101:
+		phclientwantprice = 25 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 2 or phsex = 102:
+		phclientwantprice = 75 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 3 or phsex = 103:
+		phclientwantprice = 100 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 4 or phsex = 104:
+		phclientwantprice = 110 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 100:
+		phclientwantprice = rand(80,150) * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	end
+	phclientwantprice1 = phclientwantprice
+
+	if pcs_apprnc >= 100 and pcs_apprnc < 120:
+		'"You are partly good looking"'
+		temp = phclientwantprice * 80/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 120 and pcs_apprnc < 140:
+		'"and you are nothing special"'
+		temp = phclientwantprice * 100/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 140 and pcs_apprnc < 160:
+		'"and you are nothing special"'
+		temp = phclientwantprice * rand(100,120)/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 160 and pcs_apprnc < 180:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 180 and pcs_apprnc < 190:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 190 and pcs_apprnc <= 200:
+		'"you are hot as fuck!"'
+		temp = phclientwantprice * 160/100
+		phclientwantprice = temp
+	elseif pcs_apprnc > 200:
+		'"But I never saw such beauty… you are a godess or smth…"'
+		temp = phclientwantprice * 180/100
+		phclientwantprice = temp
+	else
+		'"…and you are not looking good"'
+		temp = phclientwantprice * 60/100
+		phclientwantprice = temp
+	end
+	phclientwantprice2 = phclientwantprice
+
+	if phtemp3 <= 6:
+		temp = phclientwantprice * rand(30,50)/100
+		phclientwantprice = temp
+	elseif phtemp3 <= 9:
+		temp = phclientwantprice * rand(100,130)/100
+		phclientwantprice = temp
+	else
+		temp = phclientwantprice * rand(120,170)/100
+		phclientwantprice = temp
+	end
+	phclientwantprice3 = phclientwantprice
+
+	if fame['pav_prostitute'] <= 50:
+		temp = PH_full_pay * 120/100
+	elseif fame['pav_prostitute'] <= 100:
+		temp = PH_full_pay * 100/100
+	elseif fame['pav_prostitute'] <= 150:
+		temp = PH_full_pay * 90/100
+		'"Are you that whore?"'
+	elseif fame['pav_prostitute'] <= 200:
+		temp = PH_full_pay * 80/100
+		'"I think I saw you"'
+	elseif fame['pav_prostitute'] <= 250:
+		temp = PH_full_pay * 70/100
+		'"OMG! It is you, that famos whore!"'
+	else
+		temp = PH_full_pay * 60/100
+		'"OMG! It is you, is it? You are <<$pcs_firstname>> - that famos whore!"'
+	end
+	phclientwantprice4 = temp
+
+	if phclientfunnow <= 100: phclientfunnow = 100
+	hewant = phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100)
+	if phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100) < phclientwantprice4:
+		'"Hah, I am good, goodbye"'
+		phclient_mood -= 1
+
+		act 'try to bargain':
+			*clr & cla
+			if carclient = 1:
+				if $clothingworntype ! 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+				end
+			else
+				if month >= 11 or month <= 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+				end
+			end
+
+
+			act '10% discount':
+				temp = PH_full_pay * 90 / 100
+				PH_full_pay = temp
+				cla
+				gt 'mod_public_WC_street_sex', 'bargain'
+
+			end
+
+			act '30% discount':
+				temp = PH_full_pay * 70 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += rand(0,1)
+				gt 'mod_public_WC_street_sex', 'bargain'
+
+			end
+
+			act '50% discount':
+				temp = PH_full_pay * 50 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 1
+				gt 'mod_public_WC_street_sex', 'bargain'
+
+			end
+
+			act '90% discount':
+				temp = PH_full_pay * 10 / 100
+				PH_full_pay = temp
+				cla
+				phclient_mood += 2
+				gt 'mod_public_WC_street_sex', 'bargain'
+
+			end
+		end
+
+		act 'bye':
+			cla
+			gs 'mod_public_WC_street_sex', 'clientaway'
+		end
+	else
+		'"Deal!"'
+		phclient_mood += rand(0,2)
+
+		temp = rand(1,10)
+		if temp <= 2:
+			phclient['condom'] = 1
+		elseif temp <= 7:
+			phclient['condom'] = 2
+		else
+			phclient['condom'] = 3
+		end
+		!! 1,3 - use, ok with it, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['pay'] = 1
+		elseif temp <= 9:
+			phclient['pay'] = 2
+		else
+			phclient['pay'] = 3
+		end
+		!! 1,3 - anywhere, attheend, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['cuminside'] = 1
+		elseif temp <= 8:
+			phclient['cuminside'] = 2
+		else
+			phclient['cuminside'] = 3
+		end
+		!! 1,3 - NOKIDS, whatever, must
+
+		if phsex ! 1:
+			act 'condom only':
+				cla
+				if phclient['condom'] <= 2:
+					'CLIENT: "Okey"'
+				end
+
+				if phclient['condom'] = 1:
+
+					gs 'mod_public_WC_street_sex', 'moneyfirst'
+					gs 'mod_public_WC_street_sex', 'placetalk'
+
+				elseif phclient['condom'] = 2:
+					'CLIENT: "Do you have some?"'
+					if mc_inventory['equipped_condoms'] + mc_inventory['normal_condoms'] + mc_inventory['sabotaged_condoms'] > 0:
+						act 'Yes':
+							cla
+							phclient['condom'] = 4
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+
+					act 'No, Oh well':
+						cla
+						phclient['condom'] = 3
+						gs 'mod_public_WC_street_sex', 'moneyfirst'
+						gs 'mod_public_WC_street_sex', 'placetalk'
+
+					end
+
+					if phsex = 3 or phsex = 100:
+						act 'Just Don''t cum inside':
+							cla
+							phclient_mood -= rand(0,1)
+							if phclient['cuminside'] = 3: phclient_mood -= 2
+							if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+							phasktonotcuminside = 1
+							'CLIENT: "Okey"'
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+				else
+					'CLIENT: "No, I want you to have sex with ME, not with some rubber"'
+
+					act 'it costs 10% more':
+						cla
+						if rand(1,3) ! 1:
+							'CLIENT: "Okey"'
+							temp = PH_full_pay*110/100
+							PH_full_pay = temp
+
+							phclient_mood -= rand(0,1)
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+						else
+							'CLIENT: "Ow, just fuck off"'
+							gs 'mod_public_WC_street_sex', 'clientaway'
+						end
+					end
+
+					act 'okey':
+						cla
+						gs 'mod_public_WC_street_sex', 'moneyfirst'
+						gs 'mod_public_WC_street_sex', 'placetalk'
+
+					end
+
+					if phsex = 3 or phsex = 100:
+						act 'Just Don''t cum inside':
+							cla
+							phclient_mood -= rand(0,1)
+							if phclient['cuminside'] = 3: phclient_mood -= 2
+							if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+							phasktonotcuminside = 1
+							'CLIENT: "Okey"'
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+
+					act 'Condom only':
+						cla
+						'CLIENT: "Ow, just fuck off"'
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+			end
+
+
+			if phsex = 3 or phsex = 100:
+				act 'Just Don''t cum inside':
+					cla
+					phasktonotcuminside = 1
+
+					if phclient['condom'] = 1:
+						'CLIENT: "I have a condom"'
+					else
+						phclient_mood -= rand(0,1)
+						if phclient['cuminside'] = 3: phclient_mood -= 2
+						if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+						'CLIENT: "Okey"'
+					end
+
+					gs 'mod_public_WC_street_sex', 'moneyfirst'
+					gs 'mod_public_WC_street_sex', 'placetalk'
+				end
+			end
+		end
+
+		gs 'mod_public_WC_street_sex', 'moneyfirst'
+		gs 'mod_public_WC_street_sex', 'placetalk'
+
+
+		if phsex = 3 or phsex = 100 and stat['BDSM'] >= 10 and rand(1,100) <= 10 and hour >= 5 and hour <= 20:
+			cla
+			'CLIENT: "My request is specific. I want to fuck you tied in front of everyone in the park. I want to make a good big creampie!"'
+
+			act 'Agree':
+				gt 'mod_public_WC_street_events2', '1cient_bdsm'
+			end
+
+			act 'Pay extra 10%':
+				cla
+
+				otemp = 110
+				if rand (101,200) >= otemp:
+					!! okey
+					'CLIENT: "Okey, let''s go"'
+					temp = PH_full_pay * 110 / 100
+					PH_full_pay = temp
+					act 'go with him': gt 'mod_public_WC_street_events2', '1cient_bdsm'
+				else
+					'CLIENT: "Nah, too expensive"'
+					act 'bye then':
+						cla
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+			end
+
+			act 'Pay extra 30%':
+				cla
+
+				otemp = 130
+				if rand (101,200) >= otemp:
+					!! okey
+					'CLIENT: "Okey, let''s go"'
+					temp = PH_full_pay * 130 / 100
+					PH_full_pay = temp
+					act 'go with him': gt 'mod_public_WC_street_events2', '1cient_bdsm'
+				else
+					'CLIENT: "Nah, too expensive"'
+					act 'bye then':
+						cla
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+			end
+
+			act 'Pay extra 50%':
+				cla
+
+				otemp = 150
+				if rand (101,200) >= otemp:
+					!! okey
+					'CLIENT: "Okey, let''s go"'
+					temp = PH_full_pay * 150 / 100
+					PH_full_pay = temp
+					act 'go with him': gt 'mod_public_WC_street_events2', '1cient_bdsm'
+				else
+					'CLIENT: "Nah, too expensive"'
+					act 'bye then':
+						cla
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+			end
+
+			act 'No!':
+				cla
+				gs 'mod_public_WC_street_sex', 'clientaway'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bargain':
+	if phsex = 1 or phsex = 101:
+		phclientwantprice = 25 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 2 or phsex = 102:
+		phclientwantprice = 75 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 3 or phsex = 103:
+		phclientwantprice = 100 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 4 or phsex = 104:
+		phclientwantprice = 110 * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	elseif phsex = 100:
+		phclientwantprice = rand(80,150) * phclientwantprice_pricekoef
+		if phclientwantprice * phwhorepay < PH_full_pay:
+			'"hmm, expensive"'
+		else
+			'"good price"'
+		end
+	end
+	phclientwantprice1 = phclientwantprice
+
+	if pcs_apprnc >= 100 and pcs_apprnc < 120:
+		'"You are partly good looking"'
+		temp = phclientwantprice * 80/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 120 and pcs_apprnc < 140:
+		'"and you are nothing special"'
+		temp = phclientwantprice * 100/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 140 and pcs_apprnc < 160:
+		'"and you are nothing special"'
+		temp = phclientwantprice * rand(100,120)/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 160 and pcs_apprnc < 180:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 180 and pcs_apprnc < 190:
+		'" you are a good looking one"'
+		temp = phclientwantprice * 120/100
+		phclientwantprice = temp
+	elseif pcs_apprnc >= 190 and pcs_apprnc <= 200:
+		'"you are hot as fuck!"'
+		temp = phclientwantprice * 160/100
+		phclientwantprice = temp
+	elseif pcs_apprnc > 200:
+		'"But I never saw such beauty… you are a godess or smth…"'
+		temp = phclientwantprice * 180/100
+		phclientwantprice = temp
+	else
+		'"…and you are not looking good"'
+		temp = phclientwantprice * 60/100
+		phclientwantprice = temp
+	end
+	phclientwantprice2 = phclientwantprice
+
+	if phtemp3 <= 6:
+		temp = phclientwantprice * rand(30,50)/100
+		phclientwantprice = temp
+	elseif phtemp3 <= 9:
+		temp = phclientwantprice * rand(100,130)/100
+		phclientwantprice = temp
+	else
+		temp = phclientwantprice * rand(120,170)/100
+		phclientwantprice = temp
+	end
+	phclientwantprice3 = phclientwantprice
+
+	if fame['pav_prostitute'] <= 50:
+		temp = PH_full_pay * 120/100
+	elseif fame['pav_prostitute'] <= 100:
+		temp = PH_full_pay * 100/100
+	elseif fame['pav_prostitute'] <= 150:
+		temp = PH_full_pay * 90/100
+		'"Are you that whore?"'
+	elseif fame['pav_prostitute'] <= 200:
+		temp = PH_full_pay * 80/100
+		'"I think I saw you"'
+	elseif fame['pav_prostitute'] <= 250:
+		temp = PH_full_pay * 70/100
+		'"OMG! It is you, that famos whore!"'
+	else
+		temp = PH_full_pay * 60/100
+		'"OMG! It is you, is it? You are <<$pcs_firstname>> - that famos whore!"'
+	end
+	phclientwantprice4 = temp
+
+	*clr & cla
+	if carclient = 1:
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+		end
+	else
+		if month >= 11 or month <= 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+		end
+	end
+
+	if phclientfunnow <= 100: phclientfunnow = 100
+	hewant = phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100)
+	if phclientwantprice * phwhorepay * (phclientfunnow/100) * (PH_area_moneybonus/100) < phclientwantprice4:
+		'"Hah, I am good, goodbye"'
+		gs 'mod_public_WC_street_sex', 'clientaway'
+
+		!! act 'bye':
+			!! cla
+			!! gs 'mod_public_WC_street_sex', 'clientaway'
+		!! end
+	else
+		'"Deal!"'
+
+		temp = rand(1,10)
+		if temp <= 2:
+			phclient['condom'] = 1
+		elseif temp <= 7:
+			phclient['condom'] = 2
+		else
+			phclient['condom'] = 3
+		end
+		!! 1,3 - use, ok with it, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['pay'] = 1
+		elseif temp <= 9:
+			phclient['pay'] = 2
+		else
+			phclient['pay'] = 3
+		end
+		!! 1,3 - anywhere, attheend, never
+
+		temp = rand(1,10)
+		if temp <= 5:
+			phclient['cuminside'] = 1
+		elseif temp <= 8:
+			phclient['cuminside'] = 2
+		else
+			phclient['cuminside'] = 3
+		end
+		!! 1,3 - NOKIDS, whatever, must
+
+		if phsex ! 1:
+			act 'condom only':
+				cla
+				if phclient['condom'] <= 2:
+					'CLIENT: "Okey"'
+				end
+
+				if phclient['condom'] = 1:
+
+					gs 'mod_public_WC_street_sex', 'moneyfirst'
+					gs 'mod_public_WC_street_sex', 'placetalk'
+
+				elseif phclient['condom'] = 2:
+					'CLIENT: "Do you have some?"'
+					if mc_inventory['equipped_condoms'] + mc_inventory['normal_condoms'] + mc_inventory['sabotaged_condoms'] > 0:
+						act 'Yes':
+							cla
+							phclient['condom'] = 4
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+
+					act 'No, Oh well':
+						cla
+						phclient['condom'] = 3
+						gs 'mod_public_WC_street_sex', 'moneyfirst'
+						gs 'mod_public_WC_street_sex', 'placetalk'
+
+					end
+
+					if phsex = 3 or phsex = 100:
+						act 'Just Don''t cum inside':
+							cla
+							phasktonotcuminside = 1
+							phclient_mood -= rand(0,1)
+							if phclient['cuminside'] = 3: phclient_mood -= 2
+							if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+							'CLIENT: "Okey"'
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+				else
+					'CLIENT: "No, I want you to have sex with ME, not with some rubber"'
+
+					act 'it costs 10% more':
+						cla
+						if rand(1,3) ! 1:
+							'CLIENT: "Okey"'
+							temp = PH_full_pay*110/100
+							PH_full_pay = temp
+							phclient_mood -= rand(0,1)
+
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+						else
+							'CLIENT: "Ow, just fuck off"'
+							gs 'mod_public_WC_street_sex', 'clientaway'
+						end
+					end
+
+					act 'okey':
+						cla
+						gs 'mod_public_WC_street_sex', 'moneyfirst'
+						gs 'mod_public_WC_street_sex', 'placetalk'
+
+					end
+
+					if phsex = 3 or phsex = 100:
+						act 'Just Don''t cum inside':
+							cla
+							phasktonotcuminside = 1
+							phclient_mood -= rand(0,1)
+							if phclient['cuminside'] = 3: phclient_mood -= 2
+							if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+							'CLIENT: "Okey"'
+							gs 'mod_public_WC_street_sex', 'moneyfirst'
+							gs 'mod_public_WC_street_sex', 'placetalk'
+
+						end
+					end
+
+					act 'Condom only':
+						cla
+						'CLIENT: "Ow, just fuck off"'
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					end
+				end
+			end
+
+
+			if phsex = 3 or phsex = 100:
+				act 'Just Don''t cum inside':
+					cla
+					phasktonotcuminside = 1
+
+					if phclient['condom'] = 1:
+						'CLIENT: "I have a condom"'
+					else
+						phclient_mood -= rand(0,1)
+						if phclient['cuminside'] = 3: phclient_mood -= 2
+						if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+						'CLIENT: "Okey"'
+					end
+
+					gs 'mod_public_WC_street_sex', 'moneyfirst'
+					gs 'mod_public_WC_street_sex', 'placetalk'
+				end
+			end
+		end
+
+		gs 'mod_public_WC_street_sex', 'moneyfirst'
+		gs 'mod_public_WC_street_sex', 'placetalk'
+	end
+end
+
+
+if $ARGS[0] = 'moneyfirst':
+	!! gs 'mod_public_WC_street_sex', 'moneyfirst'
+	!! gs 'mod_public_WC_street_sex', 'placetalk'
+	act 'money first':
+		cla
+
+		if phclient['pay'] = 1:
+			'CLIENT: "Okey"'
+			phclient['pay'] = 4
+			phclient_mood -= rand(0,1)
+
+			gs 'mod_public_WC_street_sex', 'placetalk'
+		elseif phclient['pay'] = 2:
+			'CLIENT: "I will pay at the end only"'
+			phclient_mood -= rand(0,1)
+			if rand(1,3) = 1:
+				'He shows the money - "Don''t worry I want some fun, not some problems from your Pimp"'
+			else
+				act 'Show me the money':
+					cla
+					'He shows the money - "Don''t worry I want some fun, not some problems from your Pimp"'
+
+					gs 'mod_public_WC_street_sex', 'placetalk'
+				end
+			end
+
+			gs 'mod_public_WC_street_sex', 'placetalk'
+		else
+			'CLIENT: "I will pay at the end only"'
+			phclient_mood -= rand(0,1)
+
+			act 'Show me the money':
+				cla
+				gs 'mod_public_WC_street_sex', 'clientaway'
+			end
+
+			gs 'mod_public_WC_street_sex', 'placetalk'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'clientaway':
+	if carclient = 0:
+		'He goes away'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEwalkaway ('+rand(1,1)+').jpg"></center>'
+	else
+		'He drives away'
+	end
+	killvar 'carclient'
+	phclient_mood = 0
+
+	act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+	act 'go away': gt $loc, $loc_arg
+	!! gs 'mod_public_WC_street_sex', 'clientaway'
+end
+
+
+if $ARGS[0] = 'placetalk':
+	if phclient['pay'] = 1: phclient['pay'] = 2
+
+	if $clothingworntype = 'nude':
+		minut+=3
+		gs 'outfit', 'wear_last_worn'
+		'I put my clothes back on. I do not want to attract unwanted attention'
+		gs 'stat'
+	end
+
+	if phdrugged > 0: phdrugged += 1
+
+	otemp = rand(1,5)
+	if phdrugged > 0 and phdrugged <= 1000:
+		act 'kiss him':
+			if otemp < 4:
+				gs 'arousal', 'kiss', 1, 'prostitution', 'sub'
+				gs 'stat'
+				minut -= 1
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/kiss ('+rand(1,1)+').jpg"></center>'
+				if phdrugged >= 1:
+					'I put the pill in his mouth, it looks like he swallows it'
+					phdrugged = 1000
+				end
+			else
+				'CLIENT: "I don''t kiss whores"'
+				phdrugged = 0
+				'I secretly spit the pill to not be drugged'
+			end
+		end
+	elseif phdrugged = 0 and (mc_inventory['mentats'] > 1 or mc_inventory['amphetamine'] > 1):
+		act 'Do you want crazy drugged sex?':
+
+			phdrugged
+			if phclientdrugs = 1:
+				cla
+				'CLIENT: "Yes"'
+
+				act 'It''s only 500 extra':
+					cla
+					PH_full_pay += 500
+					'CLIENT: "OK!"'
+					'I put 2 tablets on my tongue'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/drugs_pill ('+rand(1,1)+').jpg"></center>'
+
+					if mc_inventory['mentats'] > 1:
+						mc_inventory['mentats'] -= 2
+						gs 'drugs', 'mentats'
+					else
+						mc_inventory['amphetamine'] -= 2
+						gs 'drugs', 'amphetamine'
+					end
+					act 'kiss him':
+						*clr & cla
+						gs 'arousal', 'kiss', 1, 'prostitution', 'sub'
+						gs 'stat'
+
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/kiss ('+rand(1,1)+').jpg"></center>'
+						'I swallow the tablet and show him my tongue, he do the same. His tongue is empty'
+
+						'CLIENT: "Ok, Where we will do this?"'
+
+
+						act 'take him to the corner':
+							minut += rand(5,10)
+							gs 'stat'
+							phwalk = 1
+
+							gt 'mod_public_WC_street_sex_corner_drugs', 'start'
+						end
+					end
+				end
+
+				act 'It''s free!':
+					cla
+					'CLIENT: "Perfect!"'
+					'I put 2 tablets on my tongue'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/drugs_pill ('+rand(1,1)+').jpg"></center>'
+
+					if mc_inventory['mentats'] > 1:
+						mc_inventory['mentats'] -= 2
+						gs 'drugs', 'mentats'
+					else
+						mc_inventory['amphetamine'] -= 2
+						gs 'drugs', 'amphetamine'
+					end
+
+					act 'kiss him':
+						*clr & cla
+						gs 'arousal', 'kiss', 1, 'prostitution', 'sub'
+						gs 'stat'
+
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/kiss ('+rand(1,1)+').jpg"></center>'
+						'I swallow the tablet and show him my tongue, he do the same. His tongue is empty'
+
+						'CLIENT: "Ok, Where we will do this?"'
+
+						act 'take him to the corner':
+							minut += rand(5,10)
+							gs 'stat'
+							phwalk = 1
+
+							gt 'mod_public_WC_street_sex_corner_drugs', 'start'
+						end
+					end
+				end
+			else
+				'CLIENT: "No"'
+			end
+		end
+	end
+
+
+
+	act 'talk about the place':
+		cla
+		if rand(1,3) ! 1 and carclient = 0:
+			'CLIENT: "Ok, Where we will do this?"'
+
+			if $loc ! 'mod_public_WC_street' and $curloc ! 'pav_park':
+				act 'take him to the apartment building nearby':
+					minut += rand(5,10)
+					gs 'stat'
+					phwalk = 1
+					gt 'mod_public_WC_street_sex_pidizd', 'start'
+				end
+			end
+
+			act 'take him to the corner':
+				minut += rand(5,10)
+				gs 'stat'
+				phwalk = 1
+				gt 'mod_public_WC_street_sex_corner', 'start'
+			end
+
+			if phBOX['bed'] > 0:
+				act 'take him to my box nearby':
+					minut += rand(2,5)
+					gs 'stat'
+					phwalk = 1
+					gt 'mod_public_WC_street_sex_box', 'start'
+				end
+			end
+		else
+			!! he show me the place
+
+			if carclient = 1 and rand (1,4) ! 1:
+				'CLIENT: "Ok, sit up in my car"'
+				temp = 15896
+			else
+				'CLIENT: "I know good place, lets go"'
+			end
+
+			act 'agree':
+				cla
+				if temp = 15896 and carclient = 1:
+					!! in the car
+					*clr & cla
+					minut += rand(5,10)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/HEshowtheway.jpg"></center>'
+					phwalk = 2
+					act 'continue': gt 'mod_public_WC_street_sex_car', 'start'
+				else
+					!! go somewhere
+					minut += rand(5,10)
+					gs 'stat'
+					phwalk = 2
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEshowtheway.jpg"></center>'
+
+					if rand(1,2) = 1 and $loc ! 'mod_public_WC_street' and $curloc ! 'pav_park':
+						'Soon we came to some apartment building'
+
+
+						act 'continue': gt 'mod_public_WC_street_sex_pidizd', 'start'
+					else
+						'We go to the corner behind'
+
+
+						act 'continue': gt 'mod_public_WC_street_sex_corner', 'start'
+					end
+				end
+			end
+
+
+
+			if temp ! 15896:
+				act 'No, It is me to choose the place':
+					cla
+					humint_exp += 3
+
+					minut += rand(1,5)
+					gs 'stat'
+					temp = fame['pav_prostitute'] / 4
+					if temp >= 50: temp = 50
+					if pcs_humint >= (rand(0,100) - temp):
+						'CLIENT: "Ok, show the way"'
+						if $loc ! 'mod_public_WC_street' and $curloc ! 'pav_park':
+							act 'take him to the apartment building nearby':
+								minut += rand(5,10)
+								gs 'stat'
+								phwalk = 1
+								gt 'mod_public_WC_street_sex_pidizd', 'start'
+							end
+						end
+
+						act 'take him to the corner':
+							minut += rand(5,10)
+							gs 'stat'
+							phwalk = 1
+							gt 'mod_public_WC_street_sex_corner', 'start'
+						end
+
+						if phBOX['bed'] > 0:
+							act 'take him to my box nearby':
+								minut += rand(2,5)
+								gs 'stat'
+								phwalk = 1
+
+								gt 'mod_public_WC_street_sex_box', 'start'
+							end
+						end
+					else
+						'CLIENT: "No, I am client here"'
+						phclient_mood -= rand(0,1)
+
+						if carclient = 1 and rand (1,4) ! 1:
+							temp = 15896
+						else
+							''
+						end
+
+						act 'agree':
+							cla
+							if temp = 15896 and carclient = 1:
+								!! in the car
+								*clr & cla
+								minut += rand(5,10)
+								gs 'stat'
+								phwalk = 2
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/HEshowtheway.jpg"></center>'
+
+								act 'continue': gt 'mod_public_WC_street_sex_car', 'start'
+							else
+								!! go somewhere
+								minut += rand(5,10)
+								gs 'stat'
+								phwalk = 2
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEshowtheway.jpg"></center>'
+
+								if rand(1,2) = 1 and $loc ! 'mod_public_WC_street' and $curloc ! 'pav_park':
+									'Soon we came to some apartment building'
+
+
+									act 'continue': gt 'mod_public_WC_street_sex_pidizd', 'start'
+								else
+									'We go to the corner behind'
+
+
+									act 'continue': gt 'mod_public_WC_street_sex_corner', 'start'
+								end
+							end
+						end
+
+						act 'go away':
+							*clr & cla
+							carclient = 0
+							gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+
+			if carclient = 1 and temp ! 15896:
+				act 'Let''s fuck in your car, maybe?':
+					cla
+					humint_exp += 3
+
+					minut += rand(1,5)
+					gs 'stat'
+					temp = fame['pav_prostitute'] / 4
+					if temp >= 50: temp = 50
+					if pcs_humint >= (rand(0,100) - temp):
+						'CLIENT: "Ok, good idea"'
+						phwalk = 1
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/HEshowtheway.jpg"></center>'
+
+						act 'continue':
+							minut += rand(5,10)
+							gs 'stat'
+
+							gt 'mod_public_WC_street_sex_car', 'start'
+						end
+					else
+						'CLIENT: "No, I am client here"'
+
+						act 'agree':
+							cla
+							!! go somewhere
+							minut += rand(5,10)
+							gs 'stat'
+							phwalk = 2
+
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/HEshowtheway.jpg"></center>'
+
+							if rand(1,2) = 1 and $loc ! 'mod_public_WC_street' and $curloc ! 'pav_park':
+								'Soon we came to some apartment building'
+
+
+								act 'continue': gt 'mod_public_WC_street_sex_pidizd', 'start'
+							else
+								'We go to the corner behind'
+
+
+								act 'continue': gt 'mod_public_WC_street_sex_corner', 'start'
+							end
+						end
+
+						act 'go away':
+							*clr & cla
+							carclient = 0
+							gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sexrobaction':
+	if gun = 1:
+		gs 'willpower', 'crime', 'self', 'medium'
+		if will_cost <= pcs_willpwr:
+			act 'Rob him!*' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				ztemp = 214
+
+				gt 'mod_public_WC_rab_gun_rob', 'rob'
+			end
+		else
+			act 'Rob him!*' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+end
+!gs 'mod_public_WC_street_sex', 'sexrobaction'
+
+
+
+if $ARGS[0] = 'man':
+
+	if stdtrigger <= 0:
+		if protect = 1:
+			' '
+		else
+			if phbjlick = 1:
+				gs 'dinSex', 'std_trigger_oral'
+				gs 'stat'
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger_oral'
+					gs 'stat'
+				end
+			elseif phballslick = 1:
+				' '
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger_oral'
+					gs 'stat'
+				end
+			elseif $phsexfolder1 = 'hj':
+				' '
+			elseif $phsexfolder1 = 'bj':
+				gs 'dinSex', 'std_trigger_oral'
+				gs 'stat'
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger_oral'
+					gs 'stat'
+				end
+			elseif $phsexfolder1 = 'vag':
+				gs 'dinSex', 'std_trigger'
+				gs 'stat'
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger'
+					gs 'stat'
+				end
+			elseif $phsexfolder1 = 'ass':
+				gs 'dinSex', 'std_trigger'
+				gs 'stat'
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger'
+					gs 'stat'
+				end
+			elseif $phsexfolder1 = 'lj':
+				' '
+			elseif $phsexfolder1 = 'lj-bj':
+				gs 'dinSex', 'std_trigger_oral'
+				gs 'stat'
+				if phtemp3 <= 6:
+					gs 'dinSex', 'std_trigger_oral'
+					gs 'stat'
+				end
+			end
+		end
+	end
+
+	if stdtrigger < 100:
+		stdtrigger += 15
+	else
+		stdtrigger = 0
+	end
+
+	if $cum1 > 100:
+		if $cum1 >= 200: $zadovolennia1_100 = $func('wrap', 'accent', ' ██████████ ') + ' '
+		if $cum1 >= 190 and $cum1 < 200: $zadovolennia1_100 = '<font color = green	> ██████████ </font> '
+		if $cum1 >= 180 and $cum1 < 190: $zadovolennia1_100 = '<font color = green	> █████████_ </font> '
+		if $cum1 >= 170 and $cum1 < 180: $zadovolennia1_100 = '<font color = green	> ████████__ </font> '
+		if $cum1 >= 160 and $cum1 < 170: $zadovolennia1_100 = '<font color = yellow	> ███████___ </font> '
+		if $cum1 >= 150 and $cum1 < 160: $zadovolennia1_100 = '<font color = yellow	> ██████____ </font> '
+		if $cum1 >= 140 and $cum1 < 150: $zadovolennia1_100 = '<font color = yellow	> █████_____ </font> '
+		if $cum1 >= 130 and $cum1 < 140: $zadovolennia1_100 = '<font color = yellow	> ████______ </font> '
+		if $cum1 >= 120 and $cum1 < 130: $zadovolennia1_100 = '<font color = yellow	> ███_______ </font> '
+		if $cum1 >= 110 and $cum1 < 120: $zadovolennia1_100 = '<font color = red	> ██________ </font> '
+		if $cum1 < 110: $zadovolennia1 = '<font color = red	> █________ </font> '
+	end
+
+	if $cum1 >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> ██████████ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> ██________ </font> '
+	if $cum1 < 10: $zadovolennia1 = '<font color = red	> █________ </font> '
+	if $cum1 >= -100 and $cum1 <= 0: $zadovolennia1 = '<font color = red	> Client cums! </font> '
+
+	if $cum1 > 100:
+		'Client''s endurance meter:'
+		'<<$zadovolennia1_100>>'
+		'<<$zadovolennia1>>'
+	else
+		'Client''s endurance meter: <<$zadovolennia1>>'
+	end
+
+	*nl
+	*nl
+
+	if phclient_mood < 0: phclient_mood = 0
+	if rand (1,100) + pcs_humint >= 100:
+		if phclient_mood <= 2:
+			'His mood is obviously terrible'
+		elseif phclient_mood <= 3:
+			'His is not in a good mood'
+		elseif phclient_mood <= 7:
+			'I can''t understand his mood'
+		else
+			'He seems happy'
+		end
+	else
+		'I can''t understand his mood'
+	end
+end
+!gs 'mod_public_WC_street_sex', 'man'
+
+
+if $ARGS[0] = 'timer':
+	if phsextimer > 0:
+		if (daystart * 24 * 60 + hour * 60 + minut) - phsextimer > 60:
+			+$OpenInnerThought+'Paid hour passed'+$CloseInnerThought
+			act 'Fun hour ends':
+				cla
+				if $cum1 <= 0:
+					phsextimer = 0
+
+					if phclient['pay'] = 4:
+						'Okey, it was fun!'
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					elseif phclient['pay'] = 5 or phclient['pay'] <= 2 or carclient = 1:
+						!! hepais and end
+						'He dress up and give me my cash (<<PH_full_pay>>)'
+						money += PH_full_pay
+						gs 'stat'
+						killvar 'PH_full_pay'
+						gs 'mod_public_WC_street_sex', 'clientaway'
+					elseif phclient['pay'] = 3:
+						!! heisnot paing and end
+						'He pushed me to the floor and run away'
+						killvar 'PH_full_pay'
+						+$OpenInnerThought+'This jerk did NOT pay me!!!'+$CloseInnerThought
+						gs 'pain', rand(1,2), 'back', 'fall'
+						gs 'stat'
+						killvar 'carclient'
+						act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+						act 'go away': gt $loc, $loc_arg
+					end
+				elseif $cum1 <= 20:
+					'CLIENT: "JUST KEEP GOING, I am almost cum"'
+					phsextimer = 0
+
+					act 'Okey':
+						killvar 'phsextimer'
+						gt $phsexstart, $phsexstart_arg
+					end
+				else
+					'CLIENT: "I need more time"'
+
+					act 'Pay extra 10%':
+						cla
+						phsextimer = 0
+						otemp = 110
+						gs 'mod_public_WC_street_sex', 'timerpayextra'
+					end
+
+					act 'Pay extra 30%':
+						cla
+						phsextimer = 0
+						otemp = 130
+						gs 'mod_public_WC_street_sex', 'timerpayextra'
+					end
+
+					act 'Pay extra 50%':
+						cla
+						phsextimer = 0
+						otemp = 150
+						gs 'mod_public_WC_street_sex', 'timerpayextra'
+					end
+
+					act 'Okey':
+						killvar 'phsextimer'
+						gt $phsexstart, $phsexstart_arg
+					end
+
+					act 'Sorry. I don''t have more time':
+						cla
+						phsextimer = 0
+						!! are you kidding bitch?
+						gt 'mod_public_WC_street_sex', 'endnow'
+					end
+				end
+			end
+		else
+			' '
+		end
+	end
+	!! gs 'mod_public_WC_street_sex', 'timer'
+end
+
+if $ARGS[0] = 'timerpayextra':
+	cla
+	if rand (101,200) >= otemp:
+		!! okey
+		'CLIENT: "Okey, just keep going"'
+
+		if phclient['pay'] = 4:
+			temp = (PH_full_pay *(otemp-100))/100
+			PH_full_pay = temp
+			phclient['pay'] = 5
+		else
+			temp = (PH_full_pay *otemp)/100
+			PH_full_pay = temp
+			if phclient['pay'] ! 3: phclient['pay'] = 5
+		end
+
+		act 'Okey':
+			killvar 'phsextimer'
+			gt $phsexstart, $phsexstart_arg
+		end
+	else
+		'CLIENT: "WTF? IT''S TOO MUCH! WHO DO YOU THINK U R?'
+		act 'continue': gt 'mod_public_WC_street_sex', 'endnow'
+	end
+end
+
+if $ARGS[0] = 'endnow':
+	cla
+	'CLIENT: "Are you kidding bitch?"'
+
+	if phclient['pay'] = 4:
+		'CLIENT: "Just finish me quick, I have paid you!"'
+
+		act 'Okey':
+			killvar 'phsextimer'
+			gt $phsexstart, $phsexstart_arg
+		end
+
+		act 'You paid for an hour. The hour ends. I have no time for you honey, sorry':
+			gt 'mod_public_WC_street_sex', 'endnow2'
+		end
+
+	elseif phclient['pay'] = 3:
+		'CLIENT: "Just finish me quick"'
+		'CLIENT: "Or I will NOT pay you"'
+
+		act 'Okey':
+			killvar 'phsextimer'
+			gt $phsexstart, $phsexstart_arg
+		end
+
+		act 'I have no time for you honey, sorry':
+			gt 'mod_public_WC_street_sex', 'endnow2'
+		end
+	else
+		'CLIENT: "I will NOT pay you"'
+
+		act 'Okey, I will make you cum':
+			killvar 'phsextimer'
+			gt $phsexstart, $phsexstart_arg
+		end
+
+		act 'I have no time for you honey, sorry':
+			gt 'mod_public_WC_street_sex', 'endnow2'
+		end
+	end
+end
+
+if $ARGS[0] = 'endnow2':
+	cla
+	temp = 0
+	if phclient['pay'] = 4: temp = 14
+	ztemp = rand(1,100) + temp
+
+	if ztemp <= 250:
+		!! chance he is ok
+		'In an angry silence he dress up and go away '
+		killvar 'carclient'
+		fame['pav_prostitute'] -= rand(0,10)
+
+		act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+		act 'go away': gt $loc, $loc_arg
+	elseif ztemp <= 85:
+		*clr & cla
+		!! chance he start fight
+		'CLIENT: "I will use you to cum one way or another"'
+
+		if month >= 11 or month <= 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+		end
+
+		act 'Attempt to escape':
+			if pcs_run < 10:
+				peshimraperand = rand(0, 11)
+			elseif pcs_run < 30:
+				peshimraperand = rand(0, 20)
+			elseif pcs_run < 50:
+				peshimraperand = rand(0, 30)
+			elseif pcs_run < 70:
+				peshimraperand = rand(0, 40)
+			elseif pcs_run < 90:
+				peshimraperand = rand(0, 50)
+			elseif pcs_run < 110:
+				peshimraperand = rand(0, 60)
+			elseif pcs_run < 130:
+				peshimraperand = rand(0, 70)
+			elseif pcs_run < 150:
+				peshimraperand = rand(0, 80)
+			elseif pcs_run < 170:
+				peshimraperand = rand(0, 90)
+			else
+				peshimraperand = 11
+			end
+
+			if peshimraperand <= 10:
+				*clr & cla
+				'<center><img <<$set_imgh>> src="images/locations/shared/street/rapist.jpg"></center>'
+				'You try to run away, but you''re not quick enough, and he catches you before you even get close to the end of the alleyway. He places a hand over your mouth so you can''t scream and drags you back into the alley.'
+				act 'Struggle': gt 'street_events_general', 'rape'
+			else
+				*clr & cla
+				'<center><img <<$set_imgh>> src="images/locations/shared/street/alleynight.jpg"></center>'
+				'You manage to lose him and get to a safer well lit area.'
+				act 'Continue':gt $loc
+			end
+		end
+		if succubusQW = 5:
+			!!Used if this was a random encounter instead of active hunting
+			act 'Feed (this can take a lot of time)': gt 'succubus', 'RapistFight'
+		end
+		act 'Struggle': gt 'street_events_general', 'rape'
+		act 'Fight':
+			cla
+			'"Fuck you asshole!" He prepared his fists to fight.'
+			act 'Defend yourself':
+				cla
+				!! gs 'npcgeneratec', 0, 'Robber', rand(18,45)
+				!! gs 'boyStat', $npclastgenerated
+
+				!! gs 'fight','initFight'
+
+				!! gs 'fight_npcdata', 'robber'
+
+				!! gt 'fight', 'start'
+
+				gs 'npcgeneratec', 0, 'Rapist', rand(18,40)
+				gs 'boyStat', $npclastgenerated
+
+				gs 'fight','initFight'
+				gs 'fight_npcdata', 'rapist'
+				gt 'fight', 'start'
+			end
+		end
+	else
+		cla
+		'He tooks the gun from his pocket and gun point me'
+		!! chance he has a gun and rape
+
+
+		'I just give up'
+		'he kick me few times'
+		gs 'pain', 5, 'head', 'kick'
+		gs 'pain', 3, 'lips', 'kick'
+		gs 'pain', 3, 'nose', 'kick'
+		gs 'pain', 5, 'tummy', 'kick'
+		gs 'stat'
+
+		if $clothingworntype ! 'nude':
+			'He undress me and take all my money.'
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			$clothingworntype = 'nude'
+			inhib_exp += rand(1,2)
+		end
+
+		money = 0
+		temp = rand(1,15) + carclient*6
+		if temp <= 4:
+			minut += rand(25,70)
+			'He kicks me few more times and go away.'
+			gs 'pain', rand(5,10), 'head', 'kick'
+			gs 'pain', rand(5,10), 'eyebrows', 'kick'
+			gs 'pain', rand(5,10), 'neck', 'kick'
+			gs 'pain', rand(5,10), 'back', 'kick'
+			gs 'pain', rand(5,10), 'thighs', 'kick'
+			gs 'pain', rand(5,10), 'tummy', 'kick'
+			gs 'pain', rand(5,10), 'ribs', 'kick'
+			gs 'pain', rand(5,10), 'chest', 'kick'
+			gs 'pain', rand(5,10), 'wrists', 'kick'
+			gs 'stat'
+			act 'Stand up':  gt $loc, $loc_arg
+		elseif temp <= 15:
+			gt 'mod_public_WC_rab_gun_rob', 'rape'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/video/90/4rapeevent/vkrav.mp4"></video></center>'
+			'he tied me and put me in a truck'
+
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4 ('+rand(1,2)+').jpg"></center>'
+			else
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n.jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/00 car/take/4n_v.mp4"></video></center>'
+				end
+			end
+
+			if rand(1,100) <= 30:
+				!! sauna
+				wait 1000
+				minut += rand(40,240)
+				money = 0
+				gs 'stat'
+				workDolg += rand(20,40)*1000
+				*nl
+				'I am at the sauna. The brutes drag me into a room and start to explain. "You''re going to live here and work until you have cleared your debt. Got it? Try to contact the authorities or escape, we''ll put a bullet in your head and bury you in the woods, understand?"'
+				'I become frightened as they''re convincing, so I just nod.'
+				act 'Look around': gt 'city_sauna', 'saunaroom'
+			else
+				!! carwork
+				wait 1000
+				minut += rand(40,240)
+				money = 0
+				gs 'stat'
+				'You don''t have to be a genius to understand: he will rape me further, and maybe others will. I can''t do anything right now, or can I? ..'
+				*nl
+				'……Ai! My thoughts were interrupted by the feeling of a stab in the arm'
+				mood -= 30
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/5carsoldevent/wait.jpg"></center>'
+				gs 'drugs', 'aphrodisiac'
+				gs 'drugs', 'heroin'
+				mc_inventory['amphetamine'] += 1
+				mc_inventory['aphrodisiac'] += 1
+				gs 'stat'
+				act 'Continue':
+					*clr & cla
+					'Listen to me, Whore, now you have a little work to do, nothing new for you. If you obey everything will end well.'
+					act 'Nod to Yes':
+						willpowermax -= rand(1,2)
+						gt 'mod_public_WC_cabine_carwork', 'start'
+					end
+					if addictive_trait_lvl >= 1:
+						'From the injection, obviously I feel a surge of drugs'
+					end
+					act 'Try to push him away with all his might':
+						if pcs_stren * addictive_trait_lvl > 80:
+							*clr & cla
+							'I pushed him hard. He hit his head hard on the car. Under the influence of something, I quickly found the knife in his pocket and cut my ropes. I jumped out of the car without thinking I ran into the woods'
+							act 'I''m running away': gt 'gad_forest', 'forest_center'
+						else
+							*clr & cla
+							'I feel like everything is floating, I can''t muster myself. I hear "That''s good."'
+							act 'Continue': gt 'mod_public_WC_cabine_carwork', 'start'
+						end
+					end
+				end
+			end
+		end
+	end
+	fame['pav_prostitute'] -= rand(0,20)
+end
+--- mod_public_WC_street_sex ---------------------------------
+

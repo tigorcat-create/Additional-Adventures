@@ -1,0 +1,274 @@
+# mod_public_WC_street_box_magicwhore_rithual_L1
+if $ARGS[0] = 'sex':
+	*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+	phkillaction = 0	
+	phiphi += 1	
+	
+	if phsex = 101:
+		!! hj
+		phsalivalubricant -= 1
+		if phspeed = 0:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['hj'] / 10 )
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			'I pulled out his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start gently jerk it looking deep in his eyes'
+			gs 'arousal', 'hj', rand(1,3)
+			gs 'stat'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/2 hj/spit and start ('+rand(1,1)+').mp4"></video></center>'			
+			phspeed += 1
+		elseif phspeed = 1:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['hj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(5,10)
+			gs 'stat'	
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/2 hj/hj ('+rand(1,1)+').mp4"></video></center>'	
+		end
+	elseif phsex = 108:
+		!! tj
+		if phspeed = 0:
+			'I put his dick tight between my tits…'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/3 tj/start ('+rand(1,1)+').mp4"></video></center>'	
+			
+			phsalivalubricant -= 1
+			if rand(1,3) = 1: phsalivalubricant -= 1
+			
+			stat['titjob'] += rand(0,1)	
+			
+			if phsalivalubricant > 10: 
+				'It is hard to jerk it, it is to wet between tits'
+				phsalivalubricant = -3
+			elseif phsalivalubricant <= 2:
+				'It is hard to jerk it, it is to dry between tits'
+			end
+			otemp = phsalivalubricant
+			if otemp >= 10: otemp = 9
+			
+			temp = 7 + ( stat['titjob'] / 10 )  + phclientforce * rand(5,15) + otemp 
+			$cum1 -= rand(0,temp)				
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			
+			gs 'arousal', 'titjob', rand(5,10)
+			gs 'stat'
+			
+			act 'Lubricate the dick':
+				cla
+				phsalivalubricant += 5
+				'I spit on the dick to make it sliding easily'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/3 tj/lubricate ('+rand(1,1)+').mp4"></video></center>'	
+				
+				minut += 2
+				gs 'stat'
+				
+				act 'keep tits fuck it': 
+					*clr & cla					
+					gt 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+				end
+			end
+			phspeed += 1
+		elseif phspeed = 1:
+			'I keep his dick tight between my tits…'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/3 tj/tj ('+rand(1,2)+').mp4"></video></center>'	
+			
+			phsalivalubricant -= 1
+			if rand(1,3) = 1: phsalivalubricant -= 1
+			
+			stat['titjob'] += rand(0,1)	
+			if phsalivalubricant > 10: 
+				'It is hard to jerk it, it is to wet between tits'
+				phsalivalubricant = -3
+			elseif phsalivalubricant <= 2:
+				'It is hard to jerk it, it is to dry between tits'
+			end
+			otemp = phsalivalubricant
+			if otemp >= 10: otemp = 9
+			
+			temp = 7 + ( stat['titjob'] / 10 )  + phclientforce * rand(5,15) + otemp 
+			$cum1 -= rand(0,temp)				
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			
+			gs 'arousal', 'titjob', rand(5,10)
+			gs 'stat'
+			
+			act 'Lubricate the dick':
+				cla
+				'I spit on the dick to make it sliding easily'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/3 tj/lubricate ('+rand(1,1)+').mp4"></video></center>'
+				phsalivalubricant += 5	
+				
+				minut += 2
+				gs 'stat'
+				
+				act 'keep tits fuck it': 
+					*clr & cla					
+					gt 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+				end
+			end
+		end
+	elseif phsex = 103:
+		phsalivalubricant = 5
+		!! vag
+		if phspeed = 0:		
+			temp = 20 + ( stat['vaginal'] / 10 )
+			$cum1 -= rand(15,temp)		
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			
+			'I pushed it inside me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/4 vag/start ('+rand(1,1)+').mp4"></video></center>'				
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			phspeed += 1
+		else
+			temp = 20 + ( stat['vaginal'] / 10 ) + 0 * rand(5,15)
+			$cum1 -= rand(15,temp)		
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+			
+			'I am fucking muself with this dick'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/4 vag/vag ('+rand(1,3)+').mp4"></video></center>'				
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+		end
+	end
+	
+
+	
+	
+	if phkillaction = 0:
+		act 'Continue':
+			*clr & cla
+			gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+		end
+		
+		if phsex ! 101:
+			if stat['hj'] >= 100:
+				act 'jeerk it':
+					phsex = 101
+					phspeed = 0
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+				end
+			else
+				act 'blow him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		end
+		if phsex ! 108:
+			if stat['titjob'] >= 10:
+				act 'titsfuck it':
+					phsex = 108
+					phspeed = 0
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+				end
+			else
+				act 'titsfuck it': $func('wrap', 'neg', '<br>Better tits job skill needed.')
+			end
+		end
+		if $clothingworntype = 'nude':
+			if phsex ! 103:			
+				act 'fuck myself':
+					phsex = 103
+					phspeed = 0
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'sex'
+				end
+			end
+		end
+		
+		if $clothingworntype ! 'nude':
+			act 'undress':
+				minut+=3
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/1 undress.mp4"></video></center>'
+				gs 'stat'
+			end
+		end
+	end
+	
+	
+	if $cum1 < 10:
+		
+		!! he cums		
+		sexvolume = rand(40,60)
+		
+		if phsex = 103:
+			cla
+			gs 'cum_call','',$boy
+			gs 'cuminsidereact', $boydesc
+			
+		else
+			*clr & cla
+			if phsex = 108:				
+				'I feel it is ready to cum, I am jerking it to the end'
+			end
+			'It is fountaning with cum'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Good rithual/1/5 hj cum ('+rand(1,1)+').mp4"></video></center>'
+			gs 'cum_call','hair',$boy
+			gs 'stat'
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','arms',$boy
+			gs 'stat'
+			gs 'cum_call','hands',$boy
+			gs 'stat'
+			gs 'cum_call','breasts',$boy
+			gs 'stat'
+		end		
+		
+		if phiphi <= 6:
+			!! win
+			'VOICE FROM NOWHERE: "It was quick enough. Congratulation, the rithual is done"'
+			PH_consanguinity_L += 1
+		else
+			!! fail
+			'VOICE FROM NOWHERE: "You are not skilled enough, the rithual is failed"'
+			PH_pay_PHmwrstat += 5
+		end		
+		
+		gs 'arousal', 'end'
+		gs 'stat'			
+		
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	end
+end
+
+if $ARGS[0] = 'man':
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_L1', 'man'
+	if $cum1 >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ███______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = red	> ██________ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> █_________ </font> '
+	if $cum1 < 10: 
+		$zadovolennia1 = '<font color = red	> The dick cums! </font> '
+	end
+	!! if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>Its endurance meter: <<$zadovolennia1>></center>'
+end
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_rithual_L1 ---------------------------------
+

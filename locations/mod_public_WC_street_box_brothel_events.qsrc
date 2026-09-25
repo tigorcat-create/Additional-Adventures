@@ -1,0 +1,169 @@
+# mod_public_WC_street_box_brothel_events
+if $ARGS[0] = 'nocum': 
+	if phwhores[i] = 4 or phwhores[i] = 5:
+		!! wasted sleeping
+		*clr
+		'<<$phgirlname[i]>> is wasted'		
+		
+		if phwhores[i] = 4:
+			!! obkinchana
+			'I see last client use here to the max point'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/wasted/4 end (1).jpg"></center>'
+			'No more work to her till the end of the shift, I think'
+			'I dress her up, the least I can do.'
+			phwhores[i] = 5
+		else
+			!! prosto valiaetcia
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/events/drugs/wasted/2 wasted (1).mp4"></video></center>'
+			
+		end
+	elseif phwhores[i] = 3:
+		*clr
+		!! wasted sex, client uses
+		'<<$phgirlname[i]>> is wasted!!!'
+		'Client does not care at all, he just using her'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/events/drugs/wasted/3 used ('+rand(1,7)+').mp4"></video></center>'
+	elseif phservicebooze[i] >= 1:
+		!! next alko step
+		if rand(0,12) + phservicebooze[i] >= 4:
+			*clr
+			if phservicebooze[i] >= 3:
+				'Cleint decides to fuck <<$phgirlname[i]>> with an bottle. <<$phgirlname[i]>> asked extra for that'
+				money += rand(300,500)	
+				phservicebooze[i] = -1
+				if rand(1,2) = 1: phwhores_hour += 1
+				if phwhores_hour >= 24:
+					phwhores_hour -= 24
+					phwhores_day += 1
+				end				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/drink/2 hebottleuse ('+rand(1,3)+').jpg"></center>'				
+				
+				
+			elseif rand(1,2) = 1 and phbooze >= 1:
+				'<<$phgirlname[i]>> is drinking with a client'
+				phwhoresdrugged[i] += rand(1,5)
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/drink/1 ad drink ('+rand(1,2)+').jpg"></center>'
+				
+				if rand(1,4) = 1:
+					phbooze -= 1
+					money += rand(300,500)
+				end
+				
+				if rand(1,3) = 1: phwhores_hour += 1
+				if phwhores_hour >= 24:
+					phwhores_hour -= 24
+					phwhores_day += 1
+				end
+				
+				if phwhoresdrugged[i] >= 100: 
+					phdruggedgirls += 1
+					phwhores[i] = 3
+					phwhores_hour += rand(2,4)
+					if phwhores_hour >= 24:
+						phwhores_hour -= 24
+						phwhores_day += 1
+					end					
+				end		
+				phservicebooze[i] += 1
+				
+			elseif phbooze > 1:
+				!! shebottleuse
+				
+				phbooze -= 1
+				money += rand(300,500)	
+				'<<$phgirlname[i]>> took an empty bottle and start to pleasure herself with it. Client enjoes view, and open other one to drink while he entertained'
+				
+				phservicebooze[i] += 2				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/drink/2 bottleuse ('+rand(1,6)+').jpg"></center>'
+				
+				
+			elseif phbooze <= 1:	
+				!! he 
+				'CLIENT: THE LAST BOTTLE, WTF?!'
+				'He was so angry, that he openned it and push it deep <<$phgirlname[i]>> ass'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/events/drugs/drink/3 hebottleuse champagne (1).mp4"></video></center>'
+				phservicebooze[i] = -1
+				
+			end
+		else
+			phservicebooze[i] = -1
+		end
+	elseif phservicedrug[i] >= 1:
+		!! nothing
+		
+		
+	elseif rand(1,10) = 1:
+		if rand(1,4) ! 1 and phbooze >= 1 and phservicebooze[i] >= 0:
+			*clr
+			phservicebooze[i] = 1
+			'Girl advertise a booze… I see client get a cash!'
+			
+			phbooze -= 1
+			money += rand(300,500)
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/drink/0 ad ('+rand(1,6)+').jpg"></center>'
+			
+			
+		elseif phdrugs >= 1:
+			*clr
+			phservicedrug[i] = 1
+			'Girl advertise a drug… I see client get a cash!'
+			phwhores_hour += rand(1,2)
+			if phwhores_hour >= 24:
+				phwhores_hour -= 24
+				phwhores_day += 1
+			end
+			phdrugs -= 1
+			money += rand(1000,3000)
+			
+			if rand(1,3) = 1 and phdrugs >= 0:				
+				!! together
+				phdrugs -= 1
+				money += rand(1000,3000)
+				phwhoresdrugged[i] += rand(20,50)
+				'Client don''t want to do it alone, so <<$phgirlname[i]>> makes him a company'
+				
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/events/drugs/cocaina/togetherSHE.mp4"></video></center>'
+				'and than…'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/maf work/events/drugs/cocaina/togetherHE.mp4"></video></center>'
+				
+				if phwhoresdrugged[i] >= 100: 
+					phdruggedgirls += 1
+					phwhores[i] = 3
+					phwhores_hour += rand(2,4)
+					if phwhores_hour >= 24:
+						phwhores_hour -= 24
+						phwhores_day += 1
+					end					
+				end
+			else
+				!! alone
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/maf work/events/drugs/cocaina/alone ('+rand(1,3)+').jpg"></center>'
+			end
+		end
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+!phwhoresdrugged[i] += 
+
+!phservicebooze[i] = 1
+!phservicedrug[i] = 1
+--- mod_public_WC_street_box_brothel_events ---------------------------------
+

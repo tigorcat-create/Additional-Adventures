@@ -1,0 +1,1009 @@
+# mod_public_WC_rab_livesklad
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	menu_off = 1
+	$location_type = 'secluded'
+
+
+	$loc = 'mod_public_WC_rab_livesklad'
+	$metka = 'start'
+	$menu_loc = 'mod_public_WC_rab_livesklad'
+	$menu_arg = 'start'
+	$loc_arg = $ARGS[0]
+
+
+	dick = 17
+	npc_dick[$npclastgenerated] = dick
+	gs 'boyStat', 'A442'
+	gs 'stat'
+
+
+
+	*clr & cla
+	gs 'stat'
+	if slova <= 0: slova = 0
+	zvit = 0
+	task1 = 0
+	task2 = 0
+	task3 = 0
+	task4 = 0
+	task5 = 0
+	task6 = 0
+	task7 = 0
+	cumgame = 0
+
+
+
+	$func('wrap', 'header center b', 'My prison room')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/live_sklad'+rand(1,6)+'.jpg"></center>'
+
+
+
+	if ropeslack = 2:
+		'Vania made a mistake! There is a slack in a rope.'
+		gs 'mod_public_WC_cabine', 'motuzka'
+		gs 'stat'
+
+		act 'Try to break the ropes':
+			cla
+			minut += rand(45,90)
+			gs 'stat'
+			if pcs_stren >= 90:
+				cla
+				'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+				$rope = 0
+				gs 'mod_public_WC_cabine', 'motuzka'
+				act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+			elseif pcs_stren >= 50:
+				cla
+				'I hear the rope crackle, but the rope does not brake.'
+				$rope -= pcs_stren * 3 / 10 + 2
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				else
+					cla
+					'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+
+					act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+				end
+			else
+				cla
+				'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+				$rope -= rand(10,20)
+				gs 'mod_public_WC_cabine', 'motuzka'
+				if $rope > 0:
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				else
+					cla
+					'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+
+					act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+				end
+			end
+		end
+	end
+
+	if ropeslack = 1:
+		act 'search slack in the belts which tides me':
+			cla
+			minut += rand(30,100)
+			gs 'stat'
+			if rand(1,100) >= 20:
+				ropeslack = 1
+				'I have found no slack'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			else
+				cla
+				ropeslack = 2
+				$rope = 100
+				'Yes, Vania made a mistake! There is a slack.'
+
+
+				act 'Try to break the ropes':
+					cla
+					if pcs_stren >= 90:
+						cla
+						'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+						$rope = 0
+						gs 'mod_public_WC_cabine', 'motuzka'
+
+						act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+					elseif pcs_stren >= 50:
+						cla
+						'I hear the rope crackle, but the rope does not brake.'
+						$rope -= pcs_stren * 3 / 10 + 2
+						gs 'mod_public_WC_cabine', 'motuzka'
+						if $rope > 0:
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						else
+							cla
+							'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+
+							act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+						end
+					else
+						cla
+						'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+						$rope -= rand(10,20)
+						gs 'mod_public_WC_cabine', 'motuzka'
+						if $rope > 0:
+							act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+						else
+							cla
+							'Under my power, all the ropes broke through with a loud sound. I wait a moment and…'
+
+							act 'continue': gt 'mod_public_WC_rab_livesklad_run', 'start'
+						end
+					end
+				end
+			end
+		end
+	end
+
+
+
+	if ganeat > 0:
+		if ganeat >= 3: 'there is a line with <<ganeat>> condoms full of smelly cum'
+		if ganeat = 2: 'there are 2 condoms full of cum'
+		if ganeat = 1: 'there is a condom full of cum'
+
+		act 'eat a cum from the condom':
+			*clr & cla
+			minut += 10
+			if rand (1,6) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/untied/drinkcondom/drink.jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/untied/drinkcondom/drinkv ('+rand(1,5)+').mp4"></video></center>'
+			end
+
+			'salty cold sperm goes down my belly…'
+
+			ganeat -= 1
+			if bimbolevel >= 2:
+				pcs_mood += 40
+				'I like more the warm one, but it''s good enough'
+			end
+			pcs_mood -= 20
+			gs 'cum_call', 'mouth', 'A442', 0
+			stat['swallow'] += 1
+			gs 'stat'
+			pcs_health -= rand(0,30)
+			pcs_health += rand(0,10)
+			fat += 3
+			pcs_energy += 40
+			if pcs_hydra >= 100:
+				pcs_hydra += 20
+			else
+				pcs_hydra += 30
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+
+
+	act 'do push-ups':
+		cla
+		*clr
+		'<center><video autoplay loop <<$set_imgh>> src="images/pc/activities/push_naked.mp4"></video></center>'
+		gs 'exercise', 'tier2', 30, 'stren_exp'
+		'You do push-ups for 30 minutes, improving your strength.'
+
+		randpushfact = rand(-5,5)
+		if pcs_energy < 40: randpushfact -= rand(1,10)
+
+		pushnum = (pcs_stren * pcs_sleep * pcs_health)  / ( 1 * 67 *  healthmax) + randpushfact
+
+		if pushnum < 1: pushnum = rand(1,5)
+		KILLVAR 'randpushfact'
+		'<br>You managed to do <<pushnum>> push-ups. Your previous record is <<pushrecord>>.'
+
+		if pushrecord < pushnum:pushrecord = pushnum & 'This is a new record!'
+		gs 'stat'
+		act 'Finish': gt $loc, $loc_arg
+	end
+
+
+	act 'wait 1 hour':
+		*clr & cla
+		if rand (1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/wait.jpg"></center>'
+		else
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/waitv.mp4"></video></center>'
+		end
+
+		minut += 58
+		gs 'stat'
+		act 'wait': gt 'mod_public_WC_rab_livesklad', 'start'
+	end
+
+	if hour > 18 or hour <= 5:
+		act 'sleep':
+			gt 'bed', 'start'
+		end
+	end
+
+	act 'Get ready for Vania (0:30)':
+		*clr & cla
+		willpowermax -= rand(0,1)
+		minut += 30
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/Svetaready/readyvag (2).jpg"></center>'
+		if rand(1,15) = 1: willdec -= 1
+
+		if willdec ! daystart:
+			if (hour >= 16 and hour <= 18) or hour <= 5 or hour >= 20:
+				*clr & cla
+				zgoda += 5
+				'Vania enters the room'
+				'I hear how Vania makes happy noices'
+				zgoda += 1
+				if rand(1,3) = 1: consent -= 1
+				if consent < 0: consent = 0
+				if rand(1,2) = 1:
+					*clr & cla
+					'Wihout any words he starts to fucks me'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/sex_sklad'+rand(1,3)+'.mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(10,15)
+					gs 'pain', rand(1,2), 'vaginal', 'stretch'
+					gs 'pain', rand(1,2), 'vaginal', 'tear'
+					gs 'stat'
+					act 'he cums':
+						*clr & cla
+						temp = rand(1,10)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+						gs 'sweat', 'add', 15
+						gs 'cum_call', 'vagina', 'A442', 0
+						gs 'cuminsidereact', 'Vania'
+						'"I am very happy, that you starts to wait for me!"'
+						'"Lets work on your consent"'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+					end
+				else
+					*clr & cla
+					'Wihout any words he rolled me and put it in my ass'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/anal_enter.mp4"></video></center>'
+					gs 'arousal', 'anal', rand(2,5)
+					gs 'pain', rand(2,4), 'asshole', 'stretch'
+					gs 'pain', rand(2,4), 'asshole', 'tear'
+					gs 'stat'
+					act 'He fucks me':
+						*clr & cla
+						'He is rought and it''s painfull'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/anal_sklad.mp4"></video></center>'
+						gs 'arousal', 'anal', rand(10,15)
+						gs 'pain', rand(2,4), 'asshole', 'stretch'
+						gs 'pain', rand(2,4), 'asshole', 'tear'
+						gs 'stat'
+						act 'He filled my ass':
+							*clr & cla
+							gs 'arousal', 'anal', rand(2,7)
+							gs 'pain', rand(2,4), 'asshole', 'stretch'
+							gs 'pain', rand(2,4), 'asshole', 'tear'
+							gs 'stat'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/cum_ass.mp4"></video></center>'
+							gs 'sweat', 'add', 15
+							gs 'cum_call', 'anus', 'A442', 0
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							'"I am very happy, that you starts to wait for me!"'
+							'"Lets work on your consent"'
+							act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+						end
+					end
+				end
+			elseif daystart - skladlive >= 1 and hour >= 7 and hour <= 8 and Vcumglass ! 1 and Vcumglass ! 2:
+				*clr & cla
+				'Vania enters with the erect cock and empty glass.'
+				'"Wow, good girl!"'
+				zgoda += 6
+				gs 'arousal', 'vaginal', rand(1,10), 'bound', 'sub', 'rape', 'humiliation'
+				gs 'stat'
+				'He fucks me not too long'
+				if rand(1,2) >= 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag ('+rand(2,4)+').jpg"></center>'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv ('+rand(8,9)+').mp4"></video></center>'
+				end
+				act 'I feel his cum in me!':
+					*clr & cla
+					gs 'cum_call', 'vagina', 'A442', 0
+					gs 'cuminsidereact', 'Vania'
+					'"Good girl, now push!"'
+					'I push the cum from my vagina.'
+					'"Nice, your breakdast is ready"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/fromvagtodrink.mp4"></video></center>'
+					Vcumglass = 2
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			else
+				'nothing happens'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		elseif willdec = daystart:
+			if daystart - skladlive >= 1 and hour >= 7 and hour <= 8 and Vcumglass ! 1 and Vcumglass ! 2:
+				*clr & cla
+				'Vania enters with the erect cock and empty glass.'
+				'"Wow, good girl!"'
+				zgoda += 6
+				gs 'arousal', 'vaginal', rand(1,10), 'bound', 'sub', 'rape', 'humiliation'
+				gs 'stat'
+				'He fucks me not too long'
+				if rand(1,2) >= 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vag ('+rand(2,4)+').jpg"></center>'
+				else
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/bdsm_sex/vag/vagv ('+rand(8,9)+').mp4"></video></center>'
+				end
+				act 'I feel his cum in me!':
+					*clr & cla
+					gs 'cum_call', 'vagina', 'A442', 0
+					gs 'cuminsidereact', 'Vania'
+					'"Good girl, now push!"'
+					'I push the cum from my vagina.'
+					'"Nice, your breakdast is ready"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/fromvagtodrink.mp4"></video></center>'
+					Vcumglass = 2
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			else
+				'nothing happens'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		end
+	end
+
+	if week ! 6:
+		if rand(1,10) = 1: willdec -= 1
+		if willdec ! daystart:
+			if (hour >= 16 and hour <= 18) or hour <= 5 or hour >= 20:
+				cla
+				'Vania enters the room'
+				'"Hello, Betsi"'
+				'"Lets work on your consent"'
+				act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+			end
+		end
+	end
+
+
+	if daystart - skladlive >= 1 and hour = 7 and Vcumglass ! 1 and Vcumglass ! 2:
+		'Vania enters with the erect cock and empty glass.'
+		'In a few strokes he fills the glass'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/full glass.mp4"></video></center>'
+		Vcumglass = 1
+		hour += 1
+		gs 'stat'
+	end
+
+	if hour >= 9 and Vcumglass = 1:
+		Vcumglass = 3
+	end
+	if hour >= 9 and Vcumglass = 2:
+		Vcumglass = 3
+	end
+
+	if Vcumglass = 1:
+		act 'drink the glass of warm cum':
+			*clr & cla
+			Vcumglass = 0
+			minut += 20
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/untied/cumglass/3v.mp4"></video></center>'
+			'salty warm sperm goes down my belly…'
+			'Warm is better…'
+
+			if bimbolevel >= 2:
+				pcs_mood += 50
+				'Very tasty!'
+			end
+			pcs_mood -= 10
+			gs 'cum_call', 'mouth', 'A442', 0
+			stat['swallow'] += 1
+			gs 'stat'
+			pcs_health += 10
+			fat += 3
+			pcs_energy += 40
+			if pcs_hydra >= 100:
+				pcs_hydra += 30
+			else
+				pcs_hydra += 40
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	elseif Vcumglass = 2:
+		act 'drink the glass of sperm from my vagina':
+			*clr & cla
+			Vcumglass = 0
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/untied/cumglass/3v.mp4"></video></center>'
+			'salty cold sperm goes down my belly…'
+			minut += 20
+
+			if bimbolevel >= 2:
+				pcs_mood += 40
+				'I like more the warm one, but it''s good enough'
+			end
+			pcs_mood -= 20
+			gs 'cum_call', 'mouth', 'A442', 0
+			stat['swallow'] += 1
+			gs 'stat'
+			pcs_health += 10
+			fat += 3
+			pcs_energy += 35
+			if pcs_hydra >= 100:
+				pcs_hydra += 20
+			else
+				pcs_hydra += 30
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	elseif Vcumglass = 3:
+		act 'drink the glass of cum':
+			*clr & cla
+			Vcumglass = 0
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/cum/cumplay/untied/cumglass/3v.mp4"></video></center>'
+			'salty cold sperm goes down my belly…'
+			minut += 20
+
+			if bimbolevel >= 2:
+				pcs_mood += 40
+				'I like more the warm one, but it''s good enough'
+			end
+			pcs_mood -= 20
+			gs 'cum_call', 'mouth', 'A442', 0
+			stat['swallow'] += 1
+			gs 'stat'
+			pcs_health += 10
+			fat += 3
+			pcs_energy += 30
+			if pcs_hydra >= 100:
+				pcs_hydra += 20
+			else
+				pcs_hydra += 30
+			end
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	elseif Vcumglass = 0:
+		'There is an empty glass'
+	end
+
+	if daystart - skladlive > 2:
+		skladlive = daystart
+		'There are new condoms on the line'
+		ganeat += 12
+		gs 'stat'
+	end
+
+	if zgoda >= 80 and week ! 6 and hour >= 20 and hour <= 21:
+		'Vania enters the room'
+		act 'Please untie me':
+			cla
+			'I can but… you''ll need to be pig'
+			'"And a pig is a helpless cattle, even more than you now XD"'
+			act 'agree':
+				*clr & cla
+				zgoda += 8
+				atemp = 0
+
+				'Nice'
+				'"Ok, my piggy say "hru" to me…"'
+				'Vania say while untying me'
+				act 'hru':
+					zgoda += rand(0,1)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/hru.mp4"></video></center>'
+					'"That the spirit!"'
+					'"Play with yourself! Piggy!"'
+					bimbo += 5
+					act 'do it':
+						*clr & cla
+						'I fingering myself on a barn floor'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/1/2fingers'+rand(1,4)+'.mp4"></video></center>'
+						gs 'arousal', 'masturbate', 10
+						gs 'stat'
+						if rand(1,5) = 1:
+							'"My piggy say "hru" to me…"'
+							atemp = 1
+							act 'hru':
+								if rand(1,3) = 1: zgoda += 1
+								atemp = 0
+								minut += 1
+								bimbo += 1
+								'Vania gigles a little'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/hru.mp4"></video></center>'
+								gs 'stat'
+								'"Put your hands away I will help you a litttle."'
+								act 'do it': gt 'mod_public_WC_rab_livesklad', 'unt2'
+							end
+							act 'no way':
+								*clr & cla
+								'"So sad… piggy need to listen!!!"'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+								'Vania slaps me, than grab my hair and drag me…'
+								gs 'pain', rand(4,5), 'cheeks', 'slap'
+								gs 'stat'
+								gs 'pain', rand(4,6), 'hair', 'stretch'
+								gs 'stat'
+								zgoda -= 8
+								consent += 2
+								'"Lets work on your consent harder" - he said with an icecold voice'
+								killvar 'atemp'
+								act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+							end
+						end
+
+						if atemp = 1:
+							'Vania looks at me with a pocker face'
+							'obviously Vania wants something'
+						elseif atemp = 0:
+							'"Put your hands away I will help you a litttle."'
+							act 'do it': gt 'mod_public_WC_rab_livesklad', 'unt2'
+						end
+					end
+				end
+
+				act 'no way':
+					*clr & cla
+					'"So sad… piggy need to listen!!!"'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+					'Vania slaps me, than grab my hair and drag me…'
+					gs 'pain', rand(4,5), 'cheeks', 'slap'
+					gs 'stat'
+					gs 'pain', rand(4,6), 'hair', 'stretch'
+					gs 'stat'
+					zgoda -= 8
+					consent += 2
+					'"Lets work on your consent harder" - he said with an icecold voice'
+
+					act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+				end
+			end
+
+			act 'No, I don''t want to':
+				cla
+				consent += 1
+				'"Ok, Lets work on your consent"'
+				act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+			end
+		end
+	elseif 	week ! 6 and hour >= 20 and hour <= 21 and rand(1,10) = 1:
+		zgoda += 1
+		if rand(1,2) = 1:
+			*clr & cla
+			'Vania enters the room'
+			'Wihout any words he starts to fucks me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/sex_sklad'+rand(1,3)+'.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(10,15)
+			gs 'pain', rand(1,2), 'vaginal', 'stretch'
+			gs 'pain', rand(1,2), 'vaginal', 'tear'
+			gs 'stat'
+			act 'he cums':
+				*clr & cla
+				temp = rand(1,10)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+				gs 'sweat', 'add', 15
+				gs 'cum_call', 'vagina', 'A442', 0
+				gs 'cuminsidereact', 'Vania'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		else
+			*clr & cla
+			'Vania enters the room'
+			'Wihout any words he rolled me and put it in my ass'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/anal_enter.mp4"></video></center>'
+			gs 'arousal', 'anal', rand(2,5)
+			gs 'pain', rand(2,4), 'asshole', 'stretch'
+			gs 'pain', rand(2,4), 'asshole', 'tear'
+			gs 'stat'
+			act 'He fucks me':
+				*clr & cla
+				'He is rought and it''s painfull'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/anal_sklad.mp4"></video></center>'
+				gs 'arousal', 'anal', rand(10,15)
+				gs 'pain', rand(2,4), 'asshole', 'stretch'
+				gs 'pain', rand(2,4), 'asshole', 'tear'
+				gs 'stat'
+				act 'He filled my ass':
+					*clr & cla
+					gs 'arousal', 'anal', rand(2,7)
+					gs 'pain', rand(2,4), 'asshole', 'stretch'
+					gs 'pain', rand(2,4), 'asshole', 'tear'
+					gs 'stat'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/anal/cum_ass.mp4"></video></center>'
+					gs 'sweat', 'add', 15
+					gs 'cum_call', 'anus', 'A442', 0
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			end
+		end
+	end
+
+
+
+	if day - lsday >= rand(3,8) and rand(1,100) <= 20:
+		act 'search slack in the belts which tides me':
+			cla
+			minut += rand(30,100)
+			gs 'stat'
+			ropeslack = 1
+			'I have found no slack'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+		end
+	end
+
+
+	if zgoda >= 100 and week ! 6 and hour >= 16:
+		*clr & cla
+		dick = 17
+		npc_dick[$npclastgenerated] = dick
+		gs 'boyStat', 'A442'
+		gs 'stat'
+
+		'Vania enters my room…'
+		'"Well, Betsy, for now I am pleased."'
+		'"You can go back to live in your room."'
+		'"We will start your train tomorrow"'
+		'"you will have a lesson each day, except Saturday. Come here at 4 PM"'
+		'Don''t forget to visit Tolik at evening.'
+
+		'Ow, Also I give you 10 words'
+		'He unchained me.'
+		slova += 10
+		vday = daystart + 1
+		zvit = week
+		consent = 0
+		$loc = 'mod_public_WC_rab'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/vania.jpg"></center>'
+		act 'Go to my room':
+			gt 'mod_public_WC_rab', 'spat2'
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+
+if $ARGS[0] = 'unt2':
+
+	*clr & cla
+	'Vania come closer and starts to fuck me with his leg '
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/2/legvag'+rand(1,2)+'.mp4"></video></center>'
+	gs 'arousal', 'vaginal_vibe', 10, 'rough', 'sub', 'humiliation'
+	gs 'stat'
+	if rand(1,5) = 1:
+		'"My piggy say "hru" to me…"'
+		atemp = 1
+		act 'hru':
+			if rand(1,3) = 1: zgoda += 1
+			atemp = 0
+			minut += 1
+			bimbo += 1
+			'Vania gigles a little'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/2/legvag-hru'+rand(1,2)+'.mp4"></video></center>'
+			gs 'stat'
+			'"My shoe is dirty, clean it!"'
+			act 'do it': gt 'mod_public_WC_rab_livesklad', 'unt22'
+		end
+		act 'no way':
+			*clr & cla
+			'"So sad… piggy need to listen!!!"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+			'Vania slaps me, than grab my hair and drag me…'
+			gs 'pain', rand(4,5), 'cheeks', 'slap'
+			gs 'stat'
+			gs 'pain', rand(4,6), 'hair', 'stretch'
+			gs 'stat'
+			zgoda -= 8
+			consent += 2
+			'"Lets work on your consent harder" - he said with an icecold voice'
+			killvar 'atemp'
+			act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+		end
+	end
+
+	if atemp = 1:
+		'Vania looks at me with a pocker face'
+		'obviously Vania wants something'
+	elseif atemp = 0:
+		'"My shoe is dirty, clean it!"'
+		act 'do it': gt 'mod_public_WC_rab_livesklad', 'unt22'
+	end
+
+end
+
+if $ARGS[0] = 'unt22':
+	*clr & cla
+	'I lick his shoes, it''s salty from my juice'
+
+	willpowermax -= rand(1,2)
+	gs 'arousal', 'flash', 15, 'rough', 'sub', 'humiliation'
+	gs 'stat'
+
+	'I see the shoes don''t fully clean'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/2/shoelick.mp4"></video></center>'
+	act 'lick more':
+		*clr & cla
+		consent -= 1
+		'I lick his shoes even more, it''s salty from my juice'
+
+		willpowermax -= rand(1,2)
+		gs 'arousal', 'flash', 15, 'rough', 'sub', 'humiliation'
+		gs 'stat'
+
+		'Now the shoes is clean'
+		'"Nice work, piggy"'
+		'"He unzips his pants and takes out his dick"'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/2/shoelick.mp4"></video></center>'
+		act 'blow Vania':
+			*clr & cla
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			'I am hungry starts to suck Vania smelly dick'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/3/bj_start.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt3'
+		end
+	end
+	act 'look up on Vania':
+		cla
+		'"You are a real PIG, aren''t you?"'
+		'"He unzips his pants and takes out his dick"'
+		act 'blow Vania':
+			*clr & cla
+			gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			'I am hungry starts to suck Vania smelly dick'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/3/bj_start.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt3'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'unt3':
+	*clr & cla
+	'I am sucking Vania'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/3/bj'+rand(1,2)+'.mp4"></video></center>'
+	gs 'arousal', 'bj', 15, 'rough', 'sub', 'humiliation'
+	gs 'stat'
+	if rand(1,5) = 1:
+		'"My piggy say "hru" to me…"'
+		atemp = 1
+		act 'hru':
+			if rand(1,3) = 1: zgoda += 1
+			atemp = 0
+			minut += 1
+			bimbo += 1
+			'Vania gigles a little'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/hru.mp4"></video></center>'
+			gs 'stat'
+			'"Turn around!"'
+			act 'Turn around':
+				*clr & cla
+				gs 'arousal', 'vaginal', 15, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania starts to fuck me'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/4/vag_start.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt4'
+			end
+		end
+		act 'no way':
+			*clr & cla
+			'"So sad… piggy need to listen!!!"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+			'Vania slaps me, than grab my hair and drag me…'
+			gs 'pain', rand(4,5), 'cheeks', 'slap'
+			gs 'stat'
+			gs 'pain', rand(4,6), 'hair', 'stretch'
+			gs 'stat'
+			zgoda -= 8
+			consent += 2
+			'"Lets work on your consent harder" - he said with an icecold voice'
+			killvar 'atemp'
+			act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+		end
+	end
+
+	if atemp = 1:
+		'Vania looks at me with a pocker face'
+		'obviously Vania wants something'
+	elseif atemp = 0:
+		'"Turn around!"'
+		act 'Turn around':
+			*clr & cla
+			gs 'arousal', 'vaginal', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			'Vania starts to fuck me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/4/vag_start.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt4'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'unt4':
+	*clr & cla
+	'Vania jumps on my pussy'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/4/vag'+rand(1,3)+'.mp4"></video></center>'
+	gs 'arousal', 'vaginal', rand(5,10), 'rough', 'sub', 'humiliation'
+	gs 'stat'
+	if rand(1,5) = 1:
+		'"My piggy say "hru" to me…"'
+		atemp = 1
+		act 'hru':
+			if rand(1,3) = 1: zgoda += 1
+			atemp = 0
+			minut += 1
+			bimbo += 1
+			'Vania gigles a little'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/4/vag-hru.mp4"></video></center>'
+			gs 'stat'
+			'"I''ll try your ass"'
+			act 'wait':
+				*clr & cla
+				gs 'arousal', 'anal', 15, 'rough', 'sub', 'humiliation'
+				gs 'stat'
+				'Vania starts to fuck my ass'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/5/anal_start.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt5'
+			end
+		end
+		act 'no way':
+			*clr & cla
+			'"So sad… piggy need to listen!!!"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+			'Vania slaps me, than grab my hair and drag me…'
+			gs 'pain', rand(4,5), 'cheeks', 'slap'
+			gs 'stat'
+			gs 'pain', rand(4,6), 'hair', 'stretch'
+			gs 'stat'
+			zgoda -= 8
+			consent += 2
+			'"Lets work on your consent harder" - he said with an icecold voice'
+			killvar 'atemp'
+			act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+		end
+	end
+
+	if atemp = 1:
+		'Vania looks at me with a pocker face'
+		'obviously Vania wants something'
+	elseif atemp = 0:
+		'"I''ll try your ass"'
+		act 'wait':
+			*clr & cla
+			gs 'arousal', 'anal', 15, 'rough', 'sub', 'humiliation'
+			gs 'stat'
+			'Vania starts to fuck my ass'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/5/anal_start.mp4"></video></center>'
+			act 'continue': gt 'mod_public_WC_rab_livesklad', 'unt5'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'unt5':
+	*clr & cla
+	'Vania fucks my ass'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/5/anal.mp4"></video></center>'
+	gs 'arousal', 'anal', rand(5,10), 'rough', 'sub', 'humiliation'
+	gs 'stat'
+	if rand(1,5) = 1:
+		'"My piggy say "hru" to me…"'
+		atemp = 1
+		act 'hru':
+			if rand(1,3) = 1: zgoda += 1
+			atemp = 0
+			minut += 1
+			bimbo += 1
+			'Vania gigles a little'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/5/anal-hru.mp4"></video></center>'
+			gs 'stat'
+			'"Turn around!"'
+			act 'Turn around':
+				*clr & cla
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+
+				gs 'stat'
+				'Vania cums on me'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/cum.mp4"></video></center>'
+				act 'continue':
+					*clr & cla
+					body_write = 1
+					consent -= 1
+					zgoda += 1
+					gs 'stat'
+					'"Good, my cumpig, I need to make an statement on your tits XD"'
+					'He writes something on my tits'
+					'"Your pig time is over as your intied time"'
+					'He tied me to my bad again'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/cumpig.jpg"></center>'
+					act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+				end
+			end
+		end
+		act 'no way':
+			*clr & cla
+			'"So sad… piggy need to listen!!!"'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/willdecrising/slap.mp4"></video></center>'
+			'Vania slaps me, than grab my hair and drag me…'
+			gs 'pain', rand(4,5), 'cheeks', 'slap'
+			gs 'stat'
+			gs 'pain', rand(4,6), 'hair', 'stretch'
+			gs 'stat'
+			zgoda -= 8
+			consent += 2
+			'"Lets work on your consent harder" - he said with an icecold voice'
+			killvar 'atemp'
+			act 'continue': gt 'mod_public_WC_rab_livesklad_willdecrising', 'start'
+		end
+	end
+
+	if atemp = 1:
+		'Vania looks at me with a pocker face'
+		'obviously Vania wants something'
+	elseif atemp = 0:
+		'"Turn around!"'
+		act 'Turn around':
+			*clr & cla
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+
+
+			gs 'stat'
+			'Vania cums on me'
+			gs 'arousal', 'end'
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/cum.mp4"></video></center>'
+			act 'continue':
+				*clr & cla
+				body_write = 1
+				consent -= 1
+				zgoda += 1
+				gs 'stat'
+				'"Good, my cumpig, I need to make an statement on your tits XD"'
+				'He writes something on my tits'
+				'"Your pig time is over as your intied time"'
+				'He tied me to my bad again'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/live_sklad/untied_sex/cumpig.jpg"></center>'
+				act 'continue': gt 'mod_public_WC_rab_livesklad', 'start'
+			end
+		end
+	end
+end
+
+--- mod_public_WC_rab_livesklad ---------------------------------
+

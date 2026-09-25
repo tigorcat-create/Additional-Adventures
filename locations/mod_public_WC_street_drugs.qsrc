@@ -1,0 +1,206 @@
+# mod_public_WC_street_drugs
+if $ARGS[0] = 'start':
+	*clr & cla
+	phdrugged = 0
+	!! Drugged guy must lost concision
+	
+	if druggedplace = 1:
+		!! pidizd
+		'Suddenly the client lost his consciousness and fall on the floor'
+		'The drug worked'
+		
+	elseif druggedplace = 2:
+		!! corner
+		'Suddenly the client lost his consciousness and fall on the ground'
+		'The drug worked'
+		
+	elseif druggedplace = 3:
+		!! corner winter
+		'Suddenly the client lost his consciousness and fall on the ground'
+		'The drug worked'
+		
+	elseif druggedplace = 4:
+		!! car
+		if phincar = 1: 
+			!! in
+			'Suddenly the client passed out'
+			'The drug worked'
+			
+		elseif phincar = 2: 
+			!! 50/50
+			'Suddenly the client lost his consciousness and fall on the ground'
+			'The drug worked'
+			
+		elseif phincar = 3: 
+			!! out
+			'Suddenly the client lost his consciousness and fall on the ground'
+			'The drug worked'
+			
+		end
+	elseif druggedplace = 6:
+		!! box
+		'Suddenly the client lost his consciousness and fall on the floor'
+		'The drug worked'
+		
+	end
+	
+	act 'Take his wallet and call an ambulance':
+		cla
+		
+		fame['pav_prostitute'] -= 1
+		
+		crime += 2
+		temp = rand(0,21)
+		if temp <= 6:
+			temp = rand(0,100)
+			money += temp
+			'there is <<temp>> money'
+			'This bastard wasn''t going to pay me, there are almost no money'
+		elseif temp <= 20:
+			temp = rand(750,2500)
+			money += temp
+			'there is <<temp>> money'
+			'Nice.'
+		else
+			temp = rand(3000,7000)
+			money += temp
+			'there is <<temp>> money'
+			'Woow, it''s a lot of money'
+		end
+		act 'run away':
+			killvar 'PH_full_pay'	
+			gs 'stat'
+			killvar 'carclient'
+			phclient_mood = 0
+			killvar 'phbjlick'
+			phsex = 0
+			phspeed = 0
+			phclientforce = 0
+			phclientfunnow = 100
+			
+			gt $loc, $loc_arg
+		end							
+	end
+	
+	act 'Take his wallet':
+		cla
+		
+		fame['pav_prostitute'] -= 5
+		
+		crime += 2
+		temp = rand(0,21)
+		if temp <= 6:
+			temp = rand(0,100)
+			money += temp
+			'there is <<temp>> money'
+			'This bastard wasn''t going to pay me, there are almost no money'
+		elseif temp <= 20:
+			temp = rand(750,2500)
+			money += temp
+			'there is <<temp>> money'
+			'Nice.'
+		else
+			temp = rand(3000,7000)
+			money += temp
+			'there is <<temp>> money'
+			'Woow, it''s a lot of money'
+		end
+		act 'run away':
+			killvar 'PH_full_pay'	
+			gs 'stat'
+			killvar 'carclient'
+			phclient_mood = 0
+			killvar 'phbjlick'
+			phsex = 0
+			phspeed = 0
+			phclientforce = 0
+			phclientfunnow = 100
+			
+			gt $loc, $loc_arg
+		end					
+	end
+	
+	act 'call ambulance':
+		!! crime += 2
+		minut += 15 
+		killvar 'PH_full_pay'	
+		gs 'stat'
+		killvar 'carclient'
+		phclient_mood = 0
+		killvar 'phbjlick'
+		phsex = 0
+		phspeed = 0
+		phclientforce = 0
+		phclientfunnow = 100
+		
+		fame['pav_prostitute'] += 2
+		
+		gt $loc, $loc_arg
+	end
+	
+	act 'run away':
+		killvar 'PH_full_pay'	
+		gs 'stat'
+		killvar 'carclient'
+		phclient_mood = 0
+		killvar 'phbjlick'
+		phsex = 0
+		phspeed = 0
+		phclientforce = 0
+		phclientfunnow = 100
+		
+		gt $loc, $loc_arg
+	end		
+
+	if druggedplace = 5:
+		cla
+		!! car move
+		'Suddenly the client passed out'
+		'FUCK! The drugs worked'
+		
+		'I pushed the brakes with all my strengh until car stoped.'
+		'It is a mirracle noone hit us and we hit nobody.'
+		'I see a car stoped and some guy goes in our direction.'
+		
+		act 'run away':
+			killvar 'PH_full_pay'	
+			gs 'stat'
+			killvar 'carclient'
+			phclient_mood = 0
+			killvar 'phbjlick'
+			phsex = 0
+			phspeed = 0
+			phclientforce = 0
+			phclientfunnow = 100
+			
+			gt $loc, $loc_arg
+		end
+	elseif druggedplace = 6:
+		cla
+		
+		'He know where this place is… it was a mistake to drugged him!'
+		
+		act 'call ambulance':
+			!! crime += 2
+			minut += 15 
+			killvar 'PH_full_pay'	
+			gs 'stat'
+			killvar 'carclient'
+			phclient_mood = 0
+			killvar 'phbjlick'
+			phsex = 0
+			phspeed = 0
+			phclientforce = 0
+			phclientfunnow = 100
+			
+			fame['pav_prostitute'] += 2
+			
+			gt $loc, $loc_arg
+		end
+	end
+	gs 'arousal', 'end'
+	gs 'stat'
+
+end
+--- mod_public_WC_street_drugs ---------------------------------
+

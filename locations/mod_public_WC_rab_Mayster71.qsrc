@@ -1,0 +1,2004 @@
+# mod_public_WC_rab_Mayster71
+if $ARGS[0] = 'guitarist':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'I see a young man behind the bush, who creates that melody'
+	'I stay and listen the music'
+	'In some time he noticed me.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/1.jpg"></center>'
+	minut += rand(10,20)
+	pcs_mood += rand(10,30)
+	gs 'npcgeneratec', 0, 'a guitarist', rand(18,22)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	'"WEll, hello! What such a nice girl doing here in the middle of nowhere" - he said with a bit of surprice in his voice'
+
+	act 'just ride and relax':
+		*clr & cla
+		'"Nice… nice, maybe you can sit here and relax while listening my music…"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/2.jpg"></center>'
+
+		act 'ok': gt 'mod_public_WC_rab_Mayster71', 'listen'
+
+		act 'nah, and go away': gt $loc, $loc_arg
+	end
+
+	act 'I need some… one to ride on':
+		cla
+		'"That… that.. that is wonderfull, I could be that someone!"'
+		'He starts to undress his pants.'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/5.jpg"></center>'
+
+		act 'ride him':
+			*clr & cla
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/7 (3).jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/7 (6).jpg"></center>'
+			end
+
+			gs 'arousal', 'vaginal', rand (10,20)
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'He cums on my belly! and starts to dress up.'
+				'"Wow, Girl, It was great!"'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/8.jpg"></center>'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				act 'ask to play a guitar':
+					cla
+					'"Easy! take and play"'
+
+					act 'take a guitar and play':
+						*clr & cla
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/play'+rand(1,9)+'.jpg"></center>'
+						instrmusic_exp += rand(0,3)
+						pcs_mood += 5
+						minut += rand(15,35)
+
+						if  pcs_instrmusic >= 100:
+							'Music fascinated me and took me to another world, music conveyed harmony to me and the guy'
+							pcs_mood += 10
+						elseif pcs_instrmusic >= 70:
+							'Music comforted my hearing and pleased my soul'
+							pcs_mood += 5
+						elseif pcs_instrmusic >= 40:
+							'AT least my music is entertaining'
+						elseif pcs_instrmusic >= 20:
+							'I can call it a music'
+						else
+							'The cacophony of sounds is cheered me up a little bit.'
+							pcs_mood -= 3
+						end
+						gs 'stat'
+
+						act 'give a guitar and go away': gt $loc, $loc_arg
+
+					end
+
+					act 'Nah, go away': gt $loc, $loc_arg
+				end
+				act 'go away': gt $loc, $loc_arg
+			end
+		end
+
+		act 'blow him': gt 'mod_public_WC_rab_Mayster71', 'gsex'
+
+		act 'run away':
+			*clr & cla
+			willpowermax += rand(0,1)
+			gs 'stat'
+			VaniaMayster -= rand(1,2)
+			'<i>If I can denieds this guy desires… could I make the same things with Vania''s?…</i>'
+			'I thought about this on my run'
+			act 'continue': gt $loc, $loc_arg
+		end
+	end
+
+	act 'can you teach me to play':
+		cla
+		'Of course, sit here and I''ll show you some acords.'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/2.jpg"></center>'
+		act 'ok': gt 'mod_public_WC_rab_Mayster71', 'listen'
+
+		act 'nah, and go away': gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'gsex':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'I am sucking his dick'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/6 ('+rand(1,2)+').jpg"></center>'
+	gs 'arousal', 'bj', rand(10,15)
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'He turned me around and starts to fuck my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/7 ('+rand(1,9)+').jpg"></center>'
+
+		gs 'arousal', 'vaginal', rand (10,20)
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'He cums on my belly! and starts to dress up.'
+			'"Wow, Girl, It was great!"'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/8.jpg"></center>'
+
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'ask to play a guitar':
+				cla
+				'"Easy! take and play"'
+
+				act 'take a guitar and play':
+					*clr & cla
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/play'+rand(1,9)+'.jpg"></center>'
+					instrmusic_exp += rand(0,3)
+					pcs_mood += 5
+					minut += rand(15,35)
+
+					if  pcs_instrmusic >= 100:
+						'Music fascinated me and took me to another world, music conveyed harmony to me and the guy'
+						pcs_mood += 10
+					elseif pcs_instrmusic >= 70:
+						'Music comforted my hearing and pleased my soul'
+						pcs_mood += 5
+					elseif pcs_instrmusic >= 40:
+						'AT least my music is entertaining'
+					elseif pcs_instrmusic >= 20:
+						'I can call it a music'
+					else
+						'The cacophony of sounds is cheered me up a little bit.'
+						pcs_mood -= 3
+					end
+					gs 'stat'
+
+					act 'give a guitar and go away': gt $loc, $loc_arg
+
+				end
+
+				act 'Nah, go away': gt $loc, $loc_arg
+			end
+			act 'go away': gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'listen':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'I listen his music and trully start relaxing…'
+	pcs_mood += 5
+	minut += rand (2,5)
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/3.jpg"></center>'
+
+	act 'relaxing':
+		*clr & cla
+		'I am not noticed the moment when he stops playing and starts to touching me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/4 (1).jpg"></center>'
+
+		gs 'arousal', 'massage', rand(5,15)
+		gs 'stat'
+
+		pcs_mood += 15
+		minut += rand (10,20)
+		gs 'stat'
+
+		gs 'willpower', 'misc', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'Run away' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/sport/run.jpg"></center>'
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				'I am running and running… stops only when I am shure he is far away'
+				coord_x -= rand (1,2)
+
+				minut += 30
+				mult = 2
+				pcs_stam -= 10
+				gs 'sweat', 'add', (3*mult)
+				fat -= (4 + mult/2)
+				pcs_energy -= 1*mult
+				pcs_hydra -= 2*mult
+				pcs_mood += (3 + mult)
+				vital_exp += rand(0,1)
+				run_exp += rand(0, 1)
+				gs 'stat'
+				killvar 'mult'
+
+				act 'look around': gt $loc, $loc_arg
+			end
+		else
+			act 'Run away ' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+		act 'let him':
+			*clr & cla
+			'In a short time he starts to kiss me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/4 (2).jpg"></center>'
+
+			gs 'arousal', 'kiss', rand(1,7)
+			gs 'stat'
+
+
+
+			gs 'willpower', 'misc', 'self', 'hard'
+			if will_cost <= pcs_willpwr:
+				act 'Run away' + $func('willpower', 'get_willcost_string'):
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/sport/run.jpg"></center>'
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+
+					'I am running and running… stops only when I am shure he is far away'
+					coord_x -= rand (1,2)
+
+					minut += 30
+					mult = 2
+					pcs_stam -= 10
+					gs 'sweat', 'add', (3*mult)
+					fat -= (4 + mult/2)
+					pcs_energy -= 1*mult
+					pcs_hydra -= 2*mult
+					pcs_mood += (3 + mult)
+					vital_exp += rand(0,1)
+					run_exp += rand(0, 1)
+					gs 'stat'
+					killvar 'mult'
+
+					act 'look around': gt $loc, $loc_arg
+				end
+			else
+				act 'Run away ' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+
+
+			act 'let him':
+				*clr & cla
+				'He starts to undress his pants.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/gytaryst/5.jpg"></center>'
+				gs 'arousal', 'voyeur', 3
+
+				act 'blow him': gt 'mod_public_WC_rab_Mayster71', 'gsex'
+
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'jora':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	if ztemp = 1:
+		'It''s a young guy'
+		'"Hey sweety! Lets have some fun"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/0.jpg"></center>'
+
+		act 'No!, and go away':
+			*clr & cla
+			'Suddenly he locks the leash to my collar and grabs my hair'
+			'"Listen to me, bitch! You will do what I want!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/leash.jpg"></center>'
+			gs 'pain', rand(2,3), 'hair', 'stretch'
+			gs 'stat'
+
+			act 'obey ':
+				if rika = 1: gt 'mod_public_WC_rab_Mayster71', 'jrika'
+				gt 'mod_public_WC_rab_Mayster71', 'obey'
+			end
+
+			gs 'willpower', 'misc', 'self', 'hard'
+			if will_cost <= pcs_willpwr:
+				act 'try to resist' + $func('willpower', 'get_willcost_string'):
+					*clr & cla
+					Vaniamayster -= 2
+					willpowermax += 1
+
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+
+					temp = rand(50,105)
+					if pcs_jab > temp or pcs_punch > temp or pcs_kick > temp or pcs_def > temp:
+
+						'My tranings was good enough, my skills is very good'
+						'I am knocked him out!'
+						pcs_mood += 40
+						gs 'exercise', 'tier3', 0, 'jab_exp', 'react_exp'
+						gs 'exercise', 'tier3', 0, 'stren_exp', 'punch_exp'
+						gs 'exercise', 'tier3', 0, 'stren_exp', 'kick_exp'
+						gs 'exercise', 'tier3', 0, 'def_exp', 'agil_exp'
+						gs 'stat'
+
+						gs 'pain', rand(0,2), 'tummy', 'kick'
+						gs 'pain', rand(0,2), 'cheeks', 'hit'
+						gs 'pain', rand(0,2), 'thighs', 'kick'
+						gs 'pain', rand(0,2), 'hair', 'stretch'
+						gs 'pain', rand(0,2), 'armL', 'twist'
+						gs 'pain', rand(0,2), 'armR', 'twist'
+						gs 'pain', rand(0,3), 'head', 'hit'
+						gs 'stat'
+
+						act 'continue': gt $loc, $loc_arg
+					else
+						'He hits me hard few times… I have no choice… I obey him.'
+
+
+						gs 'exercise', 'tier3', 0, 'jab_exp', 'react_exp'
+						gs 'exercise', 'tier3', 0, 'stren_exp', 'punch_exp'
+						gs 'exercise', 'tier3', 0, 'stren_exp', 'kick_exp'
+						gs 'exercise', 'tier3', 0, 'def_exp', 'agil_exp'
+						gs 'stat'
+
+						gs 'pain', rand(2,3), 'tummy', 'kick'
+						gs 'pain', rand(2,2), 'cheeks', 'hit'
+						gs 'pain', rand(2,4), 'thighs', 'kick'
+						gs 'pain', rand(2,3), 'hair', 'stretch'
+						gs 'pain', rand(2,5), 'armL', 'twist'
+						gs 'pain', rand(2,5), 'armR', 'twist'
+						gs 'pain', rand(2,6), 'head', 'hit'
+						gs 'stat'
+						act 'obey':
+							if rika = 1: gt 'mod_public_WC_rab_Mayster71', 'jrika'
+							gt 'mod_public_WC_rab_Mayster71', 'obey'
+						end
+					end
+				end
+			else
+				act 'try to resist ' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+		end
+
+		act 'lets do it!':
+			*clr & cla
+			if rika = 1 and temper >= 20 : gt 'mod_public_WC_rab_Mayster71', 'rika1'
+
+			if $clothingworntype ! 'nude':
+				'He rudely undressed my top… and start to suck my tits.'
+			else
+				'He starts to play with my boobies'
+			end
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/1.jpg"></center>'
+
+			gs 'arousal', 'foreplay', 10, 'sub', 'rough'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'When he play enought with my tits he starts to fingering me to make me wet.'
+				'He undress his pants, suck this!'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/2.jpg"></center>'
+
+				gs 'arousal', 'vaginal_finger', 10, 'sub', 'rough'
+				gs 'stat'
+
+				act 'suck':
+					*clr & cla
+					'I am sucking his dick'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/3.jpg"></center>'
+
+					gs 'arousal', 'bj', rand(10,15), 'sub', 'rough'
+					gs 'stat'
+
+					act 'continue':
+						*clr & cla
+						'He band me and fuck.'
+
+						'"Ow YES, open your mouth!"'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/4.jpg"></center>'
+
+						gs 'arousal', 'vaginal', rand(10,15), 'sub', 'rough'
+						gs 'stat'
+						act 'Open my mouth':
+							*clr & cla
+							'He tottaly fill my mouth'
+							'he dressed his pants - "Good girl…" - he pets my head, - "…Bue" - and goes away'
+
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'face', $npclastgenerated, 0
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call', 'mouth', $npclastgenerated, 0
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/5.jpg"></center>'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt $loc, $loc_arg
+						end
+					end
+				end
+			end
+		end
+	elseif ztemp = 2:
+		'I press the pedal quickly… I afraid that guy!'
+		'Suddenly the bike stops and I fly to the ground'
+		gs 'pain', rand(0,4), 'head', 'kick'
+		gs 'pain', rand(0,4), 'lips', 'kick'
+		gs 'pain', rand(0,4), 'nose', 'kick'
+		gs 'pain', rand(0,4), 'armR', 'kick'
+		gs 'pain', rand(0,4), 'tummy', 'kick'
+		gs 'pain', rand(0,4), 'legL', 'kick'
+		gs 'pain', rand(0,4), 'back', 'kick'
+		gs 'stat'
+
+		'I lie down on the ground… my body hurts… I observe the bike''s wheel with a stick in it… and the guy runs to me…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/velvpav.jpg"></center>'
+
+
+		gs 'willpower', 'misc', 'self', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'left the bike and run away!' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+
+				gs 'willpower', 'pay', 'self'
+				minut += rand(5,10)
+				gs 'stat'
+				onvelyk = 0
+				coord_v_x = coord_x
+				coord_v_y = coord_y
+				coord_x -= rand(1,2)
+
+				gt $loc, $loc_arg
+			end
+		else
+			act 'left the bike and run away!' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+		act 'wait':
+			*clr & cla
+			'He comes to me and locks the leash to my collar…'
+			'"Listen to me, bitch! You will do what I want!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/leash.jpg"></center>'
+
+			act 'obey':
+				if rika = 1: gt 'mod_public_WC_rab_Mayster71', 'jrika'
+				gt 'mod_public_WC_rab_Mayster71', 'obey'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'obey':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	ztemp = 0
+	if pcs_magik > 0: 'I see something unhuman in thr guy''s eyes…'
+	'we walk in a scilense for some time'
+	temp = rand(1,3)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/go/trip<<temp>>.jpg"></center>'
+	minut += rand(15,25)
+	if lis ! 1 or lis ! 2:
+		'We come to the forest'
+		minut += rand(0,15)
+	end
+	gs 'stat'
+
+	onvelyk = 0
+	coord_v_x = coord_x
+	coord_v_y = coord_y
+	coord_x = rand (1,3)
+	coord_y = rand (3,5) * (-1)
+
+	'He ties me to the tree!'
+	if $clothingworntype ! 'nude':
+		'And undress me'
+		gs 'bras', 'remove'
+		gs 'clothing', 'strip'
+		gs 'panties', 'remove'
+		gs 'stat'
+	end
+
+	temp = rand (1,2)
+	if temp = 1:
+		'Stranger takes some branch and grins'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick1.mp4"></video></center>'
+		act 'stare terrified':
+			'He use this branch to rub my pussy…'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/stick2.mp4"></video></center>'
+			if pcs_magik > 0:
+				'Sometimes his disguise disappears and I see his real form…'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/monster.mp4"></video></center>'
+			end
+			gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+			gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+			gs 'pain', 5, 'labia', 'burn'
+			gs 'pain', 5, 'breasts', 'slap'
+			gs 'pain', 5, 'nipples', 'slap'
+			gs 'stat'
+			'At last he put the branch aside'
+			act 'wait': gt 'mod_public_WC_rab_Mayster71', 'maniakd2'
+		end
+	else
+		'Stranger grins and starts to put all his focus on my tits…'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/tits1.mp4"></video></center>'
+		'At last he stops'
+		act 'wait':
+			gt 'mod_public_WC_rab_Mayster71', 'maniakd2'
+		end
+
+		gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+		gs 'arousal', 'BDSM', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+		gs 'pain', 5, 'breasts', 'burn'
+		gs 'pain', 5, 'nipples', 'burn'
+		gs 'pain', 5, 'breasts', 'slap'
+		gs 'pain', 5, 'nipples', 'slap'
+		gs 'pain', 5, 'breasts', 'pinch'
+		gs 'pain', 5, 'nipples', 'pinch'
+		gs 'pain', 5, 'breasts', 'pull'
+		gs 'pain', 5, 'nipples', 'twist'
+		gs 'pain', 5, 'nipples', 'pull'
+		gs 'stat'
+	end
+end
+
+if $ARGS[0] = 'maniakd2':
+	CLOSE ALL
+	menu_off = 0
+	*clr & cla
+
+	if pcs_magik > 0:
+		ztemp = 'cultist'
+	else
+		ztemp = 'maniak'
+	end
+
+
+	if ztemp = 'cultist' or ztemp = 'maniak':
+		'Then <<ztemp>> pulls me down and retied to a tree…'
+	else
+		'Then man pulls me down and retied to a tree…'
+	end
+	*nl
+	minut += 5
+	'He went somewhere but come back in 5 minutes with another branch with a duct-taped dildo! He starts to fuck me with this tool…'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_start.mp4"></video></center>'
+	gs 'arousal', 'foreplay', 5, 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'BDSM', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+	gs 'arousal', 'vaginal_dildo', rand(10,15), 'bound', 'beast', 'rough', 'rape'
+	gs 'pain', 2, 'labia', 'burn'
+	stat['vaginal'] += 1
+	gs 'stat'
+	act 'continue':
+		*clr & cla
+		'When he finished to play with my pussy he forced me to suck that dildo.'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/Dildo_bj.mp4"></video></center>'
+		gs 'arousal', 'bj', 5, 'bound', 'beast', 'rough', 'rape'
+		stat['bj'] += 1
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'"Now, you are ready for me…"'
+			*nl
+			'He changes my position, and tied be another way.'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_start.mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'bound', 'beast', 'rough', 'rape'
+			stat['vaginal'] += 1
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_2.mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(10,20), 'bound', 'beast', 'rough', 'rape'
+				gs 'stat'
+				if pcs_magik > 0:
+					'Sometimes his disguise disappears and I see his real form…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_monstr_3.mp4"></video></center>'
+				end
+				act 'continue':
+					*clr & cla
+					'He groans and this is stops…'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/night/maniak/sex_fin.mp4"></video></center>'
+
+					if pcs_magik > 0:
+						gs 'npcgeneratec', 0, 'cultist', 420
+						gs 'boyStat', $npclastgenerated
+					else
+						gs 'npcgeneratec', 0, 'maniak', 42
+						gs 'boyStat', $npclastgenerated
+					end
+
+
+					guy += 1
+					rape += 1
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+
+
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+
+					if pcs_magik > 0:
+						$ztemp = 'cultist'
+						gs 'cuminsidereact', 'cultist'
+
+					else
+						$ztemp = 'maniak'
+						gs 'cuminsidereact', 'maniak'
+
+					end
+
+					stat['vaginal'] += 1
+					gs 'stat'
+					'<<$ztemp>> wore his pants, slap my ass few times…'
+					'…He was looking at me for few minutes… and untied me… I am exhausted and just falls on the ground.'
+					'He goes away'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'stand up': ztemp = 0 & gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'jrika':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+
+	ztemp = 0
+	if pcs_magik > 0: 'I see something unhuman in thr guy''s eyes…'
+	'we walk to the river'
+
+	temp = rand(1,3)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/go/trip<<temp>>.jpg"></center>'
+	minut += rand(2,5)
+	gs 'stat'
+
+	act 'wait':
+		*clr & cla
+		'He tied me to some rod'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/3 kara.jpg"></center>'
+
+		act 'continue':
+			*clr & cla
+			'And fuck my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/b2.jpg"></center>'
+			gs 'arousal', 'bj', rand(10,15), 'sub', 'rough'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He totally fill my mouth'
+				'he dressed his pants - "Good girl…" - he pets my head, - "…Bue" - and goes away'
+
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/5.jpg"></center>'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'wait':
+					*clr & cla
+					minut += 15
+					gs 'stat'
+
+					'I have gathered my thoughts… I need to do something'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/3 kara.jpg"></center>'
+					cultistrope = rand(1,3)
+					rope = 100 * cultistrope
+					act 'continue': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'rika1':
+	menu_off = 0
+	*clr & cla
+
+	'Perfect, he takes my hand and take me to the water'
+	'We quickly undress each other and with nonstop kissing'
+	'When we were waist-deep in water… he said "Now blow me".'
+	gs 'arousal', 'flash', 10
+	gs 'stat'
+	gs 'arousal', 'kiss', rand(5,10)
+	gs 'stat'
+
+	if $clothingworntype ! 'nude':
+		$lastwornclothingtype['swim'] = $clothingworntype
+		lastwornclothingnumber['swim'] = clothingwornnumber
+		$lastwornpantytype['swim'] = $pantyworntype
+		lastwornpantynumber['swim'] = pantywornnumber
+		$lastwornbratype['swim'] = $braworntype
+		lastwornbranumber['swim'] = brawornnumber
+		gs 'clothing', 'strip_all', 'VillageRiver'
+	end
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/start.jpg"></center>'
+
+	act 'blow him':
+		*clr & cla
+		gs 'arousal', 'bj', rand(5,10)
+		gs 'stat'
+		'I feel how he goes to the dipper water, and at some momet I fully dipped in the water.'
+		'He pulls my face to his dick, like commands to blow more!'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/1 ('+rand(1,2)+').jpg"></center>'
+		act 'continue sucking him':
+			*clr & cla
+			'I try do my best in sucking… but the luck of air is felt strongly!'
+			'Time to time I pop up to take a needed breath of air.'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/2 ('+rand(1,4)+').jpg"></center>'
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'At some point he rotates me and start to fuck me'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/3 ('+rand(1,7)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(10,15)
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'He totally controls my orgasm and my life. He decides when it''s a time to breath'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/3 ('+rand(1,7)+').jpg"></center>'
+					gs 'arousal', 'vaginal', rand(10,15)
+					gs 'stat'
+					$orgasm_or = 'yes'
+					act 'continue':
+						*clr & cla
+						'He cums deeply in me… and we swims to the beach'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/underwater/3 ('+rand(1,7)+').jpg"></center>'
+						gs 'arousal', 'vaginal', rand(10,15)
+						gs 'stat'
+
+						cumspclnt = 4
+						gs 'cum_cleanup'
+						gs 'exercise', 'tier1', 1, 'stren_exp'
+						pcs_sweat = 0
+						if deodorant_on = 1: gs 'sweat', 'remove_deo' and '<br>Your deodorant gets washed away in the water.</br>'
+						gs 'stat'
+
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'vagina', $npclastgenerated, 0
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						'He dressed up - "Good girl…" - he pets my head, - "…Bue" - and goes away'
+						act 'continue': gt $loc, $loc_arg
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'jkara':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/Jora/3 kara.jpg"></center>'
+	minut += rand(5,15)
+	gs 'stat'
+
+
+	if hour >= 21 and zvit = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	elseif zvit + 1 = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	elseif zvit - 6 = week and poshuk = 0:
+		poshuk = 1
+		phour = hour
+		pday = daystart
+	end
+
+
+
+	if poshuk > 0:
+		if daystart - pday > 0:
+			if daystart - pday = 1:
+				poshuk = (daystart - pday) * 4 + (24 - phour)
+			elseif daystart - pday <= 2:
+				poshuk = (daystart - pday) * 12 + (24 - phour)
+			else
+				poshuk = (daystart - pday) * 24 + (24 - phour)
+			end
+		else
+			poshuk = hour - phour
+		end
+
+		if zashmorg = 0: poshuk = poshuk / rand(1,10)
+
+		if coord_x < 0: tempx = coord_x * (0 - 1)
+		if coord_y < 0: tempy = coord_y * (0 - 1)
+
+		if poshuk > tempx + tempy:
+			killvar 'tempx'
+			killvar 'tempy'
+			gt 'mod_public_WC_rab_Mayster7', 'Vania'
+		else
+			killvar 'tempx'
+			killvar 'tempy'
+		end
+		if poshuk = 0: poshuk = 1
+	end
+
+	act 'Try to break the ropes':
+		if pcs_stren >= 90:
+			*clr & cla
+			'I hear the rope crackle, but the rope does not lend itself.'
+			rope -= pcs_stren * 8 / 10 + 2
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					 gt $loc, $loc_arg
+				end
+			end
+		elseif pcs_stren >= 50:
+			*clr & cla
+			'I hear the rope crackle, but the rope does not lend itself.'
+			rope -= pcs_stren * 3 / 10 + 2
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					 gt $loc, $loc_arg
+				end
+			end
+		else
+			*clr & cla
+			'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+			rope -= 15
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					 gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+	act 'Try to get out of the ropes':
+		if pcs_agil >= 80:
+			*clr & cla
+			'I move my hands, looking for a way to slip out of the shackles.'
+			rope -= pcs_agil * 8 / 10 + 5
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					gt $loc, $loc_arg
+				end
+			end
+		elseif pcs_agil >= 50 and pcs_agil < 80:
+			*clr & cla
+			'I move my hands, looking for a way to slip out of the shackles.'
+			rope -= pcs_agil * 3 / 10 + 5
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					gt $loc, $loc_arg
+				end
+			end
+		else
+			*clr & cla
+			'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+			rope -= 15
+			gs 'mod_public_WC_rab_Mayster71', 'motuzka'
+			if rope > 0:
+				act 'rest a bit': gt 'mod_public_WC_rab_Mayster71', 'jkara'
+			else
+				*clr & cla
+				'With the loud sound of the rope, it finally bursts.'
+				act 'look around':
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'motuzka':
+	if rope >= 100 * cultistrope: $sylamotuzky = '<font color = green	> █████ </font> '
+	if rope >= 80 * cultistrope and rope < 100 * cultistrope: $sylamotuzky = $func('wrap', 'accent', ' ████_ ') + ' '
+	if rope >= 60 * cultistrope and rope < 80 * cultistrope: $sylamotuzky = $func('wrap', 'accent', ' ███__ ') + ' '
+	if rope >= 40 * cultistrope and rope < 60 * cultistrope: $sylamotuzky = '<font color = red	> ██___ </font> '
+	if rope >= 20 * cultistrope and rope < 40 * cultistrope: $sylamotuzky = '<font color = red	> █____ </font> '
+	if rope < 20 * cultistrope: $sylamotuzky = '<font color = red	> I am free! </font> '
+	'<center>The rope shackles me by: <<$sylamotuzky>></center>'
+end
+
+
+
+if $ARGS[0] = 'sino':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	'He continue the work but look at me lateral vision'
+	'"Wanna fuck, girl?"'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/1.jpg"></center>'
+	gs 'npcgeneratec', 0, 'a guitarist', rand(25,35)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	minut += 5
+	gs 'stat'
+
+
+	act 'no!':
+		cla
+		'Then, went to hell out from here!!!'
+		pcs_mood -= rand(5,10)
+		gs 'stat'
+		act 'go away': gt $loc, $loc_arg
+	end
+
+	act 'yes':
+		*clr & cla
+		minut += rand(3,10)
+		gs 'stat'
+
+		'"Nice, come on."'
+		'He grabs my hand and we go to some sort of a shed nearby'
+		'He puts me on the hay and starts to kiss me'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/2.jpg"></center>'
+		gs 'arousal', 'kiss', rand(5,12)
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He starts to lick my clitoris'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/3.jpg"></center>'
+			gs 'arousal', 'cuni', rand(10,15)
+			gs 'stat'
+			act 'continue':
+				*clr & cla
+				'He is a gentleman, when I become wet enought he starts to fuck me'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/4 ('+rand(1,3)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(10,15)
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'He wealthy cums on my breasts!'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/sino/5.jpg"></center>'
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'breasts', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					'"It was fun, I need to work" - he dress up and go away'
+					'I have nothing to do but go away too'
+					act 'Go away': gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'tsex':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'npcgeneratec', 0, 'a guitarist', rand(22,50)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	if ztemp = 1:
+		'I suck him'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/bj.jpg"></center>'
+		gs 'arousal', 'bj', rand(10,20)
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			temp = rand(1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+			'He cums in my throat'
+			stat['swallow'] += 1
+			spafinloc = 12
+
+			gs 'sweat', 'add', 5
+
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Freshen up' : gt $loc, $loc_arg
+		end
+	elseif ztemp = 2:
+		gs 'arousal', 'vaginal', rand(10,20)
+		gs 'stat'
+		if rand(1,2) = 1:
+			'He fucks me'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/sex ('+rand(1,3)+').jpg"></center>'
+		else
+			'We use my bike as a support for our sex'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/sex_velo.mp4"></video></center>'
+		end
+		act 'continue':
+			*clr & cla
+			temp = rand(1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/2/tolik<<temp>>.mp4"></video></center>'
+			'He ends up in me'
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			spafinloc = 0
+			gs 'cuminsidereact', 'Guy'
+			gs 'cum_manage'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Freshen up' : gt $loc, $loc_arg
+		end
+	elseif ztemp = 3:
+		'He spit few times on my anus and starts to fuck it'
+		gs 'arousal', 'anal', rand(10,20)
+		gs 'stat'
+		if rand(1,2) = 1:
+			'He puts me on himself and fucks me '
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/anal.mp4"></video></center>'
+		else
+			'We use my bike as a support for our sex'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/sex_velo.mp4"></video></center>'
+		end
+		act 'continue':
+			*clr & cla
+			'He ends up in me'
+			if rand(1,2) = 1:
+				'He puts me on himself and fucks me '
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/anal.mp4"></video></center>'
+			else
+				'We use my bike as a support for our sex'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/randsex/sex_velo.mp4"></video></center>'
+			end
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			gs 'cum_call', 'anus', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Freshen up' : gt $loc, $loc_arg
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'velorape':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'npcgeneratec', 0, 'rapist', rand(18,55)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	'On my way through the forest…'
+	minut += rand(0,3)
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/start.mp4"></video></center>'
+
+	act 'continue':
+		*clr & cla
+		'they are undressing me on the way to somewhere?!'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/startrape 1.mp4"></video></center>'
+		gs 'arousal', 'porn', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+		gs 'stat'
+		gs 'arousal', 'foreplay', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'the rapist push their dicks to my face, in my mouth, try to penetrate me'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/startrape 2.mp4"></video></center>'
+			gs 'arousal', 'porn', rand(5,10), 'bound', 'sub'
+			gs 'stat'
+			gs 'arousal', 'foreplay', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+			gs 'stat'
+			gs 'arousal', 'bj', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+			minut -= 10
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'Two of them hold me and one starts to fuck me…'
+				pcs_mood -= rand(10,30)
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/startrape 3 ('+rand(1,2)+').mp4"></video></center>'
+
+				gs 'arousal', 'vaginal', rand(10,15), 'sub', 'rough', 'group', 'gangbang', 'rape'
+
+				gs 'stat'
+				act 'continue':
+					*clr & cla
+					'They rotate me as they want'
+					'I suck one dick while other is fucking my pussy'
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/pm '+rand(1,4)+'.mp4"></video></center>'
+
+					gs 'arousal', 'vaginal', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+					gs 'stat'
+					act 'continue':
+						*clr & cla
+						'They decides to fuck me all at onec'
+
+						if rand(1,2) = 1:
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/3.mp4"></video></center>'
+						else
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/3 m.mp4"></video></center>'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/3 ap.mp4"></video></center>'
+						end
+
+						gs 'arousal', 'vaginal', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+						gs 'arousal', 'bj', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+						gs 'arousal', 'anal', rand(5,10), 'sub', 'rough', 'group', 'gangbang', 'rape'
+						minut -= 8
+						gs 'stat'
+						act 'continue':
+							*clr & cla
+							'They are finished with me'
+
+							temp = rand(1,3)
+							if temp = 1:
+								'One of them cums on my face'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'face', $npclastgenerated, 0
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'cum_call', 'hair', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonface 2.mp4"></video></center>'
+							elseif temp = 2:
+								'One of them cums on my back'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'back', $npclastgenerated, 0
+								gs 'cum_call', 'butt', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonass 3.mp4"></video></center>'
+							elseif temp = 3:
+								'One of them cums in me!'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								gs 'cuminsidereact', 'forest rapist'
+								gs 'cum_manage'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Tolik/2/Tolik2.mp4"></video></center>'
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+							gs 'stat'
+							temp = rand(1,3)
+							if temp = 1:
+								'One of them cums on my face'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'face', $npclastgenerated, 0
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'cum_call', 'hair', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonface 2.mp4"></video></center>'
+							elseif temp = 2:
+								'One of them cums on my back'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'back', $npclastgenerated, 0
+								gs 'cum_call', 'butt', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonass 3.mp4"></video></center>'
+							elseif temp = 3:
+								'One of them cums in me!'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								gs 'cuminsidereact', 'forest rapist'
+								gs 'cum_manage'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Tolik/2/Tolik2.mp4"></video></center>'
+							end
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							temp = rand(1,3)
+							if temp = 1:
+								'One of them cums on my face'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'face', $npclastgenerated, 0
+								gs 'cum_call', 'mouth', $npclastgenerated, 0
+								gs 'cum_call', 'hair', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonface 2.mp4"></video></center>'
+							elseif temp = 2:
+								'One of them cums on my back'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'back', $npclastgenerated, 0
+								gs 'cum_call', 'butt', $npclastgenerated, 0
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/cumonass 3.mp4"></video></center>'
+							elseif temp = 3:
+								'One of them cums in me!'
+								gs 'npcgeneratec', 0, 'a forest rapist', rand(20,55)
+								gs 'boyStat', $npclastgenerated
+								gs 'cum_call', 'vagina', $npclastgenerated, 0
+								gs 'cuminsidereact', 'forest rapist'
+								gs 'cum_manage'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Tolik/2/Tolik2.mp4"></video></center>'
+							end
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue':
+								*clr & cla
+								'They go away…'
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/velo_rape/end.mp4"></video></center>'
+								act 'stand up and look around': gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'mastif':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	if bm_bobik_setup ! 1: bm_bobik_setup = 1 & gs 'mod_public_WC_rab_work_zoo', 'bobik_setup'
+
+	if onvelyk = 1:
+		if ztemp = 1:
+			if onvelyk = 1:
+				act 'ride a bike on west':
+					coord_x -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on east':
+					coord_x += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on north':
+					coord_y += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on south':
+					coord_y -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+		elseif ztemp = 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/ride_start.jpg"></center>'
+			'The dog comes to me and start barking and puts his muzzle to my pussy'
+
+			ztemp = 0
+			if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+				act 'go to the dog and kiss it':
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+					minut += 1
+					npc_QW['A220'] += rand(0,1)
+					temp = rand(1,4)
+					if temp = 4: zoo += 1
+					ztemp = 1
+					gs 'arousal', 'kiss', rand(5,10), 'beast'
+					temp = rand (1,20)
+					if temp = 1: zoo += 1
+					gs 'stat'
+				end
+			end
+			if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15):
+				act 'play with dog''s dick':
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+					minut += 1
+					npc_QW['A220'] += rand(0,1)
+					temp = rand(1,4)
+					if temp = 4: zoo += 1
+					ztemp = 2
+					gs 'arousal', 'bj', rand(5,10), 'beast'
+					temp = rand (1,20)
+					if temp = 1: zoo += 1
+					gs 'stat'
+				end
+			end
+
+			act 'I stand on my four':
+				*clr & cla
+				gs 'sweat', 'add', 10
+				zoo += 1
+				'I stand on my four'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/wait dog.mp4"></video></center>'
+				act 'wait': gt 'mod_public_WC_rab_Mayster71', 'ds'
+			end
+
+			if onvelyk = 1:
+				act 'ride a bike on west':
+					coord_x -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on east':
+					coord_x += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on north':
+					coord_y += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'ride a bike on south':
+					coord_y -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					onvelyk = 1
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+		end
+	else
+		if ztemp = 1:
+			if onvelyk = 0:
+				act 'go west':
+					coord_x -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go east':
+					coord_x += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go north':
+					coord_y += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go south':
+					coord_y -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+		elseif ztemp = 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/mastif.jpg"></center>'
+			'The dog comes to me and start barking and puts his muzzle to my pussy'
+
+			ztemp = 0
+			if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+				act 'go to the dog and kiss it':
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+					minut += 1
+					npc_QW['A220'] += rand(0,1)
+					temp = rand(1,4)
+					if temp = 4: zoo += 1
+					ztemp = 1
+					gs 'arousal', 'kiss', rand(5,10), 'beast'
+					temp = rand (1,20)
+					if temp = 1: zoo += 1
+					gs 'stat'
+				end
+			end
+			if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15):
+				act 'play with dog''s dick':
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+					minut += 1
+					npc_QW['A220'] += rand(0,1)
+					temp = rand(1,4)
+					if temp = 4: zoo += 1
+					ztemp = 2
+					gs 'arousal', 'bj', rand(5,10), 'beast'
+					temp = rand (1,20)
+					if temp = 1: zoo += 1
+					gs 'stat'
+				end
+			end
+
+			act 'I stand on my four':
+				*clr & cla
+				gs 'sweat', 'add', 10
+				zoo += 1
+				'I stand on my four'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/wait dog.mp4"></video></center>'
+				act 'wait': gt'mod_public_WC_rab_Mayster71', 'ds'
+			end
+
+			if onvelyk = 0:
+				act 'go west':
+					coord_x -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go east':
+					coord_x += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go north':
+					coord_y += 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+				act 'go south':
+					coord_y -= 1
+					pole = 0
+					lis = 0
+					rika = 0
+					boloto = 0
+					gt 'mod_public_WC_rab_Mayster7', 'ride'
+				end
+			end
+		elseif ztemp = 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/tease/tease_rakom ('+rand(1,2)+').jpg"></center>'
+			act 'wait': gt'mod_public_WC_rab_Mayster71', 'ds'
+		end
+	end
+end
+
+if $ARGS[0] = 'ds':
+	*clr & cla
+	'The dogs comes to me and perfectly know what to do… what?!'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/start.jpg"></center>'
+
+	gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+	gs 'arousal', 'end'
+	gs 'stat'
+	gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+	stat['vaginal'] += 1
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'The dog starts to penetrates me!'
+		temp = rand (1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/pussv ('+rand(1,3)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/puss ('+rand(1,10)+').jpg"></center>'
+		end
+
+		npc_horny['A220'] = 0
+		if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+		DogVag+=1
+
+		npc_QW['A220'] += 1
+		gs 'stat'
+
+		gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Allow to knot me':
+			*clr & cla
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+			gs 'stat'
+
+			temp = rand (1,2)
+
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+			end
+
+
+			gs 'arousal', 'vaginal', 15, 'sub', 'beast', 'rough'
+			gs 'arousal', 'end'
+			gs 'stat'
+			banditboggle = RAND(0,5)
+			if banditboggle <= 3:
+				if pcs_vag < 10:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 4
+					vgape = 3
+					pcs_horny = 0
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+					gs 'arousal', 'vaginal', 20, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag < 25:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 3
+					vgape = 2
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,50)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag < 35:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 2
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				else
+					gs 'arousal_funcs', 'stretch', 'vaginal', 1
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				end
+			else
+				if pcs_vag < 10:
+					minut += 20
+					gs 'arousal_funcs', 'stretch', 'vaginal', 4
+					vgape = 3
+					pcs_horny = 0
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 10:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 3
+					vgape = 1
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				end
+			end
+		end
+
+
+		act 'Prevent':
+			*clr & cla
+			minut += 2
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+
+			temp = rand (1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/pv ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/p.jpg"></center>'
+			end
+
+			gs 'stat'
+			banditboggle = RAND(0,5)
+			if banditboggle <= 1:
+				if pcs_vag < 15:
+					minut += 10
+					gs 'arousal_funcs', 'stretch', 'vaginal', 1
+					vgape = 1
+					pcs_horny -= RAND(10,20)
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'labia', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 15 and pcs_vag < 25:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 1
+					gs 'boyStat', 'A220'
+					gs 'stat'
+					if pcs_horny >= 100:
+						minut += 10
+
+						pcs_mood = 100
+						gs 'stat'
+
+						sexvolume = rand(20,500)
+						gs 'cum_manage'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						sexvolume = rand(20,150)
+						gs 'cum_manage'
+						gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 25 and pcs_vag < 35:
+					gs 'boyStat', 'A220'
+					sexvolume = rand(20,590)
+					gs 'cum_manage'
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 35:
+					gs 'boyStat', 'A220'
+					sexvolume = rand(20,590)
+					gs 'cum_manage'
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+
+						$orgasm_or = 'yes'
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					else
+						gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				end
+			else
+
+				if pcs_vag < 15:
+					minut += 10
+					gs 'arousal_funcs', 'stretch', 'vaginal', 1
+					if vgape <3:vgape += 1
+					pcs_horny -= RAND(10,20)
+					gs 'stat'
+
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 15 and pcs_vag < 25:
+					gs 'arousal_funcs', 'stretch', 'vaginal', 1
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,50)
+					gs 'stat'
+
+					gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 25 and pcs_vag < 35:
+					gs 'boyStat', 'A800'
+					gs 'cum_call', 'vagina', 'A800', 0, '', '', rand(20,300)
+					gs 'stat'
+
+					gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				elseif pcs_vag >= 35:
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,300)
+					gs 'stat'
+
+					gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt $loc, $loc_arg
+					exit
+				end
+			end
+		end
+	end
+end
+
+
+
+
+if $ARGS[0] = 'beast':
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	if onvelyk = 1:
+		'Something… some Beast grabs the bike and I jump out of it in the last moment!!!'
+		'I start to run from it!!!'
+	else
+		'I saw Something… some Beast! I start to run from it!!!'
+	end
+	coord_v_x = coord_x
+	coord_v_y = coord_y
+
+	minut += rand (5,15)
+	gs 'stat'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/RUNRUN3.mp4"></video></center>'
+	'Beast runs after me! I am not shure if I can run from it!'
+
+	act 'climb a tree':
+		cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo.mp4"></video></center>'
+		'I tried to climb a tree, but it appears to hard for me… And I hanging on a branch…'
+		act 'Try to find something with my feet to push myself':
+			*clr & cla
+			'I feel something hard with my feet and try to use it as a support for climbing…'
+			wait 1500
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/derevo_fin.mp4"></video></center>'
+			'I Hear beast''s moaning. Look down… The beast lie on the ground'
+			gs 'arousal', 'footjob', 5, 'beast', 'feet', 'unknown'
+			stat['footjob'] += 1
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'legs', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			if coord_x <= 0:
+				act 'Jump and run!': b_big = 3 & gt 'mod_public_WC_rab_Mayster7', 'run'
+			else
+				coord_x -= rand(1,3)
+				coord_y -= rand(0,2)
+				act 'Jump and run!': gt $loc, $loc_arg
+			end
+		end
+	end
+
+	act 'continue running':
+		if pcs_agil >= 90 or pcs_run >= 70:
+			*clr & cla
+			'I have run away'
+			minut += 15
+			gs 'sweat', 'add', 15
+			gs 'stat'
+			'I ran away!'
+			act 'take a breath':
+				coord_x -= rand(1,3)
+				coord_y -= rand(0,2)
+				gt $loc, $loc_arg
+			end
+		else
+			*clr & cla
+			'Beast caught me and knocked me down! It growls and rub his dick over my tits… It''s beter to help him'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/beast/titjob.mp4"></video></center>'
+			gs 'arousal', 'titjob', 20, 'beast', 'rape', 'rough'
+
+			gs 'npcgeneratec', 0, 'le beast', 113
+			gs 'boyStat', $npclastgenerated
+
+			gs 'cum_call', 'hands', $npclastgenerated, 0
+
+			gs 'cum_call', 'stomach', $npclastgenerated, 0
+
+			gs 'cum_call', 'breasts', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'
+			'The beast cums all over my body, and lie down with pleasure on muzzle.'
+			if pcs_sleep <= 20:
+				act 'go to sleep with beast':
+					*clr & cla
+					wait 500
+					temp = rand(45,120)
+					minut += temp
+					if temp > 60:
+						pcs_sleep += 20
+					else
+						pcs_sleep += 8
+					end
+					'I wake up, beast is still sleeping.'
+					act 'run away':
+						if coord_x <= 0:
+							b_big = 3 & gt 'mod_public_WC_rab_Mayster7', 'run'
+						else
+							coord_x -= rand(1,3)
+							coord_y -= rand(0,2)
+							gt $loc, $loc_arg
+						end
+					end
+
+					act 'go to sleep with beast':
+						*clr & cla
+						*nl
+						'…Zzz…'
+						wait 500
+						temp = rand(45,120)
+						minut += temp
+						if temp > 60:
+							pcs_sleep += 20
+						else
+							pcs_sleep += 8
+						end
+						if hour >= endhour:
+							*clr & cla
+							temp = rand(1,3)
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/go/trip<<temp>>.jpg"></center>'
+							'I woke up because Rednecks tide me up, there is no beast around…'
+							*nl
+							'They put bag on my had and we starts to go somewhere (home, I suppose).'
+							act 'continue': b_big = 4 & gt 'mod_public_WC_rab_Mayster7', 'run'
+						else
+							*clr & cla
+							'I wake up, because some maniak catchs and  carries me somewhere.'
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/7/maniakd/unis.mp4"></video></center>'
+							if hour <= 5 or hour >= 22:
+								act 'continue': b_big = 5 & gt 'mod_public_WC_rab_Mayster7', 'run'
+							else
+								act 'continue': b_big = 6 & gt 'mod_public_WC_rab_Mayster7', 'run'
+							end
+						end
+					end
+				end
+			end
+			act 'run away':
+				if coord_x <= 0:
+					b_big = 3 & gt 'mod_public_WC_rab_Mayster7', 'run'
+				else
+					coord_x -= rand(1,3)
+					coord_y -= rand(0,2)
+					gt $loc, $loc_arg
+				end
+			end
+		end
+	end
+end
+--- mod_public_WC_rab_Mayster71 ---------------------------------
+

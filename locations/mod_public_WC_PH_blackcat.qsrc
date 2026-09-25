@@ -1,0 +1,394 @@
+# mod_public_WC_PH_blackcat
+if $ARGS[0] = 'start': 
+	$metka = 'start'
+	$loc = 'mod_public_WC_PH_blackcat'
+	$menu_loc = 'mod_public_WC_PH_blackcat'
+	$menu_arg = 'start'
+	menu_off = 0
+	*clr & cla
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/0 walk.mp4"></video></center>'
+	
+	'I go with the bruser, and in a short time we stands near the door'
+	'"You can meet him there" - he points on the door.'
+	minut += 5
+	gs 'stat'
+	
+	act 'enter the door':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/room.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/boss/smokes ('+rand(1,2)+').jpg"></center>'
+		'I entered the big fancy room with a lot of black guys'
+		'There is a guy with a cigar… he is the one, I met in the toilet glory hole.'
+		'He starts to talk to me'
+		'"Ow, guys, look. She is 27629 I talked about"'
+		'"Why so long girl? I''ve been waiting!"'
+		'"Come here"'
+		'I come to him and stay in front of him'
+		'"On your knees, girl."'
+		minut += 3
+		act 'stand on my knees':
+			cla
+			'"Good girl, you are promising. Now try this cigar"'
+			act 'try it':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/1 start smoke.mp4"></video></center>'
+				gs 'drugs','smoke'
+				
+				if smokerNeed > 0 and NarkImmune = 0:
+					+$OpenInnerThought+'The cigar is very good!'+$CloseInnerThought
+					pcs_mood += rand(0,10)
+					'"I see it in your eyse, you like it. And I like the way you smoke))" - he said'
+				else
+					+$OpenInnerThought+'I take a few pulls, the taste is terrible'+$CloseInnerThought
+					'"Not a big fan of cigars? but the way you smoke is good))"'
+				end
+				minut += 3
+				gs 'stat'
+				'"You may have a good money if you''ll be a good toy" - he unzip his pants - "Now, make my dick smokes"'
+				act 'blow him':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/2 bj.mp4"></video></center>'
+					'I blow his <<$npc_thdick>> dick with all my skills'
+					gs 'boyStat', 'A491'
+					gs 'arousal', 'bj', rand(15,20), 'prostitution'
+					gs 'stat'
+					act 'make him cum':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/3 cum.jpg"></center>'
+						'He spays it all over my face and mouth…'
+						'"Nice girl, I like your style… Now make my gang happy and we will talk about real money."'
+						gs 'cum_call','face', 'A491'
+						gs 'stat'
+						
+						gs 'cum_call','mouth', 'A491'
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'take a drink from the table and agree':
+							sexcorrupt += 1
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/0 drink.mp4"></video></center>'
+							gs 'drugs', 'alcohol', 'wine', 1
+							gs 'stat'
+							'"Nice girl" - Big boss said - "come on guys, don''t be shy)))"'
+							act 'it starts': gt 'mod_public_WC_PH_blackcat', 'testgb'
+						end
+						
+						act 'beg to avoid this and go away':
+							*clr & cla
+							blackcat = 3
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/boss/drink.jpg"></center>'
+							'"Girl, I am very disappointed"'
+							'"I am not a monster, but you waist my time and need to be punished." - "Serg, please, do"'
+							
+							act 'please no!':
+								*clr & cla
+								'The big black comes and bent me with force'
+								'He strarts to hard fuck me'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/kara.mp4"></video></center>'
+								gs 'npcgeneratec', 0, 'an unknown black', rand(18,25)
+								gs 'boyStat', $npclastgenerated
+								gs 'arousal', 'vaginal', rand(20,40), 'rough', 'prostitution', 'rape'
+								gs 'stat'
+								act 'continue':
+									*clr & cla
+									gs 'cum_call','vaginal',$boy	
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/cumin.jpg"></center>'
+									'"I fill his hot cum inside me!"'
+									gs 'cuminsidereact', $boy
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'continue':
+										*clr & cla
+										'Serg pulls his dick out… he brakes my hands and pulls my hair till sit me in the marshrutka'
+										+$OpenInnerThought+'I feell Serg''s hot sperm flows down my legs'+$CloseInnerThought
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/BUS.jpg"></center>'
+										gs 'cum_call','legs',$boy	
+										gs 'stat'
+										gs 'pain', 2, 'handR', 'stretch'
+										gs 'stat'
+										gs 'pain', 2, 'hair', 'pull'
+										gs 'stat'
+										minut += rand(15,20)
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'Continue':
+											*clr & cla
+											'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+											minut += rand(20,40)
+											gs 'stat'
+											'in a short time I come back to the park'
+											act 'continue': gt 'mod_public_WC_PH_come', 'start'
+										end	
+									end
+								end
+							end
+						end
+						
+						act 'Seductively go to guys and say "hello"':
+							sexcorrupt += 1
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/1 hello.mp4"></video></center>'
+							'Guys with hunger eyes and long dongs are approaching me…'
+							act 'it starts': gt 'mod_public_WC_PH_blackcat', 'testgb'
+						end						
+					end
+				end				
+			end
+		end
+	end	
+end
+
+if $ARGS[0] = 'testgb':
+	$metka = 'testgb'
+	$loc = 'mod_public_WC_PH_blackcat'
+	$menu_loc = 'mod_public_WC_PH_blackcat'
+	$menu_arg = 'testgb'
+	menu_off = 0
+	*clr & cla
+	gs 'npcgeneratec', 0, 'an unknown black', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	
+	'I start to blow the guy, another come closer, I start to blow him too'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/2 bj2.mp4"></video></center>'
+	gs 'arousal', 'bj', rand(3,5), 'prostitution', 'group', 'gangbang'
+	gs 'stat'
+	gs 'arousal', 'bj', rand(3,5), 'prostitution', 'group', 'gangbang'
+	gs 'stat'
+	act 'othe guys are approaching':
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/3 bj4.mp4"></video></center>'
+		'The guys become more and more, my hands help me to entertain as many as possible'
+		gs 'arousal', 'bj', rand(1,2), 'prostitution', 'group', 'gangbang'
+		gs 'stat'
+		gs 'arousal', 'bj', rand(1,2), 'prostitution', 'group', 'gangbang'
+		gs 'stat'
+		gs 'arousal', 'hj', rand(1,2), 'prostitution', 'group', 'gangbang'
+		gs 'stat'
+		gs 'arousal', 'hj', rand(1,2), 'prostitution', 'group', 'gangbang'
+		gs 'stat'
+		act 'continue':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/4 bj5.mp4"></video></center>'
+			'There are to many dicks!'
+			gs 'arousal', 'bj', rand(1,2), 'prostitution', 'group', 'gangbang'
+			gs 'stat'
+			gs 'arousal', 'bj', rand(1,2), 'prostitution', 'group', 'gangbang'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(1,2), 'prostitution', 'group', 'gangbang'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(1,2), 'prostitution', 'group', 'gangbang'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/5 line ass start.mp4"></video></center>'
+				'They are ready to fuck me and create a queue'
+				'The first one fucks my ass'
+				gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group', 'gangbang'
+				gs 'stat'
+				
+				act 'continue':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/6 line ass.mp4"></video></center>'
+					
+					'They are fucking my ass one by one'
+					gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group', 'gangbang'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/7 line pa.mp4"></video></center>'
+						
+						'Some has lack of temtension and starts to fucks me during other turns'
+						gs 'arousal', 'anal', rand(5,10), 'prostitution', 'group', 'gangbang'
+						gs 'stat'
+						gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'group', 'gangbang'
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/8 gb4.mp4"></video></center>'
+							
+							'More and more blacks join before their turn!'
+							gs 'arousal', 'anal', rand(2,5), 'prostitution', 'group', 'gangbang'
+							gs 'stat'
+							gs 'arousal', 'vaginal', rand(2,5), 'prostitution', 'group', 'gangbang'
+							gs 'stat'
+							gs 'arousal', 'bj', rand(2,5), 'prostitution', 'group', 'gangbang'
+							gs 'stat'
+							gs 'arousal', 'bj', rand(2,5), 'prostitution', 'group', 'gangbang'
+							gs 'stat'
+							ztemp = rand(6,10)
+							
+							act 'continue': gt 'mod_public_WC_PH_blackcat', 'cycle'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = 'cycle': 
+	$metka = 'cycle'
+	$loc = 'mod_public_WC_PH_blackcat'
+	$menu_loc = 'mod_public_WC_PH_blackcat'
+	$menu_arg = 'cycle'
+	menu_off = 0
+	*clr & cla
+	'Finally they start to cum'
+	gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+	if rand(1,2) = 1:
+		ztemp -= 1
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/9 cum puss.mp4"></video></center>'
+		'The black cums in me!'		
+		gs 'cum_call','vaginal',$boy	
+		gs 'stat'		
+		gs 'cuminsidereact', $boy
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat', 'cycle'
+		
+	else	
+		ztemp -=1
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/10 cum m '+rand(1,2)+'.mp4"></video></center>'
+		'The black cums in my mouth'		
+		gs 'cum_call','mouth',$boy	
+		gs 'stat'
+		act 'continue': gt 'mod_public_WC_PH_blackcat', 'cycle'
+		
+	end
+	gs 'arousal', 'end'
+	gs 'stat'	
+	
+	
+	
+	if ztemp = 1:
+		*clr & cla
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/11 last cum m.mp4"></video></center>'
+		'Finally the last one'
+		'All other thugs just chatting like I am not even exist.'
+				
+		gs 'cum_call','mouth',$boy	
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'		
+		act 'wait':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/end.jpg"></center>'
+			'The Boss starts to talk'			
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/black cat/test gb/boss/boss/smokeanddrink.jpg"></center>'
+			'"Guys do you like it?"'
+			*nl
+			'"Yeeees!!!"'
+			'"The bitch is fire!"'
+			'Guys yells loudly!'
+			*nl
+			'"Well, girl… Now I have an offer for you:"'
+			
+			'"You will work in the Pleasure House, and I''ll met you with Yana to do this…"'
+			'"But each working day start you will entertain us at first"'
+			
+			+$OpenInnerThought+'Does he mean entertain them all for free?'+$CloseInnerThought
+			+$OpenInnerThought+'Can I agree to do this?'+$CloseInnerThought
+			
+			act 'Refuse':
+				cla
+				'I am sorry, it''s to much for me'				
+				'"I see, well, anyway it was fun."'
+				sexcorrupt -= 1
+				if sexcorrupt < -10: sexcorrupt = -10
+				
+				'"Serg, please help her to sit in the marshrytka"'
+				act 'walk out':
+					*clr & cla
+					minut += rand(5,10)
+					gs 'stat'
+					'Serg helps me to find a way to marshrutka'
+					act 'sit in the marshrutka':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+						minut += rand(20,40)
+						gs 'stat'
+						'in a short time I come back to the park'
+						act 'continue': gt 'mod_public_WC_PH_come', 'start'
+					end
+				end
+			end
+			
+			
+			
+			gs 'willpower', 'prostitution', 'self'
+			will_cost += (sexcorrupt / 3)
+			if (will_cost) <= pcs_willpwr:
+				act 'Ask to have a payment for the entertainment' + $func('willpower', 'get_willcost_string'):
+					sexcorrupt -= 2
+					if sexcorrupt < -10: sexcorrupt = -10
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'			
+					
+					'"You see guys, I like her.. clever girl))"'
+					'"Alright you''ll receive payment for it"'
+					catpay = 1
+				end
+			else
+				act 'Ask to have a payment for the entertainment' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+			
+			
+			
+			act 'Agree':
+				cla
+				sexcorrupt += 1
+				
+				'"Nice"'
+				'"Serg, walk her to Yana"'
+				blackcat = 100
+				act 'go with Serg':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/0 walk.mp4"></video></center>'
+					
+					'Serg took me to a room where different girls were painting, dressing…'
+					'- Yana, Big Cat said this girl on his side'
+					'A 30-year-old woman of stern appearance approached us.'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+					
+					If Yana >= 1:
+						'"Hmmm…"'
+						+$OpenInnerThought+'she pretends not to know me'+$CloseInnerThought
+					end
+					'"ok, no problem, girl, see you tomorrow"'
+					Yana = 2
+					'"Good, now come wit me to the marshrutka" - Serg said'
+					
+					act 'walk with Serg':
+						*clr & cla
+						minut += rand(5,10)
+						gs 'stat'
+						'Serg helps me to find a way to marshrutka'
+						act 'sit in the marshrutka':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+				end
+			end
+		end			
+	end	
+end
+--- mod_public_WC_PH_blackcat ---------------------------------
+

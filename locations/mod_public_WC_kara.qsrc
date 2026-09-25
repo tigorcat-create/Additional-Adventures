@@ -1,0 +1,718 @@
+# mod_public_WC_kara
+if $ARGS[0] = '0sliv':
+	$loc = 'mod_public_WC_kara'
+	slova = 0
+	'Oh, no! I spent more words than I had.'
+	wait 700
+	if brak <= 2:
+		'You do not want to listen, you will be punished!'
+		act 'continue': gt 'mod_public_WC_kara', 'kara3'
+	else
+		brak += 1
+		temp = rand (1,3)
+		if temp = 1: pcs_humint += 1
+		'You have been warned about words, you will be punished'
+		wait 1500
+		if brak < 10:
+			temp = 1
+			if cumgame = 1: temp = 2
+		elseif brak < 20:
+			temp = 6
+		elseif brak < 30:
+			temp = rand(2,3)
+		elseif brak < 40:
+			temp = rand(2,4)
+		elseif brak < 60:
+			temp = rand(1,2)
+			if temp = 1: temp = 4
+			if temp = 2: temp = 7
+		elseif brak < 70:
+			temp = rand(1,3)
+			if temp = 1: temp = 4
+			if temp = 2: temp = 5
+			if temp = 3: temp = 7
+		else
+			temp = 5
+		end
+		if temp = 1: gt 'mod_public_WC_kara', 'kara1'
+		if temp = 2: gt 'mod_public_WC_kara', 'kara2'
+		if temp = 3: gt 'mod_public_WC_kara', 'kara3'
+		if temp = 4: gt 'mod_public_WC_kara', 'kara4'
+		if temp = 5: gt 'mod_public_WC_kara', 'kara5'
+		if temp = 6: gt 'mod_public_WC_kara', 'kara6'
+		if temp = 7: gt 'mod_public_WC_kara7', 'kara7'
+	end
+end
+
+if $ARGS[0] = 'vtecha':
+	$loc = 'mod_public_WC_kara'
+	'You will be punished for your run away!'
+	act 'Continue':
+		if brak < 10:
+			temp = 1
+			if cumgame = 1: temp = 2
+		elseif brak < 20:
+			temp = 6
+		elseif brak < 30:
+			temp = rand(2,3)
+		elseif brak < 40:
+			temp = rand(2,4)
+		elseif brak < 60:
+			temp = rand(1,2)
+			if temp = 1: temp = 4
+			if temp = 2: temp = 7
+		elseif brak < 70:
+			temp = rand(1,3)
+			if temp = 1: temp = 4
+			if temp = 2: temp = 5
+			if temp = 3: temp = 7
+		else
+			temp = 5
+		end
+		if temp = 1: gt 'mod_public_WC_kara', 'kara1'
+		if temp = 2: gt 'mod_public_WC_kara', 'kara2'
+		if temp = 3: gt 'mod_public_WC_kara', 'kara3'
+		if temp = 4: gt 'mod_public_WC_kara', 'kara4'
+		if temp = 5: gt 'mod_public_WC_kara', 'kara5'
+		if temp = 6: gt 'mod_public_WC_kara', 'kara6'
+		if temp = 7: gt 'mod_public_WC_kara7', 'kara7'
+	end
+end
+
+if npc_loyality >= 70   and npc_loyality < 1000:   gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'kara1':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'stat'
+	'Well, I understand everything, you''re new. And the punishment will not be severe, yet. Appreciate my generosity.'
+	gs 'arousal', 'voyeur', 2
+	gs 'stat'
+	'Redneck fills a full glass and hands it to me.'
+	temp = rand (1,3)
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/<<temp>>.mp4"></video></center>'
+	emptyglass = 0
+	'Drink!'
+	if trt_cumeater = 1:
+		act 'With pleasure. I drink':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/drinkp1.jpg"></center>'
+			gs 'cum_call', 'mouth', 'redneck'
+			cumstakan = rand(1,brak) - 1
+			cumgame = 1
+			cumwin = cumstakan
+
+			if bimbolevel >= 2:
+				pcs_mood += 40
+				+$OpenInnerThought+'Warm as i like it!'+$CloseInnerThought
+			end
+			pcs_mood -= 10
+			spafinloc = 12
+			gs 'cum_manage'
+			stat['swallow'] += 1
+			gs 'stat'
+			pcs_health -= rand(0,30)
+			pcs_health += rand(0,10)
+			gs 'beverage', 'semen_stats', 60
+
+
+			'He strokes my head and says, well done. All over the yard and houses, I''ll hide <<cumstakan>> glasses full of cum. You must find them all and drink as soon as possible. Day after tomorrow you will show me all the empty glasses.'
+			'And for your persistence, I give you 2 words.'
+			slova += 2
+			vlada += 1
+			if week = 1: finishcumgame = 3
+			if week = 2: finishcumgame = 4
+			if week = 3: finishcumgame = 5
+			if week = 4: finishcumgame = 6
+			if week = 5: finishcumgame = 7
+			if week = 6: finishcumgame = 1
+			if week = 7: finishcumgame = 2
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_rab', 'dvir'
+		end
+	end
+	act 'I drink it':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/1/drinkp1.jpg"></center>'
+		willpowermax -= rand(1,2)
+		gs 'cum_call', 'mouth', 'redneck'
+		cumstakan = rand(1,brak) - 1
+		cumgame = 1
+		cumwin = cumstakan
+
+		if bimbolevel >= 2:
+			pcs_mood += 40
+			+$OpenInnerThought+'Warm as i like it!'+$CloseInnerThought
+		end
+		pcs_mood -= 10
+		spafinloc = 12
+		gs 'cum_manage'
+		stat['swallow'] += 1
+		gs 'stat'
+		pcs_health -= rand(0,30)
+		pcs_health += rand(0,10)
+		gs 'beverage', 'semen_stats', 60
+		gs 'arousal', 'end'
+		gs 'stat'
+
+
+		'He strokes my head and says, well done. All over the yard and houses, I''ll hide <<cumstakan>> glasses full of cum. You must find them all and drink as soon as possible. Day after tomorrow you will show me all the empty glasses.'
+		'Well done, get a word.'
+		slova += 1
+		vlada += 1
+		if week = 1: finishcumgame = 3
+		if week = 2: finishcumgame = 4
+		if week = 3: finishcumgame = 5
+		if week = 4: finishcumgame = 6
+		if week = 5: finishcumgame = 7
+		if week = 6: finishcumgame = 1
+		if week = 7: finishcumgame = 2
+		gs 'stat'
+		act 'Continue': gt 'mod_public_WC_rab', 'dvir'
+	end
+	gs 'willpower', 'misc', 'self', 'hard'
+	if will_cost <= pcs_willpwr:
+		act 'No!' + $func('willpower', 'get_willcost_string'):
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			'"You disappoint me!" He hit me in the face with a big swing…'
+			gs 'pain', rand(3,4), 'head', 'hit'
+			brak += 2
+			willpowermax += rand(0,2)
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_kara', 'kara3'
+		end
+	else
+		act 'No!' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+end
+
+if $ARGS[0] = 'kara2':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'bras', 'remove'
+	gs 'clothing', 'strip'
+	gs 'panties', 'remove'
+	gs 'stat'
+	'What have you still not understood what you need! You have everything you want and yet you create problems!'
+	'They tied me, now I looks like sex doll.'
+	temp = rand(1,9)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/2/s<<temp>>.jpg"></center>'
+	act 'wait':
+		*clr & cla
+		'Redneck fucked me'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/2/p<<temp>>.mp4"></video></center>'
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+		guy += 1
+		rape += 1
+		gs 'cum_call', 'vaginal', 'redneck'
+		gs 'cuminsidereact', 'redneck'
+		minut += rand(5, 25)
+		temp = rand (5,13)
+		trah = temp
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Contiue':
+			cla
+			temp = rand(1,2)
+			if temp = 1: gt 'mod_public_WC_kara', 'bj'
+			if temp = 2: gt 'mod_public_WC_kara', 'sex'
+		end
+	end
+end
+
+if $ARGS[0] = 'bj':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	trah -= 1
+	if trah < 0:
+		gt 'mod_public_WC_rab', 'dvir'
+	else
+		temp = rand(5, 45)
+		minut += temp
+		'After <<temp>> minuts next redneck come'
+		'He fucked my mouth.'
+		temp = rand (1,6)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/2/b<<temp>>.jpg"></center>'
+		gs 'arousal', 'bj', temp, 'sub', 'rough'
+		stat['swallow'] += 1
+		rape += 1
+		gs 'cum_call', 'mouth', 'redneck'
+		minut += rand(5, 15)
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Contiue':
+			temp = rand(1,2)
+			if temp = 1: gt 'mod_public_WC_kara', 'bj'
+			if temp = 2: gt 'mod_public_WC_kara', 'sex'
+		end
+	end
+end
+
+if $ARGS[0] = 'sex':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	trah -= 1
+	if trah < 0:
+		gt 'mod_public_WC_rab', 'dvir'
+	else
+		temp = rand(5, 45)
+		minut += temp
+		'After <<temp>> minuts next redneck come'
+		'He fucked me'
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/2/p<<temp>>.mp4"></video></center>'
+		gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+		guy += 1
+		rape += 1
+		gs 'cum_call', 'vaginal', 'redneck'
+		gs 'cuminsidereact', 'redneck'
+		gs 'arousal', 'vaginal', 15, 'unknown', 'sub', 'rough', 'rape'
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Contiue':
+			temp = rand(1,2)
+			if temp = 1: gt 'mod_public_WC_kara', 'bj'
+			if temp = 2: gt 'mod_public_WC_kara', 'sex'
+		end
+	end
+end
+
+if $ARGS[0] = 'kara3':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'bras', 'remove'
+	gs 'panties', 'remove'
+	gs 'stat'
+	'What have you still not understood what you need! You have everything you want and yet you create problems!'
+	'I was tied up outside'
+	temp = rand(1,2)
+	if temp = 1:
+		temp = rand(1,3)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/s<<temp>>.jpg"></center>'
+	else
+		temp = rand(1,2)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/sv<<temp>>.mp4"></video></center>'
+	end
+	act 'wait':
+		*clr & cla
+		'Redneck used my mouth'
+
+		temp = rand(1,2)
+		if temp = 1:
+			temp = rand(1,2)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/b<<temp>>.jpg"></center>'
+		else
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/bv<<temp>>.mp4"></video></center>'
+		end
+		gs 'arousal', 'bj', rand(5, 15)
+		stat['swallow'] += 1
+		rape += 1
+		sper = 1
+		gs 'cum_call', 'mouth', 'redneck'
+		minut += rand(5, 15)
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		trah = rand(1,10)
+		act 'Contiue': gt 'mod_public_WC_kara', 'bj2'
+	end
+end
+
+if $ARGS[0] = 'bj2':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	trah -= 1
+	sper += 1
+	if trah < 0:
+		act 'Finally the end': gt 'mod_public_WC_rab', 'dvir'
+	else
+		temp = rand(5, 45)
+		minut += temp
+		'After <<temp>> minuts next redneck come'
+		'Redneck fucked my mouth'
+		if temp = 1:
+			temp = rand(1,2)
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/b<<temp>>.jpg"></center>'
+		else
+			temp = rand(1,3)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/3/bv<<temp>>.mp4"></video></center>'
+		end
+
+		gs 'arousal', 'bj', rand(5, 15)
+		stat['swallow'] += 1
+		rape += 1
+		gs 'cum_call', 'mouth', 'redneck'
+		if sper >= 3: gs 'cum_call', 'face', 'redneck'
+		if sper = 4: gs 'cum_call', 'clothes', 'redneck'
+		if sper = 5:
+			gs 'cum_call', 'hair', 'redneck'
+			gs 'clothing', 'strip'
+		end
+		if sper >= 6:
+			gs 'cum_call', 'legs', 'redneck'
+			gs 'cum_call', 'hair', 'redneck'
+		end
+		if sper >= 7: gs 'cum_call', 'mouth', 'redneck'
+
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'Next?': gt 'mod_public_WC_kara', 'bj2'
+	end
+end
+
+if $ARGS[0] = 'kara4':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'stat'
+	if brak >= 30:
+		temp = rand(1,2)
+	else
+		temp = 1
+	end
+	if temp = 1:
+		'Simple methods do not cure, let''s try this one'
+		temp = rand (1,4)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/uv<<temp>>.mp4"></video></center>'
+		stat['BDSM'] += 1
+		gs 'arousal', 'BDSM', rand(45,120), 'bound', 'sub'
+		gs 'pain', rand(0,2), 'back', 'spank'
+		gs 'pain', rand(0,2), 'asscheeks', 'spank'
+		gs 'pain', rand(0,2), 'hips', 'spank'
+		gs 'pain', rand(0,2), 'legL', 'spank'
+		gs 'pain', rand(0,2), 'legR', 'spank'
+		gs 'pain', rand(0,2), 'shoulders', 'spank'
+		gs 'pain', rand(0,2), 'armL', 'spank'
+		gs 'pain', rand(0,2), 'armR', 'spank'
+		gs 'pain', rand(0,2), 'chest', 'spank'
+		gs 'pain', rand(0,2), 'breasts', 'spank'
+		gs 'pain', rand(0,2), 'nipples', 'spank'
+		gs 'pain', rand(0,2), 'ribs', 'spank'
+		gs 'pain', rand(0,2), 'tummy', 'spank'
+		gs 'pain', rand(0,2), 'pubic', 'spank'
+		gs 'pain', rand(0,2), 'labia', 'spank'
+		gs 'stat'
+		act 'Finally the end': gt 'mod_public_WC_rab', 'dvir'
+	else
+		'Hold the bottle. You now have a choice. Either you jump on it, or or I''ll shove 3 of those in you'
+		temp = rand(1,3)
+		stat['BDSM'] += 1
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/kara/4/pv<<temp>>.mp4"></video></center>'
+		'I have no choice, I agreed.'
+		willpowermax -= rand(0,2)
+		$orgasm_or = 'yes'
+		gs 'arousal', 'vaginal_fist', 15, 'rough', 'sub', 'humiliation'
+		gs 'arousal', 'end'
+		gs 'stat'
+		vlada += 1
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+		stat['vaginal'] += 3
+		stat['vaginal_fist'] += 4
+		gs 'pain', rand(2,7), 'vaginal', 'pierce'
+		gs 'pain', rand(2,4), 'vaginal', 'break'
+		gs 'pain', rand(4,5), 'vaginal', 'stretch'
+		gs 'stat'
+		act 'Finally redneck told me to stop': gt 'mod_public_WC_rab', 'dvir'
+	end
+end
+
+if $ARGS[0] = 'kara5':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'stat'
+	if brak - vlada >= 30:
+		'Bitch, we are tired of you.'
+		'I forcefully pour a huge dose of vodka and I lose consciousness.'
+		gs 'drugs', 'alcohol', 'vodka', 4
+		gs 'stat'
+		workDolg += rand(20000,40000)
+		brak = 0
+		vlada -= 15
+		if vlada < 0: vlada = 0
+		'You are at the sauna. The brutes drag you into a room and start to explain. "You''re going to live here and work until you have cleared your debt. Got it? Try to contact the authorities or escape, we''ll put a bullet in your head and bury you in the woods, understand?"'
+		'You become frightened as they''re convincing, so you just nod.'
+		act 'Look around': gt 'city_sauna', 'saunaroom'
+	else
+		if rand(1,3) >= 2:
+			'I was drugged and locked up in a room… Very soon I can no longer think, I want to be fucked…'
+			'Naked strangers come into the room and I take turns treating everyone'
+			mc_inventory['amphetamine'] += 1
+			gs 'drugs', 'amphetamine'
+			mc_inventory['aphrodisiac'] += 1
+			gs 'drugs', 'aphrodisiac'
+			gs 'stat'
+			temp = rand(1,10)
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+			willpowermax -= rand(0,3)
+			gs 'arousal', 'vaginal', 8, 'sub', 'rough', 'prostitution', 'group'
+			gs 'arousal', 'anal', 8, 'sub', 'rough', 'prostitution', 'group'
+			gs 'arousal', 'bj', 8, 'sub', 'rough', 'prostitution', 'group'
+			$orgasm_or = 'yes'
+			gs 'arousal_funcs', 'stretch', 'vaginal', rand(1,2)
+			gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+			gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+			gs 'arousal_funcs', 'stretch', 'anal', rand(1,2)
+			facial += rand(1,2)
+			sex += rand(1,2)
+			gang += 1
+			guy += rand(1,5)
+			gs 'sweat', 'add', 30
+			gs 'cum_call', 'vaginal', 'an unknown guy'
+			gs 'cuminsidereact', 'an unknown guy'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'cum_call', 'face', 'an unknown guy'
+			gs 'cum_call', 'face', 'an unknown guy'
+			gs 'cum_call', 'clothes', 'an unknown guy'
+			gs 'cum_call', 'back', 'an unknown guy'
+			gs 'cum_call', 'arms', 'an unknown guy'
+			gs 'cum_call', 'hands', 'an unknown guy'
+			gs 'cum_call', 'stomach', 'an unknown guy'
+			gs 'cum_call', 'breasts', 'an unknown guy'
+			gs 'cum_call', 'hair', 'an unknown guy'
+			gs 'cum_call', 'labia', 'an unknown guy'
+			gs 'cum_call', 'butt', 'an unknown guy'
+			gs 'cum_call', 'anus', 'an unknown guy'
+			gs 'cum_call', 'vaginal', 'an unknown guy'
+			gs 'cuminsidereact', 'an unknown guy'
+			gs 'stat'
+			gs 'cum_call', 'vaginal', 'an unknown guy'
+			gs 'cuminsidereact', 'an unknown guy'
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'I fucked…': gt 'mod_public_WC_rab', 'dvir'
+		else
+			'You are smart and helpful, but nothing comes to you. We have no choice; we give you to the Master for training.'
+			act 'Continue': gt 'mod_public_WC_rab_Mayster', 'start'
+		end
+	end
+end
+
+if $ARGS[0] = 'kara6':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	gs 'stat'
+	'Why have you not yet understood what we need! You have everything you want and still create problems. We have come up with a fun way to punish you. You''ll like it… I have a pimp friend, I asked him something for your punishment.'
+	'I was put at the table and Tolik put the jar on the table.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/6/banka.jpg"></center>'
+	'Eat it all!!!'
+
+	gs 'willpower', 'misc', 'resist', 'hard'
+	if will_cost <= pcs_willpwr:
+		act 'No!' + $func('willpower', 'get_willcost_string'):
+			*clr & cla
+			gs 'willpower', 'pay', 'resist'
+			gs 'stat'
+
+			'Tolik bends me over, the other two hold me while he fucks me.'
+			rape += 1
+
+			guy += 1
+			gs 'arousal_funcs', 'stretch', 'vaginal', 1
+			gs 'stat'
+			act 'wait':
+				*clr & cla
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'stat'
+				temp = rand(3,4)
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tolik/1/tolik<<temp>>.mp4"></video></center>'
+				minut += rand(5,10)
+				'Tolik finishes, but I do not feel like I was flooded from the inside, but Tolik always cums inside'
+				act 'continue':
+					ztemp = 0 & gt 'mod_public_WC_kara', 'gandon'
+				end
+			end
+		end
+	else
+		act 'No!' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+	act 'ok': ztemp = 1 & gt 'mod_public_WC_kara', 'gandon'
+
+end
+
+if $ARGS[0] = 'gandon':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	if ztemp = 0:
+		temp = rand(1,2)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/6/tolik<<temp>>.jpg"></center>'
+		'Tolik used condom?'
+		'Here''s a little familiar taste, haha, now you drink it?'
+		act 'ok':
+			cla
+			ztemp = 1
+			'I remove the condom from Toliks'' 25 sm dick and add it to the jar'
+			act 'Continue': gt 'mod_public_WC_kara', 'gandon'
+		end
+
+		gs 'willpower', 'misc', 'resist', 'hard'
+		if will_cost <= pcs_willpwr:
+			act 'No!' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'resist'
+				gs 'stat'
+
+				'You pissed me off'
+				'They starts to beat me'
+
+				gs 'pain', rand(1,3), 'back', 'hit'
+				gs 'pain', rand(1,3), 'hips', 'hit'
+				gs 'pain', rand(1,3), 'legL', 'kick'
+				gs 'pain', rand(1,3), 'legR', 'kick'
+				gs 'pain', rand(1,3), 'armL', 'hit'
+				gs 'pain', rand(1,3), 'armR', 'hit'
+				gs 'pain', rand(1,3), 'ribs', 'kick'
+				gs 'pain', rand(1,3), 'tummy', 'hit'
+				minut += rand(15,20)
+				gs 'stat'
+
+
+				act 'It is finally over': gt 'mod_public_WC_rab', 'dvir'
+			end
+		else
+			act 'No!' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	else
+		'I am ready to drink condoms'
+		temp = rand(1,2)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/6/gotova<<temp>>.jpg"></center>'
+		gandonpiyu = brak
+		act 'Drink': gt 'mod_public_WC_kara', 'gandondrink'
+	end
+end
+
+if $ARGS[0] = 'gandondrink':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	$loc = 'mod_public_WC_kara'
+	if gandonpiyu = 0:
+		'I drank everything'
+		'Tolik patted me on the head "Good girl, now you can go"'
+		act 'Go out': gt 'mod_public_WC_rab', 'dvir'
+	else
+		'Drink one more condom'
+		gandonpiyu -= 1
+		if gandonpiyu > 1:
+			'<<gandonpiyu>> condoms left'
+		else
+			'<<gandonpiyu>> condom left'
+		end
+
+		if bimbolevel >= 2:
+			pcs_mood += 40
+			+$OpenInnerThought+'I like more the warm one, but it''s good enough'+$CloseInnerThought
+		end
+		pcs_mood -= 10
+		spafinloc = 12
+		gs 'cum_manage'
+		stat['swallow'] += 1
+		gs 'stat'
+		pcs_health -= rand(0,30)
+		pcs_health += rand(0,10)
+		gs 'beverage', 'semen_stats', 15
+		gs 'arousal', 'end'
+		gs 'stat'
+
+
+
+		temp = rand(1,14)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/kara/6/d<<temp>>.jpg"></center>'
+		gs 'cum_call', 'mouth'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+		if trt_cumeater = 1:
+			pcs_mood += 10
+		else
+			'The smell and taste are horrible, I can barely contain my vomiting'
+			pcs_health -= rand(0,10)
+			pcs_mood -= rand(1,3)
+			if pcs_health <= 50:
+				zaraz = 0
+				'I can no longer drink'
+				act 'Beg to stop it!':
+					cla
+					willpowermax -= rand(2,10)
+					gs 'stat'
+					temp = rand(1,2)
+					if temp = 1:
+						temp = rand(1,10)
+						act 'Beg even more to stop it!':
+							willpowermax -= rand(0,3)
+							gs 'stat'
+							zaraz += 1
+							if zaraz = temp:
+								*clr & cla
+								'Tolik laughed, dipped my face into the contents of the condoms, kicked me and said "Free"'
+								gs 'cum_call', 'face', 'unknown', 0, 1, -1, 150
+								gs 'cum_call', 'hair', 'unknown', 0, 1, -1, 150
+								gs 'pain', 2, 'chest', 'kick'
+								gs 'stat'
+								act 'Crawl out of here': gt 'mod_public_WC_rab', 'dvir'
+							end
+						end
+					else
+						'Tolik laughed, dipped my face into the contents of the condoms, kicked me and said "Free"'
+						gs 'cum_call', 'face', 'unknown', 0, 1, -1, 150
+						gs 'cum_call', 'hair', 'unknown', 0, 1, -1, 150
+						gs 'pain', 2, 'chest', 'kick'
+						gs 'stat'
+						act 'Crawl out of here': gt 'mod_public_WC_rab', 'dvir'
+					end
+
+				end
+			end
+		end
+		act 'Continue': gt 'mod_public_WC_kara', 'gandondrink'
+	end
+end
+
+--- mod_public_WC_kara ---------------------------------
+

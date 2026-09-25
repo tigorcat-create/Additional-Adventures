@@ -1,0 +1,1212 @@
+# mod_public_WC_PH_come
+if $ARGS[0] = 'start':
+	menu_off = 0
+	*clr & cla
+	$location_type = 'outdoors'
+	$locclass = 'city_park'
+
+	$metka = 'start'
+	$loc = 'mod_public_WC_PH_come'
+	$loc_arg = 'start'
+
+	$menu_loc = 'mod_public_WC_PH_come'
+	$menu_arg = 'start'
+
+	menu_off = 0
+
+	$locM = 'mod_public_WC_PH_come'
+	$locM_arg = 'start'
+	CLOSE ALL
+	gs 'stat'
+
+
+	$func('wrap', 'header center b', 'The bus stop to the Pleasure house')
+	if month >= 11 or month < 4:
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/BUSSTOP.jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/BUSSTOPl.jpg"></center>'
+	end
+
+	if hour >= 23:
+		'The marshrutka is here'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/BUS.jpg"></center>'
+		act 'sit in the marshrutka': gt 'mod_public_WC_PH_come','ride'
+	else
+		'There is no marshrutka'
+		+$OpenInnerThought+'I think the marshrutka must be here at 23:00'+$CloseInnerThought
+	end
+
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			cla
+			minut += 10
+			pcs_mood += rand(1,3)
+			gs 'drugs','smoke'
+			gs 'stat'
+			'You decide to kill some time with cigarette.'
+			'<center><img <<$set_imgh>> src="images/locations/pavlovsk/resident/apartment/events/benchsmoke.jpg"></center>'
+			act 'continue': gt 'mod_public_WC_PH_come','start'
+		end
+	end
+
+	act 'Wait': gs 'obj_din', 'wait'
+
+	act 'Go away': gt 'city_park', 'start'
+	if npc_loyality >= 70 and npc_loyality < 1000: cla
+end
+
+if $ARGS[0] = 'ctart':
+	*clr & cla
+	'<b>Guys, I need to ask your support for Ukraine.
+	I know, that you are here for fun and etc… But I am need your help and millions like me also.
+	Please support my very friend Dima, he is a volunteer, who work with medical equipment for soldiers and different request for civilians in liberated terittories. His paypal email is <u>dmytro.skihin@gmail.com</u>
+	If you have no trust to me (I can understand this, I am just some text on your monitor), please support Ukraine in any other way you can (this government site as example: <u>https://u24.gov.ua/</u>)
+	We are needed to win (cuz it''s the only way to survive), and we really need your support.</b>'
+	*nl
+	'<b>THANK YOU!!!</b>'
+	'<b>Dima constantly support our front soldiers with a military med kits. And I know, you helped him with this.</b>'
+	'<b>Thank you! I am proud about our community!</b>'
+
+	act 'continue':
+		*clr & cla
+		'The ruSSians are unhuman beings'
+		'ruSSians are the Nazis of the 21st century'
+		'ruSSia is a terrorist state'
+		'I am agree with all the civilized world - ruSSia have committed war crimes against many nations'
+		act 'I am agree with all the statements (agree and exit)':
+			gs 'stat'
+			gs 'mod_public_WC_rab', 'stat'
+			itemp = 30000+610
+			MYMODversion = itemp
+			killvar 'itemp'
+			gt $loc, $loc_arg
+		end
+	end
+end
+
+if $ARGS[0] = 'ride':
+	*clr & cla
+	$menu_arg = 'ride'
+	$location_type = 'secluded'
+	$metka = 'ride'
+	menu_off = 0
+	ztemp = 0
+	'I sat down in marshrutka, and in a short time the ride starts.'
+	'I just try to relax and gether myself during this sort ride'
+	pcs_willpwr += 5
+	minut += rand(10,20)
+	gs 'stat'
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+	act 'continue':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+		'The marshrutka is stoped and I exit the marshrutka somewhere in the cottage town'
+		'Some guy, bruser or smth, look at each passanger and divides on two lines.'
+		'He look at me for few moments and direct the way…'
+		'Me and few other girls waiting near a backdoor.'
+
+		act 'continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+			'in a short time the same bruser come to me and ask'
+			'"Hi, girl. What are you doing here? "'
+			minut += rand(3,10)
+			gs 'stat'
+
+			if vic_card = 1:
+				act 'give the business card to him':
+					cla
+					'"Go with me to the interview room"'
+					act 'Go with him':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+						'Bruser shows me the door'
+						'"You know girl, you better undress yourself there, the interview may damage your cloth." - Bruser said'
+						act 'enter the door':
+							*clr & cla
+							'I am in a small pretty dark room'
+							'At the moment the door closed behind me I hear the lock is also closed.'
+
+							act 'undress':
+								minut += 3
+								gs 'clothing', 'strip'
+								gs 'underwear', 'remove'
+								gs 'stat'
+							end
+
+							act 'wait':
+								cla
+								minut += rand(10,30)
+								gs 'stat'
+
+								'In some time'
+								'Naked strangers come into the room and I take turns treating everyone'
+
+								temp = rand(1,10)
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+								gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+								gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+								gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+								gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+								gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+								gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+								facial += rand(1,2)
+								sex += rand(3,5)
+								gang += 1
+								guy += rand(9,12)
+								gs 'sweat', 'add', 30
+								gs 'cum_call', 'vaginal', 'an unknown guy'
+								gs 'cuminsidereact', 'an unknown guy'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								gs 'cum_call', 'face', 'an unknown guy'
+								gs 'cum_call', 'face', 'an unknown guy'
+								if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+								gs 'cum_call', 'back', 'an unknown guy'
+								gs 'cum_call', 'arms', 'an unknown guy'
+								gs 'cum_call', 'hands', 'an unknown guy'
+								gs 'cum_call', 'stomach', 'an unknown guy'
+								gs 'cum_call', 'breasts', 'an unknown guy'
+								gs 'cum_call', 'hair', 'an unknown guy'
+								gs 'cum_call', 'labia', 'an unknown guy'
+								gs 'cum_call', 'butt', 'an unknown guy'
+								gs 'cum_call', 'anus', 'an unknown guy'
+								gs 'cum_call', 'vaginal', 'an unknown guy'
+								gs 'cuminsidereact', 'an unknown guy'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+								gs 'cum_call', 'vaginal', 'an unknown guy'
+								gs 'cuminsidereact', 'an unknown guy'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								act 'The guys still coming through the door':
+									*clr & cla
+									temp = rand(1,10)
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+									gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+									gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+									gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+									gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+									gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+									gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+									facial += rand(1,2)
+									sex += rand(3,5)
+									gang += 1
+									guy += rand(9,12)
+									gs 'sweat', 'add', 30
+									gs 'cum_call', 'vaginal', 'an unknown guy'
+									gs 'cuminsidereact', 'an unknown guy'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									gs 'cum_call', 'face', 'an unknown guy'
+									gs 'cum_call', 'face', 'an unknown guy'
+									if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+									gs 'cum_call', 'back', 'an unknown guy'
+									gs 'cum_call', 'arms', 'an unknown guy'
+									gs 'cum_call', 'hands', 'an unknown guy'
+									gs 'cum_call', 'stomach', 'an unknown guy'
+									gs 'cum_call', 'breasts', 'an unknown guy'
+									gs 'cum_call', 'hair', 'an unknown guy'
+									gs 'cum_call', 'labia', 'an unknown guy'
+									gs 'cum_call', 'butt', 'an unknown guy'
+									gs 'cum_call', 'anus', 'an unknown guy'
+									gs 'cum_call', 'vaginal', 'an unknown guy'
+									gs 'cuminsidereact', 'an unknown guy'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									gs 'cum_call', 'vaginal', 'an unknown guy'
+									gs 'cuminsidereact', 'an unknown guy'
+									gs 'stat'
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'at some moment the fuck parade is end':
+										*clr & cla
+										minut += rand(10,30)
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/test.jpg"></center>'
+
+										'I just sit on the floor exhausted'
+										'I hear the door is open'
+										'I open one eye, and through cum see some woman comes in'
+										'A 30-year-old woman of stern appearance approached me.'
+										'"My name is Yana"'
+										'"Girl, the interview was successful. I want to see you next time."'
+										Yana = 2
+										'"Now, you can go home"'
+										gs 'outfit', 'wear_last_worn'
+										'Yana go away and the bruser helps me to dress up and sit in the marshrutka'
+										act 'Continue':
+											*clr & cla
+											'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+											minut += rand(20,40)
+											gs 'stat'
+											'in a short time I come back to the park'
+											act 'continue': gt 'mod_public_WC_PH_come', 'start'
+										end
+									end
+								end
+							end
+						end
+						act 'I think, I better refuse ':
+							cla
+							'"Well, goodbye then"'
+							'The bruser sit me on the marshrutka'
+							minut += rand(15,20)
+							gs 'stat'
+							act 'Continue':
+								cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+								minut += rand(20,40)
+								gs 'stat'
+								'in a short time I come back to the park'
+								act 'continue': gt 'mod_public_WC_PH_come', 'start'
+							end
+						end
+					end
+				end
+			end
+
+			if blackcat = 3:
+				act '"I looking for a Black Cat''s Leader"':
+					cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+					'The bruser asks a number'
+					act '27629':
+						cla
+						'"You must leave!"'
+						'The bruser sit me on the marshrutka'
+						minut += rand(15,20)
+						gs 'stat'
+						act 'Continue':
+							cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+
+					act 'I don''t know the number':
+						cla
+						'"Well, don''t waste my time!"'
+						'The bruser sit me on the marshrutka'
+						minut += rand(15,20)
+						gs 'stat'
+						act 'Continue':
+							cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+				end
+			end
+
+			if blackcat = 1:
+				act '"I looking for a Black Cat''s Leader"':
+					cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+					'The bruser asks a number'
+					act '27629':
+						cla
+						'"Ok, go with me"'
+						act 'go with him':
+							gt 'mod_public_WC_PH_blackcat', 'start'
+						end
+					end
+
+					act 'I don''t know the number':
+						cla
+						'"Well, don''t waste my time!"'
+						'The bruser sit me on the marshrutka'
+						minut += rand(15,20)
+						gs 'stat'
+						act 'Continue':
+							cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+				end
+			end
+			If kingk = 1:
+				act '"I need to say hello to Yana from King K"':
+					*clr & cla
+					'He look at me for some few second "Ok, go with me"'
+
+					'Bruser took me to a room where different girls were painting, dressing…'
+					'- Yana, some girl from kolia asks you!'
+					'A 30-year-old woman of stern appearance approached us.'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+					If Yana >= 1:
+						'Oh, hi, Betsi.'
+						if vtecha = 1:
+							'"Ow… ow… I see. You ran away"'
+							if ryska >= 1:
+								Yana = 2
+								'"I don''t care about Tolik, you are a nice worker"'
+								'"Do you want some job?"'
+								act 'yes':
+									cla
+									gs 'mod_public_WC_PH_come', 'worklist'
+								end
+							else
+								'"I can hide you from Tolik… but if I want to. What is my interest?"'
+								temp1 = rand(10,20)*500
+								temp2 = rand(10,20)*1000
+								temp3 = rand(10,20)*2500
+								yanamon = rand(1000, 30000)
+
+								if money + karta >= temp1:
+									act 'offer <<temp1>> money to Yana':
+										if temp1 > yanamon:
+											cla
+											'"Deal, Tolik wouldn''t know."'
+											money -= yanamon
+											if money <= 0: karta += money & money = 0
+											gs 'stat'
+											Yana = 2
+											gs 'mod_public_WC_PH_come', 'worklist'
+										else
+											'"It''s not Intresting, Betsi…"'
+											ztemp += 1
+											if ztemp >= 2:
+												cla
+												'"Ow, enought. I just will take 30% of your income"'
+												act 'I have no choise "ok"':
+													cla
+													yanatax = 50
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												end
+											end
+										end
+									end
+								end
+
+								if money + karta >= temp2:
+									act 'offer <<temp2>> money to Yana':
+										if temp2 > yanamon:
+											cla
+											'"Deal, Tolik wouldn''t know."'
+											money -= yanamon
+											if money <= 0: karta += money & money = 0
+											gs 'stat'
+											Yana = 2
+											gs 'mod_public_WC_PH_come', 'worklist'
+										else
+											'"It''s not Intresting, Betsi…"'
+											ztemp += 1
+											if ztemp >= 2:
+												cla
+												'"Ow, enought. I just will take 30% of your income"'
+												act 'I have no choise "ok"':
+													cla
+													yanatax = 50
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												end
+											end
+										end
+									end
+								end
+
+								if money + karta >= temp3:
+									act 'offer <<temp3>> money to Yana':
+										if temp3 > yanamon:
+											cla
+											'"Deal, Tolik wouldn''t know."'
+											money -= yanamon
+											if money <= 0: karta += money & money = 0
+											gs 'stat'
+											Yana = 2
+											gs 'mod_public_WC_PH_come', 'worklist'
+										else
+											'"It''s not Intresting, Betsi…"'
+											ztemp += 1
+											if ztemp >= 2:
+												cla
+												'"Ow, enought. I just will take 30% of your income"'
+												act 'I have no choise "ok"':
+													cla
+													yanatax = 50
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												end
+											end
+										end
+									end
+								end
+							end
+						else
+							'"Do you want some job?"'
+							act 'yes':
+								cla
+								Yana = 2
+								gs 'mod_public_WC_PH_come', 'worklist'
+							end
+						end
+					else
+						'"New girl!"'
+						if pcs_apprnc >= 120:
+							'"…and a pretty one"'
+							'"Kolia still has a good eye))"'
+							'"Do you want some job?"'
+							act 'yes':
+								cla
+								Yana = 2
+								gs 'mod_public_WC_PH_come', 'worklist'
+							end
+						else
+							'"Nah, you are not pretty enought for our VIP place"'
+
+
+							if fame['pav_prostitute'] >= 200 or fame['city_prostitute'] >= 150 or fame['village_prostitute'] >= 300:
+								act 'I am quite famous and has good working skills':
+									cla
+									'"Hmm, yes, I think I know you…"'
+									'"Ok, you can work"'
+									Yana = 2
+									gs 'mod_public_WC_PH_come', 'worklist'
+								end
+							end
+
+							if stat['gloryhole'] > 50:
+								act 'I have enought expirience for a gloryhole':
+									cla
+									'"Hmm. ok, I want to check you"'
+									'"The best I can offer for now is a blowbox"'
+									'Do you agree?'
+									act 'yes':
+										cla
+										'"Ok, go to the girl room and prepare yourself"'
+										'"if you perform good I''ll give you all the jobs next time"'
+										Yana = 3
+										act 'go': blowbox = 1 & gt 'mod_public_WC_rab_work', 'room'
+									end
+
+									act 'no':
+										cla
+										'"Well, goodbye then"'
+										'Yana go away and the bruser sit me on the marshrutka'
+										minut += rand(15,20)
+										gs 'stat'
+										act 'Continue':
+											cla
+											'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+											minut += rand(20,40)
+											gs 'stat'
+											'in a short time I come back to the park'
+											act 'continue': gt 'mod_public_WC_PH_come', 'start'
+										end
+									end
+								end
+							end
+
+							act 'please give me some test or smth, Kolia really appreciates me':
+								cla
+								'"Sounds reasonable"'
+								'"We have a test room, I need to warn you, this test is really hard"'
+
+								act 'I am ready for anything':
+									cla
+									'"Ok, than go with him"'
+									'"Vlad take her to the test room"'
+									minut += rand(5,10)
+
+									act 'Go with Vlad':
+										*clr & cla
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+										'Vlad show me the door'
+										'"You know girl, you better undress yourself there, the test may damage your cloth." - Vlad said'
+										act 'enter the door':
+											*clr & cla
+											'I am in a small pretty dark room'
+											'At the moment the door closed behind me I hear the lock is also closed.'
+
+											act 'undress':
+												minut += 3
+												inhib_exp += rand(0,1)
+												gs 'clothing', 'strip'
+												gs 'underwear', 'remove'
+												gs 'stat'
+											end
+
+											act 'wait':
+												cla
+												minut += rand(10,30)
+												gs 'stat'
+
+												'In some time'
+												'Naked strangers come into the room and I take turns treating everyone'
+
+
+
+
+
+												temp = rand(1,10)
+												'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+												gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+												gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+												gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+												gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+												gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+												gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+												facial += rand(1,2)
+												sex += rand(3,5)
+												gang += 1
+												guy += rand(9,12)
+												gs 'sweat', 'add', 30
+												gs 'cum_call', 'vaginal', 'an unknown guy'
+												gs 'cuminsidereact', 'an unknown guy'
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												gs 'cum_call', 'face', 'an unknown guy'
+												gs 'cum_call', 'face', 'an unknown guy'
+												if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+												gs 'cum_call', 'back', 'an unknown guy'
+												gs 'cum_call', 'arms', 'an unknown guy'
+												gs 'cum_call', 'hands', 'an unknown guy'
+												gs 'cum_call', 'stomach', 'an unknown guy'
+												gs 'cum_call', 'breasts', 'an unknown guy'
+												gs 'cum_call', 'hair', 'an unknown guy'
+												gs 'cum_call', 'labia', 'an unknown guy'
+												gs 'cum_call', 'butt', 'an unknown guy'
+												gs 'cum_call', 'anus', 'an unknown guy'
+												gs 'cum_call', 'vaginal', 'an unknown guy'
+												gs 'cuminsidereact', 'an unknown guy'
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												gs 'cum_call', 'vaginal', 'an unknown guy'
+												gs 'cuminsidereact', 'an unknown guy'
+												gs 'stat'
+												gs 'arousal', 'end'
+												gs 'stat'
+												act 'The guys still coming through the door':
+													*clr & cla
+													temp = rand(1,10)
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+													gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+													gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+													gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+													gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+													gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+													gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+													facial += rand(1,2)
+													sex += rand(3,5)
+													gang += 1
+													guy += rand(9,12)
+													gs 'sweat', 'add', 30
+													gs 'cum_call', 'vaginal', 'an unknown guy'
+													gs 'cuminsidereact', 'an unknown guy'
+													gs 'stat'
+													gs 'arousal', 'end'
+													gs 'stat'
+													gs 'cum_call', 'face', 'an unknown guy'
+													gs 'cum_call', 'face', 'an unknown guy'
+													if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+													gs 'cum_call', 'back', 'an unknown guy'
+													gs 'cum_call', 'arms', 'an unknown guy'
+													gs 'cum_call', 'hands', 'an unknown guy'
+													gs 'cum_call', 'stomach', 'an unknown guy'
+													gs 'cum_call', 'breasts', 'an unknown guy'
+													gs 'cum_call', 'hair', 'an unknown guy'
+													gs 'cum_call', 'labia', 'an unknown guy'
+													gs 'cum_call', 'butt', 'an unknown guy'
+													gs 'cum_call', 'anus', 'an unknown guy'
+													gs 'cum_call', 'vaginal', 'an unknown guy'
+													gs 'cuminsidereact', 'an unknown guy'
+													gs 'stat'
+													gs 'arousal', 'end'
+													gs 'stat'
+													gs 'cum_call', 'vaginal', 'an unknown guy'
+													gs 'cuminsidereact', 'an unknown guy'
+													gs 'stat'
+													gs 'arousal', 'end'
+													gs 'stat'
+													act 'at some moment the fuck parade is end':
+														*clr & cla
+														minut += rand(10,30)
+														'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/test.jpg"></center>'
+														'I just sit on the floor exhausted'
+														'I hear the door is open'
+														'I open one eye, and through cum see Yana comes in'
+														'"Well girl, I want to see you next time. You are good enought"'
+														Yana = 2
+														'"Now, you can go home"'
+														gs 'outfit', 'wear_last_worn'
+														'Yana go away and the bruser helps me to dress up and sit in the marshrutka'
+														act 'Continue':
+															*clr & cla
+															'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+															minut += rand(20,40)
+															gs 'stat'
+															'in a short time I come back to the park'
+															act 'continue': gt 'mod_public_WC_PH_come', 'start'
+														end
+													end
+												end
+											end
+										end
+									end
+								end
+
+								act 'I see… I think, I better refuse ':
+									cla
+									'"Well, goodbye then"'
+									'Yana go away and the bruser sit me on the marshrutka'
+									minut += rand(15,20)
+									gs 'stat'
+									act 'Continue':
+										cla
+										'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+										minut += rand(20,40)
+										gs 'stat'
+										'in a short time I come back to the park'
+										act 'continue': gt 'mod_public_WC_PH_come', 'start'
+									end
+								end
+							end
+							act 'I see, very sad':
+								cla
+								'"Well, goodbye then"'
+								'Yana go away and the bruser sit me on the marshrutka'
+								minut += rand(15,20)
+								gs 'stat'
+								act 'Continue':
+									cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+									minut += rand(20,40)
+									gs 'stat'
+									'in a short time I come back to the park'
+									act 'continue': gt 'mod_public_WC_PH_come', 'start'
+								end
+							end
+						end
+					end
+				end
+			end
+
+			If Yana = 1:
+				act 'I want to see Yana':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+					'Why even I must be vorried anout your wanties?'
+					act 'what if I give you a blowjob':
+						'"I am bruser in a brothel, Are you serious?"'
+					end
+
+					act 'I''ll pay':
+						'"Ok, 2000 and I''ll bring you to Yana"'
+
+						if money >= 2000:
+							act 'pay 2000':
+								cla
+								money -= 2000
+								minut += rand(3,8)
+								gs 'stat'
+
+								'He counts the money "Ok, go with me"'
+
+								'Bruser took me to a room where different girls were painting, dressing…'
+								'- Yana, some girl asks you!'
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+								'"Oh, hi, Betsi."'
+								if vtecha = 1:
+									'"Ow… ow… I see. You ran away"'
+									if ryska >= 1:
+										Yana = 2
+										'"I don''t care about Tolik, you are a nice worker"'
+										'"Do you want some job?"'
+										act 'yes':
+											cla
+											gs 'mod_public_WC_PH_come', 'worklist'
+										end
+									else
+										'"I can hide you from Tolik… but if I want to. What is my interest?"'
+										temp1 = rand(10,20)*500
+										temp2 = rand(10,20)*1000
+										temp3 = rand(10,20)*2500
+										yanamon = rand(1000, 30000)
+
+										if money + karta >= temp1:
+											act 'offer <<temp1>> money to Yana':
+												if temp1 > yanamon:
+													cla
+													'"Deal, Tolik wouldn''t know."'
+													money -= yanamon
+													if money <= 0: karta += money & money = 0
+													gs 'stat'
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												else
+													'"It''s not Intresting, Betsi…"'
+													ztemp += 1
+													if ztemp >= 2:
+														cla
+														'"Ow, enought. I just will take 30% of your income"'
+														act 'I have no choise "ok"':
+															cla
+															yanatax = 50
+															Yana = 2
+															gs 'mod_public_WC_PH_come', 'worklist'
+														end
+													end
+												end
+											end
+										end
+
+										if money + karta >= temp2:
+											act 'offer <<temp2>> money to Yana':
+												if temp2 > yanamon:
+													cla
+													'"Deal, Tolik wouldn''t know."'
+													money -= yanamon
+													if money <= 0: karta += money & money = 0
+													gs 'stat'
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												else
+													'"It''s not Intresting, Betsi…"'
+													ztemp += 1
+													if ztemp >= 2:
+														cla
+														'"Ow, enought. I just will take 30% of your income"'
+														act 'I have no choise "ok"':
+															cla
+															yanatax = 50
+															Yana = 2
+															gs 'mod_public_WC_PH_come', 'worklist'
+														end
+													end
+												end
+											end
+										end
+
+										if money + karta >= temp3:
+											act 'offer <<temp3>> money to Yana':
+												if temp3 > yanamon:
+													cla
+													'"Deal, Tolik wouldn''t know."'
+													money -= yanamon
+													if money <= 0: karta += money & money = 0
+													gs 'stat'
+													Yana = 2
+													gs 'mod_public_WC_PH_come', 'worklist'
+												else
+													'"It''s not Intresting, Betsi…"'
+													ztemp += 1
+													if ztemp >= 2:
+														cla
+														'"Ow, enought. I just will take 30% of your income"'
+														act 'I have no choise "ok"':
+															cla
+															yanatax = 50
+															Yana = 2
+															gs 'mod_public_WC_PH_come', 'worklist'
+														end
+													end
+												end
+											end
+										end
+									end
+								else
+									'"Do you want some job?"'
+									act 'yes':
+										cla
+										Yana = 2
+										gs 'mod_public_WC_PH_come', 'worklist'
+									end
+								end
+							end
+
+							act 'I haven''t have 2000':
+								cla
+								'"Well, don''t waste my time!"'
+								'The bruser sit me on the marshrutka'
+								minut += rand(15,20)
+								gs 'stat'
+								act 'Continue':
+									*clr & cla
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+									minut += rand(20,40)
+									gs 'stat'
+									'in a short time I come back to the park'
+									act 'continue': gt 'mod_public_WC_PH_come', 'start'
+								end
+							end
+						else
+							cla
+							'I haven''t have 2000'
+							'"Well, don''t waste my time!"'
+							'The bruser sit me on the marshrutka'
+							minut += rand(15,20)
+							gs 'stat'
+							act 'Continue':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+								minut += rand(20,40)
+								gs 'stat'
+								'in a short time I come back to the park'
+								act 'continue': gt 'mod_public_WC_PH_come', 'start'
+							end
+						end
+					end
+
+					act 'I don''t know':
+						cla
+						'"Well, don''t waste my time!"'
+						'The bruser sit me on the marshrutka'
+						minut += rand(15,20)
+						gs 'stat'
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+				end
+			end
+
+			act 'I am looking for some work':
+				cla
+				'"Why even I must be vorried about your needs?"'
+				act 'what if I give you a blowjob':
+					'"I am bruser in a brothel, Are you serious?"'
+				end
+
+				act 'I''ll pay':
+					'"Ok, 5000 and I''ll bring you to the interview room"'
+
+					if money >= 5000:
+						act 'pay 5000':
+							cla
+							money -= 5000
+							minut += rand(3,8)
+							gs 'stat'
+							'He caunts the money - "Go with me to the interview room"'
+							act 'Go with him':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+								'Bruser shows me the door'
+								'"You know girl, you better undress yourself there, the interview may damage your cloth." - Bruser said'
+								act 'enter the door':
+									*clr & cla
+									'I am in a small pretty dark room'
+									'At the moment the door closed behind me I hear the lock is also closed.'
+
+									act 'undress':
+										minut += 3
+										gs 'clothing', 'strip'
+										gs 'underwear', 'remove'
+										gs 'stat'
+									end
+
+									act 'wait':
+										cla
+										minut += rand(10,30)
+										gs 'stat'
+
+										'In some time'
+										'Naked strangers come into the room and I take turns treating everyone'
+
+										temp = rand(1,10)
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+										gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+										gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+										gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+										gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+										gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+										gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+										facial += rand(1,2)
+										sex += rand(3,5)
+										gang += 1
+										guy += rand(9,12)
+										gs 'sweat', 'add', 30
+										gs 'cum_call', 'vaginal', 'an unknown guy'
+										gs 'cuminsidereact', 'an unknown guy'
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										gs 'cum_call', 'face', 'an unknown guy'
+										gs 'cum_call', 'face', 'an unknown guy'
+										if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+										gs 'cum_call', 'back', 'an unknown guy'
+										gs 'cum_call', 'arms', 'an unknown guy'
+										gs 'cum_call', 'hands', 'an unknown guy'
+										gs 'cum_call', 'stomach', 'an unknown guy'
+										gs 'cum_call', 'breasts', 'an unknown guy'
+										gs 'cum_call', 'hair', 'an unknown guy'
+										gs 'cum_call', 'labia', 'an unknown guy'
+										gs 'cum_call', 'butt', 'an unknown guy'
+										gs 'cum_call', 'anus', 'an unknown guy'
+										gs 'cum_call', 'vaginal', 'an unknown guy'
+										gs 'cuminsidereact', 'an unknown guy'
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										gs 'cum_call', 'vaginal', 'an unknown guy'
+										gs 'cuminsidereact', 'an unknown guy'
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'The guys still coming through the door':
+											*clr & cla
+											temp = rand(1,10)
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/line/lwv<<temp>>.mp4"></video></center>'
+
+											gs 'arousal', 'vaginal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+											gs 'arousal', 'anal', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+											gs 'arousal', 'bj', rand(15,50), 'sub', 'rough', 'prostitution', 'group'
+
+											gs 'arousal_funcs', 'stretch', 'vaginal', rand(3,5)
+											gs 'arousal_funcs', 'stretch', 'oral', rand(1,2)
+											gs 'arousal_funcs', 'stretch', 'anal', rand(3,5)
+
+											facial += rand(1,2)
+											sex += rand(3,5)
+											gang += 1
+											guy += rand(9,12)
+											gs 'sweat', 'add', 30
+											gs 'cum_call', 'vaginal', 'an unknown guy'
+											gs 'cuminsidereact', 'an unknown guy'
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+											gs 'cum_call', 'face', 'an unknown guy'
+											gs 'cum_call', 'face', 'an unknown guy'
+											if $clothingworntype ! 'nude': gs 'cum_call', 'clothes', 'an unknown guy'
+											gs 'cum_call', 'back', 'an unknown guy'
+											gs 'cum_call', 'arms', 'an unknown guy'
+											gs 'cum_call', 'hands', 'an unknown guy'
+											gs 'cum_call', 'stomach', 'an unknown guy'
+											gs 'cum_call', 'breasts', 'an unknown guy'
+											gs 'cum_call', 'hair', 'an unknown guy'
+											gs 'cum_call', 'labia', 'an unknown guy'
+											gs 'cum_call', 'butt', 'an unknown guy'
+											gs 'cum_call', 'anus', 'an unknown guy'
+											gs 'cum_call', 'vaginal', 'an unknown guy'
+											gs 'cuminsidereact', 'an unknown guy'
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+											gs 'cum_call', 'vaginal', 'an unknown guy'
+											gs 'cuminsidereact', 'an unknown guy'
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+											act 'at some moment the fuck parade is end':
+												*clr & cla
+												minut += rand(10,30)
+												'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/test.jpg"></center>'
+												'I just sit on the floor exhausted'
+												'I hear the door is open'
+												'I open one eye, and through cum see some woman comes in'
+												'A 30-year-old woman of stern appearance approached me.'
+												'"My name is Yana"'
+												'"Girl, the interview was successful. I want to see you next time."'
+												Yana = 2
+												'"Now, you can go home"'
+												gs 'outfit', 'wear_last_worn'
+												'Yana go away and the bruser helps me to dress up and sit in the marshrutka'
+												act 'Continue':
+													*clr & cla
+													'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+													minut += rand(20,40)
+													gs 'stat'
+													'in a short time I come back to the park'
+													act 'continue': gt 'mod_public_WC_PH_come', 'start'
+												end
+											end
+										end
+									end
+								end
+							end
+						end
+						act 'I haven''t have 5000':
+							cla
+							'"Well, don''t waste my time!"'
+							'The bruser sit me on the marshrutka'
+							minut += rand(15,20)
+							gs 'stat'
+							act 'Continue':
+								*clr & cla
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+								minut += rand(20,40)
+								gs 'stat'
+								'in a short time I come back to the park'
+								act 'continue': gt 'mod_public_WC_PH_come', 'start'
+							end
+						end
+					else
+						cla
+						'I haven''t have 5000'
+						'"Well, don''t waste my time!"'
+						'The bruser sit me on the marshrutka'
+						minut += rand(15,20)
+						gs 'stat'
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+							minut += rand(20,40)
+							gs 'stat'
+							'in a short time I come back to the park'
+							act 'continue': gt 'mod_public_WC_PH_come', 'start'
+						end
+					end
+				end
+
+				act 'I don''t know':
+					cla
+					'"Well, don''t waste my time!"'
+					'The bruser sit me on the marshrutka'
+					minut += rand(15,20)
+					gs 'stat'
+					act 'Continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+						minut += rand(20,40)
+						gs 'stat'
+						'in a short time I come back to the park'
+						act 'continue': gt 'mod_public_WC_PH_come', 'start'
+					end
+				end
+			end
+		end
+
+		If Yana = 2:
+			*clr & cla
+			shtraf = 0
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+			'The marshrutka is stoped and I go away from the marshrutka somewhere in the cottage town'
+			'Some guy, bruser or smth, look at each passanger and divides on two lines.'
+			'He look at me for a moment and direct the way…'
+			'Me with majority of other girls go inside.'
+			act 'continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+				'Yana meet me with a smile'
+				gs 'mod_public_WC_PH_come', 'worklist'
+			end
+		end
+		If blackcat = 100:
+			*clr & cla
+			shtraf = 0
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+			'The marshrutka is stoped and I go away from the marshrutka somewhere in the cottage town'
+			'Some guy, bruser or smth, look at each passanger and divides on two lines.'
+			'He look at me for a moment and direct the way…'
+			'Me with majority of other girls go inside.'
+			act 'continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+				'Yana meet me with a smile'
+				'"You are a Black Cat gang toy. And must be there at first"'
+				'"Go with him"'
+
+				act 'Go with a guy':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/ohorona.jpg"></center>'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/test gb/boss/0 walk.mp4"></video></center>'
+
+					'I go with the bruser, and in a short time we stands near the door'
+					'"The Black Cats are there" - he points on the door.'
+
+					roomtemp = rand(1,5)
+					'"…ow, your room is №<<roomtemp>>, it''s better to work with client in your room, and not in the main hall"'
+					minut += 5
+					gs 'stat'
+
+					act 'enter the door':
+						gt 'mod_public_WC_PH_blackcat_daily', 'start'
+					end
+				end
+			end
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: cla
+
+if $ARGS[0] = 'worklist':
+	'"Nice, today there are vacancies:"'
+	'Serve'
+	samawork = 1
+	if ryska >= 10: 'Entertain guests.'
+	if WCzoo > 0: 'Perform at the zootheater.'
+	if ryska >= 20: 'Make a company at the meetings.'
+	'What will you do?'
+
+	act 'Maid':
+		cla
+		'Well, there is always a lot of work here. Will you deliver drinks, keep clean? Or you can work with table decoration. there is also an option to work in blowbox'
+		act'I will deliver drinks': napoi = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'I will keep the Pleasure house clean': chystota = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'Being a table decoration is for me': stil = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'I risk to work in blowbox': blowbox = 1 & gt 'mod_public_WC_rab_work', 'room'
+	end
+
+
+	If blackcat ! 100 and ryska >= 10:
+		act 'Go to the Black Cat gangs':
+			blackshloha = 1
+			gt 'mod_public_WC_rab_work', 'room'
+		end
+	else
+		*nl
+		'I need more reputation to unlock this work (Go to the Black Cat gangs)'
+		'Now I have <<ryska>>/10 clients signs'
+	end
+
+	if ryska >= 10:
+		act 'Go to the guests': shloha = 1 & gt 'mod_public_WC_rab_work', 'room'
+	else
+		*nl
+		'I need more reputation to unlock this work (Entertain the guests)'
+		'Now I have <<ryska>>/10 clients signs'
+	end
+
+	if WCzoo > 0: act 'Zootheatre': zt = 1 & gt 'mod_public_WC_rab_work', 'room'
+	if WCzoo = 0: '<u>the beast content option disabled, therefore the beast job is disabled too.</u>'
+	!! if ryska >= 20:
+		!! act 'I want to entertain meetings. -=WIP=-': vecheria = 1 & gt 'mod_public_WC_rab_work', 'room'
+	!! end
+end
+
+
+--- mod_public_WC_PH_come ---------------------------------
+

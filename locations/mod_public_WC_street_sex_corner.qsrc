@@ -1,0 +1,3842 @@
+# mod_public_WC_street_sex_corner
+if $ARGS[0] = 'start':
+	*clr & cla
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'start'
+	
+	phsextimes = 0
+	
+	phwait = 0
+	if rand(1,5) = 1:
+		phfootjob = 1
+	else
+		killvar 'phfootjob'
+	end
+	
+
+	
+	temp = rand(1,10)
+	minut += temp
+	'We come to some secluded corner'	
+
+	if phsex >= 100:
+		!! countdown
+		phsextimer = daystart * 24 * 60 + hour * 60 + minut	
+		!! gs 'mod_public_WC_street_sex', 'timer'
+	end
+
+	If phwalk = 1:
+		!! mewalk
+		'It is one of my regular work spots'
+	else
+		!! heshowstheway
+		if rand(1,3) ! 1:
+			'It is close to my regular work spot'
+		else
+			'It is one of my regular work spots'
+		end
+	end
+	
+	if phclient['pay'] = 4:
+		'We stoped for the moment.'
+		'He counts few bills and pay me.'		
+		money += PH_full_pay
+		minut += 3
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'		
+	else
+		if month >= 11 or month <= 3:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+		end		
+	end
+	gs 'stat'
+	
+	if $clothingworntype ! 'nude':
+		act 'undress':
+			
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/event/undress_me.mp4"></video></center>'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':			
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'			
+		end
+	end
+	
+	act 'continue':
+		gt 'mod_public_WC_street_sex_corner', 'sexstart'
+	end
+	
+	gs 'mod_public_WC_street_sex', 'timer'
+end
+
+
+if $ARGS[0] = 'sexstart':
+	*clr & cla	
+	minut += 5
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'sexstart'
+
+	if month >= 11 or month <= 3:
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 WINTER/client_talk ('+rand(1,1)+').jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/hecome ('+rand(1,5)+').jpg"></center>'
+	end	
+	
+	if phsex <= 2 or phsex <= 102:
+		act 'sit':
+			cla
+			'I sit in a proveke pose, taunt him'			
+			
+			phsit = 1
+			'He comes clother'
+			
+			if phsex = 100:
+				act 'I want to jerk him':
+					cla
+					phsex = 101
+					gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+				end
+				
+				act 'I want to blow him':
+					cla
+					phsex = 102
+					gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+				end
+			else
+				gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+			end
+		end
+	end	
+	
+	act 'wait':
+		*clr & cla
+		phwait += 1
+		stophere = 1
+		phclientfunnow -= 5
+		
+		gt 'mod_public_WC_street_sex_corner', 'sexstart'
+	end
+	
+	if mc_inventory['cigarettes'] > 0:
+		act 'smoke':
+			cla
+			minut += 10
+			pcs_mood += rand(1,3)
+			gs 'drugs','smoke'
+			gs 'stat'
+			stophere = 1					
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/wait/hecome/Smoke ('+rand(1,1)+').jpg"></center>'
+
+			
+			act 'wait':
+				*clr & cla
+				phwait += 1
+				stophere = 1
+				phclientfunnow -= 5
+				
+				gt 'mod_public_WC_street_sex_corner', 'sexstart'
+			end
+			
+			gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+		end
+	end
+	
+	gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+	
+	if phwait >= 2:
+		!! grope
+		*clr & cla
+		killvar 'phwait'
+		killvar 'stophere'
+		killvar 'phwalk'
+		
+		if phsex = 103 or phsex = 104 or phsex = 3 or phsex = 4:
+			
+			if $clothingworntype ! 'nude' and rand(1,4) = 1:
+				'CLIENT: "It is always pleasure to unbox new toy"'
+				minut += 3
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/event/undress_he.mp4"></video></center>'
+				
+			end
+			
+			'He warming up my pussy'
+			$cum1 -= 3
+			phclientfunnow += 3
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/3 pussy/pussy ('+rand(1,2)+').mp4"></video></center>'
+			
+			gs 'arousal', 'foreplay', rand(3,5), 'prostitution', 'sub'
+			gs 'stat'
+		else
+			'He gropes my tits'
+			phclientfunnow += 2
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/grope/1 tits/tits_grope ('+rand(1,2)+').mp4"></video></center>'	
+			
+			gs 'arousal', 'foreplay', rand(3,3), 'prostitution', 'sub'
+			gs 'stat'	
+		end
+		
+		gs 'mod_public_WC_street_sex_corner', 'sexstart2'
+	end
+	gs 'mod_public_WC_street_sex', 'timer'
+end
+
+if $ARGS[0] = 'sexstart2':
+	!*clr & cla
+	act 'Start service':
+		cla
+		if phsex = 100:
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+		elseif phsex = 1 or phsex = 101:
+			!! hj
+			if phsit = 1:
+				'I sit in a proveke pose, preparing to serv him'
+						
+			end
+			killvar 'phsit'
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+		elseif phsex = 2 or phsex = 102:
+			!! bj
+			!! CONDOM CHECK
+			if phsit = 1:
+				'I sit in a proveke pose, preparing to serv him'
+				!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/2 pidizd/event/wait/sit.jpg"></center>'			
+			end
+			killvar 'phsit'
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+		elseif phsex = 3 or phsex = 103:
+			!! sex
+			!! CONDOM CHECK
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+		elseif phsex = 4 or phsex = 104:
+			!! anal
+			!! CONDOM CHECK
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+		else
+			' '
+			'BUG'
+			phsex = rand(101,104)
+			gs 'mod_public_WC_street_sex_corner', 'condomcheck'			
+		end	
+	end
+	gs 'mod_public_WC_street_sex', 'sexrobaction'
+	gs 'mod_public_WC_street_sex', 'timer'
+end
+
+if $ARGS[0] = 'condomcheck':
+	if phsex = 100:
+		if (phclient['condom'] = 2 or phclient['condom'] = 3) and protect ! 1:
+			if mc_inventory['equipped_condoms'] > 0 or mc_inventory['normal_condoms'] > 0:			
+				act 'took a condom from my the purse':
+					
+					if phclient['condom'] = 2:							
+						if stat['bj'] >= 100:
+							act 'Wear it with my mouth':
+								*clr & cla
+								phclient_mood += rand(0,1)
+								phclientfunnow += 5
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+								protect = 1
+								if mc_inventory['equipped_condoms'] > 0:
+									dynamic $prezik
+								elseif mc_inventory['normal_condoms'] > 0:
+									mc_inventory['equipped_condoms'] += 1
+									mc_inventory['normal_condoms'] -= 1
+									dynamic $prezik
+								end
+								
+								
+								
+								act 'continue':
+									cla
+									act 'jerk him':
+										phsex = 101
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'blow him':
+										phsex = 102
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'fuck him':
+										phsex = 103
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'assfuck him':
+										phsex = 104
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+								end
+							end
+						end
+						
+						act 'Wear it with my hands':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+							
+							protect = 1
+							if mc_inventory['equipped_condoms'] > 0:
+								dynamic $prezik
+							elseif mc_inventory['normal_condoms'] > 0:
+								mc_inventory['equipped_condoms'] += 1
+								mc_inventory['normal_condoms'] -= 1
+								dynamic $prezik
+							end
+							
+							
+							
+							act 'continue':
+								cla
+								act 'jerk him':
+									phsex = 101
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'blow him':
+									phsex = 102
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'fuck him':
+									phsex = 103
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'assfuck him':
+									phsex = 104
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+						end
+					elseif phclient['condom'] = 3:
+						cla
+						'CLIENT: "No, I want you to have sex with ME, not with some rubber"'					
+						phclient_mood -= rand(0,1)
+							
+						
+						
+						act 'okey':
+							+$OpenInnerThought+'I need to ask this before'+$CloseInnerThought
+							
+							act 'continue':
+								cla
+								act 'jerk him':
+									phsex = 101
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'blow him':
+									phsex = 102
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'fuck him':
+									phsex = 103
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'assfuck him':
+									phsex = 104
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+						end
+						
+						if phsex = 3 or phsex = 100:
+							act 'Just Don''t cum inside':
+								cla
+								phasktonotcuminside = 1
+								phclient_mood -= rand(0,1)
+								if phclient['cuminside'] = 3: phclient_mood -= 2
+								if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+								'CLIENT: "Okey"'	
+								act 'continue':
+									cla
+									act 'jerk him':
+										phsex = 101
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'blow him':
+										phsex = 102
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'fuck him':
+										phsex = 103
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+									
+									act 'assfuck him':
+										phsex = 104
+										gt 'mod_public_WC_street_sex_corner', 'sex'
+									end
+								end
+							end
+						end
+					end					
+				end
+			end
+		end
+		
+		act 'continue':
+			cla
+			act 'jerk him':
+				phsex = 101
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			act 'blow him':
+				phsex = 102
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			act 'fuck him':
+				phsex = 103
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			act 'assfuck him':
+				phsex = 104
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+		
+		if (protect ! 1 and phclient['condom'] = 1) or (protect ! 1 and phclient['condom'] = 4):
+			cla
+			if phclient['condom'] = 1:
+				!! he uses condom
+				protect = 1	
+				if rand(1,3) = 1:
+					cla
+					'he wordlessly hands me a condome from his pocket before I can say anything.'
+					!! me uses condom
+					
+					if stat['bj'] >= 100:
+						act 'Wear it with my mouth':
+							phclient_mood += rand(0,1)
+							*clr & cla
+							phclientfunnow += 5
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+							
+							act 'continue':
+								cla
+								act 'jerk him':
+									phsex = 101
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'blow him':
+									phsex = 102
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'fuck him':
+									phsex = 103
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+								
+								act 'assfuck him':
+									phsex = 104
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+						end
+					end
+					
+					act 'Wear it with my hands':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+						
+						act 'continue':
+							cla
+							act 'jerk him':
+								phsex = 101
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'blow him':
+								phsex = 102
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'fuck him':
+								phsex = 103
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'assfuck him':
+								phsex = 104
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+					end				
+				else
+					*clr & cla
+					'He wear the condom'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/on/b_hewear.mp4"></video></center>'
+					
+					act 'continue':
+						cla
+						act 'jerk him':
+							phsex = 101
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'blow him':
+							phsex = 102
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'fuck him':
+							phsex = 103
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'assfuck him':
+							phsex = 104
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+					end
+				end
+			elseif phclient['condom'] = 4:
+				!! me uses condom
+				cla
+				if stat['bj'] >= 100:
+					act 'Wear it with my mouth':
+						*clr & cla
+						phclient_mood += rand(0,1)
+						phclientfunnow += 5
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+						protect = 1
+						if mc_inventory['equipped_condoms'] > 0:
+							dynamic $prezik
+						elseif mc_inventory['normal_condoms'] > 0:
+							mc_inventory['equipped_condoms'] += 1
+							mc_inventory['normal_condoms'] -= 1
+							dynamic $prezik
+						end
+						
+						
+						
+						act 'continue':
+							cla
+							act 'jerk him':
+								phsex = 101
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'blow him':
+								phsex = 102
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'fuck him':
+								phsex = 103
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+							
+							act 'assfuck him':
+								phsex = 104
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+					end
+				end
+				
+				act 'Wear it with my hands':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+					
+					protect = 1
+					if mc_inventory['equipped_condoms'] > 0:
+						dynamic $prezik
+					elseif mc_inventory['normal_condoms'] > 0:
+						mc_inventory['equipped_condoms'] += 1
+						mc_inventory['normal_condoms'] -= 1
+						dynamic $prezik
+					end
+					
+					
+					
+					act 'continue':
+						cla
+						act 'jerk him':
+							phsex = 101
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'blow him':
+							phsex = 102
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'fuck him':
+							phsex = 103
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						act 'assfuck him':
+							phsex = 104
+							gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+					end
+				end
+			end
+		end	
+	else
+		if (phclient['condom'] = 2 or phclient['condom'] = 3) and protect ! 1:
+			if mc_inventory['equipped_condoms'] > 0 or mc_inventory['normal_condoms'] > 0:			
+				act 'took a condom from my the purse':
+					
+					if phclient['condom'] = 2:							
+						if stat['bj'] >= 100:
+							act 'Wear it with my mouth':
+								*clr & cla
+								phclient_mood += rand(0,1)
+								phclientfunnow += 5
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+								protect = 1
+								if mc_inventory['equipped_condoms'] > 0:
+									dynamic $prezik
+								elseif mc_inventory['normal_condoms'] > 0:
+									mc_inventory['equipped_condoms'] += 1
+									mc_inventory['normal_condoms'] -= 1
+									dynamic $prezik
+								end	
+								
+								act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+						
+						act 'Wear it with my hands':
+							*clr & cla
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+							
+							protect = 1
+							if mc_inventory['equipped_condoms'] > 0:
+								dynamic $prezik
+							elseif mc_inventory['normal_condoms'] > 0:
+								mc_inventory['equipped_condoms'] += 1
+								mc_inventory['normal_condoms'] -= 1
+								dynamic $prezik
+							end
+							
+							
+							
+							act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+					elseif phclient['condom'] = 3:
+						cla
+						'CLIENT: "No, I want you to have sex with ME, not with some rubber"'
+						phclient_mood -= rand(0,1)
+										
+						
+						act 'okey':
+							+$OpenInnerThought+'I need to ask this before'+$CloseInnerThought
+							
+							act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+						
+						if phsex = 3 or phsex = 100:
+							act 'Just Don''t cum inside':
+								cla
+								phasktonotcuminside = 1
+								phclient_mood -= rand(0,1)
+								if phclient['cuminside'] = 3: phclient_mood -= 2
+								if phclient['cuminside'] ! 3: phclient['cuminside'] = 1
+								'CLIENT: "Okey"'	
+								act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+					end					
+				end
+			end
+		end
+		
+		act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		
+		if (protect ! 1 and phclient['condom'] = 1) or (protect ! 1 and phclient['condom'] = 4):
+			cla
+			if phclient['condom'] = 1:
+				!! he uses condom
+				protect = 1	
+				if rand(1,3) = 1:
+					cla
+					'he wordlessly hands me a condome from his pocket before I can say anything.'
+					!! me uses condom
+					
+					if stat['bj'] >= 100:
+						act 'Wear it with my mouth':
+							*clr & cla
+							phclient_mood += rand(0,1)
+							phclientfunnow += 5
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+							
+							act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+						end
+					end
+					
+					act 'Wear it with my hands':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+						
+						act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+					end				
+				else
+					*clr & cla
+					'He wear the condom'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/on/b_hewear.mp4"></video></center>'
+					
+					act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+				end
+			elseif phclient['condom'] = 4:
+				!! me uses condom
+				cla
+				if stat['bj'] >= 100:
+					act 'Wear it with my mouth':
+						*clr & cla
+						phclient_mood += rand(0,1)
+						phclientfunnow += 5
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/mouth ('+rand(1,6)+').mp4"></video></center>'
+						protect = 1
+						if mc_inventory['equipped_condoms'] > 0:
+							dynamic $prezik
+						elseif mc_inventory['normal_condoms'] > 0:
+							mc_inventory['equipped_condoms'] += 1
+							mc_inventory['normal_condoms'] -= 1
+							dynamic $prezik
+						end
+						
+						
+						
+						act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+					end
+				end
+				
+				act 'Wear it with my hands':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/on/hands ('+rand(1,4)+').mp4"></video></center>'	
+					
+					protect = 1
+					if mc_inventory['equipped_condoms'] > 0:
+						dynamic $prezik
+					elseif mc_inventory['normal_condoms'] > 0:
+						mc_inventory['equipped_condoms'] += 1
+						mc_inventory['normal_condoms'] -= 1
+						dynamic $prezik
+					end
+					
+					
+					
+					act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+				end
+			end
+		end	
+	end
+	!! gs 'mod_public_WC_street_sex_corner', 'condomcheck'
+end
+
+
+
+if $ARGS[0] = 'sex':
+	cla
+	if month >= 11 or month <= 3: gt 'mod_public_WC_street_sex_corner_winter', 'sex'
+	
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'sex'	
+	phsextimes += 1
+	
+	if phsex = 1 or phsex = 101:
+		$phsexfolder1 = 'hj'
+		if phspeed = 0:
+			
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['hj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I pulled out his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start gently jerk it'
+			gs 'arousal', 'hj', rand(1,3)
+			gs 'stat'
+			
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/0 start/0 start ('+rand(1,3)+').mp4"></video></center>'
+				
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/0 start/0 start ('+rand(1,3)+').jpg"></center>'
+			end
+			phspeed += 1
+			
+			!! act 'increase speed':
+				!*clr & cla
+				!! phspeed += 1
+				!! gt 'mod_public_WC_street_sex_corner', 'sex'				
+			!! end
+		elseif phspeed = 1:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['hj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(5,10)
+			gs 'stat'	
+			
+			if rand(1,5) = 1:
+				'He gropes my ass while I jerk him'
+				phclientfunnow += 5
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/1/1 he grope ('+rand(1,1)+').jpg"></center>'
+			elseif rand(1,5) <= 2:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/1/1 ('+rand(1,2)+').mp4"></video></center>'
+				
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/1/1 ('+rand(1,3)+').jpg"></center>'
+			end
+			
+			if stat['hj'] >= 50:
+				act 'increase speed':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			else
+				act 'increase speed': $func('wrap', 'neg', '<br>Better hand job skill needed.')
+			end
+			
+			if stat['bj'] >= 100:
+				act 'breath on it, lick a bit':
+					!*clr & cla
+					cla
+					phclientfunnow += 5
+					
+					phbjlick = 1
+					
+					otemp = phspeed
+					if otemp = 0: otemp = 1
+					
+					temp = (( (stat['hj'] + stat['hj'] + stat['bj'])/ 30 ) - ((protect*36)/otemp))/1
+					$cum1 -= rand(0,temp)
+					gs 'mod_public_WC_street_sex', 'man'
+					gs 'arousal', 'hj', rand(5,10)
+					gs 'stat'
+					
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/hj/2 lick top.mp4"></video></center>'
+					act 'keep jerking': 
+						*clr & cla
+						gt 'mod_public_WC_street_sex_corner', 'sex'
+					end
+					
+					!! chance to push to bj
+					if rand(1,20) <= 1 or phbjforce > 0:
+						cla
+						'He start to push his dick to my mouth'
+						phbjforce += 1
+						
+						if phbjforce >= rand(2,4):
+							'Suddenly he pushed with big force, his <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+							if phsex >= 100: 
+								phsex = 2
+								'CLEINT: "SUCK ME DRY!'
+								act 'blow him':
+									phclientfunnow += 5
+									phspeed = 1	
+									phclientforce = 1
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							else
+								act 'Push him':
+									cla
+									'ME: "WTF, you paid for the hand job!"'
+									phspeed = 1
+									'CLIENT: "Your mouth is so welcoming! I want the blow job!'									
+									otemp = 2
+									
+									gs 'mod_public_WC_street_sex_corner', 'paymore'
+								end
+								
+								act 'blow him':
+									phclientfunnow += 20
+									phspeed = 1
+									if phsex >= 100: 
+										phsex = 102
+									else
+										phsex = 2
+									end	
+									phclientforce = 1
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+						else
+							act 'avoid penetration':
+								cla
+								phclientfunnow -= 25								
+								act 'keep jerking': 
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+							
+							act 'blow him':
+								phclientfunnow += 20
+								phspeed = 1
+								if phsex >= 100: 
+									phsex = 102
+								else
+									phsex = 2
+								end								
+								*clr & cla
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+					end
+				end
+			end
+		elseif phspeed = 2:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['hj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(5,10)
+			gs 'stat'
+			
+			if rand(1,5) = 1:
+				'He gropes my ass while I jerk him'
+				phclientfunnow += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/2/2 he grope ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/2/2 ('+rand(1,3)+').mp4"></video></center>'
+			end
+			
+			if stat['hj'] >= 100:
+				act 'increase speed':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			else
+				act 'increase speed': $func('wrap', 'neg', '<br>Better hand job skill needed.')
+			end
+			
+			act 'jerk slower':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			if stat['bj'] >= 100:
+				act 'breath on it, lick a bit':
+					!*clr & cla
+					cla
+					phclientfunnow += 5
+					phbjlick = 1
+					
+					otemp = phspeed
+					if otemp = 0: otemp = 1
+					
+					temp = (( (stat['hj'] + stat['hj'] + stat['bj'])/ 30 ) - ((protect*36)/otemp))/1
+					$cum1 -= rand(0,temp)
+					gs 'mod_public_WC_street_sex', 'man'
+					gs 'arousal', 'hj', rand(5,10)
+					gs 'stat'
+					
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/hj/2 lick top.mp4"></video></center>'
+					act 'keep jerking': 
+						*clr & cla
+						gt 'mod_public_WC_street_sex_corner', 'sex'
+					end
+					
+					! chance to push to bj
+					if rand(1,20) <= 1 or phbjforce > 0:
+						cla
+						'He start to push his dick to my mouth'
+						phbjforce += 1
+						
+						if phbjforce >= rand(2,4):
+							'Suddenly he pushed with big force, his <<$npc_thdick[$npclastgenerated]>> cock in my mouth'
+							if phsex >= 100: 
+								phsex = 2
+								'CLEINT: "SUCK ME DRY!'
+								act 'blow him':
+									phclientfunnow += 5
+									phspeed = 2	
+									phclientforce = 1
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							else
+								act 'Push him':
+									cla
+									'ME: "WTF, you paid for the hand job!"'
+									phspeed = 1
+									'CLIENT: "Your mouth is so welcoming! I want the blow job!'									
+									otemp = 2
+									
+									gs 'mod_public_WC_street_sex_corner', 'paymore'
+								end
+								
+								act 'blow him':
+									phclientfunnow += 20
+									phspeed = 2
+									if phsex >= 100: 
+										phsex = 102
+									else
+										phsex = 2
+									end								
+									phclientforce = 1
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+						else
+							act 'avoid penetration':
+								cla
+								phclientfunnow -= 25								
+								act 'keep jerking': 
+									*clr & cla
+									gt 'mod_public_WC_street_sex_corner', 'sex'
+								end
+							end
+							
+							act 'blow him':
+								phclientfunnow += 20
+								phspeed = 1
+								if phsex >= 100: 
+									phsex = 102
+								else
+									phsex = 2
+								end								
+								*clr & cla
+								gt 'mod_public_WC_street_sex_corner', 'sex'
+							end
+						end
+					end
+				end
+			end
+		elseif phspeed = 3:	
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['hj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(0,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'hj', rand(5,10)
+			gs 'stat'	
+			fame['pav_prostitute'] += rand(0,1)
+			
+			if rand(1,2) <= 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/3/3 ('+rand(1,2)+').mp4"></video></center>'
+				
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/3/3 ('+rand(1,2)+').jpg"></center>'
+			end
+			
+			act 'jerk slower':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end	
+		else
+			' '
+		end
+		
+		
+		if phclientforce = 0:		
+			act 'keep jerking': 
+				*clr & cla
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			gs 'mod_public_WC_street_sex_corner', 'ifphsex100more'
+		elseif phclientforce = 1:
+			cla
+			if phspeed < 3: phspeed += 1			
+			act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		end
+	elseif phsex = 2 or phsex = 102:
+		$phsexfolder1 = 'bj'
+		if phspeed = 0:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I pulled out his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to suck it'
+			phspeed += 1
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/0 start/0 start ('+rand(1,2)+').mp4"></video></center>'
+			
+			!! act 'increase speed':
+				!*clr & cla
+				!! phspeed += 1
+				!! gt 'mod_public_WC_street_sex_corner', 'sex'				
+			!! end
+		elseif phspeed = 1:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) - phmasturb_me * 2 + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am sucking him'
+			
+			if phmasturb_me = 1:				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/selfplay ('+rand(1,1)+').jpg"></center>'
+				
+				gs 'arousal', 'masturbate', 10
+				gs 'stat'
+				minut -= 10
+				gs 'stat'
+				phclientfunnow += rand(0,5)
+			else
+				if rand(1,13) <= 3:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/1 ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/1 ('+rand(1,10)+').jpg"></center>'
+				end
+			end
+			
+			if stat['bj'] >= 40:
+				act 'lick the top':
+					!*clr & cla
+					cla
+					phclientfunnow += 5
+					phbjlick = 1
+					
+					otemp = phspeed
+					if otemp = 0: otemp = 1
+					
+					temp = (( (stat['hj'] + stat['hj'] + stat['bj'])/ 30 ) - ((protect*36)/otemp))/1 - phmasturb_me * 2
+					$cum1 -= rand(0,temp)
+					gs 'mod_public_WC_street_sex', 'man'
+					gs 'arousal', 'bj', rand(5,10)
+					gs 'stat'
+					
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/licktop ('+rand(1,2)+').jpg"></center>'
+					
+					act 'keep sucking': 
+						*clr & cla
+						gt 'mod_public_WC_street_sex_corner', 'sex'
+					end
+				end
+			else
+				act 'lick the top': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			if pcs_horny >=40 and phmasturb_me = 0:
+				act 'Caress Myself':
+					!*clr & cla
+					*clr
+					phmasturb_me = 1
+					if $clothingworntype = 'nude':						
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/selfplay ('+rand(1,1)+').jpg"></center>'
+						'Feeling a bit turned on, I expose my pussy and begin to run my clit, while sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+						
+						gs 'arousal', 'masturbate', 4
+						gs 'stat'
+						minut -= 4
+						gs 'stat'						
+					else						
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/selfplay ('+rand(1,1)+').jpg"></center>'
+						'Feeling a bit turned on, I reach down my underwear and start rubbing my clit, while sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+						
+						gs 'arousal', 'masturbate', 4
+						gs 'stat'						
+					end
+				end
+			elseif phmasturb_me = 1:
+				act 'Stop masturbating':
+					phmasturb_me = 0
+					*clr 
+					'Now I can cocentrate more on the work'
+					if rand(1,8) <= 4:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/1 ('+rand(1,3)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/1 ('+rand(1,10)+').jpg"></center>'
+					end
+				end
+			elseif pcs_horny < 40:
+				act 'Caress Myself':
+					'I am NOT horny enought to do this'
+				end
+			end
+			
+			if stat['bj'] >= 50:
+				act 'increase speed':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			else
+				act 'increase speed': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+		elseif phspeed = 2:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) - phmasturb_me * 2 + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am sucking him like a vacuum machine'
+			
+			
+			if phmasturb_me = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/selfplay ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'masturbate', 10
+				gs 'stat'
+				minut -= 10
+				gs 'stat'
+				phclientfunnow += rand(0,5)
+				if rand(1,5) = 1: phclient_mood += 1
+			else
+				if rand(1,12) <= 7:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/2 ('+rand(1,7)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/2 ('+rand(1,5)+').jpg"></center>'
+				end
+			end
+			
+			if pcs_horny >=40 and phmasturb_me = 0:
+				act 'Caress Myself':
+					!*clr & cla
+					*clr
+					phmasturb_me = 1
+					if $clothingworntype = 'nude':						
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/selfplay ('+rand(1,1)+').mp4"></video></center>'
+						'Feeling a bit turned on, I expose my pussy and begin to run my clit, while sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+						
+						gs 'arousal', 'masturbate', 4
+						gs 'stat'
+						minut -= 4
+						gs 'stat'						
+					else						
+						gs 'stat'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/selfplay ('+rand(1,1)+').mp4"></video></center>'
+						'Feeling a bit turned on, I reach down my underwear and start rubbing my clit, while sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+						
+						gs 'arousal', 'masturbate', 4
+						gs 'stat'						
+					end
+				end
+			elseif phmasturb_me = 1:
+				act 'Stop masturbating':
+					phmasturb_me = 0
+					*clr 
+					'Now I can cocentrate more on the work'
+					if rand(1,12) <= 7:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/2 ('+rand(1,7)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/2 ('+rand(1,5)+').jpg"></center>'
+					end
+				end
+			elseif pcs_horny < 40:
+				act 'Caress Myself':
+					'I am NOT horny enought to do this'
+				end
+			end
+			
+			if stat['bj'] >= 100:
+				act 'Balls deep blow job':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			else
+				act 'Balls deep blow job': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			act 'blow slower':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			if phclient_mood - phsextimes + rand(5,10) <= 0 and phclientforce = 0:
+				*clr & cla
+				'CLIENT: "WTF, I ask for a good blow, IS it your first day?!"'
+				'He grab my head and push me deeper on his <<npc_dick[$npclastgenerated]>>cm long dick'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/3 deep/force ('+rand(1,1)+').mp4"></video></center>'				
+				
+				phspeed = 3
+				phclientforce = 1
+				phclient_mood += 1				
+			elseif phclientforce = 1:
+				'Client staring at me, his stasre says: "Don''t fucking think to put it out your mouth…"'
+			end
+		elseif phspeed = 3:	
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock balls deep'	
+			fame['pav_prostitute'] += rand(0,1)	
+			
+			if phmasturb_me = 1:
+				phmasturb_me = 0
+				'I stoped masturbating to focus on the pace keeping'
+			end
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/3 deep/3 ('+rand(1,6)+').mp4"></video></center>'
+			
+			if stat['bj'] >= 150:
+				act 'Face fuck him':
+					*clr & cla
+					phspeed += 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			else
+				act 'Face fuck him': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			act 'blow not so deep':
+				*clr & cla
+				phspeed -= 1
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			
+			
+			if phclient_mood - phsextimes + rand(5,10) <= 0 and phclientforce = 0:
+				*clr & cla
+				'CLIENT: "WTF, I ask for a good blow, IS it your first day?!"'
+				'He push his <<npc_dick[$npclastgenerated]>>cm long dick rought to my throat, increasing pace with each push… He starts to literrally fuck my face'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/4 ff/force ('+rand(1,5)+').mp4"></video></center>'				
+				
+				phspeed = 4
+				phclientforce = 1
+				phclient_mood += 1				
+			elseif phclientforce = 1:
+				*clr
+				'Client holds my head to check me suck bals deep his <<npc_dick[$npclastgenerated]>>cm long dick'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/3 deep/force ('+rand(1,1)+').mp4"></video></center>'
+			end
+			if stat['bj'] < 100:
+				if phthrowup >= rand(5,10):
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/3 deep/force ('+rand(1,1)+').mp4"></video></center>'
+					!! throwup
+					
+					!! 'I started to throw up in the exact same second as his dick meet my throat.'
+					'I started to throw up'
+					'He pulls out his dick, but I throw up few more times.'					
+					
+					!! 'I throw up even few times more.'
+					pcs_mood -= rand(30,70)
+					stat['bj'] += 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/puke/deep_ryg ('+rand(1,1)+').mp4"></video></center>'					
+					
+					if phclient['pay'] = 4:
+						'CLIENT: "WTF?! It is not a part of a deal. I am going to use other hole!'
+						'He rotates me'
+						phclientforce = 1
+						phspeed = 1
+						phsex = rand(3,4)
+					else
+						phthrowup = 1111
+						'CLIENT: "WTF?! Hell no!"'
+						'He start running away. And I am not in condition to run for him…'		
+						killvar 'PH_full_pay'
+						+$OpenInnerThought+'This jerk did NOT pay me!!!'+$CloseInnerThought		
+						!! gs 'pain', rand(1,2), 'back', 'fall'
+						gs 'stat'		
+						act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+						act 'go away': gt $loc, $loc_arg						
+					end
+				elseif (stat['bj'] < 50 and npc_dick[$npclastgenerated] > 15) or (stat['bj'] < 60 and npc_dick[$npclastgenerated] > 16) or (stat['bj'] < 70 and npc_dick[$npclastgenerated] > 17) or (stat['bj'] < 80 and npc_dick[$npclastgenerated] > 18) or (stat['bj'] < 90 and npc_dick[$npclastgenerated] > 19) or (npc_dick[$npclastgenerated] >= 20):
+					+$OpenInnerThought+'His <<npc_dick[$npclastgenerated]>>cm long cock pushes my throat!'+$CloseInnerThought	
+					!! prevents me to breathe
+					+$OpenInnerThought+'I am not sure I can last too long!'+$CloseInnerThought
+					
+					phthrowup += 1
+					if phthrowup >= 3: '<i>He goes very deep… to deep… I was on the edge to throw up</i>'
+				else
+					' '
+				end				
+			end
+		elseif phspeed = 4:	
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 3*phspeed + ( stat['bj'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(5,temp)
+			
+			gs 'arousal', 'bj', rand(5,10)
+			gs 'stat'			
+			gs 'mod_public_WC_street_sex', 'man'
+			'I am beeing face fucked'	
+			fame['pav_prostitute'] += rand(1,1)
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/4 ff/4 ('+rand(1,4)+').mp4"></video></center>'
+			
+			
+			act 'stop the facefucking':
+				*clr & cla
+				phspeed = 2
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+			
+			
+			if phclient_mood - phsextimes + rand(5,10) <= 0 and phclientforce = 0:
+				*clr & cla
+				'CLIENT: "WTF, I ask for a good blow, IS it your first day?!"'
+				'He push his <<npc_dick[$npclastgenerated]>>cm long dick rought to my throat, increasing pace with each push… He starts to literrally fuck my face'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/4 ff/force ('+rand(1,5)+').mp4"></video></center>'				
+				
+				phspeed = 4
+				phclientforce = 1
+				phclient_mood += 1				
+			elseif phclientforce = 1:
+				*clr
+				'Client holds my head to face fucking me'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/4 ff/force ('+rand(1,5)+').mp4"></video></center>'
+			end
+			if stat['bj'] < 150:
+				if phthrowup >= rand(2,10):
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/4 ff/force ('+rand(1,5)+').mp4"></video></center>'
+					!! throwup
+					
+					!! 'I started to throw up in the exact same second as his dick meet my throat.'
+					'I started to throw up'
+					'He pulls out his dick, but I throw up few more times.'					
+					
+					!! 'I throw up even few times more.'
+					pcs_mood -= rand(30,70)
+					stat['bj'] += 1
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/puke/ff_ryg ('+rand(1,1)+').mp4"></video></center>'				
+					
+					if phclient['pay'] = 4:
+						'CLIENT: "WTF?! It is not a part of a deal. I am going to use other hole!'
+						'He rotates me'
+						phclientforce = 1
+						phspeed = 1
+						phsex = rand(3,4)
+					else
+						phthrowup = 1111
+						'CLIENT: "WTF?! Hell no!"'
+						'He start running away. And I am not in condition to run for him…'		
+						killvar 'PH_full_pay'
+						+$OpenInnerThought+'This jerk did NOT pay me!!!'+$CloseInnerThought		
+						!! gs 'pain', rand(1,2), 'back', 'fall'
+						gs 'stat'		
+						act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+						act 'go away': gt $loc, $loc_arg						
+					end
+				elseif (stat['bj'] < 50 and npc_dick[$npclastgenerated] > 15) or (stat['bj'] < 60 and npc_dick[$npclastgenerated] > 16) or (stat['bj'] < 70 and npc_dick[$npclastgenerated] > 17) or (stat['bj'] < 80 and npc_dick[$npclastgenerated] > 18) or (stat['bj'] < 90 and npc_dick[$npclastgenerated] > 19) or (npc_dick[$npclastgenerated] >= 20):
+					+$OpenInnerThought+'His <<npc_dick[$npclastgenerated]>>cm long cock pushes my throat!'+$CloseInnerThought	
+					!! prevents me to breathe
+					+$OpenInnerThought+'I am not sure I can last too long!'+$CloseInnerThought
+					
+					phthrowup += 1
+					if phthrowup >= 3: '<i>He goes very deep… to deep… I was on the edge to throw up</i>'
+				else
+					' '
+				end				
+			end
+		else
+			' '
+		end
+		
+		
+		if phclientforce = 0:			
+			if stat['bj'] >= 40 and phspeed <= 2:
+				act 'lick the balls':
+					!*clr & cla
+					cla
+					phclientfunnow += 2
+					otemp = 1
+					
+					temp = ( stat['bj'] / 15 )
+					$cum1 -= rand(0,temp)
+					gs 'mod_public_WC_street_sex', 'man'
+					gs 'arousal', 'bj', rand(5,10)
+					gs 'stat'					
+					
+					if phspeed = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/1 top/balls ('+rand(1,1)+').mp4"></video></center>'
+					elseif phspeed = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/2/balls ('+rand(1,1)+').mp4"></video></center>'
+					end
+					
+					act 'keep sucking': 
+						*clr & cla
+						gt 'mod_public_WC_street_sex_corner', 'sex'
+					end
+				end
+			elseif stat['bj'] < 40:
+				act 'lick the balls': $func('wrap', 'neg', '<br>Better blow job skill needed.')
+			end
+			
+			act 'keep blowing': gt 'mod_public_WC_street_sex_corner', 'sex'
+			gs 'mod_public_WC_street_sex_corner', 'ifphsex100more'
+			
+			
+			if phclient_mood - phsextimes + rand(3,13) <= 0 and phclientforce = 0:
+				*clr & cla				
+				'CLIENT: "WTF, I ask for a good blow, IS it your first day?!"'
+				'CLIENT: "This hole is not good enought"'
+				
+				act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+				
+				
+				if phassonly = 1:
+					'He rotates me'
+					'CLIENT: "WTF?"'
+					'ME: "No pussy for you!"'
+					'HE spit and penetrates my ass'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/assonly ('+rand(1,1)+').jpg"></center>'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/bj/FORCE change to vag.mp4"></video></center>'				
+					
+					phspeed = 1
+					phclientforce = 1
+					phclient_mood += 1
+					if phsex >= 100: 
+						phsex = 104
+					else
+						phsex = 4
+					end
+				else
+					'He rotates me and penetrates my pussy'
+					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/bj/FORCE change to vag.mp4"></video></center>'				
+					
+					phspeed = 1
+					phclientforce = 1
+					phclient_mood += 1
+					if phsex >= 100: 
+						phsex = 103
+					else
+						phsex = 3
+					end
+				end
+			end
+		elseif phclientforce = 1:
+			cla
+			if phspeed = 3: 
+				if rand(1,3) = 1: phspeed += 1
+			end
+			if phspeed < 3: phspeed += 1			
+			act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		end
+	elseif phsex = 3 or phsex = 103:
+		$phsexfolder1 = 'vag'
+		if phspeed = 0:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			temp = 0 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			
+			gs 'arousal', 'foreplay', rand(5,10)
+			gs 'stat'
+			
+			phmasturb_me = 0
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/0 start/check my hole ('+rand(1,1)+').jpg"></center>'
+				'He rotates me and check my holes'
+				phspeed = 1
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/0 start/check my hole ('+rand(1,1)+').mp4"></video></center>'
+				phspeed = 1
+				'He rotates me and warming up my holes'
+			end
+			
+
+			'Then I lay down and he penetrates my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/0 start ('+rand(1,1)+').jpg"></center>'	
+			phspeed = 2
+
+			
+			
+			if phspeed ! 1:
+				act 'Doggy':
+					*clr & cla
+					phspeed = 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 2:
+				act 'Missionary':
+					*clr & cla
+					phspeed = 2
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 3:
+				act 'Cowgirl':
+					*clr & cla
+					phspeed = 3
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 4:
+				act 'Standing':
+					*clr & cla
+					phspeed = 4
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			
+		elseif phspeed = 1:
+			!! Doggy
+			otemp = 2
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			
+			if rand(1,10) <= 21:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 behind/1 ('+rand(1,10)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 behind/1 ('+rand(1,11)+').jpg"></center>'
+			end
+			
+			phmasturb_me = 0
+			
+			if phspeed ! 1:
+				act 'Doggy':
+					*clr & cla
+					phspeed = 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 2:
+				act 'Missionary':
+					*clr & cla
+					phspeed = 2
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 3:
+				act 'Cowgirl':
+					*clr & cla
+					phspeed = 3
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 4:
+				act 'Standing':
+					*clr & cla
+					phspeed = 4
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+		elseif phspeed = 2:
+			!! Missionary
+			phmasturb_me = 0
+			otemp = 2
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'			
+			
+
+			if rand(1,5) <= 8:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/1 ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/1 ('+rand(1,3)+').jpg"></center>'
+			end
+			
+			if rand(1,7) <= 1:
+				'He gropes my tits'
+				$cum1 -= 2
+				phclientfunnow += 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/tits_grope ('+rand(1,1)+').mp4"></video></center>'
+			end
+			
+			if phspeed ! 1:
+				act 'Doggy':
+					*clr & cla
+					phspeed = 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 2:
+				act 'Missionary':
+					*clr & cla
+					phspeed = 2
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 3:
+				act 'Cowgirl':
+					*clr & cla
+					phspeed = 3
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 4:
+				act 'Standing':
+					*clr & cla
+					phspeed = 4
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			
+			
+			if phthrowup = rand(2,3) and phclientforce = 1:
+				*clr & cla
+				$orgasm_or = 'yes'
+				gs 'arousal', 'vaginal', -9, 'prostitution', 'rough', 'sub'
+				gs 'stat'				
+				gs 'pain', 10, 'throat', 'choke'
+				gs 'stat'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/choke ('+rand(1,1)+').jpg"></center>'
+				
+			elseif phclient_mood - phsextimes + rand(5,10) <= 0 and phclientforce = 0:
+				*clr & cla
+				phthrowup = 1
+				phclientforce = 1
+				
+				$orgasm_txt = 'And then he let''s go, my brain floods my body with endorphins as my breath in cool air and it''s like a trigger for the rest of my body to let go. My eyes roll back and my tongue slips out of my mouth like a bitch in heat that get''s bred by her master as my orgasm blocks out the pain and turns this horrible moment into pure bliss.'
+				'He suddenly gripes my throat violently. He brutally chokes me…'
+				
+				gs 'pain', 10, 'throat', 'choke'
+				gs 'stat'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/choke ('+rand(1,1)+').jpg"></center>'
+				phclientforce = 1
+				phclient_mood += 1				
+			elseif phclientforce = 1:
+				phthrowup += 1
+				phclient_mood += 1
+				'He brutally chokes me, he doesn''t let go and when my lungs scream for air I realize that could be it. The end. Dying in some shitted home while being brutally fucked.'
+				gs 'pain', 10, 'throat', 'choke'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 missionary/choke ('+rand(1,1)+').jpg"></center>'
+			end
+		elseif phspeed = 3:	
+			!! Cowgirl			
+			otemp = 2
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'i am riding his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'			
+			
+			if phmasturb_me = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/selfplay ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'masturbate', 10
+				gs 'stat'
+				minut -= 10
+				gs 'stat'
+				phclientfunnow += rand(0,5)
+				if rand(1,5) = 1: phclient_mood += 1
+			else
+				if rand(1,10) <= 19:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/1 ('+rand(1,10)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/1 ('+rand(1,9)+').jpg"></center>'
+				end
+			end
+			
+			
+			if pcs_horny >=40 and phmasturb_me = 0:
+				act 'Caress Myself':
+					!*clr & cla
+					*clr
+					phmasturb_me = 1
+					
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/selfplay ('+rand(1,2)+').jpg"></center>'
+					'I begin to run my clit.'
+					
+					gs 'arousal', 'masturbate', 4
+					gs 'stat'
+					minut -= 4
+					gs 'stat'
+				end
+			elseif phmasturb_me = 1:
+				act 'Stop masturbating':
+					phmasturb_me = 0
+					*clr 
+					if rand(1,10) <= 19:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/1 ('+rand(1,10)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 cowgirl/1 ('+rand(1,9)+').jpg"></center>'
+					end
+				end
+			elseif pcs_horny < 40:
+				act 'Caress Myself':
+					'I am NOT horny enought to do this'
+				end
+			end
+			
+			if phspeed ! 1:
+				act 'Doggy':
+					*clr & cla
+					phspeed = 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 2:
+				act 'Missionary':
+					*clr & cla
+					phspeed = 2
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 3:
+				act 'Cowgirl':
+					*clr & cla
+					phspeed = 3
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 4:
+				act 'Standing':
+					*clr & cla
+					phspeed = 4
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+		elseif phspeed = 4:	
+			!! Standing
+			otemp = 2
+			phmasturb_me = 0
+						
+			temp = 20 + ( stat['vaginal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(10,20)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+			
+			if rand(1,5) <= 9:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 stand/1 ('+rand(1,5)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/1 stand/1 ('+rand(1,4)+').jpg"></center>'
+			end
+			
+			if phspeed ! 1:
+				act 'Doggy':
+					*clr & cla
+					phspeed = 1
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 2:
+				act 'Missionary':
+					*clr & cla
+					phspeed = 2
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 3:
+				act 'Cowgirl':
+					*clr & cla
+					phspeed = 3
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+			if phspeed ! 4:
+				act 'Standing':
+					*clr & cla
+					phspeed = 4
+					gt 'mod_public_WC_street_sex_corner', 'sex'				
+				end
+			end
+		else		
+			' '
+		end	
+		
+		
+		if phclientforce = 0:			
+			act 'keep fucking': gt 'mod_public_WC_street_sex_corner', 'sex'
+			gs 'mod_public_WC_street_sex_corner', 'ifphsex100more'
+		elseif phclientforce = 1:
+			cla
+			if rand(1,5) = 1: 
+				phspeed = rand(1,4)	
+				if phspeed = 3: phspeed = 4
+				'He forces me to change the position'
+			end
+			act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		end
+	elseif phsex = 4 or phsex = 104:
+		$phsexfolder1 = 'ass'
+		if phspeed = 0:
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+			
+			
+			temp = 0 + ( stat['anal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'he pushed his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> in my asshole'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'			
+			
+			if rand(1,4) <= 9:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/2 ass ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/2 ass ('+rand(1,5)+').jpg"></center>'
+			end
+			
+			phspeed += 1
+		elseif phspeed = 1:
+			!! Doggy
+			otemp = phspeed
+			if otemp = 0: otemp = 1
+						
+			temp = 20 + ( stat['anal'] / 10 ) - ((protect*12)/otemp) + phclientforce * rand(5,15)
+			$cum1 -= rand(15,temp)
+			
+			gs 'mod_public_WC_street_sex', 'man'
+			'he is fucking my ass'
+			gs 'arousal', 'anal', rand(5,10)
+			gs 'stat'
+			
+			if rand(1,4) <= 9:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/2 ass ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/2 ass ('+rand(1,5)+').jpg"></center>'
+			end
+		else
+			' '
+		end		
+		
+		
+		if phclientforce = 0:			
+			act 'keep fucking': gt 'mod_public_WC_street_sex_corner', 'sex'
+			gs 'mod_public_WC_street_sex_corner', 'ifphsex100more'
+		elseif phclientforce = 1:
+			cla
+			act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		end
+	end	
+	
+	if protect = 1 and phclient['condom'] ! 1:
+		act 'remove condom':
+			*clr & cla
+			if phsex = 1 or phsex = 101:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/bj ('+rand(2,4)+').mp4"></video></center>'
+			elseif phsex = 2 or phsex = 102:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/bj ('+rand(1,5)+').mp4"></video></center>'
+			elseif phsex = 3 or phsex = 103:
+				if phspeed = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/vag ('+rand(5,5)+').mp4"></video></center>'
+				elseif phspeed = 2:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/vag ('+rand(1,4)+').mp4"></video></center>'
+				elseif phspeed = 3:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/vag ('+rand(6,6)+').mp4"></video></center>'
+				elseif phspeed = 4:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/vag ('+rand(7,8)+').mp4"></video></center>'
+				end				
+			elseif phsex = 4 or phsex = 104:
+				if phspeed = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/sex ('+rand(3,3)+').mp4"></video></center>'
+				elseif phspeed = 2:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/sex ('+rand(1,1)+').mp4"></video></center>'
+				elseif phspeed = 3:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/sex ('+rand(4,5)+').mp4"></video></center>'
+				elseif phspeed = 4:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/0 condom_sex/b/off/me/sex ('+rand(2,2)+').mp4"></video></center>'
+				end
+			end
+			protect = 0
+			act 'continue': gt 'mod_public_WC_street_sex_corner', 'sex'
+		end
+	elseif protect = 1:
+		act 'remove condom':
+			+$OpenInnerThought+'I can''t remove coondom. IT''s client request!'+$CloseInnerThought
+		end
+	end
+	
+	gs 'mod_public_WC_street_sex', 'timer'
+	
+	if phclientforce = 0:
+		gs 'mod_public_WC_street_sex', 'timer'
+		gs 'mod_public_WC_street_sex', 'sexrobaction'
+	end
+	
+	if $cum1 <= 0:
+		gs 'mod_public_WC_street_sex_corner', 'sexcum'
+	else
+		phbjlick = 0
+	end
+	
+	
+	
+	if phthrowup = 1111:
+		cla
+		act 'looking for the next client': gs 'mod_public_WC_street','prostitutesearch'
+		act 'go away': gt $loc, $loc_arg	
+	end
+	
+	
+	
+	if rand(1,70) - phsextimes <= -4:
+		gt 'mod_public_WC_street_events', 'cop1'
+	end
+	
+	if phdrugged = 1000 and (bcil - rand(0,200)) <= 0 and phsextimes >= 2:
+		druggedplace = 2
+		gt 'mod_public_WC_street_drugs', 'start'
+	end	
+end
+
+if $ARGS[0] = 'sexcum':
+	!*clr & cla
+	cla
+	gs 'arousal', 'end'
+	gs 'stat'
+	gs 'mod_public_WC_street_sex', 'man'
+	$phsexstart = 'mod_public_WC_street_sex_corner'
+	$phsexstart_arg	= 'sex'
+	
+	phmasturb_me = 0
+	if (phspeed = 4 and phclientforce = 1 and phsex = 3) or (phspeed = 4 and phclientforce = 1 and phsex = 103): 
+		$orgasm_or = 'yes'
+		gs 'arousal', 'vaginal', -9, 'prostitution', 'rough', 'sub'
+		gs 'stat'
+	end	
+	
+	fame['pav_prostitute'] += 1	
+	
+	if protect = 1:
+		gs 'arousal', 'end'
+		gs 'stat'
+		if phsex = 1 or phsex = 101:
+			if phspeed >= 4:
+				protect = 0
+				'Client removes my legs from his dick and points me to sit closer'
+				'Client removed the condom and…'
+				phtemp = 1234
+				*nl	
+			elseif rand(1,3) <= 2:
+				protect = 0
+				'Client removed the condom and…'
+				*nl				
+			else
+				*clr & cla
+				if phbjlick ! 0:
+					'My tongue feels the hot of his dick… the condom starts increase while it collecs all the clients cum'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/hj_lick ('+rand(1,2)+').mp4"></video></center>'
+					killvar 'phbjlick'
+				else
+					'I feel the hot of his dick… the condom starts increase while it collecs all the clients cum'
+					if rand(1,3) = 1:
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/cum/hj ('+rand(1,1)+').jpg"></center>'
+					else
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/hj ('+rand(1,2)+').mp4"></video></center>'
+					end
+				end
+			end			
+		elseif phsex = 2 or phsex = 102:
+			if rand(1,13) + phspeed >= 11:
+				protect = 0
+				'Client stoped me and removed the condom and…'
+				phclientforce = 0
+				phbjclienthand = 1
+				*nl				
+			else
+				*clr & cla
+				if phbjlick ! 0:
+					'My tongue feels the hot of his dick… the condom starts increase while it collecs all the clients cum'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/hj_lick ('+rand(1,2)+').mp4"></video></center>'
+					killvar 'phbjlick'	
+				else
+					'I feel the hot of his dick… the condom is groving inside my mouth. The hot sperm is filling it'				
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/bj ('+rand(1,2)+').mp4"></video></center>'
+				end
+			end			
+		elseif phsex = 3 or phsex = 103:
+			if rand(1,10) <= 3 or phclient['cuminside'] = 3:
+				protect = 0
+				phbjclienthand = 1
+				phclientforce = 0
+				'Client removed the condom and…'
+				*nl
+			elseif rand(1,10) <= 3:
+				*clr & cla
+				protect = 100
+				'Client removed the condom and…'
+
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end	
+
+				If phspeed = 1:
+					!! behind
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/con_remove_ass ('+rand(1,1)+').mp4"></video></center>'
+					'spreys my ass'
+					gs 'cum_call','butt',$boy
+					gs 'stat'
+					gs 'cum_call','pantyrear',$boy
+					gs 'stat'
+					if rand(1,2) = 1:
+						gs 'cum_call','back',$boy
+						gs 'stat'
+					end
+					
+				elseif phspeed = 2:	
+					!! miss
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/con_remove_pubic ('+rand(1,1)+').mp4"></video></center>'
+					'cums on my body'
+					gs 'cum_call','hands',$boy
+					gs 'stat'
+					gs 'cum_call','stomach',$boy
+					gs 'stat'
+					gs 'cum_call','pantyfront',$boy
+					gs 'stat'
+					
+				elseif phspeed = 3:
+					
+					
+				elseif phspeed = 4:	
+					!! stand
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/con_remove_pubic ('+rand(1,1)+').mp4"></video></center>'
+					'cums on my body'
+					gs 'cum_call','hands',$boy
+					gs 'stat'
+					gs 'cum_call','stomach',$boy
+					gs 'stat'
+					gs 'cum_call','pantyfront',$boy
+					gs 'stat'
+					
+				end				
+			else
+				*clr & cla
+				'I fill hot sperm filing me inside the condom'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/cum/vag ('+rand(1,1)+').mp4"></video></center>'
+				gs 'cum_call','internalcondom',$boy
+				gs 'stat'
+			end
+		elseif phsex = 4 or phsex = 104:
+			if rand(1,10) <= 4:
+				protect = 0
+				phbjclienthand = 1
+				phclientforce = 0
+				'Client removed the condom and…'
+				*nl
+			else
+				'I fill hot sperm filing my ass inside the condom'
+			end
+		end
+		
+		if protect = 1:
+			'The client pulls the rubber off…'
+			if rand(1,4) = 1:
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+				'…and throws it on the floor'
+				'He pulls up his pants'
+			elseif rand(1,10) = 1 or phclient_mood <= 2:			
+				if (phsex = 3 or phsex = 103) and rand(1,3) = 1:
+					'…and pour its insides on me'					
+					
+					if $clothingworntype = 'nude':
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+					else
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'pantyrear', $npclastgenerated, 0
+					end				
+					phclient_mood += 1				
+					gs 'arousal', 'end'
+					gs 'stat'					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/he_pouronme ('+rand(1,1)+').mp4"></video></center>'
+					
+				elseif (phsex = 3 or phsex = 103) and rand(1,3) ! 1:
+					'…and throws it on me'				
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/cumed_throw_pubic ('+rand(1,1)+').jpg"></center>'
+					
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'clothes_hidden', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'					
+				elseif rand(1,2) = 1:
+					'…and throws it on my face'
+					
+					if (phsex = 4 or phsex = 104):
+						+$OpenInnerThought+'It smells ass.'+$CloseInnerThought
+					end
+					
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/cumed_throw_face ('+rand(1,2)+').jpg"></center>'
+					
+					gs 'boyStat', $npclastgenerated
+					gs 'cum_call', 'face', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'					
+				else
+					'…and throws it on me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/cumed_throw_tits ('+rand(1,1)+').jpg"></center>'
+					
+					if $clothingworntype = 'nude':
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+					else
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+					end	
+					gs 'arousal', 'end'
+					gs 'stat'				
+				end				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end	
+			elseif rand (1,4) = 1 and phsex ! 3 and phsex ! 103 and phsex ! 104 and phsex ! 4:
+				'He grabs my head and pill it back'
+				'AS I opened my mouth to say "ouch" - he pours the condom insides in my mouth'
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/eat_makes_me ('+rand(1,1)+').jpg"></center>'
+				phclient_mood += 1
+				
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				
+				
+				cla
+				gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+			else
+				!! hegives me ->
+				'Client gives the condom to me'
+				phtakecondom = 1
+				
+				act 'Pour the condom insides on me':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/me_pouronme ('+rand(1,1)+').jpg"></center>'
+					phclientfunnow += rand(5,10)
+					
+					if $clothingworntype = 'nude':
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'breasts', $npclastgenerated, 0
+					else
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'clothes', $npclastgenerated, 0
+					end		
+					gs 'arousal', 'end'
+					gs 'stat'					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end
+				end
+				
+				act 'Eat the cum from the condom':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/condom/ConPlay/eat_me ('+rand(1,1)+').jpg"></center>'
+					phclientfunnow += rand(10,15)
+					
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end
+				end
+				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end			
+			end
+		end
+	end
+	!! phclient_mood
+	!! phclientfunnow
+	
+	if protect = 0:
+		if phsex = 1 or phsex = 101:
+			cla
+			
+			if phbjclienthand = 1:				
+				killvar 'phbjclienthand'			
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+				
+				if rand(1,4) = 1:
+					'He points his dick on my breasts'					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 bellyANDtits/tits ('+rand(1,1)+').mp4"></video></center>'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+					
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end
+				elseif rand(1,4) = 1:
+					'He points his dick to my face'					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 face/face ('+rand(2,2)+').mp4"></video></center>'
+					if rand(1,3) = 1:
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+					end
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end
+				else
+					cla
+					'He points his dick to my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 mouth/mouth ('+rand(4,5)+').mp4"></video></center>'					
+					gs 'cum_call','mouth',$boy
+					gs 'stat'					
+					
+					gs 'mod_public_WC_street_sex_corner', 'swallowORnot'				
+				end
+			else			
+				'I feel his cock twitch and realize he is about to cum…'
+				
+				act 'keep jerking':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/cum/miss ('+rand(1,3)+').mp4"></video></center>'
+					gs 'cum_call','hands',$boy
+					gs 'stat'
+
+					phclientfunnow -= 15				
+					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end
+				end
+				
+				act 'point it to my mouth':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/cum/mouth ('+rand(1,2)+').mp4"></video></center>'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					
+					gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+				end
+				
+				act 'point it on my face':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/cum/face ('+rand(1,4)+').mp4"></video></center>'
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end					
+					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end
+				end
+				
+				act 'point it on my tits':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/hj/cum/tits ('+rand(1,1)+').mp4"></video></center>'
+					gs 'cum_call','arms',$boy
+					gs 'stat'
+					gs 'cum_call','hands',$boy
+					gs 'stat'
+					!! gs 'cum_call','stomach',$boy
+					!! gs 'stat'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+					
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end
+					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end
+				end
+			end
+		elseif phsex = 2 or phsex = 102:	
+			if phbjclienthand = 1:				
+				killvar 'phbjclienthand'
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+				
+				if rand(1,4) = 1:
+					'He points his dick on my breasts'					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 bellyANDtits/tits ('+rand(1,1)+').mp4"></video></center>'
+					gs 'cum_call','breasts',$boy
+					gs 'stat'
+					
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end
+				elseif rand(1,4) = 1:
+					'He points his dick to my face'					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 face/face ('+rand(2,2)+').mp4"></video></center>'
+					if rand(1,3) = 1:
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+					end
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					
+					if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+						'He cleans his dick with my hair'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+						pcs_mood -= 30
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+						phclientfunnow += 10
+						fame['pav_prostitute'] += 1
+					end
+				else
+					cla
+					'He points his dick to my mouth'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 mouth/mouth ('+rand(4,5)+').mp4"></video></center>'					
+					gs 'cum_call','mouth',$boy
+					gs 'stat'					
+					
+					gs 'mod_public_WC_street_sex_corner', 'swallowORnot'				
+				end
+			else
+				!! act 'end the service':
+					!! gs 'mod_public_WC_street_sex_corner', 'endservice'
+				!! end
+				
+				if phclientforce = 1:
+					if rand(1,3) ! 1:
+						'I feel his cock twitch and realize he is about to cum…'
+						cla						
+						gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+					else
+						'I feel his cock twitch and realize he is about to cum…'
+						phtemp = rand(1,10)
+						if phtemp <= 4:
+							*clr & cla	
+							'He points his dick to my mouth'
+							if rand(1,7) <= 4:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,4)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,3)+').jpg"></center>'
+							end
+							
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'cum_call','mouth_swallow',$boy
+							gs 'stat'
+							
+							gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+						elseif phtemp <= 7:	
+							*clr & cla
+							'He points his dick on my face'							
+							if rand(1,7) <= 2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/face ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/face ('+rand(1,5)+').jpg"></center>'
+							end
+							
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+
+							if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+								'He cleans his dick with my hair'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+								pcs_mood -= 30
+								gs 'cum_call','hair',$boy
+								gs 'stat'
+								phclientfunnow += 10
+								fame['pav_prostitute'] += 1
+							end
+							
+							act 'end the service':
+								gs 'mod_public_WC_street_sex_corner', 'endservice'
+							end
+						elseif phtemp <= 10:
+							*clr & cla
+							'He points his dick on my tits'							
+
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/tits ('+rand(1,2)+').mp4"></video></center>'
+
+							gs 'cum_call','arms',$boy
+							gs 'stat'
+							gs 'cum_call','hands',$boy
+							gs 'stat'
+							!! gs 'cum_call','stomach',$boy
+							!! gs 'stat'
+							gs 'cum_call','breasts',$boy
+							gs 'stat'
+							
+							if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+								'He cleans his dick with my hair'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+								pcs_mood -= 30
+								gs 'cum_call','hair',$boy
+								gs 'stat'
+								phclientfunnow += 10
+								fame['pav_prostitute'] += 1
+							end
+							
+							act 'end the service':
+								gs 'mod_public_WC_street_sex_corner', 'endservice'
+							end
+						end
+					end
+				else
+					'I feel his cock twitch and realize he is about to cum…'
+					
+					act 'point it to my mouth':
+						*clr & cla
+						if rand(1,7) <= 4:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,4)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,3)+').jpg"></center>'
+						end
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','mouth_swallow',$boy
+						gs 'stat'
+						
+						gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+					end
+					
+					act 'point it on my face':
+						*clr & cla
+						if rand(1,7) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/mouth ('+rand(1,5)+').jpg"></center>'
+						end
+
+						
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+
+						if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+							'He cleans his dick with my hair'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+							pcs_mood -= 30
+							gs 'cum_call','hair',$boy
+							gs 'stat'
+							phclientfunnow += 10
+							fame['pav_prostitute'] += 1
+						end					
+						
+						act 'end the service':
+							gs 'mod_public_WC_street_sex_corner', 'endservice'
+						end
+					end
+					
+					act 'point it on my tits':
+						*clr & cla
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/tits ('+rand(1,2)+').mp4"></video></center>'
+
+
+						gs 'cum_call','arms',$boy
+						gs 'stat'
+						gs 'cum_call','hands',$boy
+						gs 'stat'
+						!! gs 'cum_call','stomach',$boy
+						!! gs 'stat'
+						gs 'cum_call','breasts',$boy
+						gs 'stat'
+						
+						if pcs_hairlng > 160 and phclient_mood <= 5 and rand(1,4) = 1:
+							'He cleans his dick with my hair'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/hair_clean ('+rand(1,6)+').mp4"></video></center>'
+							pcs_mood -= 30
+							gs 'cum_call','hair',$boy
+							gs 'stat'
+							phclientfunnow += 10
+							fame['pav_prostitute'] += 1
+						end
+						
+						act 'end the service':
+							gs 'mod_public_WC_street_sex_corner', 'endservice'
+						end
+					end
+					
+					act 'keep sucking':
+						cla
+						gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+					end
+				end					
+			end
+		elseif phsex = 3 or phsex = 103:
+			!! act 'end the service':
+				!! gs 'mod_public_WC_street_sex_corner', 'endservice'
+			!! end		
+		
+			if phbjclienthand = 1:
+				killvar 'phbjclienthand'
+				!! remove to cum in or 50/50
+				phcumplace = 1
+				gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+			else		
+				if phclientforce = 1:
+					If phclient['cuminside'] = 3:
+						!! list of cum methods
+						phcumplace = 1
+						gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+					elseIf phclient['cuminside'] = 2:						
+						if phasktonotcuminside = 1:
+							phcumplace = 2
+						else
+							phcumplace = rand(1,2)
+						end
+					elseif phclient['cuminside'] = 1:
+						!! NOKIDS
+						phcumplace = 2
+					end	
+					
+					gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+				else
+					
+					if rand (1,2) = 1:					
+						'I feel his cock twitch and realize he is about to cum…'
+						
+						act 'keep fucking':
+							phcumplace = 1
+							
+							if phclient['cuminside'] = 1: phcumplace = 2
+							
+							gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+						end
+						
+						act 'blow him to the end':
+							cla
+							phsex = 2
+							phspeed = 3
+							gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+						end
+						
+						act 'Say: "Pull it out."':
+							If phclient['cuminside'] = 3:
+								!! list of cum methods
+								phcumplace = 1
+								gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+							else
+								phcumplace = 2
+								gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+							end
+						end
+					else
+						If phclient['cuminside'] = 3:
+							!! list of cum methods
+							phcumplace = 1
+							gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+						elseIf phclient['cuminside'] = 2:						
+							if phasktonotcuminside = 1:
+								phcumplace = 2
+							else
+								phcumplace = rand(1,2)
+							end
+						elseif phclient['cuminside'] = 1:
+							!! NOKIDS
+							phcumplace = 2
+						end	
+						
+						gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+					end
+				end
+			end
+		elseif phsex = 4 or phsex = 104:
+			!! act 'end the service':
+				!! gs 'mod_public_WC_street_sex_corner', 'endservice'
+			!! end		
+		
+			if phbjclienthand = 1:				
+				!! remove to cum in
+				'Client fills my guts with his sperm'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/3 cumass ('+rand(1,2)+').mp4"></video></center>'
+				
+				gs 'cum_call','anus',$boy
+				gs 'stat'
+				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+				
+				killvar 'phbjclienthand'
+			else		
+				if phclientforce = 1:					
+					if rand(1,3) = 1:
+						!! out
+						'Client pulls out his dick and loads on my back'							
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/3 cum on ass ('+rand(1,1)+').mp4"></video></center>'					
+						gs 'cum_call','butt',$boy
+						gs 'stat'
+						gs 'cum_call','back',$boy
+						gs 'stat'
+					else	
+						!! in						
+						'Client fills my guts with his sperm'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/3 cumass ('+rand(1,2)+').mp4"></video></center>'
+						
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+					end
+					
+					act 'end the service':
+						gs 'mod_public_WC_street_sex_corner', 'endservice'
+					end					
+				else
+					'I feel his cock twitch and realize he is about to cum…'
+					
+					act 'keep fucking':
+						cla						
+						!! in
+						'Client fills my guts with his sperm'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/3 cumass ('+rand(1,2)+').mp4"></video></center>'
+						
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+						
+						act 'end the service':
+							gs 'mod_public_WC_street_sex_corner', 'endservice'
+						end
+					end
+					
+					act 'blow him to the end':
+						cla
+						'CLIENT: "Yes, clean my dick!"'
+						
+						phsex = 2
+						phclientfunnow += 10
+						phspeed = 3
+						gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+					end
+					
+					act 'Say: "Pull it out."':
+						cla
+						!! out						
+						'Client pulls out his dick and loads on my back'							
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/ass/3 cum on ass ('+rand(1,1)+').mp4"></video></center>'							
+						gs 'cum_call','butt',$boy
+						gs 'stat'
+						gs 'cum_call','back',$boy
+						gs 'stat'
+						
+						act 'end the service':
+							gs 'mod_public_WC_street_sex_corner', 'endservice'
+						end
+					end
+				end
+			end
+		end	
+	end
+	!! phclient_mood
+	!! phclientfunnow	
+end
+
+if $ARGS[0] = 'vagcumlist':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_sex_corner', 'vagcumlist'
+	*clr & cla
+	
+	if phcumplace < 100:	
+		if phcumplace = 1:
+			!! in
+			if phspeed = 1:
+				!! behind
+				if phasktonotcuminside = 1:
+					if phclientforce = 1:
+						!! 50/50
+						'He pulls his dick out and cum on my belly'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/in-out ('+rand(1,1)+').mp4"></video></center>'
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'
+						gs 'cum_call','stomach',$boy
+						gs 'stat'
+						gs 'cum_call','',$boy, 2
+						gs 'stat'
+					else
+						!! cum and mommy laugh
+						'ME: "What the fuck? You agreed to not cum inside?"'
+						'He takes a step back and immediately starts to laugh.' 
+						'CLIENT: "Don''t worry, Mommy, I wanted to deposite in whore - I did" - he says between waves of laughter.'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/behind_in ('+rand(1,2)+').mp4"></video></center>'
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc						
+					end
+				else
+					!! cum
+					if rand(1,5) ! 1:					
+						'He pump me up with his semen'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/behind_in ('+rand(1,2)+').mp4"></video></center>'
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+					else
+						'He pulls out to sprey my labia, and put it back after, really?'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/out-in ('+rand(1,5)+').mp4"></video></center>'
+						
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc					
+					end
+				end
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+			elseif phspeed = 2:
+				!! missionary
+				if phasktonotcuminside = 1:
+					if phclientforce = 1:
+						!! 50/50
+						'He pulls his dick out and cum on my belly'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/in-out ('+rand(1,1)+').mp4"></video></center>'
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'
+						gs 'cum_call','stomach',$boy
+						gs 'stat'
+						gs 'cum_call','',$boy, 2
+						gs 'stat'
+					else
+						!! cum and mommy laugh
+						'ME: "What the fuck? You agreed to not cum inside?"'
+						'He takes a step back and immediately starts to laugh.' 
+						'CLIENT: "Don''t worry, Mommy, I wanted to deposite in whore - I did" - he says between waves of laughter.'
+						
+						!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/behind_in ('+rand(1,2)+').mp4"></video></center>'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/VAG ('+rand(1,1)+').jpg"></center>'
+						
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc						
+					end
+				else
+					!! cum
+					if rand (1,5) ! 1:
+						'He pump me up with his semen'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/cum/1 vag/1 in/cumin (1).jpg"></center>'	
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/1 in/missionary ('+rand(1,2)+').mp4"></video></center>'
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+					else
+						'He pulls out to sprey my labia, and put it back after, really?'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/out-in ('+rand(1,5)+').mp4"></video></center>'
+						
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc					
+					end
+				end
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+			elseif phspeed = 3:
+				!! cowgirl
+				if phasktonotcuminside = 1:
+					if phclientforce = 1:
+						!! 50/50
+						'He pulls his dick out and cum on my belly'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/in-out ('+rand(1,1)+').mp4"></video></center>'
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'
+						gs 'cum_call','stomach',$boy
+						gs 'stat'
+						gs 'cum_call','',$boy, 2
+						gs 'stat'
+					else
+						!! cum and mommy laugh
+						'ME: "What the fuck? You agreed to not cum inside?"'
+						'He takes a step back and immediately starts to laugh.' 
+						'CLIENT: "Don''t worry, Mommy, I wanted to deposite in whore - I did" - he says between waves of laughter.'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/cow_in ('+rand(1,1)+').mp4"></video></center>'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/VAG ('+rand(1,1)+').jpg"></center>'
+						
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc						
+					end
+				else
+					!! cum
+					if rand (1,5) ! 1:
+						'He pump me up with his semen'
+						!! '<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/cum/1 vag/1 in/cumin (1).jpg"></center>'	
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/cow_in ('+rand(1,1)+').mp4"></video></center>'
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+					else
+						'He pulls out to sprey my labia, and put it back after, really?'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/out-in ('+rand(1,5)+').mp4"></video></center>'
+						
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc					
+					end
+				end
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+			elseif phspeed = 4:
+				!! standing
+				if phasktonotcuminside = 1:
+					if phclientforce = 1:
+						!! 50/50
+						'He pulls his dick out and cum on my belly'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/in-out ('+rand(1,1)+').mp4"></video></center>'
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'
+						gs 'cum_call','stomach',$boy
+						gs 'stat'
+						gs 'cum_call','',$boy, 2
+						gs 'stat'
+					else
+						!! cum and mommy laugh
+						'ME: "What the fuck? You agreed to not cum inside?"'
+						'He takes a step back and immediately starts to laugh.' 
+						'CLIENT: "Don''t worry, Mommy, I wanted to deposite in whore - I did" - he says between waves of laughter.'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/stand_in ('+rand(1,3)+').mp4"></video></center>'	
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc						
+					end
+				else
+					!! cum
+					if rand (1,5) ! 1:
+						'He pump me up with his semen'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/stand_in ('+rand(1,3)+').mp4"></video></center>'
+						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc
+					else
+						'He pulls out to sprey my labia, and put it back after, really?'
+						
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/2 5050/out-in ('+rand(1,5)+').mp4"></video></center>'
+						
+						gs 'cum_call','pantyfront',$boy
+						gs 'stat'
+						gs 'cum_call','labia',$boy
+						gs 'stat'						
+						gs 'cum_call','',$boy
+						gs 'cuminsidereact', $boydesc					
+					end
+				end
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+			end
+			phcumplace = 0
+		elseif phcumplace = 2:
+			!! out			
+			if phspeed = 1:
+				!! behind				
+				if rand(1,10) <= 7:				
+					!! onass
+					phcumplace = 101
+				else				
+					!! pussytomouth
+					phcumplace = 102
+				end
+			elseif phspeed = 2:
+				!! missionary				
+				temp = rand(1,10)				
+				if temp <= 5:
+					!! onbelly
+					phcumplace = 201					
+				elseif temp = 6:
+					!! onface
+					phcumplace = 202
+				else
+					!! pubic
+					phcumplace = 203
+				end
+			elseif phspeed = 3:
+				!! cowgirl
+				phcumplace = 0
+				'He puls out his cock end spreys on my pubic'
+				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end				
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/cow_out ('+rand(1,1)+').jpg"></center>'
+				
+				gs 'cum_call','pantyfront',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'				
+			elseif phspeed = 4:
+				!! standing
+				phcumplace = 0
+				'He puls out his cock end spreys on my pubic'
+				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+				
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/cow_out ('+rand(1,1)+').jpg"></center>'
+				gs 'cum_call','pantyfront',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+			end
+		end	
+	end
+	
+	if phcumplace = 101:
+		!! onass
+		'Client pulls out his dick and loads on my butt'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/3 on/onass ('+rand(1,1)+').mp4"></video></center>'
+		
+		gs 'cum_call','butt',$boy
+		gs 'stat'
+		gs 'cum_call','back',$boy
+		gs 'stat'
+		
+		act 'clean the dick':
+			*clr & cla
+			fame['pav_prostitute'] += 2
+			'I am cleaning it with my saliva'
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/vag/cum/onass then clean ('+rand(1,1)+').mp4"></video></center>'
+			phclientfunnow += 15
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'			
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_corner', 'endservice'
+			end
+		end
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end
+	elseif phcumplace = 102:
+		!! pussytomouth
+		'He turns me and push down, he put it in my mouth'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/vag/cum/pussy to mouth ('+rand(1,1)+').mp4"></video></center>'
+		
+		act 'continue':
+			gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+		end		
+	elseif phcumplace = 201:
+		!! onbelly	
+		'Client pulls out his cock and loads on my belly'	
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/cum/1 vag/3 on/onbelly (1).jpg"></center>'		
+		gs 'cum_call','pantyfront',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'		
+		
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end		
+	elseif phcumplace = 202:
+		!! onface
+		
+		'He pulls his cock out and shot on my FACE!!!'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 vag/3 on/onface ('+rand(1,1)+').mp4"></video></center>'	
+		gs 'cum_call','pantyfront',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','breasts',$boy
+		gs 'stat'
+		gs 'cum_call','hair',$boy
+		gs 'stat'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'			
+
+		if $clothingworntype = 'nude':
+			gs 'cum_call','breasts',$boy
+			gs 'stat'			
+		else
+			gs 'cum_call','clothes',$boy
+			gs 'stat'			
+		end
+		
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end		
+	elseif phcumplace = 203:	
+		!! pubic
+		'Client pulls out his dick and loads on my pubic'
+		
+		if rand(1,2) = 1:	
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/misionary_out ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/vag/2 cum/misionary_out ('+rand(1,1)+').mp4"></video></center>'
+		end
+		
+		gs 'cum_call','pantyfront',$boy
+		gs 'stat'
+		gs 'cum_call','stomach',$boy
+		gs 'stat'
+		gs 'cum_call','labia',$boy
+		gs 'stat'		
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end		
+	end
+
+	!! act 'end the service':
+		!! gs 'mod_public_WC_street_sex_corner', 'endservice'
+	!! end	
+	
+	!! phclient_mood
+	!! phclientfunnow	
+	!! fame['pav_prostitute'] += 1
+	killvar 'phcumplace'
+	killvar 'phasktonotcuminside'
+end
+
+if $ARGS[0] = 'swallowBJ':
+	!! gs 'mod_public_WC_street_sex_corner', 'swallowBJ'
+	if trt_cumeater = 1:
+		act 'swallow':	
+			*clr & cla
+			
+			gs 'mod_public_WC_street_sex_corner', 'swallowBJ2'
+		end
+	else
+		gs 'willpower', 'swallow', 'self'
+		temp = will_cost - (sexcorrupt / 4)
+		will_cost -= (sexcorrupt / 4)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			
+			act 'swallow (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				
+				gs 'mod_public_WC_street_sex_corner', 'swallowBJ2'
+			end
+		else
+			act 'swallow ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+		end
+	end
+	
+	act 'I can''t handle it!':
+		*clr & cla
+		
+		if phclientforce = 1:
+			'I am trying my best to put it out. But it worthless…'
+			phclientfunnow -= 30
+			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/sex/bj push him out ('+rand(1,1)+').mp4"></video></center>'
+			
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_sex_corner', 'swallowBJ2'
+				
+			end
+		else			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/bj/cum/tomuchinmouth ('+rand(1,1)+').mp4"></video></center>'
+			'It is too much!!!'
+			
+			gs 'cum_call','face',$boy
+			gs 'stat'
+			gs 'cum_call','mouth',$boy
+			gs 'stat'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'
+			!! gs 'cum_call','arms',$boy
+			!! gs 'stat'
+			gs 'cum_call','hands',$boy
+			gs 'stat'
+			
+			if $clothingworntype = 'nude':
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','breasts',$boy
+				gs 'stat'
+			else
+				gs 'cum_call','clothes',$boy
+				gs 'stat'		
+			end
+			
+			phclientfunnow += 1
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_corner', 'endservice'
+			end	
+		end
+	end	
+end
+if $ARGS[0] = 'swallowBJ2':
+	!*clr & cla
+	fame['pav_prostitute'] += 1
+	!! check if I have enought skill to swallow everything
+	
+	phcumtemp = rand (50,150)
+
+	gs 'boyStat', $npclastgenerated
+	if phcumtemp - 40 <= 40:
+		sparrvol = 40
+	else
+		sparrvol = phcumtemp - 20
+	end
+	
+	if phspeed = 5:
+		!! ff
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/ff ('+rand(1,2)+').mp4"></video></center>'
+		'He keeps his pace and cumming… sperm flies eveerywhere: my mouth, face, hair'
+		
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'cum_call', 'hair', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'		
+		phclientfunnow += 10
+		fame['pav_prostitute'] += 2	
+		
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end			
+	elseif stat['swallow'] >= sparrvol:
+		!! yes
+		if rand(1,3) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/swallow_3YES ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/swallow_3YES ('+rand(1,1)+').mp4"></video></center>'
+			
+		end
+		'I take everything with a last drop to my mouth'
+		
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		!! spafinloc = 11
+		!! gs 'cum_manage'
+		gs 'arousal', 'end'
+		gs 'stat'		
+		phclientfunnow += 20
+		fame['pav_prostitute'] += 3
+		
+		if phspeed = 4:
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_corner', 'endservice'
+			end
+		else
+			'Clients deposit is in my mouth'
+			gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+		end
+		
+
+		if rand(1,10) = 1:
+			*clr
+			'His firs splurp was so powerfull it goes through my nose'
+			'CLIENT: "The DRAGON!!! NICE!!!"'
+			*nl
+			'I take everything with a last drop to my mouth'
+			phclientfunnow += 50
+			fame['pav_prostitute'] += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/dragon ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'			
+		elseif phcumtemp >= 130:
+			*clr
+			'I was prepared to take it all, but the guy is a monster and I just CAN''T!'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/MASSIVE load ('+rand(1,1)+').mp4"></video></center>'
+			'CLIENT: "Wow, congratulations! your swallow result is best so far from all the whores I had"'
+			phclientfunnow += 10
+			fame['pav_prostitute'] += 1	
+			
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			
+			if $clothingworntype = 'nude':
+				gs 'cum_call', 'stomach', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+				gs 'cum_call', 'hair', $npclastgenerated, 0
+			else
+				gs 'cum_call', 'clothes', $npclastgenerated, 0
+			end	
+			gs 'arousal', 'end'
+			gs 'stat'			
+		end
+	elseif stat['swallow'] >= sparrvol - 20:
+		!! 50/50
+		'I am trying to take it al in the mouth, but, few dropes still do not fit'
+		
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'arousal', 'end'
+		gs 'stat'		
+		phclientfunnow += 5
+		fame['pav_prostitute'] += 1
+		
+		if rand(1,3) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/swallow_2almostall ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/swallow_2almostall ('+rand(1,1)+').mp4"></video></center>'
+		end
+		
+		if phspeed = 4:
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_corner', 'endservice'
+			end
+		else
+			'Clients deposit is in my mouth'
+			gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+		end
+		
+		if rand(1,10) = 1:
+			*clr
+			'His firs splurp was so powerfull it goes through my nose'
+			'CLIENT: "The DRAGON!!! NICE!!!"'
+			*nl
+			'I am trying to take it al in the mouth, but, few dropes still do not fit'
+			phclientfunnow += 50
+			fame['pav_prostitute'] += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/dragon ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'cum_call', 'face', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'			
+		end		
+	else
+		!! no
+		'I am trying to take it al in the mouth, but it is too much for me!!!'
+		
+		gs 'cum_call', 'mouth', $npclastgenerated, 0
+		gs 'cum_call', 'face', $npclastgenerated, 0
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		
+		if $clothingworntype = 'nude':
+			gs 'cum_call','stomach',$boy
+			gs 'stat'
+			gs 'cum_call','breasts',$boy
+			gs 'stat'
+		else
+			gs 'cum_call','clothes',$boy
+			gs 'stat'		
+		end
+		gs 'arousal', 'end'
+		gs 'stat'		
+		phclientfunnow += 1			
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/swallow_1NOT ('+rand(1,2)+').mp4"></video></center>'
+		
+		if rand(1,10) = 1:
+			*clr
+			'His firs splurp was so powerfull it goes through my nose'
+			'CLIENT: "The DRAGON!!! NICE!!!"'
+			*nl
+			'After the "dragon" I just cant swallow anything…'
+			phclientfunnow += 50
+			fame['pav_prostitute'] += 3
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/1 bj/dragon ('+rand(1,1)+').mp4"></video></center>'
+			
+			gs 'cum_call', 'face', $npclastgenerated, 0
+		end
+		gs 'arousal', 'end'
+		gs 'stat'
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end		
+	end
+	killvar 'phcumtemp'	
+end
+
+if $ARGS[0] = 'swallowORnot':
+	i = 1
+	act 'Show him his deposit':		
+		if i = 1: phclientfunnow += 5
+		i += 1		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/cum/2 mouth/mouth_full_show (1).jpg"></center>'		
+	end
+	
+	
+	if trt_cumeater = 1:
+		act 'swallow':
+			*clr & cla			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 mouth/swallow ('+rand(1,1)+').mp4"></video></center>'
+			gs 'cum_call','mouth_swallow',$boy
+			gs 'stat'
+			phclientfunnow += 10
+			if phclient['cuminside'] = 3: phclientfunnow += rand(0,20)
+			
+			fame['pav_prostitute'] += rand(0,1)
+			
+			gs 'mod_public_WC_street_sex_corner', 'cleandick'
+			
+			act 'end the service':
+				gs 'mod_public_WC_street_sex_corner', 'endservice'
+			end			
+		end
+	else
+		gs 'willpower', 'swallow', 'self'
+		temp = will_cost - (sexcorrupt / 4)
+		will_cost -= (sexcorrupt / 4)
+		if will_cost <= 0: will_cost = 0
+		if will_cost <= pcs_willpwr:
+			
+			act 'swallow (<<temp>> Willpower)':
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/universal/cum/2 mouth/swallow ('+rand(1,1)+').mp4"></video></center>'				
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				phclientfunnow += 10
+				fame['pav_prostitute'] += rand(0,1)
+				if phclient['cuminside'] = 3: phclientfunnow += rand(0,20)
+				
+				gs 'mod_public_WC_street_sex_corner', 'cleandick'
+				
+				act 'end the service':
+					gs 'mod_public_WC_street_sex_corner', 'endservice'
+				end
+			end
+		else
+			act 'swallow ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+		end
+	end
+	
+	act 'spit the cum':
+		*clr & cla	
+		phclientfunnow -= rand(0,20)
+		if phclient['cuminside'] = 3: phclientfunnow -= rand(0,20)
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/bj/cum/spit ('+rand(1,1)+').mp4"></video></center>'
+		
+		if phclient['cuminside'] = 3 or phclient_mood <= 3: '"WTF R U DOING, WHORE?! SUCH A GOOD DEPOSITE!!!"'
+		'He slaps my face'
+		fame['pav_prostitute'] -= rand(0,1)		
+		gs 'pain', rand(3,5), 'cheeks', 'slap'
+		gs 'stat'	
+		
+		gs 'mod_public_WC_street_sex_corner', 'cleandick'	
+		
+		act 'end the service':
+			gs 'mod_public_WC_street_sex_corner', 'endservice'
+		end
+	end	
+	!! gs 'mod_public_WC_street_sex_corner', 'swallowORnot'
+end
+
+if $ARGS[0] = 'cleandick':
+	phi = 1
+	act 'clean the dick':
+		if phi = 1: 
+			phclientfunnow += 5
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'mouth', $npclastgenerated, 0
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'			
+			!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/street work/2 pidizd/bj/cum/clean ('+rand(1,2)+').mp4"></video></center>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/1 provulok/bj/cum/clean ('+rand(1,2)+').jpg"></center>'
+		end
+		phi += 1
+	end
+	!! gs 'mod_public_WC_street_sex_corner', 'cleandick'
+end
+
+
+if $ARGS[0] = 'endservice':
+	cla	
+	if phtakecondom = 1:
+		'I throw the condom on the ground'
+		phclientfunnow -= rand(0,10)
+	end
+	killvar 'phtakecondom'
+	
+	protect = 0
+	If phclient['pay'] = 4:
+		'Okey, it was fun!'
+		
+		if phclientfunnow >= 300:
+			'CLIENT: "UNBELIEVABLE!!! You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell everybody about you!"'
+			
+			temp = (PH_full_pay / 100 ) * 10				
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'					
+			fame['pav_prostitute'] += 5
+		elseif phclientfunnow >= 200:
+			'CLIENT: "You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell my friends about you"'
+			
+			temp = (PH_full_pay / 100 ) * 5				
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+			
+			fame['pav_prostitute'] += 3
+		elseif phclientfunnow > 150:
+			fame['pav_prostitute'] += 1
+			
+		end			
+		gs 'stat'
+		
+		killvar 'PH_full_pay'
+		gs 'mod_public_WC_street_sex', 'clientaway'	
+	elseIf phclient['pay'] <= 2 or phclient['pay'] = 5 or carclient > 0:
+		'He dress up and give me my cash (<<PH_full_pay>>)'
+		money += PH_full_pay
+		
+		if phclientfunnow >= 300:
+			'CLIENT: "UNBELIEVABLE!!! You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell everybody about you!"'
+			
+			temp = (PH_full_pay / 100 ) * 10				
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'				
+			fame['pav_prostitute'] += 5
+		elseif phclientfunnow >= 200:
+			'CLIENT: "You are the best whore I ever had. You know what, here is your tips!"'
+			'CLIENT: "I will tell my friends about you"'
+			
+			temp = (PH_full_pay / 100 ) * 5				
+			money += temp
+			'He gives me <<temp>>'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+			
+			fame['pav_prostitute'] += 3
+		elseif phclientfunnow > 150:
+			fame['pav_prostitute'] += 1
+			
+		end			
+		gs 'stat'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+		gs 'stat'
+		killvar 'PH_full_pay'		
+		gs 'mod_public_WC_street_sex', 'clientaway'
+	elseif phclient['pay'] = 3:
+		!! herunaway		
+		'He pushed me to the floor and run away'
+
+		if phclientfunnow >= 300:			
+			fame['pav_prostitute'] += 5
+		elseif phclientfunnow >= 200:
+			fame['pav_prostitute'] += 3
+		elseif phclientfunnow > 150:
+			fame['pav_prostitute'] += 1				
+		end			
+		gs 'stat'
+	
+		killvar 'PH_full_pay'
+		+$OpenInnerThought+'This jerk did NOT pay me!!!'+$CloseInnerThought		
+		gs 'pain', rand(1,2), 'back', 'fall'
+		gs 'stat'
+	end
+	cla
+	
+
+	
+	
+	
+	act 'looking for the next client':
+		gs 'mod_public_WC_street','prostitutesearch'
+	end
+	act 'go away': 
+		gt $loc, $loc_arg
+	end
+end
+
+
+
+if $ARGS[0] = 'paymore':
+	'The client is…'
+	*nl
+	if phtemp3 <= 6:							
+		'poor'			
+	elseif phtemp3 <= 9:
+		'casual dressed'
+	else
+		'fancy'
+		ytemp = 3
+	end
+	
+	act 'Client is always right, Honey':
+		phclientfunnow += 13
+		phspeed = 1
+		phsex = otemp
+		gs 'mod_public_WC_street_sex_corner', 'sexstart'
+	end
+	
+	temp = 25 * phwhorepay
+	act 'It costs <<temp>> extra':
+		*clr & cla
+		if rand(1,11) > 2 - ytemp:
+			!! agree
+			if phclient['pay'] = 4:
+				'He gives me extra cash'
+				money += 25 * phwhorepay
+				PH_full_pay += 25 * phwhorepay
+				phsex = otemp
+				phspeed = 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+				act 'continue':
+					*clr & cla
+					gs 'mod_public_WC_street_sex_corner', 'sex'
+				end
+			end								
+		else
+			!! nah
+			'CLIENT: "To expensive, I am good"'
+			phclientfunnow -= 13
+			
+			act 'For you it is free':
+				phclientfunnow += 13
+				phsex = otemp
+				phspeed = 1
+				gs 'mod_public_WC_street_sex_corner', 'sexstart'
+			end
+			
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+	end
+	
+	temp = 50 * phwhorepay
+	act 'It costs <<temp>> extra':
+		*clr & cla
+		if rand(1,11) > 5 - ytemp:
+			!! agree
+			if phclient['pay'] = 4:
+				'He gives me extra cash'
+				money += 50 * phwhorepay
+				PH_full_pay += 50 * phwhorepay
+				phsex = otemp
+				phspeed = 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+				act 'continue':
+					*clr & cla
+					gs 'mod_public_WC_street_sex_corner', 'sex'
+				end
+			end								
+		else
+			!! nah
+			'CLIENT: "To expensive, I am good"'
+			phclientfunnow -= 13
+			
+			act 'For you it is free':
+				phclientfunnow += 13
+				phsex = otemp
+				phspeed = 1
+				gs 'mod_public_WC_street_sex_corner', 'sexstart'
+			end
+			
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+	end
+	
+	temp = 75 * phwhorepay
+	act 'It costs <<temp>> extra':
+		*clr & cla
+		if rand(1,11) > 8 - ytemp:
+			!! agree
+			if phclient['pay'] = 4:
+				'He gives me extra cash'
+				money += 75 * phwhorepay
+				PH_full_pay += 75 * phwhorepay
+				phsex = otemp
+				phspeed = 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/universal/event/paid.jpg"></center>'	
+				act 'continue':
+					*clr & cla
+					gs 'mod_public_WC_street_sex_corner', 'sex'
+				end
+			end								
+		else
+			!! nah
+			'CLIENT: "To expensive, I am good"'
+			phclientfunnow -= 13
+			
+			act 'For you it is free':
+				phclientfunnow += 13
+				phsex = otemp
+				phspeed = 1
+				gs 'mod_public_WC_street_sex_corner', 'sexstart'
+			end
+			
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'ifphsex100more':
+	if phsex > 100:			
+		if phsex ! 101:
+			act 'jerk him':
+				phsex = 101
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+		if phsex ! 102:			
+			act 'blow him':
+				phsex = 102
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+		if phsex ! 103:			
+			act 'fuck him':
+				phsex = 103
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+		if phsex ! 104:			
+			act 'assfuck him':
+				phsex = 104
+				phspeed = 1					
+				gt 'mod_public_WC_street_sex_corner', 'sex'
+			end
+		end
+	end
+end
+
+
+
+
+
+
+	
+	
+
+--- mod_public_WC_street_sex_corner ---------------------------------
+

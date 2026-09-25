@@ -1,0 +1,139 @@
+# comands
+pl
+
+iif
+
+
+
+
+
+
+
+
+	if pcs_humint <= 40 or pcs_intel <= 50:
+		act 'Oh, I will do':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint <= 60 or pcs_intel <= 70:
+		act 'Ok, I''ll do':
+			slova -= 3
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint <= 80 or pcs_intel <= 90:
+		act 'Ok':
+			slova -= 1
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+	if pcs_humint > 80 or pcs_intel > 90:
+		act 'Nod "yes"':
+			slova -= 0
+			if slova < 0:
+				gt 'mod_public_WC_kara', '0sliv'
+			else
+				gt 'mod_public_WC_rab_Task','taskdo'
+			end
+		end
+	end
+
+
+
+
+
+
+	if $clothingworntype ! 'nude':
+		act 'undress':
+
+			minut += 3
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			'I have undressed myself.'
+		end
+	end
+	if $clothingworntype = 'nude':
+		act 'Get dressed':
+
+			minut+=3
+			gs 'outfit', 'wear_last_worn'
+			'I put my clothes back on.'
+			gs 'stat'
+		end
+	end
+
+	if $pantyworntype ! 'none':
+		act 'Remove panties (0:02)':
+			minut += 2
+			gs 'stat'
+			gs 'panties', 'remove'
+			gt $loc, $loc_arg
+		end
+	end
+
+	if $braworntype ! 'none':
+		act 'Remove bra (0:02)':
+			minut += 2
+			gs 'stat'
+			gs 'bras', 'remove'
+			gt $loc, $loc_arg
+		end
+	end
+
+
+
+
+
+
+
+
+
+!-=wip=-
+gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'
+gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+
+phescortfunDONE = 1
+phescortfunSexDONE += 1
+phescortfun -= 50
+if phescortfun <= 0: phescortfun = 0
+
+
+
+
+'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/1/bania/.mp4"></video></center>'
+'+rand(1,)+'
+
+'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/1/bania/.jpg"></center>'
+'+rand(1,)+'
+
+
+
+!phescortfun +=
+!phescortfunDONE =
+!phescortfunSexDONE =
+!phescortfunNEED =
+!'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+
+
+
+	if $clothingworntype ! 'nude': gs 'clothing', 'strip'
+	if $pantyworntype ! 'none' and $braworntype ! 'none': gs 'underwear', 'remove'
+
+
+--- comands ---------------------------------
+

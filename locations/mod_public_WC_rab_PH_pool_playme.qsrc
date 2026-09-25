@@ -1,0 +1,3402 @@
+# mod_public_WC_rab_PH_pool_playme
+if $ARGS[0] = 'playme':
+	*clr & cla
+	
+
+	gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+
+	
+	if phMyballs + phhisballs + 1 >= 10:
+		'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/2 (1).jpg">'
+	elseif phMyballs = 0 or phhisballs = 1:
+		'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/2 (3).jpg">'
+	else
+		'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/2 (2).jpg">'
+	end
+	
+	
+	if phmyturn = 1 and phpoolturn ! 0:		
+		phpoolturn += 1
+		
+		if mc_inventory['cigarettes'] > 0:
+			act 'Smoking':
+				minut += rand(3,5)
+				gs 'drugs', 'smoke'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/smoke/play_smoke.jpg"></center>'
+			end
+		end
+		
+		if phMyballs > 0:
+			phacc1 = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20)-((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2
+			if phacc1 <= 0: phacc1 = rand(1,30)
+			if phacc1 > 100: phacc1 = 100
+			act 'Pocket a ball with <<phacc1>>% accuracy':
+				*clr & cla
+				if rand(1,5) = 1: pool_exp += 1
+				
+				if phacc1 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 5
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Yes! I have pocketed the ball!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				else	
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end			
+			
+			phacc2 = phacc1 - rand(5,8)
+			if phacc2 <= 0: phacc2 = rand(1,10)
+			if phacc2 > 100: phacc2 = 100
+			act 'Tease while pocket a ball with <<phacc2>>% accuracy':
+				*clr & cla
+				if rand(1,5) = 1: pool_exp += 1
+				phhisarounsed += rand(1,6) + (3 - phmydress)
+				
+				if phacc2 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 5
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed the ball!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end					
+				else	
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end
+		end	
+		
+		if phMyballs >= 2:
+			phacc3 = phacc1 - (((100 - rand(pcs_pool,100))*rand(3,6))/10)
+			if phacc3 <= 0: phacc3 = rand(1,20)
+			if phacc3 > 100: phacc3 = 100
+			act 'Pocket 2 balls at once with <<phacc3>>% chance':
+				*clr & cla
+				pool_exp += 1
+				
+				if phacc3 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Yes! I have pocketed 2 balls!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+					
+					phMyballs -= 1
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				elseif phacc3 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'I have pocketed just one ball'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				else
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 7
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed all!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end			
+			
+			phacc4 = phacc3 - rand(5,10)
+			if phacc4 <= 0: phacc4 = rand(1,10)
+			if phacc4 > 100: phacc4 = 100
+			act 'Tease while Pocket 2 balls at once with <<phacc4>>% chance':
+				*clr & cla
+				pool_exp += 1
+				phhisarounsed += rand(1,6) + (3 - phmydress)
+				
+				if phacc4 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed 2 balls!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+					
+					phMyballs -= 1
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				elseif phacc4 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed 2 balls!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				else
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 7
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Fuck! I have missed all!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end
+		end
+		
+		if phMyballs + phhisballs >= 5:
+			phacc5 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - ((100 - rand(pcs_pool,100)) * rand(13,15) / 10)
+			if phacc5 <= 0: phacc5 = rand(1,10)
+			if phacc5 > 100: phacc5 = 100
+			act 'Pocket a ball and make a worse situation to the opponent with <<phacc5>>% chance':
+				*clr & cla
+				pool_exp += 1
+				
+				if phacc5 >= rand(0,100):
+					phpoolhit_rival += ( 100 - rand(pcs_pool, 100) ) / 6
+					if phpoolhit_rival <= 0: phpoolhit = 1
+					phpoolhit = 100 - phpoolhit_rival
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Yes! I have pocketed a ball and a situation clearly worse for the opponent!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				elseif phacc5 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Yes! I have pocketed a ball, but I made a mess on the table'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				else
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 7
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed all!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end	
+			
+			phacc6 = phacc5 - rand(5,10)
+			if phacc6 <= 0: phacc6 = rand(1,5)
+			if phacc6 > 100: phacc6 = 100
+			act 'Tease while pocket a ball and make a worse situation to the opponent with <<phacc6>>% chance':
+				*clr & cla
+				pool_exp += 1
+				phhisarounsed += rand(1,6) + (3 - phmydress)
+				
+				if phacc6 >= rand(0,100):
+					phpoolhit_rival += ( 100 - rand(pcs_pool, 100) ) / 6
+					if phpoolhit_rival <= 0: phpoolhit = 1
+					phpoolhit = 100 - phpoolhit_rival
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed a ball and a situation clearly worse for the opponent!'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				elseif phacc6 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed a ball, but I made a mess on the table'
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+				else
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 4
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 7
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Fuck! I have missed all!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end
+		end
+		
+		if phMyballs = 0:
+			phacc7 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - phhisballs * 3
+			if phacc7 <= 0: phacc7 = rand(1,10)
+			if phacc7 > 100: phacc7 = 100
+			act 'Pocket a 8 ball with <<phacc7>>% accuracy':
+				*clr & cla
+				if rand(1,3) = 1: pool_exp += 1
+				
+				if phacc7 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 5
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Yes! I have pocketed the 8 ball!'
+					'I WIN!!!'
+					phmyturn = 1
+					
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+					
+					
+					phpoolturn = 0
+					
+					if phbet > 0:
+						'"Damn, girl… here is your money"'
+						
+						minut += 3
+						gs 'stat'
+						phbilliardday = 0
+						act 'take the money and go away':
+							otemp = 0
+							money += phbet
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					elseif phstrippool = 1:
+						temp = phmydress * 250
+						if temp = 0: temp = 250
+						'"Damn, girl… good game"'
+						if phmydress > 0:
+							'"Look at you, I obviously own you a <<temp>>" <b>₽</b>'
+						else
+							'"You are fully naked, but here is your 250 as win reward))"'
+						end
+						act 'take the money and go away':
+							otemp = 0
+							minut += 3
+							money += temp
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					end					
+				else	
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end			
+			
+			phacc8 = phacc7 - rand(1,10)
+			if phacc8 <= 0: phacc8 = rand(1,5)
+			if phacc8 > 100: phacc8 = 100
+			act 'Tease while pocket a 8 ball with <<phacc8>>% accuracy':
+				*clr & cla
+				if rand(1,3) = 1: pool_exp += 1
+				phhisarounsed += rand(1,6) + (3 - phmydress)
+				
+				if phacc8 >= rand(0,100):
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 5
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 1
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play_tease/play_tease ('+rand(1,2)+').jpg">'
+						end
+					elseif phmydress = 2:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play_tease/play_tease.mp4"></video></center>'
+					elseif phmydress = 0:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play_tease/play_tease ('+rand(1,2)+').jpg">'
+					end
+					
+					'Yes! I have pocketed the 8 ball!'
+					'I WIN!!!'
+					phmyturn = 1
+					
+					
+					if phMyballs = 5 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her shirt"'							
+						else
+							'"He undress his shirt"'							
+						end						
+					elseif phMyballs = 3 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her bra"'							
+						else
+							'"He undress his socks"'							
+						end	
+					elseif phMyballs = 1 and phstrippool = 1:
+						phrivaldress -= 1
+						if phttemp = 2:
+							'"She undress her panties"'							
+						else
+							'"He undress his jeans"'							
+						end	
+					end
+					
+					
+					phpoolturn = 0
+					
+					if phbet > 0:
+						'"Damn, girl… here is your money"'
+						
+						minut += 3
+						gs 'stat'
+						phbilliardday = 0
+						act 'take the money and go away':
+							otemp = 0
+							money += phbet
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					elseif phstrippool = 1:
+						temp = phmydress * 250
+						if temp = 0: temp = 250
+						'"Damn, girl… good game"'
+						if phmydress > 0:
+							'"Look at you, I obviously own you a <<temp>>" <b>₽</b>'
+						else
+							'"You are fully naked, but here is your 250 as win reward))"'
+						end
+						act 'take the money and go away':
+							otemp = 0
+							minut += 3
+							money += temp
+							gs 'stat'
+							gt $loc, $loc_arg
+						end
+					end			
+				else	
+					phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 3
+					if phpoolhit <= 0: phpoolhit = 1
+					phpoolhit_rival = 100 - phpoolhit
+					phMyballs -= 0
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					if phmydress = 3:
+						if rand(1,6) <= 2:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,2)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/play/play ('+rand(1,4)+').jpg">'
+						end
+					elseif phmydress = 2:
+						if rand(1,6) <= 0:
+							
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+						end
+					elseif phmydress = 1:
+						'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/play/play.jpg">'
+					elseif phmydress = 0:
+						if rand(1,4) <= 1:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,1)+').mp4"></video></center>'
+						else
+							'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/play/play ('+rand(1,3)+').jpg">'
+						end
+					end
+					
+					'Fuck! I have missed!'
+					phmyturn = 0
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+				end
+			end
+		end
+		
+		if phMyballs ! 0 and phhisballs ! 0 and phhisarounsed >= rand(70,100) and phttemp ! 2:
+			cla
+			if mc_inventory['cigarettes'] > 0:
+				act 'Smoking':
+					minut += rand(3,5)
+					gs 'drugs', 'smoke'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/smoke/play_smoke.jpg"></center>'
+				end
+			end
+			
+			if phMyballs > 0:
+				phacc1 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2
+				if phacc1 = 0: phacc1 = rand(1,30)
+				act 'Pocket a ball with <<phacc1>>% accuracy':
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+
+				phacc2 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - rand(5,5)
+				if phacc2 = 0: phacc2 = rand(1,30)
+				act 'Tease while pocket a ball with <<phacc2>>% accuracy':			
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+			end
+			
+			if phMyballs >= 2:
+				phacc3 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - (100 - rand(pcs_pool,100))
+				if phacc3 <= 0: phacc3 = rand(1,20)
+				act 'Pocket 2 balls at once with <<phacc3>>% chance':
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+			
+				phacc4 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - (100 - rand(pcs_pool,100)) - rand(5,10)
+				if phacc4 <= 0: phacc4 = rand(1,20)
+				act 'Tease while Pocket 2 balls at once with <<phacc4>>% chance':
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+			end
+			
+			if phMyballs + phhisballs >= 5:
+				phacc5 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - (100 - rand(pcs_pool,100)) * rand(13,15) / 10
+				if phacc5 <= 0: phacc5 = rand(1,10)
+				act 'Pocket a ball and make a worse situation to the opponent with <<phacc5>>% chance':
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+				
+				phacc8 = ((13 * (rand(pcs_pool,100)+rand(pcs_pool,100))) / 20) - ((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phMyballs * 2 - rand(5,5) - phhisballs * 3
+				if phacc8 <= 0: phacc8 = rand(1,30)
+				act 'Tease while pocket a 8 ball with <<phacc8>>% accuracy':
+					temp = rand(1,2)
+					phevent = temp
+					gt 'mod_public_WC_rab_PHwork_events_7', 'event'
+				end
+			end
+		end
+		if phpoolturn = 2:
+			*clr & cla
+			gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+			'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/1.jpg">'
+			act 'make a break shoot':
+				*clr & cla
+				gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+				phacc = 100
+				
+				'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/hit.jpg">'
+				phpoolhit = 100 - rand(pcs_pool, 100)
+				if phpoolhit <= 0: phpoolhit = 1
+				phpoolhit_rival = 100 - phpoolhit
+				
+				if phpoolhit >= 90:
+					'I made a bad shoot'
+				elseif phpoolhit >= 50:
+					'I made an ok shoot'
+				elseif phpoolhit >= 30:					
+					'I made a good shoot'
+				else
+					'I made a perfect shoot'
+				end
+				
+				act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+			end
+		end		
+	elseif phmyturn = 0 and phpoolturn ! 0:
+		phpoolturn += 1
+		
+		
+		if phttemp = 2:
+			'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/she<<hisava>>.jpg">'		
+		elseif pooltemptemp > 1:
+			'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/they.jpg">'
+		elseif phttemp = 1:
+			'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/he<<hisava>>.jpg">'
+		end
+		
+		act 'wait':
+			*clr & cla			
+			if phhisballs > 0:			
+				if phhisballs >= 2:
+					temp = (((rand(pcs_pool,100)+rand(pcs_pool,100))*13)/20)-((rand(0, phpoolhit)+rand(0, phpoolhit))/2) + phhisballs * 5
+					if temp = 0: temp = rand(1,30)
+					
+					if temp >= rand(0,100):
+						phhisballs -= 1
+						if temp >= rand(70,100):
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 2
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets 2 balls with one shoot!'
+							temp = 2525689
+						elseif temp >= rand(50,100):
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball and he make a tricky situation for my balls'
+						else	
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball'
+						end
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						else
+							if phmydress = 3:
+								if rand (1,6)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+						
+						
+						
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+						
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										phhisarounsed += rand(1,6) + (3 - phmydress)
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+						
+						if temp = 2525689: 
+							phhisballs -= 1
+							temp = 0
+						end
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+						
+					else
+						if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+							
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+						else
+							
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+						end
+						gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+						'He missed'
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						else
+							if phmydress = 3:
+								if rand (1,6)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+						
+						phmyturn = 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+					end				
+				elseif phhisballs = 1:
+					temp = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20) - ((rand(0, phpoolhit_rival)+rand(0, phpoolhit_rival))/2) + phhisballs * 5
+					if temp = 0: temp = rand(1,30)
+					
+					if temp >= rand(0,100):
+						phhisballs -= 1
+						if temp >= rand(70,100):
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball and he make a tricky situation for my balls'
+						else	
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball'
+						end
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						else
+							if phmydress = 3:
+								if rand (1,6)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+						
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+						
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+					else
+						if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+							
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+						else
+							
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+						end
+						gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+						'He missed'
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						else
+							if phmydress = 3:
+								if rand (1,6)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+								end
+							elseif phmydress = 2:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 1:
+								if rand (1,4)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+								end	
+							elseif phmydress = 0:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+						
+						
+						phmyturn = 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+					end				
+				end
+			elseif phhisballs = 0:
+				temp = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20) - ((rand(0, phpoolhit_rival)+rand(0, phpoolhit_rival))/2) - phMyballs * 3
+				if temp = 0: temp = rand(1,30)
+				
+				if temp >= rand(0,100):
+					'He pockets the 8 ball!'
+					'He win!'
+					
+					if phttemp = 2:
+						if phmydress = 3:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						elseif phmydress = 2:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end
+						elseif phmydress = 1:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end
+						elseif phmydress = 0:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+						end
+					else
+						if phmydress = 3:
+							if rand (1,6)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+							end
+						elseif phmydress = 2:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end	
+						elseif phmydress = 1:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end	
+						elseif phmydress = 0:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+						end
+					end
+					
+					if phstrippool = 1:
+						cla
+						'"I am the winer" - he is staring at me'
+						phmydress = 0
+						
+						act 'tease':
+							'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+							gs 'arousal', 'flash', 2, 'exhibitionism'
+							gs 'stat'
+							otemp = 0
+							
+							if phttemp = 2:
+								'She start touching me'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							elseif pooltemptemp > 1:
+								'Guys keep fiving each other… "Come on
+ baby, we are lonely!"'
+								if pooltemptemp <= 4:
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'line'
+								else
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'gb_free'
+								end								
+							elseif phttemp = 1:
+								'He is looking at me with hungry eyes'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							end
+						end
+						
+						act 'wait':
+							cla
+							otemp = 0
+							if phttemp = 2:
+								'She start touching me'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							elseif pooltemptemp > 1:
+								'Guys keep fiving each other… "Come on
+ baby, we are lonely!"'
+								if pooltemptemp <= 4:
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'line'
+								else
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'gb_free'
+								end								
+							elseif phttemp = 1:
+								'He is looking at me with hungry eyes'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							end
+						end
+					elseif phbet > 0:
+						cla
+						'<b>Game bet is <<phbet>> ₽</b>'
+						
+						if money >= phbet:
+							act 'pay':
+								*clr & cla		
+								if phttemp = 2:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/she<<hisava>>.jpg">'		
+								elseif pooltemptemp > 1:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/they.jpg">'
+								elseif phttemp = 1:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/he<<hisava>>.jpg">'
+								end
+								'"Nice game!"'
+								if phttemp = 2:
+									'She slaps my ass and go away'
+								else
+									'He slaps my ass and go away'
+								end
+								money -= phbet
+								phbet = 0
+								gs 'stat'
+								act 'Go away':
+									otemp = 0
+									gt $loc, $loc_arg
+								end
+							end
+						end
+						
+						act 'I don''t have money…':
+							*clr & cla
+							otemp = 0									
+							if phttemp = 2:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/she<<hisava>>.jpg">'		
+							elseif pooltemptemp > 1:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/they.jpg">'
+							elseif phttemp = 1:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/he<<hisava>>.jpg">'
+							end
+							
+							if pooltemptemp > 1:
+								tratatatra = 1567
+								gt 'mod_public_WC_rab_PHwork_events_7','gb'
+							elseif phhisarounsed >= rand(50,80):
+								!! sex
+								'"I knew I win, you have no chance)))"'
+								'"And yes, we can find a  solution"'
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							else
+								!! wish
+								'"I knew I win, you have no chance)))"'
+								'"And yes, we can find a  solution"'
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'wish'
+							end							
+						end
+					end
+				else
+					if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+						
+						phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+						if phpoolhit <= 0: phpoolhit_rival = 1
+						phpoolhit_rival = 100 - phpoolhit
+					else
+						
+						phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+						if phpoolhit_rival <= 0: phpoolhit_rival = 1
+						phpoolhit = 100 - phpoolhit_rival
+					end
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					'He missed'
+					
+					if phttemp = 2:
+						if phmydress = 3:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,3)+').jpg"></center>'
+							end
+						elseif phmydress = 2:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end
+						elseif phmydress = 1:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end
+						elseif phmydress = 0:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+						end
+					else
+						if phmydress = 3:
+							if rand (1,6)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait/wait ('+rand(1,4)+').jpg"></center>'
+							end
+						elseif phmydress = 2:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end	
+						elseif phmydress = 1:
+							if rand (1,4)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait/wait ('+rand(1,2)+').jpg"></center>'
+							end	
+						elseif phmydress = 0:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait/wait ('+rand(1,3)+').jpg"></center>'
+						end
+					end
+					
+					
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+				end	
+			end
+		end
+		
+		act 'tease':
+			*clr & cla	
+			phhisarounsed += rand(1,6) + (3 - phmydress)
+			if phhisballs > 0:			
+				if phhisballs >= 2:					
+					temp = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20) - ((rand(0, phpoolhit_rival)+rand(0, phpoolhit_rival))/2) + phhisballs * 5 - phhisarounsed /10 * 2
+					if temp = 0: temp = rand(1,30)
+					
+					if temp >= rand(0,100):
+						phhisballs -= 1
+						if temp >= rand(70,100):
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 2
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets 2 balls with one shoot!'
+							temp = 2525689
+						elseif temp >= rand(50,100):
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball and he make a tricky situation for my balls'
+						else	
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball'
+						end
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+							elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						else
+							if phmydress = 3:
+								if rand (1,2)<=1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+								end
+							elseif phmydress = 2:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+							elseif phmydress = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						end
+						
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+						
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+						
+						if temp = 2525689: 
+							phhisballs -= 1
+							temp = 0
+						end
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+						
+					else
+						if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+							
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+						else
+							
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+						end
+						gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+						'He missed'
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+							elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						else
+							if phmydress = 3:
+								if rand (1,2)<=1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+								end
+							elseif phmydress = 2:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+							elseif phmydress = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						end
+						
+						phmyturn = 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+					end				
+				elseif phhisballs = 1:
+					temp = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20) - ((rand(0, phpoolhit_rival)+rand(0, phpoolhit_rival))/2) + phhisballs * 5 - phhisarounsed /10 * 2
+					if temp = 0: temp = rand(1,30)
+					
+					if temp >= rand(0,100):
+						phhisballs -= 1
+						if temp >= rand(70,100):
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball and he make a tricky situation for my balls'
+						else	
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+							
+							gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+							'He pockets a ball'
+						end
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+							elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						else
+							if phmydress = 3:
+								if rand (1,2)<=1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+								end
+							elseif phmydress = 2:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+							elseif phmydress = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						end
+						
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+						
+						if phstrippool = 1 and ( phhisballs = 5 or phhisballs = 3 or phhisballs = 1 ):
+							cla
+							'"2 balls pocketed…" - he is staring at me'
+							
+							act 'tease and undress':
+								*clr & cla
+								phhisarounsed += rand(1,3) + (3 - phmydress)
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+							
+							act 'undress':
+								*clr & cla
+								if phmydress = 3:
+									minut += 2
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 2:
+									gs 'arousal', 'flashlite', 2, 'exhibitionism'
+									gs 'stat'
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+								elseif phmydress = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								elseif phmydress = 0:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> strip.jpg"></td><td valign="top"><br>'
+									gs 'arousal', 'flash', 2, 'exhibitionism'
+									gs 'stat'
+								end
+								
+								if phmydress >= 2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/23 strip.mp4"></video></center>'
+								elseif phmydress = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/1 strip.mp4"></video></center>'
+								end
+								
+								if phttemp = 2:
+									if phrivaldress = 3:
+										'She is wearing: shirt, bra, panties.'
+									elseif phrivaldress = 2:
+										'She is wearing: bra, panties.'
+									elseif phrivaldress = 1:
+										'She is wearing: panties.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									elseif phrivaldress = 0:
+										'She is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								else
+									if phrivaldress = 4:
+										'He is wearing: shirt, jeans, socks, underpants.'
+									elseif phrivaldress = 3:
+										'He is wearing: jeans, socks, underpants.'
+									elseif phrivaldress = 2:
+										'He is wearing: jeans, underpants.'
+									elseif phrivaldress = 1:
+										'He is wearing: underpants.'
+									elseif phrivaldress = 0:
+										'He is wearing: nothing.'
+										gs 'arousal', 'voyeur', 3, 'exhibitionism'
+										minut -= 3
+										gs 'stat'
+									end
+								end
+								
+								if phbet > 0:
+									'<b>Game bet is <<phbet>> ₽</b>'
+								end
+								*nl
+								if phMyballs > 0:
+									'There are <<phMyballs>> my balls left on the table'	
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								else
+									'I need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+								end
+								*nl
+								if phhisballs > 0:
+									'There are <<phhisballs>> his balls left on the table'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								else
+									'Opponent need to pocket the 8 ball only'
+									gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+								end
+								phmydress -= 1
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'
+							end
+						end
+					else
+						if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+							
+							phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+							if phpoolhit <= 0: phpoolhit_rival = 1
+							phpoolhit_rival = 100 - phpoolhit
+						else
+							
+							phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+							if phpoolhit_rival <= 0: phpoolhit_rival = 1
+							phpoolhit = 100 - phpoolhit_rival
+						end
+						gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+						'He missed'
+						
+						if phttemp = 2:
+							if phmydress = 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+							elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						else
+							if phmydress = 3:
+								if rand (1,2)<=1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+								end
+							elseif phmydress = 2:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+							elseif phmydress = 1:
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+							elseif phmydress = 0:
+								if rand (1,5)<=2:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+								end
+							end
+						end
+						
+						
+						phmyturn = 1
+						act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+					end				
+				end
+			elseif phhisballs = 0:
+				temp = (((rand(PHpcs_pool_rival,100)+rand(PHpcs_pool_rival,100))*13)/20) - ((rand(0, phpoolhit_rival)+rand(0, phpoolhit_rival))/2) - phMyballs * 3 - phhisarounsed /10 * 2
+				if temp = 0: temp = rand(1,30)
+				
+				if temp >= rand(0,100):
+					'He pockets the 8 ball!'
+					'He win!'
+					
+					if phttemp = 2:
+						if phmydress = 3:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+						elseif phmydress = 2:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+						elseif phmydress = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+						elseif phmydress = 0:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+					else
+						if phmydress = 3:
+							if rand (1,2)<=1:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+							end
+						elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+						elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+						elseif phmydress = 0:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+					end
+					
+					if phstrippool = 1:
+						cla
+						'"I am the winer" - he is staring at me'
+						phmydress = 0
+						
+						act 'tease':
+							'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>> tease.jpg"></td><td valign="top"><br>'
+							gs 'arousal', 'flash', 2, 'exhibitionism'
+							gs 'stat'
+							otemp = 0
+							
+							if phttemp = 2:
+								'She start touching me'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							elseif pooltemptemp > 1:
+								'Guys keep fiving each other… "Come on
+ baby, we are lonely!"'
+								if pooltemptemp <= 4:
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'line'
+								else
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'gb_free'
+								end								
+							elseif phttemp = 1:
+								'He is looking at me with hungry eyes'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							end
+						end
+						
+						act 'wait':
+							cla
+							otemp = 0
+							if phttemp = 2:
+								'She start touching me'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							elseif pooltemptemp > 1:
+								'Guys keep fiving each other… "Come on
+ baby, we are lonely!"'
+								if pooltemptemp <= 4:
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'line'
+								else
+									act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'gb_free'
+								end								
+							elseif phttemp = 1:
+								'He is looking at me with hungry eyes'
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							end
+						end
+					elseif phbet > 0:
+						cla
+						'<b>Game bet is <<phbet>> ₽</b>'
+						
+						if money >= phbet:
+							act 'pay':
+								*clr & cla		
+								if phttemp = 2:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/she<<hisava>>.jpg">'		
+								elseif pooltemptemp > 1:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/they.jpg">'
+								elseif phttemp = 1:
+									'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/he<<hisava>>.jpg">'
+								end
+								'"Nice game!"'
+								if phttemp = 2:
+									'She slaps my ass and go away'
+								else
+									'He slaps my ass and go away'
+								end
+								money -= phbet
+								phbet = 0
+								gs 'stat'
+								act 'Go away':
+									otemp = 0
+									gt $loc, $loc_arg
+								end
+							end
+						end
+						
+						act 'I don''t have money…':
+							*clr & cla
+							otemp = 0									
+							if phttemp = 2:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/she<<hisava>>.jpg">'		
+							elseif pooltemptemp > 1:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/they.jpg">'
+							elseif phttemp = 1:
+								'<img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/he<<hisava>>.jpg">'
+							end
+							
+							if pooltemptemp > 1:
+								tratatatra = 1567
+								gt 'mod_public_WC_rab_PHwork_events_7','gb'
+							elseif phhisarounsed >= rand(50,80):
+								!! sex
+								'"I knew I win, you have no chance)))"'
+								'"And yes, we can find a  solution"'
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'sex'
+							else
+								!! wish
+								'"I knew I win, you have no chance)))"'
+								'"And yes, we can find a  solution"'
+								
+								act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'wish'
+							end							
+						end
+					end
+				else
+					if PHpcs_pool_rival >= rand(60,100) and temp >= rand(0,100):
+						
+						phpoolhit += ( 100 - rand(pcs_pool, 100) ) / 6
+						if phpoolhit <= 0: phpoolhit_rival = 1
+						phpoolhit_rival = 100 - phpoolhit
+					else
+						
+						phpoolhit_rival += ( 100 - rand(phpoolhit_rival, 100) ) / 5
+						if phpoolhit_rival <= 0: phpoolhit_rival = 1
+						phpoolhit = 100 - phpoolhit_rival
+					end
+					gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+					'He missed'
+					
+					if phttemp = 2:
+						if phmydress = 3:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/w.jpg"></center>'
+						elseif phmydress = 2:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+						elseif phmydress = 1:
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/w.jpg"></center>'
+						elseif phmydress = 0:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+					else
+						if phmydress = 3:
+							if rand (1,2)<=1:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/3/wait_tease/tease.jpg"></center>'
+							end
+						elseif phmydress = 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'
+						elseif phmydress = 1:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/2/wait_tease/tease ('+rand(1,2)+').jpg"></center>'	
+						elseif phmydress = 0:
+							if rand (1,5)<=2:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,2)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/0/wait_tease/tease ('+rand(1,3)+').jpg"></center>'
+							end
+						end
+					end
+					
+					
+					phmyturn = 1
+					act 'continue': gt 'mod_public_WC_rab_PHwork_events_7', 'playme'						
+				end	
+			end
+		end
+		
+		if phhisarounsed >= 50 and phttemp ! 2:
+			'I see his dick has strong erection.'
+			act 'blow him':
+				*clr & cla
+				'As he focused to make a shoot, I sneaked up to his pants… quickly drop them off and start to suuck his dick…'
+				sexcorrupt += 1
+				'"Ow yeees, I really need this"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/event/bj.jpg"></center>'
+				gs 'arousal', 'bj', 5, 'exhibitionism'
+				gs 'stat'
+				
+				act 'continue':
+					if rand(1,4) = 4:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/bj/1 start.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/bj/1 start ('+rand(1,3)+').jpg"></center>'			
+					end
+					gs 'arousal', 'bj', rand(5,5), 'exhibitionism'
+					gs 'stat'
+					
+					act 'continue':
+						*clr & cla
+						'   '
+						if rand(1,20) <= 14:
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/bj/2 bj ('+rand(1,14)+').mp4"></video></center>'
+						else
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/bj/2 bj ('+rand(1,6)+').jpg"></center>'			
+						end
+						gs 'arousal', 'bj', rand(10,15), 'exhibitionism'
+						gs 'stat'
+						
+						act 'continue':
+							*clr & cla
+							gs 'arousal', 'bj', rand(5,10), 'exhibitionism'
+							gs 'stat'
+							
+							if rand(1,2) = 1:
+								'He shot his sperm inside my mouth'					
+								if rand(1,2) = 1:
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/cum/1 mouthv.mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/cum/1 mouth.jpg"></center>'	
+								end
+								
+								gs 'cum_call','mouth',$boy
+								gs 'stat'
+							else
+								'He shot his sperm on my face'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/cum/1 face.mp4"></video></center>'
+								gs 'cum_call','face',$boy
+								gs 'stat'
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+							
+							'"Ok, I thing we both ok with the DRAW result)))"'
+							'He dressed his pants and go away'
+							
+							if mc_inventory['cigarettes'] > 0:
+								act 'Smoking':
+									minut += rand(3,5)
+									gs 'drugs', 'smoke'
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/1/cum/2 smoke.jpg"></center>'
+								end
+							end				
+							
+							act 'Go away':
+								otemp = 0
+								gt $loc, $loc_arg
+							end
+						end
+					end
+				end
+			end
+		end
+	elseif phpoolturn = 0:
+		*clr & cla
+		
+		mestrip = rand(1,2)
+		phpoolturn = 1
+		phmydress = 3
+		phrivaldress = 4
+		if phttemp = 2: phrivaldress = 3
+		
+		hisava = rand(1,3)
+		
+		phpoolhit_rival = 50
+		phpoolhit = 50
+		
+		phMyballs = 7
+		phhisballs = 7
+		
+		phhisarounsed = 0
+		if rand(1,3) = 1:
+			PHpcs_pool_rival = rand(30,60)
+		else
+			PHpcs_pool_rival = rand(40,100)
+		end
+		
+		gs 'mod_public_WC_rab_PHwork_events_7', 'phpoolinfo'
+		cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/start/0 ('+rand(1,2)+').jpg"></center>'
+		
+		if phttemp = 2:
+			'"Show me what you got"'
+			phmyturn = 1
+		else
+			'"Please, Ladies first"'
+			phmyturn = 1
+		end
+		
+		act 'nice, first hit is mine': gt 'mod_public_WC_rab_PH_pool_playme', 'playme'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+
+if $ARGS[0] = 'tablesituationdiff':
+	if phpoolhit >= 110: $cc = '<font color = red	> ██████████ </font> '
+	if phpoolhit >= 100 and phpoolhit < 110: $cc = '<font color = red	> ██████████ </font> '
+	if phpoolhit >= 90 and phpoolhit < 100: $cc = '<font color = red	> █████████_ </font> '
+	if phpoolhit >= 80 and phpoolhit < 90: $cc = $func('wrap', 'accent', ' ████████__ ') + ' '
+	if phpoolhit >= 70 and phpoolhit < 80: $cc = $func('wrap', 'accent', ' ███████___ ') + ' '
+	if phpoolhit >= 60 and phpoolhit < 70: $cc = $func('wrap', 'accent', ' ██████____ ') + ' '
+	if phpoolhit >= 50 and phpoolhit < 60: $cc = $func('wrap', 'accent', ' █████_____ ') + ' '
+	if phpoolhit >= 40 and phpoolhit < 50: $cc = $func('wrap', 'accent', ' ████______ ') + ' '
+	if phpoolhit >= 30 and phpoolhit < 40: $cc = '<font color = green	> ███_______ </font> '
+	if phpoolhit >= 20 and phpoolhit < 30: $cc = '<font color = green	> ██_________ </font> '
+	if phpoolhit >= 10 and phpoolhit < 20: $cc = '<font color = green	> █__________ </font> '
+	if phpoolhit < 10: $cc = '<font color = green	> ___________ </font> '
+	*nl
+	'<center>Curent table situation for me: <<$cc>></center>' 
+	*nl	
+	+$OpenInnerThought+'The harder situation for me, the harder make a good hit'+$CloseInnerThought
+end
+
+if $ARGS[0] = 'tablesituationdiff_rival':
+	if phpoolhit_rival >= 110: $cc = '<font color = red	> ██████████ </font> '
+	if phpoolhit_rival >= 100 and phpoolhit_rival < 110: $cc = '<font color = red	> ██████████ </font> '
+	if phpoolhit_rival >= 90 and phpoolhit_rival < 100: $cc = '<font color = red	> █████████_ </font> '
+	if phpoolhit_rival >= 80 and phpoolhit_rival < 90: $cc = $func('wrap', 'accent', ' ████████__ ') + ' '
+	if phpoolhit_rival >= 70 and phpoolhit_rival < 80: $cc = $func('wrap', 'accent', ' ███████___ ') + ' '
+	if phpoolhit_rival >= 60 and phpoolhit_rival < 70: $cc = $func('wrap', 'accent', ' ██████____ ') + ' '
+	if phpoolhit_rival >= 50 and phpoolhit_rival < 60: $cc = $func('wrap', 'accent', ' █████_____ ') + ' '
+	if phpoolhit_rival >= 40 and phpoolhit_rival < 50: $cc = $func('wrap', 'accent', ' ████______ ') + ' '
+	if phpoolhit_rival >= 30 and phpoolhit_rival < 40: $cc = '<font color = green	> ███_______ </font> '
+	if phpoolhit_rival >= 20 and phpoolhit_rival < 30: $cc = '<font color = green	> ██_________ </font> '
+	if phpoolhit_rival >= 10 and phpoolhit_rival < 20: $cc = '<font color = green	> █__________ </font> '
+	if phpoolhit_rival < 10: $cc = '<font color = green	> ___________ </font> '
+	*nl
+	'<center>Curent table situation for him: <<$cc>></center>'
+	*nl	
+	+$OpenInnerThought+'The harder situation for him, the harder make a good hit for him'+$CloseInnerThought
+end
+
+if $ARGS[0] = 'phpoolinfo':
+	if phstrippool = 1:
+		if phmydress = 3:
+			minut += 2
+			gs 'stat'
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>>.jpg"></td><td valign="top"><br>'
+		elseif phmydress = 2:
+			gs 'arousal', 'flashlite', 2, 'exhibitionism'
+			gs 'stat'
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>>.jpg"></td><td valign="top"><br>'
+		elseif phmydress = 1:
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>>.jpg"></td><td valign="top"><br>'
+			gs 'arousal', 'flash', 2, 'exhibitionism'
+			gs 'stat'
+		elseif phmydress = 0:
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH events/brothel/pool/play/striptease/<<mestrip>>/<<phmydress>>.jpg"></td><td valign="top"><br>'
+			gs 'arousal', 'flash', 2, 'exhibitionism'
+			gs 'stat'
+		end
+		
+		if phttemp = 2:
+			if phrivaldress = 3:
+				'She is wearing: shirt, bra, panties.'
+			elseif phrivaldress = 2:
+				'She is wearing: bra, panties.'
+			elseif phrivaldress = 1:
+				'She is wearing: panties.'
+				gs 'arousal', 'voyeur', 3, 'exhibitionism'
+				minut -= 3
+				gs 'stat'
+			elseif phrivaldress = 0:
+				'She is wearing: nothing.'
+				gs 'arousal', 'voyeur', 3, 'exhibitionism'
+				minut -= 3
+				gs 'stat'
+			end
+		else
+			if phrivaldress = 4:
+				'He is wearing: shirt, jeans, socks, underpants.'
+			elseif phrivaldress = 3:
+				'He is wearing: jeans, socks, underpants.'
+			elseif phrivaldress = 2:
+				'He is wearing: jeans, underpants.'
+			elseif phrivaldress = 1:
+				'He is wearing: underpants.'
+			elseif phrivaldress = 0:
+				'He is wearing: nothing.'
+				gs 'arousal', 'voyeur', 3, 'exhibitionism'
+				minut -= 3
+				gs 'stat'
+			end
+		end
+	end
+
+	if phbet > 0:
+		'<b>Game bet is <<phbet>> ₽</b>'
+	end
+	
+	
+	*nl
+	if phMyballs > 0:
+		'There are <<phMyballs>> my balls left on the table'	
+		gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+	else
+		'I need to pocket the 8 ball only'
+		gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff'
+	end
+	
+	*nl
+	if phhisballs > 0:
+		'There are <<phhisballs>> his balls left on the table'
+		gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+	else
+		'Opponent need to pocket the 8 ball only'
+		gs 'mod_public_WC_rab_PHwork_events_7', 'tablesituationdiff_rival'
+	end
+end
+--- mod_public_WC_rab_PH_pool_playme ---------------------------------
+

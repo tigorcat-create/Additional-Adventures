@@ -1,0 +1,124 @@
+# mod_public_WC_street_events_3
+if $ARGS[0] = 'car2':
+	*clr & cla
+		
+	'Some car stoped near me, and ask:"How much for us both at once?"'
+	if $clothingworntype ! 'nude':
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/bikini ('+rand(1,5)+').jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/street work/walktalk/00 CAR/hecome/naked ('+rand(1,2)+').jpg"></center>'
+	end
+	
+	temp = rand(1,3)
+	ztemp = rand(1,3)
+	ytemp = rand(1,10)
+	phtemp1 = temp
+	phtemp2 = ztemp
+	phtemp3 = ytemp
+	if $loc = 'mod_public_WC_street' and $loc_arg = 'start':
+		ytemp = rand(1,8)			
+	end		
+	
+	'The guy looks like…'
+	*nl
+	if ytemp <= 6:
+		ytemp = 1
+		'poor'		
+		phclientwantprice_pricekoef = rand(1,2)	
+	elseif ytemp <= 9:
+		'casual dressed'	
+		ytemp = 2
+		phclientwantprice_pricekoef = rand(1,3)
+	else
+		'fancy'
+		ytemp = 3			
+		phclientwantprice_pricekoef = rand(2,3)
+	end
+	
+	
+	if temp = 1:
+		'stuffy'
+		bcil += rand(0,40)
+	elseif temp = 2:
+		'average'
+		bcil += rand(40,60)
+	else
+		'brutal'
+		bcil += rand(60,100)
+	end
+	
+	if ztep = 1:
+		'weak man'
+		bcil -= rand(0,30)
+	elseif ztemp = 2:
+		'man'
+		bcil += rand(0,20)
+	else
+		'strong man'
+		bcil += rand(20,50)
+	end
+	if bcil <= 0: bcil = 10
+	ztemp = 0
+	if rand(1,5) = 1: fame['pav_prostitute'] += 1
+	
+	phclient_mood = rand(0,10)
+	if rand (1,100) + pcs_humint >= 100: 
+		if phclient_mood <= 2:
+			'His mood is obviously terrible'
+		elseif phclient_mood <= 3:
+			'His is not in a good mood'
+		elseif phclient_mood <= 7:
+			'I can''t understand his mood'
+		else
+			'He seems happy'
+		end
+	else
+		'I can''t understand his mood'
+	end	
+	
+	phsex = 100
+	
+	act 'FREE service for you, honey!':
+		PH_full_pay = 0
+		phclient_mood += rand(0,2)
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 25 * phwhorepay * 2
+	act 'It costs <<temp>>':
+		PH_full_pay = 25 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 50 * phwhorepay * 2
+	act 'It costs <<temp>>':
+		PH_full_pay = 50 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 100 * phwhorepay * 2
+	act 'It costs <<temp>>':
+		PH_full_pay = 100 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 150 * phwhorepay * 2
+	act 'It costs <<temp>>':
+		PH_full_pay = 150 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 250 * phwhorepay * 2
+	act 'It costs <<temp>>':
+		PH_full_pay = 250 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+	
+	temp = 500 * phwhorepay * 2
+	act 'It costs <<temp>>':			
+		PH_full_pay = 500 * phwhorepay
+		gs 'mod_public_WC_street_events', 'thinktopay'
+	end
+end
+--- mod_public_WC_street_events_3 ---------------------------------
+

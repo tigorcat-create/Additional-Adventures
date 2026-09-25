@@ -1,0 +1,1221 @@
+# mod_public_WC_rab_work
+if $ARGS[0] = 'wstart':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'wstart'
+	gs 'stat'
+	*clr & cla
+	vladajob11 = 1
+	vladajob12 = 1
+	vladajob13 = 1
+	vladajob14 = 1
+	vladajob2 = 1
+	vladajob3 = 1
+	vladajob4 = 1
+	'I sit in the car and we go somewhere'
+	'During the road Tolik explaine me something in general'
+	*nl
+	'My friend owns a place to meet very serious people and he needs girls who are able to take care of important guests.'
+	'I bring him girls and get thanks for it… Finally you have confidence, and I think you can help us all. So now I''m taking you… Behave with dignity, do not engage in nonsense, do not dare to refuse guests.'
+	'I''ll pick you up in the morning, and God forbid, they''ll complain about you.'
+
+	PHpin = 0
+
+	act 'continue':
+		cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+		'Very soon we arrived at the back entrance of the house somewhere in the cottage town, Tolik took me to a room where different girls were painting, dressing…'
+		'- Yana, let''s meet, it''s Betsy!'
+		'A 30-year-old woman of stern appearance approached us.'
+		'- New, as if nothing, well Tolich, I''ll do it. Betsy let''s go…'
+		if Yana ! 2: Yana = 1
+
+
+
+		act 'Go with her': gt 'mod_public_WC_rab_work', 'start'
+		act 'Tolik, I don''t want to do this':
+			cla
+			brak += 3
+			'Tolik, changed in the face.'
+			'All right, Betsy, let''s go home'
+			act 'continue': gt 'mod_public_WC_rab_work', 'niroboti'
+		end
+
+
+		gs 'willpower', 'misc', 'self', 'easy'
+		if will_cost <= pcs_willpwr:
+			act 'I am not Betsi.' + $func('willpower', 'get_willcost_string'):
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				brak += 1
+				'Tolik''s eyes filled with anger'
+				'- Tolik, goodbye, I''ll figure it out.'
+
+				act 'Go with her': gt 'mod_public_WC_rab_work', 'start'
+				act 'Tolik, I don''t want to do this':
+					cla
+					brak += 3
+					'Tolik, changed in the face.'
+					'All right, Betsy, let''s go home'
+					act 'continue': gt 'mod_public_WC_rab_work', 'niroboti'
+				end
+			end
+		else
+			act 'I am not Betsi' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+	end
+end
+
+
+if $ARGS[0] = 'niroboti':
+	$loc_arg = $ARGS[0]
+	CLOSE ALL
+	'You disappointed me very much. I''m ashamed of Yana!'
+	'You will be punished!'
+	act 'continue': gt 'mod_public_WC_kara', 'vtecha'
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'start':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'start'
+	gs 'stat'
+	*clr & cla
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/room.jpg"></center>'
+
+	if askTolik = 1:
+		ryska = 0
+		'All right, girl. I''m not interested in your relationship with Tolik, Betsy, keep in mind, we appreciate quality girls… If you are popular you will have our support… If you create problems… well, you better not create them.'
+		'We have several works. But Tolik is responsible for you, so I will admit you to them, only with his consent.'
+	end
+
+	if askTolik = 2:
+		'Very soon we arrived at the back entrance of the house somewhere in the cottage town, Tolik took me to a room where different girls were painting and getting dressed. And he called Yana'
+		'I''ll pick you up in the morning, and God forbid, Jana will complain about you'
+	end
+	askTolik = 2
+
+	'Hi Betsy, today there are vacancies:'
+	'Serve'
+	if vlada >= 30 and ryska >= 10: 'Entertain guests.'
+	if WCzoo > 0: 'Perform at the zootheater.'
+	if vlada >= 45 and ryska >= 20: 'Make a company at meetings.'
+	'What will you do?'
+
+	act 'Maid':
+		cla
+		'Well, there is always a lot of work here. Will you deliver drinks, keep clean? Or you can work with table decoration. there is also an option to work in blowbox'
+		act'I will deliver drinks': napoi = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'I will keep it clean': chystota = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'Being a table decoration is for me': stil = 1 & gt 'mod_public_WC_rab_work', 'room'
+
+		act'I risk to work in blowbox': blowbox = 1 & gt 'mod_public_WC_rab_work', 'room'
+	end
+
+	PHTolikbring = 1
+
+	If blackcat ! 100 and ryska >= 10:
+		act 'Go to the Black Cat gangs':
+			blackshloha = 1
+			gt 'mod_public_WC_rab_work', 'room'
+		end
+	else
+		'I need more reputation to unlock this work (Go to the Black Cat gangs)'
+		'Now I have <<ryska>>/10 clients signs'
+	end
+
+	if vlada >= 30 and ryska >= 10:
+		act 'Go to the guests': shloha = 1 & gt 'mod_public_WC_rab_work', 'room'
+	end
+	if WCzoo > 0: act 'Zootheatre': zt = 1 & gt 'mod_public_WC_rab_work', 'room'
+	if WCzoo = 0: '<u>the beast content option disabled, therefore the beast job is disabled too.</u>'
+	!! if vlada >= 45 and ryska >= 20:
+		!! act 'I want to entertain meetings. -=WIP=-': vecheria = 1 & gt 'mod_public_WC_rab_work', 'room'
+	!! end
+end
+
+
+
+
+
+if $ARGS[0] = 'room':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'room'
+	gs 'stat'
+	*clr & cla
+	menu_off = 0
+	bag = 1
+	phfunlist = 0
+	phtime1 = 100
+	phtime2 = 100
+	phtime3 = 100
+	phtime4 = 100
+	'She sent me to prepare'
+	killvar 'phdog'
+
+	Artem = 0
+	ahide = 0
+	Vania = 0
+
+
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/room.jpg"></center>'
+
+	'Yana gave me the key to the locker.'
+	'Girls rummage around, getting ready for work.'
+
+
+
+	act 'Prepare myself to work (0:25)':
+		*clr & cla
+		minut += 25
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/meeting/ready.mp4"></video></center>'
+
+		makupskl_exp += rand(1,3)
+		vidageday -= 1
+		pcs_makeup = 4
+		pcs_lipbalm += 8
+		'<<$makeupHeavy>>'
+
+		if napoi = 1 or chystota = 1:
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			gs 'panties', 'remove'
+			gs 'shoes', 'strip'
+			gs 'purses', 'remove'
+			defaultcoat = 0
+
+			gs 'clothing', 'wear', 'gm_maid', rand(16, 40)
+			gs 'shoes', 'wear', 'scandalicious', rand(23, 30)
+			gs 'stat'
+		end
+		if stil = 1 or zt = 1:
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			gs 'panties', 'remove'
+			gs 'shoes', 'strip'
+			gs 'purses', 'remove'
+			defaultcoat = 0
+			$clothingworntype = 'nude'
+		end
+
+
+		if shloha = 1:
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			gs 'panties', 'remove'
+			gs 'shoes', 'strip'
+			gs 'purses', 'remove'
+			defaultcoat = 0
+
+			act 'Choose an outfit': gt 'wardrobe', 'main'
+			act 'find some outfit here':
+				cla
+				'I found some and dress up it'
+				gs 'clothing', 'wear', 'gm_maid', rand(16, 40)
+				gs 'shoes', 'wear', 'scandalicious', rand(23, 30)
+				PCloStyle = 4
+				PCloProstitute = 1
+
+				act 'Continue': gt 'mod_public_WC_rab_work', 'room'
+			end
+		end
+
+		act 'Continue': gt 'mod_public_WC_rab_work', 'room'
+	end
+
+	act 'go to the bathroom':
+		cla
+		*nl
+		'There is a '+iif(stanok < 1,'<a href="exec: stanok += 5 & gt ''mod_public_WC_rab_work'', ''room''">razor</a>','razors')+' on a shelf, that I can use to shave with. '+iif(stanok > 0, '<a href="exec:gs ''din_van'', ''shave_options''">Shave Options</a>','')+''
+		dynamic $brit
+		act 'Take a shower (0:15)':
+			cla
+			*clr
+			minut += 15
+			dynamic $showerdin
+
+			pcs_sweat = 0
+			pcs_hairbsh = 1
+			pcs_breath = 1
+			face_write = 0
+			body_write = 0
+			lubonus = 0
+			pcs_mood += 5
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/wash.mp4"></video></center>'
+			act 'Move away': minut += 1 & gt 'mod_public_WC_rab_work', 'room'
+		end
+		act 'Move away': minut += 1 & gt 'mod_public_WC_rab_work', 'room'
+	end
+
+	act 'go to work':
+		minut += 3
+		gs 'stat'
+		phwork = 0
+		if blackshloha = 1:
+			if pcs_makeup < 3:
+				'Yana stopped me. Betsy, makeup is not enough, go draw.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			elseif pcs_sweat > 10:
+				'She stopped. Betsy, weren''t you taught to wash?'
+			else
+				cla
+				roomtemp = rand(1,5)
+				phwork = 6
+				'Yana  stoped me "Your room for today is №<<roomtemp>>, it''s better to work with client in your room, and not in the main hall"'
+				act '"ok, I see. I will work in my room"': blackshloha = 0 & gt 'mod_public_WC_PH_blackcat_daily', 'start'
+			end
+		elseif napoi = 1:
+			if pcs_makeup < 3:
+				'Yana stopped me. Betsy, makeup is not enough, go draw.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			elseif pcs_sweat > 10:
+				'She stopped. Betsy, weren''t you taught to wash?'
+			else
+				phwork = 1
+				napoi = 0 & gt 'mod_public_WC_rab_work', 'napoi'
+			end
+
+		elseif chystota = 1:
+			if pcs_makeup < 3:
+				'Yana stopped me. Betsy, makeup is not enough, go draw.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			else
+				phwork = 3
+				chystota = 0 & gt 'mod_public_WC_rab_work', 'chystota'
+			end
+
+		elseif stil = 1:
+			if pcs_sweat > 1:
+				'Yana stopped me. Betsy, you have to be perfectly clean!'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			elseif $clothingworntype ! 'nude':
+				'You need to be naked! Go prepare yourself'
+			else
+				phwork = 2
+				stil = 0 & gt 'mod_public_WC_rab_work', 'stil'
+			end
+
+		elseif blowbox = 1:
+			phwork = 4
+			blowbox = 0 & gt 'mod_public_WC_rab_work', 'blowbox'
+		elseif zt = 1:
+			if $clothingworntype ! 'nude':
+				'You need to be naked! Go prepare yourself'
+			else
+				phwork = 5
+				zt = 0
+				gt 'mod_public_WC_rab_work', 'zoo'
+			end
+		elseif shloha = 1:
+			If (PCloStyle = 4 or PCloProstitute = 1 or PCloInhibit >= 40 or PCloThinness = 6) and pcs_makeup >= 2 and pcs_sweat <= 10:
+				shloha = 0
+				phwork = 7
+				gt 'mod_public_WC_rab_work_whore', 'start'
+
+			else
+				'"You need to have more sluty dress! Is it not obvious? You will work a WHORE!!!"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+			end
+
+			if pcs_makeup < 2:
+				'Yana stopped me. Betsy, makeup is not enough!'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+
+
+			elseif pcs_sweat > 10:
+				'Yana stopped me. Betsy, weren''t you taught to wash?'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+
+			end
+		else
+			'I have done all my todays work'
+		end
+	end
+
+	act 'talk with girls':
+		'Знайомство з новою дівчиною і іншими -=WIP=-'
+	end
+
+	if zt = 0 and stil = 0 and chystota = 0 and napoi = 0 and blowbox = 0 and blackshloha = 0 and shloha = 0 and PHTolikbring = 1:
+		act 'wait for Tolik (60 minutes)':
+			minut += 60
+			gs 'stat'
+			gt 'mod_public_WC_rab_work', 'room'
+		end
+	end
+	if zt = 0 and stil = 0 and chystota = 0 and napoi = 0 and blowbox = 0 and blackshloha = 0 and shloha = 0 and PHTolikbring ! 1:
+		act 'Wait': gs 'obj_din', 'wait'
+	end
+
+
+
+
+	if phescort ! 0 and PHTolikbring = 1:
+		'Yana comes to me'
+		'"Sorry, Betsy. Tolik thinks it''s to dangerous to do escort and he don''t let you to do this. I have removed you from the site"'
+		phescort = 0
+		phescorttask = 0
+		phinforest = 1
+	elseif phescort ! 0 and phescorttask = 0:
+		act 'Tell Yana I don''t want to work as escort anymore':
+			phescort = 0
+			'"Ok, girl, it''s up to you. If you don''t want money it''s your problem"'
+		end
+	elseif phescort = 0:
+		act 'Ask Yana about escort work':
+			!! cla
+			if PHTolikbring = 1:
+				'"Sorry, Betsy. Tolik thinks it''s to dangerous and never let you do this."'
+				phinforest = 1
+			elseif ryska >= 30:
+				cla
+				phescorttask = 0
+				'"Yes, I think it could work"'
+				'"I need to tell the escort rules to you:"'
+				'"I will add you to our site. Anyone can order you"'
+				'"Also take this. your account details wrote there."'
+				'"Each order is a MUST for you"'
+				'"You will receive SMS about your orders"'
+				'"Each SMS tells the place, time and any extra wanties of the client"'
+				'"You will know it''s your client if he holds two yellow roses."'
+				'"Our clients MUST be happy to use our service"'
+				'"Problems of our clients is YOUR problems."'
+				'"Client pays for 4 hours, usually. But all the rulles above must be fulfil."'
+				'"I will pay on your card for each order depends on your performance"'
+				act 'Agree':
+					phescort = 1
+					phescorttask = 0
+					if escortpauseconfig = 0: escortpauseconfig = 5
+					if phescortshorttaskconfig = 0: phescortshorttaskconfig = 3
+					gt 'mod_public_WC_rab_work', 'room'
+				end
+
+				act 'Don''t want to do this':
+					phescort = 0
+					phescorttask = 0
+					gt 'mod_public_WC_rab_work', 'room'
+				end
+
+			elseif ryska < 30:
+				'"You need to have more marks. For now you are not so popular"'
+			end
+		end
+	end
+
+
+	if hour >= 9 and hour < 21 and PHTolikbring = 1:
+		*clr & cla
+		'Tolik comes to me after quick chat with Yana'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>' & '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tolik/tolik.jpg"></center>'
+		if FUNJOBDONE >= 1000: ryska += 1
+		if FUNJOBDONE >= 3000: ryska += 1
+		if FUNJOBDONE >= 5000: ryska += 4
+		killvar 'FUNJOBDONE'
+		if shtraf > 5:
+			'Can you do something without problems?'
+			brak += shtraf
+			shtraf = 0
+		else
+			'Well done, let''s go home.'
+			brak -= 5
+			shtraf = 0
+			vlada += 1 + ryska
+		end
+		if ryska > 0:
+			act 'Ask her about the symbol drawn on me':
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+				'Well, well… this means that our client liked you very much and he recommends your service to others. If you collect 10 lines, we will be able to entrust you with the best work, of course with the consent of Anatoly.'
+				'<b>Now you have <<ryska>> lines</b>'
+			end
+		end
+		act 'Go to Tolik''s car':
+			minut += rand(20,40)
+			gs 'stat'
+			PHTolikbring = 0
+			gs 'bras', 'remove'
+			gs 'clothing', 'strip'
+			gs 'panties', 'remove'
+			gs 'shoes', 'strip'
+			gs 'purses', 'remove'
+			defaultcoat = 0
+
+			gs 'stat'
+
+			gt 'mod_public_WC_rab_DVIR', 'dvir'
+		end
+	end
+	if hour >= 9 and hour < 21 and PHTolikbring ! 1:
+		*clr & cla
+		'I have a quick chat with Yana'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Yana.jpg"></center>'
+		if phwhoreshift > 0: shtraf += 5
+		PHTolikbring = 0
+		if shtraf > rand(5,7):
+			'Can you do something without problems?'
+			if phwhoreshift > 0: '"You have served less than 10 clients!"'
+			phwhoreshift = 0
+			'No money for you!'
+
+			If FUNJOBDONE > 0:
+				ytemp = ryska*300 - shtraf*200 + (FUNJOBDONE / 100)*50
+				if ytemp >= 10000: ytemp = 10000
+				money += ytemp
+				'"Well, you show good work for the clients… ok this is for you <<ytemp>>"'
+				if FUNJOBDONE >= 1000: ryska += 1
+				if FUNJOBDONE >= 3000: ryska += 1
+				if FUNJOBDONE >= 5000: ryska += 4
+				killvar 'FUNJOBDONE'
+			end
+
+		else
+			'Well done, you can go home.'
+			sexcorrupt += 2
+
+			gs 'willpower', 'misc', 'self'
+			will_cost += (sexcorrupt / 3)
+			if will_cost <= pcs_willpwr:
+				act 'ask about money' + $func('willpower', 'get_willcost_string'):
+					cla
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					sexcorrupt -= 3
+
+					'"Money, I thought you just like sex XD. I am kidding, honey, don''t be so…"'
+
+					If FUNJOBDONE > 0:
+						'"You show good work for the clients today!"'
+					end
+
+					ytemp = ryska*300 - shtraf*200 + (FUNJOBDONE / 100)*50
+					if ytemp <= 500: ytemp = 500
+					if ytemp >= 10000: ytemp = 10000
+					'Here is your money for today: <<ytemp>>'
+					money += ytemp
+					if FUNJOBDONE >= 1000: ryska += 1
+					if FUNJOBDONE >= 3000: ryska += 1
+					if FUNJOBDONE >= 5000: ryska += 4
+					killvar 'FUNJOBDONE'
+					gs 'stat'
+
+					if ytemp <= 1000:
+						act 'why it''s only <<ytemp>>?':
+							'"Honey, you need to perform much better, to receive more money."'
+							if ryska = 0:
+								'"Our clients must ask about you, cuz they sure you complete all of their wishes… for now it''s not like that."'
+							elseif ryska > 0:
+								if ryska > 1:
+									'"Our clients must ask about you, cuz they sure you complete all of their wishes… You are on the right way, but <<ryska>> likes from the clients is not enought"'
+								else
+									'"Our clients must ask about you, cuz they sure you complete all of their wishes… You are on the right way, but <<ryska>> like from the clients is not enought"'
+								end
+							end
+						end
+					end
+
+					if ryska > 0:
+						act 'Ask Yana about the symbol drawn on me':
+							*clr
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+							'Well, well… this means that our client liked you very much and he recommends your service to others. If you collect 10 lines, we will be able to entrust you with the best work, of course with higher salary).'
+							'<b>Now you have <<ryska>> lines</b>'
+						end
+					end
+					act 'Go to marshrutka':
+						*clr & cla
+						shtraf = 0
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+						minut += rand(20,40)
+						gs 'stat'
+						'in a short time I come back to the park'
+						act 'continue': gt 'mod_public_WC_PH_come', 'start'
+					end
+				end
+			elseif will_cost <= pcs_willpwr:
+				act 'I am to corrupt of sex to ask about money: ' + $func('willpower', 'get_willcost_string'): $func('wrap', 'neg', '<br>I want that!.')
+			else
+				act 'ask about money' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+		end
+
+		if ryska > 0:
+			act 'Ask Yana about the symbol drawn on me':
+				*clr
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+				'Well, well… this means that our client liked you very much and he recommends your service to others. If you collect 10 lines, we will be able to entrust you with the best work, of course with higher salary).'
+				'<b>Now you have <<ryska>> lines</b>'
+			end
+		end
+		act 'Take a quick shower (0:05)':
+			*clr
+			minut += 5
+			!! dynamic $showerdin
+
+			pcs_sweat = 0
+			pcs_hairbsh = 1
+			pcs_breath = 1
+			face_write = 0
+			body_write = 0
+			lubonus = 0
+			pcs_mood += 5
+			gs 'stat'
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/wash.mp4"></video></center>'
+			!! act 'Move away': minut += 1 & gt 'mod_public_WC_rab_work', 'room'
+		end
+		act 'Go to marshrutka':
+			*clr & cla
+			shtraf = 0
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/road.jpg"></center>'
+			minut += rand(20,40)
+			gs 'stat'
+			'in a short time I come back to the park'
+			act 'continue': gt 'mod_public_WC_PH_come', 'start'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'napoi':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'napoi'
+	gs 'stat'
+	*clr & cla
+	'Yana looked at me: "Fine, now, let me fasten the jewelry.'
+	'With a few quick movements, she fastened the chains to my arms and lifted them to the front.'
+	temp = rand(1,7)
+	'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	'Go to the bar, Toha will explain everything to you.'
+	'Oh, and I remind you: "If you can remember something to customers, the better for you."'
+	pain['hands'] += 3
+	gs 'arousal', 'flash', 5, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 2
+	gs 'stat'
+	act 'Go to the bar':
+		cla
+		'I went to the bar, a handsome young boy immediately began to command'
+		if vladajob13 = 1 and vladajob11 = 1:
+			'Hi, Yana said you''re new to Betsy. Here you need to do everything clearly and quickly. If your tray is empty, you immediately go to me, if it is full, then I have already told you where and to whom to take drinks. I hope there will be no problems. At 9 o''clock your shift ends, you will come to me.'
+			vladajob11 = 0
+		elseif vladajob11 = 1 and vladajob13 = 0:
+			'Hi, Betsy. Here you need to do everything clearly and quickly. If your tray is empty, you immediately go to me, if it is full, then I have already told you where and to whom to take drinks. I hope there will be no problems. At 9 o''clock your shift ends, you will come to me.'
+			vladajob11 = 0
+		else
+			'Hi Betsy, let''s get to work soon. At 9 o''clock your shift ends.'
+		end
+		temp = rand(1,5)
+		if temp = 1: broom = 1
+		if temp = 2: broom = 2
+		if temp = 3: broom = 3
+		if temp = 4: broom = 4
+		if temp = 5: broom = 5
+		bglass = rand(1,6)
+		bcil = bglass
+		if broom = 1: 'Here are the drinks. You must go to tables, after reading this stand, the guys will understand that it is for them'
+		if broom = 2: 'Here are the drinks. You must go to billiard, after reading this stand, the guys will understand that it is for them'
+		if broom = 3: 'Here are the drinks. You must go to balcony, after reading this stand, the guys will understand that it is for them'
+		if broom = 4: 'Here are the drinks. You must go to office, after reading this stand, the guys will understand that it is for them'
+		if broom = 5: 'Here are the drinks. You must go to dancefloor, after reading this stand, the guys will understand that it is for them'
+		bhour = hour
+		bminut = minut
+		temp = rand(1,13)
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/hils.mp4"></video></center>'
+		act'Stare on Toha':
+			minut += 3
+			gs 'stat'
+			gt 'mod_public_WC_rab_work_TOHA', 'Tohanapoi'
+		end
+		act'Go to the tables': minut += 1 & gt 'mod_public_WC_rab_work', 'tables'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+	end
+end
+
+
+
+if $ARGS[0] = 'Toha':
+	gt 'mod_public_WC_rab_work_TOHA', 'Tohanapoi'
+end
+
+
+
+
+if $ARGS[0] = 'tables':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'tables'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', '"Tables"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tables.jpg"></center>'
+	pain['hands'] += 2
+	gs 'arousal', 'flash', 0, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 3
+	gs 'mod_public_WC_rab_work', 'heels'
+	if bglass >0:
+		temp = rand(1,13)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+	else
+		temp = rand(1,7)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	end
+
+	act 'go to other room':
+		cla
+		act'Go to the Toha': minut += 1 & gt 'mod_public_WC_rab_work', 'Toha'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+	end
+	act 'wait': 'I can''t wait here, I''m sure Toha will pay attention to that.'
+
+	act 'Slovly walk around to show your order number':
+		if broom = 1 and bglass > 0:
+			gt 'mod_public_WC_rab_work', 'SWA'
+		else
+			'Nobody pays attention to me'
+		end
+	end
+
+
+
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+
+	if hour >= 10 and hour < 21:
+		*clr & cla
+		temp = ( hour - bhour ) * 60 + ( minut - bminut )
+		if temp <= 15: bcil = 0
+		if bcil ! 0: shtraf += rand(0,3)
+		'Toha approached me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/TOHA.jpg"></center>'
+		'Did you enjoy working so much? Why don''t you come to me? Your shift is over, you can go to the room '
+		'Toha quickly freed me from the BDSM gear.'
+		if temp <= 15: 'Don''t worry about the last order.'
+		act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+		if shtraf >= 5:
+			act 'Ask if I can make up for my guilt today.':
+				cla
+				'Of course you can, let''s go to the subsoil. Toha smiles greedily'
+
+				gs 'willpower', 'prostitution', 'self', 'medium'
+				if will_cost <= pcs_willpwr:
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						'Going into the utility room, Toh bent me by force and began to have'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/ursex.mp4"></video></center>'
+
+						guy += 1
+						dick = 18
+						npc_dick[$npclastgenerated] = dick
+
+						stat['vaginal'] += 1
+						gs 'sweat', 'add', 5
+						gs 'arousal', 'vaginal', 15, 'bound', 'sub', 'prostitution'
+						gs 'stat'
+
+
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/tohacum.jpg"></center>'
+							'Toha finished on me.'
+							'"It was good, your sins are forgiven." - finally Toha slapped me on the buttocks. '
+							$cumarrnam = 'Toha'
+							spafinloc = 11
+							spafinloc = 15
+							shtraf = 0
+							gs 'cum_manage'
+							gs 'stat'
+							act 'Go to the room': gt 'mod_public_WC_rab_work', 'room'
+							gs 'arousal', 'end'
+							gs 'stat'
+						end
+					end
+				else
+					act 'Go to the utility room' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'billiard':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'billiard'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Billiard')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/billiard.jpg"></center>'
+	pain['hands'] += 2
+	gs 'arousal', 'flash', 0, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 1
+	gs 'mod_public_WC_rab_work', 'heels'
+	if bglass >0:
+		temp = rand(1,13)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+	else
+		temp = rand(1,7)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	end
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 5 & gt 'mod_public_WC_rab_work', 'tables'
+		act'Go to balcony': minut += 8 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to office': minut += 3 & gt 'mod_public_WC_rab_work', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+	act 'Slovly walk around to show your order number':
+		if broom = 2 and bglass > 0:
+			gt 'mod_public_WC_rab_work', 'SWA'
+		else
+			'Nobody pays attention to me'
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'balcony':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'balcony'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Balcony')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/balcony.jpg"></center>'
+	pain['hands'] += 2
+	gs 'arousal', 'flash', 0, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 2
+	gs 'mod_public_WC_rab_work', 'heels'
+	if bglass >0:
+		temp = rand(1,13)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+	else
+		temp = rand(1,7)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	end
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 3 & gt 'mod_public_WC_rab_work', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_work', 'office'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_work', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+
+	act 'Slovly walk around to show your order number':
+		if broom = 3 and bglass > 0:
+			gt 'mod_public_WC_rab_work', 'SWA'
+		else
+			'Nobody pays attention to me'
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'office':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'office'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Office')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/office.jpg"></center>'
+	pain['hands'] += 2
+	gs 'arousal', 'flash', 0, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 2
+	gs 'mod_public_WC_rab_work', 'heels'
+	if bglass > 0:
+		temp = rand(1,13)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+	else
+		temp = rand(1,7)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	end
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_work', 'tables'
+		act'Go to billiard': minut += 3 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to dancefloor': minut += 11 & gt 'mod_public_WC_rab_work', 'dancefloor'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+
+	act 'Slovly walk around to show your order number':
+		if broom = 4 and bglass > 0:
+			gt 'mod_public_WC_rab_work', 'SWA'
+		else
+			'Nobody pays attention to me'
+		end
+	end
+
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+if $ARGS[0] = 'dancefloor':
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work'
+	$metka = 'dancefloor'
+	gs 'stat'
+	*clr & cla
+	$func('wrap', 'header center b', 'Dancefloor')
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/party.jpg"></center>'
+	pain['hands'] += 2
+	gs 'arousal', 'flash', 0, 'sub', 'bound', 'humiliation'
+	gs 'flash', 'exhibitionism', 3
+	gs 'mod_public_WC_rab_work', 'heels'
+	if bglass >0:
+		temp = rand(1,13)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bwfull (<<temp>>).jpg"></center>'
+	else
+		temp = rand(1,7)
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/serving/napoi/bw (<<temp>>).jpg"></center>'
+	end
+
+	act 'go to other room':
+		cla
+		act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_work', 'tables'
+		act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to office': minut += 11 & gt 'mod_public_WC_rab_work', 'office'
+	end
+	act 'wait': gs 'obj_din', 'wait'
+
+
+
+	act 'Slovly walk around to show your order number':
+		if broom = 5 and bglass > 0:
+			gt 'mod_public_WC_rab_work', 'SWA'
+		else
+			'Nobody pays attention to me'
+		end
+	end
+	gs 'mod_public_WC_rab_PHwork_events', 'start'
+end
+
+
+
+
+
+
+if $ARGS[0] = 'SWA':
+	minut += rand(3,10)
+	cla
+	gs 'stat'
+	if bcil > 1: temp = 1
+	if bcil = 1: temp = 2
+	if temp = 1: 'men waved at me. I approached.'
+	if temp = 2: 'man waved at me. I approached.'
+
+	temp = ( hour - bhour ) * 60 + ( minut - bminut )
+	if temp <= 30:
+		'girl, you''re just in time'
+	else
+		'where have you been?'
+	end
+	'All the glasses from the tray were taken'
+	if bcil ! bglass:
+		bcilg = bcil - bglass
+
+		temp = ( hour - bhour ) * 60 + ( minut - bminut )
+		if temp <= 30:
+			bcil = 0
+		else
+			bcil = temp
+		end
+
+
+		'Hey, that''s not the whole order! Where''s my drink! '
+		bglass = 0
+		act'Go to the Toha': minut += 1 & gt 'mod_public_WC_rab_work', 'toha'
+		act'Go to billiard': minut += 5 & gt 'mod_public_WC_rab_work', 'billiard'
+		act'Go to balcony': minut += 3 & gt 'mod_public_WC_rab_work', 'balcony'
+		act'Go to office': minut += 8 & gt 'mod_public_WC_rab_work', 'office'
+		act'Go to dancefloor': minut += 8 & gt 'mod_public_WC_rab_work', 'dancefloor'
+
+		act 'Turn around and bend over':
+			*clr & cla
+			temp = rand(1,3)
+			if temp = 1:
+				'And that''s all you can offer? - I felt a strong blow to the ass'
+				gs 'pain', rand(1,3), 'asscheeks', 'slap'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/smakass.mp4"></video></center>'
+				'Everyone, get out of here'
+				temp = rand(1, bcilg)
+				if temp <= 2: bcilg = 0
+				minut += 3
+				gs 'stat'
+				act 'go away': gt 'mod_public_WC_rab_work', 'tables'
+			else
+				'Well, uh-uh, maybe I''ll forgive you. - a stranger began to take off my panties… '
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/tease.mp4"></video></center>'
+				gs 'arousal', 'flash', 10, 'bound', 'sub'
+				if analplug = 1 : 'Wow, you''re packed here too!'
+				act 'continue':
+					*clr & cla
+					minut += rand(10,15)
+					if analplug = 1:
+						'The man pulled out the cork and fucked me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bwsex.mp4"></video></center>'
+						'oh you are forgiven'
+						temp = rand (1,3)
+						if temp = 1: analplug = 0
+						bcil = 0
+						bcilg = 0
+						if pcs_ass <= 10:
+							'"You''re so tight, it was unbelievable, but let me recommend you to friends…" - He took a marker and made a line on me, adding a number next to it. '
+							ryska += 1
+						end
+						gs 'arousal', 'anal', rand(5,15), 'bound', 'sub'
+
+						guy += 1
+						stat['anal'] += 1
+						temp = rand(1,4)
+						if temp = 1: spafinloc = 3
+						if temp = 2: spafinloc = 4
+						if temp = 3: spafinloc = 5
+						if temp = 4: spafinloc = 8
+						gs 'stat'
+
+					else
+						'The guy fucked me'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bwsex.mp4"></video></center>'
+						if pcs_vag <= 10:
+							'"You''re so tight, it was unbelievable, but let me recommend you to friends…" - He took a marker and made a line on me, adding a number next to it. - "… Wow, you are unquestionably forgiven." '
+							ryska += 1
+							bcil = 0
+							bcilg = 0
+						else
+							temp = rand(1,3)
+							if temp = 3:
+								'It wasn''t bad, but I''m not sorry.'
+							else
+								'Excuse me, leave my semen on tip.'
+							bcil = 0
+							bcilg = 0
+							end
+						end
+						gs 'arousal', 'vaginal', rand(5,15), 'bound', 'sub'
+
+						guy += 1
+						stat['vaginal'] += 1
+						temp = rand(1,4)
+						if temp = 1: spafinloc = 0
+						if temp = 2: spafinloc = 1
+						if temp = 3: spafinloc = 2
+						if temp = 4: spafinloc = 17
+						gs 'stat'
+					end
+					gs 'stat'
+					act 'go away': gt 'mod_public_WC_rab_work', 'tables'
+				end
+				act 'try to run away':
+					*clr & cla
+					'Leaping from the man, I ran to the exit, accompanied by my escape loud laughter'
+					minut += rand(3,8)
+					if pcs_heels <= rand(20,45): 'Unable to keep my balance, I fall to the floor, raising a new wave of laughter'
+					temp = rand(1,10)
+					if temp <= 2: bcil = 0 & bcilg = 0
+					gs 'pain', rand(2,7), 'back', 'hit'
+					gs 'stat'
+					act 'Stand up': gt 'mod_public_WC_rab_work', 'tables'
+				end
+			end
+		end
+		gs 'willpower', 'humiliation', 'self', 'medium'
+		if will_cost <= pcs_willpwr:
+			act 'Get on your knees' + $func('willpower', 'get_willcost_string'):
+				*clr & cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/knee.jpg"></center>'
+				temp = rand (1,2)
+				if temp = 1:
+					minut += rand(5,10)
+					'A man pokes his finger at me and calls the men next to me to look at such a bimbo'
+					willpowermax -= rand(3,5)
+					'The men buzzed approvingly looking at me. "Don''t be afraid, bitch, I won''t complain about you…" '
+					bcil = 0
+					bcilg = 0
+
+
+				else
+					minut += rand(0,5)
+					'Oh, get out of here, you''re a little whipped if you work like that!'
+					willpowermax -= rand(0,1)
+
+				end
+
+				gs 'stat'
+				act 'go away': gt 'mod_public_WC_rab_work', 'tables'
+			end
+		else
+			act 'Get on your knees' + $func('willpower', 'get_willcost_string'): $noWillpower
+		end
+
+
+	else
+		temp = ( hour - bhour ) * 60 + ( minut - bminut )
+		if temp <= 30:
+			bcil = 0
+		else
+			bcil = temp
+		end
+		bglass = 0
+	end
+
+	act'Go to the tables': minut += 8 & gt 'mod_public_WC_rab_work', 'tables'
+	act'Go to billiard': minut += 8 & gt 'mod_public_WC_rab_work', 'billiard'
+	act'Go to balcony': minut += 11 & gt 'mod_public_WC_rab_work', 'balcony'
+	act'Go to office': minut += 11 & gt 'mod_public_WC_rab_work', 'office'
+	act 'wait': gs 'obj_din', 'wait'
+end
+
+
+
+if $ARGS[0] = 'heels':
+	ztemp = pcs_heels - rand(0,35)
+	if ztemp < 0: ztemp = 0
+	ytemp = rand(ztemp,100)
+	if ytemp <= 75:
+		if 75 - ytemp >= 60:
+			'I feel like a cow on ice with heels like that, '
+			'I awkwardly put my foot and fell to the floor'
+			if bglass > 0:
+				bglass = 0 & 'All glasses are broken'
+				temp = rand(1,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bglass<<temp>>.jpg"></center>'
+			else
+				'Good thing I didn''t have glasses'
+			end
+		elseif 75 - ytemp >= 50:
+			'I feel like a cow on ice with heels like that, '
+			'I tripped on my feet and fell to the floor'
+			if bglass > 1:
+				bglass = 1 & 'All but one of the glasses shattered'
+				temp = rand(1,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bglass<<temp>>.jpg"></center>'
+			elseif bglass = 1:
+				bglass = 0 & 'The last glass broke'
+				temp = rand(1,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bglass<<temp>>.jpg"></center>'
+			else
+				'Good thing I didn''t have glasses'
+			end
+		elseif 75 - ytemp >= 30:
+			'I feel like I''m on a tightrope with heels like that,'
+			'I put my foot awkwardly and began to shake me, barely regaining my balance'
+			if bglass > 1:
+				bglass -= 1 & 'But one glass still fell'
+				temp = rand(1,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bglass<<temp>>.jpg"></center>'
+			elseif bglass = 1:
+				'The last glass shook for a long time, but still stayed on the tray'
+			else
+				'Nothing can fall from an empty tray'
+			end
+		elseif 75 - ytemp >= 15:
+			'It''s hard for me to walk, but somehow I keep my balance'
+			temp = rand (1,3)
+			if temp = 1:
+				if bglass > 1:
+					bglass -= 1 & 'I almost fell and broke one glass'
+				temp = rand(1,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/napoi/bglass<<temp>>.jpg"></center>'
+				elseif bglass = 1:
+					'The last glass shook for a long time, but still stayed on the tray'
+				else
+					'I think even if the tray was full, I wouldn''t drop anything'
+				end
+			end
+		elseif 75 - ytemp >= 0:
+			'I walk on such heels uncertainly'
+			'I tripped over something, but I persevered'
+			if bglass > 1:
+				'The glasses rattled menacingly, but nothing happened'
+			elseif bglass = 1:
+				'The last glass traveled a bit on the tray, but it all worked out'
+			else
+				'I think even if the tray was full, I wouldn''t drop anything'
+			end
+		else
+			'I walk good on this heels'
+		end
+	else
+		'I walk good on this heels'
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+if $ARGS[0] = 'chystota':
+	gt 'mod_public_WC_rab_work_chystota', 'start'
+
+
+end
+
+if $ARGS[0] = 'stil':
+	gt 'mod_public_WC_rab_work_stil', 'start'
+
+end
+
+if $ARGS[0] = 'blowbox':
+	gt 'mod_public_WC_rab_work_blowbox', 'start'
+
+end
+
+if $ARGS[0] = 'zoo':
+	gt 'mod_public_WC_rab_work_zoo', 'start'
+
+end
+
+--- mod_public_WC_rab_work ---------------------------------
+

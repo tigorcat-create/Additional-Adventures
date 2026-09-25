@@ -1,0 +1,2116 @@
+# mod_public_WC_rob_home
+if $ARGS[0] = 'start':
+	*clr & cla	
+	!! 'I hear a doorbell'
+	!! 'The client is in the shower and hear nothing'
+	!! act 'go open the door'
+	
+	minut += 5
+	gs 'stat'
+	phroberkilled = 0
+	
+	temp = rand(1,5)
+	if temp = 1:
+		$maskyvannia = 'A pizza guy'
+		
+	elseif temp = 2:
+		$maskyvannia = 'A mailman'
+	elseif temp = 3:
+		$maskyvannia = 'A policeman'
+	elseif temp = 4:
+		$maskyvannia = 'A pizza guy'
+	else
+		$maskyvannia = 'A policeman'
+	end
+	
+	'I stand in front of the door'
+	
+	'"Who is there" - I have ask'
+	'"<<$maskyvannia>>" - the voice outside said'
+	
+	act 'open the door': gt 'mod_public_WC_rob_home', 'openthedoor'
+	
+	act 'look in the door viewer':
+		cla
+		if rand(1,3) = 1:
+			'I see a <<$maskyvannia>>'			
+		else
+			'I see just a guy'
+		end
+		
+		act 'open the door': gt 'mod_public_WC_rob_home', 'openthedoor'
+		
+		act 'we did not call any, goodbuy':
+			*clr & cla
+			killvar 'maskyvannia'
+			phrober += rand(0,2)
+			gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+		end
+	end
+	
+	act 'we did not call any, goodbuy':
+		*clr & cla
+		killvar 'maskyvannia'
+		phrober += rand(0,2)
+		gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	end
+end
+
+if $ARGS[0] = 'openthedoor':
+	*clr & cla
+	minut += 5
+	gs 'stat'
+	phrobfail = 0
+	
+	if rand(1,3) = 1:
+		!! kidnap
+		phrober = -20
+		
+		'I opened the door and with <<$maskyvannia>> the few in the masks run in'
+		'They quikly grab me, I can''t move at all'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+		
+		act 'screem':
+			*clr & cla
+			'As I tried to screem, the guy hit me in the stomach, and I loose all my air'
+			'Also he closed my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/grab (1).jpg"></center>'
+			gs 'pain', rand(2,4), 'tummy', 'hit'
+			gs 'stat'
+			
+			phrobfail += 1
+			
+			act 'wait': gt 'mod_public_WC_rob_home', 'startin'
+		end
+		
+		act 'wait': gt 'mod_public_WC_rob_home', 'startin'
+	else
+		if $maskyvannia = 'A pizza guy':			
+			'The guy gives me a pizza. He said, everything paid'			
+		elseif $maskyvannia = 'A mailman':
+			'The guy ask me to sign and take the parcel. I did it'
+		elseif $maskyvannia = 'A policeman':
+			'He asked me some general questions, like "what this adress is" write smth in his note and shortly go away.'
+		end
+		
+		act 'Go back to the client': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+	end	
+	killvar 'maskyvannia'
+end
+
+if $ARGS[0] = 'startin':
+	*clr & cla	
+	phrober -= 1000
+	
+	if phrobfail = 0:
+		!! scare me
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/0 start/scare_v.mp4"></video></center>'
+	else
+		!! loose
+		'they put me on the floor'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/lose.jpg"></center>'
+	end
+	
+	'"If you help us everything will be ok"'
+	'"We need him, not you"'
+	'"Don''t speak, just nod"'
+	'"Will you help us?"'
+	
+	act 'nod yes':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+		'"Good girl" - he said with smile'
+		'"Now, you will answer me, but slovly and very quiet…"'
+		'"Where is he?"'
+		
+		act 'He is in the bathroom':
+			phhimbathroom = 1
+			gt 'mod_public_WC_rob_home', 'searchhim'
+		end
+		
+		+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+		act 'He is in the sauna (lie)':
+			phhimbathroom = 2
+			gt 'mod_public_WC_rob_home', 'searchhim'
+		end
+	end
+	
+	act 'nod no':
+		cla
+		'I see anger in his eyes'
+		'"You will regret this" - he said'
+		phrobtied = 1
+		phrobfail += 1
+		'They tied me and gaged me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+		
+		act 'continue':
+			*clr & cla	
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+			'They left me in this room and go inside the house'
+			
+			act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+		end
+	end
+	
+	if phrobfail = 0:
+		act 'screem':
+			*clr & cla
+			'As I tried to screem, the guy hit me in the stomach, and I loose all my air'
+			'Also he closed my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/grab (1).jpg"></center>'
+			gs 'pain', rand(2,4), 'tummy', 'hit'
+			gs 'stat'
+			
+			phrobfail += 1
+			
+			act 'nod no':
+				cla
+				'I see anger in his eyes'
+				'"You will regret this" - he said'
+				phrobtied = 1
+				phrobfail += 1
+				'They tied me and gaged me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+				
+				act 'continue':
+					*clr & cla	
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+					'They left me in this room and go inside the house'
+					
+					act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+				end
+			end
+			
+			act 'nod yes':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+				'"Good girl" - he said with smile'
+				'"Now, you will answer me, but slovly and very quiet…"'
+				'"Where is he?"'
+				
+				act 'He is in the bathroom':
+					phhimbathroom = 1
+					gt 'mod_public_WC_rob_home', 'searchhim'
+				end
+				
+				+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+				act 'He is in the sauna (lie)':
+					phhimbathroom = 2
+					gt 'mod_public_WC_rob_home', 'searchhim'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'hefight':
+	*clr & cla
+	!! 'They left me in this room and go inside the house'
+	!! e shans, sh4o yogo NE zalamayut
+	
+	minut += 20
+	gs 'stat'
+	'I hear swearing and shooting'
+	'It continues for some time'	
+	
+	wait 1500
+	
+	if rand (1,4) = 1:
+		phrober -= 80
+		'the client enters the room'
+		'"Ow, you alive" - now, things are better.'
+		'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+		
+		act 'wait':
+			cla
+			'He made a call, smth about "cleaning"…'
+			'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+			
+			$phescortzara = 'street'
+			$phescortude = ' '
+			killvar 'heinvanna'
+			killvar 'phdog'
+			killvar 'phtemp'
+			killvar 'hehorny'
+			killvar 'PHMYROOM'
+			
+			act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+			
+			act 'ask to go home':
+				*clr & cla
+				killvar 'zzphday'	
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+				killvar 'phendescort'
+				phescortfunNEED = 0
+				phescortfunSexDONE -= 1
+				if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+				phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+				temp = phmoneypaid * 100
+				phmoneypaid = temp
+				phmoneypaidH = rand(11,17)
+				phmoneypaidD = daystart + rand(1,2)
+				phescortfun = 0
+				killvar 'phclientava'
+				killvar 'phdog'
+				phescorttask = 0
+				killvar 'phescortD'	
+				killvar 'phescortH'
+				'"Okey, girl, I understand it. I also have some… something to do"'
+				'I kissed him as goodbuy and go'			
+				+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+				act 'Go away': gt 'city_redlight', 'start'
+			end			
+			
+			gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+		end
+		
+		act 'ask to go home':
+			*clr & cla
+			killvar 'zzphday'	
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			killvar 'phendescort'
+			phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+			temp = phmoneypaid * 100
+			phmoneypaid = temp
+			phmoneypaidH = rand(11,17)
+			phmoneypaidD = daystart + rand(1,2)
+			phescortfun = 0
+			killvar 'phclientava'
+			killvar 'phdog'
+			phescorttask = 0
+			killvar 'phescortD'	
+			killvar 'phescortH'
+			'"Okey, girl, I understand it. I also have some… something to do"'
+			'I kissed him as goodbuy and go'			
+			+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+			act 'Go away': gt 'city_redlight', 'start'
+		end
+		
+		act 'life-affirming sex?':
+			cla			
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			'"What? I mean - Yes,… Yes, please!"'
+			$cum1 = rand (100,120)
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'roomsexcycl'
+		end
+	else
+		'One of the robers enters the room'
+		'He grabs me and put in the main room, where the client is already tied sitting.'
+		
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/hetied.png"></center>'
+		*nl
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,2)+').jpg"></center>'
+		
+		act 'wait': gt 'mod_public_WC_robed', 'start'
+	end
+end
+
+if $ARGS[0] = 'searchhim':
+	*clr & cla	
+	'"Show us the way" - he bend my hand behind my back and start walking while holding the hand. I need to start walking too'
+	
+	if phhimbathroom = 1:
+		!! 'He is in the bathroom'
+		'I show them the bathroom door.'
+		phrobfail = 0
+		phrobfail -= 1
+		'They are circle the bathroom door and wait'
+		wait 1500
+		'the door opens, as he steped out the bathroom, they pushed him to the floor and tied him'
+		'the guy, who holds me push me to sit near the client'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/hetied.png"></center>'
+		
+		act 'wait': gt 'mod_public_WC_robed', 'start'
+		
+	elseif phhimbathroom = 2:
+		!! 'He is in the sauna (lie)'
+		'As we pass the bathroom door, I see the light is off. Where is he?'
+		wait 1500
+		!! win probye vriatuvaty abo vtik
+		'We turned to the corridor and…' 
+		wait 1500
+		if rand(1,3) ! 1:
+			'…the shoot appears - "Vladimir down!"'
+			'"Shit" - guy who holds me - pushes me away - "Stay here, bitch!"'
+			'He runs to the previous room, where shots are fired'
+			
+			
+			act 'wait':
+				gt 'mod_public_WC_rob_home', 'hefight'
+			end
+			
+			if gun = 1 and ammo > 0:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/hided gun.jpg"></center>'
+				gs 'willpower', 'crime', 'self'
+				if will_cost <= pcs_willpwr and ammo > 0:	
+					act 'Shoot at the rober' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						ammo -= 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						
+						tirkoef = pcs_agil + pcs_shoot
+						tirmin = tirkoef * 20 / 100
+						tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+						if tirand >= 80:						
+							pcs_mood += 5
+							'I killed one!.'
+							killed +=1	& phroberkilled  += 1				
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							itemp -= rand(1,3)
+						elseif tirand >= 50:
+							if rand(1,10) > 3:
+								'I killed one!.'
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						elseif tirand >= 30:
+							if rand(1,10) > 5:
+								'I killed one!.'
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						elseif tirand >= 15:
+							if rand(1,10) > 8:
+								'I killed one!.'
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						end
+						
+						gs 'exp_gain', 'shoot', 1
+						
+						phrobshoot = rand(1,3)
+						phhefight = 0
+						
+						act 'continue': gt 'mod_public_WC_rob_home', 'shoot'			
+					end
+				elseif will_cost > pcs_willpwr:
+					act 'Shoot at the rober ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $func('wrap', 'neg', '<br>I don''t have enough willpower to use this action.')
+				end			
+				if ammo < 1: 'I have NO ammo!!!'
+			end
+		else
+			'…they search all the house. The client is not in here'
+			'"Well, he ran away… shit… At least we have you"'
+			'they tied me and bring somewhere'
+			
+			act 'wait': gt 'mod_public_WC_rob_car', 'car'
+		end
+	end
+	killvar 'phhimbathroom'
+end
+
+if $ARGS[0] = 'shoot':
+	*clr & cla	
+	!! 'He runs to the previous room, where shots are fired'
+	!! Shoot at the rober	
+	phrobfail -= 100
+	phrobkillphrobkill = 1
+	
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/1 meshoot/aim.mp4"></video></center>'
+	phrobshoot += 1
+	phhefight += rand(0,1)
+	
+	if phrobshoot > 3:
+		'I peek around the corner and see few rober reloading the guns'
+	else
+		'I peek around the corner and see few rober shooting at someone'
+	end
+	
+	act 'wait':
+		minut += 5
+		if phrobshoot > 3: phrobshoot -= rand(0,3)
+		gs 'stat'
+		gt 'mod_public_WC_rob_home', 'shoot'
+	end
+	
+	if gun = 1 and ammo >= 2:
+		act 'go shoot them':
+			*clr & cla			
+			minut += 5
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+			
+			tirkoef = pcs_agil + pcs_shoot
+			tirmin = tirkoef * 20 / 100
+			tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+			if tirand >= 80:						
+				pcs_mood += 5
+				'I killed one!.'
+				killed +=1	& phroberkilled  += 1				
+				willpowermax += 5
+				pcs_mood -= 40
+				pcs_mood += killed
+				itemp -= rand(1,3)
+				phrobkill +=1
+			elseif tirand >= 50:
+				if rand(1,10) > 3:
+					'I killed one!.'
+					phrobkill +=1
+					killed +=1	& phroberkilled  += 1				
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					itemp -= rand(1,3)
+				else
+					'I missed'
+				end
+			elseif tirand >= 30:
+				if rand(1,10) > 5:
+					'I killed one!.'
+					phrobkill +=1
+					killed +=1	& phroberkilled  += 1				
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					itemp -= rand(1,3)
+				else
+					'I missed'
+				end
+			elseif tirand >= 15:
+				if rand(1,10) > 8:
+					'I killed one!.'
+					phrobkill +=1
+					killed +=1	& phroberkilled  += 1				
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					itemp -= rand(1,3)
+				else
+					'I missed'
+				end
+			end
+			
+			gs 'exp_gain', 'shoot', 1
+			
+			
+			if phrobkill < 2:
+				tirkoef = pcs_agil + pcs_shoot
+				tirmin = tirkoef * 20 / 100
+				tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+				if tirand >= 80:						
+					pcs_mood += 5
+					'I killed one!.'
+					phrobkill +=1
+					killed +=1	& phroberkilled  += 1				
+					willpowermax += 5
+					pcs_mood -= 40
+					pcs_mood += killed
+					itemp -= rand(1,3)
+				elseif tirand >= 50:
+					if rand(1,10) > 3:
+						'I killed one!.'
+						phrobkill +=1
+						killed +=1	& phroberkilled  += 1				
+						willpowermax += 5
+						pcs_mood -= 40
+						pcs_mood += killed
+						itemp -= rand(1,3)
+					else
+						'I missed'
+					end
+				elseif tirand >= 30:
+					if rand(1,10) > 5:
+						'I killed one!.'
+						phrobkill +=1
+						killed +=1	& phroberkilled  += 1				
+						willpowermax += 5
+						pcs_mood -= 40
+						pcs_mood += killed
+						itemp -= rand(1,3)
+					else
+						'I missed'
+					end
+				elseif tirand >= 15:
+					if rand(1,10) > 8:
+						'I killed one!.'
+						phrobkill +=1
+						killed +=1	& phroberkilled  += 1				
+						willpowermax += 5
+						pcs_mood -= 40
+						pcs_mood += killed
+						itemp -= rand(1,3)
+					else
+						'I missed'
+					end
+				end
+				
+				gs 'exp_gain', 'shoot', 1
+			end
+			
+			if phrobkill >= 2:				
+				'2 Dead robers are on the floor'
+				'Noone shooting'
+				'The client comes to me, take a gun and put it on the floor, then he hugs me'
+				
+				act 'wait':
+					cla
+					'He made a call, smth about "cleaning"…'
+					'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+					
+					$phescortzara = 'street'
+					$phescortude = ' '
+					killvar 'heinvanna'
+					killvar 'phdog'
+					killvar 'phtemp'
+					killvar 'hehorny'
+					killvar 'PHMYROOM'
+					
+					act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+					
+					act 'ask to go home':
+						*clr & cla
+						killvar 'zzphday'	
+						'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+						killvar 'phendescort'
+						phescortfunNEED = 0
+						phescortfunSexDONE -= 1
+						if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+						phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+						temp = phmoneypaid * 100
+						phmoneypaid = temp
+						phmoneypaidH = rand(11,17)
+						phmoneypaidD = daystart + rand(1,2)
+						phescortfun = 0
+						killvar 'phclientava'
+						killvar 'phdog'
+						phescorttask = 0
+						killvar 'phescortD'	
+						killvar 'phescortH'
+						'"Okey, girl, I understand it. I also have some… something to do"'
+						'I kissed him as goodbuy and go'			
+						+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+						act 'Go away': gt 'city_redlight', 'start'
+					end			
+					
+					gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+				end
+				
+				act 'ask to go home':
+					*clr & cla
+					killvar 'zzphday'	
+					'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+					killvar 'phendescort'
+					phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+					temp = phmoneypaid * 100
+					phmoneypaid = temp
+					phmoneypaidH = rand(11,17)
+					phmoneypaidD = daystart + rand(1,2)
+					phescortfun = 0
+					killvar 'phclientava'
+					killvar 'phdog'
+					phescorttask = 0
+					killvar 'phescortD'	
+					killvar 'phescortH'
+					'"Okey, girl, I understand it. I also have some… something to do"'
+					'I kissed him as goodbuy and go'			
+					+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+					act 'Go away': gt 'city_redlight', 'start'
+				end				
+			elseif phrobkill = 1:				
+				if phrobshoot > 3:
+					'Last rober throw his gun and raise his hands - "Don''t shoot!"'
+					'The Client quicly runs to him and just shoot in his head'
+					*nl
+					'…'
+					'Noone shooting'
+					'The client comes to me, take a gun and put it on the floor, then he hugs me'
+					
+					act 'wait':
+						cla
+						'He made a call, smth about "cleaning"…'
+						'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+						
+						$phescortzara = 'street'
+						$phescortude = ' '
+						killvar 'heinvanna'
+						killvar 'phdog'
+						killvar 'phtemp'
+						killvar 'hehorny'
+						killvar 'PHMYROOM'
+						
+						act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+						
+						act 'ask to go home':
+							*clr & cla
+							killvar 'zzphday'	
+							'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+							killvar 'phendescort'
+							phescortfunNEED = 0
+							phescortfunSexDONE -= 1
+							if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+							phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+							temp = phmoneypaid * 100
+							phmoneypaid = temp
+							phmoneypaidH = rand(11,17)
+							phmoneypaidD = daystart + rand(1,2)
+							phescortfun = 0
+							killvar 'phclientava'
+							killvar 'phdog'
+							phescorttask = 0
+							killvar 'phescortD'	
+							killvar 'phescortH'
+							'"Okey, girl, I understand it. I also have some… something to do"'
+							'I kissed him as goodbuy and go'			
+							+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+							act 'Go away': gt 'city_redlight', 'start'
+						end			
+						
+						gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+					end
+					
+					act 'ask to go home':
+						*clr & cla
+						killvar 'zzphday'	
+						'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+						killvar 'phendescort'
+						phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+						temp = phmoneypaid * 100
+						phmoneypaid = temp
+						phmoneypaidH = rand(11,17)
+						phmoneypaidD = daystart + rand(1,2)
+						phescortfun = 0
+						killvar 'phclientava'
+						killvar 'phdog'
+						phescorttask = 0
+						killvar 'phescortD'	
+						killvar 'phescortH'
+						'"Okey, girl, I understand it. I also have some… something to do"'
+						'I kissed him as goodbuy and go'			
+						+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+						act 'Go away': gt 'city_redlight', 'start'
+					end					
+				else
+					'The rober turns around and shoot at me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/aim.jpg"></center>'
+					
+					'I feel sharp pain'	
+					gs 'pain', 10, 'shoulders', 'pierce'
+					gs 'stat'
+					act 'is it bad?':
+						cla
+						pcs_health -= rand(350,1000)
+						if pcs_health < 0: pcs_health = 1
+						gs 'stat'
+						if pcs_health <= 10:
+							*clr & cla
+							'SO MUCH PAIN!!!'
+							'I am lying on the floor because of pain'
+							act 'wait': gt 'mod_public_WC_rob_home', 'endfight'
+						else
+							'just a scratch'
+							act 'hide back':
+								phrobshoot -= 1000
+								phhefight -= 10
+								gt 'mod_public_WC_rob_home', 'shoot'
+							end
+						end
+					end
+				end
+			else
+				if phrobshoot > 3:					
+					if ammo >= 2:
+						act 'shoot again while they reloads!':
+							*clr & cla			
+							minut += 5
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+							
+							tirkoef = pcs_agil + pcs_shoot
+							tirmin = tirkoef * 20 / 100
+							tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+							if tirand >= 80:						
+								pcs_mood += 5
+								'I killed one!.'
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+								phrobkill +=1
+							elseif tirand >= 50:
+								if rand(1,10) > 3:
+									'I killed one!.'
+									phrobkill +=1
+									killed +=1	& phroberkilled  += 1				
+									willpowermax += 5
+									pcs_mood -= 40
+									pcs_mood += killed
+									itemp -= rand(1,3)
+								else
+									'I missed'
+								end
+							elseif tirand >= 30:
+								if rand(1,10) > 5:
+									'I killed one!.'
+									phrobkill +=1
+									killed +=1	& phroberkilled  += 1				
+									willpowermax += 5
+									pcs_mood -= 40
+									pcs_mood += killed
+									itemp -= rand(1,3)
+								else
+									'I missed'
+								end
+							elseif tirand >= 15:
+								if rand(1,10) > 8:
+									'I killed one!.'
+									phrobkill +=1
+									killed +=1	& phroberkilled  += 1				
+									willpowermax += 5
+									pcs_mood -= 40
+									pcs_mood += killed
+									itemp -= rand(1,3)
+								else
+									'I missed'
+								end
+							end
+							
+							gs 'exp_gain', 'shoot', 1
+							
+							if phrobkill < 2:
+								tirkoef = pcs_agil + pcs_shoot
+								tirmin = tirkoef * 20 / 100
+								tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+								if tirand >= 80:						
+									pcs_mood += 5
+									'I killed one!.'
+									phrobkill +=1
+									killed +=1	& phroberkilled  += 1				
+									willpowermax += 5
+									pcs_mood -= 40
+									pcs_mood += killed
+									itemp -= rand(1,3)
+								elseif tirand >= 50:
+									if rand(1,10) > 3:
+										'I killed one!.'
+										phrobkill +=1
+										killed +=1	& phroberkilled  += 1				
+										willpowermax += 5
+										pcs_mood -= 40
+										pcs_mood += killed
+										itemp -= rand(1,3)
+									else
+										'I missed'
+									end
+								elseif tirand >= 30:
+									if rand(1,10) > 5:
+										'I killed one!.'
+										phrobkill +=1
+										killed +=1	& phroberkilled  += 1				
+										willpowermax += 5
+										pcs_mood -= 40
+										pcs_mood += killed
+										itemp -= rand(1,3)
+									else
+										'I missed'
+									end
+								elseif tirand >= 15:
+									if rand(1,10) > 8:
+										'I killed one!.'
+										phrobkill +=1
+										killed +=1	& phroberkilled  += 1				
+										willpowermax += 5
+										pcs_mood -= 40
+										pcs_mood += killed
+										itemp -= rand(1,3)
+									else
+										'I missed'
+									end
+								end
+								
+								gs 'exp_gain', 'shoot', 1
+							end
+							
+							if phrobkill >= 2:				
+								'2 Dead robers are on the floor'
+								'Noone shooting'
+								'The client comes to me, take a gun and put it on the floor, then he hugs me'
+								
+								act 'wait':
+									cla
+									'He made a call, smth about "cleaning"…'
+									'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+									
+									$phescortzara = 'street'
+									$phescortude = ' '
+									killvar 'heinvanna'
+									killvar 'phdog'
+									killvar 'phtemp'
+									killvar 'hehorny'
+									killvar 'PHMYROOM'
+									
+									act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+									
+									act 'ask to go home':
+										*clr & cla
+										killvar 'zzphday'	
+										'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+										killvar 'phendescort'
+										phescortfunNEED = 0
+										phescortfunSexDONE -= 1
+										if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+										phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+										temp = phmoneypaid * 100
+										phmoneypaid = temp
+										phmoneypaidH = rand(11,17)
+										phmoneypaidD = daystart + rand(1,2)
+										phescortfun = 0
+										killvar 'phclientava'
+										killvar 'phdog'
+										phescorttask = 0
+										killvar 'phescortD'	
+										killvar 'phescortH'
+										'"Okey, girl, I understand it. I also have some… something to do"'
+										'I kissed him as goodbuy and go'			
+										+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+										act 'Go away': gt 'city_redlight', 'start'
+									end			
+									
+									gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+								end
+								
+								act 'ask to go home':
+									*clr & cla
+									killvar 'zzphday'	
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+									killvar 'phendescort'
+									phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+									temp = phmoneypaid * 100
+									phmoneypaid = temp
+									phmoneypaidH = rand(11,17)
+									phmoneypaidD = daystart + rand(1,2)
+									phescortfun = 0
+									killvar 'phclientava'
+									killvar 'phdog'
+									phescorttask = 0
+									killvar 'phescortD'	
+									killvar 'phescortH'
+									'"Okey, girl, I understand it. I also have some… something to do"'
+									'I kissed him as goodbuy and go'			
+									+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+									act 'Go away': gt 'city_redlight', 'start'
+								end				
+							elseif phrobkill = 1:
+								'The rober shoot at me'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/aim.jpg"></center>'
+								
+								'I feel sharp pain'	
+								gs 'pain', 10, 'shoulders', 'pierce'
+								gs 'stat'
+								act 'is it bad?':
+									cla
+									pcs_health -= rand(350,1000)
+									if pcs_health < 0: pcs_health = 1
+									gs 'stat'
+									if pcs_health <= 10:
+										*clr & cla
+										'SO MUCH PAIN!!!'
+										'I am lying on the floor because of pain'
+										act 'wait': gt 'mod_public_WC_rob_home', 'endfight'
+									else
+										'just a scratch'
+										act 'hide back':
+											phrobshoot -= 1000
+											phhefight -= 10
+											gt 'mod_public_WC_rob_home', 'shoot'
+										end
+									end
+								end
+							else
+								'The rober shoot at me'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/aim.jpg"></center>'
+								
+								'I feel sharp pain'	
+								gs 'pain', 10, 'shoulders', 'pierce'
+								gs 'stat'
+								act 'is it bad?':
+									cla
+									pcs_health -= rand(350,1000)
+									if pcs_health < 0: pcs_health = 1
+									gs 'stat'
+									if pcs_health <= 10:
+										*clr & cla
+										'SO MUCH PAIN!!!'
+										'I am lying on the floor because of pain'
+										act 'wait': gt 'mod_public_WC_rob_home', 'endfight'
+									else
+										'just a scratch'
+										act 'hide back':
+											phrobshoot -= 1000
+											phhefight -= 10
+											gt 'mod_public_WC_rob_home', 'shoot'
+										end
+									end
+								end
+							end
+						end
+					end
+					
+					act 'hide back':
+						phrobshoot -= 1000
+						phhefight -= 10
+						gt 'mod_public_WC_rob_home', 'shoot'
+					end
+				else
+					'The rober turns around and shoot at me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/aim.jpg"></center>'
+					
+					'I feel sharp pain'	
+					gs 'pain', 10, 'shoulders', 'pierce'
+					gs 'stat'
+					act 'is it bad?':
+						cla
+						pcs_health -= rand(350,1000)
+						if pcs_health < 0: pcs_health = 1
+						gs 'stat'
+						if pcs_health <= 10:
+							*clr & cla
+							'SO MUCH PAIN!!!'
+							'I am lying on the floor because of pain'
+							act 'wait': gt 'mod_public_WC_rob_home', 'endfight'
+						else
+							'just a scratch'
+							act 'hide back':
+								phrobshoot -= 1000
+								phhefight -= 10
+								gt 'mod_public_WC_rob_home', 'shoot'
+							end
+						end
+					end
+				end
+			end
+			phrobshoot -= 100
+		end
+	elseif ammo <= 1:
+		'I have not have enought ammo'
+	end
+	
+	if phhefight >= 5:
+		*clr & cla
+		!! they got him or he win?
+		killvar 'phrobshoot'
+		killvar 'phhefight'
+		gt 'mod_public_WC_rob_home', 'endfight'
+	end
+end
+
+if $ARGS[0] = 'endfight':
+	*clr & cla
+	!! they got him or he win?
+	
+	'The silence… no shooting…'
+	
+	if pcs_health <= 10: 'I am bleeding'
+	
+	if phrobkillphrobkill = 1:
+		phrobkill += 1
+		killvar 'phrobkillphrobkill'
+	end
+	
+	if rand (1,6) + phrobkill > 4:
+		!! hewin
+		killvar 'phrobkill'
+		if pcs_health <= 10:
+			'the client enters the room'
+			'"Ow shit! Dont worry. We will bring you to the hospital… everything will be alright"'
+			gun = 0
+			
+			killvar 'phendescort'
+			phescortfunNEED = 5
+			
+			if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+			phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+			temp = phmoneypaid * 100
+			phmoneypaid = temp
+			phmoneypaidH = rand(11,17)
+			phmoneypaidD = daystart + rand(1,2)
+			phescortfun = 0
+			killvar 'phclientava'
+			killvar 'phdog'
+			phescorttask = 0
+			killvar 'phescortD'	
+			killvar 'phescortH'
+			
+			act 'lose consciousness':
+				*clr & cla
+				'I wake up in the clinic'
+				minut += rand(8,12)*60
+				gs 'stat'
+				pcs_health += rand(400,1400)
+				gs 'stat'				
+				'<center><img <<$set_imgh>> src="images/locations/shared/clinic/wakeup.jpg"></center>'
+				'the medical staff that helps me to get up and dress. After a last medical examination - that leaves a baffling physician assuming that my wounds were misdiagnosed - I am escorted to the hospital''s exit.'				
+				act 'Leave': gt 'city_residential'
+			end
+		else
+			phrober -= 80
+			'the client enters the room'
+			'"Ow, you alive" - now, things are better.'
+			'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			
+			act 'wait':
+				cla
+				'He made a call, smth about "cleaning"…'
+				'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+				
+				$phescortzara = 'street'
+				$phescortude = ' '
+				killvar 'heinvanna'
+				killvar 'phdog'
+				killvar 'phtemp'
+				killvar 'hehorny'
+				killvar 'PHMYROOM'
+				
+				act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+				
+				act 'ask to go home':
+					*clr & cla
+					killvar 'zzphday'	
+					'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+					killvar 'phendescort'
+					phescortfunNEED = 0
+					phescortfunSexDONE -= 1
+					if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+					phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+					temp = phmoneypaid * 100
+					phmoneypaid = temp
+					phmoneypaidH = rand(11,17)
+					phmoneypaidD = daystart + rand(1,2)
+					phescortfun = 0
+					killvar 'phclientava'
+					killvar 'phdog'
+					phescorttask = 0
+					killvar 'phescortD'	
+					killvar 'phescortH'
+					'"Okey, girl, I understand it. I also have some… something to do"'
+					'I kissed him as goodbuy and go'			
+					+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+					act 'Go away': gt 'city_redlight', 'start'
+				end			
+				
+				gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+			end
+			
+			act 'ask to go home':
+				*clr & cla
+				killvar 'zzphday'	
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+				killvar 'phendescort'
+				phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+				temp = phmoneypaid * 100
+				phmoneypaid = temp
+				phmoneypaidH = rand(11,17)
+				phmoneypaidD = daystart + rand(1,2)
+				phescortfun = 0
+				killvar 'phclientava'
+				killvar 'phdog'
+				phescorttask = 0
+				killvar 'phescortD'	
+				killvar 'phescortH'
+				'"Okey, girl, I understand it. I also have some… something to do"'
+				'I kissed him as goodbuy and go'			
+				+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+				act 'Go away': gt 'city_redlight', 'start'
+			end
+			
+			act 'life-affirming sex?':
+				cla			
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+				'"What? I mean - Yes,… Yes, please!"'
+				$cum1 = rand (100,120)
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'roomsexcycl'
+			end
+		end
+	else
+		!! heloose		
+		killvar 'phendescort'
+		phescortfunNEED = 0
+		phmoneypaid = 0
+		temp = phmoneypaid * 100
+		phmoneypaid = temp
+		phmoneypaidH = rand(1,2)
+		phmoneypaidD = daystart + 1
+		phescortfun = 0
+		killvar 'phclientava'
+		killvar 'phdog'
+		phescorttask = 0
+		killvar 'phescortD'	
+		killvar 'phescortH'		
+		
+		if pcs_health <= 10:
+			'rober come to me… and looking at me'
+			'"It is sad to waste such Bliad''"'
+			
+			act 'lose consciousness':
+				*clr & cla
+				gun = 0
+				'I wake up in the clinic'
+				minut += rand(8,12)*60
+				gs 'stat'
+				pcs_health += rand(400,1400)
+				money = 0
+				gs 'stat'				
+				'<center><img <<$set_imgh>> src="images/locations/shared/clinic/wakeup.jpg"></center>'
+				'The medical staff that helps me to get up and dress. After a last medical examination - that leaves a baffling physician assuming that my wounds were misdiagnosed - I am escorted to the hospital''s exit.'				
+				act 'Leave': gt 'city_residential'
+			end
+			killvar 'phrobkill'
+		else			
+			act 'run from the building':
+				killvar 'phendescort'
+				phescortfunNEED = 0
+				phmoneypaid = 0
+				temp = phmoneypaid * 100
+				phmoneypaid = temp
+				phmoneypaidH = rand(1,2)
+				phmoneypaidD = daystart + 1
+				phescortfun = 0
+				killvar 'phclientava'
+				killvar 'phdog'
+				phescorttask = 0
+				killvar 'phescortD'	
+				killvar 'phescortH'		
+				minut += 60
+				gt 'city_redlight', 'start'
+			end
+			
+			if gun = 1 and ammo >= 2:
+				act 'go shoot them':
+					*clr & cla			
+					minut += 5
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+					
+					tirkoef = pcs_agil + pcs_shoot
+					tirmin = tirkoef * 20 / 100
+					tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+					if tirand >= 80:						
+						pcs_mood += 5
+						'I killed one!.'
+						killed +=1	& phroberkilled  += 1				
+						willpowermax += 5
+						pcs_mood -= 40
+						pcs_mood += killed
+						itemp -= rand(1,3)
+						phrobkill +=1
+					elseif tirand >= 50:
+						if rand(1,10) > 3:
+							'I killed one!.'
+							phrobkill +=1
+							killed +=1	& phroberkilled  += 1				
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							itemp -= rand(1,3)
+						else
+							'I missed'
+						end
+					elseif tirand >= 30:
+						if rand(1,10) > 5:
+							'I killed one!.'
+							phrobkill +=1
+							killed +=1	& phroberkilled  += 1				
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							itemp -= rand(1,3)
+						else
+							'I missed'
+						end
+					elseif tirand >= 15:
+						if rand(1,10) > 8:
+							'I killed one!.'
+							phrobkill +=1
+							killed +=1	& phroberkilled  += 1				
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							itemp -= rand(1,3)
+						else
+							'I missed'
+						end
+					end					
+					gs 'exp_gain', 'shoot', 1					
+					
+					if phrobkill < 2:
+						tirkoef = pcs_agil + pcs_shoot
+						tirmin = tirkoef * 20 / 100
+						tirand = rand(tirkoef - tirmin*2, tirkoef + tirmin)
+
+						if tirand >= 80:						
+							pcs_mood += 5
+							'I killed one!.'
+							phrobkill +=1
+							killed +=1	& phroberkilled  += 1				
+							willpowermax += 5
+							pcs_mood -= 40
+							pcs_mood += killed
+							itemp -= rand(1,3)
+						elseif tirand >= 50:
+							if rand(1,10) > 3:
+								'I killed one!.'
+								phrobkill +=1
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						elseif tirand >= 30:
+							if rand(1,10) > 5:
+								'I killed one!.'
+								phrobkill +=1
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						elseif tirand >= 15:
+							if rand(1,10) > 8:
+								'I killed one!.'
+								phrobkill +=1
+								killed +=1	& phroberkilled  += 1				
+								willpowermax += 5
+								pcs_mood -= 40
+								pcs_mood += killed
+								itemp -= rand(1,3)
+							else
+								'I missed'
+							end
+						end
+						
+						gs 'exp_gain', 'shoot', 1
+					end
+					
+					if phrobkill >= 2:
+						'All robers are dead on the floor'
+						'Noone shooting'
+						'The client comes to me, take a gun and put it on the floor, then he hugs me'
+						
+						act 'wait':
+							cla
+							'He made a call, smth about "cleaning"…'
+							'After the call he turned his attention to me "This situation will not spoil the day, lets go clear our minds"'
+							
+							$phescortzara = 'street'
+							$phescortude = ' '
+							killvar 'heinvanna'
+							killvar 'phdog'
+							killvar 'phtemp'
+							killvar 'hehorny'
+							killvar 'PHMYROOM'
+							
+							act 'Go with him': gt 'mod_public_WC_rab_btothel_escort_place', 'street'
+							
+							act 'ask to go home':
+								*clr & cla
+								killvar 'zzphday'	
+								'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+								killvar 'phendescort'
+								phescortfunNEED = 0
+								phescortfunSexDONE -= 1
+								if phescortfunSexDONE < 0: phescortfunSexDONE = 0
+								phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+								temp = phmoneypaid * 100
+								phmoneypaid = temp
+								phmoneypaidH = rand(11,17)
+								phmoneypaidD = daystart + rand(1,2)
+								phescortfun = 0
+								killvar 'phclientava'
+								killvar 'phdog'
+								phescorttask = 0
+								killvar 'phescortD'	
+								killvar 'phescortH'
+								'"Okey, girl, I understand it. I also have some… something to do"'
+								'I kissed him as goodbuy and go'			
+								+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+								act 'Go away': gt 'city_redlight', 'start'
+							end			
+							
+							gs 'mod_public_WC_rab_btothel_escort_place', 'phendescort'
+						end
+						
+						act 'ask to go home':
+							*clr & cla
+							killvar 'zzphday'	
+							'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+							killvar 'phendescort'
+							phmoneypaid = ( phescortfunNEED * rand(500,1000) + rand(300,500) * phescortfunSexDONE ) * 50 /10000
+							temp = phmoneypaid * 100
+							phmoneypaid = temp
+							phmoneypaidH = rand(11,17)
+							phmoneypaidD = daystart + rand(1,2)
+							phescortfun = 0
+							killvar 'phclientava'
+							killvar 'phdog'
+							phescorttask = 0
+							killvar 'phescortD'	
+							killvar 'phescortH'
+							'"Okey, girl, I understand it. I also have some… something to do"'
+							'I kissed him as goodbuy and go'			
+							+$OpenInnerThought+'I hope noone will search me…'+$CloseInnerThought			
+							act 'Go away': gt 'city_redlight', 'start'
+						end	
+					else
+						'The rober run to me and knocked the gun out of my hands'
+						gun = 0
+						'he hit me hard and I fallon the floor'
+						'He tied me'						
+						'He grabs me and put in the main room, where the client is already tied sitting.'
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/hetied.png"></center>'
+						*nl
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/3 tied/wait/2 room/tape/tape ('+rand(1,2)+').jpg"></center>'
+						phrobtied = 1
+						phrobfail += 100 * phrobkill
+						
+						act 'wait': gt 'mod_public_WC_robed', 'start'
+					end
+					killvar 'phrobkill'
+				end
+			end
+		end		
+	end	
+end
+
+
+
+if $ARGS[0] = 'invade':
+	*clr & cla	
+	!! heinvanna, no door bell
+	phrober -= 1000
+	phroberkilled = 0
+	
+	$func('wrap', 'header center b', '"Main room"')
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/villa/1/0 room.jpg"></center>'	
+	
+	'Next to the door, I can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the bathroom is to the right, but it locked.'
+	
+	if phsleep > 0 and gun = 0:
+		'I saw the gun in his near bed cabinet'
+		act 'take his gun':
+			gun = 1
+			ammo += 12
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/hisgun.jpg"></center>'
+			
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/hided gun.jpg"></center>'
+		end
+	end
+	
+	'I HEAR THE LOUD NOICE'
+	
+	act 'ignore':
+		*clr & cla		
+		if rand(1,3) = 1:
+			!! they INVADE
+			'Sudenly the man in mask and a gun enters the room - I am so scared I can''t screem, just open my mouth'
+			'he approaches me and put his gun in my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/gun_mouth ('+rand(1,2)+').jpg"></center>'
+			phrober -= 1000
+			
+			'"If you help us everything will be ok"'
+			'"We need him, not you"'
+			'"Don''t speak, just nod"'
+			'"Will you help us?"'
+			
+			act 'nod yes':
+				cla				
+				'"Good girl" - he said with smile'
+				'"Now, you will answer me, but slovly and very quiet…"'
+				'"Where is he?"'
+				'He took the gun from my mouth'
+				
+				act 'He is in the bathroom':
+					phhimbathroom = 1
+					gt 'mod_public_WC_rob_home', 'searchhim'
+				end
+				
+				+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+				act 'He is in the sauna (lie)':
+					phhimbathroom = 2
+					gt 'mod_public_WC_rob_home', 'searchhim'
+				end
+			end
+			
+			act 'nod no':
+				*clr & cla
+				'I see anger in his eyes'
+				'"You will regret this" - he said'
+				phrobtied = 1
+				phrobfail += 1
+				'They tied me and gaged me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+				
+				act 'continue':
+					*clr & cla	
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+					'They put me in entrance room and go inside the house'
+					
+					act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+				end
+			end			
+		else
+			gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+		end		
+	end
+	
+	act 'check the source':
+		*clr & cla
+		
+		if gun = 1: '<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/hided gun.jpg"></center>'
+		
+		if rand(1,4) > 2:
+			!! they INVADE
+			'I have found the robers in the house!'
+			phrober -= 1000
+			
+			act 'run to the client':
+				*clr & cla
+				!! fight
+				minut += 5
+				gs 'stat'
+				
+				'I run in the bathroom and tell the client everything'
+				'He tap the button and we go through the hatch to the basement'
+				'In a short time we are in his car riding away'
+				
+				act 'continue':
+					*clr & cla					
+					phcardrive = 3
+					$phescortude = 'dinner'
+					phescortfun += 20
+					gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+				end
+			end
+			
+			if gun = 1 and ammo >= 3:
+				act 'take them at the gunpoint':
+					*clr & cla					
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/1 meshoot/aim.mp4"></video></center>'
+					'"Game over guys, lie down!" - I order aiming at them!'
+					
+					round = 0
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/aim.jpg"></center>'
+					temp = rand(1,10)
+					
+					if temp <= 4:
+						'she wouldn''t do it, guys go!'
+						act 'Surrender':
+							*clr & cla
+							'They quikly grab me, I can''t move at all'
+							'they take my gun'
+							gun = 0
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'							
+							
+							act 'screem':
+								*clr & cla
+								'As I tried to screem, the guy hit me in the stomach, and I loose all my air'
+								'Also he closed my mouth'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/grab (1).jpg"></center>'
+								gs 'pain', rand(2,4), 'tummy', 'hit'
+								gs 'stat'
+								
+								phrobfail += 1
+								
+								act 'wait': gt 'mod_public_WC_rob_home', 'startin'
+							end
+							
+							act 'wait': gt 'mod_public_WC_rob_home', 'startin'							
+						end
+						
+						gs 'willpower', 'crime', 'self', 'hard'
+						if will_cost <= pcs_willpwr and ammo > 0:
+							act 'kill them' + $func('willpower', 'get_willcost_string'):
+								trahobomj = rand(3,4)
+								round += 1
+								*clr & cla	
+								ammo -= 1
+								shoot_exp += 1
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+								gs 'willpower', 'pay', 'self'
+								gs 'stat'
+								
+								if pcs_shoot > rand(10,30):
+									'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+									killed +=1	& phroberkilled  += 1				
+									willpowermax += 5
+									pcs_mood -= 40
+									pcs_mood += killed
+									
+									'The dead body fell on the ground'
+									crime += 5
+									trahobomj -= 1
+									
+									temp1 = rand(0,3)
+									temp2 = rand(0,3)
+									temp3 = rand(0,3)
+									temp4 = rand(0,2)
+									
+									if trahobomj = 0:
+										'there are no other robers here'										
+									elseif trahobomj = 1: 
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 2: 
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 3:
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp3 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 4:
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp3 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp4 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									end
+									if trahobomj = 0:
+										'Robers sit in the car and quickly ride away'
+										act 'Back home': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+									else
+										act 'try to kill all of them!': gt 'mod_public_WC_rob_home', 'shoot22'
+										if trahobomj = 1:
+											'There is one rober furiously run to me with knife in his hand'
+										else
+											'There are <<trahobomj>> robers furiously run to me!'
+										end
+									end
+								else
+									'I missed!'
+									
+									temp1 = rand(0,2)
+									temp2 = rand(0,2)
+									temp3 = rand(0,2)
+									temp4 = rand(0,1)
+									
+									if trahobomj = 0:
+										'there are no other robers here'
+									elseif trahobomj = 1: 
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 2: 
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 3:
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp3 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									elseif trahobomj = 4:
+										if temp1 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp2 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp3 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+										if temp4 = 0: 
+											'rober run away'
+											trahobomj -= 1
+										end
+									end
+									if trahobomj = 0:
+										'there are no other rober here'
+										act 'Back home': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+									else
+										act 'Surrender':
+											*clr & cla
+											'They quikly grab me, I can''t move at all'
+											'they take my gun'
+											gun = 0
+											'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'							
+											
+											act 'screem':
+												*clr & cla
+												'As I tried to screem, the guy hit me in the stomach, and I loose all my air'
+												'Also he closed my mouth'
+												'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/grab (1).jpg"></center>'
+												gs 'pain', rand(2,4), 'tummy', 'hit'
+												gs 'stat'
+												
+												phrobfail += 1
+												
+												act 'wait': gt 'mod_public_WC_rob_home', 'startin'
+											end
+											
+											act 'wait': gt 'mod_public_WC_rob_home', 'startin'							
+										end	
+										act 'try to kill all of them!': gt 'mod_public_WC_rob_home', 'shoot22'
+										if trahobomj = 1:
+											'There is one rober furiously run to me with knife in his hand'
+										else
+											'There are <<trahobomj>> robers furiously run to me!'
+										end
+									end
+								end
+							end
+						else
+							act 'kill the robers' + $func('willpower', 'get_willcost_string'): $noWillpower
+						end
+					else
+						'ok, ok, girl, be cool…'
+						'…please, we just go away'
+						'they throw their guns and go out the home. Sit in the car and ride away.'
+						act 'Go back home':
+							minut += rand(1,3) * 4
+							gs 'stat'
+							gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+						end
+					end
+				end
+			elseif ammo < 2:
+				'I need more ammo.'
+			end
+			
+			act 'run from the home':
+				killvar 'phendescort'
+				phescortfunNEED = 0
+				phmoneypaid = 0
+				temp = phmoneypaid * 100
+				phmoneypaid = temp
+				phmoneypaidH = rand(1,2)
+				phmoneypaidD = daystart + 1
+				phescortfun = 0
+				killvar 'phclientava'
+				killvar 'phdog'
+				phescorttask = 0
+				killvar 'phescortD'	
+				killvar 'phescortH'		
+				minut += 60
+				gt 'city_redlight', 'start'
+			end
+		else
+			minut += 10
+			gs 'stat'
+			'I found nothing'
+			act 'Continue': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+		end	
+	end
+end
+
+if $ARGS[0] = 'shoot22':
+	*clr & cla
+	CLOSE ALL
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/1 meshoot/aim.mp4"></video></center>'
+	if ammo > 0:
+		act 'kill the next one':
+			*clr & cla	
+			ammo -= 1
+			shoot_exp += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/1 meshoot/shoot.jpg"></center>'
+			gs 'stat'
+			
+			if pcs_shoot > rand(10,30) + 15 * round:				
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/r_events/11/body.jpg"></center>'
+				killed +=1	& phroberkilled  += 1				
+				willpowermax += 5
+				pcs_mood -= 40
+				pcs_mood += killed
+				
+				'The dead body fell on the ground'
+				crime += 5
+				trahobomj -= 1
+				
+				round += 1
+				temp1 = rand(0,3)
+				temp2 = rand(0,3)
+				temp3 = rand(0,3)
+				temp4 = rand(0,2)
+				
+				if trahobomj = 0:
+					'there are no other robers here'
+				elseif trahobomj = 1: 
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 2: 
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 3:
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 4:
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp4 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				end
+				if trahobomj = 0:
+					'there are no other robers here'
+					act 'Back home': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+				else
+					'I have no time for one more shoot!'
+					if trahobomj = 1:
+						'There is one rober furiously run to me with knife in his hand'
+					else
+						'There are <<trahobomj>> robers furiously run to me!'
+					end
+					
+					'they hit the gun out my hands and push me to the floor'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/lose.jpg"></center>'
+					gun = 0
+					'"If you help us everything will be ok"'
+					'"We need him, not you"'
+					'"Don''t speak, just nod"'
+					'"Will you help us?"'
+					
+					act 'nod yes':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+						'"Good girl" - he said with smile'
+						'"Now, you will answer me, but slovly and very quiet…"'
+						'"Where is he?"'
+						
+						act 'He is in the bathroom':
+							phhimbathroom = 1
+							gt 'mod_public_WC_rob_home', 'searchhim'
+						end
+						
+						+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+						act 'He is in the sauna (lie)':
+							phhimbathroom = 2
+							gt 'mod_public_WC_rob_home', 'searchhim'
+						end
+					end
+					
+					act 'nod no':
+						cla
+						'I see anger in his eyes'
+						'"You will regret this" - he said'
+						phrobtied = 1
+						phrobfail += 1
+						'They tied me and gaged me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+						
+						act 'continue':
+							*clr & cla	
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+							'They left me in this room and go inside the house'
+							
+							act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+						end
+					end
+				end
+			else
+				'I missed!'
+				
+				temp1 = rand(0,2)
+				temp2 = rand(0,2)
+				temp3 = rand(0,2)
+				temp4 = rand(0,1)
+				
+				if trahobomj = 0:
+					'there are no other robers here'
+				elseif trahobomj = 1: 
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 2: 
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 3:
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				elseif trahobomj = 4:
+					if temp1 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp2 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp3 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+					if temp4 = 0: 
+						'rober run away'
+						trahobomj -= 1
+					end
+				end
+				if trahobomj = 0:
+					'there are no other robers here'
+					act 'Back home': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+				else
+					'I have no time for one more shoot!'
+					if trahobomj = 1:
+						'There is one rober furiously run to me with knife in his hand'
+					else
+						'There are <<trahobomj>> robers furiously run to me!'
+					end
+					
+					'they hit the gun out my hands and push me to the floor'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/lose.jpg"></center>'
+					gun = 0
+					'"If you help us everything will be ok"'
+					'"We need him, not you"'
+					'"Don''t speak, just nod"'
+					'"Will you help us?"'
+					
+					act 'nod yes':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+						'"Good girl" - he said with smile'
+						'"Now, you will answer me, but slovly and very quiet…"'
+						'"Where is he?"'
+						
+						act 'He is in the bathroom':
+							phhimbathroom = 1
+							gt 'mod_public_WC_rob_home', 'searchhim'
+						end
+						
+						+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+						act 'He is in the sauna (lie)':
+							phhimbathroom = 2
+							gt 'mod_public_WC_rob_home', 'searchhim'
+						end
+					end
+					
+					act 'nod no':
+						cla
+						'I see anger in his eyes'
+						'"You will regret this" - he said'
+						phrobtied = 1
+						phrobfail += 1
+						'They tied me and gaged me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+						
+						act 'continue':
+							*clr & cla	
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+							'They left me in this room and go inside the house'
+							
+							act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+						end
+					end
+				end
+			end
+		end
+	else
+		act 'Oh no! I have no ammo… I am dead now…':
+			*clr & cla
+			if trahobomj = 0:
+				'there are no other robers here'
+				act 'Back home': gt 'mod_public_WC_rab_btothel_escort_villa', 'nomer_full'
+			else
+				'I have no time for one more shoot!'
+				if trahobomj = 1:
+					'There is one rober furiously run to me with knife in his hand'
+				else
+					'There are <<trahobomj>> robers furiously run to me!'
+				end
+				
+				'they hit the gun out my hands and push me to the floor'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/lose.jpg"></center>'
+				gun = 0
+				'"If you help us everything will be ok"'
+				'"We need him, not you"'
+				'"Don''t speak, just nod"'
+				'"Will you help us?"'
+				
+				act 'nod yes':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+					'"Good girl" - he said with smile'
+					'"Now, you will answer me, but slovly and very quiet…"'
+					'"Where is he?"'
+					
+					act 'He is in the bathroom':
+						phhimbathroom = 1
+						gt 'mod_public_WC_rob_home', 'searchhim'
+					end
+					
+					+$OpenInnerThought+'If I say he is in the sauna, they will spend time to circled it and the client will have time to save me or smth…'+$CloseInnerThought
+					act 'He is in the sauna (lie)':
+						phhimbathroom = 2
+						gt 'mod_public_WC_rob_home', 'searchhim'
+					end
+				end
+				
+				act 'nod no':
+					cla
+					'I see anger in his eyes'
+					'"You will regret this" - he said'
+					phrobtied = 1
+					phrobfail += 1
+					'They tied me and gaged me'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+					
+					act 'continue':
+						*clr & cla	
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/tide.jpg"></center>'
+						'They left me in this room and go inside the house'
+						
+						act 'wait': gt 'mod_public_WC_rob_home', 'hefight'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'heclean':
+	*clr & cla
+	killvar 'phroberkilled'
+	'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 200 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+	
+	'I talked with the client about gunshoots and dead bodies'	
+
+	'He made a call, smth about "cleaning"…'
+	'After the call he turned his attention to me'
+	'"So, you are my bodyguard now?)) At least I need to thank you"'
+	'He took cash from the walet and give it to me - "You deffenitelly deserve it!"'
+	money += rand(6,10)*1000
+	gs 'stat'	
+	'"Lets go clear our minds"'	
+	
+	$phescortzara = 'street'
+	$phescortude = ' '
+	killvar 'heinvanna'
+	killvar 'phdog'
+	killvar 'phtemp'
+	killvar 'hehorny'
+	killvar 'PHMYROOM'	
+	
+	act 'Go with him':
+		*clr & cla					
+		phcardrive = 3
+		$phescortude = 'dinner'
+		phescortfun += 20
+		gt 'mod_public_WC_rab_btothel_escort_place', 'car'
+	end
+end
+
+
+
+--- mod_public_WC_rob_home ---------------------------------
+

@@ -1,0 +1,173 @@
+# mod_public_WC_rob_at_home
+if $ARGS[0] = 'start':
+	*clr & cla	
+	minut += 5
+	gs 'stat'
+	phroberkilled = 0
+	
+	temp = rand(1,5)
+	if temp = 1:
+		$maskyvannia = 'A pizza guy'
+		
+	elseif temp = 2:
+		$maskyvannia = 'A mailman'
+	elseif temp = 3:
+		$maskyvannia = 'A policeman'
+	elseif temp = 4:
+		$maskyvannia = 'A pizza guy'
+	else
+		$maskyvannia = 'A policeman'
+	end
+	
+	'I stand in front of the door'
+	
+	'"Who is there" - I have ask'
+	'"<<$maskyvannia>>" - the voice outside said'
+	
+	act 'open the door': gt 'mod_public_WC_rob_at_home', 'openthedoor'
+	
+	act 'look in the door viewer':
+		cla
+		if rand(1,3) = 1:
+			'I see a <<$maskyvannia>>'			
+		else
+			'I see just a guy'
+		end
+		
+		act 'open the door': gt 'mod_public_WC_rob_at_home', 'openthedoor'
+		
+		act 'I did not call any, goodbuy':
+			*clr & cla
+			killvar 'maskyvannia'
+
+			gt $loc, $loc_arg
+		end
+	end
+	
+	act 'I did not call any, goodbuy':
+		*clr & cla
+		killvar 'maskyvannia'
+
+		gt $loc, $loc_arg
+	end
+end
+
+if $ARGS[0] = 'openthedoor':
+	*clr & cla
+	minut += 5
+	gs 'stat'
+	phrobfail = 0
+	
+	if rand(1,3) = 1:
+		!! kidnap
+		phrober = -20
+		
+		'I opened the door and with <<$maskyvannia>> the few in the masks run in'
+		'They quikly grab me, I can''t move at all'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/opendoor.jpg"></center>'
+		
+		act 'screem':
+			*clr & cla
+			'As I tried to screem, the guy hit me in the stomach, and I loose all my air'
+			'Also he closed my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/grab (1).jpg"></center>'
+			gs 'pain', rand(2,4), 'tummy', 'hit'
+			gs 'stat'
+			
+			phrobfail += 1
+			
+			act 'wait': gt 'mod_public_WC_rob_at_home', 'startin'
+		end
+		
+		act 'wait': gt 'mod_public_WC_rob_at_home', 'startin'
+	else
+		if $maskyvannia = 'A pizza guy':			
+			'The guy with a pizza as the adress and it is not my. He appoligize and go away.'			
+		elseif $maskyvannia = 'A mailman':
+			'The guy ask me to sign and take the parcel. I did it'
+		elseif $maskyvannia = 'A policeman':
+			'He asked me some general questions, like "what this adress is" write smth in his note and shortly go away.'
+		end
+		
+		act 'Go back to the client': gt $loc, $loc_arg
+		
+		if phathome = 1:
+			cla
+			act 'Go back': gt $loc, $loc_arg
+		end
+	end	
+	killvar 'maskyvannia'
+end
+
+if $ARGS[0] = 'startin':
+	*clr & cla
+	'they put me on the floor'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/0 start/2+/lose.jpg"></center>'
+	killvar 'phrobfail'
+	killvar 'phrobbos'
+	killvar 'phrobwife'
+	killvar 'phsafefindout'
+	killvar 'photherevent'
+	killvar 'phdtape'
+	killvar 'pduck'
+	killvar 'pheventstartlive'
+	killvar 'phrobtiedwhere'
+	killvar 'phwindow'
+	killvar 'phapronon'
+	killvar 'phrobwatme'
+	killvar 'phroberkilled'
+	killvar 'phknife'
+	killvar 'phrobers'
+	colir = 1	
+	money = 0	
+	phclienttied = 0
+	'Robber: "Someone lived here before you and he had hided smth from us here. We will search thi smth"'
+	'Robber: "You will take care of us during the search, otherwise…"'
+	killvar 'phrobday'
+	killvar 'phrobh'
+	killvar 'phclienttied'
+	killvar 'phrobbos'
+	killvar 'phrobwife'
+	
+	phrobday = daystart + 2
+	phrobh = rand(19,22)	
+	
+	act 'nod "yes"':
+		gt 'mod_public_WC_robed_live', 'start'
+	end	
+	
+	phiamhome = 1
+	phrobwife = 0
+	if rand(1,5) = 1:
+		cla
+		'Other robber aproches me "Boss whant to see you"'
+		'He break me and we go to other room'
+		phrobbos = 0
+		killvar 'phrobbos'		
+		act 'wait': gt 'mod_public_WC_robed_boss', 'start'
+	end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_rob_at_home ---------------------------------
+

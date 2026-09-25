@@ -1,0 +1,454 @@
+# mod_public_WC_rab_tryrun
+if $ARGS[0] = 'start':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	temp = rand(1,3)
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/run<<temp>>.jpg"></center>'
+	'Am I sure?'
+	gs 'willpower', 'misc', 'self', 'hard'
+	if will_cost <= pcs_willpwr:
+		act 'Run!' + $func('willpower', 'get_willcost_string'):
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			act 'Continue': gt 'mod_public_WC_rab_tryrun', 'run'
+		end
+	else
+		act 'Run!' + $func('willpower', 'get_willcost_string'): $noWillpower
+	end
+	act 'No!':
+		if $metka = 'viranda':
+			gt 'mod_public_WC_rab', 'viranda'
+		else
+			gt 'mod_public_WC_rab', 'dvir'
+		end
+	end
+
+	if VaniaMayster >= 100:
+		cla
+		'<i>I obey Vania for so long…</i>'
+		'<i>I can''t run from Vania anymore</i>'
+
+		act 'Go back!':
+			if $metka = 'viranda':
+				gt 'mod_public_WC_rab', 'viranda'
+			else
+				gt 'mod_public_WC_rab', 'dvir'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'run':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	minut += 5
+	gs 'stat'
+	'I hear someone running after me!!!'
+	if ktemp = 105: 'Obviously it''s Vania'
+	killvar 'ktemp'
+	if month <= 4 or month >= 10:
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun10.mp4"></video></center>'
+	else
+		temp = rand(1,3)
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/tryrun/runrun<<temp>>.mp4"></video></center>'
+	end
+	if gun = 1:
+		ztemp = 0
+		act 'use gun': gt 'mod_public_WC_rab_gun_run', 'run'
+	end
+	act 'Run with all my strength!':
+		if ktemp = 105:
+			killvar 'ktemp'
+			gt 'mod_public_WC_rab_tryrun', 'k100'
+		end
+		if week <= 5:
+			gt 'mod_public_WC_rab_tryrun', 'runweek15'
+		end
+		if week = 6:
+			gt 'mod_public_WC_rab_tryrun', 'runweek6'
+		end
+		if week = 7:
+			gt 'mod_public_WC_rab_tryrun', 'runweek7'
+		end
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'runweek15':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	if hour >= 0 and hour <= 5:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I was able to break away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost',  'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 14 and hour <= 19:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I was able to break away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost',  'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 21 and hour <= 24:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I was able to break away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost',  'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 11 and hour <= 12:
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand (80, 90):
+			'I ran away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand (180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'Nope… I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	else
+		'Soon they will notice my disappearance'
+		if pcs_run >= rand (80, 90):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+if $ARGS[0] = 'runweek6':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	if hour >= 0 and hour <=5:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 21 and hour <= 24:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 16 and hour <=19 and $metka ! 'viranda':
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 16 and hour <=19 and $metka = 'viranda':
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand (80, 90):
+			'I ran away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand (180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 8 and hour <=9 and $metka ! 'viranda':
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 8 and hour <=9 and $metka = 'viranda':
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand (80, 90):
+			'I ran away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand (180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 11 and hour <= 12:
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand (80, 90):
+			'I ran away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand (180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 14 and hour <= 15:
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand (80, 90):
+			'I ran away!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand (180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	else
+		'Soon they will notice my disappearance'
+		if pcs_run >= rand (80, 90):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+if $ARGS[0] = 'runweek7':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	if hour >= 0 and hour <=5:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand(10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 17 and hour <= 19:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand(10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 21 and hour <= 24:
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand(10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 8 and hour <= 12 and $metka ! 'viranda':
+		'It seems I ran away unnoticed'
+		if pcs_run >= rand(80, 90):
+			'I ran away!'
+			minut += rand(10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		elseif pcs_agil + pcs_sprt + pcs_run + pcs_ftbll >= rand(180, 270):
+			'I was able to escape!'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught up and broke!'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	elseif hour >= 8 and hour <= 12 and $metka = 'viranda':
+		'I was immediately spotted'
+		if pcs_run >= rand (85, 111):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	else
+		'Soon they will notice my disappearance'
+		if pcs_run >= rand (80, 90):
+			'I managed to break away'
+			minut += rand (10, 40)
+			vtecha = 1
+			Artem = 0 & Tolik = 0 & Vania = 0
+			brak += 10
+			act 'Continue': gt 'gad_forest_lost', 'forest_center'
+		else
+			'I was caught and broke'
+			brak += 5
+			act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+		end
+	end
+end
+
+if $ARGS[0] = 'k100':
+	CLOSE ALL
+	menu_off = 0
+	$location_type = 'secluded'
+	*clr & cla
+	gs 'stat'
+	if pcs_run >= rand (65, 91):
+		'I was able to break away!'
+		minut += rand (10, 40)
+		vtecha = 1
+		Artem = 0 & Tolik = 0 & Vania = 0
+		brak += 10
+		act 'Continue': gt 'gad_forest_lost',  'forest_center'
+	else
+		'I was caught and broke'
+		brak += 5
+		act 'Continue': gt 'mod_public_WC_kara', 'vtecha'
+	end
+end
+
+--- mod_public_WC_rab_tryrun ---------------------------------
+

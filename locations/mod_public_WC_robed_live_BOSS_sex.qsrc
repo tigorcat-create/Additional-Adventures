@@ -1,0 +1,1187 @@
+# mod_public_WC_robed_live_BOSS_sex
+if $ARGS[0] = 'start':
+	*clr & cla
+
+	minut += 5
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'Boss', rand(60,70)
+	gs 'boyStat', $npclastgenerated
+
+
+	if phtemp = 1:
+		!! other cum -> chair
+		gs 'mod_public_WC_robed_live_BOSS_sex', 'chair'
+	elseif phtemp = 2:
+		!! good prepared -> column
+		gs 'mod_public_WC_robed_live_BOSS_sex', 'column'
+	elseif phtemp = 3:
+		!! good prepared -> wall
+		gs 'mod_public_WC_robed_live_BOSS_sex', 'wall'
+	elseif phtemp = 4:
+		!! bad prepared -> street
+		gs 'mod_public_WC_robed_live_BOSS_sex', 'street'
+	elseif phtemp = 5:
+		!! bdsm event + just sex
+		gs 'mod_public_WC_robed_live_BOSS_sex', 'bdsm'
+	end
+end
+
+
+
+if $ARGS[0] = 'chair':
+	*clr & cla
+	'he pushed me on the chair and tied me to it'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/1.jpg"></center>'
+	minut += 7
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'After that he just sit in a silence and stare at me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/2 ('+rand(1,2)+').jpg"></center>'
+		gs 'arousal', 'flash', 10, 'sub'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He aproches me'
+			'Boss: "I want to fuck you, but I can''t. That is why I am very engry and disapointed… You will feel my disapointment soon. This hole must be filled with my cum only. DO YOU UNDERSTAND?" - he points on my pussy'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/3.jpg"></center>'
+			gs 'arousal', 'flash', 1, 'sub'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He took a dildo ib the stick from the shell…'
+				'He spit a dildo few times and start to fuck me with it'
+				dick = 35
+				gs 'arousal', 'BDSM', rand(3,6), 'sub'
+				gs 'stat'
+				gs 'arousal', 'vaginal_dildo', rand(5,10)
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/4.jpg"></center>'
+
+				act 'continue':
+					*clr & cla
+					'He keeps fucking me with a dildo - "You think it is only pleasure?"'
+					'He start spanking me, while drilling my pussy'
+
+					dick = 35
+					gs 'arousal', 'BDSM', rand(3,6), 'sub'
+					gs 'stat'
+					gs 'arousal', 'vaginal_dildo', rand(5,10)
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/5.jpg"></center>'
+					stat['BDSM'] += rand(1,1)
+					gs 'pain', rand(2,2), 'tummy', 'spank'
+					gs 'stat'
+
+					gs 'pain', rand(0,2), 'shoulders', 'spank'
+					gs 'stat'
+					gs 'pain', rand(0,2), 'ribs', 'spank'
+					gs 'stat'
+					gs 'pain', rand(0,2), 'tummy', 'spank'
+					gs 'stat'
+					gs 'pain', rand(2,4), 'breasts', 'spank'
+					gs 'stat'
+
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'
+					elseif stat['BDSM'] <= 10:
+						'"AAAaaa" - I screamed as he hits me'
+					end
+
+					act 'continue':
+						*clr & cla
+						'He start spanking me, while drilling my pussy'
+						'Boss: "Don''t worry it is just the start"'
+
+						dick = 35
+						gs 'arousal', 'BDSM', rand(3,6), 'sub'
+						gs 'stat'
+						gs 'arousal', 'vaginal_dildo', rand(5,10)
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_chair/5.jpg"></center>'
+						stat['BDSM'] += rand(1,1)
+						gs 'pain', rand(2,2), 'tummy', 'spank'
+						gs 'stat'
+
+						gs 'pain', rand(0,2), 'shoulders', 'spank'
+						gs 'stat'
+						gs 'pain', rand(0,2), 'ribs', 'spank'
+						gs 'stat'
+						gs 'pain', rand(0,2), 'tummy', 'spank'
+						gs 'stat'
+						gs 'pain', rand(2,4), 'breasts', 'spank'
+						gs 'stat'
+
+						if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+							'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+						elseif stat['BDSM'] > 25:
+							'<i>Yeeees, it feels great!</i>'
+						elseif stat['BDSM'] <= 10:
+							'"AAAaaa" - I screamed as he hits me'
+						end
+
+						act 'continue':
+							*clr & cla
+							gt 'mod_public_WC_robed_live_BOSS_sex', 'bossmad'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bossmad':
+	*clr & cla
+	!! pins
+	'He takes a pin from his pocket… "Sit still"'
+	'He pins my mouth'
+
+	stat['BDSM'] += rand(0,1)
+	if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+		'<i>I had some BDSM experience… mouth hurts, but I can handle it</i>'
+		gs 'pain', rand(1,3), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] > 25:
+		'<i>Yeeees, it feels great!</i>'
+
+		'"Ow, I see you are pretty open for the new feelings"'
+		gs 'pain', rand(0,1), 'mouth', 'freeze'
+		gs 'stat'
+
+	elseif stat['BDSM'] <= 10:
+		'<i><b>AAAAAAAAAAAAAA sharp pain! mouth hurts!</b></i>'
+		gs 'pain', rand(3,5), 'mouth', 'freeze'
+		gs 'stat'
+	end
+
+	'With quick moves he add more pins to my mouth, but all next pins feel less pain'
+
+	minut += rand(5,10)
+	stat['BDSM'] += rand(0,1)
+	if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+		gs 'pain', rand(2,4), 'mouth', 'freeze'
+		gs 'stat'
+	elseif stat['BDSM'] > 25:
+
+		gs 'pain', rand(0,2), 'mouth', 'freeze'
+		gs 'stat'
+
+	elseif stat['BDSM'] <= 10:
+
+		gs 'pain', rand(4,7), 'mouth', 'freeze'
+		gs 'stat'
+	end
+
+
+	act 'wait':
+		*clr & cla
+		'He pets me like a dog few times then gently takes my nipple and twists it slowly…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/tits/train/start.jpg"></center>'
+		'…and pins it with the pin!'
+
+
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/tits/tits/start.mp4"></video></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/tits/tits/1 ('+rand(1,2)+').jpg"></center>'
+
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+		'He gently grab other breast, cares a nipple a little…'
+		'… and pins it too!'
+		pin2 = 2
+
+		act 'wait':
+			*clr & cla
+
+			temp = rand(1,3)
+			if temp = 1: '"Pain is not so bad, pain is different and pain is intresting" - He said'
+			if temp = 2: '"If you feel the pain - you are alive and can feel pleasure too. You just need to combine it" - He said'
+			if temp = 3: '"Just talk with your body" - He said'
+
+			'He spread my legs, I can look only on that pin…'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/shipka/puss/start.jpg"></center>'
+
+			act 'wait':
+				*clr & cla
+				'He pins my clitoris!'
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+					gs 'pain', rand(2,4), 'mouth', 'freeze'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+
+					gs 'pain', rand(0,2), 'mouth', 'freeze'
+					gs 'stat'
+
+				elseif stat['BDSM'] <= 10:
+
+					gs 'pain', rand(4,7), 'mouth', 'freeze'
+					gs 'stat'
+				end
+
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+
+					gs 'pain', rand(0,2), 'nipples', 'pinch'
+					gs 'stat'
+
+				elseif stat['BDSM'] <= 10:
+
+					gs 'pain', rand(4,7), 'nipples', 'pinch'
+					gs 'stat'
+				end
+
+
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+					gs 'pain', rand(4,5), 'clitoris', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+
+					gs 'pain', rand(1,4), 'clitoris', 'pinch'
+					gs 'stat'
+
+				elseif stat['BDSM'] <= 10:
+
+					gs 'pain', rand(5,6), 'clitoris', 'pinch'
+					gs 'stat'
+				end
+				pin3 = 2
+				'with no pause he takes another pin and add it to previous one!.. and another… and ano… and… AAaaaa'
+
+				'I was so asorbed by pain, I missed the moment he started to fuck my ass…'
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/chair/3 event/pins.mp4"></video></center>'
+				gs 'npcgeneratec', 0, 'Boss', 60
+				gs 'boyStat', $npclastgenerated
+
+				gs 'arousal', 'anal', rand(5,12), 'humiliation', 'bound', 'prostitution'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'As he drill my ass he start to ull the pins of one by one'
+					'Each pull make my body spasm'
+					'Each spasm he groans…'
+					pin3 = 0
+					pin2 = 0
+
+					gs 'arousal', 'anal', rand(5,12), 'exhibitionism', 'humiliation', 'bound', 'prostitution'
+					gs 'stat'
+
+
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+						gs 'pain', rand(2,4), 'mouth', 'freeze'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'
+
+
+						gs 'pain', rand(0,2), 'mouth', 'freeze'
+						gs 'stat'
+
+					elseif stat['BDSM'] <= 10:
+
+						gs 'pain', rand(4,7), 'mouth', 'freeze'
+						gs 'stat'
+					end
+
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+						gs 'pain', rand(2,4), 'nipples', 'pinch'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'
+
+
+						gs 'pain', rand(0,2), 'nipples', 'pinch'
+						gs 'stat'
+
+					elseif stat['BDSM'] <= 10:
+
+						gs 'pain', rand(4,7), 'nipples', 'pinch'
+						gs 'stat'
+					end
+
+
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+						gs 'pain', rand(4,5), 'clitoris', 'pinch'
+						gs 'stat'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'
+
+
+						gs 'pain', rand(1,4), 'clitoris', 'pinch'
+						gs 'stat'
+
+					elseif stat['BDSM'] <= 10:
+
+						gs 'pain', rand(5,6), 'clitoris', 'pinch'
+						gs 'stat'
+					end
+
+					act 'continue':
+						*clr & cla
+						minut += 3
+						'He groans and shoots sperm deep in my ass'
+						'he put his pants back and go away'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/cum_all/ass/ass (1).mp4"></video></center>'
+
+						gs 'cum_call','anus',$boy
+						gs 'stat'
+						gs 'cum_call','legs',$boy
+						gs 'stat'
+
+						'He put a buttplug in my ass to avoid his sperm leaking'
+						analPlugIn = 1
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						act 'continue':
+							phrobtied = 1
+							pduck = 1
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/3 assonly/1 ass only ('+rand(1,2)+').jpg"></center>'
+							minut += 3
+							gs 'stat'
+							'He put the duck tape on my pussy: "I hope you will learn the lesson and I could fuck you next time"'
+							'He goes away'
+							'the robber comes in'
+
+							gs 'mod_public_WC_robed_live', 'walkroom'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'column':
+	*clr & cla
+	'Boss: "I like you are prepared for me"'
+	'Boss: "Now we will combine learning and pleasure. WE will harden your nipples."'
+
+
+	if pin2 = 0:
+		'He breaks me down and put a pin on my tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/2.jpg"></center>'
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+		'Then he put other one on the other tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/3 ('+rand(1,2)+').jpg"></center>'
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+	elseif pin2 = 1:
+		'He breaks me down and put a pin on my tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/3 ('+rand(1,2)+').jpg"></center>'
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+	elseif pin2 >= 2:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/3 ('+rand(1,2)+').jpg"></center>'
+
+
+
+	end
+	phbosshappy += 1
+
+	act 'Continue':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/4.jpg"></center>'
+		'Boss: "Now the learning begin"'
+		'He tied me to the column'
+		'Then he adds even more pins, but it hurts less than previous pins'
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+		'Boss: "Now I left you with the pain… just train yourself to be comfort with it"'
+		+$OpenInnerThought+'I hear he does not left my room. I feel he is staring at me…'+$CloseInnerThought
+
+		act 'wait':
+			*clr & cla
+			minut += rand(10,20)
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/4.jpg"></center>'
+			'Boss: "Ok, now you are ready for the next step"'
+			'He removes all the pins'
+			pin1 = 0
+			pin2 = 0
+			pin3 = 0
+
+			act 'Continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/5 ('+rand(1,3)+').jpg"></center>'
+				'He start spanking my nipples'
+
+				stat['BDSM'] += rand(1,1)
+				minut += 10
+				gs 'pain', rand(0,2), 'shoulders', 'spank'
+				gs 'stat'
+				gs 'pain', rand(0,2), 'ribs', 'spank'
+				gs 'stat'
+				gs 'pain', rand(0,2), 'tummy', 'spank'
+				gs 'stat'
+				gs 'pain', rand(2,4), 'breasts', 'spank'
+				gs 'stat'
+				gs 'pain', rand(3,5), 'nipples', 'spank'
+				gs 'stat'
+
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+				elseif stat['BDSM'] <= 10:
+					'"AAAaaa" - I screamed as he hits me'
+				end
+
+				act 'Continue':
+					*clr & cla
+					'Suddenly he stop hiting me and start kissing me… I see big bulb in his pants'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/5_kiss.jpg"></center>'
+					gs 'arousal', 'kiss', 5
+					gs 'stat'
+
+
+					act 'Continue':
+						*clr & cla
+						'Boss: "Noow see your new skill" - he put pins on my nipples back…'
+						'But the nipples are so stressed and hot… I… I really do not feel the pain from pins'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/6_2 (1).jpg"></center>'
+						pin2 = 2
+
+						'He notice my reaction and smile'
+						'start kissing me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/6_kiss.jpg"></center>'
+						gs 'arousal', 'kiss', 5
+						gs 'stat'
+
+						act 'Continue':
+							*clr & cla
+							'Boss: "And one last lesson" - he pins my pussy back… that pain I feel'
+							if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+
+								gs 'pain', rand(4,5), 'clitoris', 'pinch'
+								gs 'stat'
+							elseif stat['BDSM'] > 25:
+								'<i>Yeeees, it feels great!</i>'
+
+
+								gs 'pain', rand(1,4), 'clitoris', 'pinch'
+								gs 'stat'
+
+							elseif stat['BDSM'] <= 10:
+
+								gs 'pain', rand(5,6), 'clitoris', 'pinch'
+								gs 'stat'
+							end
+							pin3 = 2
+							stat['BDSM'] += rand(0,1)
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/6_1.jpg"></center>'
+							'Boss: "You need some time…"'
+							+$OpenInnerThought+'I hear he does not left my room. I feel he is staring at me…'+$CloseInnerThought
+
+							act 'wait':
+								*clr & cla
+								minut += rand(10,20)
+								gs 'pain', rand(1,5), 'clitoris', 'pinch'
+								gs 'stat'
+								gs 'pain', rand(0,1), 'nipples', 'pinch'
+								gs 'stat'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/6_2 (2).jpg"></center>'
+								'It is too much pain. I can''t stand on my legs'
+
+								act 'wait':
+									*clr & cla
+									if rand(1,2) = 1:
+										'start kissing me'
+										'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/6_kiss.jpg"></center>'
+										gs 'arousal', 'kiss', 5
+										gs 'stat'
+
+										act 'continue':
+											*clr & cla
+											'He untied me - I have lack of strenght and he puts me like a doll on his dick'
+											'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/8_1 (1).jpg"></center>'
+											gs 'arousal', 'vaginal', 15
+											gs 'stat'
+											act 'continue':
+												*clr & cla
+												'He wealthy cums in me'
+												'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/8_1 (2).jpg"></center>'
+												gs 'arousal', 'vaginal', 35
+												gs 'stat'
+												gs 'cum_call','',$boy
+												gs 'cuminsidereact', $boydesc
+
+												'He put me on the bed like a doll - "It was much FUN!"'
+												'He goes away'
+												'the robber comes in'
+												gs 'arousal', 'end'
+												gs 'stat'
+												gs 'mod_public_WC_robed_live', 'walkroom'
+											end
+										end
+									else
+										'He aproach me and put his dick in my mouth'
+										'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/7_2.jpg"></center>'
+										gs 'arousal', 'bj', 15
+										gs 'stat'
+
+										act 'continue':
+											*clr & cla
+											'I have lack of strenght and he just fuck my face…'
+											'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_6.jpg"></center>'
+											gs 'arousal', 'bj', 35
+											gs 'stat'
+											'He loads deep in my throat, I swallow everything…'
+											phrobtied = 1
+											'Boss: "It was much FUN!"'
+											'He goes away'
+											'the robber comes in'
+											gs 'cum_call','face',$boy
+											gs 'stat'
+											gs 'cum_call','mouth',$boy
+											gs 'stat'
+											gs 'cum_call','mouth_swallow',$boy
+											gs 'stat'
+											gs 'arousal', 'end'
+											gs 'stat'
+											gs 'mod_public_WC_robed_live', 'walkroom'
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'wall':
+	*clr & cla
+	'Boss: "I like you are prepared for me"'
+	'Boss: "Now we will combine learning and pleasure. WE will harden your nipples."'
+	'He tied me with a leash between two colums'
+
+
+	if pin2 = 0:
+		'He put a pin on my tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/3.jpg"></center>'
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+		'Then he put other one on the other tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/4.jpg"></center>'
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+	elseif pin2 = 1:
+		'He put a pin on my tit'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/4.jpg"></center>'
+		minut += rand(5,10)
+		stat['BDSM'] += rand(0,1)
+		if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+			'<i>nipple hurts, but I can handle it</i>'
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] > 25:
+			'<i>Yeeees, it feels great!</i>'
+
+			gs 'pain', rand(0,1), 'nipples', 'pinch'
+			gs 'stat'
+		elseif stat['BDSM'] <= 10:
+			'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+			gs 'pain', rand(2,4), 'nipples', 'pinch'
+			gs 'stat'
+		end
+
+	elseif pin2 >= 2:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/4.jpg"></center>'
+
+
+
+	end
+	phbosshappy += 1
+
+	act 'Continue':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/5.jpg"></center>'
+		'Boss: "Now the learning begin"'
+
+
+		'Boss: "Now I left you with the pain… just train yourself to be comfort with it"'
+		+$OpenInnerThought+'I hear he does not left my room. I feel he is staring at me…'+$CloseInnerThought
+
+		act 'wait':
+			*clr & cla
+			minut += rand(10,20)
+			gs 'pain', rand(1,2), 'nipples', 'pinch'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/nopins.jpg"></center>'
+			'Boss: "Ok, now you are ready for the next step"'
+			'He removes all the pins'
+			pin1 = 0
+			pin2 = 0
+			pin3 = 0
+
+			act 'Continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/6 ('+rand(1,1)+').jpg"></center>'
+				'He start spanking my nipples'
+
+				stat['BDSM'] += rand(1,1)
+				minut += 10
+				gs 'pain', rand(0,2), 'shoulders', 'spank'
+				gs 'stat'
+				gs 'pain', rand(0,2), 'ribs', 'spank'
+				gs 'stat'
+				gs 'pain', rand(0,2), 'tummy', 'spank'
+				gs 'stat'
+				gs 'pain', rand(2,4), 'breasts', 'spank'
+				gs 'stat'
+				gs 'pain', rand(3,5), 'nipples', 'spank'
+				gs 'stat'
+
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+				elseif stat['BDSM'] <= 10:
+					'"AAAaaa" - I screamed as he hits me'
+				end
+
+				act 'Continue':
+					*clr & cla
+					'Suddenly he stop hiting me and start kissing me… I see big bulb in his pants'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_column/5_kiss.jpg"></center>'
+					gs 'arousal', 'kiss', 5
+					gs 'stat'
+
+					act 'Continue':
+						*clr & cla
+						'He pushed me to sit on a dildo… I missed a moment he brought it here'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_1.jpg"></center>'
+						dick = 35
+						gs 'arousal', 'BDSM', rand(3,6), 'sub'
+						gs 'stat'
+						gs 'arousal', 'vaginal_dildo', rand(5,10)
+						gs 'stat'
+
+						act 'Continue':
+							*clr & cla
+							'the moment dildo penetrates me he start to slap my nipples'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_2.jpg"></center>'
+							gs 'arousal', 'BDSM', rand(3,6), 'sub'
+							gs 'stat'
+							gs 'arousal', 'vaginal_dildo', rand(5,10)
+							gs 'stat'
+
+							stat['BDSM'] += rand(1,1)
+							minut += 10
+							gs 'pain', rand(0,2), 'shoulders', 'spank'
+							gs 'stat'
+							gs 'pain', rand(0,2), 'ribs', 'spank'
+							gs 'stat'
+							gs 'pain', rand(0,2), 'tummy', 'spank'
+							gs 'stat'
+							gs 'pain', rand(2,4), 'breasts', 'spank'
+							gs 'stat'
+							gs 'pain', rand(3,5), 'nipples', 'spank'
+							gs 'stat'
+
+							if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+								'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+							elseif stat['BDSM'] > 25:
+								'<i>Yeeees, it feels great!</i>'
+							elseif stat['BDSM'] <= 10:
+								'"AAAaaa" - I screamed as he hits me'
+							end
+							pin2 = 0
+							pin3 = 0
+
+							act 'Continue':
+								*clr & cla
+								'Suddenly he stoped and remove the dildo-stick'
+								'I fall on my knees… Apparently the stick holds me, cuz It is too much pain. I can''t stand on my legs'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_4.jpg"></center>'
+
+								act 'Continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'wall2'
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'wall2':
+	*clr & cla
+	'He aproach me and put his dick in my mouth'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_5.jpg"></center>'
+	gs 'arousal', 'bj', 15
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'I have lack of strenght and he just fuck my face…'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/boss/tied_wall/7_6.jpg"></center>'
+		gs 'arousal', 'bj', 35
+		gs 'stat'
+		'He loads deep in my throat, I swallow everything…'
+		phrobtied = 1
+		'Boss: "It was much FUN!"'
+		'He goes away'
+		'the robber comes in'
+		gs 'cum_call','face',$boy
+		gs 'stat'
+		gs 'cum_call','mouth',$boy
+		gs 'stat'
+		gs 'cum_call','mouth_swallow',$boy
+		gs 'stat'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'mod_public_WC_robed_live', 'walkroom'
+	end
+end
+
+
+
+if $ARGS[0] = 'street':
+	*clr & cla
+	'Boss take a leash and bind me to it… he walks me like a dog'
+	'Two robers also walk with us'
+	$location_type = 'public_indoors'
+	menu_off = 1
+
+	'We go somewhere outside…'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/1 start/1.jpg"></center>'
+	minut += 15
+	gs 'stat'
+
+	act 'continue':
+		*clr & cla
+		'Boss: "I hope, after this lesson you will prepare to meet me"'
+		'He unleashed me and grooping me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/1 start/2.jpg"></center>'
+		gs 'arousal', 'foreplay', rand(5,5), 'sub', 'rape'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'He tied my hands and tied them with a rope to the branch above'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/1 start/3.jpg"></center>'
+			gs 'arousal', 'foreplay', rand(5,5), 'sub', 'rape'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'He kiss me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/1 start/4.jpg"></center>'
+				gs 'arousal', 'kiss', rand(5,5), 'sub', 'rape'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'I hear a "ssspshh sound"'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/2 bdsm/hit ('+rand(1,5)+').jpg"></center>'
+					!! gs 'arousal', 'kiss', rand(5,5), 'sub', 'rape'
+					!! gs 'stat'
+
+					gs 'pain', rand(0,2), 'shoulders', 'spank'
+					gs 'stat'
+					gs 'pain', rand(0,2), 'ribs', 'spank'
+					gs 'stat'
+					gs 'pain', rand(0,2), 'tummy', 'spank'
+					gs 'stat'
+					gs 'pain', rand(2,4), 'breasts', 'spank'
+					gs 'stat'
+
+					stat['BDSM'] += 1
+					if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+						'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+					elseif stat['BDSM'] > 25:
+						'<i>Yeeees, it feels great!</i>'
+					elseif stat['BDSM'] <= 10:
+						'"AAAaaa" - I screamed as he hits me'
+					end
+
+					phtemp = rand(3,6)
+
+
+
+					act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'out2'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'out2':
+	*clr & cla
+	phtemp -= 1
+	minut += 3
+
+	if rand(1,4) = 1: stat['BDSM'] += 1
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/2 bdsm/hit ('+rand(1,5)+').jpg"></center>'
+
+	gs 'pain', rand(0,2), 'shoulders', 'spank'
+	gs 'stat'
+	gs 'pain', rand(0,2), 'ribs', 'spank'
+	gs 'stat'
+	gs 'pain', rand(0,2), 'tummy', 'spank'
+	gs 'stat'
+	gs 'pain', rand(2,4), 'breasts', 'spank'
+	gs 'stat'
+
+	stat['BDSM'] += 1
+	if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+		'<i>I had some BDSM experience… it  hurts, but I can handle it</i>'
+	elseif stat['BDSM'] > 25:
+		'<i>Yeeees, it feels great!</i>'
+	elseif stat['BDSM'] <= 10:
+		'"AAAaaa" - I screamed as he hits me'
+	end
+
+	if rand(1,3) = 1:
+		'He stopes for a moment…'
+		'And kiss me'
+		'Boss: "I am into fresh-spanked girls"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/1 start/4.jpg"></center>'
+		gs 'arousal', 'kiss', rand(5,5), 'sub', 'rape'
+		gs 'stat'
+	end
+
+	act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'out2'
+
+
+	if phtemp <= 0:
+		*clr & cla
+		'He threw a wip and band me'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/3 bj/bj ('+rand(1,2)+').jpg"></center>'
+		gs 'arousal', 'bj', rand(15,15), 'sub', 'rape'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+			'he fuck my face for some time, then he go to the other side'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/4 sex/sex ('+rand(1,4)+').jpg"></center>'
+			gs 'arousal', 'vaginal', rand(15,15), 'sub', 'rape'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'he is fucking me rought'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/4 sex/sex ('+rand(1,4)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(15,20), 'sub', 'rape'
+				gs 'stat'
+
+				act 'continue':
+					*clr & cla
+					'he cums deep in my womb'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/4 sex/sex ('+rand(1,4)+').jpg"></center>'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+					'Boss wiped his dick of me - "Next time meet me good" - he goes away.'
+					act 'continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/3 event/try to rob/event/street-wood/5 end.jpg"></center>'
+						'Robbers untied me and walk me to my room'
+
+						phrobtied = 0 & phdtape = 0
+						gs 'mod_public_WC_robed_live', 'walkroom'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bdsm':
+	*clr & cla
+	phbosshappy += rand(1,2)
+	'Boss: "You met me so warm, I need to thank you back"'
+
+	'He used rop to tied my hands to the hook on the ceiling'
+	if analPlugIn = 0:
+		if rand(1,2) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/1 wait/wait ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/1 wait/wait ('+rand(1,2)+').jpg"></center>'
+		end
+	else
+		if rand(1,2) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/1 wait/wait ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/1 wait/wait ('+rand(1,2)+').jpg"></center>'
+		end
+	end
+
+
+	'He took the vibrator and start pleasuring me'
+	'He enjoys my pleasure screems and the flexure my body in a pleasure agony doing…'
+	gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation', 'bound'
+	gs 'stat'
+	if rand(1,3) = 1:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/3 event/vibro/vibrohe (1).mp4"></video></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/3 event/vibro/vibrohe ('+rand(1,2)+').jpg"></center>'
+	end
+
+	act 'continue':
+		*clr & cla
+		'It''s Soooouuuoo goood, I am all pleasure, I am all hot, i am cuming!'
+		$orgasm_or = 'yes'
+		gs 'arousal', 'masturbate', rand(3,12), 'exhibitionism', 'humiliation', 'bound', 'prostitution'
+		gs 'stat'
+
+		if rand(1,3) = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/3 event/vibro/vibrohe (1).mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/3 event/vibro/vibrohe ('+rand(1,2)+').jpg"></center>'
+		end
+
+		act 'continue':
+			cla
+			'As I come back to senses, I see the smiling Boss…'
+			'Boss: "Now it is my turn tu cum" - I see his erected dick'
+
+			act 'continue': gt 'mod_public_WC_robed_live_BOSS_sex', 'bdsm2'
+		end
+	end
+end
+
+if $ARGS[0] = 'bdsm2':
+	*clr & cla
+	'He took the leash from the wall and slap me once!'
+	stat['BDSM'] += 1
+	minut += 2
+	if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+		'<i>I had some BDSM experience… clitor hurts, but I can handle it</i>'
+		gs 'pain', rand(1,3), 'clitoris', 'spank'
+		gs 'stat'
+	elseif stat['BDSM'] > 25:
+		gs 'pain', rand(0,1), 'clitoris', 'spank'
+		gs 'stat'
+		'"Slap me daddy!" - I screemed… he stops amazed'
+		FUNJOBDONE += 50
+	elseif stat['BDSM'] <= 10:
+		'<i><b>AAAAAAAAAAaaAAAAA!!! IT hurts! IT hurts! IT hurts!</b></i>'
+		gs 'pain', rand(3,5), 'clitoris', 'spank'
+		gs 'stat'
+		FUNJOBDONE += 20
+	end
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/3 event/smak/smackpussy ('+rand(1,3)+').mp4"></video></center>'
+
+	phrobtied = 1
+
+	'He is smiling and hit me more…'
+
+	minut += 2
+	if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+		'<i>I had some BDSM experience… clitor hurts, but I can handle it</i>'
+		gs 'pain', rand(1,3), 'clitoris', 'spank'
+		gs 'stat'
+	elseif stat['BDSM'] > 25:
+		gs 'pain', rand(0,1), 'clitoris', 'spank'
+		gs 'stat'
+		'"Slap me daddy!" - I screemed… he stops amazed'
+		FUNJOBDONE += 50
+	elseif stat['BDSM'] <= 10:
+		'<i><b>AAAAAAAAAAaaAAAAA!!! IT hurts! IT hurts! IT hurts!</b></i>'
+		gs 'pain', rand(3,5), 'clitoris', 'spank'
+		gs 'stat'
+		FUNJOBDONE += 20
+	end
+
+	act 'wait':
+		!! vag
+		'He threw the leash'
+		if rand(1,3) <= 2:
+			phtemp = 40
+			'He loose rope''s knots and change my binds with few quick moves to make me as on the swing'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'He bends me a little and push his dick inside me'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(5,6)+').mp4"></video></center>'
+		end
+
+		gs 'arousal', 'vaginal', 5, 'exhibitionism', 'humiliation', 'bound', 'prostitution'
+		gs 'stat'
+
+		act 'continue':
+			*clr & cla
+
+			'His speed increasing.'
+			if phtemp = 40:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(5,6)+').mp4"></video></center>'
+			end
+			gs 'arousal', 'vaginal', rand(20,40), 'exhibitionism', 'humiliation', 'bound', 'prostitution'
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				minut += 3
+				'He groans and cums deep in my womb…'
+				'he put his pants back and put me back on my feet. Then he go away'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				if phtemp = 40:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(1,4)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/SEX_ALL/FUN/tied/rod/2 sex/vag ('+rand(5,6)+').mp4"></video></center>'
+				end
+				killvar 'phtemp'
+				phrobtiedwhere = 2
+
+				'Boss: "It was much FUN!"'
+				'He goes away'
+				'the robber comes in'
+				gs 'arousal', 'end'
+				gs 'stat'
+				gs 'mod_public_WC_robed_live', 'walkroom'
+			end
+		end
+	end
+end
+
+
+
+--- mod_public_WC_robed_live_BOSS_sex ---------------------------------
+

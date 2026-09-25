@@ -1,0 +1,761 @@
+# mod_public_WC_PH_blackcat_daily_big
+if $ARGS[0] = 'big':
+	*clr & cla
+	gs 'npcgeneratec', 0, 'The Black Cat gang member', rand(18,25)
+	gs 'boyStat', $npclastgenerated
+	dick = 50
+	$boy[0] = $boy
+
+	'Hi, can we talk about big dick, I mean big dick, sorry, I mean big dick, I mean big dick…'
+
+	'Hah, funny whore, I like it, let''s fuck you to brainless stance'
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/see.mp4"></video></center>'
+
+	act 'go with him':
+		*clr & cla
+		gs 'arousal', 'voyeur', 60, 'sub'
+		minut -= 60
+		gs 'stat'
+		'As we come to the room I strart to undress him'
+
+		+$OpenInnerThought+'OMG my body afraid but SO want IT!'+$CloseInnerThought
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/undress.mp4"></video></center>'
+
+		temp = rand (1,3)
+		if temp = 1:
+			'"Well, whore, open your mouth"'
+			otemp = 1
+			act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+		elseif temp = 2:
+			'"Whore, bend over"'
+			otemp = 2
+			act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+		elseif temp = 3:
+			'"Let''s check your ass, whore. Bend over"'
+			otemp = 3
+			act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+		end
+
+		gs 'willpower', 'misc', 'resist', 'hard'
+		temp = will_cost + (sexcorrupt / 3)
+		will_cost += (sexcorrupt / 3)
+		if will_cost <= pcs_willpwr:
+
+			act 'Let''s better I show you my skills in (<<temp>> Willpower)':
+				cla
+				gs 'willpower', 'pay', 'self'
+				gs 'stat'
+
+				'"Ok, and what you want to show me?"'
+
+
+				act 'Let me suck you!':
+					cla
+					'Ok, show me, what you got'
+					otemp = 1
+					act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+				end
+
+				act 'Fuck my pussy!':
+					cla
+					'Ok, show me, what you got'
+					otemp = 2
+					act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+				end
+
+				act 'My ass is all your!':
+					cla
+					'Ok, show me, what you got'
+					otemp = 3
+					act 'YES': gt 'mod_public_WC_PH_blackcat_daily', 'bigbig'
+				end
+			end
+		elseif will_cost <= pcs_willpwr:
+			act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+		else
+			act 'Let''s better I show you my skills in ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+		end
+	end
+
+
+	gs 'willpower', 'misc', 'self', 'hard'
+	temp = will_cost + (sexcorrupt / 3)
+	will_cost += (sexcorrupt / 3)
+	if will_cost <= pcs_willpwr:
+
+		act '"Sorry I better go" - run away (<<temp>> Willpower)':
+			*clr & cla
+			gs 'willpower', 'pay', 'self'
+			gs 'stat'
+			sexcorrupt -= 5
+			gt 'mod_public_WC_PH_blackcat_daily', 'start'
+		end
+	elseif will_cost <= pcs_willpwr:
+		act 'I am to corrupt of sex to resist:  ' + $func('wrap', 'v_neg', '(<<will_cost>> Willpower + <<sexcorrupt>> sexcorrupt)'): $func('wrap', 'neg', '<br>I want that!.')
+	else
+		act '"Sorry I better go" - run away ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+	end
+end
+
+if npc_loyality >=  70  and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'bigbig':
+	*clr & cla
+	bigend = 0
+	bigboored = 0
+
+	gs 'arousal', 'foreplay_give', 5
+	gs 'stat'
+
+	if otemp = 1:
+		if stat['bj'] <= 80:
+			'I put the dick on my hand just for scale'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/start/try_H.mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+				killvar 'otemp'
+				gs 'pain', rand(5,7), 'mouth', 'pierce'
+				gs 'stat'
+				gs 'pain', rand(5,7), 'throat', 'pierce'
+				gs 'stat'
+
+				'I can''t put more than the tip of this schlong inside my mouth'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/0 start/nub_start ('+rand(1,2)+').mp4"></video></center>'
+				gs 'arousal', 'bj', rand(3,5), 'sub', 'group', 'prostitution'
+				gs 'stat'
+
+
+				if bigend + bigboored > 0:
+					cla
+				end
+
+				act 'suck the tip':
+					*clr & cla
+					'I can''t manage this monstr without pain and I do my best with the tip'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/1 tip/tip ('+rand(1,4)+').mp4"></video></center>'
+					bigboored += 3
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbja'
+					end
+				end
+
+
+				gs 'willpower', 'bj', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+
+					act 'try to suck it as much as I can (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+
+						sexcorrupt += 1
+						'I do my best to make him feel god… my mouth hurts and my lips tears but I want to show him my best skills'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/2 bj/bj ('+rand(1,12)+').mp4"></video></center>'
+						gs 'pain', rand(3,5), 'mouth', 'pierce'
+						gs 'stat'
+						gs 'pain', rand(3,5), 'lips', 'tear'
+						gs 'stat'
+						bigboored += rand(1,2)
+						bigend += rand(0,2)
+						gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+						gs 'stat'
+
+						if bigend >= 10:
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+						elseif bigboored >= 10:
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+						else
+							act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbja'
+						end
+
+					end
+				else
+					act 'try to suck it as much as I can ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+
+				act 'lick the balls (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/balls ('+rand(1,2)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbja'
+					end
+				end
+
+				act 'lick the tip (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/tiplick ('+rand(1,7)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbja'
+					end
+				end
+
+				act 'lick the dick (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/lick ('+rand(1,3)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbja'
+					end
+				end
+			end
+		elseif stat['bj'] <= 130:
+			'I try to meashure the dick with my mouth'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/start/try_m.mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+				killvar 'otemp'
+				gs 'pain', rand(2,5), 'mouth', 'pierce'
+				gs 'stat'
+				gs 'pain', rand(2,5), 'throat', 'pierce'
+				gs 'stat'
+
+				'I put the tip to moisten it with my saliva'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/0 start/bj_start (1).mp4"></video></center>'
+
+
+				if bigend + bigboored > 0:
+					cla
+				end
+
+				act 'suck him':
+					*clr & cla
+					'I suck him hard, but it''s the hell long dick'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/2 bj/bj ('+rand(1,12)+').mp4"></video></center>'
+					bigboored += rand(2,3)
+					bigend += rand(2,3)
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjb'
+					end
+				end
+
+				gs 'willpower', 'bj', 'self'
+				temp = will_cost - sexcorrupt / 5
+				will_cost -= (sexcorrupt / 5)
+				if will_cost < 0: will_cost = 0
+				if will_cost <= pcs_willpwr:
+
+					act 'Try to suck the whole dick (<<temp>> Willpower)':
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+
+						sexcorrupt += 1
+						'I do my best to make him feel god… my mouth hurts and my throat stretches but I want to show him my best skills'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/3 pro/likeapro ('+rand(1,3)+').mp4"></video></center>'
+						gs 'pain', rand(3,5), 'mouth', 'pierce'
+						gs 'stat'
+						gs 'pain', rand(3,5), 'throat', 'stretch'
+						gs 'stat'
+						bigboored += rand(1,2)
+						bigend += rand(2,3)
+
+						gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+						gs 'stat'
+
+						if bigend >= 10:
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+						elseif bigboored >= 10:
+							act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+						else
+							act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjb'
+						end
+
+					end
+				else
+					act 'Try to suck the whole dick ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+				end
+
+				act 'lick the balls (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/balls ('+rand(1,2)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjb'
+					end
+				end
+
+				act 'lick the tip (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/tiplick ('+rand(1,7)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjb'
+					end
+				end
+
+				act 'lick the dick (find the will to continue)':
+					*clr & cla
+					pcs_willpwr += rand(10,15)
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/lick ('+rand(1,3)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += 0
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjb'
+					end
+				end
+			end
+		else
+			'I rub the dick and licks it time to time'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/hj.mp4"></video></center>'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/start/try_m.mp4"></video></center>'
+
+			act 'continue':
+				*clr & cla
+				killvar 'otemp'
+				gs 'pain', rand(0,2), 'mouth', 'pierce'
+				gs 'stat'
+				gs 'pain', rand(0,1), 'throat', 'pierce'
+				gs 'stat'
+
+				'I leave my saliva all along the dick and start to suck it'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/0 start/bj_start (2).mp4"></video></center>'
+
+				act 'Deepthroat him':
+					*clr & cla
+					'I do my best to make him feel god… I know i am good'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/3 pro/pro ('+rand(1,4)+').mp4"></video></center>'
+					bigboored += rand(0,1)
+					bigend += rand(2,3)
+
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjc'
+					end
+				end
+
+				act 'lick the balls':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/balls ('+rand(1,2)+').mp4"></video></center>'
+					bigboored += 0
+					bigend += 1
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjc'
+					end
+				end
+
+				act 'lick the tip':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/tiplick ('+rand(1,7)+').mp4"></video></center>'
+					bigboored += 0
+					bigend += 1
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjc'
+					end
+				end
+
+				act 'lick the dick':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/lick/lick ('+rand(1,3)+').mp4"></video></center>'
+					bigboored += 0
+					bigend += 1
+					gs 'arousal', 'bj', rand(5,10), 'sub', 'group', 'prostitution'
+					gs 'stat'
+
+					if bigend >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'bigcum'
+					elseif bigboored >= 10:
+						act 'continue': gt 'mod_public_WC_PH_blackcat_daily', 'big throat'
+					else
+						act 'continue': gs 'mod_public_WC_PH_blackcat_cykl', 'loopbjc'
+					end
+				end
+			end
+		end
+	elseif otemp = 2:
+		'I put the dick to my tummy just for scale'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/start/try_J.mp4"></video></center>'
+
+		act 'continue':
+			*clr & cla
+			killvar 'otemp'
+			'He slowly put his monster inside me…'
+
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/sex/start ('+rand(1,5)+').mp4"></video></center>'
+			gs 'arousal', 'vaginal', rand(5,10)
+			gs 'stat'
+
+			if vgape >= 3:
+				'My well used pussy easy hold the monster dick'
+				gs 'pain', rand(0,2), 'vaginal', 'pierce'
+				gs 'stat'
+			elseif vgape >= 1 or pcs_vag > 10:
+				'My experienced pussy with small discomfort eat the monster dick'
+				gs 'pain', rand(2,5), 'vaginal', 'pierce'
+				gs 'stat'
+			else
+				'My tight and unused used pussy cracks with this dick. OMG it''s so painfull!'
+				gs 'pain', rand(5,7), 'vaginal', 'pierce'
+				gs 'stat'
+			end
+
+			act 'continue':
+				*clr & cla
+				'He is drilling all my guts…'
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/sex/sex ('+rand(1,10)+').mp4"></video></center>'
+				gs 'arousal', 'vaginal', rand(5,10)
+				gs 'stat'
+
+				if vgape >= 3:
+					'OMG! OMG! It''s sssooOOO GoOoD'
+					$orgasm_or = 'yes'
+					gs 'pain', rand(0,2), 'vaginal', 'pierce'
+					gs 'stat'
+				elseif vgape >= 1 or pcs_vag > 10:
+					'oooowww, God, I am a 30% dick right now!!!!'
+					gs 'pain', rand(2,5), 'vaginal', 'pierce'
+					gs 'stat'
+				else
+					'OMG it''s so painfull!'
+					gs 'pain', rand(5,7), 'vaginal', 'pierce'
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					'At some moment I feel the hot sperm fills me. It feels like all my belly full of sperm…'
+
+
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/sex/cum ('+rand(1,4)+').mp4"></video></center>'
+					gs 'arousal', 'vaginal', rand(5,10)
+					gs 'stat'
+
+					if vgape >= 3:
+						$orgasm_or = 'yes'
+						gs 'pain', rand(0,2), 'vaginal', 'pierce'
+						gs 'stat'
+						'"Nice pussy, whore. You knew how to use it"'
+						'He writes a mark on me'
+						ryska += 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+					elseif vgape >= 1 or pcs_vag > 10:
+						$orgasm_or = 'yes'
+						gs 'pain', rand(2,5), 'vaginal', 'pierce'
+						gs 'stat'
+						'"It would be better if you wasn''t a log."'
+					else
+						'Finally! it''s end!'
+						gs 'pain', rand(5,7), 'vaginal', 'pierce'
+						gs 'stat'
+						'"Tight pussy, I like it"'
+						'He writes a mark on me'
+						ryska += 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+					end
+					gs 'cum_call', 'vagina', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	elseif otemp = 3:
+		'I put the dick to my ass just for scale'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/start/try_S.mp4"></video></center>'
+
+		act 'continue':
+			*clr & cla
+			killvar 'otemp'
+
+			'He puts the tip of the dick inside my asshole… then he starts to make his way deeper… and deeper… and OMFG deeper!'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/ass/0 start ('+rand(1,2)+').mp4"></video></center>'
+
+			gs 'arousal', 'anal', rand(10,15), 'sub'
+			gs 'stat'
+			if agape >= 3:
+				'My gaping asshole take the monster dong with a pleasure'
+				gs 'pain', rand(0,2), 'asshole', 'pierce'
+				gs 'stat'
+			elseif agape >= 1 or pcs_ass > 10:
+				'My stretchy anus take the monster dong with a little discomfort'
+				gs 'pain', rand(2,5), 'asshole', 'pierce'
+				gs 'stat'
+			else
+				'OMG he will rip me!!! My tight asshole can''t make it!!!'
+				gs 'pain', rand(5,7), 'asshole', 'pierce'
+				gs 'stat'
+			end
+
+			act 'continue':
+				*clr & cla
+				'It feel like he drills all my holes at the same time, the damn dick is just too big!'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/ass/1 ass ('+rand(1,11)+').mp4"></video></center>'
+
+				gs 'arousal', 'anal', rand(10,15), 'sub'
+				gs 'stat'
+				if agape >= 3:
+					'I move my ass to pleasure him, he moves his dick to pleasure me… perfect…'
+					$orgasm_or = 'yes'
+					gs 'pain', rand(0,2), 'asshole', 'pierce'
+					gs 'stat'
+				elseif agape >= 1 or pcs_ass > 10:
+					'AA-aaa-, I feel the waves of pleasure with each push'
+					gs 'pain', rand(2,5), 'asshole', 'pierce'
+					gs 'stat'
+				else
+					'OMG he will rip me!!! OMG the PAIN!!!'
+					gs 'pain', rand(5,7), 'asshole', 'pierce'
+					gs 'stat'
+				end
+
+				act 'continue':
+					*clr & cla
+					'At some moment I feel the hot sperm fills me. It feels like all my belly full of sperm…'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/ass/2 cum.mp4"></video></center>'
+
+					gs 'arousal', 'anal', rand(10,15), 'sub'
+					gs 'stat'
+					if agape >= 3:
+						'Owww yes, finally the nice big schlong for my ruined ass!!!'
+						$orgasm_or = 'yes'
+						gs 'pain', rand(0,2), 'asshole', 'pierce'
+						gs 'stat'
+						'"Nice ass, whore. You knew how to use it"'
+						'He writes a mark on me'
+						ryska += 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+					elseif agape >= 1 or pcs_ass > 10:
+						'AA-aaa-, I feel the waves of pleasure with each spit of sperm inside me'
+						$orgasm_or = 'yes'
+						gs 'pain', rand(2,5), 'asshole', 'pierce'
+						gs 'stat'
+						'Whore, next time do something, don''t be a log'
+					else
+						'OMG the PAIN!!! OMG it… end… finally…'
+						gs 'pain', rand(5,7), 'asshole', 'pierce'
+						gs 'stat'
+						'"Tight ass, I like to ruin new anuses"'
+						'He writes a mark on me'
+						ryska += 1
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+					end
+					gs 'cum_call', 'anus', $npclastgenerated, 0
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'Go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'bigcum':
+	*clr & cla
+	killvar 'loopbj'
+
+	'He groans and start to sprey the fountain of cum on my face'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/4 cum/face_mouth ('+rand(1,6)+').mp4"></video></center>'
+
+
+
+	happycats += 1
+	gs 'cum_call','hands',$boy
+	gs 'cum_call','face',$boy
+	gs 'cum_call','mouth',$boy
+	gs 'cum_call','stomach',$boy
+	gs 'cum_call','breasts',$boy
+	gs 'cum_call','hair',$boy
+	gs 'stat'
+	gs 'arousal', 'end'
+	gs 'stat'
+	act 'wait':
+		cla
+		bigboored += 1
+
+		if bigend - bigboored >= 8:
+			'"You know, it was on of the best bj I ever had"'
+			'He writes a mark on me'
+			ryska += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+		elseif bigend - bigboored >= 5:
+			'"I like your skills, whore."'
+		else
+			'"Bitch, you are ok."'
+		end
+		killvar 'bigend'
+		killvar 'bigboored'
+
+		act 'Go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+
+	end
+
+	act 'lick the dick':
+		*clr & cla
+		sexcorrupt += 1
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/4 cum/lick_after ('+rand(1,2)+').mp4"></video></center>'
+		gs 'cum_call','mouth',$boy
+		gs 'cum_call','hands',$boy
+		gs 'stat'
+		bigboored -= 1
+		gs 'arousal', 'end'
+		gs 'stat'
+		if bigend - bigboored >= 8:
+			'"You know, it was on of the best bj I ever had"'
+			'He writes a mark on me'
+			ryska += 1
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/symbol.jpg"></center>'
+		elseif bigend - bigboored >= 5:
+			'"I like your skills, whore."'
+		else
+			'"Bitch, you are ok."'
+		end
+		killvar 'bigend'
+		killvar 'bigboored'
+
+		act 'Go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+	end
+end
+
+if $ARGS[0] = 'big throat':
+	*clr & cla
+	killvar 'loopbj'
+	killvar 'bigboored'
+
+	'"Girl, you are to amateur"'
+	'"The only thing you  are ok as a sex toy, and I''ll use you like one"'
+	'He grab my head and start literally fuck my mouth'
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/facefuck/facefuck ('+rand(1,5)+').mp4"></video></center>'
+
+	if stat['bj'] <= rand(50,130):
+		+$OpenInnerThought+'aAAaaaauauuugghtaaaaggght eeeeeh aaaghtghaaaa!'+$CloseInnerThought
+		gs 'pain', rand(5,9), 'mouth', 'pierce'
+		gs 'stat'
+		gs 'pain', rand(5,9), 'throat', 'stretch'
+		gs 'stat'
+		bigend += rand(1,3)
+		gs 'arousal', 'bj', rand(5,10), 'sub', 'prostitution', 'humiliation', 'deepthroat'
+		gs 'stat'
+
+
+	else
+		+$OpenInnerThought+'I do my best to keep breathing but it''s sooo hard'+$CloseInnerThought
+		gs 'pain', rand(3,5), 'mouth', 'pierce'
+		gs 'stat'
+		gs 'pain', rand(3,5), 'throat', 'stretch'
+		gs 'stat'
+		bigend += rand(1,3)
+		gs 'arousal', 'bj', rand(5,10), 'sub', 'prostitution', 'humiliation', 'deepthroat'
+		gs 'stat'
+	end
+
+	if bigend < 10:
+		act 'continue': gt 'mod_public_WC_PH_blackcat_cykl', 'loopbjc'
+	else
+		killvar 'loopbj'
+		killvar 'bigend'
+		'He cums deeeep in my throat…'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/deep/deep/deep_grab.mp4"></video></center>'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/black cat/events/big/bj/4 cum/throat.mp4"></video></center>'
+		gs 'cum_call','mouth',$boy
+		gs 'arousal', 'end'
+		gs 'stat'
+		'He cums and silence just go away'
+		act 'Go away': gt 'mod_public_WC_PH_blackcat_daily', 'start'
+	end
+end
+--- mod_public_WC_PH_blackcat_daily_big ---------------------------------
+

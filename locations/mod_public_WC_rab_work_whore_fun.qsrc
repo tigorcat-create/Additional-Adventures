@@ -1,0 +1,2348 @@
+# mod_public_WC_rab_work_whore_fun
+if $ARGS[0] = 'fun':
+	*clr & cla
+	$loc_arg = $ARGS[0]
+	$location_type = 'indoors'
+	$loc = 'mod_public_WC_rab_work_whore'
+
+	gs 'stat'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/room.jpg"></center>'
+
+
+	if phfunlist = 0:
+		phfunlist = 1
+
+		phtime1 = hour + 1
+		if phtime1 >= 24: phtime1 -= 24
+
+		phtime2 = phtime1 + rand(2,3)
+		if phtime2 >= 24: phtime2 -= 24
+
+		phtime3 = phtime2 + rand(2,3)
+		if phtime3 >= 24: phtime3 -= 24
+
+		phtime4 = phtime3 + rand(2,3)
+		if phtime4 >= 24: phtime4 -= 24
+
+		if phtime1 > 7: phtime1 = 100
+		if phtime2 > 7: phtime2 = 100
+		if phtime3 > 7: phtime3 = 100
+		if phtime4 > 7: phtime4 = 100
+		phgirls = rand(0,6)
+		if phgirls = 1: phonegirl = rand(1,3)
+
+
+		if phtime1 < 30:
+			temp = rand (1,7)
+			if temp = 1: $phfunclient1 = 'old guys'
+			if temp = 2: $phfunclient1 = 'foreign students'
+			if temp = 3: $phfunclient1 = 'some nerds'
+			if temp = 4: $phfunclient1 = 'just some guy'
+			if temp = 5: $phfunclient1 = 'office plankton party'
+			if temp = 6: $phfunclient1 = 'stag party'
+			if temp = 7: $phfunclient1 = 'BDSM request'
+		end
+		if phtime2 < 30:
+			temp = rand (1,7)
+			if temp = 1: $phfunclient2 = 'old guys'
+			if temp = 2: $phfunclient2 = 'foreign students'
+			if temp = 3: $phfunclient2 = 'some nerds'
+			if temp = 4: $phfunclient2 = 'just some guy'
+			if temp = 5: $phfunclient2 = 'office plankton party'
+			if temp = 6: $phfunclient2 = 'stag party'
+			if temp = 7: $phfunclient2 = 'BDSM request'
+		end
+		if phtime3 < 30:
+			temp = rand (1,7)
+			if temp = 1: $phfunclient3 = 'old guys'
+			if temp = 2: $phfunclient3 = 'foreign students'
+			if temp = 3: $phfunclient3 = 'some nerds'
+			if temp = 4: $phfunclient3 = 'just some guy'
+			if temp = 5: $phfunclient3 = 'office plankton party'
+			if temp = 6: $phfunclient3 = 'stag party'
+			if temp = 7: $phfunclient3 = 'BDSM request'
+		end
+		if phtime4 < 30:
+			temp = rand (1,7)
+			if temp = 1: $phfunclient4 = 'old guys'
+			if temp = 2: $phfunclient4 = 'foreign students'
+			if temp = 3: $phfunclient4 = 'some nerds'
+			if temp = 4: $phfunclient4 = 'just some guy'
+			if temp = 5: $phfunclient4 = 'office plankton party'
+			if temp = 6: $phfunclient4 = 'stag party'
+			if temp = 7: $phfunclient4 = 'BDSM request'
+		end
+		phskladnist = 0
+		phchooseme = 0
+		phtempttemp = 0
+	end
+
+	act 'go to the bar':
+		minut += 3
+		gs 'stat'
+		gt 'mod_public_WC_rab_btothel', 'tables'
+	end
+
+	act 'wait (0:15)':
+		minut += 15
+		gs 'stat'
+		gt 'mod_public_WC_rab_work_whore', 'fun'
+	end
+
+	act 'look on the client schhedule list':
+		*nl
+		if phtime1 < 30:
+			'At <<phtime1>>:00 hour the <<$phfunclient1>> comes.'
+		end
+		if phtime2 < 30:
+			'At <<phtime2>>:00 hour the <<$phfunclient2>> comes.'
+		end
+		if phtime3 < 30:
+			'At <<phtime3>>:00 hour the <<$phfunclient3>> comes.'
+		end
+		if phtime4 < 30:
+			'At <<phtime4>>:00 hour the <<$phfunclient4>> comes.'
+		end
+	end
+
+	act 'Choose an outfit': gt 'wardrobe', 'main'
+
+	if phgirlsrelations >= 100: phgirlsrelations = 100
+
+	if hour ! phtime1 and hour ! phtime2 and hour ! phtime3 and hour ! phtime4:
+		*nl
+		'My relationship with a brothel girls is <<phgirlsrelations>>/100'
+		if phgirls = 0:
+			'There are no girls here… this is not often happens!'
+		else
+			+$OpenInnerThought+'I can talk with girls to understand what clients like… but they will share the experience only if I have good relationship'+$CloseInnerThought
+			if phgirls = 1:
+				'there is one girl like me working here'
+			else
+				'there are <<phgirls>> girls like me working here'
+			end
+		end
+
+
+
+		if phgirls = 1:
+			act 'convince her to work together':
+				*clr & cla
+				persuas_exp += 1
+				minut += 15
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/one_girl (<<phonegirl>>).jpg"></center>'
+				if phgirlsrelations + pcs_persuas + ryska - 10 >= rand (40,80):
+					phgirlsrelations += 1
+					phdeal = 1
+					'I have convinced her! She is waiting to hear my plan'
+
+					if stat['BDSM'] >= 25:
+						!bdsm - naked and tied
+						act 'we must look like we have been kidnaped':
+							cla
+							phphi = 1
+							'We will ask to tied us on the floor, and we must look like we are trying to loose the knots'
+
+
+							'"Ow, yes! Guys like that, the defenseless girls…"'
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+						end
+					end
+
+					if stat['BDSM'] >= 50:
+						!bdsm - naked and tied
+						act 'We must use pins and ropes!':
+							cla
+							phphi = 4
+							'We will ask to use pins on us while we tied'
+
+							'"It''s crazy… but I like it!"'
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+						end
+					end
+
+					act 'We need to sell our holes':
+						cla
+						phphi = 2
+						'"Ow, yes! It teased them at the start… nice idea!"'
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+
+					act 'we must humble oneselfs':
+						cla
+						phphi = 3
+						'"Yeah, the guys like to feel their dominance… let''s do that"'
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+				else
+					'I am failed in convincing her…'
+					'I think I have lack of autority.'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+				end
+			end
+
+			if phgirlsrelations >= 30 and hour < 7:
+				act 'ask what next clients like':
+					cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/one_girl (<<phonegirl>>).jpg"></center>'
+					if phtime1 >= hour and phtime1 ! 100:
+						$temp = $phfunclient1
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+					elseif phtime2 >= hour and phtime2 ! 100:
+						$temp = $phfunclient2
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+
+					elseif phtime3 >= hour and phtime3 ! 100:
+						$temp = $phfunclient3
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+
+					elseif phtime4 >= hour and phtime4 ! 100:
+						$temp = $phfunclient4
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+					end
+
+					minut += rand(5,10)
+					act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+				end
+			end
+
+			act 'chat with a girl':
+				cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/one_girl (<<phonegirl>>).jpg"></center>'
+
+				'We spend some time casually talking about life and work'
+
+				'"Different guys like different clothings. But all of them like good quality clothing more"'
+
+				if rand(1,5) = 1:
+					'The girl told me that…'
+					temp = rand(1,21)
+					if temp = 1: 'old guys like schoolgirls or sluts'
+					if temp = 2: 'old guys like heels'
+					if temp = 3: 'old guys like sub girls'
+					if temp = 4: 'foreign students like bimbos'
+					if temp = 5: 'foreign students like heels'
+					if temp = 6: 'foreign students like sluts'
+					if temp = 7: 'nerds like otaku staff, like maids or cosplay'
+					if temp = 8: 'nerds like to be higher than a girl'
+					if temp = 9: 'nerds like big boobs'
+					if temp = 10: 'virgins like schoolgirls'
+					if temp = 11: 'virgins like heels'
+					if temp = 12: 'virgins like when woman helps'
+					if temp = 13: 'office plankton like maid or bimbos'
+					if temp = 14: 'office plankton like heel'
+					if temp = 15: 'office plankton like unusual hair colors'
+					if temp = 16: 'for a stag party better worn the slutiest wear you have'
+					if temp = 17: 'for a stag party better worn heel'
+					if temp = 18: 'for a stag party better not be too nude to be choosen, it''s better to tease'
+					if temp = 19: 'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+					if temp = 20: 'old guys afraid unusual hair colors'
+					if temp = 21: 'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+				end
+
+				minut += rand(10,15)
+				phgirlsrelations += rand(0,1)
+				act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+			end
+
+
+		elseif phgirls > 1:
+			act 'convince them to work together':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/talk ('+rand(1,3)+').jpg"></center>'
+				persuas_exp += rand(2,3)
+				minut += 20
+				gs 'stat'
+				if phgirlsrelations + pcs_persuas + ryska - 10 >= rand (60,100):
+					phdeal = 1
+					'I have convinced them! They are waiting to hear my plan'
+					phgirlsrelations += 2
+					if stat['BDSM'] >= 25:
+						act 'We will make them see our bodies as on a meat market':
+							!bdsm naked
+							phphi = 1
+							cla
+
+							'"It''s kind a fetish BDSM thing… Guys like that! Yes, let''s do it!"'
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+						end
+					end
+
+					if stat['BDSM'] >= 50:
+						act 'We will use pins and ropes to make a slavemarket scene':
+							!pins
+							phphi = 2
+							cla
+
+							'"It sounds hard… areyou sure about it?"'
+							'"Tottaly - it''s a big fetish!" - I answered'
+							'"Ok, let''s do it!"'
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+						end
+					end
+
+					act 'We need to sell our holes':
+
+						phphi = 3
+						cla
+						'"Yes! It''s very sexy and they would be turned on from the start… Also it sounds fun)"'
+						!домовитись про зустріч: show_holes->
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+
+					act 'We need to look like a pro-whore team':
+
+						phphi = 4
+						cla
+						'"Yes, if we would look like a proffessionals, they will pay more!"'
+
+						!домовитись про зустріч: уніформа ->
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+
+					act 'We need to wear a swimsuit':
+
+						phphi = 5
+						cla
+						'"Good idea! It''s the easiest way to create a mood for them."'
+
+						!домовитись про зустріч: bikini ->
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+
+					act 'We need to be full naked':
+
+						phphi = 6
+						cla
+						'"If one naked body make them stupid, a lot of naked bodies and we will took all their money!!!"'
+
+
+						!домовитись про зустріч: naked ->
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+					end
+				else
+					'I am failed in convincing them…'
+					'I think I have lack of autority here'
+
+					act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+				end
+			end
+
+			if phgirlsrelations >= 30 and hour < 7:
+				act 'ask what next clients like':
+					cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/talk ('+rand(1,3)+').jpg"></center>'
+					if phtime1 >= hour and phtime1 ! 100:
+						$temp = $phfunclient1
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+					elseif phtime2 >= hour and phtime2 ! 100:
+						$temp = $phfunclient2
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+
+					elseif phtime3 >= hour and phtime3 ! 100:
+						$temp = $phfunclient3
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+
+					elseif phtime4 >= hour and phtime4 ! 100:
+						$temp = $phfunclient4
+
+						if $temp = 'old guys':
+							'old guys like schoolgirls or sluts'
+							'old guys like heels'
+							'old guys like sub girls'
+							'old guys afraid unusual hair colors'
+						elseif $temp = 'foreign students':
+							'foreign students like bimbos'
+							'foreign students like heels'
+							'foreign students like sluts'
+						elseif $temp = 'some nerds':
+							'nerds like otaku staff, like maids or cosplay'
+							'nerds like to be higher than a girl'
+							'nerds like big boobs'
+						elseif $temp = 'just some guy':
+							'virgins like schoolgirls'
+							'virgins like heels'
+							'virgins like when woman helps'
+						elseif $temp = 'office plankton party':
+							'office plankton like maid or bimbos'
+							'office plankton like heel'
+							'office plankton like unusual hair colors'
+						elseif $temp = 'stag party':
+							'for a stag party better worn the slutiest wear you have'
+							'for a stag party better worn heel'
+							'for a stag party better not be too nude to be choosen, it''s better to tease'
+						elseif $temp = 'BDSM request':
+							'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+						end
+					end
+
+					minut += rand(5,10)
+					act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+				end
+			end
+
+			act 'chat with the girls':
+				cla
+				minut += rand(10,15)
+				phgirlsrelations += rand(0,1)
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/talk ('+rand(1,3)+').jpg"></center>'
+
+				'We spend some time casually talking about life and work'
+
+				'"Different guys like different clothings. But all of them like good quality clothing more"'
+
+				if rand(1,2) = 1:
+					'The girls told me that…'
+					temp = rand(1,21)
+					if temp = 1: 'old guys like schoolgirls or sluts'
+					if temp = 2: 'old guys like heels'
+					if temp = 3: 'old guys like sub girls'
+					if temp = 4: 'foreign students like bimbos'
+					if temp = 5: 'foreign students like heels'
+					if temp = 6: 'foreign students like sluts'
+					if temp = 7: 'nerds like otaku staff, like maids or cosplay'
+					if temp = 8: 'nerds like to be higher than a girl'
+					if temp = 9: 'nerds like big boobs'
+					if temp = 10: 'virgins like schoolgirls'
+					if temp = 11: 'virgins like heels'
+					if temp = 12: 'virgins like when woman helps'
+					if temp = 13: 'office plankton like maid or bimbos'
+					if temp = 14: 'office plankton like heel'
+					if temp = 15: 'office plankton like unusual hair colors'
+					if temp = 16: 'for a stag party better worn the slutiest wear you have'
+					if temp = 17: 'for a stag party better worn heel'
+					if temp = 18: 'for a stag party better not be too nude to be choosen, it''s better to tease'
+					if temp = 19: 'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+					if temp = 20: 'old guys afraid unusual hair colors'
+					if temp = 21: 'It beter chances to be choosen for BDSM request if you worn some fetish clothing'
+				end
+
+				act 'continue': gt 'mod_public_WC_rab_work_whore', 'fun'
+			end
+		end
+	else
+		*clr & cla
+		if hour = phtime1:
+			$phfunclient = $phfunclient1
+		elseif hour = phtime2:
+			$phfunclient = $phfunclient2
+		elseif hour = phtime3:
+			$phfunclient = $phfunclient3
+		elseif hour = phtime4:
+			$phfunclient = $phfunclient4
+		end
+
+		temp = 0
+		if phgirls = 0: temp = rand (1,3)
+		if temp >= 2:
+			'few girls run to the room'
+		elseif temp = 1:
+			'a girl runs to the room'
+		end
+		phgirls += temp
+
+		if phgirls = 0:
+			'There are no girls here… this is not often happen!'
+		else
+			if phgirls = 1:
+				'there is one girl like me waiting the clients'
+			else
+				'there are <<phgirls>> girls like me waiting the clients'
+			end
+		end
+
+		'Yana enters the room, close the door behind her and just looking on her watch…'
+
+		if phgirls > 1 and phdeal = 1:
+			if phphi = 1:
+				'"Bruser - tied us as a meat in the store… but just pull down our panties and hide our heads" - I command'
+				'He looks on Yana till she nods'
+				'Then he do exact what I said with each girl'
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'shoes', 'strip'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/hello_naked_tied.jpg"></center>'
+
+			elseif phphi = 2:
+				'I command where different girls must to stand and in what posture…'
+				'I choose few girls and command the bruser to pin us together'
+				'He looks on Yana till she nods'
+				'Then he uses pins exact how I said.'
+
+				minut += rand(5,10)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+					'"Ow, I see you know this feeling"'
+					gs 'pain', rand(0,1), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				end
+				'He grab my other nipple and fix a second pin on it'
+
+				minut += rand(5,10)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+					'"Now it''s great, isn''t it?"'
+					gs 'pain', rand(0,1), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				end
+
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'shoes', 'strip'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/hello_tied_pins.jpg"></center>'
+
+			elseif phphi = 3:
+				'"Holes up" - I said doing my best to not laught'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/show ('+rand(1,3)+').jpg"></center>'
+
+			elseif phphi = 4:
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'shoes', 'strip'
+				!uniform
+
+				'We stands together as a jpop girls band "BJ69" - haha))'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_elite.jpg"></center>'
+				gs 'clothing', 'wear', 'scandalicious_bikinis', rand(1, 40)
+				gs 'stat'
+
+			elseif phphi = 5:
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'shoes', 'strip'
+				!bikini
+				'"We are the Baywatch" - I said, girls laught.'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_bikini.mp4"></video></center>'
+				gs 'clothing', 'wear', 'moncheri_dress', rand(1, 100)
+				gs 'shoes', 'wear', 'scandalicious', rand(23, 30)
+				gs 'stat'
+
+			elseif phphi = 6:
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'shoes', 'strip'
+				!naked
+
+				'Yana is looking on our preparations with interest, but say nothing'
+
+				if rand (1,3) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_nakedv (1).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_naked ('+rand(1,2)+').jpg"></center>'
+				end
+			end
+		elseif phgirls = 1 and phdeal = 1:
+			if phphi = 1:
+
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'shoes', 'strip'
+				'"Hey bruser, tide us on the floor" - I have command.'
+				'He looks on Yana till she nods'
+				'Then he bind us on the floor, as we wish'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/2girl_ hello_naked_tied.mp4"></video></center>'
+			elseif phphi = 2:
+				'"Holes up" - I said doing my best to not laught'
+				if rand (1,2) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/show ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/show ('+rand(1,2)+').jpg"></center>'
+				end
+			elseif phphi = 3:
+				'"Come, sit by me" - the girl listen to me'
+				'"Now, don''t look up or in his eyes, just be submissive"'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/hello ('+rand(1,1)+').jpg"></center>'
+			elseif phphi = 4:
+				'"hey bruser, took some pins and ropes, we ned them here!" - I have command.'
+				'He looks on Yana till she nods'
+				'he tied us, and take few pins frokm the pocket'
+
+				'He grab my nipple and fix a pin on it'
+				gs 'bras', 'remove'
+				gs 'clothing', 'strip'
+				gs 'panties', 'remove'
+				gs 'shoes', 'strip'
+
+				minut += rand(5,10)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+					'"Ow, I see you know this feeling"'
+					gs 'pain', rand(0,1), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				end
+
+
+				'He grab my other nipple and fix a second pin on it'
+
+				minut += rand(5,10)
+				stat['BDSM'] += rand(0,1)
+				if stat['BDSM'] <= 25 and stat['BDSM'] > 10:
+					'<i>I had some BDSM experience… nipple hurts, but I can handle it</i>'
+					gs 'pain', rand(1,2), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] > 25:
+					'<i>Yeeees, it feels great!</i>'
+
+					'"Now it''s great, isn''t it?"'
+					gs 'pain', rand(0,1), 'nipples', 'pinch'
+					gs 'stat'
+				elseif stat['BDSM'] <= 10:
+					'<i><b>AAAAAAAAAAAAAA sharp pain! nipple hurts!</b></i>'
+					gs 'pain', rand(2,4), 'nipples', 'pinch'
+					gs 'stat'
+				end
+
+				'Then he do tthe same thing with other girl'
+				'She screems and I see how her eyes becomes wet'
+				'He tied the pin to the rod, and add some load on the rope… he tied the rope to other pin'
+				'I feel how the load is pulling my nipples'
+				'At the last he throw the load to some tub at the ceiling'
+				'The load constantly pulling my pins…'
+				'I was so concentrated on myself, I missed when he did the same with the girl…'
+
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/2girl_ hello_naked_tied_pins.mp4"></video></center>'
+			end
+		elseif phdeal = 0:
+			if phgirls = 1:
+				'Me and a girl stand close together'
+			elseif phgirls > 1:
+				'Me and the girls start to line up'
+			end
+			'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/start ('+rand(1,4)+').jpg"></center>'
+		end
+
+		if $phfunclient ! 'BDSM request':
+			'Yana looks at us, wait for a minut while we silence…'
+		else
+			if phgirls = 1 and phphi = 0:
+				'Yana command a bruser to tied me and other girl'
+				'He very quickly and proffessionaly tied me and the girl…'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/raby.jpg"></center>'
+			elseif phgirls > 1 and phphi = 0:
+				'Yana command a bruser to tied everybody'
+				'He very quickly and proffessionaly tied each girl…'
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/raby.jpg"></center>'
+			end
+		end
+		'…Yana opens the main door.'
+		phchooseme = 0
+		phskladnist = 0
+
+		act 'wait':
+			*clr & cla
+			phskladnist = -1
+			minut += 5
+			gs 'stat'
+
+			itemp = (pcs_apprnc / 10) - 10
+			phchooseme += itemp
+			killvar 'itemp'
+
+			if phgirls = 1:
+				phtempttemp = 1
+			else
+				phtempttemp = rand(2,phgirls)
+			end
+
+			if $phfunclient = 'just some guy':
+				phtempttemp = 1
+				'In a few minutes some guy enters the room. He is afraid? I think he is a virgin'
+			elseif $phfunclient = 'office plankton party':
+				'In a few minutes the office workers start to enter the room. There are <<phtempttemp>> of them'
+			elseif $phfunclient = 'stag party':
+				'In a few minutes the drunk guys start to enter the room. There are <<phtempttemp>> of them'
+			elseif $phfunclient = 'BDSM request':
+				'In a few minutes some guys start to enter the room. There are <<phtempttemp>> of them'
+			else
+				'In a few minutes <<$phfunclient>> start to enter the room. There are <<phtempttemp>> of them'
+			end
+
+			if phgirls > 1 and phdeal = 1:
+				if phphi = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/hello_naked_tied.jpg"></center>'
+					if $phfunclient = 'old guys':
+						'"hah, I think this two will be obedient"'
+						phdeal = 2
+						'The guy puts a leah and drug me somewhere…'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"Yana, you know I like fresh meat, but this is a little too much))"'
+						'"Please change this"'
+						'Yana ask the bruser to unbind us and we lined up in front of the students'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'some nerds':
+						'"No-no, is it even legal?"'
+						'"Yes, it''s ok" - tana said - "Bud, I see you don''t like it, and the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'just some guy':
+						'"No-no, I want to feel the ladie, please untide them"'
+						'"Of course, the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'office plankton party':
+						'"Hah, the tied one we had in our office - hahaha - we want a free chics!"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'stag party':
+						'"She can''t entertain us that way! Please solve this"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'BDSM request':
+						'"Ow, sooo nice, the meat is waiting…"'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						phdeal = 4
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					end
+				elseif phphi = 2:
+					PHpin = 2
+					if $phfunclient = 'old guys':
+						'"hah, I think this two will be obedient"'
+						phdeal = 3
+						'The guy puts a leah and drug me somewhere…'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"Yana, you know I like fresh meat, but this is a little too much))"'
+						'"Please change this"'
+						'Yana ask the bruser to unbind us and we lined up in front of the students'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'some nerds':
+						'"No-no, is it even legal?"'
+						'"Yes, it''s ok" - tana said - "Bud, I see you don''t like it, and the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'just some guy':
+						'"No-no, I want to feel the ladie, please untide them"'
+						'"Of course, the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'office plankton party':
+						'"Hah, the tied one we had in our office - hahaha - we want a free chics!"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'stag party':
+						'"She can''t entertain us that way! Please solve this"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'BDSM request':
+						'"Ow, sooo nice, the meat is waiting…"'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						phdeal = 5
+						ryska += 1
+						shtraf -= 4
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					end
+				elseif phphi = 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/show ('+rand(1,3)+').jpg"></center>'
+					if $phfunclient = 'old guys':
+						'"It''s good you are know ,what we need))"'
+						phdeal = 2
+						ryska += 1
+						'The grandpa help me to stand up and we go to his room'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/gotohisroom.jpg"></center>'
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'old'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"It''s good you are know ,what we need))"'
+						phdeal = 2
+						ryska += 1
+						'The big black guy just take me up and carry somewhere'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/black.mp4"></video></center>'
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'black'
+						end
+					elseif $phfunclient = 'some nerds':
+						'"Wow, soooo hot"'
+						phdeal = 0
+						ryska += 1
+						phchooseme +=  rand(20,30)
+						'I see the hungry shine in their eyes'
+						'"I like all of them, can you line them up?" - some of them said'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+					elseif $phfunclient = 'just some guy':
+						'"I don''t want dirty whores, show me the woman in you!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'office plankton party':
+						'"Hey, we have the same sluts at the office! We want higher level of service!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'stag party':
+						'"Nah, we are here for party! not just for holes! Stand up girlls. Show me what you got!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'BDSM request':
+						'"Yeah, that is ok, but I want to see the whole body, not only holes. Stand up"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					end
+				elseif phphi = 4:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_elite.jpg"></center>'
+					'"Wow, such a level… nice"'
+					'"Line up, Ladies" - I command'
+					'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+					ryska += 1
+					phchooseme +=  rand(10,30)
+					phdeal = 0
+
+					if  $phfunclient = 'old guys':
+
+					elseif $phfunclient = 'foreign students':
+
+					elseif $phfunclient = 'some nerds':
+
+					elseif $phfunclient = 'just some guy':
+
+					elseif $phfunclient = 'office plankton party':
+
+					elseif $phfunclient = 'stag party':
+
+					elseif $phfunclient = 'BDSM request':
+
+					end
+
+
+				elseif phphi = 5:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_bikini.mp4"></video></center>'
+					'"Wow, beach party… I am intrigued!" - the client say'
+					'"Line up, Ladies" - I command'
+					'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+					ryska += 1
+					phchooseme +=  rand(10,30)
+					phdeal = 0
+					if  $phfunclient = 'old guys':
+
+					elseif $phfunclient = 'foreign students':
+
+					elseif $phfunclient = 'some nerds':
+
+					elseif $phfunclient = 'just some guy':
+
+					elseif $phfunclient = 'office plankton party':
+
+					elseif $phfunclient = 'stag party':
+
+					elseif $phfunclient = 'BDSM request':
+
+					end
+				elseif phphi = 6:
+					if rand (1,3) = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_nakedv (1).mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/hello_naked ('+rand(1,2)+').jpg"></center>'
+					end
+
+
+					'"Wow, like in the candy store!" - the client say'
+					'"Line up, Ladies" - I command'
+					'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+					ryska += 1
+					phchooseme +=  rand(10,30)
+					phdeal = 0
+
+					if  $phfunclient = 'old guys':
+
+					elseif $phfunclient = 'foreign students':
+
+					elseif $phfunclient = 'some nerds':
+
+					elseif $phfunclient = 'just some guy':
+
+					elseif $phfunclient = 'office plankton party':
+
+					elseif $phfunclient = 'stag party':
+
+					elseif $phfunclient = 'BDSM request':
+
+					end
+				end
+			elseif phgirls = 1 and phdeal = 1:
+				if phphi = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/2girl_ hello_naked_tied.mp4"></video></center>'
+					if $phfunclient = 'old guys':
+						'"hah, I think this two will be obedient"'
+						phdeal = 2
+						'The guy puts a leah and drug me somewhere…'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"Yana, you know I like fresh meat, but this is a little too much))"'
+						'"Please change this"'
+						'Yana ask the bruser to unbind us and we lined up in front of the students'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'some nerds':
+						'"No-no, is it even legal?"'
+						'"Yes, it''s ok" - tana said - "Bud, I see you don''t like it, and the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'just some guy':
+						'"No-no, I want to feel the ladie, please untide them"'
+						'"Of course, the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'office plankton party':
+						'"Hah, the tied one we had in our office - hahaha - we want a free chics!"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'stag party':
+						'"She can''t entertain us that way! Please solve this"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'BDSM request':
+						'"Ow, sooo nice, the meat is waiting…"'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						phdeal = 4
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					end
+				elseif phphi = 2:
+					if rand (1,2) = 1:
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/show ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/show ('+rand(1,2)+').jpg"></center>'
+					end
+					if  $phfunclient = 'old guys':
+						'"It''s good you are know ,what we need))"'
+						phdeal = 2
+						ryska += 1
+						'The grandpa help me to stand up and we go to his room'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/gotohisroom.jpg"></center>'
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'old'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"It''s good you are know ,what we need))"'
+						phdeal = 2
+						ryska += 1
+						'The big black guy just take me up and carry somewhere'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/black.mp4"></video></center>'
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'black'
+						end
+					elseif $phfunclient = 'some nerds':
+						'"Wow, soooo hot"'
+						phdeal = 0
+						ryska += 1
+						phchooseme +=  rand(20,30)
+						'I see the hungry shine in their eyes'
+						'"I like all of them, can you line them up?" - some of them said'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+					elseif $phfunclient = 'just some guy':
+						'"I don''t want dirty whores, show me the woman in you!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'office plankton party':
+						'"Hey, we have the same sluts at the office! We want higher level of service!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'stag party':
+						'"Nah, we are here for party! not just for holes! Stand up girlls. Show me what you got!"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					elseif $phfunclient = 'BDSM request':
+						'"Yeah, that is ok, but I want to see the whole body, not only holes. Stand up"'
+						phdeal = 0
+						shtraf += 3
+						'"Of course, the wish of the client is a law here" - Yana said'
+					end
+				elseif phphi = 3:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/hello ('+rand(1,1)+').jpg"></center>'
+					if  $phfunclient = 'old guys':
+						'"hah, I think this two will be obedient"'
+						phdeal = 0
+						'I feel their glance at me…'
+						'"We want to check all of them"'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+						ryska += 1
+						phchooseme +=  rand(20,30)
+					elseif $phfunclient = 'foreign students':
+						'"Why does this two so quiet. We are here for fun!"'
+						'"Don''t worry, they are very fun, do you girls?" - Yana said'
+						'"Yes, sure!" - we answer with a big smile.'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'some nerds':
+						'"This two is fun, like that guilty bff  schoolgirls"'
+						phchooseme +=  rand(10,30)
+						'"We want to check all of them"'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						'While we took our places in the line, Yana marked ma and wishper "Nice idea, girl"'
+						phdeal = 0
+					elseif $phfunclient = 'just some guy':
+						'I  see, the client just stand in front of us and is looking on us only…'
+						'He stands like forever and then just go to Yana and wishper smth to her'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						'"Girls, lined up."'
+						phdeal = 0
+						if rand (1,2) = 1:
+							phchooseme +=  rand(0,30)
+						else
+							phchooseme -=  rand(0,30)
+						end
+					elseif $phfunclient = 'office plankton party':
+						'"Yeah, great. Can you line them up?"'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'stag party':
+						'"We need girls for fun! this two are too silence, can you do something with this?"'
+						'"Of course, the wish of the client is a law here" - Yana said'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'BDSM request':
+						'"Ow, sooo nice, the meat is knowing it''s place…"'
+						'He locked a collar and leash on me'
+						'He pulled the leash and I start to crawl behind him'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go ('+rand(1,3)+').jpg"></center>'
+						phdeal = 3
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'crawl':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'leased_BDSM'
+						end
+					end
+				elseif phphi = 4:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/2girl/2girl_ hello_naked_tied_pins.mp4"></video></center>'
+					PHpin = 2
+					if $phfunclient = 'old guys':
+						'"hah, I think this two will be obedient"'
+						phdeal = 3
+						'The guy puts a leah and drug me somewhere…'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						ryska += 1
+						shtraf -= 2
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					elseif $phfunclient = 'foreign students':
+						'"Yana, you know I like fresh meat, but this is a little too much))"'
+						'"Please change this"'
+						'Yana ask the bruser to unbind us and we lined up in front of the students'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'some nerds':
+						'"No-no, is it even legal?"'
+						'"Yes, it''s ok" - tana said - "Bud, I see you don''t like it, and the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'just some guy':
+						'"No-no, I want to feel the ladie, please untide them"'
+						'"Of course, the wish of the client is a law here"'
+						'Yana ask the bruser to unbind us and we lined up in front of the nerds'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'office plankton party':
+						'"Hah, the tied one we had in our office - hahaha - we want a free chics!"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'stag party':
+						'"She can''t entertain us that way! Please solve this"'
+						'"Of course, the wish of the client is a law here"'
+						phdeal = 0
+						shtraf += 3
+					elseif $phfunclient = 'BDSM request':
+						'"Ow, sooo nice, the meat is waiting…"'
+						'On the way out, Yana make a mark on me and wink'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/Vania/trener/willdecrising/drag.mp4"></video></center>'
+						phdeal = 5
+						ryska += 1
+						shtraf -= 4
+						if shtraf <= 0: shtraf = 0
+						act 'wait':
+							otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'tied'
+						end
+					end
+				end
+			end
+
+			!Яна прийшла - план перевіряємо, якщо все ок при виході яна хвалить і ставить марку + money
+			!План не спрацював перевіряємо кожну окремо як стандартно. -> phdeal = 0 '"Yeah, great. Can you line them up?"'
+
+			if phdeal ! 0: otemp = phdeal
+			if phdeal = 0:
+
+				if $phfunclient ! 'BDSM request' and phphi = 0:
+					'We lined up'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/start ('+rand(1,4)+').jpg"></center>'
+				elseif $phfunclient = 'BDSM request' and phphi = 0:
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/allgirl/tied/raby.jpg"></center>'
+				else
+					'We lined up'
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/waiting costumer/start ('+rand(1,4)+').jpg"></center>'
+				end
+
+				if otemp < 1: otemp = 1
+				if phtempttemp = 1: 'The client start too check us'
+				if phtempttemp > 1: 'The clients start too check us'
+
+				act 'Try to sell myself':
+					cla
+
+					act 'dance':
+						*clr & cla
+						if $clothingworntype = 'nude':
+							'I am dancing naked'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/dance/naked_dance ('+rand(1,2)+').mp4"></video></center>'
+							dancero_exp += rand(1,2)
+							gs 'arousal', 'flash', 10
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						else
+							'I am dancing!'
+							minut += 10
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/dance/dance.mp4"></video></center>'
+							danc_exp += rand(1,2)
+
+							act 'expose tits':
+								*clr & cla
+								'I expose my brests to the clients'
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/dance/dance_topless ('+rand(1,3)+').mp4"></video></center>'
+								gs 'arousal', 'flash', 10
+								gs 'stat'
+
+								if $phfunclient = 'old guys':
+									phchooseme += 0
+									phchooseme -= 10
+									phskladnist += 0
+									!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+								elseif $phfunclient = 'foreign students':
+									phchooseme += rand (5,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!чорні: bimbo, heels, small, sluty behaviour
+								elseif $phfunclient = 'some nerds':
+									phchooseme += rand (10,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!задроти: maid, not heels, big boobs, ahegao
+								elseif $phfunclient = 'just some guy':
+									phchooseme += rand (10,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!незайманий: school, heel, dom
+								elseif $phfunclient = 'office plankton party':
+									phchooseme += 0
+									phchooseme -= 0
+									phskladnist += 0
+									!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+								elseif $phfunclient = 'stag party':
+									phchooseme += 0
+									phchooseme -= 0
+									phskladnist += 0
+									!парубоцький вечір: the slutiest, heels, tease only
+								elseif $phfunclient = 'BDSM request':
+									phchooseme += 0
+									phchooseme -= 0
+									phskladnist += 0
+									!bdsm - bind
+								end
+
+
+
+								act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+							end
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+
+						if $phfunclient = 'old guys':
+							phchooseme += rand (25,25)
+							phchooseme -= 0
+							phskladnist += 1
+							!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+						elseif $phfunclient = 'foreign students':
+							phchooseme += rand (10,25)
+							phchooseme -= 0
+							phskladnist += 1
+							!чорні: bimbo, heels, small, sluty behaviour
+						elseif $phfunclient = 'some nerds':
+							phchooseme += rand (20,25)
+							phchooseme -= 0
+							phskladnist += 1
+							!задроти: maid, not heels, big boobs, ahegao
+						elseif $phfunclient = 'just some guy':
+							phchooseme += rand (20,25)
+							phchooseme -= 0
+							phskladnist += 1
+							!незайманий: school, heel, dom
+						elseif $phfunclient = 'office plankton party':
+							phchooseme += rand (20,20)
+							phchooseme -= 0
+							phskladnist += 1
+							!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+						elseif $phfunclient = 'stag party':
+							phchooseme += rand (25,25)
+							phchooseme -= 0
+							phskladnist += 1
+							!парубоцький вечір: the slutiest, heels, tease only
+						elseif $phfunclient = 'BDSM request':
+							phchooseme += rand (10,15)
+							phchooseme -= 0
+							phskladnist += 1
+							!bdsm - bind
+						end
+
+					end
+
+					gs 'willpower', 'misc', 'self'
+					temp = will_cost - sexcorrupt / 5
+					will_cost -= (sexcorrupt / 5)
+					if will_cost <= 0: will_cost = 0
+					if will_cost <= pcs_willpwr:
+						act 'masturbate for clients (<<temp>> Willpower)':
+							*clr & cla
+							gs 'willpower', 'pay', 'self'
+							gs 'stat'
+							sexcorrupt += 1
+							gs 'arousal', 'masturbate', 5
+							gs 'stat'
+							'I am pleasuring myself in front of everyone'
+							gs 'arousal', 'flash', 5
+							gs 'stat'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/masturbate/masturbate ('+rand(1,4)+').mp4"></video></center>'
+
+							if $phfunclient = 'old guys':
+								phchooseme += 0
+								phchooseme -= rand (5,5)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (10,20)
+								phchooseme -= 0
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (10,20)
+								phchooseme -= 0
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (25,25)
+								phchooseme -= 0
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (10,20)
+								phchooseme -= 0
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (10,20)
+								phchooseme -= 0
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (10,10)
+								phchooseme -= 0
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+					else
+						act 'masturbate for clients ' + $func('wrap', 'v_neg', '(<<temp>> Willpower)'): $noWillpower
+					end
+
+					act 'make the ahegado face':
+						*clr & cla
+						minut += 5
+						gs 'stat'
+						'I am teasing the guy'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/ahegado ('+rand(1,5)+').mp4"></video></center>'
+
+						if $phfunclient = 'old guys':
+							phchooseme += rand (0,0)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+						elseif $phfunclient = 'foreign students':
+							phchooseme += rand (0,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!чорні: bimbo, heels, small, sluty behaviour
+						elseif $phfunclient = 'some nerds':
+							phchooseme += rand (25,25)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!задроти: maid, not heels, big boobs, ahegao
+						elseif $phfunclient = 'just some guy':
+							phchooseme += rand (30,30)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!незайманий: school, heel, dom
+						elseif $phfunclient = 'office plankton party':
+							phchooseme += rand (25,25)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+						elseif $phfunclient = 'stag party':
+							phchooseme += rand (10,20)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!парубоцький вечір: the slutiest, heels, tease only
+						elseif $phfunclient = 'BDSM request':
+							phchooseme += rand (0,0)
+							phchooseme -= rand (5,5)
+							phskladnist += 1
+							!bdsm - bind
+						end
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+					end
+
+					act 'tease with a hj skill show-off':
+						*clr & cla
+						minut += 5
+						gs 'stat'
+						'I am teasing the guy'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/droch ('+rand(1,6)+').mp4"></video></center>'
+
+						if $phfunclient = 'old guys':
+							phchooseme += rand (10,20)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+						elseif $phfunclient = 'foreign students':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!чорні: bimbo, heels, small, sluty behaviour
+						elseif $phfunclient = 'some nerds':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!задроти: maid, not heels, big boobs, ahegao
+						elseif $phfunclient = 'just some guy':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!незайманий: school, heel, dom
+						elseif $phfunclient = 'office plankton party':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+						elseif $phfunclient = 'stag party':
+							phchooseme += rand (10,20)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!парубоцький вечір: the slutiest, heels, tease only
+						elseif $phfunclient = 'BDSM request':
+							phchooseme += rand (0,0)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!bdsm - bind
+						end
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+					end
+
+					if $clothingworntype ! 'nude':
+						act 'show my pussy':
+							*clr & cla
+							gs 'arousal', 'flash', 10
+							minut -= 5
+							gs 'stat'
+							'I am showing my pussy'
+
+							if rand(1,13) <= 9:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/show_pussy/showpuss ('+rand(1,9)+').jpg"></center>'
+							else
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/show_pussy/showpussv ('+rand(1,4)+').mp4"></video></center>'
+
+							end
+
+							if $phfunclient = 'old guys':
+								phchooseme += 0
+								phchooseme -= rand (3,3)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (5,10)
+								phchooseme -= 0
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (5,10)
+								phchooseme -= 0
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (15,15)
+								phchooseme -= 0
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (5,10)
+								phchooseme -= 0
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (5,10)
+								phchooseme -= 0
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (5,5)
+								phchooseme -= 0
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							if pcs_horny >= 40:
+								act 'tease my wet pussy':
+									*clr & cla
+									gs 'arousal', 'flash', 10
+									minut -= 5
+									gs 'stat'
+
+									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/show_pussy/play/playpuss ('+rand(1,2)+').mp4"></video></center>'
+								if $phfunclient = 'old guys':
+									phchooseme += 0
+									phchooseme -= rand (3,3)
+									phskladnist += 0
+									!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+								elseif $phfunclient = 'foreign students':
+									phchooseme += rand (5,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!чорні: bimbo, heels, small, sluty behaviour
+								elseif $phfunclient = 'some nerds':
+									phchooseme += rand (5,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!задроти: maid, not heels, big boobs, ahegao
+								elseif $phfunclient = 'just some guy':
+									phchooseme += rand (15,15)
+									phchooseme -= 0
+									phskladnist += 0
+									!незайманий: school, heel, dom
+								elseif $phfunclient = 'office plankton party':
+									phchooseme += rand (5,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+								elseif $phfunclient = 'stag party':
+									phchooseme += rand (5,10)
+									phchooseme -= 0
+									phskladnist += 0
+									!парубоцький вечір: the slutiest, heels, tease only
+								elseif $phfunclient = 'BDSM request':
+									phchooseme += rand (5,5)
+									phchooseme -= 0
+									phskladnist += 0
+									!bdsm - bind
+								end
+									act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+								end
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+
+						act 'show my ass':
+							*clr & cla
+							gs 'arousal', 'flash', 10
+							minut -= 5
+							gs 'stat'
+							'I am showing my asshole'
+							'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/show_ass/show_ass.jpg"></center>'
+
+							if $phfunclient = 'old guys':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (10,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (10,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (10,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (20,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+
+						act 'show my tits':
+							*clr & cla
+							gs 'arousal', 'flash', 10
+							minut -= 5
+							gs 'stat'
+							'I am showing my tits'
+
+							if rand(1,19) <= 3:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/show_tits/showtits ('+rand(1,3)+').jpg"></center>'
+							else
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/show_tits/showtitsv ('+rand(1,10)+').mp4"></video></center>'
+							end
+
+							if $phfunclient = 'old guys':
+								phchooseme += rand (0,0)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (0,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (10,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (10,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (10,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (0,0)
+								phchooseme -= rand (5,5)
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+					end
+
+					if $clothingworntype = 'nude':
+						act 'do sexy staff':
+							*clr & cla
+							gs 'arousal', 'flash', 10
+							minut -= 5
+							gs 'stat'
+
+
+							if rand(1,8) <= 2:
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/tease naked/tease_naked ('+rand(1,2)+').jpg"></center>'
+							else
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/tease naked/tease_nakedv ('+rand(1,6)+').mp4"></video></center>'
+							end
+
+							if $phfunclient = 'old guys':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (0,0)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+					end
+
+
+					if $clothingworntype ! 'nude':
+						act 'be sexy':
+							*clr & cla
+							minut += 5
+							gs 'stat'
+							'I am teasing the guys'
+							if rand(1,7) <= 5:
+								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/besexyv ('+rand(1,5)+').mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/besexy ('+rand(1,2)+').jpg"></center>'
+							end
+
+							if $phfunclient = 'old guys':
+								phchooseme += rand (0,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (0,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (20,20)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (15,15)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (10,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+					end
+
+					act 'lick my lips':
+						*clr & cla
+						minut += 5
+						gs 'stat'
+						'I am teasing the guys'
+
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/pomada.mp4"></video></center>'
+
+
+						if $phfunclient = 'old guys':
+							phchooseme += rand (20,20)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+						elseif $phfunclient = 'foreign students':
+							phchooseme += rand (0,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!чорні: bimbo, heels, small, sluty behaviour
+						elseif $phfunclient = 'some nerds':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!задроти: maid, not heels, big boobs, ahegao
+						elseif $phfunclient = 'just some guy':
+							phchooseme += rand (10,10)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!незайманий: school, heel, dom
+						elseif $phfunclient = 'office plankton party':
+							phchooseme += rand (25,25)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+						elseif $phfunclient = 'stag party':
+							phchooseme += rand (25,25)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!парубоцький вечір: the slutiest, heels, tease only
+						elseif $phfunclient = 'BDSM request':
+							phchooseme += rand (0,0)
+							phchooseme -= rand (0,0)
+							phskladnist += 1
+							!bdsm - bind
+						end
+
+						act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+					end
+
+					if tatvag >= 1 or tatblly >= 1:
+						act 'show my tattoo':
+							*clr & cla
+							gs 'arousal', 'flashlite', 5
+							gs 'stat'
+							gs 'stat'
+							'I am teasing the guys'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/lisrab/work/PH/Iam/tease/besexy/tatoo.mp4"></video></center>'
+
+							if $phfunclient = 'old guys':
+								phchooseme += rand (0,0)
+								phchooseme -= rand (5,5)
+								phskladnist += 1
+								!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+							elseif $phfunclient = 'foreign students':
+								phchooseme += rand (30,30)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!чорні: bimbo, heels, small, sluty behaviour
+							elseif $phfunclient = 'some nerds':
+								phchooseme += rand (30,30)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!задроти: maid, not heels, big boobs, ahegao
+							elseif $phfunclient = 'just some guy':
+								phchooseme += rand (10,10)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!незайманий: school, heel, dom
+							elseif $phfunclient = 'office plankton party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+							elseif $phfunclient = 'stag party':
+								phchooseme += rand (25,25)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!парубоцький вечір: the slutiest, heels, tease only
+							elseif $phfunclient = 'BDSM request':
+								phchooseme += rand (25,52)
+								phchooseme -= rand (0,0)
+								phskladnist += 1
+								!bdsm - bind
+							end
+
+							act 'continue': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+						end
+					end
+
+					if $phfunclient = 'BDSM request' and phphi = 0:
+						cla
+						'I am tied, i can do nothing.'
+						act 'wait': gt 'mod_public_WC_rab_work_whore', 'sell_meself'
+					end
+				end
+
+				if $phfunclient = 'old guys':
+					!старі: school or slut but NOT naked, heels, hair only humman, sub behaviour
+					if CloStyle = 1: phchooseme += (10 * CloQuality) / 7
+					if CloStyle = 4 or CloProstitute = 1: phchooseme += (10 * CloQuality) / 7
+
+					if CloStyle2 = 4 or CloSchool = 1:
+						phchooseme += (40 * CloQuality) / 7
+					else
+						phchooseme += (15 * CloInhibit * CloQuality) / 280
+						phchooseme += (15 * CloQuality) / 7
+					end
+					if $clothingworntype = 'nude': phchooseme -= 20
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+
+					if pcs_haircol >= 4:
+						temp = 3 * pcs_haircol
+						if temp >= 30: temp = 30
+						phchooseme -= temp
+					end
+				elseif $phfunclient = 'foreign students':
+					!чорні: bimbo, heels, small, sluty behaviour
+					if CloBimbo = 1:
+						phchooseme += 40 * CloQuality / 7
+					else
+						phchooseme += (15 * CloInhibit * CloQuality) / 280
+						phchooseme += (15 * CloQuality) / 7
+					end
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+
+					if pcs_weight <= 60: phchooseme += 10
+
+				elseif $phfunclient = 'some nerds':
+					!задроти: maid, not heels, big boobs, ahegao
+					if (CloStyle2 = 1 or CloMaid = 1) or (CloStyle2 = 4 or CloSchool = 1):
+						phchooseme += 40 * CloQuality / 7
+					else
+						phchooseme += (15 * CloInhibit * CloQuality) / 280
+						phchooseme += (15 * CloQuality) / 7
+					end
+
+					temp = 116 - ShoHeels * 100 / 6
+					phchooseme += (20 * temp * ShoQuality) / 700
+
+					if pcs_weight <= 60: phchooseme += 10
+					if tits >= 4:
+						phchooseme += 10 * tits / 4
+					end
+
+				elseif $phfunclient = 'just some guy':
+					!незайманий: school, heel, dom
+					if (CloStyle2 = 4 or CloSchool = 1):
+						phchooseme += 40 * CloQuality / 7
+					else
+						phchooseme += (15 * CloQuality) / 7
+						phchooseme += (15 * CloQuality) / 7
+					end
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+
+				elseif $phfunclient = 'office plankton party':
+					!корпоратив офісного планктону: maid or bimbo, heel, unhuman hair, tease only
+					if CloStyle2 = 1 or CloMaid = 1:
+						phchooseme += 40 * CloQuality / 7
+					elseif CloBimbo = 1:
+						phchooseme += 40 * CloQuality / 7
+					else
+						phchooseme += (15 * CloInhibit * CloQuality) / 280
+						phchooseme += (15 * CloQuality) / 7
+					end
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+
+					if pcs_haircol >= 4: phchooseme += 10
+
+				elseif $phfunclient = 'stag party':
+					!парубоцький вечір: the slutiest, heels, tease only
+					phchooseme += (15 * CloInhibit * CloQuality) / 245
+					phchooseme += (15 * CloQuality) / 7
+					if CloBimbo = 1: phchooseme += 10
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+
+				elseif $phfunclient = 'BDSM request':
+					!bdsm - bind
+					if phpin = 2: phchooseme += 10
+
+					if CloStyle3 ! 4 and CloStyle3 ! 0:
+						phchooseme += 40 * CloQuality / 7
+					else
+						phchooseme += (15 * CloInhibit * CloQuality) / 280
+						phchooseme += (15 * CloQuality) / 7
+					end
+
+					phchooseme += (20 * ShoHeels * ShoQuality) / 42
+				end
+
+				zztemp = 5 * phgirls
+				if zztemp >= 80: zztemp = 80
+				temp = phchooseme - (zztemp + (phskladnist * 10))
+				itemp = phchooseme - (100 + (phskladnist * 10))
+				if itemp >= 0: temp = 100
+				if itemp <= 0 and temp <= 0: temp = 1
+				if temp > 0 and itemp < 0:
+					temp = ((temp*100)/(temp - itemp))
+				end
+				'<b>client choose me with <<temp>>% chance</b>'
+				if phchooseme >= rand(zztemp,100):
+					cla
+
+					'A client choose me'
+					phtempttemp -= 1
+					if $phfunclient = 'BDSM request':
+						'He locked a collar and leash on me'
+						'He pulled the leash and I start to crawl behind him'
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go ('+rand(1,3)+').jpg"></center>'
+						act 'crawl':
+							if phdeal ! 0: otemp = phdeal
+							killvar 'phdeal'
+							killvar 'phphi'
+							phtemptemp = 1
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+							gt 'mod_public_WC_rab_work_whore', 'leased_BDSM'
+						end
+					else
+						act 'go with him to his room':
+							phtempttemp = 1
+
+							killvar 'phdeal'
+							killvar 'phphi'
+
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+
+							gt 'mod_public_WC_rab_work_whore', 'start_sex'
+						end
+					end
+
+					if phtempttemp >= 1 and rand(1,3) = 1:
+						cla
+
+						temp = rand(1,phtempttemp)
+						if temp > 1: '<<temp>> guys are going with us'
+						if temp = 1: 'Another guy start to tak with the client, and he on the way with us'
+						phtempttemp = 1 + temp
+
+						act 'go with them to his room':
+							killvar 'phdeal'
+							killvar 'phphi'
+
+							phgirls = rand(0,6)
+							if phgirls = 1: phonegirl = rand(1,3)
+
+							gt 'mod_public_WC_rab_work_whore', 'start_sex'
+						end
+					end
+				else
+					'A client DOES NOT choose me!'
+					phtempttemp -= 1
+					phgirls -= 1
+					if phtempttemp > 1 and rand(1,4) = 1:
+						itemp = phtempttemp - 1
+						temp = rand(1,itemp)
+						killvar 'itemp'
+						'<<temp>> other clients go with the girl'
+						phtempttemp -= temp
+					end
+
+					!if rand(0,50) + phgirlsrelations >= rand(40,50): '-=wip=-' cla & '"Let''s take this girl with us!"'
+
+
+				end
+				killvar 'zztemp'
+
+				if phtempttemp <= 0:
+					cla
+					phtempttemp = 0
+					'There are no clients left… noone choosed me…'
+					'Yana open the door and wait…'
+					killvar 'phdeal'
+					killvar 'phphi'
+
+					phgirls = rand(0,6)
+					if phgirls = 1: phonegirl = rand(1,3)
+
+					act 'go to the bar':
+						minut += 3
+						gs 'stat'
+						gt 'mod_public_WC_rab_btothel', 'tables'
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+--- mod_public_WC_rab_work_whore_fun ---------------------------------
+

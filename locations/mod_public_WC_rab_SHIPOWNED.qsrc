@@ -1,0 +1,1334 @@
+# mod_public_WC_rab_SHIPOWNED
+if $ARGS[0] = 'start':
+	*clr & cla
+	'It passed a lot of time… he opened the trunk and I feel he is bringing me somewhere'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/3 event/try to rob/4 took/1 end 1.mp4"></video></center>'
+	minut += rand(60,90)
+	gs 'stat'
+	'He tied my eyes'
+	phslaveship = 0
+
+
+	act 'wait':
+		*clr & cla
+		'I see nothing but I feel how different men toch me everywhere, but they are not grooping me, more like inspecting'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/2 sail.jpg"></center>'
+
+
+		i = rand(1,5)
+		temp = rand(15,96)
+		act 'wait':
+			cla
+			*nl
+			'Suddenly loud voice: "Lot #<<temp>>. First bet 2000. Our trading starts!"'
+
+
+			if i >= 1:
+				temp = rand(20,100)*100
+				'Some buyer: "<<temp>>"'
+			end
+			if i >= 2:
+				temp += rand(1,30)*100
+				'Some buyer: "<<temp>>"'
+			end
+			if i >= 3:
+				temp += rand(1,30)*100
+				'Some buyer: "<<temp>>"'
+			end
+			if i >= 4:
+				temp += rand(1,30)*100
+				'Some buyer: "<<temp>>"'
+			end
+			if i >= 5:
+				temp += rand(1,30)*100
+				'Some buyer: "<<temp>>"'
+			end
+
+			temp = 15000
+			!-=wip=- destroy line above
+
+			if temp < 15000:
+				!! fishing boat
+
+
+
+
+
+
+
+			elseif temp >= 14000 and temp <= 24000:
+				!! pirats
+				phslaveship = 1
+				phcaplove = 0
+				act 'continue':
+					*clr & cla
+
+					'Some man tied me to a cart and take the blinds from me'
+					'He bring me to the empty room'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/00 start 2/bring.jpg"></center>'
+					minut += rand(10,15)
+					gs 'stat'
+
+					act 'wait':
+						*clr & cla
+
+						'I am just waiting and nothing happaning'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/00 start 2/wait.jpg"></center>'
+						minut += rand(10,15)
+						gs 'stat'
+
+						act 'wait':
+							*clr & cla
+							'Someone enters the room'
+							'He untied me, grabs me and "we" go somewhere'
+							'They put wet rag to my face, and soon I… I…'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/1 start.jpg"></center>'
+
+							minut += rand(10,15)
+							gs 'stat'
+
+							act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'pirat'
+						end
+					end
+				end
+			else
+				!! scientist
+
+
+
+
+
+
+
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'pirat':
+	*clr & cla
+	'I feel wind from the sea…'
+	'I hear ship ropes'
+	'"She wakes up" - man voice shouts'
+	!! phslaveship = 1
+
+	phcapkey = 0
+	phpiratkara = 0
+	phslaveship = 1
+	phpiratcome -= rand(8,10)
+	PHpirates = rand(1,15)
+
+	if PHpirates < 10: PHpirates += 9
+	if phpiratefriend > 0: phpiratefriend = 0
+	bcil = 1
+	phboatend = daystart + rand(4,6)
+
+	act 'Open my eyes':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+		!! 4 pirates
+		'I see. They remove the ducktape from my eyes. but, but… where am I?'
+		'Black-black man come to me: "Congratulations! You are a slave now. And if you don''t want to be tied and be the fuck-furnitor it is better for you to submit."'
+		'Black-black man: "I am the capitan of this ship. My words is over everybodys one."'
+		'Capitan: "Also we are in the international waters. There is no law here, except… my law."'
+
+		act 'submit':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+
+			phpiratefriend += 30
+			bcil = 0
+			'He commands to untied me'
+			'A pirate untied me and led me to my cabin'
+
+			act 'continue':
+				minut += 60
+				gs 'stat'
+				gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'start'
+			end
+		end
+
+		act 'protest':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/4 pirates.jpg"></center>'
+			'I see evil glances fixed on me'
+			!! 4 pirates
+
+			phpiratefriend = -15
+
+
+			'A pirate grabs my hair. "You need some lesson, bitch!"'
+			'He pulls me somewhere'
+			act 'continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/pirat/motor/tied_wait.jpg"></center>'
+				'He bring me to some technical room.. It is very loud here'
+				'He tied me to smth.'
+
+				act 'wait': gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'karastart'
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'island':
+	*clr & cla
+	!! phpiratkara = daystart + rand(6,8)
+	$loc = 'mod_public_WC_rab_SHIPOWNED'
+	$menu_loc = 'mod_public_WC_rab_SHIPOWNED'
+	$loc_arg = 'island'
+	$menu_arg = 'island'
+	$loc = 'mod_public_WC_rab_SHIPOWNED'
+	menu_off = 0
+
+	If temper < 20: temper = 20
+	if pcs_sweat < 35 : gs 'sweat', 'add', 5
+
+	if phsunblock > 0:
+		phsunblock -= 1
+		if rand(1,3) = 1: pcs_health -= (200 - pcs_hydra)
+		gs 'stat'
+	else
+		'It is hot here!'
+		if pcs_hydra >= 100:
+			pcs_hydra -= 3
+		else
+			pcs_hydra -= 6
+		end
+		if bcil ! 1 and mc_inventory['suncream'] ! 0:
+			act 'use suncream':
+				mc_inventory['suncream'] -=  1
+				pcs_tan += 3
+				phsunblock += 10
+				'I apply sunblock to my body.'
+				gs 'stat'
+			end
+		end
+	end
+
+	if sound_settings['environment_off'] = 0: PLAY 'mod/public_WC/sound/sea.wav',50
+	minut += 60
+	gs 'stat'
+	'…'
+
+	if bcil = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/tied (1).jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/wait ('+rand(1,2)+').jpg"></center>'
+	end
+
+	act 'wait': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+
+	if pcs_sleep < 20:
+		act 'sleep':
+			if rand(1,10) = 1: piratestakemenow = 1
+			cla
+			menu_off = 0
+			act 'continue': gt $loc, $loc_arg
+			if pcs_sleep >= 20 and pcs_sleep <= 90:
+				gs 'sweat', 'add', 10
+				pcs_sleep += 15
+				pcs_health += 5
+				minut += 60
+				gs 'stat'
+				*nl
+				'You sleep about an hour.'
+			elseif pcs_sleep < 20:
+				*clr & cla
+				gs 'sweat', 'add', rand(15,50)
+				gs 'stat'
+				gt 'pre_sleep', 'prepare_sleep'
+			else
+				minut += 5
+				gs 'stat'
+				*nl
+				'You are not tired enough to sleep, even for a short nap.'
+			end
+		end
+	else
+		act 'Take a nap (1:00)':
+			if rand(1,30) = 1: piratestakemenow = 1
+			cla
+			menu_off = 0
+			act 'continue': gt $loc, $loc_arg
+			if pcs_sleep >= 20 and pcs_sleep <= 90:
+				gs 'sweat', 'add', 10
+				pcs_sleep += 15
+				pcs_health += 5
+				minut += 60
+				gs 'stat'
+				*nl
+				'You sleep about an hour.'
+			elseif pcs_sleep < 20:
+				*clr & cla
+				gs 'sweat', 'add', rand(15,50)
+				gs 'stat'
+				gt 'pre_sleep', 'prepare_sleep'
+			else
+				minut += 5
+				gs 'stat'
+				*nl
+				'You are not tired enough to sleep, even for a short nap.'
+			end
+		end
+	end
+
+
+	if daystart - vogond > 0 and vogon >= 1:
+		if hour + 24 - vogon > 4:
+			vogon = 0
+			'the fire went out'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/fireOFF.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/fireON.jpg"></center>'
+		end
+	elseif daystart - vogond = 0:
+		if hour - vogon > 4:
+			vogon = 0
+			'the fire went out'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/fireOFF.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/fireON.jpg"></center>'
+		end
+	end
+
+
+
+	if bcil = 0:
+		!*clr
+		act 'go swim':
+			phpoolswim = 0
+			heswim = 0
+			phsunblock = 0
+			gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+		end
+
+		if sunWeather = 1:
+			act 'Sunbathe':
+				*clr & cla
+				if pcs_sweat < 35 : gs 'sweat', 'add', 5
+				if pcs_hydra >= 100:
+					pcs_hydra -= 10
+				else
+					pcs_hydra -= 20
+				end
+				pcs_mood += 15
+				'<center><img <<$set_imgh>> src="images/locations/shared/lake/tanning_swimsuit.jpg"></center>'
+
+				if mc_inventory['suncream'] =  0:
+					pcs_tan += 1
+					'I lie on the beach and sunbathe for an hour.'
+				else
+					mc_inventory['suncream'] -=  1
+					pcs_tan += 3
+					phsunblock += 10
+					'I apply sunblock to my body before sunbathing for an hour.'
+				end
+
+				act 'wait': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+			end
+		end
+
+		if phcoconut > 0:
+			act 'open coconut and drink it':
+				*clr & cla
+				phcoconut -= 1
+				'I spend some time to open the coconut, but the refreshing juice worth it!'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/drink (1).jpg"></center>'
+				minut += rand(0,181)
+				gs 'mood', 'raise', 'small'
+				minut += 2
+				gs 'beverage', 'milkshake_stats'
+				dynamic $fill_bottle
+
+				act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+			end
+		end
+
+
+
+		if boletus_cooked > 0:
+			act 'Eat cooked mushrooms (0:15)':
+				*clr & cla
+
+				minut += 15
+				boletus_cooked -= 1
+				gs 'mood', 'raise', 'small'
+				gs 'food', 'healthy_meal_stats'
+
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/boletuscook.jpg"></center>'
+				*nl
+				'I eat some cooked mushrooms. They are pretty tasty.'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+		if ryba_cooked > 0:
+			act 'Eat cooked fish (0:15)':
+				*clr & cla
+
+				minut += 15
+				ryba_cooked -= 1
+				gs 'mood', 'raise', 'small'
+				gs 'food', 'healthy_meal_stats'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/ryba_gotuyu ('+rand(1,2)+').jpg"></center>'
+				*nl
+				'I eat some cooked fish. They are pretty tasty!'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+		if bilberry > 0:
+			act 'Eat berries (0:15)':
+				*clr & cla
+
+				minut += 15
+				bilberry -= 1
+				gs 'food', 'bilberry_stats'
+
+				'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/bilberry.jpg"></center>'
+				*nl
+				'I eat some berries. These are great.'
+
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+
+
+
+		if hmyz >= 5:
+			act 'make a fire':
+				*clr & cla
+				hmyz -= 5
+				'I spent some time to make a fire'
+				minut += rand(5,15)
+				minut -= 60
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/fireON.jpg"></center>'
+				vogon = hour
+				vogond = daystart
+				act 'Continue': gt $loc, $loc_arg
+			end
+		end
+
+		if vogon >= 1:
+			if boletus > 0:
+				act 'Cook some mushrooms in the fire (0:15)':
+					*clr & cla
+					minut -= 60
+					minut += 15
+					boletus_cooked += 1
+					boletus -= 1
+					frost = 0
+					if pcs_servng < 100:servng_exp += 1
+					gs'stat'
+
+
+					'<center><img <<$set_imgh>> src="images/locations/gadukino/forest/boletushot.jpg"></center>'
+					*nl
+					'I spend 15 minutes grilling some mushrooms in the fire.'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+			if ryba > 0:
+				act 'Cook some fish in the fire (0:15)':
+					*clr & cla
+					minut -= 60
+					minut += 15
+					ryba_cooked += 1
+					ryba -= 1
+					frost = 0
+					if pcs_servng < 100:servng_exp += 1
+					gs'stat'
+
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/rest/vogon/ryba_gotuyu ('+rand(1,2)+').jpg"></center>'
+					*nl
+					'I spend 15 minutes grilling some fish in the fire.'
+
+					act 'Continue': gt $loc, $loc_arg
+				end
+			end
+		else
+			'I could make a fire if I have enought branches'
+			'maybe I need to walk a beach to find some?'
+		end
+
+		if phrod = 1:
+			act 'fishing': gt 'mod_public_WC_fishing_game', 'g1_0'
+		end
+
+		act 'walk the beach (2:00)':
+			*clr & cla
+			minut += 60
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/walk (1).jpg"></center>'
+
+
+
+			if rand(1,3) = 1 and phrod ! 1:
+				'I have found a fishing rod'
+				phrod = 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/velyk/event/rybalka/vudka.jpg"></center>'
+				act 'take the rod': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+			elseif (rand(1,4) = 1 and phcoconut < 10) or (rand(1,2) = 1 and phcoconut < 2):
+				'I see a Palm with the coconut… few coconut is on the ground!'
+
+				act 'take the coconut':
+					phcoconut += 1
+					gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+				end
+			elseif rand (1,3) ! 1:
+				'I found some branches. I could make fire, if I have enought'
+				hmyz += rand(3,4)
+			end
+
+			act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+		end
+
+		if $clothingworntype ! 'nude':
+			act 'undress':
+				cla
+				minut += 3
+				minut -= 60
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				'I have undressed myself.'
+				!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/yacht/actions/undress.mp4"></video></center>'
+				act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+			end
+		end
+		if $clothingworntype = 'nude' and phnodress = 0:
+			act 'Get dressed':
+				cla
+				minut+=3
+				minut -= 60
+				gs 'outfit', 'wear_last_worn'
+				'I put your clothes back on.'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+			end
+		end
+	else
+		act 'try to unbind myself':
+			cla
+			act 'Try to break the ropes':
+				if pcs_stren >= 90 and phwindow = 0:
+					cla
+					'Under my power, all the ropes broke through with a loud sound'
+					$rope = 0
+
+					gs 'mod_public_WC_cabine', 'motuzka'
+					wait 500
+					act 'look around':
+
+						gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+					end
+				elseif pcs_stren >= 50:
+					cla
+					'I hear the rope crackle, but the rope does not lend itself.'
+					$rope -= pcs_stren * 3 / 10 + 2
+					gs 'mod_public_WC_cabine', 'motuzka'
+					if $rope > 0:
+						act 'continue':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					else
+						*clr & cla
+						'With the loud sound of the rope, it finally bursts.'
+						wait 500
+						act 'look around':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					end
+				else
+					cla
+					'I can hear the rope barely cracking, I''m not sure if I have enough strength.'
+					$rope -= 15
+					gs 'mod_public_WC_cabine', 'motuzka'
+					if $rope > 0:
+						act 'continue':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					else
+						cla
+						'With the loud sound of the rope, it finally bursts.'
+						wait 500
+
+						act 'look around':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					end
+				end
+			end
+			act 'Try to get out of the ropes':
+				if pcs_agil >= 80 and phwindow = 0:
+					cla
+					$rope = 0
+
+					gs 'mod_public_WC_cabine', 'motuzka'
+					'Turning my hands from behind my back to the front, I find how to turn my hand and slip through the knots.'
+					wait 500
+					act 'look around':
+
+						gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+					end
+				elseif pcs_agil >= 50:
+					cla
+					'I move my hands, looking for a way to slip out of the shackles.'
+					$rope -= pcs_agil * 3 / 10 + 5
+					gs 'mod_public_WC_cabine', 'motuzka'
+					if $rope > 0:
+						act 'continue':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					else
+						cla
+						'Finally I find how to wrap my hand and slip through the knots.'
+						wait 500
+						act 'look around':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					end
+				elseif pcs_agil < 50:
+					cla
+					'I move my hands awkwardly, looking for a way to slip out of the shackles, I''m not sure what I''m doing right.'
+					$rope -= 15
+					gs 'mod_public_WC_cabine', 'motuzka'
+					if $rope > 0:
+						act 'continue':
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					else
+						cla
+						'Finally I find how to wrap my hand and slip through the knots.'
+						wait 500
+						act 'look around':
+
+							gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+						end
+					end
+				end
+			end
+			act 'Expand the knots to slip out of the ropes':
+				if pcs_agil + pcs_stren >= rand(120, 200) and phwindow = 0:
+					cla
+					$rope = 0
+
+					gs 'mod_public_WC_cabine', 'motuzka'
+					'Finally, the ropes don''t hold me.'
+					wait 500
+
+					act 'look around':
+
+						gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+					end
+				else
+					cla
+					$rope -= rand(1,10)
+					gs 'mod_public_WC_cabine', 'motuzka'
+					'The nodes became lighter, but not enough.'
+					act 'continue':
+						gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+					end
+				end
+			end
+		end
+	end
+
+
+
+	if daystart <= phpiratkara and phslaveship = 1:
+		*clr & cla
+		killvar 'phsunblock'
+		killvar 'phcoconut'
+		!! vernulys i zabraly mene
+
+		'Pirates come back!'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+		'Pirate: "No way! She alives!"'
+		'They grab me and take me to their ship'
+		phnodress = 0
+
+		act 'continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+			'Capitan: "I see you are ready to submit"'
+
+			act 'submit':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht2/start/3 capt.jpg"></center>'
+
+				phpiratefriend += 30
+				bcil = 0
+				'A pirate led me to my cabin'
+				phslaveship = 1
+				phpiratcome -= rand(8,10)
+				if PHpirates = 0: PHpirates = rand(1,15)
+				if PHpirates < 10: PHpirates += 9
+				phboatend = daystart + rand(4,6)
+
+				phescortfun = 80
+				phrod = 0
+
+				act 'continue':
+					minut += 60
+					gs 'stat'
+					gt 'mod_public_WC_rab_btothel_escort_fly_pirat', 'start'
+				end
+			end
+		end
+	elseif phslaveship = 0:
+		if piratestakemenow = 1:
+			gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+			phslaveship = 1
+			gt 'mod_public_WC_rab_SHIPOWNED', 'pirat'
+		end
+
+		if rand(1,13) = 1:
+			'I see the fishig ship. And it is really close'
+			shiptype = rand(1,3)
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/2 other ships/3 fishing ship (<<shiptype>>).jpg"></center>'
+
+			if gun = 1 and ammo > 0:
+				act 'Shoot in the air':
+					cla
+					ammo -= 1
+					*clr & cla
+					'The ship finds me'
+					'They come to the island'
+					'In a shor time I am on the fishing ship deck'
+					gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+					phslaveship = 3
+					act 'continue': gt 'mod_public_WC_rab_phslaveship_3_fishing', 'start'
+				end
+			end
+
+			act 'Scream and jump on the beach as hard as I can':
+				cla
+
+				if vogon >= 1:
+					temp = rand(1,10) + rand(1,10)
+				else
+					temp = rand(1,10)
+				end
+
+				if temp >= 8:
+					'The ship finds me'
+					'They come to the island'
+					'In a shor time I am on the fishing ship deck'
+					gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+					phslaveship = 3
+					act 'continue': gt 'mod_public_WC_rab_phslaveship_3_fishing', 'start'
+				elseif temp <= 5:
+					'The ship does not notice me'
+					act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+				else
+					cla
+					'The ship finds me'
+					'They come to the island'
+					act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'tiedsex'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'swim':
+	*clr & cla
+	$loc = 'mod_public_WC_rab_SHIPOWNED'
+	$loc_arg = 'swim'
+	cumspclnt = 4
+	gs 'cum_cleanup'
+	minut += 5
+	phtemp = 0
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/swim (1).jpg"></center>'
+
+	pcs_sweat = 0
+	if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+
+	gs 'stat'
+
+	act 'Go to the beach':
+		*clr & cla
+		minut -= 55
+
+		gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+	end
+
+	if phcoast >= 1:
+		'the little island is nearby'
+
+		act 'dive to research a bottom':
+			*clr & cla
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 15
+			pcs_sweat = 0
+			pcs_mood += 5
+
+			phkysen = 100
+
+			if pcs_stren < 30 and rand(1,10) = 1: stren_exp += 1
+			phpoolswim = 0
+
+			if $clothingworntype = 'nude':
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/down ('+rand(1,2)+').jpg"></center>'
+			else
+				!! NE gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/down ('+rand(1,2)+').mp4"></video></center>'
+			end
+
+			phkysen -= rand(20,30)
+
+			act 'Ascend':
+				*clr & cla
+				temp_gr = rand(0,15)
+				phkysen = 100
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+				end
+				killvar 'phbottomsearch'
+				wait 1000
+				gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+			end
+
+			act 'swim':
+				*clr & cla
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+				end
+				gs 'mod_public_WC_rab_SHIPOWNED', 'deepaction'
+			end
+
+			act 'Search something on the bottom':
+				*clr & cla
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/shore/bottom ('+rand(1,3)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/shore/bottom.jpg"></center>'
+				end
+
+				temp_gr = rand(0,15)
+				cumspclnt = 4
+				gs 'cum_cleanup'
+				minut += 1
+				pcs_sweat = 0
+				pcs_mood += rand(0,1)
+
+				temp = rand(1,100)
+				if temp <= 5:
+					'I have found a gold coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 500
+				elseif temp <= 10:
+					'I have found a silver coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 100
+				else
+					'I have found nothing'
+				end
+				gs 'stat'
+				phkysen -= rand(00,30)
+				phbottomsearch = 1
+				gs 'mod_public_WC_rab_SHIPOWNED', 'deepaction'
+			end
+		end
+	end
+	act 'Go skinny dipping (00:15)':
+		*clr & cla
+		temp_gr = rand(0,15)
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		minut += 15
+		pcs_sweat = 0
+		pcs_mood += 5
+
+		phkysen = 100
+
+		if pcs_stren < 30 and rand(1,10) = 1: stren_exp += 1
+		phpoolswim = 0
+
+		if $clothingworntype = 'nude':
+			!! gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/down ('+rand(1,2)+').jpg"></center>'
+		else
+			!! NE gola
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/down ('+rand(1,2)+').mp4"></video></center>'
+		end
+
+		phkysen -= rand(20,30)
+
+		act 'Ascend':
+			*clr & cla
+			temp_gr = rand(0,15)
+			phkysen = 100
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+			end
+			wait 1000
+			gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+		end
+
+		act 'swim':
+			*clr & cla
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+			end
+			gs 'mod_public_WC_rab_SHIPOWNED', 'deepaction'
+		end
+	end
+
+
+	if phpoolswim = 1:
+		minut += 30
+		gs 'exercise', 'tier1', 1, 'stren_exp'
+		gs 'stat'
+
+
+		if $clothingworntype = 'nude':
+			!! gola
+			if rand(1,3) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim (1).mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim ('+rand(1,2)+').jpg"></center>'
+			end
+		else
+			!! NE gola
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/swim.mp4"></video></center>'
+		end
+
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		if rand(1,4) = 1: gs 'exercise', 'tier1', 1, 'stren_exp'
+
+		pcs_sweat = 0
+		if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+		gs 'stat'
+
+		act 'keep swimming (0:30)': gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+
+		act 'rest':
+			*clr & cla
+			!! 'I rest a bit and go back to swim'
+			phpoolswim = 0
+			if $clothingworntype = 'nude':
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/lie ('+rand(1,5)+').jpg"></center>'
+			else
+				!! NE gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/lie ('+rand(1,1)+').jpg"></center>'
+			end
+
+			!! act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_new', 'pool2'
+			gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+		end
+	else
+		'I am resting.'
+		phpoolswim = 0
+		if $clothingworntype = 'nude':
+			!! gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/lie ('+rand(1,5)+').jpg"></center>'
+		else
+			!! NE gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/lie ('+rand(1,1)+').jpg"></center>'
+		end
+
+		minut += 25
+		pcs_mood += rand(0,20)
+		gs 'stat'
+
+		act 'Go swim (0:30)':
+			*clr & cla
+			'The water is warm'
+			if $clothingworntype = 'nude':
+				!! gola
+				if rand(1,3) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim (1).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim ('+rand(1,2)+').jpg"></center>'
+				end
+			else
+				!! NE gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/swim.mp4"></video></center>'
+			end
+			minut += 30
+			gs 'exercise', 'tier1', 1, 'stren_exp'
+			gs 'stat'
+
+			act 'swim (0:30)':
+				phpoolswim = 1
+				minut += 30
+				gs 'exercise', 'tier1', 1, 'stren_exp'
+				gs 'stat'
+				gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+			end
+
+			act 'Change my mind':
+				phpoolswim = 0
+				gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+			end
+		end
+
+		act 'keep resting': gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+	end
+end
+
+if $ARGS[0] = 'deepaction':
+	phkysen -= rand(20,40)
+	minut += 1
+	gs 'stat'
+
+	act 'Ascend':
+		*clr & cla
+		temp_gr = rand(0,15)
+		phkysen = 100
+		killvar 'phbottomsearch'
+		if $clothingworntype = 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+		end
+		wait 1000
+		gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+	end
+
+	act 'swim':
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+		end
+		gs 'mod_public_WC_rab_SHIPOWNED', 'deepaction'
+	end
+
+	if phbottomsearch = 1:
+		act 'Search something on the bottom':
+			*clr & cla
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/shore/bottom ('+rand(1,3)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/shore/bottom.jpg"></center>'
+			end
+
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 1
+			pcs_sweat = 0
+			pcs_mood += rand(0,1)
+
+			temp = rand(1,100)
+			if temp <= 5:
+				'I have found a gold coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 500
+			elseif temp <= 15:
+				'I have found a silver coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 100
+			else
+				'I have found nothing'
+			end
+			gs 'stat'
+			phkysen -= rand(0,30)
+			phbottomsearch = 1
+			gs 'mod_public_WC_rab_SHIPOWNED', 'deepaction'
+		end
+	end
+
+	if phkysen <= 0:
+		cla
+		'I need air!!!'
+		act 'Ascend':
+			*clr & cla
+			killvar 'phbottomsearch'
+			temp_gr = rand(0,15)
+			phkysen = 100
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+			end
+			wait 1000
+			gt 'mod_public_WC_rab_SHIPOWNED', 'swim'
+		end
+	end
+end
+
+if $ARGS[0] = 'tiedsex':
+	*clr & cla
+	minut += 25
+	gs 'stat'
+	gs 'npcgeneratec', 0, 'a young sailor', rand(17,28)
+	gs 'boyStat', $npclastgenerated
+
+	'Three young sailors rush to me'
+	'they pushed me on the sand'
+	'I am screaming'
+
+	if $clothingworntype ! 'nude':
+		'Amid trashing limbs and horrid screams the girl''s clothes are ripped away.'
+	end
+
+	'Guy1: "Shut up, bitch! we know it''s a whores island. Pirates had fucjed you, and now we will."'
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/1.jpg"></center>'
+
+	act 'continue':
+		*clr & cla
+		'They are checking my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/3.jpg"></center>'
+		gs 'arousal', 'foreplay', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+
+		if cumloc[1] = 0:
+			'Guy2: "Ow, Artie! She is clen!"'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/2.jpg"></center>'
+			gs 'arousal', 'cuni', rand(15,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			minut -= 15
+			gs 'stat'
+			'The leader of the pack (Artie), laps hungrily at the my cunt'
+		else
+			'Guy2: "Shit, the pirates cum… let''s just use her holes"'
+		end
+
+		act 'continue':
+			*clr & cla
+			'Wrists bound… legs spread wide, the three gangmen paw my body.'
+			minut += 10
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/5.jpg"></center>'
+
+			act 'continue':
+				*clr & cla
+				'Artie as a leader has "Droit du seigneur".'
+				'Artie prepared to penetrates me'
+				gs 'arousal', 'foreplay', rand(3,5), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/6.jpg"></center>'
+
+				act 'continue':
+					*clr & cla
+					'Oblivious to my screaming, the leader fucks me with his swollen cock'
+					gs 'arousal', 'vaginal', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/7.jpg"></center>'
+
+					act 'continue':
+						*clr & cla
+						'Artie spreys my belly with his cum'
+						gs 'arousal', 'vaginal', rand(5,5), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/8 ('+rand(1,2)+').jpg"></center>'
+						gs 'npcgeneratec', 0, 'Artie', rand(35,35)
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'labia', $npclastgenerated, 0
+						gs 'boyStat', $npclastgenerated
+						gs 'cum_call', 'stomach', $npclastgenerated, 0
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Continue':
+							*clr & cla
+							gs 'npcgeneratec', 0, 'a young sailor', rand(17,28)
+							gs 'boyStat', $npclastgenerated
+							'After Artie other sailor start to fuck me'
+							gs 'arousal', 'vaginal', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/10 ('+rand(1,3)+').jpg"></center>'
+
+							act 'Continue':
+								*clr & cla
+								'The last one does not want to wait. He pushed his dick to my mouth'
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/1 start/12.jpg"></center>'
+								gs 'arousal', 'vaginal', rand(15,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'
+								minut -= 15
+								gs 'arousal', 'bj', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'
+
+								act 'Continue':
+									cla
+									'Sailors load me from both sides simultaniously'
+									gs 'cum_call','mouth',$boy
+									gs 'stat'
+									gs 'cum_call','mouth_swallow',$boy
+									gs 'stat'
+									gs 'cum_call','',$boy
+									gs 'cuminsidereact', $boydesc
+									gs 'arousal', 'end'
+									gs 'stat'
+									act 'Continue': gt 'mod_public_WC_rab_SHIPOWNED', 'tiedsex2'
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'tiedsex2':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/13.jpg"></center>'
+	'Now they take me somewhere'
+
+	gs 'arousal', 'flash', rand(10,10), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'
+
+	act 'Continue':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/14.jpg"></center>'
+		'They throw me to the pit, the Artie dug up.'
+
+		gs 'arousal', 'flash', rand(10,10), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+
+		act 'Continue':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/15.jpg"></center>'
+			'They are digging me.'
+
+			gs 'arousal', 'flash', rand(10,10), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+
+			act 'Continue':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/16.jpg"></center>'
+				'They are sit down behind and jerking their dicks'
+				'OMG?! Are they ready to second round?'
+
+				gs 'arousal', 'voyeur', rand(10,10), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+
+				act 'Continue':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/17.jpg"></center>'
+					'Sailor stick his dick in my mouth'
+					'The other keep jerking'
+					gs 'arousal', 'bj', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+
+					act 'Continue':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/18.jpg"></center>'
+						'First one shut my nose. I open mouth wide'
+						'He cumshot in my throat'
+						'The other keep jerking'
+						gs 'arousal', 'voyeur', rand(5,15), 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'
+						gs 'cum_call','face',$boy
+						gs 'stat'
+						gs 'cum_call','mouth',$boy
+						gs 'stat'
+						gs 'cum_call','mouth_swallow',$boy
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'Continue':
+							*clr & cla
+							'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/20.jpg"></center>'
+							'The second one cums on my face'
+							gs 'npcgeneratec', 0, 'a young sailor', rand(17,28)
+							gs 'boyStat', $npclastgenerated
+							gs 'cum_call','face',$boy
+							gs 'stat'
+							gs 'cum_call','mouth',$boy
+							gs 'stat'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'Continue':
+								*clr & cla
+								minut += rand(20,40)
+								gs 'stat'
+								'They gather all the staff and left me alone'
+								phtemp = rand(3,6)
+								'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/22.jpg"></center>'
+
+								act 'Continue': gt 'mod_public_WC_rab_SHIPOWNED', 'tiedsex3'
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'tiedsex3':
+	*clr & cla
+	'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/2/2 dig/22.jpg"></center>'
+	'I am trying to dig up my hand and to dig up me'
+	minut += 60
+	gs 'stat'
+	if phtemp <= 3: 'My hand is free'
+	if phtemp <= 1: 'Almost Free'
+
+	act 'keep trying': gt 'mod_public_WC_rab_SHIPOWNED', 'tiedsex3'
+
+	if phtemp <= 0:
+		cla
+		'I am free!'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/yacht3/events/island/live/wait ('+rand(1,2)+').jpg"></center>'
+		killvar 'phtemp'
+
+		act 'continue': gt 'mod_public_WC_rab_SHIPOWNED', 'island'
+	end
+	phtemp -= 1
+end
+
+
+
+if $ARGS[0] = 'noship':
+	!Я стераю всю інфо про корабель, на якому був
+	!gs 'mod_public_WC_rab_SHIPOWNED', 'noship'
+	phslaveship = 0
+	phnodress = 0
+	killvar 'phslaveship'
+	killvar 'phnodress'
+	killvar 'phboatend'
+	killvar 'phpiratefriend'
+	killvar 'phfoodhere'
+	killvar 'phboatfood'
+	killvar 'phescortfun'
+	killvar 'phpiratefriend'
+	killvar 'phcaplove'
+	killvar 'phcapkey'
+	killvar 'phpiratkara'
+	killvar 'phpiratcome'
+	killvar 'PHpirates'
+	killvar 'bcil'
+	killvar 'phrod'
+	killvar 'ryba'
+	killvar 'vogon'
+	killvar 'vogond'
+	killvar 'hmyz'
+	killvar 'phmyfood'
+	gs 'stat'
+end
+
+!phslaveship = 1 - pirat
+!phslaveship = 2 - sciense
+!phslaveship = 3 - fishing
+!phslaveship = 4 - cargo
+!phslaveship = 5 - friends
+--- mod_public_WC_rab_SHIPOWNED ---------------------------------
+

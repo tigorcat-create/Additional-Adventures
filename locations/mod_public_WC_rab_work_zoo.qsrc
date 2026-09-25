@@ -1,0 +1,2009 @@
+# mod_public_WC_rab_work_zoo
+if $ARGS[0] = 'start':
+	$loc_arg = $ARGS[0]
+	$location_type = 'outdoors'
+	$loc = 'mod_public_WC_rab_work_zoo'
+	$metka = 'start'
+	*clr & cla
+	if HBJ < 1: HBJ = 0
+	if Hvag < 1: Hvag = 0
+	if bm_bobik_setup ! 1: bm_bobik_setup = 1 & gs 'mod_public_WC_rab_work_zoo', 'bobik_setup'
+	if bm_mujyk_setup ! 1: bm_mujyk_setup = 1 & gs 'mod_public_WC_rab_work_zoo', 'mujyk_setup'
+	'Yana looked at me: "One last thing…" Some guy come from behind and put a collar on me'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/vania/trener/bdsm/povidok/start (1).mp4"></video></center>'
+	'"…Fine, now you''re ready. Go with him."'
+	bglass = 0
+	bcilg = 0
+	bcil = 0
+	bhour = 0
+	gs 'flash', 'exhibitionism', 3
+	gs 'stat'
+	act 'go with him':
+		*clr & cla
+		'The guy connect a leash to my collar and we go'
+		'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/vania/trener/bdsm/povidok/go (2).jpg"></center>'
+		willpowermax -=rand(0,1)
+		minut += 5
+		gs 'stat'
+		'in few minutes me come to the big room with no windows and stage. There is a cage behind the curtains.'
+		'We come clother to the cage. "Now girl. There is only one rule "Be silent… but don''t during the process… you know what I mean."'
+		'If you creates some problems I will use punishments.'
+		'After the auction you need to be in that cage. Now and during auction sit still near me.'
+		act 'sit':
+			*clr & cla
+			minut += rand(15,40)
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/wait/wait'+rand(1,2)+'.jpg"></center>'
+			'Some time passed and different guys came in to this room. Some of them sits, some walk around, some come to me and look like on a dummy doll.'
+			act 'wait':
+				cla
+				'Guy who holds me looks on his watch, clears his throat and say: "Gentlemen, please take your seats, the auction begins"'
+				'All "Gentlemen" took their sits.'
+				bhour = 0
+				act 'continue': gt 'mod_public_WC_rab_work_zoo', 'torgy'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'torgy':
+	*clr & cla
+	groshi = 0
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/wait/wait'+rand(1,2)+'.jpg"></center>'
+	temp = rand(1,8)
+	bhour += 1
+	if temp = 1:
+		gs 'flash', 'exhibitionism', 1
+		gs 'stat'
+	end
+	'The <<bhour>> lot is the <<bhour>> hour!'
+
+	'I watch how different guys make a bids using 2 plates. One with number and the other with two letters:'
+	temp = rand(1,6)
+	ztemp = rand(1,6)
+	if ztemp = temp: ztemp += 1
+	if ztemp > 6: ztemp = 4
+	ytemp = rand(1,6)
+	if ytemp = temp: ytemp += 1
+	if ytemp = ztemp: ytemp += 1
+	if ytemp > 6: ytemp = 1
+
+	if  temp = 1: '"П2"'
+	if	temp = 2: '"ПС"'
+	if	temp = 3: '"ПМ"'
+	if	temp = 4: '"ПА"'
+	if	temp = 5: '"КС"'
+	if	temp = 6: '"КМ"'
+
+
+	if  ztemp = 1: '"П2"'
+	if	ztemp = 2: '"ПС"'
+	if	ztemp = 3: '"ПМ"'
+	if	ztemp = 4: '"ПА"'
+	if	ztemp = 5: '"КС"'
+	if	ztemp = 6: '"КМ"'
+
+
+	if  ytemp = 1: '"П2"'
+	if	ytemp = 2: '"ПС"'
+	if	ytemp = 3: '"ПМ"'
+	if	ytemp = 4: '"ПА"'
+	if	ytemp = 5: '"КС"'
+	if	ytemp = 6: '"КМ"'
+
+
+	minut += rand(5,10)
+	gs 'stat'
+	bglass = rand(1,3)
+	'Sold… '
+	if bglass = 1:
+		if  temp = 1: '"П2"'
+		if	temp = 2: '"ПС"'
+		if	temp = 3: '"ПМ"'
+		if	temp = 4: '"ПА"'
+		if	temp = 5: '"КС"'
+		if	temp = 6: '"КМ"'
+
+		bcil = temp
+	elseif bglass = 2:
+		if  ztemp = 1: '"П2"'
+		if	ztemp = 2: '"ПС"'
+		if	ztemp = 3: '"ПМ"'
+		if	ztemp = 4: '"ПА"'
+		if	ztemp = 5: '"КС"'
+		if	ztemp = 6: '"КМ"'
+
+		bcil = ztemp
+	elseif bglass = 3:
+		if ytemp = 1: '"П2"'
+		if	ytemp = 2: '"ПС"'
+		if	ytemp = 3: '"ПМ"'
+		if	ytemp = 4: '"ПА"'
+		if	ytemp = 5: '"КС"'
+		if	ytemp = 6: '"КМ"'
+
+		bcil = ytemp
+	end
+	if bhour = 1: bcil1 = bcil
+	if bhour = 2: bcil2 = bcil
+	if bhour = 3: bcil3 = bcil
+	if bhour = 4: bcil4 = bcil
+	if bhour = 5: bcil5 = bcil
+	if bhour = 6: bcil6 = bcil
+	if bhour = 7: bcil7 = bcil
+	if bhour = 8: bcil8 = bcil
+	if bhour = 9: bcil9 = bcil
+	temp = rand (1,20)*500
+	'for <<temp>> rubles.'
+	if bhour = 9:
+		bhour = 0
+		bglass = 0
+		bcil = 0
+		temp = 24 - hour
+		if temp <= 0:
+			'Auction is over. The show starts now!'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'show'
+		else
+			'Auction is over. The show will start in <<temp>> hours.'
+			'"Wait for your first client in the cage"'
+			act 'go to the cage':
+				cla
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/wait/klitka.mp4"></video></center>'
+				act 'wait for first client': gt 'mod_public_WC_rab_work_zoo', 'show'
+			end
+		end
+	else
+		act 'continue': gt 'mod_public_WC_rab_work_zoo', 'torgy'
+	end
+end
+
+if npc_loyality >= 70 and npc_loyality < 1000: gt 'mod_public_WC_PH_blackcat_daily_4'
+
+if $ARGS[0] = 'show':
+	*clr & cla
+	bhour += 1
+	if bhour = 1: bcil = bcil1
+	if bhour = 2: bcil = bcil2
+	if bhour = 3: bcil = bcil3
+	if bhour = 4: bcil = bcil4
+	if bhour = 5: bcil = bcil5
+	if bhour = 6: bcil = bcil6
+	if bhour = 7: bcil = bcil7
+	if bhour = 8: bcil = bcil8
+	if bhour = 9: bcil = bcil9
+
+	if bhour > 1:
+		'Is it too hard for me?'
+		act 'ask my manager to stop this':
+			*clr & cla
+			if pcs_health <= 150:
+				'You look not very well…'
+				'Sorry gentlemen! We are really need to stop it cuz our performer health'
+				'Ok, girl, go to the rooms'
+				act 'Go to girls room': gt 'mod_public_WC_rab_work', 'room'
+			elseif pcs_stam <= 100 or pcs_mood <= 10:
+				'Ow, sweety, we can fix this. I''ll help you. please take this.'
+				gs 'willpower', 'misc', 'self', 'hard'
+				if will_cost <= pcs_willpwr:
+					act 'No, I wouldn''t take it!' + $func('willpower', 'get_willcost_string'):
+						*clr & cla
+						gs 'willpower', 'pay', 'self'
+						gs 'stat'
+						'Gentleman, I apologize for the technical problem. We will manage everything within 15 minutes.'
+						'Please wait here'
+						'He pulled me by the leash'
+						shtraf += 3
+						'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go (1).jpg"></center>'
+						gs 'pain', 1, 'neck', 'pull'
+						gs 'stat'
+						act 'crawl after him':
+							cla
+							'We went into the utility room'
+							'Look girl, you aren''t first one here. I promise you will regret if you give me wrong answer.'
+							'Will you take this pill?'
+							act 'take the pill':
+								cla
+								if pcs_stam <= 100:
+									pcs_stam += 150
+									gs 'drugs', 'heroin'
+									gs 'drugs', 'amphetamine'
+									mc_inventory['amphetamine'] += 1
+									gs 'stat'
+								else
+									pcs_mood += 35
+									gs 'drugs', 'heroin'
+									gs 'drugs', 'amphetamine'
+									mc_inventory['amphetamine'] += 1
+									gs 'stat'
+								end
+								if bcil = 1: act 'go to work': gt 'mod_public_WC_rab_work_zoo', '2d'
+								if bcil = 2: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dsex'
+								if bcil = 3: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dbj'
+								if bcil = 4: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dass'
+								if bcil = 5: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'hsex'
+								if bcil = 6: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'hbj'
+							end
+							act 'refuse':
+								cla
+								'It''s your choice'
+								'He hit me in stomach and some big guy take me somewhere'
+								gs 'pain', 4, 'tummy', 'hit'
+								gs 'stat'
+								bhour = hour + 2
+								if bhour >= 24:
+									bhour -= 24
+								else
+									bhour = 0
+								end
+								bcilg = 4
+								act 'continue':
+									temp = 12456
+									gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+								end
+							end
+						end
+					end
+				else
+					act 'No, I wouldn''t take it!' + $func('willpower', 'get_willcost_string'): $noWillpower
+				end
+
+				act 'take the pill and go to work':
+					if pcs_stam <= 100:
+						pcs_stam += 150
+						gs 'drugs', 'heroin'
+						gs 'drugs', 'amphetamine'
+						mc_inventory['amphetamine'] += 1
+						gs 'stat'
+					else
+						pcs_mood += 35
+						gs 'drugs', 'heroin'
+						gs 'drugs', 'amphetamine'
+						mc_inventory['amphetamine'] += 1
+						gs 'stat'
+					end
+					if bcil = 1:  gt 'mod_public_WC_rab_work_zoo', '2d'
+					if bcil = 2:  gt 'mod_public_WC_rab_work_zoo', 'dsex'
+					if bcil = 3:  gt 'mod_public_WC_rab_work_zoo', 'dbj'
+					if bcil = 4:  gt 'mod_public_WC_rab_work_zoo', 'dass'
+					if bcil = 5:  gt 'mod_public_WC_rab_work_zoo', 'hsex'
+					if bcil = 6:  gt 'mod_public_WC_rab_work_zoo', 'hbj'
+				end
+			else
+				'What? Not making things up, start the work!'
+				shtraf += 1
+				if bcil = 1: act 'go to work': gt 'mod_public_WC_rab_work_zoo', '2d'
+				if bcil = 2: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dsex'
+				if bcil = 3: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dbj'
+				if bcil = 4: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'dass'
+				if bcil = 5: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'hsex'
+				if bcil = 6: act 'go to work': gt 'mod_public_WC_rab_work_zoo', 'hbj'
+				act 'refuse':
+					cla
+					'Gentleman, I apologize for the technical problem. We will manage everything within 15 minutes.'
+					'Please wait here'
+					'He pulled me by the leash'
+					shtraf += 3
+					'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/Vania/trener/bdsm/povidok/go (1).jpg"></center>'
+					gs 'pain', 1, 'neck', 'pull'
+					gs 'stat'
+					act 'crawl after him':
+						'It''s your big mistake'
+						'He hit me in stomach and some big guy take me somewhere'
+						gs 'pain', 4, 'tummy', 'hit'
+						gs 'stat'
+						bhour = hour + 2
+						if bhour >= 24:
+							bhour -= 24
+						else
+							bhour = 0
+						end
+						bcilg = 4
+						act 'continue':
+							gt 'mod_public_WC_rab_work_blowbox', 'bb_skuta'
+						end
+					end
+				end
+			end
+		end
+	end
+	if pcs_stam <= 110: 'I feel too tired…'
+	if pcs_stam <= 50: 'with the last effort I stand on my feet'
+
+	'There are big letters on my cage:'
+	if bcil = 1: 'П2'
+	if bcil = 2: 'ПС'
+	if bcil = 3: 'ПМ'
+	if bcil = 4: 'ПА'
+	if bcil = 5: 'КС'
+	if bcil = 6: 'КМ'
+
+	'Some guy enters the room, give some ticket to my "manager".'
+	'"Let''s go girl." He opened my cage and we go to the stage.'
+	'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/wait/letsgo ('+rand(1,2)+').mp4"></video></center>'
+	if bcil = 1:
+		act 'continue':
+			dick = rand(20, 30)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', '2d'
+		end
+	elseif bcil = 2:
+		act 'continue':
+			dick = rand(20, 30)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', 'dsex'
+		end
+	elseif bcil = 3:
+		act 'continue':
+			dick = rand(20, 30)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', 'dbj'
+		end
+	elseif bcil = 4:
+		act 'continue':
+			dick = rand(20, 30)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', 'dass'
+		end
+	elseif bcil = 5:
+		act 'continue':
+			dick = rand(40, 50)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', 'hsex'
+		end
+	elseif bcil = 6:
+		act 'continue':
+			dick = rand(40, 50)
+			npc_dick[$npclastgenerated] = dick
+			gt 'mod_public_WC_rab_work_zoo', 'hbj'
+		end
+	end
+
+	if bhour = 10:
+		*clr & cla
+		'That client was the last one. Good job. Let''s go to girls room'
+		if groshi > 0:
+			'You was pretty good, he gives me some money'
+			money += groshi / 2
+			groshi = 0
+			temp = shtraf * 350
+			if shtraf > 0 and money >= temp:
+				'Of course, there were problems with you, but your tips can make me blind on them.'
+				act 'give money to solve problems (<<temp>>) <b>₽</b>. And go to girls room':
+					money -= temp
+					shtraf = 0
+					gs 'stat'
+					gt 'mod_public_WC_rab_work', 'room'
+				end
+			end
+
+		end
+		if ryska <= 10:
+			'Guy make some mark on me'
+			ryska += 1
+		end
+
+
+		act 'Go to girls room': gt 'mod_public_WC_rab_work', 'room'
+	end
+end
+
+
+
+if $ARGS[0] = '2d':
+	*clr & cla
+	'There are two dogs on the stage'
+	'I started to suck both…'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/2dbj.jpg"></center>'
+
+
+	gs 'sweat', 'add', 10
+	DogBJ+=2
+	zoo += 2
+	gs 'stat'
+	gs 'arousal', 'bj', 10, 'sub', 'beast'
+	gs 'arousal', 'end'
+	gs 'stat'
+	'After some time first dog ready to cum'
+	act 'On the face':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+		gs 'boyStat', 'A220'
+		sexvolume = rand(20,50)
+		gs 'cum_call', 'face', 'A220', 0
+		gs 'stat'
+		gs 'arousal', 'hj', 5, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+		'Second dog is ready to cum too'
+		act 'In the mouth':
+			*clr & cla
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+			end
+			gs 'boyStat', 'A220'
+			gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+			gs 'stat'
+			gs 'arousal', 'bj', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+		act 'On the face':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+			gs 'boyStat', 'A220'
+			sexvolume = rand(20,50)
+			gs 'cum_call', 'face', 'A220', 0
+			gs 'stat'
+			gs 'arousal', 'hj', 5, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+	end
+
+	act 'In the mouth':
+		*clr & cla
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+		end
+		gs 'boyStat', 'A220'
+		gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+		gs 'stat'
+		gs 'arousal', 'bj', 15, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+		'Second dog is ready to cum too'
+		act 'In the mouth':
+			*clr & cla
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+			end
+			gs 'boyStat', 'A220'
+			gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+			gs 'stat'
+			gs 'arousal', 'bj', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+		act 'On the face':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+			gs 'boyStat', 'A220'
+			sexvolume = rand(20,50)
+			gs 'cum_call', 'face', 'A220', 0
+			gs 'stat'
+			gs 'arousal', 'hj', 5, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'dsex':
+	*clr & cla
+	'There is a dog on the stage'
+	'"come on girl, he awaits you" - the guy said'
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dog.jpg"></center>'
+
+	zoo += 1
+	ztemp = 0
+	if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+		act 'go to the dog and kiss it':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 1
+			gs 'arousal', 'kiss', rand(5,10), 'beast'
+			gs 'stat'
+		end
+	end
+	if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15):
+		act 'play with dog''s dick':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 2
+			gs 'arousal', 'bj', rand(5,10), 'beast'
+			gs 'stat'
+		end
+	end
+
+
+
+
+
+	act 'I stand on my four':
+		*clr & cla
+		gs 'sweat', 'add', 10
+		'I stand on my four'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/wait dog.mp4"></video></center>'
+
+		act 'wait':
+			*clr & cla
+			'The guy unleashed the dog. And all begins'
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/start.jpg"></center>'
+
+			gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+			stat['vaginal'] += 1
+			gs 'stat'
+
+			act 'continue':
+				*clr & cla
+				'The dog starts to penetrates me!'
+				temp = rand (1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/pussv ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/puss ('+rand(1,10)+').jpg"></center>'
+				end
+
+				npc_horny['A220'] = 0
+				if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+				DogVag+=1
+
+				npc_QW['A220'] += 1
+				gs 'stat'
+
+				gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'Allow to knot me':
+					*clr & cla
+					if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+					gs 'stat'
+
+					temp = rand (1,2)
+
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,2)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+					end
+
+
+					gs 'arousal', 'vaginal', 15, 'sub', 'beast', 'rough'
+					gs 'arousal', 'end'
+					gs 'stat'
+					banditboggle = RAND(0,5)
+					if banditboggle <= 3:
+						if pcs_vag < 10:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 4
+							vgape = 3
+							pcs_horny = 0
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'arousal', 'vaginal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag < 25:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 3
+							vgape = 2
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,50)
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag < 35:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 2
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						else
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					else
+						if pcs_vag < 10:
+							minut += 20
+							gs 'arousal_funcs', 'stretch', 'vaginal', 4
+							vgape = 3
+							pcs_horny = 0
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 10:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 3
+							vgape = 1
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					end
+				end
+
+
+				act 'Prevent':
+					*clr & cla
+					minut += 2
+					if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+
+
+					temp = rand (1,2)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/pv ('+rand(1,3)+').mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/p.jpg"></center>'
+					end
+
+
+
+
+
+					gs 'stat'
+					banditboggle = RAND(0,5)
+					if banditboggle <= 1:
+						if pcs_vag < 15:
+							minut += 10
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							vgape = 1
+							pcs_horny -= RAND(10,20)
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'labia', 'A220', 0, '', '', rand(20,590)
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 15 and pcs_vag < 25:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							gs 'boyStat', 'A220'
+							gs 'stat'
+							if pcs_horny >= 100:
+								minut += 10
+
+								pcs_mood = 100
+								gs 'stat'
+
+								sexvolume = rand(20,500)
+								gs 'cum_manage'
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								sexvolume = rand(20,150)
+								gs 'cum_manage'
+								gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 25 and pcs_vag < 35:
+							gs 'boyStat', 'A220'
+							sexvolume = rand(20,590)
+							gs 'cum_manage'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 35:
+							gs 'boyStat', 'A220'
+							sexvolume = rand(20,590)
+							gs 'cum_manage'
+							gs 'stat'
+							if pcs_horny >= 100:
+
+								pcs_mood = 100
+								gs 'stat'
+
+								$orgasm_or = 'yes'
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							else
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+							end
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					else
+						if pcs_vag < 15:
+							minut += 10
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							if vgape < 3: vgape += 1
+							pcs_horny -= RAND(10,20)
+							gs 'stat'
+
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 15 and pcs_vag < 25:
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,50)
+							gs 'stat'
+
+							gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 25 and pcs_vag < 35:
+							gs 'boyStat', 'A800'
+							gs 'cum_call', 'vagina', 'A800', 0, '', '', rand(20,300)
+							gs 'stat'
+
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						elseif pcs_vag >= 35:
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,300)
+							gs 'stat'
+
+							gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'dbj':
+	*clr & cla
+	zoo += 1
+	'There is a dog on the stage'
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dog.jpg"></center>'
+	ztemp = 0
+	if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+		act 'go to the dog and kiss it':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 1
+			gs 'arousal', 'kiss', rand(5,10), 'beast'
+			gs 'stat'
+		end
+	end
+	if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15) :
+		act 'play with dog''s dick':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 2
+			gs 'arousal', 'bj', rand(5,10), 'beast'
+			gs 'stat'
+		end
+	end
+
+
+
+
+
+
+	act 'I started to blow it.':
+		*clr & cla
+		gs 'sweat', 'add', 5
+		'I started to blow it.'
+		temp = rand(1,2)
+		if temp = 1:
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bjv ('+rand(1,10)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bj ('+rand(1,10)+').jpg"></center>'
+		end
+
+		DogBJ+=1
+		gs 'arousal', 'bj', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+
+		if pcs_apprnc >= rand(130,250) and ( zoo >= 30 or pcs_horny >= 100 ):
+			'Client unzip his fly and say "Girl, wow! I need your help too"'
+			act 'I ignore the client':
+				cla
+				shtraf += rand(0,1)
+				act 'On me':
+					*clr & cla
+					gs 'boyStat', 'A220'
+					sexvolume = rand(20,50)
+
+					temp = rand(1,2)
+					if temp = 1:
+						'Dog cums on my face'
+						gs 'cum_call', 'face', 'A220', 0
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+					else
+						'Dog cums on me'
+						gs 'cum_call', 'stomach', 'A220', 0
+						gs 'cum_call', 'breasts', 'A220', 0
+						gs 'cum_call', 'hair', 'A220', 0
+
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+					end
+
+					gs 'stat'
+					gs 'arousal', 'hj', 5, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+				end
+
+				act 'In the mouth':
+					*clr & cla
+					temp = rand(1,2)
+					if temp = 1:
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+					else
+						'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+					end
+
+
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+					gs 'stat'
+					gs 'arousal', 'bj', 15, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+				end
+			end
+
+
+			gs 'willpower', 'prostitution', 'self'
+			if will_cost <= pcs_willpwr:
+				act 'ask for a tip' + $func('willpower', 'get_willcost_string'):
+					gs 'willpower', 'pay', 'self'
+					gs 'stat'
+					temp = rand(1,6)
+
+					if temp = 1:
+						'Well, it depends from your skills'
+						dodatkovi = 0
+					elseif temp = 6:
+						'Of course! I want to fuck such dogs'' bitch'
+						dodatkovi = 500
+					else
+						'Well, it depends from your skills'
+						dodatkovi = rand(150,600)
+					end
+
+
+
+
+
+
+					act 'come closer, darling (wink)':
+						*clr & cla
+						temp = stat['bj']
+						dodatkovi += stat['bj'] * 5
+						'I strarted to blow the client.'
+
+						guy += 1
+						stat['bj'] += 1
+						gs 'sweat', 'add', 5
+						gs 'arousal', 'bj', 10, 'prostitution'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/man/manstart.mp4"></video></center>'
+						gs 'stat'
+						act 'continue with client':
+							*clr & cla
+							temp = rand (1,10)
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/1/b<<temp>>.mp4"></video></center>'
+							act 'finish with client':
+								*clr & cla
+								temp = rand(1,10)
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+								'Client cums in my throat'
+								stat['swallow'] += 1
+								spafinloc = 12
+								sparrvol = 20
+								cumarrcpt = 20
+								gs 'cum_call', 'mouth'
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								temp = rand(1,3)
+								groshi += dodatkovi
+								if temp = 1:
+									'It was fun, but I want to see the happy dog.'
+									act 'come back to the dog':
+
+										*clr & cla
+										gs 'sweat', 'add', 5
+										'I started to blow it.'
+										temp = rand(1,2)
+										if temp = 1:
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bjv ('+rand(1,10)+').mp4"></video></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bj ('+rand(1,10)+').jpg"></center>'
+										end
+
+
+										gs 'stat'
+										gs 'arousal', 'bj', 10, 'sub', 'beast'
+										gs 'arousal', 'end'
+										gs 'stat'
+
+
+										act 'continue':
+											cla
+											act 'On me':
+												*clr & cla
+												gs 'boyStat', 'A220'
+												sexvolume = rand(20,50)
+
+												temp = rand(1,2)
+												if temp = 1:
+													'Dog cums on my face'
+													gs 'cum_call', 'face', 'A220', 0
+													'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+												else
+													'Dog cums on me'
+													gs 'cum_call', 'stomach', 'A220', 0
+													gs 'cum_call', 'breasts', 'A220', 0
+													gs 'cum_call', 'hair', 'A220', 0
+
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+												end
+
+												gs 'stat'
+												gs 'arousal', 'hj', 5, 'sub', 'beast'
+												gs 'arousal', 'end'
+												gs 'stat'
+												act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+											end
+
+											act 'In the mouth':
+												*clr & cla
+
+
+												temp = rand(1,2)
+												if temp = 1:
+													'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+												else
+													'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+												end
+
+
+												gs 'boyStat', 'A220'
+												gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+												gs 'stat'
+												gs 'arousal', 'bj', 15, 'sub', 'beast'
+												gs 'arousal', 'end'
+												gs 'stat'
+												act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+											end
+										end
+									end
+								else
+									'It was fantastic!'
+									'Client goes to my "manager", gives money and go away.'
+									ztemp = 555
+									act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+								end
+							end
+
+							if zoo >= 30:
+								act 'tell the manager that the dog mustn''t be sad, and point my finger on my empty hole.':
+									*clr & cla
+									'Dog penetrates me'
+									'Beasts'' and clients'' dick fuck me in the same rhythm'
+									gs 'sweat', 'add', 10
+									gs 'stat'
+									gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+									stat['vaginal'] += 1
+									DogVag+=1
+
+									npc_QW['A220'] += 1
+									gs 'stat'
+
+									gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+									gs 'arousal', 'end'
+									gs 'stat'
+
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/man/manbj.mp4"></video></center>'
+									act 'continue':
+										*clr & cla
+										$orgasm_or = 'yes'
+										gs 'stat'
+										'I loose my mind in orgasm becaus of the RHYTHM!!'
+
+										temp = rand(1,10)
+										'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+										stat['swallow'] += 1
+										spafinloc = 12
+										sparrvol = 20
+										cumarrcpt = 20
+										gs 'cum_call', 'mouth'
+										gs 'stat'
+										gs 'arousal', 'end'
+										gs 'stat'
+
+
+										temp = rand (1,2)
+
+										if temp = 1:
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,4)+').mp4"></video></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+										end
+
+
+										gs 'arousal_funcs', 'stretch', 'vaginal', 1
+										gs 'boyStat', 'A220'
+										gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+										gs 'stat'
+
+
+
+										pcs_mood = 100
+										gs 'stat'
+
+
+										gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+										gs 'arousal', 'end'
+										gs 'stat'
+
+										'It was epic!'
+										if ryska <= 15:
+											'He take some marker and write a symbol on me'
+											ryska += 1
+										end
+										shtraf = 0
+										'Client goes to my "manager", gives money and go away.'
+										dodatkovi += rand (1,10) * 100
+										groshi += dodatkovi
+										ztemp = 555
+										act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+
+									end
+								end
+							end
+						end
+					end
+
+					act 'disagree and give all myself to the dog':
+						*clr & cla
+						act 'On me':
+							*clr & cla
+							gs 'boyStat', 'A220'
+							sexvolume = rand(20,50)
+
+							temp = rand(1,2)
+							if temp = 1:
+								'Dog cums on my face'
+								gs 'cum_call', 'face', 'A220', 0
+								'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+							else
+								'Dog cums on me'
+								gs 'cum_call', 'stomach', 'A220', 0
+								gs 'cum_call', 'breasts', 'A220', 0
+								gs 'cum_call', 'hair', 'A220', 0
+
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+							end
+
+							gs 'stat'
+							gs 'arousal', 'hj', 5, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						end
+
+						act 'In the mouth':
+							*clr & cla
+
+
+							temp = rand(1,2)
+							if temp = 1:
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+							else
+								'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+							end
+
+
+							gs 'boyStat', 'A220'
+							gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+							gs 'stat'
+							gs 'arousal', 'bj', 15, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						end
+					end
+				end
+			else
+				act 'ask for a tip' + $func('willpower', 'get_willcost_string'): $noWillpower
+			end
+
+			act 'nod "yes"':
+				*clr & cla
+				temp = stat['bj']
+				dodatkovi += stat['bj'] * 5
+				'I strarted to blow the client.'
+
+				guy += 1
+				stat['bj'] += 1
+				gs 'sweat', 'add', 5
+				gs 'arousal', 'bj', 10, 'prostitution'
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/man/manstart.mp4"></video></center>'
+				gs 'stat'
+				act 'continue with client':
+					*clr & cla
+					temp = rand (1,10)
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/1/b<<temp>>.mp4"></video></center>'
+					act 'finish with client':
+						*clr & cla
+						temp = rand(1,10)
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+						'Client cums in my throat'
+						stat['swallow'] += 1
+						spafinloc = 12
+						sparrvol = 20
+						cumarrcpt = 20
+						gs 'cum_call', 'mouth'
+						gs 'stat'
+
+
+
+						temp = rand(1,3)
+						groshi += dodatkovi
+						if temp = 1:
+							'It was fun, but I want to see the happy dog.'
+							act 'come back to the dog':
+
+								*clr & cla
+								gs 'sweat', 'add', 5
+								'I started to blow it.'
+								temp = rand(1,2)
+								if temp = 1:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bjv ('+rand(1,10)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/bj/bj ('+rand(1,10)+').jpg"></center>'
+								end
+
+
+								gs 'stat'
+								gs 'arousal', 'bj', 10, 'sub', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+
+
+								act 'continue':
+									cla
+									act 'On me':
+										*clr & cla
+										gs 'boyStat', 'A220'
+										sexvolume = rand(20,50)
+
+										temp = rand(1,2)
+										if temp = 1:
+											'Dog cums on my face'
+											gs 'cum_call', 'face', 'A220', 0
+											'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+										else
+											'Dog cums on me'
+											gs 'cum_call', 'stomach', 'A220', 0
+											gs 'cum_call', 'breasts', 'A220', 0
+											gs 'cum_call', 'hair', 'A220', 0
+
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+										end
+
+										gs 'stat'
+										gs 'arousal', 'hj', 5, 'sub', 'beast'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+									end
+
+									act 'In the mouth':
+										*clr & cla
+
+
+										temp = rand(1,2)
+										if temp = 1:
+											'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+										end
+
+
+										gs 'boyStat', 'A220'
+										gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+										gs 'stat'
+										gs 'arousal', 'bj', 15, 'sub', 'beast'
+										gs 'arousal', 'end'
+										gs 'stat'
+										act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+									end
+								end
+							end
+						else
+							'It was fantastic!'
+							'Client goes to my "manager", gives money and go away.'
+							ztemp = 555
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						end
+					end
+
+					if zoo >= 30:
+						act 'tell the manager that the dog mustn''t be sad, point my finger on my empty hole.':
+							*clr & cla
+							'Dog penetrates me'
+							'Beasts'' and clients'' dick fuck me in the same rhythm'
+							gs 'sweat', 'add', 10
+							gs 'stat'
+							gs 'arousal_funcs', 'stretch', 'vaginal', 1
+
+							stat['vaginal'] += 1
+							DogVag+=1
+
+							npc_QW['A220'] += 1
+							gs 'stat'
+
+							gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+							gs 'arousal', 'end'
+							gs 'stat'
+
+							'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/man/manbj.mp4"></video></center>'
+							act 'continue':
+								*clr & cla
+								$orgasm_or = 'yes'
+								gs 'stat'
+								'I loose my mind in orgasm becaus of the RHYTHM!!'
+
+								temp = rand(1,10)
+								'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/Artem/2/b (<<temp>>).mp4"></video></center>'
+								stat['swallow'] += 1
+								spafinloc = 12
+								sparrvol = 20
+								cumarrcpt = 20
+								gs 'cum_call', 'mouth'
+								gs 'stat'
+
+
+
+								temp = rand (1,2)
+
+								if temp = 1:
+									'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/kv ('+rand(1,4)+').mp4"></video></center>'
+								else
+									'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/p/k ('+rand(1,4)+').jpg"></center>'
+								end
+
+
+								gs 'arousal_funcs', 'stretch', 'vaginal', 1
+								gs 'boyStat', 'A220'
+								gs 'cum_call', 'vagina', 'A220', 0, '', '', rand(20,590)
+								gs 'stat'
+
+
+								pcs_mood = 100
+								gs 'stat'
+
+
+								gs 'arousal', 'vaginal', 20, 'rough', 'beast'
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								'It was epic!'
+								if ryska <= 15:
+									'He take some marker and write a symbol on me'
+									ryska += 1
+								end
+								shtraf = 0
+								'Client goes to my "manager", gives money and go away.'
+								dodatkovi += rand (1,10) * 100
+								groshi += dodatkovi
+								ztemp = 556
+								act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+
+							end
+						end
+					end
+				end
+			end
+
+		else
+			act 'On me':
+				*clr & cla
+				gs 'boyStat', 'A220'
+				sexvolume = rand(20,50)
+
+				temp = rand(1,2)
+				if temp = 1:
+					'Dog cums on my face'
+					gs 'cum_call', 'face', 'A220', 0
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/f ('+rand(1,2)+').jpg"></center>'
+				else
+					'Dog cums on me'
+					gs 'cum_call', 'stomach', 'A220', 0
+					gs 'cum_call', 'breasts', 'A220', 0
+					gs 'cum_call', 'hair', 'A220', 0
+
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/onv ('+rand(1,2)+').mp4"></video></center>'
+				end
+
+				gs 'stat'
+				gs 'arousal', 'hj', 5, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+			end
+
+			act 'In the mouth':
+				*clr & cla
+
+
+				temp = rand(1,2)
+				if temp = 1:
+					'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/inv.mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/m/in ('+rand(1,3)+').jpg"></center>'
+				end
+
+
+				gs 'boyStat', 'A220'
+				gs 'cum_call', 'mouth', 'A220', 0, '', '', rand(20,50)
+				gs 'stat'
+				gs 'arousal', 'bj', 15, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'stat'
+				act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+			end
+		end
+	end
+end
+
+
+
+
+if $ARGS[0] = 'dass':
+	*clr & cla
+	zoo += 1
+	'There is a dog on the stage'
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dog.jpg"></center>'
+	ztemp = 0
+	if ztemp = 0 and ( DogBJ >= 10 or ( DogVag + DogAnal ) >= 5 or zoo >= 10 ):
+		act 'go to the dog and kiss it':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/kiss.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 1
+			gs 'arousal', 'kiss', rand(5,10), 'beast'
+			gs 'stat'
+
+		end
+	end
+	if ztemp <= 1 and ( DogBJ >= 15 or ( DogVag + DogAnal ) >= 10 or zoo >= 15) :
+		act 'play with dog''s dick':
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/dickplay.mp4"></video></center>'
+			minut += 1
+			npc_QW['A220'] += rand(0,1)
+			temp = rand(1,4)
+			if temp = 4: zoo += 1
+			ztemp = 2
+			gs 'arousal', 'bj', rand(5,10), 'beast'
+			gs 'stat'
+		end
+	end
+
+
+	act 'wait for the dog':
+		*clr & cla
+		gs 'sweat', 'add', 12
+		'The guy unleashed the dog. And I put dogs'' dick slowly in my ass'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/ass/start.mp4"></video></center>'
+
+		gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+
+
+
+		act 'continue':
+			*clr & cla
+			npc_QW['A220'] += 1
+			npc_horny['A220'] = 0
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood/2
+			DogAnal+=1
+			gs 'stat'
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/ass/ass.jpg"></center>'
+			else
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/sex/ass/assv'+rand(1,2)+'.mp4"></video></center>'
+			end
+
+			gs 'arousal', 'anal', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'pain', 2, 'asshole', 'stretch'
+			gs 'stat'
+
+
+
+
+			act 'Let the dog knot my ass':
+				*clr & cla
+				if alko < 6 and zoo < 20: pcs_mood = pcs_mood/2
+				gs 'stat'
+
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/ass/kv.mp4"></video></center>'
+				$orgasm_or = 'yes'
+				gs 'arousal', 'anal', 15, 'sub', 'beast'
+				gs 'arousal', 'end'
+				gs 'pain', 'asshole', 'stretch'
+				gs 'stat'
+				banditboggle = RAND(0,5)
+				if banditboggle <= 4:
+					if pcs_ass < 15:
+						gs 'arousal_funcs', 'stretch', 'anal', 4
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					elseif pcs_ass < 25:
+						gs 'arousal_funcs', 'stretch', 'anal', 3
+						agape = 2
+						pcs_horny -= RAND(15,30)
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					elseif pcs_ass < 35:
+						gs 'arousal_funcs', 'stretch', 'anal', 2
+						agape = 1
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+
+							$orgasm_or = 'yes'
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						else
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					else
+
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						if pcs_horny >= 100:
+
+							pcs_mood = 100
+							gs 'stat'
+							$orgasm_or = 'yes'
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						else
+							gs 'arousal', 'anal', 20, 'sub', 'beast'
+							gs 'arousal', 'end'
+							gs 'stat'
+							act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+							exit
+						end
+					end
+				else
+
+					if pcs_ass < 15:
+						gs 'arousal_funcs', 'stretch', 'anal', 5
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					elseif pcs_ass < 25:
+						gs 'arousal_funcs', 'stretch', 'anal', 5
+						agape = 3
+						pcs_horny = 0
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					elseif pcs_ass < 35:
+						gs 'arousal_funcs', 'stretch', 'anal', 4
+						agape = 2
+						pcs_horny -= RAND(40,60)
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+						gs 'stat'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					else
+						gs 'arousal_funcs', 'stretch', 'anal', 3
+						agape = 1
+						gs 'boyStat', 'A220'
+						gs 'cum_call', 'anus', 'A220', 0, '', '', rand(5,50)
+						gs 'stat'
+						gs 'arousal', 'anal', 5, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					end
+				end
+			end
+
+
+
+
+
+
+
+			act 'Prevent':
+				*clr & cla
+				minut += 2
+				if alko < 6 and zoo < 20: pcs_mood = pcs_mood/2
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/d/cum/ass/ass.jpg"></center>'
+				if pcs_ass < 15:
+
+					agape = 2
+					pcs_horny -= RAND(15,30)
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'butt', 'A220', 0, '', '', rand(20,590)
+					gs 'arousal', 'anal', 10, 'sub', 'beast'
+					gs 'arousal', 'end'
+					gs 'stat'
+					act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+					exit
+				elseif pcs_ass < 25:
+
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					end
+
+				elseif pcs_ass < 35:
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					end
+				else
+					gs 'boyStat', 'A220'
+					gs 'cum_call', 'anus', 'A220', 0, '', '', rand(20,590)
+					gs 'stat'
+					if pcs_horny >= 100:
+
+						pcs_mood = 100
+						gs 'stat'
+						$orgasm_or = 'yes'
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					else
+						gs 'arousal', 'anal', 20, 'sub', 'beast'
+						gs 'arousal', 'end'
+						gs 'stat'
+						act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+						exit
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'bobik_setup':
+	npctemp = 220
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Bobik'
+	$npc_nickname['A<<npctemp>>'] = 'Bobik'
+	$npc_lastname['A<<npctemp>>'] = 'The Dog'
+	$npc_usedname['A<<npctemp>>'] = 'Bobik'
+	$npc_notes['A<<npctemp>>'] = 'My work dog.'
+	npc_cyc['A<<npctemp>>'] = -1
+	npc_fert['A<<npctemp>>'] = -1
+	$npc_firstpart['A<<npctemp>>'] = 'U'
+	$npc_lastpart['A<<npctemp>>'] = 'U'
+	$npc_kidpater['A<<npctemp>>'] = 'N'
+	npc_spermpot['A<<npctemp>>'] = -1
+	npc_vag['A<<npctemp>>'] = -1
+	npc_hymen['A<<npctemp>>'] = -1
+	npc_nips['A<<npctemp>>'] = 1
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_thdick['A<<npctemp>>'] = 'knotted'
+	npc_dick['A<<npctemp>>'] = 0
+end
+
+
+
+if $ARGS[0] = 'Mujyk_setup':
+	npctemp = 221
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_firstname['A<<npctemp>>'] = 'Mujyk'
+	$npc_nickname['A<<npctemp>>'] = 'Mujyk'
+	$npc_lastname['A<<npctemp>>'] = 'The Horse'
+	$npc_usedname['A<<npctemp>>'] = 'Mujyk'
+	$npc_notes['A<<npctemp>>'] = 'My work horse.'
+	npc_cyc['A<<npctemp>>'] = -1
+	npc_fert['A<<npctemp>>'] = -1
+	$npc_firstpart['A<<npctemp>>'] = 'U'
+	$npc_lastpart['A<<npctemp>>'] = 'U'
+	$npc_kidpater['A<<npctemp>>'] = 'N'
+	npc_spermpot['A<<npctemp>>'] = -1
+	npc_vag['A<<npctemp>>'] = -1
+	npc_hymen['A<<npctemp>>'] = -1
+	npc_nips['A<<npctemp>>'] = 1
+	gs 'npcstaticdefaults', 'defaults'
+	gs 'npcstaticdefaults', 'body', 'actor'
+	npc_gender['A<<npctemp>>'] = 0
+	$npc_thdick['A<<npctemp>>'] = 'knotted'
+	npc_dick['A<<npctemp>>'] = 0
+end
+
+
+
+if $ARGS[0] = 'hsex':
+	*clr & cla
+	'There is a horse on the stage'
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/h.jpg"></center>'
+	act 'bend over':
+		*clr & cla
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/sex/sex ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'foreplay', 15, 'sub', 'beast'
+		gs 'arousal', 'end'
+		gs 'stat'
+		gs 'arousal_funcs', 'stretch', 'vaginal', 4
+
+		stat['vaginal'] += 1
+
+
+
+		gs 'stat'
+		act 'lie down and make horse cum':
+			*clr & cla
+			'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/assv.mp4"></video></center>'
+			npc_horny['A221'] = 0
+			if alko < 6 or zoo < 20: pcs_mood = pcs_mood*3/4
+			HVag+=1
+
+			if HVag <= 9:
+				temp = 9 - HVag
+				gs 'pain', rand(temp,9),'vaginal', 'pierce'
+			else
+				gs 'pain', rand(1,4),'vaginal', 'pierce'
+			end
+
+			pcs_stam -= 40
+
+			npc_QW['A221'] += 1
+			gs 'stat'
+			gs 'arousal', 'vaginal', 10, 'sub', 'beast', 'rough'
+			gs 'arousal', 'end'
+			gs 'stat'
+			gs 'arousal_funcs', 'stretch', 'vaginal', 4
+			gs 'boyStat', 'A221'
+			gs 'cum_call', 'vagina', 'A221', 0, '', '', rand(100,250)
+			gs 'stat'
+			gs 'arousal', 'vaginal', 10, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'hbj':
+	*clr & cla
+	'There is a horse on the stage'
+
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/h.jpg"></center>'
+
+
+	act 'Starts to suck it':
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/bj/bj ('+rand(1,3)+').jpg"></center>'
+
+		HBJ+=1
+		gs 'stat'
+		gs 'arousal', 'bj', 10, 'sub', 'beast'
+		gs 'arousal', 'end'
+		if HBJ <= 9:
+			temp = 9 - HBJ
+			gs 'pain', rand(temp,9),'mouth', 'pierce'
+		else
+			gs 'pain', rand(1,4),'mouth', 'pierce'
+		end
+		pcs_stam -= 30
+		gs 'stat'
+		act 'Horse cums':
+			*clr & cla
+			gs 'boyStat', 'A221'
+			sexvolume = rand(100,250)
+
+
+			'Horse cums in my mouth, I do my best to swallow everything but it''s to much for me! Cums goes over my mouth to my face and on my tits.'
+
+			temp = rand(1,2)
+			if temp = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/bj ('+rand(1,10)+').jpg"></center>'
+			else
+				'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/h/cum/bjv.mp4"></video></center>'
+			end
+
+			gs 'cum_call', 'face', 'A221', 0
+
+
+			gs 'cum_call', 'stomach', 'A221', 0
+			gs 'cum_call', 'breasts', 'A221', 0
+			gs 'cum_call', 'hair', 'A221', 0
+
+			gs 'stat'
+			gs 'arousal', 'hj', 5, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			gs 'boyStat', 'A221'
+			gs 'cum_call', 'mouth', 'A221', 0, '', '', rand(100,250)
+			gs 'stat'
+			gs 'arousal', 'bj', 15, 'sub', 'beast'
+			gs 'arousal', 'end'
+			gs 'stat'
+			act 'continue': gt 'mod_public_WC_rab_work_zoo', 'end'
+		end
+	end
+end
+
+
+
+
+
+if $ARGS[0] = 'end':
+	*clr & cla
+	killvar 'dodatkovi'
+	pcs_stam  -= rand(40,90)
+	if ztemp = 555: pcs_stam  += rand(60,70)
+	if ztemp = 556: pcs_stam  -= rand(0,50)
+	ztemp = 0
+	if pcs_stam  <= 0:
+		pcs_stam = 0
+		'I''m very tired, everything floats before my eyes… I plunge into the dark nothing…'
+
+
+		act 'continue': gt 'mod_public_WC_rab_work_zoo', 'tired'
+	else
+		pcs_stam += stammax/100
+		'go to my cage'
+		'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/zoo/zoo/wait/klitka.mp4"></video></center>'
+		act 'wait': gt 'mod_public_WC_rab_work_zoo', 'show'
+	end
+end
+
+
+if $ARGS[0] = 'tired':
+	*clr & cla
+	killvar 'dodatkovi'
+	temp = 9 - bhour
+	shtraf += rand(0,temp)
+	temp = rand(6,30) * 10
+	minut += temp
+	if temp > 120:
+		pcs_sleep += 35
+	else
+		pcs_sleep += 15
+	end
+	pcs_stam += temp/2
+	'I woke up'
+	'"manager" looks angry'
+	'You are too weak for this job or you need more practice, I don''t know. But…'
+	if groshi > 0:
+		'…You earned some money and it solve some problems, now go away'
+		groshi = groshi / 500
+		shtraf -= groshi
+		if shtraf < 0: shtraf = 0
+	else
+		'…you are in a big trouble!'
+	end
+	groshi = 0
+	gs 'stat'
+	act 'continue': gt 'mod_public_WC_rab_work', 'room'
+end
+
+--- mod_public_WC_rab_work_zoo ---------------------------------
+

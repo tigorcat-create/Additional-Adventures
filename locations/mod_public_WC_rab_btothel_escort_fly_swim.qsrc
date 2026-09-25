@@ -1,0 +1,685 @@
+# mod_public_WC_rab_btothel_escort_fly_swim
+if $ARGS[0] = 'swim':
+	*clr & cla
+	gs 'mod_public_WC_rab_btothel_escort_place', 'phescortfun'	
+	$loc = 'mod_public_WC_rab_btothel_escort_fly_swim'
+	$loc_arg = 'swim'
+	cumspclnt = 4
+	gs 'cum_cleanup'
+	minut += 5
+	phtemp = 0
+	
+	if heswim = 1 and rand(1,20) = 1: 
+		heswim = 0
+		'<<$phclientname>> go back to the yacht'
+	end
+	if heswim = 0 and rand(1,10) = 1: heswim = 1
+	
+
+	pcs_sweat = 0	
+	if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+	if $clothingworntype = 'nude' and rand(1,3) = 1: phescortfun += 1
+	gs 'stat'
+	
+	act 'Use a ladder to come up from the water':
+		*clr & cla
+		minut += 5
+		gs 'stat'
+		
+		if $clothingworntype ! 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/bikini/down.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/naked/upanddown ('+rand(1,5)+').jpg"></center>'
+		end
+		
+		act 'Jump to the water':
+			*clr & cla
+			pcs_mood += 10
+			gs 'stat'
+			if rand(1,3) = 1:
+				gs 'pain', rand(1,4), 'tummy', 'hit'
+				gs 'stat'
+				gs 'pain', rand(1,4), 'back', 'hit'
+				gs 'stat'
+			end
+			
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/bikini/jump.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/naked/jump.jpg"></center>'
+			end				
+			
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_fly', 'swim'
+		end
+		
+		i = 1
+		act 'use towel':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/towel.jpg"></center>'
+			!! towel
+			minut += 5
+			gs 'stat'
+			if i = 1: pcs_mood += 10
+			i += 1
+		end
+		
+		act 'wash salt water from my body':
+			*clr & cla
+			!! shower 
+			minut += 15
+			pcs_skin += 1
+			if frost > 0:frost = 0
+			minut += 10
+			gs 'stat'
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/bikini/shower.jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/naked/shower ('+rand(1,2)+').jpg"></center>'
+			end	
+			
+			act 'use towel':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/1 yacht/towel.jpg"></center>'
+				!! towel 
+				minut += 5
+				gs 'stat'
+				act 'up': gt 'mod_public_WC_rab_btothel_escort_fly', 'yacht'
+			end
+		end
+		
+		act 'up': gt 'mod_public_WC_rab_btothel_escort_fly', 'yacht'
+	end
+	
+	if phcoast = 1:
+		'the little island is nearby'
+		
+		act 'dive to research a bottom':			
+			*clr & cla
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 15
+			pcs_sweat = 0
+			pcs_mood += 5
+			
+			phkysen = 100
+
+			if pcs_stren < 30 and rand(1,10) = 1: stren_exp += 1
+			phpoolswim = 0
+			
+			if $clothingworntype = 'nude':
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/down ('+rand(1,2)+').jpg"></center>'
+			else 
+				!! NE gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/down ('+rand(1,2)+').mp4"></video></center>'			
+			end
+			
+			phkysen -= rand(20,30)
+			
+			act 'Ascend':
+				*clr & cla
+				temp_gr = rand(0,15)
+				phkysen = 100
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+				end
+				killvar 'phbottomsearch'
+				wait 1000
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+			
+			act 'swim':
+				*clr & cla
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+				end
+				gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'deepaction'
+			end
+			
+			act 'Search something on the bottom':
+				*clr & cla
+				if $clothingworntype = 'nude':
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/shore/bottom ('+rand(1,3)+').jpg"></center>'					
+				else					
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/shore/bottom.jpg"></center>'
+				end
+				
+				temp_gr = rand(0,15)
+				cumspclnt = 4
+				gs 'cum_cleanup'
+				minut += 1
+				pcs_sweat = 0
+				pcs_mood += rand(0,1)
+				
+				temp = rand(1,100)
+				if temp <= 5:
+					'I have found a gold coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 500
+				elseif temp <= 10:
+					'I have found a silver coin!'
+					'It costs a lot!'
+					money += rand(1,10) * 100
+				else
+					'I have found nothing'
+				end
+				gs 'stat'
+				phkysen -= rand(00,30)
+				phbottomsearch = 1
+				gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'deepaction'
+			end
+		end
+	end	
+	act 'Go skinny dipping (00:15)':
+		*clr & cla
+		temp_gr = rand(0,15)
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		minut += 15
+		pcs_sweat = 0
+		pcs_mood += 5
+		
+		phkysen = 100
+
+		if pcs_stren < 30 and rand(1,10) = 1: stren_exp += 1
+		phpoolswim = 0
+		
+		if $clothingworntype = 'nude':
+			!! gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/down ('+rand(1,2)+').jpg"></center>'
+		else 
+			!! NE gola
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/down ('+rand(1,2)+').mp4"></video></center>'			
+		end
+		
+		phkysen -= rand(20,30)
+		
+		act 'Ascend':
+			*clr & cla
+			temp_gr = rand(0,15)
+			phkysen = 100
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+			end
+			wait 1000
+			gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+		end
+		
+		act 'swim':
+			*clr & cla
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+			end
+			gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'deepaction'
+		end
+	end
+	
+	
+	if phpoolswim = 1:		
+		minut += 30
+		gs 'exercise', 'tier1', 1, 'stren_exp'
+		gs 'stat'
+		
+		if heswim = 1:
+			'We are swimming and fooling around together'
+			phescortfun += 1
+		end
+			
+		if $clothingworntype = 'nude':
+			!! gola
+			if rand(1,3) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim (1).mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim ('+rand(1,2)+').jpg"></center>'
+			end
+		else 
+			!! NE gola
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/swim.mp4"></video></center>'
+		end
+			
+		cumspclnt = 4
+		gs 'cum_cleanup'
+		if rand(1,4) = 1: gs 'exercise', 'tier1', 1, 'stren_exp'
+
+		pcs_sweat = 0	
+		if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+		gs 'stat'
+			
+		act 'keep swimming (0:30)': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			
+		act 'rest':
+			*clr & cla
+			!! 'I rest a bit and go back to swim'
+			phpoolswim = 0
+			if $clothingworntype = 'nude':
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/lie ('+rand(1,5)+').jpg"></center>'
+			else 
+				!! NE gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/lie ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			!! act 'continue': gt 'mod_public_WC_rab_btothel_escort_villa_new', 'pool2'
+			gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+		end
+	else
+		'I am resting.'
+		phpoolswim = 0
+		if $clothingworntype = 'nude':
+			!! gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/lie ('+rand(1,5)+').jpg"></center>'
+		else 
+			!! NE gola
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/lie ('+rand(1,1)+').jpg"></center>'
+		end
+		
+		minut += 25		
+		pcs_mood += rand(0,20)
+		gs 'stat'
+		
+		act 'Go swim (0:30)':
+			*clr & cla
+			'The water is warm'
+			if $clothingworntype = 'nude':
+				!! gola
+				if rand(1,3) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim (1).mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/swim/swim ('+rand(1,2)+').jpg"></center>'
+				end
+			else 
+				!! NE gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/swim/swim.mp4"></video></center>'
+			end
+			minut += 30
+			gs 'exercise', 'tier1', 1, 'stren_exp'
+			gs 'stat'
+			
+			act 'swim (0:30)':
+				phpoolswim = 1
+				minut += 30
+				gs 'exercise', 'tier1', 1, 'stren_exp'
+				gs 'stat'				
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+			
+			act 'Change my mind':
+				phpoolswim = 0
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+		end
+		
+		act 'keep resting': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+	end	
+	
+	
+	if heswim = 1:
+		act 'tease':
+			*clr & cla
+			if $clothingworntype = 'nude':
+				!! gola
+				if rand(1,2) = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/tease/tits ('+rand(1,1)+').mp4"></video></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/tease/pussy ('+rand(1,1)+').jpg"></center>'
+				end
+			else 
+				!! NE gola
+				if rand(1,6) <= 2:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/tease/show_ass ('+rand(1,2)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/tease/show_tits ('+rand(1,4)+').mp4"></video></center>'
+				end
+			end
+			
+			gs 'arousal', 'flash', rand(5,5), 'prostitution'
+			gs 'stat'
+			phescortfun += rand(2,4)
+			'He is smiling looking at me'			
+			phpoolswim = 0			
+			act 'continue': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+		end
+		
+		if phescortfun >= 10 and phescortfun < 20:
+			act 'kiss him':
+				phpoolswim = 0
+				*clr & cla
+				gs 'arousal', 'kiss', 5, 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)
+				
+				act 'go away': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+		elseif phescortfun >= 20:
+			act 'kiss him':
+				*clr & cla
+				phpoolswim = 0
+				'I swim to <<$phclientname>> and starts kissing him passionately'
+				gs 'arousal', 'kiss', 5, 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)
+				
+				act 'go away': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+				
+				act 'sex':
+					*clr & cla
+					$cum1 = rand (80,120)			
+					gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+				end
+			end
+		end
+		
+		if $clothingworntype ! 'nude':
+			!! NE gola
+			act 'undress':
+				cla
+				phpoolswim = 0
+				'I start to undress just as I caught his look on me'
+				gs 'arousal', 'flash', rand(5,5), 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)					
+			
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				$clothingworntype = 'nude'
+				gs 'stat'
+				
+				act 'continue': gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+		end
+	else
+		act 'undress':			
+			minut += 5			
+			gs 'clothing', 'strip'
+			gs 'underwear', 'remove'
+			gs 'stat'
+			$clothingworntype = 'nude'
+			gs 'stat'			
+		end
+	end	
+	
+	if phescortfun >= rand(50,70) and heswim = 1:
+		cla
+		'He swims to me and starts kissing me passionately'
+		gs 'arousal', 'kiss', 5, 'prostitution'
+		gs 'stat'
+		phescortfun += rand(1,3)
+		
+		
+		act 'sex':
+			cla
+			$cum1 = rand (80,120)			
+			gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+		end
+	end
+end
+
+if $ARGS[0] = 'deepaction':
+	phkysen -= rand(20,40)
+	minut += 1
+	gs 'stat'
+	
+	act 'Ascend':
+		*clr & cla
+		temp_gr = rand(0,15)
+		phkysen = 100
+		killvar 'phbottomsearch'
+		if $clothingworntype = 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+		end
+		wait 1000
+		gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+	end
+	
+	act 'swim':
+		*clr & cla
+		if $clothingworntype = 'nude':
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/swim.mp4"></video></center>'
+		end
+		gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'deepaction'
+	end
+	
+	if phbottomsearch = 1:
+		act 'Search something on the bottom':
+			*clr & cla
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/shore/bottom ('+rand(1,3)+').jpg"></center>'					
+			else					
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/shore/bottom.jpg"></center>'
+			end
+			
+			temp_gr = rand(0,15)
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			minut += 1
+			pcs_sweat = 0
+			pcs_mood += rand(0,1)
+			
+			temp = rand(1,100)
+			if temp <= 5:
+				'I have found a gold coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 500
+			elseif temp <= 15:
+				'I have found a silver coin!'
+				'It costs a lot!'
+				money += rand(1,10) * 100
+			else
+				'I have found nothing'
+			end
+			gs 'stat'
+			phkysen -= rand(0,30)
+			phbottomsearch = 1
+			gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'deepaction'
+		end
+	end
+	
+	if phkysen <= 0:
+		cla
+		'I need air!!!'
+		act 'Ascend':
+			*clr & cla
+			killvar 'phbottomsearch'
+			temp_gr = rand(0,15)
+			phkysen = 100
+			if $clothingworntype = 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/naked/dive/up ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/2 swim/bikini/dive/up.jpg"></center>'
+			end
+			wait 1000
+			gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+		end		
+	end
+end
+
+
+
+if $ARGS[0] = 'sexswim':
+	cla
+	act 'blow him':
+		*clr & cla		
+		temp = 10 + ( stat['bj'] / 10 )
+		$cum1 -= rand(5,temp)
+		phtemp = 2
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I am sucking him'
+		if rand(1,8) <= 5:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/3 bj/bj ('+rand(1,5)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/3 bj/bj ('+rand(1,3)+').jpg"></center>'
+		end
+		
+		gs 'arousal', 'bj', rand(10,15)
+		gs 'stat'
+		act 'continue': gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+	end	
+	act 'jerk him':
+		*clr & cla		
+		temp = 10 + ( stat['hj'] / 10 )
+		$cum1 -= rand(0,temp)
+		phtemp = 3
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'hj', rand(10,15)
+		gs 'stat'
+		if rand(1,4) <= 3:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/2 hj/hj ('+rand(1,3)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/2 hj/hj ('+rand(1,1)+').jpg"></center>'
+		end
+		
+		act 'continue': gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+		
+	end	
+	act 'foot jerk him':
+		*clr & cla		
+		temp = 10 + ( stat['footjob'] / 10 )
+		$cum1 -= rand(0,temp)
+		phtemp = 4
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'I stroke him with my foots'
+		gs 'arousal', 'footjob', rand(10,15), 'exhibitionism'
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/1 foreplay/lj ('+rand(1,1)+').mp4"></video></center>'	
+		act 'continue': gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+	end	
+	act 'tits fuck him':
+		*clr & cla		
+		temp = 15 + ( stat['titjob'] / 10 )
+		$cum1 -= rand(10,temp)
+		phtemp = 5
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'his hard cock is rubbing between my tits'
+		gs 'arousal', 'titjob', rand(10,15)
+		gs 'stat'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/1 foreplay/tj ('+rand(1,1)+').mp4"></video></center>'
+		
+		act 'continue': gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+	end	
+	act 'fuck him':
+		*clr & cla		
+		temp = 20 + ( stat['vaginal'] / 10 )
+		$cum1 -= rand(15,temp)
+		phtemp = 6
+		gs 'mod_public_WC_rab_work_whore_room', 'man'
+		'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'vaginal', rand(10,15)
+		gs 'stat'
+		
+		if rand(1,9) <= 8:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/4 sex/sex ('+rand(1,8)+').mp4"></video></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/4 sex/sex ('+rand(1,1)+').jpg"></center>'
+		end
+		act 'continue': gs 'mod_public_WC_rab_btothel_escort_fly_swim', 'sexswim'
+	end
+	
+	if $cum1 < 20:
+		cla
+		colir = 1
+		phescortfunSexDONE += 1
+		phescortfun -= 50
+		if phescortfun <= 0: phescortfun = 0
+		if phtemp = 2:			
+			'I feel how his dick temperature increasing'			
+			
+			act 'swallow it':
+				*clr & cla
+				act 'continue':
+					phtemp = 0
+					gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+				end
+
+				'I feel every plash of his cum in my throat'
+				
+				gs 'boyStat', $npclastgenerated
+				gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'cum_call', 'face', $npclastgenerated, 0
+				gs 'cum_call', 'breasts', $npclastgenerated, 0
+								
+				gs 'cum_call', 'mouth', $npclastgenerated, 0
+				act 'continue':
+					phtemp = 0
+					gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+				end
+			end	
+		elseif phtemp = 4:
+			'He almost ready to cum and I decided to finish him with my hands'
+			gs 'arousal', 'footjob', rand(10,15), 'exhibitionism'
+			gs 'stat'
+			
+			if rand(1,3) <= 4:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/hj ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/hj ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			gs 'boyStat', $npclastgenerated			
+			gs 'cum_call', 'arms', $npclastgenerated, 0
+				gs 'arousal', 'end'
+				gs 'stat'
+			
+			act 'continue':
+				phtemp = 0
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end
+		elseif phtemp = 5:			
+			'He cumed'
+			
+			if rand(1,3) <= 4:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/hj ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/hj ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			gs 'boyStat', $npclastgenerated			
+			gs 'cum_call', 'arms', $npclastgenerated, 0
+			gs 'arousal', 'end'
+			gs 'stat'			
+			act 'continue':
+				phtemp = 0
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end		
+		elseif phtemp = 6:
+			*clr & cla
+			
+			'He cums deep in my pussy'
+			
+			if rand(1,3) <= 4:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/vag ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/2 yacht/goswim/3 sex/5 cum/vag ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			gs 'boyStat', $npclastgenerated
+			gs 'cum_call', 'vagina', $npclastgenerated, 0
+			gs 'cuminsidereact', $boydesc
+			gs 'arousal', 'end'
+			gs 'stat'			
+			act 'continue':
+				phtemp = 0
+				gt 'mod_public_WC_rab_btothel_escort_fly_swim', 'swim'
+			end		
+		end
+	end
+end
+
+
+
+
+--- mod_public_WC_rab_btothel_escort_fly_swim ---------------------------------
+

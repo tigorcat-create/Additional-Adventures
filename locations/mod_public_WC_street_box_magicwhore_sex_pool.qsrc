@@ -1,0 +1,982 @@
+# mod_public_WC_street_box_magicwhore_sex_pool
+if $ARGS[0] = 'pool':
+	!! gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool'
+	'I need to change my clothing'
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_pool'
+	$loc_arg = 'pool'
+
+	phpooltemp = hour + rand(3,8)
+	zztemp = day
+	if phpooltemp >= 24: phpooltemp -= 24 & zztemp += 1
+
+	phpoolswim = 0
+	phescortfun = 0
+
+	if func('changingroom','count_swim_item') > 0:
+		act 'Use changing room':gt 'changingroom', 'view_swim_list'
+	end
+
+	!! be naked
+	act 'Undress':
+		gs 'clothing', 'strip'
+		gs 'underwear', 'remove'
+		gs 'stat'
+		$clothingworntype = 'nude'
+		gs 'stat'
+		killvar 'phpantybikini'
+		gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+	end
+
+	killvar 'phpoolrest'
+	killvar 'phplavky'
+
+	if PSwim = 1 or $clothingworntype = 'nude':
+		if PSwim = 1: phpantybikini = 1
+		if $clothingworntype ! 'nude': phpantybikini = 1
+		act 'continue':
+			*clr & cla
+			'I am at the pool'
+			*nl
+			'Mage, looks like regular guy, is looking at me and my clone.'
+
+			If temper < 28: temper = 28
+			if pcs_sweat < 35 : gs 'sweat', 'add', 2
+			gs 'stat'
+
+			if $clothingworntype ! 'nude':
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_bikini ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_naked ('+rand(1,1)+').jpg"></center>'
+				phescortfun += 1
+			end
+
+
+			!! if $clothingworntype ! 'nude':
+				!! act 'undress':
+					!! phclientfunnow += 3
+					!! minut += 3
+					!! gs 'clothing', 'strip'
+					!! gs 'underwear', 'remove'
+					!! gs 'stat'
+					!! 'I have undressed myself.'
+					!! phescortfun += 3
+				!! end
+			!! end
+			!! if $clothingworntype = 'nude':
+				!! act 'Get dressed':
+					!! minut+=3
+					!! gs 'outfit', 'wear_last_worn'
+					!! gs 'underwear', 'wear'
+					!! 'I put my clothes back on.'
+					!! gs 'stat'
+				!! end
+			!! end
+
+			act 'lie down and masturbate':
+				*clr & cla
+				'I am rubbing my clitor'
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb alone ('+rand(1,1)+').jpg"></center>'
+				gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 6
+
+				phmasturb_me = 1
+
+				act 'Command clone to join':
+					*clr & cla
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb together ('+rand(1,1)+').jpg"></center>'
+					'We are masturbating together'
+					gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+					gs 'stat'
+					phescortfun += 6
+					gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+
+					if phescortfun >= 50:
+						'Mage don''t want to wait anymore'
+
+						phsex = 103
+						phspeed = 1
+						phtemp = 1
+						phrazom = 1
+
+						gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+					else
+						act 'swim':
+							*clr & cla
+							phpoolswim = 1
+							phmasturb_me = 0
+							gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+						end
+
+						act 'wait':
+							*clr & cla
+							phpoolswim = 0
+							phmasturb_me = 0
+							minut += 15
+							gs 'stat'
+							gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+						end
+					end
+				end
+
+				if phescortfun >= 50:
+					act 'sex':
+						phsex = 100
+						gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+					end
+				end
+
+				act 'swim':
+					*clr & cla
+					phpoolswim = 1
+					phmasturb_me = 0
+					gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+				end
+
+				act 'wait':
+					*clr & cla
+					phpoolswim = 0
+					phmasturb_me = 0
+					minut += 15
+					gs 'stat'
+					gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+				end
+
+				if rand(1,3) = 1 and phescortfun >= 30:
+					if rand(1,3) ! 1:
+						cla
+						'MAGE: "You" - he points on the clone - "blow me"'
+						phsex = 102
+						phsexme = 2
+
+						act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+					else
+						'He push his pants down'
+						'MAGE: "I am ready girls!"'
+
+						phsex = 100
+						gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+					end
+				end
+			end
+
+			act 'Strict to the sex':
+				phsex = 100
+				gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+			end
+
+			temp = 1
+			act 'tease':
+				*clr
+				'We are teasing him'
+				if temp = 1: phescortfun += 6
+				temp += 1
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/tease ('+rand(1,5)+').jpg"></center>'
+
+				if rand(1,4) ! 1 and phescortfun <= 10:
+					if rand(1,2) = 1:
+						'Mage gropes my breasts'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/he grope tits ('+rand(1,1)+').jpg"></center>'
+					else
+						'Mage checks my pussy'
+						'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/hegrope pussy ('+rand(1,1)+').jpg"></center>'
+					end
+					phescortfun += 1
+					gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub'
+					gs 'stat'
+				elseif rand(1,3) = 1:
+					*clr
+					cla
+					'Mage don''t want to wait anymore'
+
+					phsex = 103
+					phspeed = 1
+					phtemp = 1
+					phrazom = 1
+
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				elseif phescortfun >= 50:
+					*clr
+					cla
+					'MAGE: "Nice bodies, You must use them to pleasure me…"'
+					!! phsex = rand(101,102)
+					!! phclientforce = 1
+
+					act 'sex':
+						phsex = 100
+						gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+					end
+				end
+			end
+
+			act 'swim':
+				*clr & cla
+				phpoolswim = 1
+				phmasturb_me = 0
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+
+			act 'wait':
+				*clr & cla
+				phpoolswim = 0
+				phmasturb_me = 0
+				minut += 15
+				gs 'stat'
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'pool2':
+	$loc = 'mod_public_WC_street_box_magicwhore_sex_pool'
+	$loc_arg = 'pool2'
+	If temper < 28: temper = 28
+	minut += 10
+	gs 'stat'
+	!! gs 'mod_public_WC_rab_btothel_escort_place', 'chas'
+	*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+	if $clothingworntype = 'nude' and phpantybikini ! 1 and rand(1,2) = 1: phescortfun += 1
+
+	!! 'The cottage has no fence with a <a href="exec:gs ''mod_public_WC_street_box_magicwhore_sex_pool'',''forest''">forest</a>.'
+
+	heinvanna = 0
+
+	if phpoolswim ! 1:
+		act 'Go swim':
+			*clr & cla
+			'The water is warm'
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/0 naked_go.jpg"></center>'
+			else
+				!! NE gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/0 bikini_go.jpg"></center>'
+			end
+
+
+			act 'swim':
+				phpoolswim = 1
+
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+
+			act 'Change my mind':
+				phpoolswim = 0
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+	end
+
+	if phpoolswim = 1:
+		if phpoolrest ! 1:
+			if heinvanna = 1:
+				'I am swimming'
+			else
+				'The mage swimming and fooling around with me'
+				phescortfun += 1
+			end
+
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/2 naked_swim.jpg"></center>'
+			else
+				!! NE gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/2 bikini_swim.mp4"></video></center>'
+			end
+
+			cumspclnt = 4
+			gs 'cum_cleanup'
+			if rand(1,4) = 1: gs 'exercise', 'tier1', 1, 'stren_exp'
+
+			pcs_sweat = 0
+			if deodorant_on = 1: gs 'sweat', 'remove_deo' & '<br>Your deodorant gets washed away in the water.</br>'
+			gs 'stat'
+
+			act 'keep swimming': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+
+			act 'wait':
+				*clr & cla
+				!! 'I rest a bit and go back to swim'
+				phpoolrest = 1
+				if $clothingworntype = 'nude' and phpantybikini ! 1:
+					!! gola
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_naked ('+rand(1,1)+').jpg"></center>'
+				else
+					!! NE gola
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_bikini ('+rand(1,1)+').jpg"></center>'
+				end
+
+				!! act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		else
+			'I am resting.'
+			phpoolrest = 1
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_naked ('+rand(1,1)+').jpg"></center>'
+			else
+				!! NE gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_bikini ('+rand(1,1)+').jpg"></center>'
+			end
+
+			act 'swim':
+				killvar 'phpoolrest'
+				gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+
+		act 'tease':
+			*clr & cla
+			'We are teasing him'
+			phescortfun += 6
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/tease ('+rand(1,5)+').jpg"></center>'
+
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+
+			if rand(1,4) ! 1 and phescortfun <= 20:
+				if rand(1,2) = 1:
+					'Mage gropes my breasts'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/he grope tits ('+rand(1,1)+').jpg"></center>'
+				else
+					'Mage checks my pussy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/hegrope pussy ('+rand(1,1)+').jpg"></center>'
+				end
+				gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 1
+				!! act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			elseif rand(1,3) = 1 and phescortfun >= 40:
+				*clr
+				cla
+				'Mage don''t want to wait anymore'
+
+				phsex = 103
+				phspeed = 1
+				phtemp = 1
+				phrazom = 1
+
+				gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+			elseif phescortfun >= 50:
+				cla
+				*clr
+				'MAGE: "Nice bodies, You must use them to pleasure me…"'
+				!! phsex = rand(101,102)
+				!! phclientforce = 1
+
+				act 'sex':
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+			gs 'arousal', 'flash', rand(5,5), 'prostitution'
+			gs 'stat'
+			phescortfun += rand(1,3)
+			phpoolrest = 1
+			gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+		end
+
+		act 'lie down and masturbate':
+			*clr & cla
+			'I am rubbing my clitor'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb alone ('+rand(1,1)+').jpg"></center>'
+			gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+			gs 'stat'
+			phescortfun += 6
+
+			phmasturb_me = 1
+
+			act 'Command clone to join':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb together ('+rand(1,1)+').jpg"></center>'
+				'We are masturbating together'
+				gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 6
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+
+				if phescortfun >= 50:
+					'Mage don''t want to wait anymore'
+
+					phsex = 103
+					phspeed = 1
+					phtemp = 1
+					phrazom = 1
+
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				else
+					act 'continue':
+						*clr & cla
+						gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+					end
+				end
+			end
+
+			if phescortfun >= 50:
+				act 'sex':
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+
+			if rand(1,3) = 1 and phescortfun >= 30:
+				if rand(1,3) ! 1:
+					cla
+					'MAGE: "You" - he points on the clone - "blow me"'
+					phsex = 102
+					phsexme = 2
+
+					act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				else
+					'He push his pants down'
+					'MAGE: "I am ready girls!"'
+
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+		end
+
+		if phescortfun >= 10:
+			act 'kiss him':
+				*clr & cla
+				gs 'arousal', 'kiss', 5, 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)
+
+				if $clothingworntype = 'nude' and phpantybikini ! 1:
+					!! gola
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/naked_kiss.jpg"></center>'
+				else
+					!! NE gola
+					phescortfun += rand(0,2)
+					'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/bikini_kiss.jpg"></center>'
+				end
+
+				phpoolrest = 1
+
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions'
+
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+
+		if phplavky = 3:
+			gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions'
+		end
+
+
+		if $clothingworntype = 'nude' and phpantybikini ! 1:
+			!! gola
+			''
+		else
+			!! NE gola
+			act 'undress':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/4 bikini_strip.mp4"></video></center>'
+				phescortfun += 2
+
+				'I start to undress just as I caught his look on me'
+				gs 'arousal', 'flash', rand(5,5), 'prostitution'
+				gs 'stat'
+				phescortfun += rand(1,3)
+
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				$clothingworntype = 'nude'
+				phpantybikini = 0
+				killvar 'phpantybikini'
+				gs 'stat'
+
+				phpoolrest = 1
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+
+		act 'Go out':
+			*clr & cla
+			minut += 5
+			gs 'stat'
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/5 bikini_out.mp4"></video></center>'
+			else
+				!! NE gola
+				phescortfun += rand(0,2)
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/5 bikini_out.mp4"></video></center>'
+			end
+
+			killvar 'phpoolswim'
+			killvar 'phpoolrest'
+
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+		end
+	end
+
+	if phpoolswim ! 1:
+		'<center><video width="200" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+
+		'The mage is chilling on the edge of the pool, swims time to time'
+
+		act 'tease':
+			*clr & cla
+			'We are teasing him'
+			phescortfun += 3
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/tease ('+rand(1,5)+').jpg"></center>'
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+
+			if rand(1,4) ! 1 and phescortfun <= 20:
+				cla
+				if rand(1,2) = 1:
+					'Mage gropes my breasts'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/he grope tits ('+rand(1,1)+').jpg"></center>'
+				else
+					'Mage checks my pussy'
+					'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/hegrope pussy ('+rand(1,1)+').jpg"></center>'
+				end
+				gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 2
+			elseif rand(1,3) = 1 and phescortfun >= 40:
+				*clr
+				cla
+				'Mage don''t want to wait anymore'
+
+				phsex = 103
+				phspeed = 1
+				phtemp = 1
+				phrazom = 1
+
+				gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+			elseif phescortfun >= 50:
+				*clr
+				cla
+				'MAGE: "Nice bodies, You must use them to pleasure me…"'
+				!! phsex = rand(101,102)
+				!! phclientforce = 1
+
+				act 'sex':
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+			gs 'arousal', 'flash', rand(5,5), 'prostitution'
+			gs 'stat'
+			phescortfun += rand(1,3)
+			phpoolrest = 1
+			gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+		end
+
+		act 'lie down and masturbate':
+			*clr & cla
+			'I am rubbing my clitor'
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb alone ('+rand(1,1)+').jpg"></center>'
+			gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+			gs 'stat'
+			phescortfun += 6
+
+			phmasturb_me = 1
+
+			act 'Command clone to join':
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/masturb together ('+rand(1,1)+').jpg"></center>'
+				'We are masturbating together'
+				gs 'arousal', 'masturbate', rand(3,5), 'prostitution', 'sub'
+				gs 'stat'
+				phescortfun += 6
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+
+				if phescortfun >= 50:
+					'Mage don''t want to wait anymore'
+
+					phsex = 103
+					phspeed = 1
+					phtemp = 1
+					phrazom = 1
+
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				else
+					act 'continue':
+						*clr & cla
+						gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+					end
+				end
+			end
+
+			if phescortfun >= 50:
+				act 'sex':
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+
+			act 'continue':
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+
+			if rand(1,3) = 1 and phescortfun >= 30:
+				if rand(1,3) ! 1:
+					cla
+					'MAGE: "You" - he points on the clone - "blow me"'
+					phsex = 102
+					phsexme = 2
+
+					act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				else
+					'He push his pants down'
+					'MAGE: "I am ready girls!"'
+
+					phsex = 100
+					gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+				end
+			end
+		end
+
+		if pcs_dancero >= 35 and $clothingworntype ! 'nude':
+			act 'dance':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/5 dance ('+rand(1,3)+').mp4"></video></center>'
+				if pcs_dancpol >= rand(50,80) or pcs_dancero >= rand(50,80) or pcs_danc >= rand(50,80):
+					'I am proffesionaly dancing, the client hypnotised by my moves'
+					phescortfun += rand(5,8)
+				elseif pcs_dancpol >= rand(20,50) or pcs_dancero >= rand(20,50) or pcs_danc >= rand(20,50):
+					'I am dancing good. Client aroused by my moves'
+					phescortfun += rand(3,6)
+				else
+					'Client is ignoring my twitching'
+					phescortfun += rand(-1,1)
+				end
+				minut += 15
+				dancpol_exp += rand(1,3)
+				pcs_dancero += rand(1,3)
+				gs 'stat'
+				phescortfun += 10
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		elseif pcs_dancero < 35:
+			+$OpenInnerThought+'I need better skills to dance for him'+$CloseInnerThought
+		end
+
+		act 'wait':
+			*clr & cla
+			!! 'I rest a bit and go back to swim'
+			phpoolrest = 1
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_naked ('+rand(1,1)+').jpg"></center>'
+			else
+				!! NE gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/whore/magicwhore/6 clones/niki-kity/pool/1 start/wait_bikini ('+rand(1,1)+').jpg"></center>'
+			end
+			minut += 10
+			gs 'stat'
+
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+		end
+
+		if $clothingworntype ! 'nude':
+			act 'remove my bra':
+				*clr & cla
+				phescortfun += 2
+				gs 'clothing', 'strip'
+				gs 'underwear', 'remove'
+				gs 'stat'
+				$clothingworntype = 'nude'
+				minut += 3
+				gs 'stat'
+				phpantybikini = 1
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/1 braoff.mp4"></video></center>'
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		elseif phpantybikini = 1:
+			act 'fully undress':
+				*clr & cla
+				phpantybikini = 0
+				minut += 3
+				phescortfun += 2
+				killvar 'phpantybikini'
+
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/2 pantiesoff.mp4"></video></center>'
+				gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+				act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+			end
+		end
+	end
+
+	if phescortfun >= rand(50,70):
+		cla
+		if phpoolswim = 1:
+			killvar 'phplavky'
+			'He swim to me and start kissing me passionately'
+			gs 'arousal', 'kiss', 5, 'prostitution'
+			gs 'stat'
+			phescortfun += rand(1,3)
+
+			if $clothingworntype = 'nude' and phpantybikini ! 1:
+				!! gola
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/naked_kiss.jpg"></center>'
+			else
+				!! NE gola
+				phescortfun += rand(0,2)
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/swim/bikini_kiss.jpg"></center>'
+			end
+
+			phpoolrest = 1
+			gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions'
+
+			!! act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'pool2'
+		else
+			killvar 'phplavky'
+			'<center><video width="200" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+			'He came close to me, and wishper "I want to fuck you."'
+
+			act 'sex': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'sexpool'
+		end
+	elseif hour >= phpooltemp and heinvanna = 0 and zztemp = day:
+		*clr & cla
+		!! go home
+		killvar 'phpooltemp'
+		killvar 'phpantybikini'
+		killvar 'phpoolswim'
+		killvar 'phpoolrest'
+		killvar 'phplavky'
+		killvar 'zztemp'
+		'<center><video width="200" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/client_mage.mp4"></video></center>'
+		'MAGE: "It''s enough swimming for today, let''s do smth else"'
+
+		act 'sex':
+			cla
+			phsex = 100
+			gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+		end
+	end
+end
+
+if $ARGS[0] = 'swimsexactions':
+	!! we both in the pool
+	if phescortfun >= rand(25,30) and phplavky ! 3:
+		act 'remove his swimming trunks':
+			cla
+			phplavky = 3
+			'I have removed the last clothing he had'
+			phescortfun += rand(1,10)
+
+			gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions'
+		end
+	end
+
+	if phplavky = 3:
+		act 'jerk him':
+			*clr & cla
+			killvar 'phplavky'
+			'I stroke his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock while we are kissing'
+			'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/naked_hj.jpg"></center>'
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			gs 'arousal', 'kiss', 5, 'prostitution'
+			minut -= 5
+			gs 'stat'
+			phescortfun += rand(1,3)
+			phsex = 1
+			$cum1 = rand(80,120)
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions2'
+		end
+
+		act 'blow him':
+			*clr & cla
+			killvar 'phplavky'
+			phsex = 2
+			'I dive to his dick and start to suck it'
+
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/bj/bj (1).jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/bj/bj (1).mp4"></video></center>'
+			end
+
+			$cum1 = rand(70,80)
+			act 'continue': gt 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions2'
+		end
+	end
+end
+
+if $ARGS[0] = 'swimsexactions2':
+	cla
+	gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+	hehorny = 0
+	act 'blow him':
+		*clr & cla
+		phsex = 102
+		temp = 10 + ( stat['bj'] / 10 )
+		$cum1 -= rand(5,temp)
+		phsex = 2
+		gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+		'I am sucking him'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/bj/bj (2).mp4"></video></center>'
+
+		gs 'arousal', 'bj', rand(10,15)
+		gs 'stat'
+		act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions2'
+	end
+	act 'jerk him':
+		*clr & cla
+		phsex = 101
+		temp = 10 + ( stat['hj'] / 10 )
+		$cum1 -= rand(0,temp)
+		phsex = 1
+		gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+		'I am polishing his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'hj', rand(10,15)
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/naked_hj.jpg"></center>'
+
+		act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions2'
+
+	end
+	act 'fuck him':
+		*clr & cla
+		phsex = 103
+		temp = 20 + ( stat['vaginal'] / 10 )
+		$cum1 -= rand(15,temp)
+		phsex = 3
+		gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+		'He is drilling my pussy with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		gs 'arousal', 'vaginal', rand(10,15)
+		gs 'stat'
+
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/underwatersex/sex/sex ('+rand(1,4)+').mp4"></video></center>'
+
+
+		act 'continue': gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'swimsexactions2'
+	end
+
+	phpoolrest = 1
+	if $cum1 < 30:
+		cla
+
+		phescortfun = 0
+		killvar 'phplavky'
+		killvar 'phsex'
+
+		'MAGE: "Wow, not so fast" - he make few steps back.'
+		'Mage put his hands on his dick… he sayid some spell and light-blue light absorbed by his cock'
+		'We get out from the water'
+		phiphi -= 2
+		if phiphi < 0: phiphi = 0
+		!! phsex = 100
+		phrazom = 2
+		phsexme = 1
+		$cum1 += rand(30,50)
+		PH_full_pay = PH_full_pay * 130 / 100
+
+		gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+		act 'Continue':
+			*clr & cla
+			gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+		end
+	end
+end
+
+if $ARGS[0] = 'sexpool':
+	*clr & cla
+	killvar 'phplavky'
+	killvar 'phsex'
+	phescortfun = 0
+	gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+	'I pushed him to sit… And grab his dick'
+	if $clothingworntype = 'nude' and phpantybikini ! 1:
+		!! gola
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/sex/1 start/hj (1).mp4"></video></center>'
+	else
+		!! NE gola
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/escort/2 place/hotel_or_hisvilla/pool/sex/1 start/hj (2).mp4"></video></center>'
+	end
+	gs 'arousal', 'hj', rand(10,15)
+	gs 'stat'
+
+	temp = 6 + ( stat['hj'] / 10 ) + phclientforce * rand(5,15) + 3
+	$cum1 -= rand(3,temp)
+
+	gs 'mod_public_WC_street_box_magicwhore_sex', 'man'
+
+	act 'blow him':
+		*clr & cla
+		phsexme = 1
+		phsex = 102
+		phspeed = 1
+		phi = 0
+		phchoke = 0
+		phrazom = 0
+		phescortfun = 0
+
+
+		gs 'mod_public_WC_street_box_magicwhore_sex', '6sex_12'
+	end
+end
+
+if $ARGS[0] = 'phescortfun':
+	!! gs 'mod_public_WC_street_box_magicwhore_sex_pool', 'phescortfun'
+	if phescortfun >= 100: $zadovolennia1 = $func('wrap', 'accent', ' ██████████ ') + ' '
+	if phescortfun >= 90 and phescortfun < 100: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+	if phescortfun >= 80 and phescortfun < 90: $zadovolennia1 = '<font color = green	> ████████__ </font> '
+	if phescortfun >= 70 and phescortfun < 80: $zadovolennia1 = '<font color = green	> ███████___ </font> '
+	if phescortfun >= 60 and phescortfun < 70: $zadovolennia1 = '<font color = green	> ██████____ </font> '
+	if phescortfun >= 50 and phescortfun < 60: $zadovolennia1 = '<font color = green	> █████_____ </font> '
+	if phescortfun >= 40 and phescortfun < 50: $zadovolennia1 = '<font color = green	> ████______ </font> '
+	if phescortfun >= 30 and phescortfun < 40: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+	if phescortfun >= 20 and phescortfun < 30: $zadovolennia1 = '<font color = yellow	> ██________ </font> '
+	if phescortfun >= 10 and phescortfun < 20: $zadovolennia1 = '<font color = yellow	> █_________ </font> '
+	if phescortfun < 10 and phescortfun > 0:
+		$zadovolennia1 = '<font color = red	> █_________ </font> '
+	end
+	if phescortfun <= 0:
+		$zadovolennia1 = '<font color = red	> __________ </font> '
+	end
+
+	'<center>The Mage''s funrate: <<$zadovolennia1>></center>'
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_sex_pool ---------------------------------
+

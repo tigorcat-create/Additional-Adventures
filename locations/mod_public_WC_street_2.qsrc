@@ -1,0 +1,728 @@
+# mod_public_WC_street_2
+if $ARGS[0] = 'start':
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'start'
+	$menu_arg = 'start'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'public_outdoors'
+	CLOSE ALL
+	
+	
+	'<center><h2>Snokhachestvo street, 3a</h2></center>'
+	if month >= 11 or month <= 3:
+		if hour >= 8 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/my home lito.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/my home lito.jpg"></center>'
+		end
+	else
+		if hour >= 8 and hour <= 21:
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/my home zyma.jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/my home zyma.jpg"></center>'
+		end
+	end
+	
+	if rand(1,5) = 1:
+		'casual "shoping" pictures'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/1 street/smitnyk.mp4"></video></center>'		
+	end
+	
+	act 'Walk to the Residential area (0:15)':minut += 2 & gt 'pav_residential'
+	act 'Walk to the Commercial area (0:15)':minut += 5 & gt 'pav_commercial'
+	act 'Walk to the Industrial region (0:15)':minut += 5 & gt 'pav_industrial'
+	act 'Walk to the Market (0:15)':minut += 15 & gt 'pav_market'
+	act 'Walk to the train station (0:15)':minut += 15 & gt 'pav_train_hall'
+	act 'Walk to the Snokhachestvo street (0:02)':minut += 2 & gt 'mod_public_WC_street', 'start'
+	
+	act 'Wait (0:15)':minut += 15 & gt 'mod_public_WC_street_2', 'start'
+	
+	if PHBarack >= 1:
+		act '<b>Go to my room #7</b>':
+			minut += 2
+			gs 'stat'
+			gt 'mod_public_WC_street_2', 'myroom'
+		end
+	else
+		if PHBarack = 2 and daystart - PHbarrackPayDay = 29:
+			PHBarack = 0
+			PHbarrackPayDay = 0
+		end
+	end
+	
+	act 'Enter the barrack':
+		minut += 3
+		gs 'stat'
+		gt 'mod_public_WC_street_2', 'korydor'		
+	end
+	
+	
+	if Grisha = 0:
+		act 'Go to the room 1':
+			*clr & cla
+			'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+			'In the some how repaired room, the middle aged man sitting'
+			'MAN: "I am Grisha, Do you come cuz the advertisement?"'
+			'ME: "Hello, Yes, I am"'
+			'GRISHA: "You will rent room 7 in this barrack. The price is 3000 per 4 weeks"'
+			Grisha = 1
+			
+			if money >= 3000:
+				act 'Rent':
+					cla
+					money -= 3000
+					minut += 5
+					gs 'stat'
+					PHBarack = 1
+					PHbarrackPayDay = daystart
+					'GRISHA: "Good, see you in 4 weeks"'
+					
+					act 'exit': gt 'mod_public_WC_street_2', 'start'
+				end
+			else
+				act 'Rent': 'I don''t have enough cash'
+			end
+			
+			act 'No, thank you':
+				cla
+				minut += 5
+				gs 'stat'
+				
+				'GRISHA: "Exit there" - he points on the door'
+				
+				act 'exit': gt 'mod_public_WC_street_2', 'start'
+			end
+		end
+	else
+		act 'Go to the Grishas room':			
+			if PHBarack = 1:
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+				'In the some how repaired room, Grisha sitting'
+				'GRISHA: "I am Grisha, Do you come cuz the advertisement?"'
+				'ME: "Hello, Yes, I am"'
+				'GRISHA: "Hi, <<$pcs_firstname>>"'
+				
+				if daystart - PHbarrackPayDay >= 28:
+					'GRISHA: "When are you going to pay?"'
+					
+					if money >= 3000:
+						act 'Pay (3000)':
+							cla
+							money -= 3000
+							PHbarrackPayDay += 28							
+							'GRISHA: "Thanks. he quickly grab the money."'								
+							
+							act 'exit': gt 'mod_public_WC_street_2', 'start'
+						end
+					else
+						act 'Pay': 'I don''t have enough cash'
+					end
+					
+					act 'I will pay this week':
+						cla
+						'ME: "I am tight on money right now, but I will pay this week"'
+						'GRISHA: "Please, don''t make me sad"'
+						'ME: "I promise, I will not"'
+						act 'exit': gt 'mod_public_WC_street_2', 'start'
+					end
+				else
+					'GRISHA: "What do you want?"'
+					
+					act 'Pay in advance':
+						cla
+						'GRISHA: "Wow, amazing."'
+						phi = input("How many weeks you want to pay?")
+						temp = ((phi*1000/4)*3000)/1000
+						'GRISHA: "It cost <<temp>>"'
+						
+						if money >= temp:
+							act 'Pay':
+								cla
+								money -= temp
+								PHbarrackPayDay += phi*7
+								'GRISHA: "NO SHIT! he quickly grab the money."'								
+								
+								act 'exit': gt 'mod_public_WC_street_2', 'start'
+							end
+						else
+							act 'Pay': 'I don''t have enough cash'
+						end
+						
+						act 'Thank you, but not now':
+							cla
+							'GRISHA: "Knew it."'							
+							
+							act 'exit': gt 'mod_public_WC_street_2', 'start'
+						end
+					end	
+
+					act 'I want to stop the rent':
+						cla
+						
+						'GRISHA: "Are you sure? There is no refunds!"'
+						
+						act 'Yes':
+							cla
+							If daystart - PHbarrackPayDay < 0: 
+								PHbarrackPayDay = daystart
+								'GRISHA: "Your last day here in 28 days"'
+							else
+								temp = daystart - PHbarrackPayDay
+								phi = 28 - temp
+								'GRISHA: "Your last day here in <<phi>> days"'
+							end
+							PHBarack = 2
+							'ME: "Okey"'
+							
+							act 'exit': gt 'mod_public_WC_street_2', 'start'
+						end
+						
+						act 'No':
+							cla
+							'GRISHA: "Knew it."'
+							act 'exit': gt 'mod_public_WC_street_2', 'start'
+						end
+					end
+				end
+			elseif PHBarack > 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+				'In the some how repaired room, Grisha sitting'
+				'GRISHA: "Hi, <<$pcs_firstname>>"'				
+				
+				if money >= 3000:
+					act 'I want to Rent':
+						cla
+						money -= 3000
+						minut += 5
+						gs 'stat'
+						PHBarack = 1
+						PHbarrackPayDay += 28
+						'GRISHA: "Good, nice to see you back"'
+						
+						act 'exit': gt 'mod_public_WC_street_2', 'start'
+					end
+				else
+					act 'Rent': 'I don''t have enough cash'
+				end
+				
+				act 'No, thank you':
+					cla
+					minut += 5
+					gs 'stat'
+					
+					'GRISHA: "Exit there" - he points on the door'
+					
+					act 'exit': gt 'mod_public_WC_street_2', 'start'
+				end
+			else
+				*clr & cla
+				'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+				'In the some how repaired room, Grisha sitting'
+				'GRISHA: "I am Grisha, Do you come cuz the advertisement?"'
+				'ME: "Hello, Yes, I am"'
+				'GRISHA: "You will rent room 7 in this barrack. The price is 3000 per 4 weeks"'
+				Grisha = 1
+				
+				if money >= 3000:
+					act 'Rent':
+						cla
+						money -= 3000
+						minut += 5
+						gs 'stat'
+						PHBarack = 1
+						PHbarrackPayDay = daystart
+						'GRISHA: "Good, see you in 4 weeks"'
+						
+						act 'exit': gt 'mod_public_WC_street_2', 'start'
+					end
+				else
+					act 'Rent': 'I don''t have enough cash'
+				end
+				
+				act 'No, thank you':
+					cla
+					minut += 5
+					gs 'stat'
+					
+					'GRISHA: "Exit there" - he points on the door'
+					
+					act 'exit': gt 'mod_public_WC_street_2', 'start'
+				end
+			end
+			
+			if daystart - PHbarrackPayDay < 28:
+				act 'Ask Grisha about his bussiness':
+					cla
+					!! 'GRISHA: "I can rent you a stall"'
+					'GRISHA: "I can sell you the box, it''s instalation is free in any place you want."'
+					'GRISHA "The box price is 25000"'
+					
+					if money >= 25000:
+						act 'buy':
+							gs 'mod_public_WC_street_2', 'boxbuy'
+						end
+					else
+						act 'buy': 'I don''t have enough cash'	
+					end
+					
+					act 'How can I use that?':
+						'GRISHA "Firstly, it is better to live in the box, then to live in the barrack. Also you can make a shop or the massage room or I don''t know, smth you want to do."'
+					end
+					
+					
+					
+					act 'leave Grisha':
+						gt 'mod_public_WC_street_2', 'start'
+					end					
+				end
+			end
+		end
+	end
+	
+	if daystart - PHbarrackPayDay >= (28+7) and PHBarack >= 1 or PHBarack = -1:
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+		'GRISHA: "Hi, <<$pcs_firstname>>"'
+		'GRISHA: "I have changed the locks. You will enter the barrack only when you pay me your 1 week dept (750), new keys price (250), my nervs spent (500) and next weeks payment (3000): 4500 in total."'		
+		PHBarack = -1
+		
+		if money >= 4500:
+			act 'Pay (4500)':
+				cla
+				money -= 4500
+				PHBarack = 1
+				PHbarrackPayDay = daystart
+				'GRISHA: "Finaly! He quickly grab the money. - here is your new keys"'								
+				gs 'stat'
+				
+				act 'exit': gt 'mod_public_WC_street_2', 'start'
+			end
+		else
+			act 'Pay (4500)': 'I don''t have enough cash'
+		end
+		
+		act 'go away': gt 'mod_public_WC_street', 'start'
+	elseif daystart - PHbarrackPayDay >= 28 and phbarrakask ! daystart and PHBarack >= 1:	
+		*clr & cla
+		'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/0 Grisha.jpg"></center>'
+		'GRISHA: "Hi, <<$pcs_firstname>>"'
+		'GRISHA: "When are you going to pay?"'			
+		phbarrakask = daystart
+		
+		act 'I will pay this week':
+			cla
+			'ME: "I am tight on money right now, but I will pay this week"'
+			'GRISHA: "Please, don''t make me sad"'
+			'ME: "I promise, I will not"'
+			act 'exit': gt 'mod_public_WC_street_2', 'start'
+		end
+	end
+	gs 'stat'
+end
+
+
+
+if $ARGS[0] = 'myroom': 
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'myroom'
+	$menu_arg = 'myroom'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'private'
+	CLOSE ALL
+	
+	$locM = 'mod_public_WC_street_2'
+	$locM_arg = 'myroom'		
+	
+	
+	'<center><h2>Snokhachestvo street, 3a, room #7</h2></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/myroom.jpg"></center>'
+	
+	act '<b>Go to the street</b>':
+		*clr & cla
+		if $clothingworntype = 'nude':
+			$func('wrap', 'neg b', 'You need to get dressed before going out.')
+			xgt $curloc
+		elseif sick > 72:
+			$func('wrap', 'neg b', 'You''re too sick to walk around in the streets.')
+			xgt $curloc
+		else
+			minut += 3
+			gt 'mod_public_WC_street_2', 'start'
+		end
+	end
+
+	act '<b>Go to the public corridor</b>':
+		gt 'mod_public_WC_street_2', 'korydor'
+	end	
+	
+	if $ml_guitar['location'] = $loc: 'Your guitar rests on its stand next to your bed.'
+	if mc_inventory['mag_porn'] > 0: 'You''ve hidden your porn magazines under the mattress of your bed.'
+	
+	if mc_inventory['tech_computer'] = 1:
+		!! It is possible to say that the university Wifi filters out porn and webcam sites, in which case will need to allow the player to choose mobile net to watch porn or do webcam shows
+		gs 'internet_mobile', 'get_access', 'free'
+		'Your <a href="exec:gt ''Komp'',''start''">computer</a> sits on your desk.'
+	end	
+	
+	'To the left of the entrance is an old <a href="exec:gt ''wardrobe'', ''start''">wardrobe</a>.'
+	'There''s a <a href="exec:gt ''mirror'',''start''">mirror</a> hanging on the wall.'
+
+	if mc_inventory['contraceptive_pill'] > 0 and mc_inventory['equipped_condoms'] + mc_inventory['normal_condoms'] + mc_inventory['sabotaged_condoms'] > 0:
+		'Your <a href="exec:gt ''stol'', ''bc''">birth control</a> is hidden in one of your desk drawers, as are your <a href="exec:gt ''stol'', ''bc''">condoms</a>.'
+	elseif mc_inventory['contraceptive_pill'] > 0:
+		'Your <a href="exec:gt ''stol'', ''bc''">birth control</a> is hidden in one of your desk drawers.'
+	elseif mc_inventory['equipped_condoms'] + mc_inventory['normal_condoms'] + mc_inventory['sabotaged_condoms'] > 0:
+		'Your <a href="exec:gt ''stol'', ''bc''">condoms</a> are hidden in one of your desk drawers.'
+	end
+
+	*nl
+	'Your <a href="exec:gt ''alarmclock'', ''start''">alarm clock</a> is set to <<func(''alarmclock'', ''alarm_display'', alarmVars[''timerH''], alarmVars[''timerM''])>> during the week and <<func(''alarmclock'', ''alarm_display'', alarmVars[''timerEndH''], alarmVars[''timerEndM''])>> during the weekend. It is currently turned ' + iif(alarmVars['alarmOn'] = 0, '<a href="exec: alarmVars[''alarmOn''] = 1 & gt $loc, $loc_arg">OFF</a>.', '<a href="exec: alarmVars[''alarmOn''] = 0 & gt $loc, $loc_arg">ON</a>.')
+	*nl
+	gs 'exercise', 'start'
+	
+	act 'Relax on your bed': gt 'bed', 'start'
+
+	dynamic $wearpan
+	dynamic $removepan
+
+	gs 'prostitution_functions', 'prostitute_outfit_at_home'
+	gs 'music_actions', 'music_icon'	
+end
+
+
+
+if $ARGS[0] = 'korydor': 
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'korydor'
+	$menu_arg = 'korydor'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'indoors'
+	CLOSE ALL
+	
+	
+	'<center><h2>Snokhachestvo street, 3a, corridor</h2></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/korydor.jpg"></center>'	
+	
+	if PHBarack >= 1:
+		act '<b>Go to my room #7</b>':
+			minut += 2
+			gs 'stat'
+			gt 'mod_public_WC_street_2', 'myroom'
+		end	
+	end
+	
+	act 'Go to the shared bathroom': gt 'mod_public_WC_street_2', 'dush'	
+	act 'Go to the restroom': gt 'mod_public_WC_street_2', 'toilet'	
+	act 'Go to the shared kitchen': gt 'mod_public_WC_street_2', 'kuhnia' 	
+	
+	act '<b>Go to the street</b>':
+		*clr & cla
+		if $clothingworntype = 'nude':
+			$func('wrap', 'neg b', 'You need to get dressed before going out.')
+			xgt $curloc
+		elseif sick > 72:
+			$func('wrap', 'neg b', 'You''re too sick to walk around in the streets.')
+			xgt $curloc
+		else
+			minut += 3
+			gt 'mod_public_WC_street_2', 'start'
+		end
+	end	
+end
+
+
+
+if $ARGS[0] = 'dush':
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'dush'
+	$menu_arg = 'dush'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'indoors'
+	CLOSE ALL
+
+	$locM = 'mod_public_WC_street_2'
+	$locM_arg = 'dush'	
+	
+	'<center><h2>Snokhachestvo street, 3a, bathroom</h2></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/dush.jpg"></center>'
+
+	
+	act '<b>Go to the public corridor</b>':
+		gt 'mod_public_WC_street_2', 'korydor'
+	end
+	
+	if PHBarack >= 1:
+		act '<b>Go to my room #7</b>':
+			minut += 2
+			gs 'stat'
+			gt 'mod_public_WC_street_2', 'myroom'
+		end	
+	end	
+	
+	gs 'din_van', 'private'	
+end
+
+
+
+
+if $ARGS[0] = 'toilet':
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'toilet'
+	$menu_arg = 'toilet'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'indoors'
+	CLOSE ALL
+
+	$locM = 'mod_public_WC_street_2'
+	$locM_arg = 'toilet'
+	
+	'<center><h2>Snokhachestvo street, 3a, restroom</h2></center>'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/toilet.jpg"></center>'
+	
+	act '<b>Go to the public corridor</b>':
+		gt 'mod_public_WC_street_2', 'korydor'
+	end
+	
+	if PHBarack >= 1:
+		act '<b>Go to my room #7</b>':
+			minut += 2
+			gs 'stat'
+			gt 'mod_public_WC_street_2', 'myroom'
+		end	
+	end
+	
+	'The room smells strongly of shit.'		
+	
+	
+	
+	dynamic $tampon
+	dynamic $quickwash
+	dynamic $basin	
+end
+
+
+
+if $ARGS[0] = 'kuhnia':
+	*clr & cla
+	!! Snoh street
+	$loc = 'mod_public_WC_street'
+	$menu_loc = 'mod_public_WC_street_2'
+	$loc_arg = 'kuhnia'
+	$menu_arg = 'kuhnia'
+	$loc = 'mod_public_WC_street_2'
+	menu_off = 0
+	$location_type = 'indoors'
+	CLOSE ALL
+	
+	
+	'<center><h2>Snokhachestvo street, 3a, kitchen</h2></center>'
+
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/building/kuhnia.jpg"></center>'
+	
+	act '<b>Go to the public corridor</b>':
+		gt 'mod_public_WC_street_2', 'korydor'
+	end
+	
+	if PHBarack >= 1:
+		act '<b>Go to my room #7</b>':
+			minut += 2
+			gs 'stat'
+			gt 'mod_public_WC_street_2', 'myroom'
+		end	
+	end
+	
+	
+	food_loc = 0
+	minut += 1
+	gs 'kit_din'
+	gs 'stat'	
+	
+	if mc_inventory['food_basic'] > 0:
+		if edahot = 0:
+			$edagot = '<a href="exec:dynamic $edagotd">Cook a meal</a>'
+		else
+			$edagot = ''
+		end
+		'Your shelf in the refrigerator holds enough food for <b><<mc_inventory[''food_basic'']>></b> ' + iif(mc_inventory['food_basic'] = 1, 'serving', 'servings') + '. <<$edagot>>'
+	else
+		$func('wrap', 'v_neg b', 'Your shelf in the refrigerator is bare. There is nothing left for you to eat.')
+	end
+
+	if edahot > 0:'<a href="exec:dynamic $edahotd">There''s a warm meal on the table.</a>'
+
+	dynamic $edasnack
+	dynamic $sandwich
+	dynamic $driwater
+	dynamic $dritea
+	dynamic $fill_bottle
+	dynamic $edaD
+	dynamic $pranik
+	dynamic $fatdel
+	dynamic $lekarstvo
+	dynamic $vitamin
+end
+
+
+if $ARGS[0] = 'boxbuy':
+	!! buy
+	cla	
+	money -= 25000
+	
+	minut += 3
+	gs 'stat'
+	
+	'I paid 25000 to Grisha, signed some document… now I am the proud owner ow the box?'
+	'GRISHA: "Where you want to install it?"'
+	
+	act 'Five Eight Estate':
+		cla
+		phBOX += 1
+		phBOXFiveEightEstate += 1
+		!! pav_complex
+		'GRISHA: "Nice to make bussiness with you, lets go"'
+		
+		$phtemp = 'pav_complex'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end
+	end
+	
+	act 'The Pavlovsk residential area':
+		cla
+		phBOX += 1
+		phBOXresidential += 1
+		!! pav_residental
+		
+		$phtemp = 'pav_residental'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end		
+	end
+	
+	act 'Commercial hub of Pavlovsk':
+		cla
+		phBOX += 1
+		phBOXCommercial += 1
+		!! pav_commercial		
+		
+		$phtemp = 'pav_commercial'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end		
+	end		
+	act 'Pavlovsk park':
+		cla
+		phBOX += 1
+		phBOXpark += 1
+		!! pav_park
+		
+		$phtemp = 'pav_park'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end		
+	end	
+	act 'Pavlovsk Industrial District':
+		cla
+		phBOX += 1
+		phBOXIndustrial += 1
+		!! pav_industrial		
+		
+		$phtemp = 'pav_industrial'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end		
+	end	
+	act 'Snokhachestvo street':
+		cla
+		phBOX += 1
+		phBOXsnoh += 1
+		!! mod_public_WC_street			
+		
+		$phtemp = 'mod_public_WC_street'
+		
+		act 'Go with him':
+			gt 'mod_public_WC_street_2', 'boxinstall'
+		end		
+	end		
+end
+
+
+if $ARGS[0] = 'boxinstall':
+	*clr & cla
+	'Grisha called someone and soon we are on the place, watching my box is installing'
+	'<center><img <<$set_imgh>> src="mod/public_WC/newstreet/1 street/box/00 MONTAJ.jpg"></center>'
+	'Grisha give me few other documents: "See you" - and go away'
+	
+	if $phtemp = 'pav_complex':
+		$loc = 'pav_complex'
+		act 'continue': gt $loc
+	elseif $phtemp = 'pav_residental':
+		$loc = 'pav_residential'
+		act 'continue': gt $loc
+	elseif $phtemp = 'pav_commercial':
+		$loc = 'pav_commercial'
+		act 'continue': gt $loc
+	elseif $phtemp = 'pav_park':
+		$loc = 'pav_park'
+		act 'continue': gt $loc
+	elseif $phtemp = 'pav_industrial'
+		$loc = 'pav_industrial'
+		act 'continue': gt $loc
+	elseif $phtemp = 'mod_public_WC_street'
+		act 'continue': gt 'mod_public_WC_street', 'start'
+	end
+	
+	killvar 'phtemp'
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_2 ---------------------------------
+

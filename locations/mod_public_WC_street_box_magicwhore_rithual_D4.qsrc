@@ -1,0 +1,1384 @@
+# mod_public_WC_street_box_magicwhore_rithual_D4
+if $ARGS[0] = 'start':
+	!*clr & cla
+	If temper < 35: temper = 35
+	if pcs_sweat < 35 : gs 'sweat', 'add', 2
+	gs 'stat'		
+	minut += 10
+	gs 'stat'
+	'OMG! Where am I?'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/backup chick ('+rand(1,1)+').mp4"></video></center>'
+	
+	phchoke = 0
+	phiphi = 0
+	$phhellwhorename = 'the other girl'
+	
+	act 'look around':
+		*clr
+		'I see an empty room, there is no light, but simehow it is not dark here'
+		'There are noone in the room, but I am not alone tied in this wall.'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/backup chicks ('+rand(1,1)+').mp4"></video></center>'
+	end
+	
+	act 'wait':
+		*clr & cla
+		If temper < 35: temper = 35
+		if pcs_sweat < 35 : gs 'sweat', 'add', 2
+		gs 'stat'		
+		minut += 10
+		gs 'stat'
+		'In some time demon enters the room'
+		'He stands near each girl. When he comes to me, he starts grope me'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/1 demon gropes ('+rand(1,2)+').mp4"></video></center>'
+		gs 'arousal', 'foreplay', rand(5,5), 'prostitution', 'sub', 'beast'
+		gs 'stat'
+		
+		act 'wait':
+			*clr & cla
+			If temper < 35: temper = 35
+			if pcs_sweat < 35 : gs 'sweat', 'add', 2
+			gs 'stat'		
+			minut += 10
+			gs 'stat'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/backup chicks ('+rand(1,1)+').mp4"></video></center>'
+			
+			'I see he pushed some girl from the wall'
+			'Then he comes to me and pushed me from the wall too'
+			'DEMON: "The rithul are going to start in 1 hour. Be ready!"'
+			'DEMON: "If the HELL-lord will be bored, you will be replaced and punished.!"'
+			
+			phquestM = minut + rand(0,15)
+			if phquestM >= 59: phquestM = 59
+			phquestH = Hour + 1
+			phquestD = daystart
+			if phquestH >= 24: 
+				phquestH = 0
+				phquestD += 1
+			else
+				' '
+			end
+			
+			*nl
+			*nl
+			
+			if Helllordwhore = 0:
+				'Other girl comes to me: "I see you are new here. I need to complete this rithual, this is the life-death question for me. And it would be much easier to achieve if you will listen me."'
+				*nl
+				'OTHER GIRL: "Also I am enchanted with low temperature spell, I can spell this on you, but, you MUST listen me"'
+			else
+				'Other girl comes to me: "I see you are experienced. I am enchanted with low temperature spell, I can spell this on you, but, you MUST listen me"'
+			end
+			
+			act 'Ignore her, wait the start of the rithual (1:00)':
+				cla
+				minut += 80
+				gs 'stat'				
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'rithual timer'
+			end
+			
+			act 'Agree to listen her':
+				gt 'mod_public_WC_street_box_magicwhore_rithual_D4', 'SHE'
+			end
+			
+			act 'How can you prove this?':
+				cla
+				'OTHER GIRL: "Open your mouth"'
+				
+				act 'Ignore her, wait the start of the rithual (1:00)':
+					cla
+					minut += 80
+					gs 'stat'				
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'rithual timer'
+				end
+				
+				act 'Agree to listen her':
+					gt 'mod_public_WC_street_box_magicwhore_rithual_D4', 'SHE'
+				end
+				
+				act 'Open my mouth':
+					*clr & cla
+					'As I oppened my mouth he spits in it!'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/kiss/spit 1 ('+rand(1,1)+').mp4"></video></center>'
+					'..But… but here saliva is winter cold…'
+					'She see surprise on my face'
+					'THE GIRL: "See?"'					
+					
+					act 'Ignore her, wait the start of the rithual (1:00)':
+						cla
+						minut += 80
+						gs 'stat'				
+						gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'rithual timer'
+					end
+					
+					act 'Agree to listen her':
+						gt 'mod_public_WC_street_box_magicwhore_rithual_D4', 'SHE'
+					end
+				end
+			end
+		end
+	end	
+end
+
+if $ARGS[0] = 'SHE':
+	*clr & cla
+	gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'hot'
+	!<<$phhellwhorename>>
+	if rand(1,5) = 1:
+		$phhellwhorename = 'Jiona'
+	elseif rand(1,4) = 1:
+		$phhellwhorename = 'Evga'
+	elseif rand(1,3) = 1:
+		$phhellwhorename = 'Ula kantoga'
+	elseif rand(1,2) = 1:
+		$phhellwhorename = 'Iuazdviga'
+	else
+		$phhellwhorename = 'Zendira'
+	end
+	
+	'SHE: "My name is <<$phhellwhorename>>. What is your name?"'
+	'ME: "<<$pcs_firstname>>"'
+	'<<$phhellwhorename>>: "Good, nice to meet you. Now spit in my mouth"'
+	gs 'npcgeneratec', 1, '<<$pcs_firstname>>', rand(25,35)
+	gs 'boyStat', $npclastgenerated	
+	
+	act 'Spit in her mouth':
+		*clr & cla
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'hot'	
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/kiss/spit 2 ('+rand(1,1)+').mp4"></video></center>'
+		'As I spitted, I feel the wave of cold going through all my body'
+		minut += 5
+		gs 'stat'
+		phiphi = 1
+		'Suddenly I feel giant urge to kiss her'
+		
+		act 'Kiss her':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/kiss/kiss start ('+rand(1,1)+').mp4"></video></center>'
+			gs 'arousal', 'kiss', rand(5,5), 'prostitution', 'sub', 'lesbian'
+			gs 'stat'
+			
+			act 'continue':
+				*clr & cla
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/kiss/kiss ('+rand(1,1)+').mp4"></video></center>'
+				gs 'arousal', 'kiss', rand(5,10), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+				'The kiss is winter cold'
+				
+				'Suddenly I feel giant urge to eat her'
+				
+				otemp = 0
+				act 'Eat her':
+					*clr
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/cuni/cuni ('+rand(1,3)+').mp4"></video></center>'
+					otemp += 1
+					
+					gs 'arousal', 'cuni_give', rand(5,15), 'prostitution', 'sub', 'lesbian'
+					gs 'stat'
+					
+					if otemp >= 3: 'Her pussy is winter cold'
+					
+					
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'rithual timer'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'hot':
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'hot'	
+	if phiphi = 1:
+		If temper < 35: temper = 35
+		if pcs_sweat < 35 : gs 'sweat', 'add', 2
+		gs 'stat'		
+		!! minut += 10
+		!! gs 'stat'
+	else
+		If temper < 20: temper = 20
+		!! if pcs_sweat < 35 : gs 'sweat', 'add', 2
+		gs 'stat'	
+	end	
+end
+
+if $ARGS[0] = 'rithual timer':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'rithual timer'
+	gs 'arousal', 'end'
+	gs 'stat'
+	phhandpain = 0
+	phdemonkara = 0
+	phclientfunnow = 0
+	
+	if (daystart > phquestD) or (phquestD = daystart and hour > phquestH) or (phquestD = daystart and phquestH = hour and minut > phquestM):
+		!*clr & cla
+		cla
+		killvar 'phquestD'
+		killvar 'phquestH'
+		killvar 'phquestM'
+		
+		'DEMON: "Hey, come here!"'
+		'He flames the goblet'
+		
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/0 demon lights ('+rand(1,1)+').mp4"></video></center>'
+		
+		!! rithual starts
+		
+		'We walk to the empty throne'
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'hot'
+		
+		act 'Bow':
+			*clr & cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/1 bow ('+rand(1,4)+').mp4"></video></center>'
+			minut += 5
+			gs 'stat'
+			
+			act 'wait':
+				*clr & cla
+				'The HEll-lord appears'
+				gs 'npcgeneratec', 0, 'HEll-lord', rand(300,1450)
+				gs 'boyStat', $npclastgenerated
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/2 summon ('+rand(1,1)+').mp4"></video></center>'
+				minut += 5
+				gs 'stat'
+				
+				act 'worship':
+					*clr & cla
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/3 summoned ('+rand(1,1)+').mp4"></video></center>'
+					minut += 5
+					gs 'stat'
+					
+					act 'keep worship':
+						*clr & cla
+						'The HEll-lord: "PLEASE ME!"'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/4 lord commands ('+rand(1,1)+').mp4"></video></center>'
+						minut += 5
+						gs 'stat'
+						
+						'DEMON: "Jerk him! NOW!!!"'
+						
+						act 'Jerk him':
+							*clr & cla
+							$cum1 = rand(300,390)
+							phspeed = 1
+							phsex = 101
+							phrazom = 2
+							phi = 0
+							phturns = 1
+							dick = 28
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/1 start ('+rand(1,1)+').mp4"></video></center>'							
+							
+							act 'Continue':
+								*clr & cla								
+								gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'sex':
+	!*clr & cla
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'hot'
+	phkillaction = 0
+	if phmouthpain <= 0: phmouthpain = 1
+	if phhandpain <= 0: phhandpain = 1	
+	if phvagpain <= 0: phvagpain = 1
+	if phasspain <= 0: phasspain = 1
+	
+	phclientfunnow += 5
+	
+	if phsex = 100:
+		' '
+		
+		
+		
+		*nl
+	elseif phsex = 101:		
+		!! if phrazom = 2:
+			!! 'DEMON: "WTF? ARE YOU KIDDING?!" - demon screams at me!'
+			!! 'I quickly start helping <<$phhellwhorename>>'
+			!! phrazom = 1
+			!! phturns = 2
+			!! phhandpain -= rand(0,1)
+		!! end
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/2 hj ('+rand(1,5)+').mp4"></video></center>'
+		phrazom = 2
+		phmouthpain -= 1
+		!! phhandpain -= 1
+		phasspain -= 1
+		phvagpain -= 1
+		
+		if phiphi = 1:
+			if phsexme = 2 and rand(1,5) > 2:
+				phsexme = 1
+				'<<$phhellwhorename>> pass the dick to me to jerk'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+			end
+		else
+			if phsexme = 2 and rand(1,6) >= 4:
+				phsexme = 1
+				'<<$phhellwhorename>> pass the dick to me to jerk'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+			end
+		end
+		
+		if phsexme = 1:
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			phhandpain += 1
+			'I am jerking HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock while kissing with <<$phhellwhorename>>'
+			
+			'The dick is HOT!'
+			gs 'pain', rand(0,phhandpain), 'armR', 'burn'
+			gs 'stat'
+		else
+			gs 'arousal', 'kiss', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			phhandpain -= 1
+			'I am kissing <<$phhellwhorename>>, while she jerking HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+		end
+		
+		temp = 6 + ( stat['hj'] / 10 ) + 1
+		$cum1 -= rand(3,temp)
+		
+		temp = 6 + ( stat['hj'] / 10 ) + 1
+		$cum1 -= rand(3,temp)
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+		phspeed += 1
+	elseif phsex = 102:
+		!! phmouthpain -= 1
+		phhandpain -= 1
+		phasspain -= 1
+		phvagpain -= 1	
+		
+		if phrazom = 1:
+			!! razom
+			phclientfunnow += 3
+			phi -= rand(0,1)
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+			
+			if phspeed = 1:
+				'We start sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock together'			
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/together/start ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'We are sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock together'			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/together/bj ('+rand(1,4)+').mp4"></video></center>'
+			end
+			
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			temp = (6 + ( stat['bj'] / 10 ) + 6)/2
+			$cum1 -= rand(4,temp)
+			
+			temp = (6 + ( stat['bj'] / 10 ) + 6)/2
+			$cum1 -= rand(4,temp)
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+			
+			phmouthpain += 1
+			gs 'pain', rand(0,phmouthpain), 'mouth', 'burn'
+			gs 'stat'
+			gs 'pain', rand(0,phmouthpain), 'lips', 'burn'
+			gs 'stat'
+			gs 'pain', rand(0,phmouthpain), 'tongue', 'burn'
+			gs 'stat'
+			!! gs 'pain', rand(1,phmouthpain), 'throat', 'burn'
+			!! gs 'stat'
+			
+			if phiphi = 1:
+				if phsexme = 2 and rand(1,5) > 2:
+					phsexme = 1
+					'<<$phhellwhorename>> pass the dick to me to blow'
+					phrazom = 2
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+				end
+			else
+				if phsexme = 2 and rand(1,6) >= 5:
+					phsexme = 1
+					'<<$phhellwhorename>> pass the dick to me to blow'
+					phrazom = 2
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+				end
+			end
+			
+			if rand(1,3) ! 1:
+				'Demon gropes us'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/demon gropes ('+rand(1,1)+').mp4"></video></center>'
+				minut -= 10
+				gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'humiliation'
+				gs 'stat'
+			end
+		elseif phrazom = 2:
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+			
+			if phspeed = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/together/start ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/onebyone/onebyone ('+rand(1,1)+').mp4"></video></center>'
+			end
+			
+
+			temp = (6 + ( stat['bj'] / 10 ) + 6)/2
+			$cum1 -= rand(4,temp)
+			
+			temp = (6 + ( stat['bj'] / 10 ) + 6)/2
+			$cum1 -= rand(4,temp)
+			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+			
+			if phiphi = 1:
+				if phsexme = 2 and rand(1,5) > 2:
+					phsexme = 1
+					'<<$phhellwhorename>> pass the dick to me to blow'
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+				end
+			else
+				if phsexme = 2 and rand(1,6) >= 4:
+					phsexme = 1
+					'<<$phhellwhorename>> pass the dick to me to blow'
+					!! '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+				end
+				
+				
+				ytemp = 0
+				act 'Ask to suck the dick together simultaniously':
+					if ytemp = 0 and rand(1,2) = 1:
+						cla
+						'<<$phhellwhorename>>: "Ok, let''s do ito."'
+						phrazom = 1
+						
+						act 'Continue':
+							gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+						end
+					else
+						'<<$phhellwhorename>>: "No."'
+					end
+					ytemp += 1
+				end
+			end
+			
+			if phsexme = 1:
+				gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub'
+				gs 'stat'
+				phmouthpain += 1				
+				
+				if phspeed = 1:
+					'I start sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				else
+					'<<$phhellwhorename>> starts sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+				end				
+				
+				act 'Push the dick balls deep':
+					cla
+					phclientfunnow += 2
+					temp = 8 + ( stat['bj'] / 10 ) + 8
+					$cum1 -= rand(4,temp)
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 bj/onebyone/deep ('+rand(1,1)+').mp4"></video></center>'
+					'The hot dick touches my throat'
+					'I see the HELL-lord really likes it'
+					phmouthpain += rand(1,2)
+					phi -= rand(1,3)
+					
+					gs 'pain', rand(0,phmouthpain), 'mouth', 'burn'
+					gs 'stat'
+					gs 'pain', rand(0,phmouthpain), 'lips', 'burn'
+					gs 'stat'
+					gs 'pain', rand(0,phmouthpain), 'tongue', 'burn'
+					gs 'stat'
+					gs 'pain', rand(1,phmouthpain), 'throat', 'burn'
+					gs 'stat'
+					
+					act 'Continue':
+						*clr & cla
+						gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+					end
+				end
+				
+				'The dick is HOT!'
+				gs 'pain', rand(0,phmouthpain), 'mouth', 'burn'
+				gs 'stat'
+				gs 'pain', rand(0,phmouthpain), 'lips', 'burn'
+				gs 'stat'
+				gs 'pain', rand(0,phmouthpain), 'tongue', 'burn'
+				gs 'stat'
+				!! gs 'pain', rand(1,phmouthpain), 'throat', 'burn'
+				!! gs 'stat'
+			else
+				!! gs 'arousal', 'kiss', rand(5,10), 'prostitution', 'sub'
+				!! gs 'stat'
+				phmouthpain -= 1
+				
+				if phspeed = 1:
+					'We start sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock one by one'
+					'It is <<$phhellwhorename>> turn to suck'
+				else
+					'We are sucking the HEll-lord''s <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock one by one'
+					'It is <<$phhellwhorename>> turn to suck'
+				end
+			end
+		else
+			' '
+		end
+		phspeed += 1
+	elseif phsex = 103:
+		phmouthpain -= 1
+		phhandpain -= 1
+		phasspain -= 1
+		!! phvagpain -= 1	
+		
+		phrazom = 2
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+		
+		if phspeed = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 vag/1 start ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 vag/2 vag ('+rand(1,2)+').mp4"></video></center>'
+		end
+		
+		temp = 20 + ( stat['vaginal'] / 10 ) + 8
+		$cum1 -= rand(15,temp)
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+		
+		
+		if phsexme = 1:
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			phvagpain += 1				
+			
+			if phspeed = 1:
+				'HEll-lord penetrates my pussy'
+			else
+				'HEll-lord is fucking me'
+			end
+			
+			'The dick is HOT!'
+			gs 'pain', rand(0,phvagpain), 'vaginal', 'burn'
+			gs 'stat'
+			gs 'pain', rand(0,phvagpain), 'clitoris', 'burn'
+			gs 'stat'
+			gs 'pain', rand(0,phvagpain), 'cervix', 'burn'
+			gs 'stat'
+		else
+			phvagpain -= 1
+			
+			if phspeed = 1:
+				'HEll-lord penetrates <<$phhellwhorename>>''s pussy'
+			else
+				'HEll-lord is fucking <<$phhellwhorename>>''s pussy'
+			end
+		end
+		
+		phspeed += 1
+	elseif phsex = 104: 
+		phmouthpain -= 1
+		phhandpain -= 1
+		!! phasspain -= 1
+		phvagpain -= 1
+		
+		phrazom = 2
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+		
+		if phspeed = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/start ('+rand(1,2)+').mp4"></video></center>'
+		else
+			if phmasturb_me = 2:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_her ('+rand(1,1)+').mp4"></video></center>'
+			elseif phmasturb_me = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_me ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/ass ('+rand(1,3)+').mp4"></video></center>'
+			end
+		end
+		
+		temp = 20 + ( stat['anal'] / 10 )
+		$cum1 -= rand(15,temp)	
+		
+		gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+		
+		
+		if phsexme = 1:
+			gs 'arousal', 'anal', rand(5,10), 'prostitution', 'sub'
+			gs 'stat'
+			phasspain += 1				
+			
+			if phspeed = 1:
+				'HEll-lord penetrates my ass'
+			else
+				'HEll-lord is fucking me'
+			end
+			
+			'The dick is HOT!'
+			gs 'pain', rand(0,phasspain), 'asshole', 'burn'
+			gs 'stat'
+			gs 'pain', rand(0,phasspain), 'asscheeks', 'burn'
+			gs 'stat'
+			
+			
+			if rand(1,10) = 1:
+				*clr & cla
+				gs 'arousal', 'kiss', rand(5,5), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+				'<<$phhellwhorename>> kissing me'
+				'I feel relax cold feeling my mouth'
+				phmouthpain -= 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/kissing ('+rand(1,1)+').mp4"></video></center>'
+				phclientfunnow += 1
+				
+				
+				act 'Continue':
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+				end
+				
+				if rand(1,4) = 1:
+					'Demon gropes her'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+					!! minut -= 10
+					!! gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'beast'
+					!! gs 'stat'
+				end
+			elseif rand(1,8) = 1 and phmasturb_me = 0:
+				*clr
+				!! '<<$phhellwhorename>> caress my clitor'
+				gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+				phmasturb_me = 2
+				
+				phclientfunnow += 1
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_her ('+rand(1,1)+').mp4"></video></center>'
+				
+				if rand(1,4) = 1:
+					'Demon gropes her'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+					!! minut -= 10
+					!! gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'beast'
+					!! gs 'stat'
+				end
+			elseif rand(1,8) = 1 and phmasturb_me = 0:
+				*clr
+				!! ''
+				phmasturb_me = 1
+				gs 'arousal', 'masturbate', 4
+				gs 'stat'
+				minut -= 4
+				gs 'stat'
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_me ('+rand(1,1)+').mp4"></video></center>'
+
+				if phmasturb_me = 1 and rand(1,4) = 1:
+					'Demon was trying to grope her, but Hell-lord stopped him'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+				end
+			end
+			
+			if phmasturb_me = 2:
+				'<<$phhellwhorename>> caress my clitor'
+				minut -= 10
+				gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'lesbian'
+				gs 'stat'
+			elseif phmasturb_me = 1:
+				'<<$phhellwhorename>> masturbates'
+			else
+				' '
+			end
+			
+			if phmasturb_me ! 0 and rand(1,6) = 1:
+				if phmasturb_me = 2:
+					'<<$phhellwhorename>> stopped masturbating me'
+				else
+					'<<$phhellwhorename>> stopped masturbate'
+				end
+				
+				phmasturb_me = 0
+			end
+		else
+			phasspain -= 1
+			
+			if phspeed = 1:
+				'HEll-lord penetrates <<$phhellwhorename>>''s ass'
+			else
+				'HEll-lord is fucking <<$phhellwhorename>>''s ass'
+			end
+			
+			if phmasturb_me = 2:
+				minut -= 10
+				'I caress <<$phhellwhorename>>''s clitor'
+				gs 'arousal', 'foreplay_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+			elseif phmasturb_me = 1:
+				minut -= 10
+				'I am rubbing my clitor'
+				gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group'
+				gs 'stat'
+			end
+			
+			
+			
+			act 'Kiss <<$phhellwhorename>>':
+				*clr & cla
+				gs 'arousal', 'kiss', rand(5,5), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+				'I feel relax cold feeling my mouth'
+				phmouthpain -= 5
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/kissing ('+rand(1,1)+').mp4"></video></center>'
+				phclientfunnow += 1
+				
+				
+				act 'Continue':
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+				end
+				
+				if rand(1,4) = 1:
+					'Demon gropes me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+					minut -= 10
+					gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'beast'
+					gs 'stat'
+				end
+			end
+			
+			act 'Caress <<$phhellwhorename>> clitor':
+				*clr & cla
+				gs 'arousal', 'foreplay_give', rand(5,10), 'prostitution', 'sub', 'lesbian'
+				gs 'stat'
+				phmasturb_me = 2
+				
+				phclientfunnow += 1
+				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_her ('+rand(1,1)+').mp4"></video></center>'
+				
+				act 'Continue':
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+				end
+				
+				if rand(1,4) = 1:
+					'Demon gropes me'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+					minut -= 10
+					gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'group', 'beast'
+					gs 'stat'
+				end
+			end
+			
+			if pcs_horny >=40 and phmasturb_me ! 1:
+				act 'Caress Myself':
+					*clr
+					phmasturb_me = 1
+					gs 'arousal', 'masturbate', 4
+					gs 'stat'
+					minut -= 4
+					gs 'stat'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/masturbate_me ('+rand(1,1)+').mp4"></video></center>'
+
+					if phmasturb_me = 1 and rand(1,4) = 1:
+						'Demon was trying to grope me, but Hell-lord stopped him'
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+					end
+				end
+			elseif phmasturb_me = 1:
+				act 'Stop masturbating':
+					phmasturb_me = 0
+				end
+			elseif pcs_horny < 40 and phmasturb_me ! 1:
+				act 'Caress Myself':
+					'I am NOT horny enought to do this'
+				end
+			end			
+		end
+		
+		if phmasturb_me = 1 and rand(1,4) = 1:
+			'Demon was trying to grope, but Hell-lord stopped him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/2 ass/demon gropes ('+rand(1,3)+').mp4"></video></center>'
+		end
+		
+		phspeed += 1
+	end	
+	
+	
+	phi += rand(1,2)
+	gs 'stat'
+	if phkillaction = 0:
+		if phsex > 100:
+			act 'continue':
+				*clr & cla			
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+			end	
+		end	
+		
+		if phsex = 102:
+			act 'jerk him':
+				phsex = 101
+				phspeed = 1
+				phrazom = 1
+				phsexme = 1
+				phmasturb_me = 0
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+			end
+		end
+		if phsex = 101:			
+			act 'blow him':
+				phsex = 102
+				phspeed = 1
+				phrazom = 1
+				phsexme = 1
+				phi -= 5				
+				phmasturb_me = 0
+				*clr & cla
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+			end
+		end
+		
+		if phsexme = 1:	
+			if phsex = 104:			
+				act 'change hole to my pussy':
+					phsex = 103
+					phspeed = 1
+					phi -= 3
+					phmasturb_me = 0
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+				end
+			end
+			if phsex = 103:			
+				act 'change hole to my ass':
+					phsex = 104
+					phspeed = 1
+					phi -= 3
+					phmasturb_me = 0
+					*clr & cla
+					gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+				end
+			end
+			
+			ztemp = 1
+			if phiphi ! 1 and phsex <= 102:
+				act 'Ask <<$phhellwhorename>> to do it instead of me':
+					if rand(1,3) = 1 and ztemp = 1:
+						*clr & cla
+						if phsex = 101:
+							'<<$phhellwhorename>> grab the dick and starts jerking'
+							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/1 hj/3 transition ('+rand(1,2)+').mp4"></video></center>'
+						end
+						phsexme = 2
+						phmasturb_me = 0
+						phrazom = 2
+						phi -= 3
+						act 'Continue':
+							*clr & cla
+							gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+						end
+					else
+						ztemp += 1
+						'<<$phhellwhorename>>: "No."'
+					end
+				end
+				!! act 'Ask <<$phhellwhorename>> to help':
+					!! if rand(1,3) = 1 and ztemp = 1:
+						!*clr & cla
+						!! phrazom = 1
+						!! phmasturb_me = 0
+						!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+					!! else
+						!! ztemp += 1
+						!! '<<$phhellwhorename>>: "No."'
+					!! end
+				!! end
+			end
+		end
+		
+		if phsex = 101 and phi >= rand(4,7):
+			phi = 0
+			phmasturb_me = 0
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/lord commands ('+rand(1,1)+').mp4"></video></center>'
+			
+			if rand(1,3) ! 1:			
+				phsex = 102
+				phspeed = 1
+				'HEll-lord: "Blow me"'
+				phmasturb_me = 0	
+				
+				if rand(1,3) = 1:
+					'He points on me'
+					phsexme = 1
+				else
+					'He points on <<$phhellwhorename>>'
+					phsexme = 2
+				end
+			elseif rand(1,2) = 1:
+				phsex = 103
+				phspeed = 1
+				'HEll-lord: "I want to fuck you"'
+				
+				phmasturb_me = 0
+				
+				if rand(1,3) = 1:
+					'He points on me'
+					phsexme = 1
+				else
+					'He points on <<$phhellwhorename>>'
+					phsexme = 2
+				end
+			else				
+				phsex = 104
+				phspeed = 1
+				'HEll-lord: "I want to fuck your ass"'
+				
+				phmasturb_me = 0
+				
+				if rand(1,3) = 1:
+					'HEll-lord points on me'
+					phsexme = 1
+				else
+					'He points on <<$phhellwhorename>>'
+					phsexme = 2
+				end
+			end
+		elseif phsex = 102 and phi >= rand(6,10):
+			phi = 0
+			phmasturb_me = 0
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/lord commands ('+rand(1,1)+').mp4"></video></center>'
+			
+			phsex = rand(103,104)
+			phspeed = 1
+			if phsex = 103: 'HEll-lord: "I want to fuck you"'	
+			if phsex = 104: 'HEll-lord: "I want to fuck your ass"'
+			
+			phmasturb_me = 0
+			
+			if rand(1,3) = 1:
+				'HEll-lord points on me'
+				if phsex = 103 and phsexme = 2: gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'bj to vag'
+				phsexme = 1
+			else
+				'He points on <<$phhellwhorename>>'
+				if phsex = 103 and phsexme = 1: gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'bj to vag'
+				phsexme = 2
+			end
+		elseif phsex = 103 and phi >= rand(7,11):
+			phi = 0
+			phmasturb_me = 0
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/lord commands ('+rand(1,1)+').mp4"></video></center>'
+			
+			if rand(1,3) = 1:
+			phsex = 104
+				phspeed = 1
+				'HEll-lord: "I want to fuck your ass"'
+				
+				phmasturb_me = 0
+				
+				if rand(1,3) = 1:
+					'HEll-lord points on me'
+					phsexme = 1
+				else
+					'He points on <<$phhellwhorename>>'
+					phsexme = 2
+				end
+			else
+				'HEll-lord: "Change the whore!"'
+				phspeed = 1
+				if phsexme = 1: 
+					phsexme = 2
+				else
+					phsexme = 1
+				end
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'vag to vag'
+			end
+		elseif phsex = 104 and phi >= rand(8,13):
+			phi = 0
+			phmasturb_me = 0
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/lord commands ('+rand(1,1)+').mp4"></video></center>'
+			
+			
+			if rand(1,3) ! 1:
+				phsex = 103
+				phspeed = 1
+				'HEll-lord: "I want to fuck you"'
+				
+				phmasturb_me = 0
+				
+				if rand(1,3) = 1:
+					'He points on me'
+					phsexme = 1
+				else
+					'He points on <<$phhellwhorename>>'
+					phsexme = 2
+				end
+			else
+				phspeed = 1
+				phsex = 102
+				if rand(1,2) = 1:					
+					if rand(1,2) = 1:
+						ztemp = 1
+						phrazom = 2
+						'HEll-lord: "Get off and blow me!"'						
+					else
+						ztemp = 2
+						'HEll-lord: "I want double blow!"'
+						phrazom = 1
+					end					
+				else
+					ztemp = 3
+					'HEll-lord: "Get off me, let the other one clow me!"'
+					phrazom = 2
+					if phsexme = 1: 
+						phsexme = 2
+					else
+						phsexme = 1
+					end
+				end
+				gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'ass to bj'
+			end
+		elseif phsex = 104 and phi >= 8 and rand(1,15) = 1:
+			phi -= 3
+			phmasturb_me = 0
+			cla
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/lord commands ('+rand(1,1)+').mp4"></video></center>'
+			
+			phsex = 104
+			phspeed = 1
+			'HEll-lord: "Change the whore!"'
+			
+			phmasturb_me = 0
+			
+			if phsexme = 1: 
+				phsexme = 2
+			else
+				phsexme = 1
+			end
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'ass to ass'
+			
+		else
+			' '
+		end
+		
+		act 'continue':
+			*clr & cla			
+			gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'sex'
+		end	
+	end
+	
+	
+	if rand(1,4) = 1:
+		if rand(1,3) = 1:
+			'Demon gropes wall-tied whores'
+			'Hell-lord angers on him'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/2 demon gropes - lord anger ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'Demon gropes wall-tied whores'
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/backup chicks/1 demon gropes ('+rand(1,2)+').mp4"></video></center>'
+		end
+	end
+	
+	
+	if phclientfunnow < 40 and $cum1 < 200 and phchoke = 0:
+		*clr & cla
+		phchoke = 1
+		'HEll-lord: "This chicks are boaring!!!"'
+		'<<$phhellwhorename>>: "No, no! PLEASE!! NO!!!"'
+		'Demon grabs me on his hand and pushed me in the wall… then he do the same to the <<$phhellwhorename>>'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/change to the backup chick ('+rand(1,1)+').mp4"></video></center>'
+		
+		'Wall tottaly absorbes me to some black small room'
+		'The rithual is failed!'
+		
+		
+		killvar 'phchoke'
+		killvar 'phdemonkara'
+		killvar 'phhandpain'
+		killvar 'phhellwhorename'
+		gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+	elseif $cum1 <= 0:
+		*clr & cla
+		!! he cums		
+		!<<$phhellwhorename>>
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/4 lord commands ('+rand(1,1)+').mp4"></video></center>'
+		'HELL-LORD: "I AM READY!!!"'
+		'demon gather us in front of Hell-lord''s cock'
+		
+		act 'wait':
+			*clr & cla			
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/4 cum/2 ('+rand(1,3)+').mp4"></video></center>'
+			'Hell-lord jerking…'
+			gs 'arousal', 'voyeur', rand(8,10), 'prostitution', 'sub', 'group', 'humiliation'
+			gs 'stat'
+			
+			act 'wait':
+				*clr & cla				
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/4 cum/4 he cums ('+rand(1,1)+').mp4"></video></center>'
+				'Hell-lord cums…'
+				*nl
+				'The cum are going and going… and, and it is extriamelly hot!!!!'
+				sexvolume = 400
+				gs 'cum_call','hair',$boy
+				gs 'stat'
+				gs 'cum_call','face',$boy
+				gs 'stat'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				gs 'cum_call','arms',$boy
+				gs 'stat'
+				gs 'cum_call','hands',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','breasts',$boy
+				gs 'stat'
+				
+				
+				gs 'pain', rand(1,6), 'head', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'hair', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'ears', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'eyebrows', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'cheeks', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'nose', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'mouth', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'lips', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'tongue', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'thighs', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'legL', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'legR', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'shoulders', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'armL', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'armR', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'handL', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'handR', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'fingers', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'chest', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'breasts', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'nipples', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'ribs', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'tummy', 'burn'
+				gs 'stat'
+				gs 'pain', rand(1,6), 'pubic', 'burn'
+				gs 'stat'
+				killvar 'phhandpain'
+				killvar 'phmouthpain'
+				killvar 'phvagpain'
+				killvar 'phasspain'
+
+				PH_full_pay += 5000 * phclientfunnow / 100
+				
+				gs 'arousal', 'end'
+				gs 'stat'
+				
+				act 'wait':
+					*clr & cla					
+					'Demon locked us and walk away'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/4 cum/5 exit ('+rand(1,1)+').mp4"></video></center>'
+					
+					
+					gs 'arousal', 'end'
+					gs 'stat'
+					
+					act 'crawl':
+						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/0 start/rithual/4 lord commands ('+rand(1,1)+').mp4"></video></center>'
+						PH_consanguinity_D = 4
+						'VOICE FROM NOWHERE: "Perfect… Thank you for your service…"'
+						
+						'Hell-lord: "I like this one." - he points on me'
+						'Demon: "You MUST do this again other time."'
+						
+						act 'Agree':
+							cla
+							Helllordwhore = daystart
+							'Demon: "Nice, see you later."'
+							
+							killvar 'phchoke'
+							killvar 'phdemonkara'
+							killvar 'phhandpain'
+							killvar 'phhellwhorename'
+							gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+						end
+						
+						act 'RUN':
+							killvar 'Helllordwhore'
+							killvar 'phchoke'
+							killvar 'phdemonkara'
+							killvar 'phhandpain'
+							killvar 'phhellwhorename'
+							gs 'mod_public_WC_street_box_magicwhore_daily', 'task_end'
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'man':
+	!! gs 'mod_public_WC_street_box_magicwhore_rithual_D4', 'man'
+	if $cum1 >= 400: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-██████████ ') + ' '
+	if $cum1 >= 390 and $cum1 < 400: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-█████████_ ') + ' '
+	if $cum1 >= 380 and $cum1 < 390: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-████████__ ') + ' '
+	if $cum1 >= 370 and $cum1 < 380: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-███████___ ') + ' '
+	if $cum1 >= 360 and $cum1 < 370: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-██████____ ') + ' '
+	if $cum1 >= 350 and $cum1 < 360: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-█████_____ ') + ' '
+	if $cum1 >= 340 and $cum1 < 350: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-████______ ') + ' '
+	if $cum1 >= 330 and $cum1 < 340: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-███_______ ') + ' '
+	if $cum1 >= 320 and $cum1 < 330: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-██________ ') + ' '
+	if $cum1 >= 310 and $cum1 < 320: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-█_________ ') + ' '	
+	if $cum1 >= 300 and $cum1 < 310: $zadovolennia1 = $func('wrap', 'accent', ' ██████████-██████████-██████████-__________ ') + ' '	
+	if $cum1 >= 290 and $cum1 < 300: $zadovolennia1 = '<font color = green	> ██████████-██████████-█████████_-__________ </font> '
+	if $cum1 >= 280 and $cum1 < 290: $zadovolennia1 = '<font color = green	> ██████████-██████████-████████__-__________ </font> '
+	if $cum1 >= 270 and $cum1 < 280: $zadovolennia1 = '<font color = green	> ██████████-██████████-███████___-__________ </font> '
+	if $cum1 >= 260 and $cum1 < 270: $zadovolennia1 = '<font color = green	> ██████████-██████████-██████____-__________ </font> '
+	if $cum1 >= 250 and $cum1 < 260: $zadovolennia1 = '<font color = green	> ██████████-██████████-█████_____-__________ </font> '
+	if $cum1 >= 240 and $cum1 < 250: $zadovolennia1 = '<font color = green	> ██████████-██████████-████______-__________ </font> '
+	if $cum1 >= 230 and $cum1 < 240: $zadovolennia1 = '<font color = green	> ██████████-██████████-███_______-__________ </font> '
+	if $cum1 >= 220 and $cum1 < 230: $zadovolennia1 = '<font color = green	> ██████████-██████████-██________-__________ </font> '
+	if $cum1 >= 210 and $cum1 < 220: $zadovolennia1 = '<font color = green	> ██████████-██████████-█_________-__________ </font> '	
+	if $cum1 >= 200 and $cum1 < 210: $zadovolennia1 = '<font color = green	> ██████████-██████████-__________-__________ </font> '	
+	if $cum1 >= 190 and $cum1 < 200: $zadovolennia1 = '<font color = yellow	> ██████████-█████████_-__________-__________ </font> '
+	if $cum1 >= 180 and $cum1 < 190: $zadovolennia1 = '<font color = yellow	> ██████████-████████__-__________-__________ </font> '
+	if $cum1 >= 170 and $cum1 < 180: $zadovolennia1 = '<font color = yellow	> ██████████-███████___-__________-__________ </font> '
+	if $cum1 >= 160 and $cum1 < 170: $zadovolennia1 = '<font color = yellow	> ██████████-██████____-__________-__________ </font> '
+	if $cum1 >= 150 and $cum1 < 160: $zadovolennia1 = '<font color = yellow	> ██████████-█████_____-__________-__________ </font> '
+	if $cum1 >= 140 and $cum1 < 150: $zadovolennia1 = '<font color = yellow	> ██████████-████______-__________-__________ </font> '
+	if $cum1 >= 130 and $cum1 < 140: $zadovolennia1 = '<font color = yellow	> ██████████-███_______-__________-__________ </font> '
+	if $cum1 >= 120 and $cum1 < 130: $zadovolennia1 = '<font color = yellow	> ██████████-██________-__________-__________ </font> '
+	if $cum1 >= 110 and $cum1 < 120: $zadovolennia1 = '<font color = yellow	> ██████████-█_________-__________-__________ </font> '	
+	if $cum1 >= 100 and $cum1 < 110: $zadovolennia1 = '<font color = yellow	> ██████████-__________-__________-__________ </font> '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> __________-__________-__________-__________ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> █████████_-__________-__________-__________ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ████████__-__________-__________-__________ </font> '
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___-__________-__________-__________ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____-__________-__________-__________ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____-__________-__________-__________ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ████______-__________-__________-__________ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = red	> ███_______-__________-__________-__________ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> ██________-__________-__________-__________ </font> '
+	if $cum1 > 0 and $cum1 < 10: $zadovolennia1 = '<font color = red	> █_________-__________-__________-__________ </font> '
+	if $cum1 <= 0: 
+		$zadovolennia1 = '<font color = red	> HEll-lord cums! </font> '
+	end
+	!! if $cum1 >= -100 and $cum1 < 0: $zadovolennia1 = 'climax'
+	'<center>HEll-lord endurance meter: <<$zadovolennia1>></center>'
+	*nl
+	*nl
+	'<center>HEll-lord FUN meter:</center>'
+	if phclientfunnow <= 5:
+		'<font color = yellow	> __________ </font> '
+	elseif phclientfunnow <= 10:
+		'<font color = yellow	> █_________ </font> '
+	elseif phclientfunnow <= 20:
+		'<font color = yellow	> ██________ </font> '
+	elseif phclientfunnow <= 30:
+		'<font color = yellow	> ███_______ </font> '
+	elseif phclientfunnow <= 40:
+		'<font color = yellow	> ████______ </font> '
+	elseif phclientfunnow <= 50:
+		'<font color = yellow	> █████_____ </font> '
+	elseif phclientfunnow <= 60:
+		'<font color = yellow	> ██████____ </font> '
+	elseif phclientfunnow <= 70:
+		'<font color = yellow	> ███████___ </font> '
+	elseif phclientfunnow <= 80:
+		'<font color = yellow	> ████████__ </font> '
+	elseif phclientfunnow <= 90:
+		'<font color = yellow	> █████████_ </font> '
+	elseif phclientfunnow <= 100:
+		'<font color = yellow	> ██████████ </font> '
+	end
+	
+	*nl
+	*nl
+	
+	'<center>My Burns:</center>'
+	'Hands: <<phhandpain>>/10'
+	'Mouth: <<phmouthpain>>/10'
+	'Vagine: <<phvagpain>>/10'
+	'Asshole: <<phasspain>>/10'
+end
+
+
+
+if $ARGS[0] = 'ass to ass':
+	'Demon swaps whores on the Hell-lor'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/ass to ass/otherwhore ('+rand(1,3)+').mp4"></video></center>'
+end
+
+if $ARGS[0] = 'ass to bj':
+	if ztemp = 1:
+		!! bj-1
+		'Demon uplift the whore from the Hell-lord and pushes her to suck Hell-lord''s cock'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/ass to bj/1 wantbj ('+rand(1,1)+').mp4"></video></center>'		
+	elseif ztemp = 2:
+		!! bj-2
+		'Demon pushes both whores to suck Hell-lord''s dick'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/ass to bj/2 wantbj ('+rand(1,1)+').mp4"></video></center>'		
+	elseif ztemp = 3:
+		!! bj-other whore
+		'Demon uplift the whore from the Hell-lord and pushes other one clean his dick'
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/ass to bj/otherwhore ('+rand(1,2)+').mp4"></video></center>'		
+	end
+	killvar 'ztemp = 1'
+end
+
+if $ARGS[0] = 'bj to vag':
+	'Demon pushed other whore to suck Hell-lord''s cock'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/bj to vag/otherwhore ('+rand(1,1)+').mp4"></video></center>'
+end
+
+if $ARGS[0] = 'vag to vag':
+	'Demon swaps whores on the Hell-lor'
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/newstreet/whore/magicwhore/Evil rithual/4/3 change/vag to vag/otherwhore ('+rand(1,1)+').mp4"></video></center>'
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- mod_public_WC_street_box_magicwhore_rithual_D4 ---------------------------------
+
