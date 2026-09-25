@@ -140,7 +140,7 @@ if $ARGS[0] = 'start2':
 
 
 
-	if $GBPH_act_me = 'groped':		
+	if GBPH_act_me = -9001:		
 		act 'wait':					
 			cla							
 			gt 'mod_public_WC_2girls1booth2', 'start2'
@@ -148,7 +148,7 @@ if $ARGS[0] = 'start2':
 	end
 
 
-	if $GBPH_act_me = 0 and $GBPH_act_she = 0:
+	if GBPH_act_me = 0 and GBPH_act_she = 0:
 		If phtemp >= 1:
 			if GBPH_nude_she + GBPH_nude_Me = 2:
 				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/wait/wait_dick ('+rand(1,1)+').jpg"></center>'	
@@ -184,7 +184,7 @@ if $ARGS[0] = 'start2':
 		end
 	end
 
-	if $GBPH_act_she = 'groped':		
+	if GBPH_act_she = -9001:		
 		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
 		$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
 
@@ -193,7 +193,7 @@ if $ARGS[0] = 'start2':
 
 		GBPH_arounsed_she += rand(3,5)
 		GBPH_arounsed_me = pcs_horny
-		$GBPH_act_she = 'groped'
+		GBPH_act_she = -9001
 	end
 
 	
@@ -223,11 +223,11 @@ if $ARGS[0] = 'start2':
 
 
 	!якщо я опрацьовую і НЕ тугезер, то скільки і як?
-	If me_do_dicks > 0 and $GBPH_act_me ! 'together':
+	If me_do_dicks > 0 and GBPH_act_me ! -10000:
 		i = 0		
 		:GBPHloopactsmestate2
 		i += 1
-		$GBPH_act_me = 0
+		GBPH_act_me = 0
 		
 		if (GBPH_act_man[i] / 100) MOD 10 = 1:
 			GB_PH_hj += 1
@@ -247,7 +247,7 @@ if $ARGS[0] = 'start2':
 			elseif GB_PH_hj = 2:
 				temp += 101
 			end
-			$GBPH_act_me = temp
+			GBPH_act_me = temp
 		else
 			jump 'GBPHloopactsmestate2'
 		end
@@ -373,7 +373,7 @@ if $ARGS[0] = 'start2':
 			jump 'GBPHloopWAITINGman3'
 		end
 		
-		if phtemp >= 1 and ($GBPH_act_me = 0):
+		if phtemp >= 1 and (GBPH_act_me = 0):
 			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/grope ('+rand(1,1)+').mp4"></video></center>'			
 			gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
 			gs 'stat'
@@ -381,15 +381,15 @@ if $ARGS[0] = 'start2':
 
 			GBPH_arounsed_she += rand(0,2)
 			GBPH_arounsed_me = pcs_horny
-		elseif phtemp >= 1 and $GBPH_act_she = 0:
+		elseif phtemp >= 1 and GBPH_act_she = 0:
 			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/grope ('+rand(1,1)+').mp4"></video></center>'				
 			gs 'arousal', 'voyeur', rand(5,7), 'prostitution', 'gloryhole'
 			gs 'stat'
 
 			GBPH_arounsed_she += rand(3,5)
 			GBPH_arounsed_me = pcs_horny	
-		elseif ($GBPH_act_me = 0) and ($GBPH_act_she > 0):
-			if $GBPH_act_she = 1010:
+		elseif (GBPH_act_me = 0) and (GBPH_act_she > 0):
+			if GBPH_act_she = 1010:
 				if rand(1,2) = 1:
 					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w1ac/2+wait ('+rand(1,3)+').mp4"></video></center>'	
 				else
@@ -401,7 +401,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny
-			elseif $GBPH_act_she = 9000:
+			elseif GBPH_act_she = 9000:
 				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w1ac/34+wait ('+rand(1,1)+').jpg"></center>'
 				gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
 				gs 'stat'
@@ -410,8 +410,8 @@ if $ARGS[0] = 'start2':
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny				
 			end
-		elseif ($GBPH_act_she = 0) and ($GBPH_act_me > 0):
-			if $GBPH_act_me = 1010:
+		elseif (GBPH_act_she = 0) and (GBPH_act_me > 0):
+			if GBPH_act_me = 1010:
 				if rand(1,2) = 1:
 					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w1ac/2+wait ('+rand(1,3)+').mp4"></video></center>'	
 				else
@@ -423,7 +423,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny		
-			elseif $GBPH_act_me = 9000:
+			elseif GBPH_act_me = 9000:
 				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w1ac/34+wait ('+rand(1,1)+').jpg"></center>'
 				gs 'arousal', 'voyeur', rand(5,7), 'prostitution', 'gloryhole'
 				gs 'stat'
@@ -433,7 +433,7 @@ if $ARGS[0] = 'start2':
 				GBPH_arounsed_me = pcs_horny	
 			end
 		elseif GBPH_side_she = GBPH_side_me:
-			if $GBPH_act_me ! 9000 and $GBPH_act_she ! 9000 and rand(1,4) = 1:
+			if GBPH_act_me ! 9000 and GBPH_act_she ! 9000 and rand(1,4) = 1:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w2ac grope/grope+grope ('+rand(1,2)+').mp4"></video></center>'
 				gs 'arousal', 'voyeur', rand(5,7), 'prostitution', 'gloryhole'
 				gs 'stat'
@@ -448,7 +448,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny				
-			elseif ($GBPH_act_me = 1100 OR $GBPH_act_me = 1001) and $GBPH_act_she ! 9000:
+			elseif (GBPH_act_me = 1100 OR GBPH_act_me = 1001) and GBPH_act_she ! 9000:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w2ac grope/1+grope ('+rand(1,1)+').mp4"></video></center>'	
 				gs 'arousal', 'voyeur', rand(5,7), 'prostitution', 'gloryhole'
 				gs 'stat'
@@ -456,7 +456,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny								
-			elseif $GBPH_act_me = 1010 and $GBPH_act_she ! 9000:
+			elseif GBPH_act_me = 1010 and GBPH_act_she ! 9000:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w2ac grope/2+grope ('+rand(1,1)+').mp4"></video></center>'	
 				gs 'arousal', 'voyeur', rand(5,7), 'prostitution', 'gloryhole'
 				gs 'stat'
@@ -464,7 +464,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny				
-			elseif ($GBPH_act_she = 1100 OR $GBPH_act_she = 1001) and $GBPH_act_me ! 9000:
+			elseif (GBPH_act_she = 1100 OR GBPH_act_she = 1001) and GBPH_act_me ! 9000:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w2ac grope/1+grope ('+rand(1,1)+').mp4"></video></center>'
 				gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
 				gs 'stat'
@@ -472,7 +472,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny				
-			elseif $GBPH_act_she = 1010 and $GBPH_act_me ! 9000:
+			elseif GBPH_act_she = 1010 and GBPH_act_me ! 9000:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w2ac grope/2+grope ('+rand(1,1)+').mp4"></video></center>'
 				gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
 				gs 'stat'
@@ -481,7 +481,7 @@ if $ARGS[0] = 'start2':
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny
 			end
-		elseif $GBPH_act_me = 1101:
+		elseif GBPH_act_me = 1101:
 			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/1w3ac grope/1+1+grope ('+rand(1,1)+').mp4"></video></center>'
 			gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
 			gs 'stat'
@@ -489,8 +489,8 @@ if $ARGS[0] = 'start2':
 
 			GBPH_arounsed_she += rand(0,2)
 			GBPH_arounsed_me = pcs_horny
-		elseif $GBPH_act_me = $GBPH_act_she and $GBPH_act_me = 'together':
-			if $GBPH_act_me_together = 1100 AND $GBPH_act_she_together = 1020:
+		elseif GBPH_act_me = GBPH_act_she and GBPH_act_me = -10000:
+			if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1020:
 				if rand(1,2) = 1:
 					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/together/2+1 ('+rand(1,1)+').jpg"></center>'
 				else
@@ -502,7 +502,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny					
-			elseif $GBPH_act_she_together = 1100 AND $GBPH_act_me_together = 1020:
+			elseif GBPH_act_she_together = 1100 AND GBPH_act_me_together = 1020:
 				if rand(1,2) = 1:
 					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/together/2+1 ('+rand(1,1)+').jpg"></center>'
 				else
@@ -514,7 +514,7 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny
-			elseif $GBPH_act_she_together = 1020 AND $GBPH_act_me_together = 1020:
+			elseif GBPH_act_she_together = 1020 AND GBPH_act_me_together = 1020:
 				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/together/2+2 ('+rand(1,2)+').mp4"></video></center>'
 				if rand(1,2) = 1:
 					gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'gloryhole', 'sub'
@@ -539,12 +539,12 @@ if $ARGS[0] = 'start2':
 
 
 	
-	if (GBPH_active_man[1] + GBPH_active_man[2] + GBPH_active_man[3] + GBPH_active_man[4] + GBPH_active_man[5] + GBPH_active_man[6] = 0) OR ($GBPH_act_me = 0 and $GBPH_act_she = 0):
+	if (GBPH_active_man[1] + GBPH_active_man[2] + GBPH_active_man[3] + GBPH_active_man[4] + GBPH_active_man[5] + GBPH_active_man[6] = 0) OR (GBPH_act_me = 0 and GBPH_act_she = 0):
 		!самий старт або ніхто нічого не робить
 
 		!перевір її дії тут
 		if GBPH_act_man[4] = 1000 OR GBPH_act_man[5] = 1000 OR GBPH_act_man[6] = 1000:
-			if $GBPH_act_she ! 'groped' and rand(1,10) >= 5 and she_do_dicks = 0:
+			if GBPH_act_she ! -9001 and rand(1,10) >= 5 and she_do_dicks = 0:
 				!працює з клієнтом
 
 				
@@ -591,7 +591,7 @@ if $ARGS[0] = 'start2':
 							$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'			
 						end	
 					end
-					$GBPH_act_she = 1100
+					GBPH_act_she = 1100
 
 					i = GBPHtemp
 					temp = 2 + 4 - (GBPH_condom[i]*12)
@@ -635,7 +635,7 @@ if $ARGS[0] = 'start2':
 							$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
 						end	
 					end
-					$GBPH_act_she = 1010
+					GBPH_act_she = 1010
 
 					i = GBPHtemp
 					temp = 2 + 8 - (GBPH_condom[i]*12)
@@ -682,7 +682,7 @@ if $ARGS[0] = 'start2':
 							end
 						end
 					end
-					$GBPH_act_she = 9000
+					GBPH_act_she = 9000
 
 					i = GBPHtemp
 					temp = 0 + 10 - (GBPH_condom[i]*12)
@@ -696,7 +696,7 @@ if $ARGS[0] = 'start2':
 				gs 'stat'
 	
 				GBPH_arounsed_me = pcs_horny
-			elseif $GBPH_act_me ! 'groped' and she_do_dicks = 0:
+			elseif GBPH_act_me ! -9001 and she_do_dicks = 0:
 				!cla
 				!працює зі мною
 
@@ -714,8 +714,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(0,2)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'tease'
-					!$GBPH_act_she = 'tease'
+					!GBPH_act_me = -9002
+					!GBPH_act_she = -9002
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -768,8 +768,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(1,3)
 					GBPH_arounsed_me = pcs_horny
-					$GBPH_act_me = 'kiss'
-					$GBPH_act_she = 'kiss'
+					GBPH_act_me = -9003
+					GBPH_act_she = -9003
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -812,8 +812,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(3,5)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = ''
-					$GBPH_act_she = 'foreplay'
+					!GBPH_act_me = 0
+					GBPH_act_she = -9006
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -858,8 +858,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(1,3)
 						GBPH_arounsed_me = pcs_horny
-						!$GBPH_act_me = ''
-						$GBPH_act_she = 'masturbate_give'
+						!GBPH_act_me = 0
+						GBPH_act_she = -9008
 						
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/other ('+rand(1,2)+').jpg"></center>'
 						$shecon = '' & $mecon = ''
@@ -874,8 +874,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(5,10)
 						GBPH_arounsed_me = pcs_horny
-						!$GBPH_act_me = ''
-						$GBPH_act_she = 'masturbate'
+						!GBPH_act_me = 0
+						GBPH_act_she = -9007
 						
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'
 						$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'
@@ -883,14 +883,14 @@ if $ARGS[0] = 'start2':
 				else
 					!cuni	
 					cla
-					$GBPH_act_she = 'cuni'
+					GBPH_act_she = -9004
 					'She licks my pussy'
 					gs 'arousal', 'cuni', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 					gs 'stat'
 
 					GBPH_arounsed_she += rand(1,35)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = ''
+					!GBPH_act_me = 0
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -920,7 +920,7 @@ if $ARGS[0] = 'start2':
 			else
 				'she looks at me and smiles'
 			end
-		elseif $GBPH_act_me ! 'groped':
+		elseif GBPH_act_me ! -9001:
 			!cla
 			!працює зі мною
 			temp = rand(1,50) + GBPH_arounsed_she
@@ -937,8 +937,8 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny
-				!$GBPH_act_me = 'tease'
-				!$GBPH_act_she = 'tease'
+				!GBPH_act_me = -9002
+				!GBPH_act_she = -9002
 
 
 				if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -987,8 +987,8 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(1,3)
 				GBPH_arounsed_me = pcs_horny
-				$GBPH_act_me = 'kiss'
-				$GBPH_act_she = 'kiss'
+				GBPH_act_me = -9003
+				GBPH_act_she = -9003
 
 
 				if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1031,8 +1031,8 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny
-				!$GBPH_act_me = ''
-				$GBPH_act_she = 'foreplay'
+				!GBPH_act_me = 0
+				GBPH_act_she = -9006
 
 
 				if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1076,8 +1076,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(1,3)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = ''
-					$GBPH_act_she = 'masturbate_give'
+					!GBPH_act_me = 0
+					GBPH_act_she = -9008
 					
 					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/other ('+rand(1,2)+').jpg"></center>'
 					$shecon = '' & $mecon = ''
@@ -1092,22 +1092,22 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(5,10)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = ''
-					$GBPH_act_she = 'masturbate'
+					!GBPH_act_me = 0
+					GBPH_act_she = -9007
 					
 					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'
 					$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'
 				end
 			else
 				!cuni	
-				$GBPH_act_she = 'cuni'
+				GBPH_act_she = -9004
 				'She licks my pussy'
 				gs 'arousal', 'cuni', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 				gs 'stat'
 
 				GBPH_arounsed_she += rand(1,35)
 				GBPH_arounsed_me = pcs_horny
-				!$GBPH_act_me = ''
+				!GBPH_act_me = 0
 
 
 				if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1160,10 +1160,10 @@ if $ARGS[0] = 'start2':
 						if GBPH_active_man[6] = 0: otemp = 6 & i = 6					
 					end
 
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001: 
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001: 
 						temp = rand(1,10)
 						if temp <= 4:
-							$GBPH_act_she = 1101
+							GBPH_act_she = 1101
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1010
@@ -1176,8 +1176,8 @@ if $ARGS[0] = 'start2':
 								$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
 							end	
 						elseif temp <= 7:
-							if $GBPH_act_she = 1100: $GBPH_act_she = 1110
-							if $GBPH_act_she = 1001: $GBPH_act_she = 1011
+							if GBPH_act_she = 1100: GBPH_act_she = 1110
+							if GBPH_act_she = 1001: GBPH_act_she = 1011
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1020	
@@ -1195,8 +1195,8 @@ if $ARGS[0] = 'start2':
 								$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
 							end						
 						else
-							if $GBPH_act_she = 1100: $GBPH_act_she = 9100
-							if $GBPH_act_she = 1001: $GBPH_act_she = 9001
+							if GBPH_act_she = 1100: GBPH_act_she = 9100
+							if GBPH_act_she = 1001: GBPH_act_she = 9001
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1030	
@@ -1209,8 +1209,8 @@ if $ARGS[0] = 'start2':
 								$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
 							end					
 						end
-					elseif $GBPH_act_she = 1010:
-							if $GBPH_act_she = 1010: $GBPH_act_she = 1110							
+					elseif GBPH_act_she = 1010:
+							if GBPH_act_she = 1010: GBPH_act_she = 1110							
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1010	
@@ -1227,8 +1227,8 @@ if $ARGS[0] = 'start2':
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
 								$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
 							end						
-					elseif $GBPH_act_she = 9000:
-						$GBPH_act_she = 9100
+					elseif GBPH_act_she = 9000:
+						GBPH_act_she = 9100
 						i = otemp
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1010
@@ -1243,7 +1243,7 @@ if $ARGS[0] = 'start2':
 					end
 				else
 					'She is working a dick.'
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 						if GBPH_condom[i] = 0:
 							if GBPH_color_man[i] = 1:
 								'<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
@@ -1266,7 +1266,7 @@ if $ARGS[0] = 'start2':
 								$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'			
 							end	
 						end
-					elseif $GBPH_act_she = 1010:
+					elseif GBPH_act_she = 1010:
 						if GBPH_condom[i] = 0:
 							if GBPH_color_man[i] = 1:
 								temp = rand(1,5)
@@ -1296,7 +1296,7 @@ if $ARGS[0] = 'start2':
 								$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
 							end	
 						end
-					elseif $GBPH_act_she = 9000:
+					elseif GBPH_act_she = 9000:
 						if GBPH_condom[i] = 0:
 							if GBPH_color_man[i] = 1:
 								'<center><video autoplay loop src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
@@ -1332,7 +1332,7 @@ if $ARGS[0] = 'start2':
 					end
 				end
 			elseif she_do_dicks = 2:
-				if (phtemp > 2) and ($GBPH_act_she = 1101 OR $GBPH_act_she = 1110 OR $GBPH_act_she = 1011):
+				if (phtemp > 2) and (GBPH_act_she = 1101 OR GBPH_act_she = 1110 OR GBPH_act_she = 1011):
 					'She start pleasuring 3 dicks.'
 
 					if otemp <= 3:
@@ -1345,21 +1345,21 @@ if $ARGS[0] = 'start2':
 						if GBPH_active_man[6] = 0: otemp = 6 & i = 6
 					end
 
-					if $GBPH_act_she = 1101:
+					if GBPH_act_she = 1101:
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1020
-						$GBPH_act_she = 1111						
-					elseif $GBPH_act_she = 1110 OR $GBPH_act_she = 1011:
+						GBPH_act_she = 1111						
+					elseif GBPH_act_she = 1110 OR GBPH_act_she = 1011:
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1010
-						$GBPH_act_she = 1111						
+						GBPH_act_she = 1111						
 					end
 					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/3 dicks/1+2+1/1+2+1 ('+rand(1,9)+').mp4"></video></center>'
 					$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/3 dicks/1+2+1/1+2+1 ('+rand(1,9)+').mp4"></video></center>'
 				else
 					'She is working 2 dicks.'
 						
-					if $GBPH_act_she = 9100 OR $GBPH_act_she = 9001:
+					if GBPH_act_she = 9100 OR GBPH_act_she = 9001:
 						if rand(1,2) = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
 							$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'				
@@ -1367,7 +1367,7 @@ if $ARGS[0] = 'start2':
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
 							$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_she = 1101:
+					elseif GBPH_act_she = 1101:
 						if GBPH_color_man[i] = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'
 							$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'	
@@ -1375,7 +1375,7 @@ if $ARGS[0] = 'start2':
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
 							$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_she = 1110 OR $GBPH_act_she = 1011:
+					elseif GBPH_act_she = 1110 OR GBPH_act_she = 1011:
 						if GBPH_color_man[i] = 1:
 							if rand(1,2) = 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'		
@@ -1438,7 +1438,7 @@ if $ARGS[0] = 'start2':
 				jump 'GBPHloopWAITINGman'
 			end
 
-			if GBPH_side_man[i] = 1 and $GBPH_act_me ! 'groped':
+			if GBPH_side_man[i] = 1 and GBPH_act_me ! -9001:
 				'Guys hand appears from the wall. he reaches my pussy and starts groping me'
 				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
 				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
@@ -1448,12 +1448,12 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(0,2)
 				GBPH_arounsed_me = pcs_horny
-				$GBPH_act_me = 'groped'
-				!$GBPH_act_she = ''
+				GBPH_act_me = -9001
+				!GBPH_act_she = 0
 
 				i = otemp
 				GBPH_act_man[i] = 1001
-			elseif GBPH_side_man[i] = 2 and $GBPH_act_she ! 'groped':
+			elseif GBPH_side_man[i] = 2 and GBPH_act_she ! -9001:
 				'Guys hand appears from the wall. he reaches her pussy and starts groping my collegue'
 				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
 				$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
@@ -1463,8 +1463,8 @@ if $ARGS[0] = 'start2':
 
 				GBPH_arounsed_she += rand(3,5)
 				GBPH_arounsed_me = pcs_horny
-				!$GBPH_act_me = 'groped'
-				$GBPH_act_she = 'groped'
+				!GBPH_act_me = -9001
+				GBPH_act_she = -9001
 
 				i = otemp
 				GBPH_act_man[i] = 1002
@@ -1472,7 +1472,7 @@ if $ARGS[0] = 'start2':
 		end
 		!check to grope
 
-		if $GBPH_act_me = 'groped':
+		if GBPH_act_me = -9001:
 			'I am enjoying...'
 
 			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/grope/wait+wait ('+rand(1,1)+').jpg"></center>'
@@ -1483,7 +1483,7 @@ if $ARGS[0] = 'start2':
 
 			GBPH_arounsed_she += rand(0,2)
 			GBPH_arounsed_me = pcs_horny
-			$GBPH_act_me = 'groped'
+			GBPH_act_me = -9001
 
 			act 'wait':					
 				cla							
@@ -1539,7 +1539,7 @@ if $ARGS[0] = 'start2':
 
 							GBPH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
 							GBPH_arounsed_me = pcs_horny
-							$GBPH_act_me = 'cuni'
+							GBPH_act_me = -9004
 
 
 							if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1579,7 +1579,7 @@ if $ARGS[0] = 'start2':
 
 								GBPH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
 								GBPH_arounsed_me = pcs_horny
-								$GBPH_act_me = 'cuni'
+								GBPH_act_me = -9004
 
 
 								if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1657,7 +1657,7 @@ if $ARGS[0] = 'start2':
 					end
 				end	
 
-				if $GBPH_act_me = 'cuni' and stat['rimming_give'] > 0:
+				if GBPH_act_me = -9004 and stat['rimming_give'] > 0:
 					act 'Eat her ass':
 						*clr & cla
 						'SHE: "Ow, my!"'
@@ -1670,7 +1670,7 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += ( rand(1,3) + stat['rimming_give']/10 )
 						GBPH_arounsed_me = pcs_horny
-						$GBPH_act_me = 'rimming'
+						GBPH_act_me = -9005
 
 
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/rimming/rimming ('+rand(1,3)+').jpg"></center>'	
@@ -1695,8 +1695,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(1,3)
 						GBPH_arounsed_me = pcs_horny
-						$GBPH_act_me = 'kiss'
-						$GBPH_act_she = 'kiss'
+						GBPH_act_me = -9003
+						GBPH_act_she = -9003
 
 
 						if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1750,8 +1750,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(3,5)
 					GBPH_arounsed_me = pcs_horny
-					$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					GBPH_act_me = -9006
+					!GBPH_act_she = 0
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -1799,8 +1799,8 @@ if $ARGS[0] = 'start2':
 
 						!GBPH_arounsed_she += rand(3,5)
 						GBPH_arounsed_me = pcs_horny
-						$GBPH_act_me = 'masturbate'
-						!$GBPH_act_she = ''
+						GBPH_act_me = -9007
+						!GBPH_act_she = 0
 						
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'
 						$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/masturb ('+rand(1,1)+').jpg"></center>'				
@@ -1828,8 +1828,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(3,12)
 						GBPH_arounsed_me = pcs_horny
-						$GBPH_act_me = 'masturbate_give'
-						!$GBPH_act_she = ''
+						GBPH_act_me = -9008
+						!GBPH_act_she = 0
 						
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/0_action/foreplay/masturb/other ('+rand(1,2)+').jpg"></center>'
 						$shecon = '' & $mecon = ''						
@@ -2031,8 +2031,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(0,2)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'tease'
-					!$GBPH_act_she = 'tease'
+					!GBPH_act_me = -9002
+					!GBPH_act_she = -9002
 
 
 					if GBPH_nude_she + GBPH_nude_Me = 2:
@@ -2062,7 +2062,7 @@ if $ARGS[0] = 'start2':
 			end
 		end
 		
-		if me_do_dicks = 1 and $GBPH_act_me ! 'together':
+		if me_do_dicks = 1 and GBPH_act_me ! -10000:
 			if GBPH_active_man[1] = 1 and (GBPH_act_man[1] / 100) MOD 10 > 0 : otemp = 1 & i = 1
 			if GBPH_active_man[2] = 1 and (GBPH_act_man[2] / 100) MOD 10 > 0 : otemp = 2 & i = 2
 			if GBPH_active_man[3] = 1 and (GBPH_act_man[3] / 100) MOD 10 > 0 : otemp = 3 & i = 3
@@ -2134,7 +2134,7 @@ if $ARGS[0] = 'start2':
 
 
 
-		if $GBPH_act_me ! 'groped' and me_do_dicks = 0:
+		if GBPH_act_me ! -9001 and me_do_dicks = 0:
 			if GBPH_man[1] = 1 and GBPH_active_man[1] = 0:
 				act 'please the dick from the hole #1':
 					cla
@@ -2185,9 +2185,9 @@ if $ARGS[0] = 'start2':
 		if she_do_dicks > 0:
 			act 'Ask her to please a dick together':
 				!together start option
-				$GBPH_act_me = 'together'
-				$GBPH_act_she_together = $GBPH_act_she
-				$GBPH_act_she = 'together'
+				GBPH_act_me = -10000
+				GBPH_act_she_together = GBPH_act_she
+				GBPH_act_she = -10000
 				cla
 				*clr
 				'She: "yes, girl, lets make this one special" - she point her finfer on a dick.'
@@ -2207,11 +2207,11 @@ if $ARGS[0] = 'start2':
 					else						
 						!together id 
 						if (GBPH_act_man[i] /10) MOD 10 = 1:
-							$GBPH_act_she_together = 1100
+							GBPH_act_she_together = 1100
 						elseif (GBPH_act_man[i] /10) MOD 10 = 2:
-							$GBPH_act_she_together = 1020
+							GBPH_act_she_together = 1020
 						else
-							$GBPH_act_she_together = 9000
+							GBPH_act_she_together = 9000
 						end
 
 
@@ -2219,7 +2219,7 @@ if $ARGS[0] = 'start2':
 						otemp = i
 						phtemp = 1356
 						GBPH_popularity += 2
-						$GBPH_act_me_together = 1100
+						GBPH_act_me_together = 1100
 						'I start jerk the dick from the hole #<<i>>.'
 					end
 				end
@@ -2239,14 +2239,14 @@ if $ARGS[0] = 'start2':
 
 
 
-				if $GBPH_act_me_together = 1100 OR $GBPH_act_she_together = 1100:
-					if $GBPH_act_me_together = 1100 AND $GBPH_act_she_together = 1100:
+				if GBPH_act_me_together = 1100 OR GBPH_act_she_together = 1100:
+					if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1100:
 						if rand(1,3) = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
+					elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
 						if GBPH_color_man[i] = 1:
 							if rand(1,3) ! 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,2)+').jpg"></center>'
@@ -2256,15 +2256,15 @@ if $ARGS[0] = 'start2':
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk_ch ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						if rand(1,12) <= 9:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
 						end	
 					end
-				elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
-					if $GBPH_act_me_together = 1020 AND $GBPH_act_she_together = 1020:
+				elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+					if GBPH_act_me_together = 1020 AND GBPH_act_she_together = 1020:
 						if GBPH_color_man[i] = 1:
 							if rand(1,11) <= 8:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
@@ -2278,10 +2278,10 @@ if $ARGS[0] = 'start2':
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
 							end		
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+2/34+2 ('+rand(1,2)+').mp4"></video></center>'
 					end
-				elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+				elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 					if rand(1,12) <= 9:
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 					else
@@ -2301,7 +2301,7 @@ if $ARGS[0] = 'start2':
 			end
 		end
 
-		if $GBPH_act_me ! 'groped' and $GBPH_act_she = 'tease':
+		if GBPH_act_me ! -9001 and GBPH_act_she = -9002:
 			cla
 			act 'Continue':	
 				cla							
@@ -2309,14 +2309,14 @@ if $ARGS[0] = 'start2':
 			end
 		end
 
-		if $GBPH_act_me ! 'groped' and $GBPH_act_she = 'kiss':
+		if GBPH_act_me ! -9001 and GBPH_act_she = -9003:
 			cla
 			act 'Continue':	
 				cla							
 				gs 'mod_public_WC_2girls1booth', 'start2'
 			end
 		end
-		if $GBPH_act_me ! 'groped' and $GBPH_act_she = 'masturbate_give':
+		if GBPH_act_me ! -9001 and GBPH_act_she = -9008:
 			cla
 			act 'Continue':	
 				cla							
@@ -2324,14 +2324,14 @@ if $ARGS[0] = 'start2':
 			end
 		end
 
-		if $GBPH_act_me ! 'groped' and $GBPH_act_she = 'cuni':
+		if GBPH_act_me ! -9001 and GBPH_act_she = -9004:
 			cla
 			act 'Continue':	
 				cla							
 				gs 'mod_public_WC_2girls1booth', 'start2'
 			end
 		end
-	elseif $GBPH_act_me = $GBPH_act_she and $GBPH_act_me = 'together':
+	elseif GBPH_act_me = GBPH_act_she and GBPH_act_me = -10000:
 		*clr
 		!together keep
 
@@ -2346,7 +2346,7 @@ if $ARGS[0] = 'start2':
 		if (GBPH_active_man[i] / 10) MOD 10 = 1:
 			if rand(1,10) <= 3:
 				'she decided to suck the guy'
-				$GBPH_act_she_together = 1020
+				GBPH_act_she_together = 1020
 				GBPH_act_man[i] += 10
 				gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 			end
@@ -2357,10 +2357,12 @@ if $ARGS[0] = 'start2':
 			gs 'mod_public_WC_2girls1booth', 'start2'
 		end
 
+		if PH_suck_order > 0: GBPH_act_she_together = 1020
+
 		!my actions
-		if $GBPH_act_me_together = 1100:
+		if GBPH_act_me_together = 1100:
 			i = otemp
-			if $GBPH_act_she_together = 1100:
+			if GBPH_act_she_together = 1100:
 				GBPH_act_man[i] = 1110
 				act 'lick clients balls':
 					cla 
@@ -2389,7 +2391,7 @@ if $ARGS[0] = 'start2':
 				act 'eat her pussy':
 					cla
 					*clr
-					$GBPH_act_me_together = 'cuni'
+					GBPH_act_me_together = -9002
 					gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 					gs 'stat'
 
@@ -2451,8 +2453,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(3,5)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2467,7 +2469,7 @@ if $ARGS[0] = 'start2':
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					PH_suck_order = 20
 					i = otemp
-					$GBPH_act_me_together = 1020
+					GBPH_act_me_together = 1020
 					GBPH_act_man[i] += 100
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
@@ -2479,7 +2481,7 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 					GBPH_act_man[i] += 200
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
@@ -2491,13 +2493,13 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 					GBPH_act_man[i] += 300
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
 					gt 'mod_public_WC_2girls1booth2', 'start2'
 				end
-			elseif $GBPH_act_she_together = 1020:
+			elseif GBPH_act_she_together = 1020:
 				GBPH_act_man[i] = 1120
 				act 'blow the dick':
 					cla
@@ -2505,7 +2507,7 @@ if $ARGS[0] = 'start2':
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					PH_suck_order = 20
 					i = otemp
-					$GBPH_act_me_together = 1020
+					GBPH_act_me_together = 1020
 					GBPH_act_man[i] += 100
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
@@ -2517,7 +2519,7 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					minut += 10
-					$GBPH_act_me_together = 'pushhersuck'
+					GBPH_act_me_together = -9001
 
 					'I am pushing her deep on the client''s dick'
 					i = otemp
@@ -2537,7 +2539,7 @@ if $ARGS[0] = 'start2':
 				act 'eat her pussy':
 					cla
 					*clr
-					$GBPH_act_me_together = 'cuni'
+					GBPH_act_me_together = -9002
 					gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 					gs 'stat'
 
@@ -2569,8 +2571,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(1,3)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2596,8 +2598,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(0,2)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2611,13 +2613,13 @@ if $ARGS[0] = 'start2':
 					*clr
 					PH_suck_order = 1
 					i = otemp
-					$GBPH_act_me_together = 1020
+					GBPH_act_me_together = 1020
 					GBPH_act_man[i] += 100
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
 					gt 'mod_public_WC_2girls1booth2', 'start2'
 				end
-			elseif $GBPH_act_she_together = 9000:
+			elseif GBPH_act_she_together = 9000:
 				GBPH_act_man[i] = 1130
 				act 'play with the balls':
 					cla 
@@ -2660,8 +2662,8 @@ if $ARGS[0] = 'start2':
 
 					!GBPH_arounsed_she += rand(0,2)
 					!GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2699,7 +2701,7 @@ if $ARGS[0] = 'start2':
 				act 'eat her pussy':
 					cla
 					*clr
-					$GBPH_act_me_together = 'cuni'
+					GBPH_act_me_together = -9002
 					gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 					gs 'stat'
 
@@ -2735,8 +2737,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(1,3)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2762,8 +2764,8 @@ if $ARGS[0] = 'start2':
 
 					GBPH_arounsed_she += rand(0,2)
 					GBPH_arounsed_me = pcs_horny
-					!$GBPH_act_me = 'foreplay'
-					!$GBPH_act_she = ''
+					!GBPH_act_me = -9006
+					!GBPH_act_she = 0
 					
 
 					act 'jerk him': 
@@ -2790,20 +2792,18 @@ if $ARGS[0] = 'start2':
 					end
 				end
 			else
+				!''
 			end
-
-
-
-		elseif $GBPH_act_me_together = 1020:
+		elseif GBPH_act_me_together = 1020:
 			i = otemp
-			if $GBPH_act_she_together = 1100:
+			if GBPH_act_she_together = 1100:
 				GBPH_act_man[i] = 1210
 				act 'just jerk him':
 					cla
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 1100
+					GBPH_act_me_together = 1100
 					GBPH_act_man[i] -= 100
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
@@ -2815,7 +2815,7 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 					GBPH_act_man[i] += 100
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
@@ -2827,20 +2827,20 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 					GBPH_act_man[i] += 200
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 
 					gt 'mod_public_WC_2girls1booth2', 'start2'
 				end
-			elseif $GBPH_act_she_together = 1020:
+			elseif GBPH_act_she_together = 1020:
 				GBPH_act_man[i] = 1220			
 				if PH_suck_order ! 1:
 					act 'help her to reach the navel':
 						cla
 						*clr
 						minut += 10
-						$GBPH_act_me_together = 'pushhersuck'
+						GBPH_act_me_together = -9001
 
 						'I am pushing her deep on the client''s dick'
 						i = otemp
@@ -2860,7 +2860,7 @@ if $ARGS[0] = 'start2':
 					act 'eat her pussy':
 						cla
 						*clr
-						$GBPH_act_me_together = 'cuni'
+						GBPH_act_me_together = -9002
 						gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 						gs 'stat'
 
@@ -2892,8 +2892,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(1,3)
 						GBPH_arounsed_me = pcs_horny
-						!$GBPH_act_me = 'foreplay'
-						!$GBPH_act_she = ''
+						!GBPH_act_me = -9006
+						!GBPH_act_she = 0
 						
 
 						act 'suck him': 
@@ -2919,8 +2919,8 @@ if $ARGS[0] = 'start2':
 
 						GBPH_arounsed_she += rand(0,2)
 						GBPH_arounsed_me = pcs_horny
-						!$GBPH_act_me = 'foreplay'
-						!$GBPH_act_she = ''
+						!GBPH_act_me = -9006
+						!GBPH_act_she = 0
 						
 
 						act 'suck him': 
@@ -2942,7 +2942,7 @@ if $ARGS[0] = 'start2':
 							gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'
 							gt 'mod_public_WC_2girls1booth2', 'start2'
 						end
-					elseif PH_suck_order = 20
+					elseif PH_suck_order = 20:
 						act 'lick the tip':
 							PH_suck_order = 30
 							gs 'mod_public_WC_2girls1booth', 'Find_together_active'
@@ -2982,7 +2982,7 @@ if $ARGS[0] = 'start2':
 						cla
 						*clr
 						i = otemp
-						$GBPH_act_me_together = 1100
+						GBPH_act_me_together = 1100
 						GBPH_act_man[i] -= 100
 						gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 						gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'						
@@ -2994,7 +2994,7 @@ if $ARGS[0] = 'start2':
 						cla
 						*clr
 						i = otemp
-						$GBPH_act_me_together = 9000
+						GBPH_act_me_together = 9000
 						GBPH_act_man[i] += 100
 						gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 						gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'						
@@ -3006,7 +3006,7 @@ if $ARGS[0] = 'start2':
 						cla
 						*clr
 						i = otemp
-						$GBPH_act_me_together = 9000
+						GBPH_act_me_together = 9000
 						GBPH_act_man[i] += 200
 
 						gt 'mod_public_WC_2girls1booth2', 'start2'
@@ -3017,14 +3017,14 @@ if $ARGS[0] = 'start2':
 						gt 'mod_public_WC_2girls1booth2', 'start2'
 					end
 				end
-			elseif $GBPH_act_she_together = 9000:
+			elseif GBPH_act_she_together = 9000:
 				GBPH_act_man[i] = 1230
 				act 'Jerk the dick':
 					cla
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 1100
+					GBPH_act_me_together = 1100
 					GBPH_act_man[i] -= 100
 					!gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					gs 'mod_public_WC_2girls1booth', 'ME_DAMAGEALL'					
@@ -3053,13 +3053,13 @@ if $ARGS[0] = 'start2':
 
 
 
-		elseif $GBPH_act_me_together = 9000:
+		elseif GBPH_act_me_together = 9000:
 			i = otemp
-			if $GBPH_act_she_together = 1100:
+			if GBPH_act_she_together = 1100:
 				if (GBPH_act_man[i] / 100) MOD 10 = 3: GBPH_act_man[i] = 1310
 				if (GBPH_act_man[i] / 100) MOD 10 = 4: GBPH_act_man[i] = 1410
 				''
-			elseif $GBPH_act_she_together = 1020:
+			elseif GBPH_act_she_together = 1020:
 				if (GBPH_act_man[i] / 100) MOD 10 = 3: GBPH_act_man[i] = 1320
 				if (GBPH_act_man[i] / 100) MOD 10 = 4: GBPH_act_man[i] = 1420			
 				act 'ask her to clean the dick':
@@ -3089,7 +3089,7 @@ if $ARGS[0] = 'start2':
 				*clr
 				gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 				i = otemp
-				$GBPH_act_me_together = 1100
+				GBPH_act_me_together = 1100
 
 				if (GBPH_act_man[i] / 100) MOD 10 = 3: GBPH_act_man[i] -= 200
 				if (GBPH_act_man[i] / 100) MOD 10 = 4: GBPH_act_man[i] -= 300
@@ -3104,7 +3104,7 @@ if $ARGS[0] = 'start2':
 				*clr
 				gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 				i = otemp
-				$GBPH_act_me_together = 1200
+				GBPH_act_me_together = 1200
 
 				if (GBPH_act_man[i] / 100) MOD 10 = 3: GBPH_act_man[i] -= 100
 				if (GBPH_act_man[i] / 100) MOD 10 = 4: GBPH_act_man[i] -= 200
@@ -3150,7 +3150,7 @@ if $ARGS[0] = 'start2':
 				*clr
 				gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 				i = otemp
-				$GBPH_act_me_together = 1100
+				GBPH_act_me_together = 1100
 
 				temp = (GBPH_act_man[i] / 10) MOD 10
 				phtemp = temp * 10
@@ -3168,7 +3168,7 @@ if $ARGS[0] = 'start2':
 				*clr
 				gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 				i = otemp
-				$GBPH_act_me_together = 1020
+				GBPH_act_me_together = 1020
 				PH_suck_order = 10
 
 				temp = (GBPH_act_man[i] / 10) MOD 10
@@ -3184,13 +3184,13 @@ if $ARGS[0] = 'start2':
 
 			i = otemp
 
-			if $GBPH_act_she_together ! 9000:
+			if GBPH_act_she_together ! 9000:
 				act 'fuck the dick':
 					cla
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 
 					temp = (GBPH_act_man[i] / 10) MOD 10
 					phtemp = temp * 10
@@ -3207,7 +3207,7 @@ if $ARGS[0] = 'start2':
 					*clr
 					gs 'mod_public_WC_2girls1booth', 'Find_together_active'
 					i = otemp
-					$GBPH_act_me_together = 9000
+					GBPH_act_me_together = 9000
 
 					temp = (GBPH_act_man[i] / 10) MOD 10
 					phtemp = temp * 10
@@ -3234,7 +3234,7 @@ if $ARGS[0] = 'start2':
 
 
 
-		If $GBPH_act_me = $GBPH_act_she and $GBPH_act_me = 'together':
+		If GBPH_act_me = GBPH_act_she and GBPH_act_me = -10000:
 			''
 		elseif PH_suck_order ! 2:			
 			act 'Continue': 
@@ -3250,17 +3250,17 @@ if $ARGS[0] = 'start2':
 			cla
 			*clr
 
-			$GBPH_act_me = ''
+			GBPH_act_me = 0
 			i = otemp
 			temp = (GBPH_act_man[i] / 10) MOD 10
 			phtemp = temp * 10
 			GBPH_act_man[i] = 1000
 			GBPH_act_man[i] += phtemp
 
-			$GBPH_act_she = '$GBPH_act_she_together'
+			GBPH_act_she = GBPH_act_she_together
 			
-			killvar '$GBPH_act_she_together'
-			killvar '$GBPH_act_me_together'
+			killvar 'GBPH_act_she_together'
+			killvar 'GBPH_act_me_together'
 
 			'I moved back from the client - let her do the job'
 			act 'Continue':
@@ -3295,25 +3295,25 @@ if $ARGS[0] = 'start2':
 		end
 
 		i = otemp
-		if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+		if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 			temp = rand(1,10)
 			if temp <= 7:
 				!''
 			else
 				'she starts sucking the D#<<i>>.'
-				$GBPH_act_she = 1010
+				GBPH_act_she = 1010
 				GBPH_act_man[i] = 1020		
 			end	
-		elseif $GBPH_act_she = 1010:
+		elseif GBPH_act_she = 1010:
 			temp = rand(1,10)
 			if temp <= 9:
 				!''
 			else
 				'she starts jerking the D#<<i>>.'
-				$GBPH_act_she = 1100
+				GBPH_act_she = 1100
 				GBPH_act_man[i] = 1010
 			end	
-		elseif $GBPH_act_she = 9000:
+		elseif GBPH_act_she = 9000:
 			!''
 		end
 
@@ -3371,10 +3371,10 @@ if $ARGS[0] = 'start2':
 						if GBPH_active_man[6] = 0: otemp = 6 & i = 6					
 					end
 
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 						temp = rand(1,10)
 						if temp <= 4:
-							$GBPH_act_she = 1101
+							GBPH_act_she = 1101
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1010
@@ -3389,8 +3389,8 @@ if $ARGS[0] = 'start2':
 								end
 							end
 						elseif temp <= 7:
-							if $GBPH_act_she = 1100: $GBPH_act_she = 1110
-							if $GBPH_act_she = 1001: $GBPH_act_she = 1011
+							if GBPH_act_she = 1100: GBPH_act_she = 1110
+							if GBPH_act_she = 1001: GBPH_act_she = 1011
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1020	
@@ -3410,8 +3410,8 @@ if $ARGS[0] = 'start2':
 								end	
 							end					
 						else
-							if $GBPH_act_she = 1100: $GBPH_act_she = 9100
-							if $GBPH_act_she = 1001: $GBPH_act_she = 9001
+							if GBPH_act_she = 1100: GBPH_act_she = 9100
+							if GBPH_act_she = 1001: GBPH_act_she = 9001
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1030	
@@ -3426,8 +3426,8 @@ if $ARGS[0] = 'start2':
 								end		
 							end			
 						end
-					elseif $GBPH_act_she = 1010:
-							if $GBPH_act_she = 1010: $GBPH_act_she = 1110							
+					elseif GBPH_act_she = 1010:
+							if GBPH_act_she = 1010: GBPH_act_she = 1110							
 							i = otemp
 							GBPH_active_man[i] = 1
 							GBPH_act_man[i] = 1010	
@@ -3446,8 +3446,8 @@ if $ARGS[0] = 'start2':
 									$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
 								end			
 							end			
-					elseif $GBPH_act_she = 9000:
-						$GBPH_act_she = 9100
+					elseif GBPH_act_she = 9000:
+						GBPH_act_she = 9100
 						i = otemp
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1010
@@ -3464,7 +3464,7 @@ if $ARGS[0] = 'start2':
 					end
 				else
 					'She is working a dick.'
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 						if sheconshow = 1:
 							if GBPH_condom[i] = 0:
 								if GBPH_color_man[i] = 1:
@@ -3489,7 +3489,7 @@ if $ARGS[0] = 'start2':
 								end	
 							end
 						end
-					elseif $GBPH_act_she = 1010:
+					elseif GBPH_act_she = 1010:
 						if sheconshow = 1:
 							if GBPH_condom[i] = 0:
 								if GBPH_color_man[i] = 1:
@@ -3521,7 +3521,7 @@ if $ARGS[0] = 'start2':
 								end	
 							end
 						end
-					elseif $GBPH_act_she = 9000:
+					elseif GBPH_act_she = 9000:
 						if sheconshow = 1:
 							if GBPH_condom[i] = 0:
 								if GBPH_color_man[i] = 1:
@@ -3559,7 +3559,7 @@ if $ARGS[0] = 'start2':
 					end
 				end
 			elseif she_do_dicks = 2:
-				if (phtemp > 2) and ($GBPH_act_she = 1101 OR $GBPH_act_she = 1110 OR $GBPH_act_she = 1011):
+				if (phtemp > 2) and (GBPH_act_she = 1101 OR GBPH_act_she = 1110 OR GBPH_act_she = 1011):
 					'She start pleasuring 3 dicks.'
 
 					if otemp <= 3:
@@ -3572,21 +3572,21 @@ if $ARGS[0] = 'start2':
 						if GBPH_active_man[6] = 0: otemp = 6 & i = 6
 					end
 
-					if $GBPH_act_she = 1101:
+					if GBPH_act_she = 1101:
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1020
-						$GBPH_act_she = 1111						
-					elseif $GBPH_act_she = 1110 OR $GBPH_act_she = 1011:
+						GBPH_act_she = 1111						
+					elseif GBPH_act_she = 1110 OR GBPH_act_she = 1011:
 						GBPH_active_man[i] = 1
 						GBPH_act_man[i] = 1010
-						$GBPH_act_she = 1111						
+						GBPH_act_she = 1111						
 					end
 					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/3 dicks/1+2+1/1+2+1 ('+rand(1,9)+').mp4"></video></center>'
 					$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/3 dicks/1+2+1/1+2+1 ('+rand(1,9)+').mp4"></video></center>'
 				else
 					'She is working 2 dicks.'
 						
-					if $GBPH_act_she = 9100 OR $GBPH_act_she = 9001:
+					if GBPH_act_she = 9100 OR GBPH_act_she = 9001:
 						if rand(1,2) = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
 							$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'				
@@ -3594,7 +3594,7 @@ if $ARGS[0] = 'start2':
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
 							$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_she = 1101:
+					elseif GBPH_act_she = 1101:
 						if GBPH_color_man[i] = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'
 							$shecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'	
@@ -3602,7 +3602,7 @@ if $ARGS[0] = 'start2':
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
 							$shecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_she = 1110 OR $GBPH_act_she = 1011:
+					elseif GBPH_act_she = 1110 OR GBPH_act_she = 1011:
 						if GBPH_color_man[i] = 1:
 							if rand(1,2) = 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'		
@@ -3634,7 +3634,7 @@ if $ARGS[0] = 'start2':
 			gs 'stat'
 			GBPH_arounsed_me = pcs_horny		
 		elseif GBPH_act_man[1] = 1000 OR GBPH_act_man[2] = 1000 OR GBPH_act_man[3] = 1000 OR GBPH_act_man[4] = 1000 OR GBPH_act_man[5] = 1000 OR GBPH_act_man[6] = 1000:
-			if $GBPH_act_she ! 'groped' and rand(1,10) >= 8 and she_do_dicks = 0:
+			if GBPH_act_she ! -9001 and rand(1,10) >= 8 and she_do_dicks = 0:
 				!працює з клієнтом
 
 				phtemp = 5436
@@ -3683,7 +3683,7 @@ if $ARGS[0] = 'start2':
 							$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'			
 						end	
 					end
-					$GBPH_act_she = 1100
+					GBPH_act_she = 1100
 
 					i = GBPHtemp
 					temp = 2 + 4 - (GBPH_condom[i]*12)
@@ -3726,7 +3726,7 @@ if $ARGS[0] = 'start2':
 							$shecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
 						end	
 					end
-					$GBPH_act_she = 1010
+					GBPH_act_she = 1010
 
 					i = GBPHtemp
 					temp = 2 + 8 - (GBPH_condom[i]*12)
@@ -3772,7 +3772,7 @@ if $ARGS[0] = 'start2':
 							end
 						end
 					end
-					$GBPH_act_she = 9000
+					GBPH_act_she = 9000
 
 					i = GBPHtemp
 					temp = 0 + 10 - (GBPH_condom[i]*12)
@@ -3793,10 +3793,10 @@ if $ARGS[0] = 'start2':
 			!ask her for the together
 
 			if rand(1,10) <= 2:							
-				$GBPH_act_me_together = $GBPH_act_me
-				$GBPH_act_me = 'together'
-				$GBPH_act_she = 'together'
-				$GBPH_act_she_together = 1100
+				GBPH_act_me_together = GBPH_act_me
+				GBPH_act_me = -10000
+				GBPH_act_she = -10000
+				GBPH_act_she_together = 1100
 				cla
 				*clr
 				'She approaches me and starts helping me with the client'	
@@ -3828,14 +3828,14 @@ if $ARGS[0] = 'start2':
 
 
 
-				if $GBPH_act_me_together = 1100 OR $GBPH_act_she_together = 1100:
-					if $GBPH_act_me_together = 1100 AND $GBPH_act_she_together = 1100:
+				if GBPH_act_me_together = 1100 OR GBPH_act_she_together = 1100:
+					if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1100:
 						if rand(1,3) = 1:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
+					elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
 						if GBPH_color_man[i] = 1:
 							if rand(1,3) ! 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,2)+').jpg"></center>'
@@ -3845,15 +3845,15 @@ if $ARGS[0] = 'start2':
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk_ch ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						if rand(1,12) <= 9:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 						else
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
 						end	
 					end
-				elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
-					if $GBPH_act_me_together = 1020 AND $GBPH_act_she_together = 1020:
+				elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+					if GBPH_act_me_together = 1020 AND GBPH_act_she_together = 1020:
 						if GBPH_color_man[i] = 1:
 							if rand(1,11) <= 8:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
@@ -3867,10 +3867,10 @@ if $ARGS[0] = 'start2':
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
 							end		
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+2/34+2 ('+rand(1,2)+').mp4"></video></center>'
 					end
-				elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+				elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 					if rand(1,12) <= 9:
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 					else
@@ -3889,10 +3889,10 @@ if $ARGS[0] = 'start2':
 				end
 			else
 				act 'Ask her to help with this client':								
-					$GBPH_act_me_together = $GBPH_act_me
-					$GBPH_act_me = 'together'
-					$GBPH_act_she = 'together'
-					$GBPH_act_she_together = 1100
+					GBPH_act_me_together = GBPH_act_me
+					GBPH_act_me = -10000
+					GBPH_act_she = -10000
+					GBPH_act_she_together = 1100
 					cla
 					*clr
 					'She approaches me and starts helping me with the client'	
@@ -3924,14 +3924,14 @@ if $ARGS[0] = 'start2':
 
 
 
-					if $GBPH_act_me_together = 1100 OR $GBPH_act_she_together = 1100:
-						if $GBPH_act_me_together = 1100 AND $GBPH_act_she_together = 1100:
+					if GBPH_act_me_together = 1100 OR GBPH_act_she_together = 1100:
+						if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1100:
 							if rand(1,3) = 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,2)+').mp4"></video></center>'
 							end
-						elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
+						elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
 							if GBPH_color_man[i] = 1:
 								if rand(1,3) ! 1:
 									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,2)+').jpg"></center>'
@@ -3941,15 +3941,15 @@ if $ARGS[0] = 'start2':
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk_ch ('+rand(1,2)+').mp4"></video></center>'
 							end
-						elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+						elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 							if rand(1,12) <= 9:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
 							end	
 						end
-					elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
-						if $GBPH_act_me_together = 1020 AND $GBPH_act_she_together = 1020:
+					elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+						if GBPH_act_me_together = 1020 AND GBPH_act_she_together = 1020:
 							if GBPH_color_man[i] = 1:
 								if rand(1,11) <= 8:
 									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
@@ -3963,10 +3963,10 @@ if $ARGS[0] = 'start2':
 									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
 								end		
 							end
-						elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+						elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+2/34+2 ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						if rand(1,12) <= 9:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 						else
@@ -3991,7 +3991,7 @@ if $ARGS[0] = 'start2':
 		
 		gs 'mod_public_WC_2girls1booth', 'freeclients'
 
-		if me_do_dicks > 0 and $GBPH_act_me ! 'together':
+		if me_do_dicks > 0 and GBPH_act_me ! -10000:
 			!я роблю
 			if me_do_dicks = 1:
 				if GBPH_active_man[1] = 1 and (GBPH_act_man[1] / 100) MOD 10 > 0 : otemp = 1 & i = 1
@@ -4073,7 +4073,7 @@ if $ARGS[0] = 'start2':
 					act 'STOP all my actions':	
 						*clr
 						cla					
-						if $GBPH_act_me = 9100 OR $GBPH_act_me = 9001:
+						if GBPH_act_me = 9100 OR GBPH_act_me = 9001:
 							i = 0
 							:GBPHloopcheck_1
 							i += 1
@@ -4093,7 +4093,7 @@ if $ARGS[0] = 'start2':
 								GBPH_active_man[i] = 0
 							end
 							if i < 6: jump 'GBPHloopcheck_3'
-						elseif $GBPH_act_me = 1101:
+						elseif GBPH_act_me = 1101:
 							i = 0
 							otemp = 0
 							:GBPHloopcheck_1
@@ -4113,7 +4113,7 @@ if $ARGS[0] = 'start2':
 								GBPH_active_man[i] = 0
 							end
 							if i < 6: jump 'GBPHloopcheck_2'					
-						elseif $GBPH_act_me = 1110 OR $GBPH_act_me = 1011:
+						elseif GBPH_act_me = 1110 OR GBPH_act_me = 1011:
 							i = 0
 							:GBPHloopcheck_1
 							i += 1
@@ -4134,13 +4134,13 @@ if $ARGS[0] = 'start2':
 							end
 							if i < 6: jump 'GBPHloopcheck_2'
 						end
-						$GBPH_act_me = ''
+						GBPH_act_me = 0
 						gt 'mod_public_WC_2girls1booth2', 'start2'
 					end
 
-					if $GBPH_act_me ! 1101:
+					if GBPH_act_me ! 1101:
 						act 'switch holes':
-							if $GBPH_act_me = 9100 OR $GBPH_act_me = 9001:
+							if GBPH_act_me = 9100 OR GBPH_act_me = 9001:
 								i = 0
 								:GBPHloopcheck_1
 								i += 1
@@ -4161,7 +4161,7 @@ if $ARGS[0] = 'start2':
 								GBPH_act_man[i] = 1300
 								i = otemp2
 								GBPH_act_man[i] = 1100
-							elseif $GBPH_act_me = 1110 OR $GBPH_act_me = 1011:
+							elseif GBPH_act_me = 1110 OR GBPH_act_me = 1011:
 								i = 0
 								:GBPHloopcheck_1
 								i += 1
@@ -4193,7 +4193,7 @@ if $ARGS[0] = 'start2':
 						end
 					end
 
-					if $GBPH_act_me = 1101:
+					if GBPH_act_me = 1101:
 						act 'suck a dick':
 							cla
 
@@ -4216,7 +4216,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_222'
 
 							act 'suck a dick #<<otemp1>>':
-								$GBPH_act_me = 1110
+								GBPH_act_me = 1110
 								i = otemp1
 								GBPH_act_man[i] = 1200
 								i = otemp2
@@ -4227,7 +4227,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'suck a dick #<<otemp2>>':
-								$GBPH_act_me = 1110
+								GBPH_act_me = 1110
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4261,7 +4261,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_2222'
 
 							act 'fuck a dick #<<otemp1>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1300
 								i = otemp2
@@ -4272,7 +4272,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'fuck a dick #<<otemp2>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4306,7 +4306,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_222522'
 
 							act 'assfuck a dick #<<otemp1>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1400
 								i = otemp2
@@ -4317,7 +4317,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'assfuck a dick #<<otemp2>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4330,7 +4330,7 @@ if $ARGS[0] = 'start2':
 						end											
 					end
 
-					if $GBPH_act_me = 1110 OR $GBPH_act_me = 1011:
+					if GBPH_act_me = 1110 OR GBPH_act_me = 1011:
 						act 'jerk a dick':
 							cla
 
@@ -4352,7 +4352,7 @@ if $ARGS[0] = 'start2':
 							end
 							if i < 6: jump 'GBPHloopcheck_2225'
 
-							$GBPH_act_me = 1101
+							GBPH_act_me = 1101
 							i = otemp1
 							GBPH_act_man[i] = 1100
 							i = otemp2
@@ -4385,7 +4385,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_22228'
 
 							act 'fuck a dick #<<otemp1>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1300
 								i = otemp2
@@ -4396,7 +4396,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'fuck a dick #<<otemp2>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4430,7 +4430,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_322222'
 
 							act 'assfuck a dick #<<otemp1>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1400
 								i = otemp2
@@ -4441,7 +4441,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'assfuck a dick #<<otemp2>>':
-								$GBPH_act_me = 9100
+								GBPH_act_me = 9100
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4454,7 +4454,7 @@ if $ARGS[0] = 'start2':
 						end											
 					end
 
-					if $GBPH_act_me = 9100 OR $GBPH_act_me = 9001:
+					if GBPH_act_me = 9100 OR GBPH_act_me = 9001:
 						act 'jerk a dick':
 							cla
 
@@ -4476,7 +4476,7 @@ if $ARGS[0] = 'start2':
 							end
 							if i < 6: jump 'GBPHloopcheck_42225'
 
-							$GBPH_act_me = 1101
+							GBPH_act_me = 1101
 							i = otemp1
 							GBPH_act_man[i] = 1100
 							i = otemp2
@@ -4509,7 +4509,7 @@ if $ARGS[0] = 'start2':
 							if i < 6: jump 'GBPHloopcheck_6222'
 
 							act 'suck a dick #<<otemp1>>':
-								$GBPH_act_me = 1110
+								GBPH_act_me = 1110
 								i = otemp1
 								GBPH_act_man[i] = 1200
 								i = otemp2
@@ -4520,7 +4520,7 @@ if $ARGS[0] = 'start2':
 								gs'mod_public_WC_2girls1booth', 'manaction2nd'
 							end
 							act 'suck a dick #<<otemp2>>':
-								$GBPH_act_me = 1110
+								GBPH_act_me = 1110
 								i = otemp1
 								GBPH_act_man[i] = 1100
 								i = otemp2
@@ -4550,12 +4550,12 @@ if $ARGS[0] = 'start2':
 				end
 				
 
-				if (phtemp > 2) and ($GBPH_act_me = 1101 OR $GBPH_act_me = 1110 OR $GBPH_act_me = 1011):					
+				if (phtemp > 2) and (GBPH_act_me = 1101 OR GBPH_act_me = 1110 OR GBPH_act_me = 1011):					
 					!почати працювати ще з 1 клієнтом
 					act 'Work 3 dicks simultaniously':
 						*clr
 						cla
-						$GBPH_act_me = 1111
+						GBPH_act_me = 1111
 
 						if GBPH_active_man[1] = 1 and ( GBPH_act_man[1] - 1000 - 99 > 0): otemp = 1 & i = 1
 						if GBPH_active_man[2] = 1 and ( GBPH_act_man[2] - 1000 - 99 > 0): otemp = 2 & i = 2
@@ -4670,11 +4670,11 @@ if $ARGS[0] = 'start2':
 					end
 					if i < 6: jump 'GBPHloopcheck_30'						
 
-					$GBPH_act_me = ''
+					GBPH_act_me = 0
 					gt 'mod_public_WC_2girls1booth2', 'start2'
 				end
 			end
-		elseif $GBPH_act_me ! 'together':
+		elseif GBPH_act_me ! -10000:
 			!я зараз не роблю			
 			!вибери клієнта і дія з ним
 
@@ -5018,9 +5018,9 @@ if $ARGS[0] = 'start2':
 			if she_do_dicks > 0:
 				act 'Ask her to please a dick together':
 					!together start option
-					$GBPH_act_me = 'together'
-					$GBPH_act_she_together = $GBPH_act_she
-					$GBPH_act_she = 'together'
+					GBPH_act_me = -10000
+					GBPH_act_she_together = GBPH_act_she
+					GBPH_act_she = -10000
 					cla
 					*clr
 					'She: "yes, girl, lets make this one special" - she point her finfer on a dick.'
@@ -5040,11 +5040,11 @@ if $ARGS[0] = 'start2':
 						else						
 							!together id 
 							if (GBPH_act_man[i] /10) MOD 10 = 1:
-								$GBPH_act_she_together = 1100
+								GBPH_act_she_together = 1100
 							elseif (GBPH_act_man[i] /10) MOD 10 = 2:
-								$GBPH_act_she_together = 1020
+								GBPH_act_she_together = 1020
 							else
-								$GBPH_act_she_together = 9000
+								GBPH_act_she_together = 9000
 							end
 
 
@@ -5052,7 +5052,7 @@ if $ARGS[0] = 'start2':
 							otemp = i
 							phtemp = 1356
 							GBPH_popularity += 2
-							$GBPH_act_me_together = 1100
+							GBPH_act_me_together = 1100
 							'I start jerk the dick from the hole #<<i>>.'
 						end
 					end
@@ -5072,14 +5072,14 @@ if $ARGS[0] = 'start2':
 
 
 
-					if $GBPH_act_me_together = 1100 OR $GBPH_act_she_together = 1100:
-						if $GBPH_act_me_together = 1100 AND $GBPH_act_she_together = 1100:
+					if GBPH_act_me_together = 1100 OR GBPH_act_she_together = 1100:
+						if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1100:
 							if rand(1,3) = 1:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,2)+').mp4"></video></center>'
 							end
-						elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
+						elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
 							if GBPH_color_man[i] = 1:
 								if rand(1,3) ! 1:
 									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,2)+').jpg"></center>'
@@ -5089,15 +5089,15 @@ if $ARGS[0] = 'start2':
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk_ch ('+rand(1,2)+').mp4"></video></center>'
 							end
-						elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+						elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 							if rand(1,12) <= 9:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 							else
 								'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
 							end	
 						end
-					elseif $GBPH_act_me_together = 1020 OR $GBPH_act_she_together = 1020:
-						if $GBPH_act_me_together = 1020 AND $GBPH_act_she_together = 1020:
+					elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+						if GBPH_act_me_together = 1020 AND GBPH_act_she_together = 1020:
 							if GBPH_color_man[i] = 1:
 								if rand(1,11) <= 8:
 									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
@@ -5111,10 +5111,10 @@ if $ARGS[0] = 'start2':
 									'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
 								end		
 							end
-						elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+						elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 							'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+2/34+2 ('+rand(1,2)+').mp4"></video></center>'
 						end
-					elseif $GBPH_act_me_together = 9000 OR $GBPH_act_she_together = 9000:
+					elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
 						if rand(1,12) <= 9:
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
 						else
@@ -5177,7 +5177,7 @@ if $ARGS[0] = 'start2':
 					*clr
 					$mecon = ''
 					$mecon = $shecon
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 
 						i = 0
 						temp = 0
@@ -5210,7 +5210,7 @@ if $ARGS[0] = 'start2':
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/1/1+wait_dressed ('+rand(1,1)+').jpg"></center>'
 							$shecon = '' & $mecon = ''	
 						end
-					elseif $GBPH_act_she = 1010:
+					elseif GBPH_act_she = 1010:
 						if GBPH_nude_she + GBPH_nude_Me = 2:
 							!nude
 							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/2/wait ('+rand(1,4)+').jpg"></center>'
@@ -5240,15 +5240,15 @@ if $ARGS[0] = 'start2':
 				end			
 			end
 
-			IF $GBPH_act_me = 'masturbate':
+			IF GBPH_act_me = -9007:
 				if she_do_dicks >= 1:
 					*clr
 					$mecon = ''
 					$mecon = $shecon
-					if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+					if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/1/1+masturb ('+rand(1,1)+').jpg"></center>'
 						$shecon = '' & $mecon = ''
-					elseif $GBPH_act_she = 1010:
+					elseif GBPH_act_she = 1010:
 						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/2/2+masturb ('+rand(1,6)+').jpg"></center>'
 						$shecon = '' & $mecon = ''
 					else
@@ -5259,7 +5259,7 @@ if $ARGS[0] = 'start2':
 				act 'stop masturbate':
 					*clr & cla
 					$mecon = ''
-					$GBPH_act_me = ''
+					GBPH_act_me = 0
 					gt 'mod_public_WC_2girls1booth2', 'start2'
 				end
 			else
@@ -5273,17 +5273,17 @@ if $ARGS[0] = 'start2':
 
 						!GBPH_arounsed_she += rand(3,5)
 						GBPH_arounsed_me = pcs_horny
-						$GBPH_act_me = 'masturbate'
-						!$GBPH_act_she = ''
+						GBPH_act_me = -9007
+						!GBPH_act_she = 0
 						
 						if she_do_dicks >= 1:
 							*clr
 							$mecon = ''
 							$mecon = $shecon
-							if $GBPH_act_she = 1100 OR $GBPH_act_she = 1001:
+							if GBPH_act_she = 1100 OR GBPH_act_she = 1001:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/1/1+masturb ('+rand(1,1)+').jpg"></center>'
 								$shecon = '' & $mecon = ''
-							elseif $GBPH_act_she = 1010:
+							elseif GBPH_act_she = 1010:
 								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/2/2+masturb ('+rand(1,6)+').jpg"></center>'
 								$shecon = '' & $mecon = ''
 							else
@@ -5406,7 +5406,7 @@ if $ARGS[0] = 'start2':
 
 	
 
-	if $GBPH_act_me = 0:
+	if GBPH_act_me = 0:
 		act'Quickly Leave':			
 			if $clothingworntype = 'nude':
 				minut+=3
@@ -5427,14 +5427,14 @@ if $ARGS[0] = 'start2':
 
 	
 
-	IF GBPH_arounsed_she >= 100 and $GBPH_act_me ! 'together':
+	IF GBPH_arounsed_she >= 100 and GBPH_act_me ! -10000:
 		GBPH_arounsed_she = rand(0,15)
 		'She cums so good, she just fall on the ground!'
 
 		i = 0
 		:GBPH_clean_actions
 		i += 1
-		$GBPH_act_she = 0
+		GBPH_act_she = 0
 
 		If ( GBPH_act_man[i] / 10 ) MOD 10 > 0:
 			GBPH_act_man[i] = 1000
@@ -5470,8 +5470,14 @@ if $ARGS[0] = 'start2':
 	!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/cum/on tits ('+rand(1,1)+').mp4"></video></center>'
 	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
 
-	if $GBPH_act_me = 'kiss': $GBPH_act_me = ''
-	if $GBPH_act_she = '' OR $GBPH_act_she = 0: $shecon = '' 
+	if GBPH_act_me = -9003: GBPH_act_me = 0
+	if GBPH_act_she = 0: $shecon = '' 
+	if GBPH_act_she = GBPH_act_me and GBPH_act_me = -10000:
+		!''
+		if GBPH_act_me_together ! 1020: PH_suck_order = 0
+	else
+		PH_suck_order = 0
+	end
 end
 
 if $ARGS[0] = 'CUM_trigger':
@@ -5501,14 +5507,14 @@ if $ARGS[0] = 'CUM_trigger':
 		otemp = i
 
 		
-		If $GBPH_act_me = $GBPH_act_she and $GBPH_act_me = 'together':
+		If GBPH_act_me = GBPH_act_she and GBPH_act_me = -10000:
 			cla
 			i = otemp
 			gs 'boyStat', $boy[i]
 			i = q
 
 			!разом дії
-			if $GBPH_act_me_together = 1100 OR $GBPH_act_me_together = 1001:
+			if GBPH_act_me_together = 1100 OR GBPH_act_me_together = 1001:
 				act 'share the splurt':
 					*clr & cla
 					i = otemp					
@@ -5923,7 +5929,7 @@ if $ARGS[0] = 'CUM_trigger':
 					end
 				end
 
-			elseif $GBPH_act_me_together = 1020:
+			elseif GBPH_act_me_together = 1020:
 				act 'share the splurt':
 					*clr & cla
 					facial += 1
@@ -6442,7 +6448,7 @@ if $ARGS[0] = 'CUM_trigger':
 					end
 				end
 
-			elseif $GBPH_act_me_together = 9000:
+			elseif GBPH_act_me_together = 9000:
 				if ( GBPH_act_man[i] /100 ) MOD 10 = 3:
 					if GBPH_condom[i] = 0:
 						act 'Allow him to cum inside':
@@ -7185,7 +7191,7 @@ if $ARGS[0] = 'CUM_trigger':
 
 			
 			!her actions
-			elseif $GBPH_act_she_together = 1100 OR $GBPH_act_she_together = 1001:
+			elseif GBPH_act_she_together = 1100 OR GBPH_act_she_together = 1001:
 				act 'Continue':
 					*clr & cla
 					i = otemp
@@ -7352,7 +7358,7 @@ if $ARGS[0] = 'CUM_trigger':
 
 
 			
-			elseif $GBPH_act_she_together = 1020:
+			elseif GBPH_act_she_together = 1020:
 				act 'Continue':
 					*clr & cla
 					i = otemp
@@ -7588,7 +7594,7 @@ if $ARGS[0] = 'CUM_trigger':
 
 
 
-			elseif $GBPH_act_she_together = 9000:
+			elseif GBPH_act_she_together = 9000:
 				act 'Continue':
 					*clr & cla
 					i = otemp
@@ -9507,55 +9513,55 @@ if $ARGS[0] = 'manleave':
 	GBPH_man[i] = 0
 	!чи є людина
 
-	If $GBPH_act_me = $GBPH_act_she and $GBPH_act_me = 'together':
-		$GBPH_act_she = ''
-		$GBPH_act_me = ''
+	If GBPH_act_me = GBPH_act_she and GBPH_act_me = -10000:
+		GBPH_act_she = 0
+		GBPH_act_me = 0
 		GBPH_side_Me = 1	
 		GBPH_side_she = 2
-		killvar '$GBPH_act_she_together'
-		killvar '$GBPH_act_me_together'
+		killvar 'GBPH_act_she_together'
+		killvar 'GBPH_act_me_together'
 	end
 
 	if (GBPH_act_man[i] / 100) MOD 10 > 0:
 		!ME clean
 		$mecon = ''
 		if (GBPH_act_man[i] / 100) MOD 10 = 1:
-			If ($GBPH_act_me) MOD 10 = ($GBPH_act_me / 100) MOD 10:
-				$GBPH_act_me -= 1
-			elseif ($GBPH_act_me / 100) MOD 10 = 1:
-				$GBPH_act_me -= 100
-			elseif $GBPH_act_me MOD 10 = 1:
-				$GBPH_act_me -= 1
+			If (GBPH_act_me) MOD 10 = (GBPH_act_me / 100) MOD 10:
+				GBPH_act_me -= 1
+			elseif (GBPH_act_me / 100) MOD 10 = 1:
+				GBPH_act_me -= 100
+			elseif GBPH_act_me MOD 10 = 1:
+				GBPH_act_me -= 1
 			end
 		elseif (GBPH_act_man[i] / 100) MOD 10 = 2:
-			$GBPH_act_me -= 10
+			GBPH_act_me -= 10
 		elseif (GBPH_act_man[i] / 100) MOD 10 = 3:
-			$GBPH_act_me -= 8000
+			GBPH_act_me -= 8000
 		elseif (GBPH_act_man[i] / 100) MOD 10 = 4:
-			$GBPH_act_me -= 8000
+			GBPH_act_me -= 8000
 		end
-		if $GBPH_act_me < 0: $GBPH_act_me = 0
+		if GBPH_act_me < 0: GBPH_act_me = 0
 	end
 
 	if (GBPH_act_man[i] / 10) MOD 10 > 0:
 		!She clean
 		$shecon = ''
 		if (GBPH_act_man[i] / 10) MOD 10 = 1:
-			If ($GBPH_act_she) MOD 10 = ($GBPH_act_she / 100) MOD 10:
-				$GBPH_act_she -= 1
-			elseif ($GBPH_act_she / 100) MOD 10 = 1:
-				$GBPH_act_she -= 100
-			elseif $GBPH_act_she MOD 10 = 1:
-				$GBPH_act_she -= 1
+			If (GBPH_act_she) MOD 10 = (GBPH_act_she / 100) MOD 10:
+				GBPH_act_she -= 1
+			elseif (GBPH_act_she / 100) MOD 10 = 1:
+				GBPH_act_she -= 100
+			elseif GBPH_act_she MOD 10 = 1:
+				GBPH_act_she -= 1
 			end
 		elseif (GBPH_act_man[i] / 10) MOD 10 = 2:
-			$GBPH_act_she -= 10
+			GBPH_act_she -= 10
 		elseif (GBPH_act_man[i] / 10) MOD 10 = 3:
-			$GBPH_act_she -= 8000
+			GBPH_act_she -= 8000
 		elseif (GBPH_act_man[i] / 10) MOD 10 = 4:
-			$GBPH_act_she -= 8000
+			GBPH_act_she -= 8000
 		end
-		if $GBPH_act_she < 0: $GBPH_act_she = 0
+		if GBPH_act_she < 0: GBPH_act_she = 0
 	end
 
 	GBPH_man_fun[i] = 0

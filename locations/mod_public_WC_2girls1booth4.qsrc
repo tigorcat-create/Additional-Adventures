@@ -12,7 +12,7 @@ if ARGS[0] = 1:
 		'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
 	end
 	GBPH_condom[i] = 0
-	!$GBPH_act_me = ''
+	!GBPH_act_me = 0
 	
 	temp = rand(1,20)
 	if temp <= 10:
@@ -68,10 +68,10 @@ if ARGS[0] = 3:
 
 	*clr & cla
 	stat['hj'] += 1
-	if $GBPH_act_me = 1100: 
-		$GBPH_act_me = 1101
+	if GBPH_act_me = 1100: 
+		GBPH_act_me = 1101
 	else
-		$GBPH_act_me = 1101
+		GBPH_act_me = 1101
 	end
 	
 	
@@ -108,8 +108,8 @@ if ARGS[0] = 4:
 	i = otemp
 
 	*clr & cla
-	if $GBPH_act_me = 1100: $GBPH_act_me = 1110
-	if $GBPH_act_me = 1001: $GBPH_act_me = 1011
+	if GBPH_act_me = 1100: GBPH_act_me = 1110
+	if GBPH_act_me = 1001: GBPH_act_me = 1011
 
 	
 	if GBPH_color_man[i] = 1:
@@ -145,8 +145,8 @@ if ARGS[0] = 5:
 	i = otemp
 
 	*clr & cla
-	if $GBPH_act_me = 1100: $GBPH_act_me = 9100
-	if $GBPH_act_me = 1001: $GBPH_act_me = 9001
+	if GBPH_act_me = 1100: GBPH_act_me = 9100
+	if GBPH_act_me = 1001: GBPH_act_me = 9001
 
 	if rand(1,2) = 1:
 		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
@@ -176,7 +176,7 @@ if ARGS[0] = 6:
 	i = otemp
 
 	*clr & cla
-	$GBPH_act_me = 1110
+	GBPH_act_me = 1110
 	
 	if GBPH_color_man[i] = 1:
 		if rand(1,2) = 1:
@@ -211,7 +211,7 @@ if ARGS[0] = 7:
 	i = otemp
 
 	*clr & cla
-	$GBPH_act_me = 9100
+	GBPH_act_me = 9100
 	
 
 	if rand(1,2) = 1:

@@ -10,7 +10,7 @@ if ARGS[0] = 1:
 		'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
 	end
 	GBPH_condom[i] = 0
-	!$GBPH_act_me = ''
+	!GBPH_act_me = 0
 	
 	temp = rand(1,20)
 	if temp <= 10:
@@ -61,10 +61,10 @@ if ARGS[0] = 3:
 	otemp = target_id
 	i = otemp
 	stat['hj'] += 1
-	if $GBPH_act_me = 1100: 
-		$GBPH_act_me = 1100
+	if GBPH_act_me = 1100: 
+		GBPH_act_me = 1100
 	else
-		$GBPH_act_me = 1001
+		GBPH_act_me = 1001
 	end
 
 
@@ -116,7 +116,7 @@ if ARGS[0] = 4:
 	otemp = target_id
 	i = otemp
 	stat['hj'] += 1
-	$GBPH_act_me = 1100
+	GBPH_act_me = 1100
 
 
 	if GBPH_condom[i] = 0:
@@ -166,7 +166,7 @@ if ARGS[0] = 5:
 	target_id   = ARGS[1]
 	otemp = target_id
 	i = otemp
-	$GBPH_act_me = 1010
+	GBPH_act_me = 1010
 
 	if GBPH_condom[i] = 0:
 		if GBPH_color_man[i] = 1:
@@ -222,7 +222,7 @@ if ARGS[0] = 6:
 	target_id   = ARGS[1]
 	otemp = target_id
 	i = otemp
-	$GBPH_act_me = 1010
+	GBPH_act_me = 1010
 
 	if GBPH_condom[i] = 0:
 		if GBPH_color_man[i] = 1:
@@ -278,7 +278,7 @@ if ARGS[0] = 7:
 	target_id   = ARGS[1]
 	otemp = target_id
 	i = otemp
-	$GBPH_act_me = 9000
+	GBPH_act_me = 9000
 
 	if GBPH_condom[i] = 0:
 		if GBPH_color_man[i] = 1:
@@ -338,7 +338,7 @@ if ARGS[0] = 8:
 	target_id   = ARGS[1]
 	otemp = target_id
 	i = otemp
-	$GBPH_act_me = 9000
+	GBPH_act_me = 9000
 
 	if GBPH_condom[i] = 0:
 		if GBPH_color_man[i] = 1:
