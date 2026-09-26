@@ -92,8 +92,12 @@ end
 if func('homes_properties', 'is_at_a_home') = -1 and $curloc ! 'korrPar' and $curloc ! 'bedrPar' and $curloc ! 'sitrPar' and $curloc ! 'kuhrPar' and $curloc ! 'vanrPar' and $curloc ! 'grandparents_house' and $curloc ! '14' and $curloc ! 'gaddvor' and $curloc ! 'gadgarden' and $curloc ! 'gadbana' and $curloc ! 'gadhouse':
 	if phathome ! 1: +$OpenInnerThought+'I am at home'+$CloseInnerThought
 	phathome = 1
-	if rand(1,40) + phtestcheat <= 1:
+	if (rand(1,40) + phtestcheat <= 1) and ((daystart = PH_doorbell_timer_day and hour >= PH_doorbell_timer) OR (daystart > PH_doorbell_timer_day)):
 		'I hear a doorbell'
+		phtestcheat = 0
+		PH_doorbell_timer = hour + 2
+		PH_doorbell_timer_day = daystart
+		If PH_doorbell_timer >= 24: PH_doorbell_timer -= 24 & PH_doorbell_timer_day += 1
 		act 'Go to the door': gt 'mod_public_WC_rob_at_home', 'start'
 	end
 else
@@ -161,7 +165,7 @@ if daystart >= phmoneypaidD:
 			gs 'telefon', 'add_sms', ' ', 'Your BANK account received <<phmoneypaid>>.'
 			phmoneypaid = 0
 			escortpause = daystart + escortpauseconfig
-			phescortshorttask = daystart + phescortshorttaskconfig
+			phshorttimer = daystart + phescortshorttaskconfig
 		end
 		killvar 'phmoneypaidD'
 		killvar 'phmoneypaidH'
@@ -678,7 +682,7 @@ if zashmorg = 3:
 end
 
 
-if MYMODversion ! 30610:
+if MYMODversion ! 30620:
 	if ($loc = 'pav_commercial' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'city_center' and menu_off = 0):
 		menu_off = 1
 		gt 'mod_public_WC_PH_come', 'ctart'
@@ -1120,7 +1124,7 @@ if lis_vania_setup ! 1: lis_vania_setup = 1 & gs 'mod_public_WC_rab_Vania', 'Van
 if lis_tolik_setup ! 1: lis_tolik_setup = 1 & gs 'mod_public_WC_rab_Tolik', 'tolik_setup'
 if PH_bc_setup ! 1: PH_bc_setup = 1 & gs 'mod_public_WC_rab_btothel', 'bc_setup'
 
-if MYMODversion ! 30610:
+if MYMODversion ! 30620:
 	if ($loc = 'pav_commercial' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) or ($loc = 'pav_complex' and menu_off = 0) and ($loc = 'city_center' and menu_off = 0):
 		menu_off = 1
 		gt 'mod_public_WC_war', 'start'
@@ -1368,7 +1372,7 @@ end
 if PHsetup = 1:
 	if phescort = 1 and phescortshorttask = 0 and rand(1,300) - ryska <= 0 and hour <= 15 and phescortD ! daystart and daystart > phshorttimer:
 		!! chance to find a client for me
-		phescortshorttask = daystart + phescortshorttaskconfig
+		phshorttimer = daystart + phescortshorttaskconfig
 		!! escortpause = daystart + escortpauseconfig
 		gs 'mod_public_WC_rab_work_PHescort_PC', 'sms'
 	end
