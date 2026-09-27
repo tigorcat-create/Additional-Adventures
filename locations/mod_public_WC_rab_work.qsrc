@@ -344,8 +344,18 @@ if $ARGS[0] = 'room':
 		end
 	end
 
+	temptemp = 0
 	act 'talk with girls':
-		'Знайомство з новою дівчиною і іншими -=WIP=-'
+		if temptemp <= rand(2,4): 
+			phgirlsrelations += rand(1,2)
+			'<i>girl like me more</i>'
+		end
+		temptemp += 1
+		minut += 15
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/PH_update_2026/PH/behindthestage/girlstalk ('+rand(1,7)+').jpg"></center>'
+		
+		'I spent some time to closer know local girls'
 	end
 
 	if zt = 0 and stil = 0 and chystota = 0 and napoi = 0 and blowbox = 0 and blackshloha = 0 and shloha = 0 and PHTolikbring = 1:

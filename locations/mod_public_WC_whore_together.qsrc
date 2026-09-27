@@ -8,7 +8,9 @@ end
 
 if $ARGS[0] = 'start':
 	*clr & cla
-	!-=wip=-
+
+	she_dom_command = 0
+	me_dom_command = 0
 
 	if $clothingworntype ! 'nude': 
 		PH_nude_Me = 0
@@ -110,6 +112,7 @@ end
 
 if $ARGS[0] = 'startchecks':
 	PH_time += 1
+	she_dom_command = 0
 
 	!її демаг + перевірка на неробіння
 	i = 0
@@ -124,8 +127,7 @@ if $ARGS[0] = 'startchecks':
 		else
 			PH_active_man[i] = 1
 			PH_active_man += 1
-			otemp =  i
-			gs 'mod_public_WC_whore_together', 'SHE_DAMAGEALL'
+			otemp =  i			
 		end
 	end
 
@@ -258,11 +260,23 @@ if $ARGS[0] = 'start2':
 	gs 'mod_public_WC_whore_together', 'SHEDOM'
 
 	If PH_act_me = -10000 and PH_act_she = -10000:
-		!-=wip=-
-		!тугезер вдвох одного
+		!-=wip=-		
 		!дії клієнта
 		!її дії
 		!мої дії
+
+		if PH_active_man = 1:
+			!тугезер вдвох одного
+		elseif PH_active_man = 2:
+			!тугезер вдвох двох
+		elseif PH_active_man = 3:
+			!тугезер вдвох трьох
+		elseif PH_active_man = 4:
+			!тугезер вдвох чотирьох
+		else
+			!Is this still together?
+		end
+		
 
 
 	else
@@ -275,7 +289,63 @@ if $ARGS[0] = 'start2':
 			temp = rand(1,50) + PH_arounsed_she	+ (PH_man - PH_active_man)*rand(0,30)
 
 			!1lesb/ass/vag/blowjob/hands/leg
-			if (PH_act_me/100000) MOD 10 > 1:
+			if me_dom_command = 1:
+				me_dom_command = 0
+				!please a dicks
+				
+				:PH_rand_3333				
+
+				i = rand(1,10)
+
+				if PH_act_man[i] = 1000:
+					GBPHtemp = i
+					she_do_dicks += 1
+				else
+					jump 'PH_rand_3333'
+				end
+
+				i = GBPHtemp
+
+				temp = rand(1,10)
+				if temp <= 5:
+					PH_act_man[i] = 1010
+					PH_active_man[i] = 1
+					PH_active_man += 1
+
+					'She starts jerking a dick'
+					PH_arounsed_she += rand(1,5)
+
+					PH_act_she = 100010
+				elseif temp <= 9:
+					PH_act_man[i] = 1020
+					PH_active_man[i] = 1
+					PH_active_man += 1
+					'She starts sucking a dick'
+
+					PH_act_she = 100100
+				else
+					if rand(1,3) ! 1:
+						PH_act_man[i] = 1030
+						PH_active_man[i] = 1
+						PH_active_man += 1
+						'She starts fucking a dick'
+
+						PH_act_she = 101000
+					else
+						PH_act_man[i] = 1040
+						PH_active_man[i] = 1
+						PH_active_man += 1
+						'She put a dick in her ass'
+
+						PH_act_she = 110000						
+					end
+				end
+				killvar 'GBPHtemp'
+
+				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution'
+				gs 'stat'		
+				PH_arounsed_me = pcs_horny
+			elseif (PH_act_me/100000) MOD 10 > 1:
 				!Iamdoingher
 				!she wait or give back
 				temp = rand(1,50) + PH_arounsed_she
@@ -526,7 +596,15 @@ if $ARGS[0] = 'start2':
 					!masturb
 					'She start pleasuring herself'
 					temp = (PH_act_she/100000) MOD 10
-					PH_act_she = -temp*100000 + 800000					
+					PH_act_she = -temp*100000 + 800000
+				elseif (temp <= 100) and (rand(1,50) - she_dom <= -15) and (PH_man - PH_active_man > 0):
+					!she command me!
+					she_dom_command = 1
+					if (PH_act_she/100) MOD 10 = 0:
+						'<<$She_name>>:Hey, work this dick. - she point on the errected dick'
+					else
+						'She catch my sign and tilt her head to the errected dick, this is certanly a command to serve it'
+					end
 				elseif temp <= 70 and me_do_dicks = 0:
 					!play with me(grope)
 					'She start licking my body and playing with it'
@@ -552,6 +630,7 @@ if $ARGS[0] = 'start2':
 					if temp <= 5:
 						PH_act_man[i] = 1010
 						PH_active_man[i] = 1
+						PH_active_man += 1
 
 						'She starts jerking a dick'
 						PH_arounsed_she += rand(1,5)
@@ -560,6 +639,7 @@ if $ARGS[0] = 'start2':
 					elseif temp <= 9:
 						PH_act_man[i] = 1020
 						PH_active_man[i] = 1
+						PH_active_man += 1
 						'She starts sucking a dick'
 
 						PH_act_she = 100100
@@ -567,12 +647,14 @@ if $ARGS[0] = 'start2':
 						if rand(1,3) ! 1:
 							PH_act_man[i] = 1030
 							PH_active_man[i] = 1
+							PH_active_man += 1
 							'She starts fucking a dick'
 
 							PH_act_she = 101000
 						else
 							PH_act_man[i] = 1040
 							PH_active_man[i] = 1
+							PH_active_man += 1
 							'She put a dick in her ass'
 
 							PH_act_she = 110000						
@@ -619,89 +701,1361 @@ if $ARGS[0] = 'start2':
 					'<<$She_name>> just stand and smiles at me'				
 				end
 			end
-		!-=wip=-
 		elseif ((PH_act_she/1000) MOD 10 > 1) OR ((PH_act_she/10000) MOD 10 > 1):
 			!1/ass/vag/blowjob/hands/leg
 			!dvag orr dass
+			if ((PH_act_she/1000) MOD 10 > 1):
+				temp = (PH_act_she/1000) MOD 10
+				'<<temp>> cocks rampaging <<$She_name>>''s pussy'
+			elseif ((PH_act_she/10000) MOD 10 > 1):
+				temp = (PH_act_she/10000) MOD 10
+				'<<temp>> cocks rampaging <<$She_name>>''s ass'
+			end
+
 			if PH_man - PH_active_man > 0:
-				
-			end			
+				!' '
+				!-=wip=-
+			end
 		elseif she_do_dicks = 1:
+			temp = rand(1,10)
+			if PH_act_she = 100010:
+				if temp >= 5:
+					'<<$She_name>> she keeps jerking'
+				else
+					'<<$She_name>> decides to suck the dick'
+					PH_act_she = 100100
+
+					i = 0
+					:loopPH1
+					i += 1
+					if (PH_act_man[i]/10) MOD 10 >= 1:
+						otemp = i
+					else
+						if i <= 10:
+							jump 'loopPH1'
+						else
+							!''
+						end
+					end
+
+					i = otemp
+					PH_act_man[i] += 10
+				end
+			elseif PH_act_she = 100100:
+				if temp >= 6:
+					'<<$She_name>> she keeps blowing him.'
+				else
+					if rand(1,3) ! 1:
+						'<<$She_name>> decides to fuck the dick'
+						PH_act_she = 101000
+
+						i = 0
+						:loopPH12
+						i += 1
+						if (PH_act_man[i]/10) MOD 10 >= 1:
+							otemp = i
+						else
+							if i <= 10:
+								jump 'loopPH12'
+							else
+								!''
+							end
+						end
+
+						i = otemp
+						PH_act_man[i] += 10
+					else
+						'<<$She_name>> decides to assfuck the dick'
+						PH_act_she = 110000
+
+						i = 0
+						:loopPH123
+						i += 1
+						if (PH_act_man[i]/10) MOD 10 >= 1:
+							otemp = i
+						else
+							if i <= 10:
+								jump 'loopPH123'
+							else
+								!''
+							end
+						end
+
+						i = otemp
+						PH_act_man[i] += 20					
+					end
+				end			
+			elseif PH_act_she = 101000:
+				'He fucknig <<$She_name>>'
+			elseif PH_act_she = 110000:
+				'He fucknig <<$She_name>>''s asshole'
+			end
+
+
 			if PH_man - PH_active_man > 0:
-				
-			end		
+				temp = rand(1,50) - she_dom
+				if me_dom_command = 1: 
+					temp = 50
+					me_dom_command = 0
+				end
+				if temp >= 45:
+					!she take next dick
+
+					i = 0
+					:PH_rand_33				
+
+					i += 1
+
+					if PH_act_man[i] = 1000:
+						GBPHtemp = i
+						she_do_dicks += 1
+					else
+						jump 'PH_rand_33'
+					end
+
+					i = GBPHtemp
+
+					temp = rand(1,10)
+					if temp <= 5:
+						PH_act_man[i] = 1010
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						'She starts jerking another dick'
+						PH_arounsed_she += rand(1,5)
+
+						PH_act_she += 10
+					elseif temp <= 9 and (PH_act_she/100) MOD 10 = 0:
+						PH_act_man[i] = 1020
+						PH_active_man[i] = 1
+						PH_active_man += 1
+						'She starts sucking another dick'
+
+						PH_act_she += 100
+					elseif temp = 10 and (PH_act_she/1000) MOD 10 = 0 and (PH_act_she/10000) MOD 10 = 0:
+						if rand(1,3) ! 1:
+							PH_act_man[i] = 1030
+							PH_active_man[i] = 1
+							PH_active_man += 1
+							'She starts fucking another dick'
+
+							PH_act_she += 1000
+						else
+							PH_act_man[i] = 1040
+							PH_active_man[i] = 1
+							PH_active_man += 1
+							'She put a dick in her ass'
+
+							PH_act_she += 10000						
+						end
+					else
+						PH_act_man[i] = 1010
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						'She starts jerking onother dick'
+						PH_arounsed_she += rand(1,5)
+
+						PH_act_she += 10					
+					end
+					killvar 'GBPHtemp'
+
+					gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution'
+					gs 'stat'		
+					PH_arounsed_me = pcs_horny
+				elseif temp <= -15:
+					!she command me!
+					she_dom_command = 1
+					if (PH_act_she/100) MOD 10 = 0:
+						'<<$She_name>>:Hey, work this dick. - she point on the errected dick'
+					else
+						'She catch my sign and tilt her head to the errected dick, this is certanly a command to serve it'
+					end
+				else
+					!''
+				end
+			end
 		elseif she_do_dicks = 2:
-			if PH_man - PH_active_man > 0:
+			if rand(1,3) = 1:
+				if ((PH_act_she / 1000) MOD 10 = 0) and ((PH_act_she / 10000) MOD 10 = 0):
+					temp = rand(1,30)				
+				elseif ((PH_act_she / 1000) MOD 10 ! 0) OR ((PH_act_she / 10000) MOD 10 ! 0):
+					temp = rand(31,100)
+				elseif ((PH_act_she / 1000) MOD 10 ! 0) And ((PH_act_she / 10000) MOD 10 ! 0): 
+					temp = rand(89,100)
+				end
+
+				i = 0
+				:loopfindguy1
+				i += 1
+				if (PH_act_man[i]/10) > 0:
+					temp1 = i
+				else
+					if i < 10:
+						jump 'loopfindguy1'
+					else
+						!''
+					end
+				end
+
+				:loopfindguy12
+				i += 1
+				if (PH_act_man[i]/10) > 0:
+					temp2 = i
+				else
+					if i < 10:
+						jump 'loopfindguy12'
+					else
+						!''
+					end
+				end
 				
-			end		
+				if temp <= 10:
+					!hjx2
+					'She jerk both dicks'
+					PH_act_she = 100020
+					i = temp1
+					PH_act_man[i] = 1010
+					i = temp2
+					PH_act_man[i] = 1010
+					killvar 'temp1'
+					killvar 'temp2'
+				elseif temp <= 30:
+					!hj+bj
+					'She jerk a dick while sucking the other'
+					PH_act_she = 100110
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1020
+						i = temp2
+						PH_act_man[i] = 1010					
+					else
+						i = temp1
+						PH_act_man[i] = 1010
+						i = temp2
+						PH_act_man[i] = 1020					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				elseif temp <= 40:
+					!hj+vag
+					'She jerks a guy while other fucking her'
+					PH_act_she = 101010
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1030
+						i = temp2
+						PH_act_man[i] = 1010					
+					else
+						i = temp1
+						PH_act_man[i] = 1010
+						i = temp2
+						PH_act_man[i] = 1030					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				elseif temp <= 50:
+					!hj+ass
+					'She jerks a guy while other assfucking her'
+					PH_act_she = 110010
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1040
+						i = temp2
+						PH_act_man[i] = 1010					
+					else
+						i = temp1
+						PH_act_man[i] = 1010
+						i = temp2
+						PH_act_man[i] = 1040					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				elseif temp <= 70:
+					!bj+vag
+					'Guys Spit roast her'
+					PH_act_she = 101100
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1030
+						i = temp2
+						PH_act_man[i] = 1020					
+					else
+						i = temp1
+						PH_act_man[i] = 1020
+						i = temp2
+						PH_act_man[i] = 1030					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				elseif temp <= 90:
+					!bj+ass
+					'Guys Spit roast her'
+					PH_act_she = 110100
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1040
+						i = temp2
+						PH_act_man[i] = 1020					
+					else
+						i = temp1
+						PH_act_man[i] = 1020
+						i = temp2
+						PH_act_man[i] = 1040					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				else
+					!vag+ass
+					'Guys fuck her ass and vagine at the same time.'
+					PH_act_she = 111000
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_man[i] = 1040
+						i = temp2
+						PH_act_man[i] = 1030					
+					else
+						i = temp1
+						PH_act_man[i] = 1030
+						i = temp2
+						PH_act_man[i] = 1040					
+					end
+					killvar 'temp1'
+					killvar 'temp2'
+				end
+			else			
+				if PH_man - PH_active_man > 0:
+					temp = rand(1,50) - she_dom
+					if me_dom_command = 1: 
+						temp = 50
+						me_dom_command = 0
+					end					
+					if temp >= 45:
+						!she take next dick
+
+						i = 0
+						:PH_rand_333				
+
+						i += 1
+
+						if PH_act_man[i] = 1000:
+							GBPHtemp = i
+							she_do_dicks += 1
+						else
+							jump 'PH_rand_333'
+						end
+
+						i = GBPHtemp
+						
+						if (PH_act_she/10) MOD = 2:
+							PH_act_man[i] = 1020
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							'She starts sucking another dick'
+							PH_arounsed_she += rand(1,5)
+
+							PH_act_she += 100						
+						else
+							PH_act_man[i] = 1010
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							'She starts jerking another dick'
+							PH_arounsed_she += rand(1,5)
+
+							PH_act_she += 10
+						end
+
+						killvar 'GBPHtemp'
+
+						gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution'
+						gs 'stat'		
+						PH_arounsed_me = pcs_horny
+					elseif temp <= -15:
+						!she command me!
+						she_dom_command = 1
+						if (PH_act_she/100) MOD 10 = 0:
+							'<<$She_name>>:Hey, work this dick. - she point on the errected dick'
+						else
+							'She catch my sign and tilt her head to the errected dick, this is certanly a command to serve it'
+						end
+					else
+						'She is enjoying sex with 2 guys!'
+					end
+				else
+					'She is enjoying sex with 2 guys!'
+				end
+			end	
 		elseif she_do_dicks = 3:
-			if PH_man - PH_active_man > 0:
-				
-			end		
-		elseif she_do_dicks = 4:
-			if PH_man - PH_active_man > 0:
-				
-			end		
-		elseif she_do_dicks = 5:
-			if PH_man - PH_active_man > 0:
-				
-			end		
-		elseif she_do_dicks > 5:
-			if PH_man - PH_active_man > 0:
-				
-			end		
+			if rand(1,3) = 1:
+				if ((PH_act_she / 10) MOD 10 = 2) and ((PH_act_she / 100) MOD 10 = 1):
+					!hjx2+bj
+					temp = rand(1,10)
+				elseif ((PH_act_she / 10) MOD 10 >= 1) and (((PH_act_she / 1000) MOD 10 = 1) OR ((PH_act_she / 10000) MOD 10 = 1)):
+					!hjx2+vag
+					!hjx2+ass
+					!hj+bj+vag
+					!hj+bj+ass
+					temp = rand(11,50)
+				else
+					!hj+vag+ass
+					!bj+vag+ass
+					temp = rand(51,60)
+				end
+
+				i = 0
+				:loopfindguy11
+				i += 1
+				if (PH_act_man[i]/10) > 0:
+					temp1 = i
+				else
+					if i < 10:
+						jump 'loopfindguy11'
+					else
+						!''
+					end
+				end
+
+				:loopfindguy122
+				i += 1
+				if (PH_act_man[i]/10) > 0:
+					temp2 = i
+				else
+					if i < 10:
+						jump 'loopfindguy122'
+					else
+						!''
+					end
+				end
+
+				:loopfindguy1223
+				i += 1
+				if (PH_act_man[i]/10) > 0:
+					temp3 = i
+				else
+					if i < 10:
+						jump 'loopfindguy1223'
+					else
+						!''
+					end
+				end
+
+				if temp <= 10:
+					!hjx2+bj
+					'All her hands are busy'
+					PH_act_she = 100120
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1020							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp2
+							PH_act_me[i] = 1020							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1020							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp1
+							PH_act_me[i] = 1020							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 20:
+					!hjx2+vag
+					'All her hands are busy and a guy is fucking her'
+					PH_act_she = 101020
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp2
+							PH_act_me[i] = 1030							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp1
+							PH_act_me[i] = 1030							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 30:
+					!hjx2+ass
+					'All her hands are busy and a guy is assfucking her'
+					PH_act_she = 110020
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1040							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp2
+							PH_act_me[i] = 1040							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1010
+							i = temp3
+							PH_act_me[i] = 1040							
+						else
+							i = temp3
+							PH_act_me[i] = 1010
+							i = temp1
+							PH_act_me[i] = 1040							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 40:
+					!hj+bj+vag
+					'She is split rosted'
+					PH_act_she = 101110
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1020
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1020
+							i = temp2
+							PH_act_me[i] = 1030							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1020
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1020
+							i = temp1
+							PH_act_me[i] = 1030							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 50:
+					!hj+bj+ass
+					'She is split rosted'
+					PH_act_she = 110110
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1020
+							i = temp3
+							PH_act_me[i] = 1040							
+						else
+							i = temp3
+							PH_act_me[i] = 1020
+							i = temp2
+							PH_act_me[i] = 1040							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1020
+							i = temp3
+							PH_act_me[i] = 1040							
+						else
+							i = temp3
+							PH_act_me[i] = 1020
+							i = temp1
+							PH_act_me[i] = 1040							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 55:
+					!hj+vag+ass
+					'She is split rosted'
+					PH_act_she = 111010
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1040
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1040
+							i = temp2
+							PH_act_me[i] = 1030							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1010
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1040
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1040
+							i = temp1
+							PH_act_me[i] = 1030							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				elseif temp <= 60:
+					!bj+vag+ass
+					'All her holes are busy!'
+					PH_act_she = 111100
+
+					if rand(1,2) = 1:
+						i = temp1
+						PH_act_me[i] = 1020
+						if rand(1,2) = 1:
+							i = temp2
+							PH_act_me[i] = 1040
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1040
+							i = temp2
+							PH_act_me[i] = 1030							
+						end
+					else
+						i = temp2
+						PH_act_me[i] = 1020
+						if rand(1,2) = 1:
+							i = temp1
+							PH_act_me[i] = 1040
+							i = temp3
+							PH_act_me[i] = 1030							
+						else
+							i = temp3
+							PH_act_me[i] = 1040
+							i = temp1
+							PH_act_me[i] = 1030							
+						end						
+					end
+
+					killvar 'temp1'
+					killvar 'temp2'
+					killvar 'temp3'
+				end
+			else
+				if PH_man - PH_active_man > 0:
+					temp = rand(1,50) - she_dom
+					if me_dom_command = 1: 
+						temp = 50
+						'SHE: "I am sorry, I just can't please one more!" - she really can''t'
+						she_dom -= rand(5,10)
+						me_dom_command = 0
+					end					
+					if temp >= 45:
+						'She is enjoying sex with 3 guys!'
+					elseif temp <= -15:
+						!she command me!
+						she_dom_command = 1
+						if (PH_act_she/100) MOD 10 = 0:
+							'<<$She_name>>:Hey, work this dick. - she point on the errected dick'
+						else
+							'She catch my sign and tilt her head to the errected dick, this is certanly a command to serve it'
+						end
+					else
+						'She is enjoying sex with 3 guys!'
+					end
+				else
+					'She is enjoying sex with 3 guys!'
+				end			
+			end
 		end
 
 
 
 		!мої дії (спочатку дії з поточними членами, потім зміна поточної ситуації, потім дії дефольні, потім дії з новими членами)
-		if me_do_dicks = 0:
-			!undress
-			!Smoke
-			!kiss
-			!masturb
-			!play with her
-			!wait
-			!please a dicks
-			!help her
+		if she_dom_command > 0:
+			!вона сказала взяти ще 1-го клієнта
+
+			she_dom_command = 0
+
+			gs 'willpower', 'skill', 'sex', 'resist', 'medium'
+			if pcs_willpwr < will_cost:
+				act 'Ignore her command' + $func('willpower', 'get_willcost_string'): $noWillpower
+			else
+				act 'Ignore her command' + $func('willpower', 'get_willcost_string'):
+					cla
+					gs 'willpower', 'pay', 'resist'
+					gs 'stat'
+					minut += 5
+					she_dom -= 3
+					act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				end
+			end
+
+			act 'Listen her':
+				cla
+				she_dom += rand(3,10)
+
+				gs 'mod_public_WC_whore_together', 'findlonelydick'
+				i = GBPHtemp
+
+				if (PH_act_me/10) MOD 10 < 2:
+					!hj
+					act 'Jerk this guy':
+						PH_act_me += 10
+						she_dom += 2
+						i = GBPHtemp
+
+						PH_act_man[i] = 1100
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						*clr & cla
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+				if (PH_act_me/100) MOD 10 < 1:
+					!bj
+					act 'suck this guy':
+						PH_act_me += 100
+						she_dom += 3
+						i = GBPHtemp
+
+						PH_act_man[i] = 1200
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						*clr & cla
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+				if (PH_act_me/1000) MOD 10 < 1:
+					!vag
+					act 'fuck this guy':
+						PH_act_me += 1000
+						she_dom += 4
+						i = GBPHtemp
+
+						PH_act_man[i] = 1300
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						*clr & cla
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+				if (PH_act_me/10000) MOD 10 < 1:
+					!ass
+					act 'assfuck this guy':
+						PH_act_me += 10000
+						she_dom += 5
+						i = GBPHtemp
+
+						PH_act_man[i] = 1400
+						PH_active_man[i] = 1
+						PH_active_man += 1
+
+						*clr & cla
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+			end
+		elseif me_do_dicks = 0:			
+			if ((PH_act_she/100000) MOD 10 > 0) and ((PH_act_she/100000) MOD 10 < 8):
+				!вона зайнята мною
+				act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+
+				if ((PH_act_me/100000) MOD 10 = 2):
+					act 'keep kising': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				else
+					act 'kiss her':						
+						gs 'arousal', 'kiss', rand(5,7), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
+						gs 'stat'
+
+						PH_arounsed_she += rand(1,3)
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 200000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 200000
+
+						*clr & cla
+						'She answered my kiss.'
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+
+				if ((PH_act_me/100000) MOD 10 = 3):
+					act 'keep groping her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif ((PH_act_she/100000) MOD 10 ! 6) and ((PH_act_she/100000) MOD 10 ! 7):					
+					!foreplay
+					act 'Grope her':						
+						gs 'arousal', 'foreplay_give', rand(5,7), 'prostitution', 'group', 'lesbian', 'gloryhole'
+						gs 'stat'
+
+						PH_arounsed_she += rand(3,5)
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 300000						
+
+						*clr & cla
+						'SHE:"girl, keep going."'
+						gs 'mod_public_WC_whore_together', 'start2'										
+					end
+				end
+				
+				if ((PH_act_me/100000) MOD 10 = 4):
+					act 'keep eating her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif PH_arounsed_she >= 50:
+					!cuni
+					act 'eat her pussy':						
+						gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
+						gs 'stat'
+
+						PH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 400000	
+
+						*clr & cla
+						'I am eating her'
+						gs 'mod_public_WC_whore_together', 'start2'							
+					end
+				else
+					act 'eat her pussy':
+						'<i>She is not HORNY enough.</i>'
+					end
+				end
+				
+				if ((PH_act_me/100000) MOD 10 = 5):
+					act 'keep fingering her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she >= 60:
+					!fingering
+					act 'finger her':						
+						gs 'arousal', 'vaginal_finger_give', rand(5,10), 'lesbian'
+						gs 'stat'
+
+						PH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 500000	
+
+						*clr & cla
+						'I am eating her'
+						gs 'mod_public_WC_whore_together', 'start2'							
+					end
+				elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she <>=> 60:
+					act 'finger her':
+						'<i>She is not HORNY enough.</i>'
+					end
+				end
+				
+				if ((PH_act_me/100000) MOD 10 = 6):
+					act 'keep fisting her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif ((PH_act_me/100000) MOD 10 >= 4) OR ((PH_act_me/100000) MOD 10 ! 8):
+					!fisting
+					act 'fisting her':						
+						gs 'arousal', 'vaginal_fist_give', rand(5,10), 'lesbian'
+						gs 'stat'
+
+						PH_arounsed_she += rand(4,8)
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 600000	
+
+						*clr & cla
+						'I am fiting my fist inside her'
+						gs 'mod_public_WC_whore_together', 'start2'							
+					end
+				end
+				
+				if ((PH_act_me/100000) MOD 10 = 7):
+					act 'keep rimming her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif ((PH_act_me/100000) MOD 10 >= 4) OR ((PH_act_me/100000) MOD 10 ! 8):
+					!rimming
+					act 'lick her asshole':						
+						gs 'arousal', 'rimming_give', rand(5,10), 'lesbian'
+						gs 'stat'
+
+						PH_arounsed_she += rand(4,8)
+						PH_arounsed_me = pcs_horny
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 700000	
+
+						*clr & cla
+						'I start licking her asshole'
+						gs 'mod_public_WC_whore_together', 'start2'							
+					end
+				end
+			else
+				!вона НЕ зайнята мною 
+				act 'wait':
+					minut += 10
+					gs 'stat'
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+
+				if $clothingworntype ! 'nude':
+					act 'undress':
+						minut += 3
+						gs 'clothing', 'strip'
+						gs 'underwear', 'remove'
+						gs 'stat'
+						PH_nude_Me = 1
+
+						*clr & cla
+						'I have undressed myself.'
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+				
+				if mc_inventory['cigarettes'] > 0:
+					act 'Smoke':						
+						minut += rand(10,15)
+						gs 'drugs','smoke'
+						gs 'stat'
+						if rand(1,4) = 1:
+							pcs_willpwr += rand(1,2)
+							if pcs_willpwr >= willpowermax: pcs_willpwr = willpowermax
+							if pcs_willpwr <= 0: pcs_willpwr = 0
+							gs 'stat'
+						end
+						gs 'stat'
+						*clr & cla
+						'I decide to kill some time with cigarette.'
+						'<center><video autoplay loop <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/smoke/smoke/idle/smoke ('+rand(1,5)+').mp4"></video></center>'
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+				
+				if ((PH_act_me/100000) MOD 10 = 8):
+					'I am masturbating'
+					act 'keep masturbating': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+				elseif pcs_horny >= 50:
+					act 'masturbate':				
+						gs 'arousal', 'masturbate', rand(5,7), 'prostitution', 'gloryhole'
+						gs 'stat'
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 800000
+
+						*clr & cla
+						'I am pleasuring myself'
+						gs 'mod_public_WC_whore_together', 'start2'
+					end
+				else
+					act 'masturbate':
+						'I am not horny enough'
+					end
+				end
+
+				if she_do_dicks = 0:
+					!kiss
+					!play with her
+					if ((PH_act_me/100000) MOD 10 = 2):
+						act 'keep kising': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					else
+						act 'kiss her':						
+							gs 'arousal', 'kiss', rand(5,7), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
+							gs 'stat'
+
+							PH_arounsed_she += rand(1,3)
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_she/100000) MOD 10
+							PH_act_she = -temp*100000 + 200000
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 200000
+
+							*clr & cla
+							'She answered my kiss.'
+							gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+					
+					if ((PH_act_me/100000) MOD 10 = 3):
+						act 'keep groping her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					else					
+						!foreplay
+						act 'Grope her':						
+							gs 'arousal', 'foreplay_give', rand(5,7), 'prostitution', 'group', 'lesbian', 'gloryhole'
+							gs 'stat'
+
+							PH_arounsed_she += rand(3,5)
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 300000						
+
+							*clr & cla
+							'SHE:"girl, keep going."'
+							gs 'mod_public_WC_whore_together', 'start2'										
+						end
+					end					
+
+
+					!cuni
+					!fingering
+					if ((PH_act_me/100000) MOD 10 = 4):
+						act 'keep eating her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					elseif PH_arounsed_she >= 50:
+						!cuni
+						act 'eat her pussy':						
+							gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
+							gs 'stat'
+
+							PH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 400000	
+
+							*clr & cla
+							'I am eating her'
+							gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					else
+						act 'eat her pussy':
+							'<i>She is not HORNY enough.</i>'
+						end
+					end
+					
+					if ((PH_act_me/100000) MOD 10 = 5):
+						act 'keep fingering her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she >= 60:
+						!fingering
+						act 'finger her':						
+							gs 'arousal', 'vaginal_finger_give', rand(5,10), 'lesbian'
+							gs 'stat'
+
+							PH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 500000	
+
+							*clr & cla
+							'I am eating her'
+							gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she <>=> 60:
+						act 'finger her':
+							'<i>She is not HORNY enough.</i>'
+						end
+					end					
+
+					!fisting
+					!rimming
+					if ((PH_act_me/100000) MOD 10 = 6):
+						act 'keep fisting her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					elseif ((PH_act_me/100000) MOD 10 >= 4) OR ((PH_act_me/100000) MOD 10 ! 8):
+						!fisting
+						act 'fisting her':						
+							gs 'arousal', 'vaginal_fist_give', rand(5,10), 'lesbian'
+							gs 'stat'
+
+							PH_arounsed_she += rand(4,8)
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 600000	
+
+							*clr & cla
+							'I am fiting my fist inside her'
+							gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					end
+					
+					if ((PH_act_me/100000) MOD 10 = 7):
+						act 'keep rimming her': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					elseif ((PH_act_me/100000) MOD 10 >= 4) OR ((PH_act_me/100000) MOD 10 ! 8):
+						!rimming
+						act 'lick her asshole':						
+							gs 'arousal', 'rimming_give', rand(5,10), 'lesbian'
+							gs 'stat'
+
+							PH_arounsed_she += rand(4,8)
+							PH_arounsed_me = pcs_horny
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 700000	
+
+							*clr & cla
+							'I start licking her asshole'
+							gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					end					
+				elseif she_do_dicks = 1 and me_do_dicks = 0:
+					!help her
+					act 'help her':
+						PH_act_she_together = PH_act_she
+						PH_act_me = -10000
+						PH_act_she = -10000
+						PH_act_me_together = 100010
+						
+						
+						i = 0
+						:PHloopfindtheguy1212
+						i += 1
+						if (PH_act_man[i] /10) MOD 10 ! 0:
+							otemp = i
+							PH_act_man[i] += 100
+						else
+							if i >= 10:
+								!''
+							else
+								jump 'PHloopfindtheguy1212'
+							end
+						end
+
+						*clr & cla
+						'I approache her and start helping me with the client'
+						gs 'mod_public_WC_whore_together', 'start2'						
+					end
+				end
+
+				if PH_man - PH_active_man > 0:
+					!please a dicks	
+
+					!cla
+					if PH_man[1] = 1 and PH_active_man[1] = 0:
+						act 'please client #1':
+							otemp = 1
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[2] = 1 and PH_active_man[2] = 0:
+						act 'please client #2':
+							otemp = 2
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[3] = 1 and PH_active_man[3] = 0:
+						act 'please client #3':
+							otemp = 3
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[4] = 1 and PH_active_man[4] = 0:
+						act 'please client #4':
+							otemp = 4
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[5] = 1 and PH_active_man[5] = 0:
+						act 'please client #5':
+							otemp = 5
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[6] = 1 and PH_active_man[6] = 0:
+						act 'please client #6':
+							otemp = 6
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[7] = 1 and PH_active_man[7] = 0:
+						act 'please client #7':
+							otemp = 7
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[8] = 1 and PH_active_man[8] = 0:
+						act 'please client #8':
+							otemp = 8
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[9] = 1 and PH_active_man[9] = 0:
+						act 'please client #9':
+							otemp = 9
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+					if PH_man[10] = 1 and PH_active_man[10] = 0:
+						act 'please client #10':
+							otemp = 10
+							gs 'mod_public_WC_whore_together2', '1dick_actions'
+						end							
+					end
+
+					
+					!order her to work a dick
+					gs 'willpower', 'bj', 'force'
+					if cheatVars['willpower'] = 0: will_cost += hypnoTime
+					if pcs_willpwr < will_cost:
+						act 'Put them on anyways' + $func('willpower', 'get_willcost_string'): $noWillpower
+					else
+						act 'Order her to please the free dick' + $func('willpower', 'get_willcost_string'):
+							cla
+							gs 'willpower', 'pay', 'force'
+							gs 'stat'
+
+							temp = rand(-15,15) - she_dom
+							if temp < 0:
+								!she resist
+								she_dom += rand(2,5)
+								'She does not obbey my order'
+							else
+								!she agree
+								she_dom -= rand(5,10)
+								'she agree to take one more dick'
+								me_dom_command = 1
+
+								if (PH_act_me/100000) MOD 10 > 1:
+									if (PH_act_me/100000) MOD 10 = 2:
+										'we stopped kissing'
+									elseif (PH_act_me/100000) MOD 10 = 3:
+										'I stopped grope her'
+									elseif (PH_act_me/100000) MOD 10 = 4:
+										'I stopped eating her'
+									elseif (PH_act_me/100000) MOD 10 = 5:
+										'I stopped fingering her'
+									elseif (PH_act_me/100000) MOD 10 = 6:
+										'I stopped fisting her'
+									elseif (PH_act_me/100000) MOD 10 = 7:
+										'I stopped rimming her'
+									end
+								end
+								temp = (PH_act_me/100000) MOD 10
+								PH_act_me = -temp*100000 + 100000
+							end							
+
+							act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+				end
+			end
 		elseif ((PH_act_me/1000) MOD 10 > 1) OR ((PH_act_me/10000) MOD 10 > 1):
-			!1/ass/vag/blowjob/hands/leg
+			!-=wip=-
+			!lesbo/ass/vag/blowjob/hands/leg
 			!dvag orr dass
 			if PH_man - PH_active_man > 0:
 				
 			end			
 		elseif me_do_dicks = 1:
+			!-=wip=-
 			if PH_man - PH_active_man > 0:
 				
 			end		
 		elseif me_do_dicks = 2:
+			!-=wip=-
 			if PH_man - PH_active_man > 0:
 				
 			end			
 		elseif me_do_dicks = 3:
+			!-=wip=-
 			if PH_man - PH_active_man > 0:
 				
-			end			
-		elseif me_do_dicks = 4:
-			if PH_man - PH_active_man > 0:
-				
-			end			
-		elseif me_do_dicks = 5:
-			if PH_man - PH_active_man > 0:
-				
-			end			
-		elseif me_do_dicks > 5:
-			if PH_man - PH_active_man > 0:
-				
-			end			
+			end
 		end		
 	end
 
 	!треба відео, що показує поточну ситуацію згідно того, хто що робе
+	gs 'mod_public_WC_whore_together', 'video'
 
-	gs 'mod_public_WC_whore_together', 'SHECUM'
+	'Her actions effect:'
+	gs 'mod_public_WC_whore_together', 'SHE_DAMAGEALL'
+	'My actions effect:'
+	gs 'mod_public_WC_whore_together', 'ME_DAMAGEALL'
+
 	
+	gs 'mod_public_WC_whore_together', 'SHECUM'
+	!додай її реакцію на те, що вона кінчилася (зупинити лезб)
+	!-=wip=-
+
+	if PH_arounsed_me >= 100:
+		gs 'arousal', 'end'
+		gs 'stat'
+		PH_arounsed_me = pcs_horny	
+	end
+	!додай мою реакцію на те, що я кінчила (зупинити лезб)
+	!-=wip=-
+	
+	!перевір чи хтось кінчив
 	gs 'mod_public_WC_whore_together', 'CUM_trigger'
+	!act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+	me_dom_command = 0
+end
+
+if $ARGS[0] = 'video':
+	!gs 'mod_public_WC_whore_together', 'video'
+	!-=wip=-
 end
 
 
@@ -1133,6 +2487,7 @@ if $ARGS[0] = 'manleave':
 
 	PH_man_fun[i] = 0
 	PH_active_man[i] = 0
+	PH_active_man -= 1
 	!чи він чекає чи ні
 
 	PH_act_man[i] = 0
@@ -1145,7 +2500,25 @@ if $ARGS[0] = 'manleave':
 	PH_condom[i] = 0	
 end
 
+if $ARGS[0] = 'findlonelydick':
+	!gs 'mod_public_WC_whore_together', 'findlonelydick'
+	i = 0
+	:PH_rand_findlonelydick				
 
+	i += 1
+
+	if PH_act_man[i] = 1000:
+		GBPHtemp = i
+	else
+		if i <= 10:
+			jump 'PH_rand_findlonelydick'
+		else
+			!''
+		end
+	end
+
+	i = GBPHtemp
+end
 
 --- mod_public_WC_whore_together ---------------------------------
 

@@ -1,0 +1,176 @@
+# mod_public_WC_whore_together2
+if $ARGS[0] = '1dick_actions':
+	cla
+	!gs 'mod_public_WC_whore_together2', '1dick_actions'
+	i = otemp
+
+	if PH_condom[i] = 1:
+		dynamic "act 'remove condom': gs 'mod_public_WC_whore_together2', 1, <<i>>"
+	elseif PH_condom[i] = 0 and prezik > 0:		
+		!dynamic "act 'put a condom': gs 'mod_public_WC_whore_together2', 2, <<i>>"
+	end
+
+	if (PH_act_man[i]/100) MOD 10 = 1:		
+		dynamic "act 'keep jerking him': gs 'mod_public_WC_whore_together2', 3, <<i>>"
+	else
+		dynamic "act 'strock his dick': gs 'mod_public_WC_whore_together2', 4, <<i>>"
+	end
+
+	if (PH_act_man[i]/100) MOD 10 = 2:		
+		dynamic "act 'keep sucking him': gs 'mod_public_WC_whore_together2', 5, <<i>>"
+	else		
+		dynamic "act 'blow him': gs 'mod_public_WC_whore_together2', 6, <<i>>"
+	end
+
+
+	if PH_nude_Me = 1:
+		if (PH_act_man[i]/100) MOD 10 = 3:			
+			dynamic "act 'keep riding the dick': gs 'mod_public_WC_whore_together2', 7, <<i>>"
+		else			
+			dynamic "act 'ride his dick': gs 'mod_public_WC_whore_together2', 8, <<i>>"
+		end
+		if (PH_act_man[i]/100) MOD 10 = 4:			
+			dynamic "act 'keep assfucking him': gs 'mod_public_WC_whore_together2', 9, <<i>>"
+		else			
+			dynamic "act 'assfuck him': gs 'mod_public_WC_whore_together2', 10, <<i>>"
+		end		
+	else
+		act 'ride his dick':
+			'<i>I must be naked to ride his dick.</i>'
+		end
+		act 'assfuck him':
+			'<i>I must be naked to ride his dick.</i>'
+		end		
+	end
+end
+
+
+
+if ARGS[0] = 1:
+	!act 'remove condom'
+	*clr & cla
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	PH_condom[i] = 0
+
+	!-=wip=-
+	!video needed
+
+	
+	act 'Next?': 
+		i = target_id
+		gs 'mod_public_WC_whore_together2', '1dick_actions'
+	end
+end
+
+if ARGS[0] = 3:
+	!keep jerking him
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 4:
+	!strock his dick
+
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+	
+	PH_act_me += 10	
+	
+	PH_act_man[i] = 1100
+	PH_active_man[i] = 1
+
+
+	*clr & cla
+	'I wrap my hands around his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to jerk it enthusiastically.'
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 5:
+	!keep sucking him
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 6:
+	!blow him
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+	
+	PH_act_me += 100	
+	
+	PH_act_man[i] = 1200
+	PH_active_man[i] = 1
+
+
+	*clr & cla
+	'I wrap my lips around his dick and take his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in my mouth and start to suck it, I suck the cock enthusiastically.'
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 7:
+	!keep riding the dick
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 8:
+	!ride his dick
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+	
+	PH_act_me += 1000	
+	
+	PH_act_man[i] = 1300
+	PH_active_man[i] = 1
+
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 9:
+	!keep assfucking him
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+if ARGS[0] = 10:
+	!assfuck him
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+	
+	PH_act_me += 10000	
+	
+	PH_act_man[i] = 1400
+	PH_active_man[i] = 1
+
+
+	*clr & cla
+	gs 'mod_public_WC_whore_together', 'start2'
+end
+
+--- mod_public_WC_whore_together2 ---------------------------------
+
