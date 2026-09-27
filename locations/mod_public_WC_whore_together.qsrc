@@ -1,0 +1,1151 @@
+# mod_public_WC_whore_together
+if $ARGS[0] = 'enter':
+	!*clr & cla
+	!-=wip=-
+	!тут треба логіка не рандомних змінних знизу.
+
+end
+
+if $ARGS[0] = 'start':
+	*clr & cla
+	!-=wip=-
+
+	if $clothingworntype ! 'nude': 
+		PH_nude_Me = 0
+	else
+		PH_nude_Me = 1
+	end
+	PH_nude_she = 0
+
+	She_dom = rand(-30,30)
+	if $She_name = ''
+		i = rand(1,10)
+		if i = 1:
+			$She_name = 'Vika'
+		elseif i = 2:
+			$She_name = 'Liza'
+		elseif i = 3:
+			$She_name = 'Olha'
+		elseif i = 4:
+			$She_name = 'Katia'
+		elseif i = 5:
+			$She_name = 'Zina'
+		elseif i = 6:
+			$She_name = 'Mal''vina'
+		elseif i = 7:
+			$She_name = 'Janna'
+		elseif i = 8:
+			$She_name = 'Nastia'
+		elseif i = 9:
+			$She_name = 'Lena'
+		elseif i = 10:
+			$She_name = 'Nadia'
+		end
+		i = 0
+	end
+
+	PH_arounsed_she = rand(5,50)
+	PH_arounsed_me = pcs_horny
+
+	PH_act_me = 0
+	PH_act_she = 0
+	PH_act_she_together = 0
+	PH_act_me_together = 0
+	!100000
+	!1lesb/ass/vag/blowjob/hands/leg
+
+	PH_she_cummed = 10000
+	PH_ava_she = 0
+	!face/tits/hands/pussy
+
+	she_do_dicks = 0
+	me_do_dicks = 0
+
+	PH_she_hj_skill = rand(50,100)
+	PH_she_bj_skill = rand(10,100)
+	PH_she_vag_skill = rand(30,120)
+	PH_she_ass_skill = rand(0,70)
+
+	otemp = 0
+
+
+	PH_man = 0
+	PH_active_man = 0
+	i = 0
+	:loopmanclear
+	i += 1
+	PH_man[i] = 0
+	!чи є людина
+
+	PH_man_fun[i] = 0	
+
+	PH_active_man[i] = 0
+	!чи він чекає чи ні
+
+	PH_act_man[i] = 0
+	!що роблять з чоловіком
+	![1][яроблю][вона робить][він робить] - 1000 - чекає
+
+	PH_cum_man[i] = 0
+	PH_color_man[i] = 0
+	PH_ava[i] = 0
+	PH_condom[i] = 0
+
+
+
+	PH_time = 0
+	PH_popularity = 0
+	PH_penalty = 0
+	
+	if i < 10:
+		jump 'loopmanclear'
+	end
+
+	!gt 'mod_public_WC_whore_together', 'start2'	
+	!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/ ('+rand(1,1)+').mp4"></video></center>'
+	!'<center><img <<$set_imgh>> src="mod/public_WC/ ('+rand(1,1)+').jpg"></center>'
+end
+
+
+
+if $ARGS[0] = 'startchecks':
+	PH_time += 1
+
+	!її демаг + перевірка на неробіння
+	i = 0
+	PH_active_man = 0
+	:GBPH_allcheck 
+	i += 1
+	
+	if PH_man[i] = 1:
+		if PH_act_man[i] < 1000: PH_act_man[i] = 1000
+		if PH_act_man[i] = 1000: 
+			PH_active_man[i] = 0
+		else
+			PH_active_man[i] = 1
+			PH_active_man += 1
+			otemp =  i
+			gs 'mod_public_WC_whore_together', 'SHE_DAMAGEALL'
+		end
+	end
+
+	if i < 10:
+		jump 'GBPH_allcheck'
+	end
+
+
+
+	!кількість клієнтів + чи їм нудно
+	i = 0
+	PH_man = 0
+	:loopmannumber
+	if PH_man[i] = 1:
+		PH_man += 1
+	end
+	if PH_act_man[i] = 1000: PH_man_fun[i] -= 1
+
+	if i < 10:
+		jump 'loopmannumber'
+	end
+
+
+	!скіки я членів роблю
+	i = 0
+	me_do_dicks = 0
+	:GBPHloopacts
+	i += 1
+	
+	if (PH_act_man[i] / 100) MOD 10 > 0:
+		me_do_dicks += 1
+	end
+	if i >= 10:
+		!''
+	else
+		jump 'GBPHloopacts'
+	end
+
+	!якщо я опрацьовую і НЕ тугезер, то скільки і як?
+	If me_do_dicks > 0 and PH_act_me ! -10000:
+		i = 0
+		temptemp = (PH_act_me/100000) MOD 10
+		PH_act_me = 0		
+		:GBPHloopactsmestate2
+		i += 1
+		
+		if (PH_act_man[i] / 100) MOD 10 = 1:
+			GB_PH_hj += 1
+		elseif  (PH_act_man[i] / 100) MOD 10 = 2:
+			GB_PH_bj += 1
+		elseif  (PH_act_man[i] / 100) MOD 10 = 3:
+			GB_PH_sex += 1
+		elseif  (PH_act_man[i] / 100) MOD 10 = 4:
+			GB_PH_anal += 1
+		end
+
+		if i >= 10:
+			!1/ass/vag/blowjob/hands/leg
+			temp = temptemp*100000 + 100*GB_PH_bj + 1000*GB_PH_sex + 10000*GB_PH_anal + 10*GB_PH_hj
+			PH_act_me = temp
+		else
+			jump 'GBPHloopactsmestate2'
+		end
+		killvar 'GB_PH_hj'
+		killvar 'GB_PH_bj'
+		killvar 'GB_PH_sex'
+		killvar 'GB_PH_anal'
+		killvar 'temptemp'
+	end
+
+	
+
+	!check dicks worked number SHE
+	i = 0
+	she_do_dicks = 0
+	:GBPHloopacts2
+	i += 1
+	
+	if (PH_act_man[i] / 10) MOD 10 > 0:
+		she_do_dicks += 1
+	end
+
+	if i >= 10:
+		!''
+	else
+		jump 'GBPHloopacts2'
+	end
+
+	!якщоSHE опрацьовує і НЕ тугезер, то скільки і як?
+	If she_do_dicks > 0 and PH_act_she ! -10000:
+		i = 0	
+		temptemp = (PH_act_she/100000) MOD 10
+		PH_act_she = 0			
+		:GBPHloopactsmestate21
+		i += 1
+		
+		if (PH_act_man[i] / 10) MOD 10 = 1:
+			GB_PH_hj += 1
+		elseif  (PH_act_man[i] / 10) MOD 10 = 2:
+			GB_PH_bj += 1
+		elseif  (PH_act_man[i] / 10) MOD 10 = 3:
+			GB_PH_sex += 1
+		elseif  (PH_act_man[i] / 10) MOD 10 = 4:
+			GB_PH_anal += 1
+		end
+
+		if i >= 10:
+			!1/ass/vag/blowjob/hands/leg
+			temp = temptemp*100000 + 100*GB_PH_bj + 1000*GB_PH_sex + 10000*GB_PH_anal + 10*GB_PH_hj
+			PH_act_she = temp
+		else
+			jump 'GBPHloopactsmestate21'
+		end
+		killvar 'GB_PH_hj'
+		killvar 'GB_PH_bj'
+		killvar 'GB_PH_sex'
+		killvar 'GB_PH_anal'
+		killvar 'temptemp'		
+	end
+end
+
+if $ARGS[0] = 'start2':
+	!*clr & cla
+	$loc = 'mod_public_WC_whore_together'
+	$metka = 'start2'
+	gs 'stat'
+
+	gs 'mod_public_WC_whore_together', 'startchecks'
+
+	gs 'mod_public_WC_whore_together', 'SHEDOM'
+
+	If PH_act_me = -10000 and PH_act_she = -10000:
+		!-=wip=-
+		!тугезер вдвох одного
+		!дії клієнта
+		!її дії
+		!мої дії
+
+
+	else
+		!все інше
+
+		!дії клієнта
+
+		!її дії (спочатку дії з поточними членами, потім зміна поточної ситуації, потім дії дефольні, потім дії з новими членами)
+		if she_do_dicks = 0:			
+			temp = rand(1,50) + PH_arounsed_she	+ (PH_man - PH_active_man)*rand(0,30)
+
+			!1lesb/ass/vag/blowjob/hands/leg
+			if (PH_act_me/100000) MOD 10 > 1:
+				!Iamdoingher
+				!she wait or give back
+				temp = rand(1,50) + PH_arounsed_she
+
+				if (PH_act_she/100000) MOD 10 = 1:
+					!nothing
+					if temp <= 30:
+						!wait
+						'She is pleased from my action'
+					elseif (PH_act_me/100000) MOD 10 = 2 and temp > 30:
+						!kiss for kiss
+						'she pasionatelly kissing me'						
+					elseif (PH_act_me/100000) MOD 10 = 3 and temp >= 50:
+						!foreplay for foreplay
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 300000
+						'She answered me and playing with my body'
+						'WE are pleasurng each other'
+					elseif (PH_act_me/100000) MOD 10 = 42 and temp >= 80:
+						!cuni for cuni
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000
+						'She soo arounsed! She start agressivly eating my pussy to pay me back.'					
+					else
+						!justpleased
+						'She enjoyes the pleasure I am doing to her'
+					end
+				if (PH_act_she/100000) MOD 10 = 2:
+					!sheiskissing
+					If temp <= 40:
+						!stop
+						'The kiss was wet and tasty, but it ends. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'We are kissing...'
+					elseif temp <= 80:
+						!foreplay
+						'The kiss is not enough for her, she start licking my body and playing with it'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 300000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000							
+					else
+						!cuni
+						'The kiss is not enough for her, she goes down...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000	
+					end
+				elseif (PH_act_she/100000) MOD 10 = 3:
+					!sheforeplays
+					If temp <= 40:
+						!stop
+						'It is fun and all, but I need a small pause. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'We are fooling around...'
+					elseif temp <= 80:
+						!cuni
+						'It is is not enough for her, she goes down...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000	
+					end
+				elseif (PH_act_she/100000) MOD 10 = 4:
+					!shecuni
+					If temp <= 40:
+						!stop
+						'It is fun and all, but I need a small pause. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'We are eating each other...'
+					elseif temp <= 80:
+						!fingering
+						'She start using hands!...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 500000	
+					end										
+				elseif (PH_act_she/100000) MOD 10 = 5:
+					!shefingering
+					If temp <= 40:
+						!stop
+						'It is fun and all, but I need a small pause. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'We are pleasuring each other...'
+					end					
+				end
+			elseif (PH_act_she/100000) MOD 10 > 1:
+				!onlyshedoingme
+				!she keeps our improves or stops
+				temp = rand(1,50) + PH_arounsed_she
+
+				if (PH_act_she/100000) MOD 10 = 2:
+					!sheiskissing
+					If temp <= 40:
+						!stop
+						'The kiss was wet and tasty, but it ends. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'We are kissing...'
+					elseif temp <= 80:
+						!foreplay
+						'The kiss is not enough for her, she start licking my body and playing with it'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 300000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000							
+					else
+						!cuni
+						'The kiss is not enough for her, she goes down...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000
+
+						temp = (PH_act_me/100000) MOD 10
+						PH_act_me = -temp*100000 + 100000	
+					end
+				elseif (PH_act_she/100000) MOD 10 = 3:
+					!sheforeplays
+					If temp <= 40:
+						!stop
+						'She stops'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000						
+					elseif temp <= 60:
+						!keep
+						'She is playing with my body to make me good...'
+					elseif temp <= 80:
+						!cuni
+						'It is is not enough for her, she goes down...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000	
+					end
+				elseif (PH_act_she/100000) MOD 10 = 4:
+					!shecuni
+					If temp <= 40:
+						!stop
+						'It is fun and all, but I need a small pause. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000					
+					elseif temp <= 60:
+						!keep
+						'She is eating me...'
+					elseif temp <= 80:
+						!fingering
+						'She start using hands!...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 500000	
+					end										
+				elseif (PH_act_she/100000) MOD 10 = 5:
+					!shefingering
+					If temp <= 40:
+						!stop
+						'It is fun and all, but I need a small pause. She moves back'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000					
+					elseif temp <= 60:
+						!keep
+						'We are pleasuring each other...'
+					elseif temp <= 80:
+						if rand(1,2) = 1:
+							!fisting
+							'She starts fisting me!'
+							temp = (PH_act_she/100000) MOD 10
+							PH_act_she = -temp*100000 + 600000
+						else
+							!rimming
+							'She starts lick my asshole!'
+							temp = (PH_act_she/100000) MOD 10
+							PH_act_she = -temp*100000 + 700000						
+						end	
+					end
+				elseif (PH_act_she/100000) MOD 10 = 6:
+					!sheisfisting
+					if rand(1,8) = 1:
+						!stop
+						'She stops fisting me and starts licking...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000	
+					else
+						!keep
+						'She is fisting me'
+					end
+				elseif (PH_act_she/100000) MOD 10 = 7:
+					!sheisrimming
+					if rand(1,6) = 1:
+						!stop
+						'She stops rimming me and starts licking...'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 400000	
+					else
+						!keep
+						'She is rimming me'
+					end					
+				end
+			elseif (PH_act_she/100000) MOD 10 = 1:
+				if temp <= 15:
+					!wait
+					She_dom += rand(0,1)
+					'<<$She_name>> just stand and smiles at me'
+				elseif temp <= 30:
+					!Smoke
+					'<<$She_name>> smokes'
+				elseif temp <= 40 and PH_nude_she = 0:
+					!undress
+					PH_nude_she = 1
+					'<<$She_name>> undress herself'
+				elseif temp <= 50 and me_do_dicks = 0:
+					!kiss
+					'She approached me and kiss'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 200000
+
+					temp = (PH_act_me/100000) MOD 10
+					PH_act_me = -temp*100000 + 200000
+				elseif temp <= 60:
+					!masturb
+					'She start pleasuring herself'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 800000					
+				elseif temp <= 70 and me_do_dicks = 0:
+					!play with me(grope)
+					'She start licking my body and playing with it'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 300000
+				elseif temp <= 100 and (PH_man - PH_active_man) > 0:			
+					!please a dicks
+					
+					:PH_rand_3				
+
+					i = rand(1,10)
+
+					if PH_act_man[i] = 1000:
+						GBPHtemp = i
+						she_do_dicks += 1
+					else
+						jump 'PH_rand_3'
+					end
+
+					i = GBPHtemp
+
+					temp = rand(1,10)
+					if temp <= 5:
+						PH_act_man[i] = 1010
+						PH_active_man[i] = 1
+
+						'She starts jerking a dick'
+						PH_arounsed_she += rand(1,5)
+
+						PH_act_she = 100010
+					elseif temp <= 9:
+						PH_act_man[i] = 1020
+						PH_active_man[i] = 1
+						'She starts sucking a dick'
+
+						PH_act_she = 100100
+					else
+						if rand(1,3) ! 1:
+							PH_act_man[i] = 1030
+							PH_active_man[i] = 1
+							'She starts fucking a dick'
+
+							PH_act_she = 101000
+						else
+							PH_act_man[i] = 1040
+							PH_active_man[i] = 1
+							'She put a dick in her ass'
+
+							PH_act_she = 110000						
+						end
+					end
+					killvar 'GBPHtemp'
+
+					gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution'
+					gs 'stat'		
+					PH_arounsed_me = pcs_horny
+				elseif me_do_dicks = 1 and PH_act_she ! -10000:
+					!help me
+					PH_act_me_together = PH_act_me
+					PH_act_me = -10000
+					PH_act_she = -10000
+					PH_act_she_together = 100010
+					'She approaches me and starts helping me with the client'	
+					!'She: "yes, girl, lets make this one special" - she point her finfer on a dick.'
+
+					phtemp = 0
+					i = 0
+					she_do_dicks = 1
+
+					:PHloopfindtheguy12
+					i += 1
+					if (PH_act_man[i] /100) MOD 10 ! 0:
+						otemp = i
+						PH_act_man[i] += 10
+					else
+						if i >= 10:
+							!''
+						else
+							jump 'PHloopfindtheguy12'
+						end
+					end
+				elseif me_do_dicks = 0
+					!play with me(grope)
+					'She start licking my body and playing with it'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 300000					
+				else
+					!wait
+					She_dom += rand(0,1)
+					'<<$She_name>> just stand and smiles at me'				
+				end
+			end
+		!-=wip=-
+		elseif ((PH_act_she/1000) MOD 10 > 1) OR ((PH_act_she/10000) MOD 10 > 1):
+			!1/ass/vag/blowjob/hands/leg
+			!dvag orr dass
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif she_do_dicks = 1:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif she_do_dicks = 2:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif she_do_dicks = 3:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif she_do_dicks = 4:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif she_do_dicks = 5:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif she_do_dicks > 5:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		end
+
+
+
+		!мої дії (спочатку дії з поточними членами, потім зміна поточної ситуації, потім дії дефольні, потім дії з новими членами)
+		if me_do_dicks = 0:
+			!undress
+			!Smoke
+			!kiss
+			!masturb
+			!play with her
+			!wait
+			!please a dicks
+			!help her
+		elseif ((PH_act_me/1000) MOD 10 > 1) OR ((PH_act_me/10000) MOD 10 > 1):
+			!1/ass/vag/blowjob/hands/leg
+			!dvag orr dass
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif me_do_dicks = 1:
+			if PH_man - PH_active_man > 0:
+				
+			end		
+		elseif me_do_dicks = 2:
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif me_do_dicks = 3:
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif me_do_dicks = 4:
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif me_do_dicks = 5:
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		elseif me_do_dicks > 5:
+			if PH_man - PH_active_man > 0:
+				
+			end			
+		end		
+	end
+
+	!треба відео, що показує поточну ситуацію згідно того, хто що робе
+
+	gs 'mod_public_WC_whore_together', 'SHECUM'
+	
+	gs 'mod_public_WC_whore_together', 'CUM_trigger'
+end
+
+
+if $ARGS[0] = 'SHECUM':
+	!gs 'mod_public_WC_whore_together', 'SHECUM'
+	$cum1 = PH_arounsed_she
+
+	
+	if $cum1 >= 100: $zadovolennia1 = '<font color = red	> <<$She_name>> cums! </font> '
+	if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = red	> ██████████ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = red	> █████████_ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> ████████__ </font> '	
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = green	> ████______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = green	> ███_______ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = green	> ██________ </font> '
+	if $cum1 >= 1 and $cum1 < 10: $zadovolennia1 = '<font color = blue	> █________ </font> '
+	if $cum1 < 1: $zadovolennia1 = '<font color = blue	> _________ </font> '
+	
+
+	'<<$She_name>> arounsed meter: <<$zadovolennia1>>'
+	if PH_arounsed_she >= 100: PH_arounsed_she -= rand(80,120)
+end
+
+if $ARGS[0] = 'SHEDOM':
+	!gs 'mod_public_WC_whore_together', 'SHEDOM'
+	$cum1 = she_dom	
+	if she_dom > 100: she_dom = 100
+	if she_dom < -100: she_dom = -100
+
+
+	if $cum1 >= 90 and $cum1 <= 100: $zadovolennia1 = '<font color = red	> __________██████████ </font> '
+	if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = red	> __________█████████_ </font> '
+	if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = yellow	> __________████████__ </font> '	
+	if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> __________███████___ </font> '
+	if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> __________██████____ </font> '
+	if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> __________█████_____ </font> '
+	if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = green	> __________████______ </font> '
+	if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = green	> __________███_______ </font> '
+	if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = green	> __________██________ </font> '
+	if $cum1 >= 4 and $cum1 < 10: $zadovolennia1 = '<font color = blue	> __________█________ </font> '
+	if $cum1 >= -3 and $cum1 < 4: $zadovolennia1 = '<font color = blue	> ____________________ </font> '
+
+	if $cum1 >= -10 and $cum1 < -3: $zadovolennia1 =  '<font color = blue	> _________█__________ </font> '
+	if $cum1 >= -20 and $cum1 < -10: $zadovolennia1 =  '<font color = blue	> ________██__________ </font> '
+	if $cum1 >= -30 and $cum1 < -20: $zadovolennia1 =  '<font color = green	> _______███__________ </font> '
+	if $cum1 >= -40 and $cum1 < -30: $zadovolennia1 =  '<font color = green	> ______████__________ </font> '
+	if $cum1 >= -50 and $cum1 < -40: $zadovolennia1 =  '<font color = green	> _____█████__________ </font> '
+	if $cum1 >= -60 and $cum1 < -50: $zadovolennia1 =  '<font color = yellow	> ____██████__________ </font> '
+	if $cum1 >= -70 and $cum1 < -60: $zadovolennia1 =  '<font color = yellow	> ___███████__________ </font> '
+	if $cum1 >= -80 and $cum1 < -70: $zadovolennia1 =  '<font color = yellow	> __████████__________ </font> '
+	if $cum1 >= -90 and $cum1 < -80: $zadovolennia1 =  '<font color = yellow	> _█████████__________ </font> '
+	if $cum1 >= -100 and $cum1 < -90: $zadovolennia1 =  '<font color = red	> ██████████__________ </font> '
+
+	'<<$She_name>> sub/dom meter: <<$zadovolennia1>>'	
+end
+
+
+if $ARGS[0] = 'MANCUM':
+	i = otemp
+	$cum1 = PH_cum_man[i]
+	if $cum1 > 100 and PH_man[i] = 1:
+		if $cum1 >= 210: $zadovolennia1_100 = '<font color = blue	> ██████████++ </font> '
+		if $cum1 >= 200 and $cum1 < 210: $zadovolennia1_100 = '<font color = blue	> ██████████ </font> '
+		if $cum1 >= 190 and $cum1 < 200: $zadovolennia1_100 = '<font color = green	> ██████████ </font> '
+		if $cum1 >= 180 and $cum1 < 190: $zadovolennia1_100 = '<font color = green	> █████████_ </font> '
+		if $cum1 >= 170 and $cum1 < 180: $zadovolennia1_100 = '<font color = green	> ████████__ </font> '	
+		if $cum1 >= 160 and $cum1 < 170: $zadovolennia1_100 = '<font color = yellow	> ███████___ </font> '
+		if $cum1 >= 150 and $cum1 < 160: $zadovolennia1_100 = '<font color = yellow	> ██████____ </font> '
+		if $cum1 >= 140 and $cum1 < 150: $zadovolennia1_100 = '<font color = yellow	> █████_____ </font> '
+		if $cum1 >= 130 and $cum1 < 140: $zadovolennia1_100 = '<font color = yellow	> ████______ </font> '
+		if $cum1 >= 120 and $cum1 < 130: $zadovolennia1_100 = '<font color = yellow	> ███_______ </font> '
+		if $cum1 >= 110 and $cum1 < 120: $zadovolennia1_100 = '<font color = red	> ██________ </font> '
+		if $cum1 < 110: $zadovolennia1 = '<font color = red	> █________ </font> '		
+	end
+	if PH_man[i] = 1:
+		if $cum1 >= 100: $zadovolennia1 = '<font color = blue	> ██████████ </font> '
+		if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> ██████████ </font> '
+		if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+		if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = green	> ████████__ </font> '	
+		if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+		if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+		if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+		if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+		if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+		if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> ██________ </font> '
+		if $cum1 < 10: $zadovolennia1 = '<font color = red	> █________ </font> '
+		if $cum1 >= -100 and $cum1 <= 0: $zadovolennia1 = '<font color = red	> Client cums! </font> '
+		
+		If PH_man > 1:
+			if $cum1 > 100:
+				'Client''s #<<otemp>> endurance meter:'
+				'<<$zadovolennia1>> + <<$zadovolennia1_100>>'
+			else
+				'Client''s #<<otemp>> endurance meter: <<$zadovolennia1>>'
+			end
+		else
+			if $cum1 > 100:
+				'Client''s endurance meter:'
+				'<<$zadovolennia1>> + <<$zadovolennia1_100>>'
+			else
+				'Client''s endurance meter: <<$zadovolennia1>>'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'ME_DAMAGEALL':
+	!gs 'mod_public_WC_whore_together', 'ME_DAMAGEALL'
+
+	!1lesb/ass/vag/blowjob/hands/leg
+	if (PH_act_me/100000) MOD 10 > 1:
+		If (PH_act_me/100000) MOD 10 = 2:
+			!kiss
+			gs 'arousal', 'kiss', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			PH_arounsed_she += rand(0,3)
+		elseIf (PH_act_me/100000) MOD 10 = 3:
+			!grope
+			gs 'arousal', 'foreplay_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			PH_arounsed_she += rand(1,5)
+		elseIf (PH_act_me/100000) MOD 10 = 4:
+			!cuni
+			gs 'arousal', 'cuni_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom += rand(0,1)
+			PH_arounsed_she += rand(5,10)
+		elseIf (PH_act_me/100000) MOD 10 = 5:
+			!fingering
+			gs 'arousal', 'vaginal_finger_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom += rand(0,1)
+			PH_arounsed_she += rand(7,12)
+		elseIf (PH_act_me/100000) MOD 10 = 6:
+			!fisting
+			gs 'arousal', 'vaginal_fist_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom -= rand(0,2)
+			PH_arounsed_she += rand(7,16)
+		elseIf (PH_act_me/100000) MOD 10 = 7:
+			!rimming
+			gs 'arousal', 'rimming_give', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom += rand(0,2)
+			PH_arounsed_she += rand(7,16)
+		elseIf (PH_act_me/100000) MOD 10 = 8:
+			!masturb
+			gs 'arousal', 'masturbate', rand(10,10)
+			minut += 10
+			gs 'stat'
+			PH_arounsed_she += rand(0,2)
+		end
+		PH_arounsed_me = pcs_horny
+	end
+
+
+
+	i = 0
+	:GBPHloopcheck1
+	i += 1
+	if (PH_act_man[i] / 100) MOD 10 = 1:
+		
+		
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = 2 + ( stat['hj'] / 10 ) - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(0,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10	
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck1'
+
+	i = 0
+	:GBPHloopcheck2
+	i += 1
+	if (PH_act_man[i] / 100) MOD 10 = 2:
+		
+
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = 2 + ( stat['bj'] / 10 ) - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(5,temp)	
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10	
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck2'
+
+
+	i = 0
+	:GBPHloopcheck3
+	i += 1
+	if (PH_act_man[i] / 100) MOD 10 = 3:
+			
+
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = 0 + ( stat['vaginal'] / 10 ) - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		gs 'arousal', 'vaginal', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10
+	else
+		!' '
+	end		
+
+	if i < 6: jump 'GBPHloopcheck3'	
+
+
+	i = 0
+	:GBPHloopcheck4
+	i += 1
+	if (PH_act_man[i] / 100) MOD 10 = 4:
+			
+
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = 0 + ( stat['anal'] / 10 ) - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		gs 'arousal', 'anal', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck4'		
+end
+
+if $ARGS[0] = 'SHE_DAMAGEALL':
+	!gs 'mod_public_WC_whore_together', 'SHE_DAMAGEALL'
+
+	!1lesb/ass/vag/blowjob/hands/leg
+	if (PH_act_she/100000) MOD 10 > 1:
+		If (PH_act_she/100000) MOD 10 = 2:
+			!kiss
+			gs 'arousal', 'kiss', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+		elseIf (PH_act_she/100000) MOD 10 = 3:
+			!grope
+			gs 'arousal', 'foreplay', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+		elseIf (PH_act_she/100000) MOD 10 = 4:
+			!cuni
+			gs 'arousal', 'cuni', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom -= rand(0,1)
+		elseIf (PH_act_she/100000) MOD 10 = 5:
+			!fingering
+			gs 'arousal', 'vaginal_finger', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom -= rand(0,1)
+		elseIf (PH_act_she/100000) MOD 10 = 6:
+			!fisting
+			gs 'arousal', 'vaginal_fist', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom += rand(0,2)
+		elseIf (PH_act_she/100000) MOD 10 = 7:
+			!rimming
+			gs 'arousal', 'rimming', rand(10,10), 'prostitution', 'sub', 'lesbian'
+			minut += 10
+			gs 'stat'
+			She_dom -= rand(0,2)
+		elseIf (PH_act_she/100000) MOD 10 = 8:
+			!masturb
+			gs 'arousal', 'voyeur', rand(10,10)
+			minut += 10
+			gs 'stat'
+			PH_arounsed_she += rand(5,10)	
+		end
+		PH_arounsed_me = pcs_horny
+	end
+
+	i = 0
+	:GBPHloopchecks1
+	i += 1
+	if (PH_act_man[i] / 10) MOD 10 = 1:
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = PH_she_hj_skill/10  - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(0,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		PH_arounsed_she += rand(1,5)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks1'
+
+	i = 0
+	:GBPHloopchecks2
+	i += 1
+	if (PH_act_man[i] / 10) MOD 10 = 2:
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = PH_she_bj_skill/10 - (PH_condom[i]*12)
+		PH_cum_man[i] -= rand(5,temp)	
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		PH_arounsed_she += rand(3,6)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks2'
+
+
+	i = 0
+	:GBPHloopchecks3
+	i += 1
+	if (PH_act_man[i] / 10) MOD 10 = 3:
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = PH_she_vag_skill/10 - (PH_condom[i]*10)
+		PH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		PH_arounsed_she += rand(5,10)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks3'	
+
+
+	i = 0
+	:GBPHloopchecks4
+	i += 1
+	if (PH_act_man[i] / 10) MOD 10 = 4:
+		otemp = i
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		temp = PH_she_ass_skill/10 - (PH_condom[i]*8)
+		PH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_whore_together', 'MANCUM'
+		PH_arounsed_she += rand(5,10)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks4'	
+end
+
+
+
+if $ARGS[0] = 'CUM_trigger':
+	!-=wip=-
+	!gs 'mod_public_WC_whore_together', 'CUM_trigger'
+end
+
+
+if $ARGS[0] = 'manleave':
+	i = otemp
+	PH_man[i] = 0
+	PH_man -= 1
+	!чи є людина
+
+	If PH_act_me = PH_act_she and PH_act_me = -10000:
+		PH_act_she = 0
+		PH_act_me = 0
+		killvar 'PH_act_she_together'
+		killvar 'PH_act_me_together'
+	end
+
+	if (PH_act_man[i] / 100) MOD 10 > 0:
+		!ME clean
+
+		if (PH_act_man[i] / 100) MOD 10 = 1:
+			If (PH_act_me) MOD 10 = (PH_act_me / 100) MOD 10:
+				PH_act_me -= 1
+			elseif (PH_act_me / 100) MOD 10 = 1:
+				PH_act_me -= 100
+			elseif PH_act_me MOD 10 = 1:
+				PH_act_me -= 1
+			end
+		elseif (PH_act_man[i] / 100) MOD 10 = 2:
+			PH_act_me -= 10
+		elseif (PH_act_man[i] / 100) MOD 10 = 3:
+			PH_act_me -= 8000
+		elseif (PH_act_man[i] / 100) MOD 10 = 4:
+			PH_act_me -= 8000
+		end
+		if PH_act_me < 0: PH_act_me = 0
+	end
+
+	if (PH_act_man[i] / 10) MOD 10 > 0:
+		!She clean
+		$shecon = ''
+		if (PH_act_man[i] / 10) MOD 10 = 1:
+			If (PH_act_she) MOD 10 = (PH_act_she / 100) MOD 10:
+				PH_act_she -= 1
+			elseif (PH_act_she / 100) MOD 10 = 1:
+				PH_act_she -= 100
+			elseif PH_act_she MOD 10 = 1:
+				PH_act_she -= 1
+			end
+		elseif (PH_act_man[i] / 10) MOD 10 = 2:
+			PH_act_she -= 10
+		elseif (PH_act_man[i] / 10) MOD 10 = 3:
+			PH_act_she -= 8000
+		elseif (PH_act_man[i] / 10) MOD 10 = 4:
+			PH_act_she -= 8000
+		end
+		if PH_act_she < 0: PH_act_she = 0
+	end
+
+	PH_man_fun[i] = 0
+	PH_active_man[i] = 0
+	!чи він чекає чи ні
+
+	PH_act_man[i] = 0
+	!що роблять з чоловіком
+	![1][яроблю][вона робить][він робить] - 1000 - чекає
+
+	PH_cum_man[i] = 0
+	PH_color_man[i] = 0
+	PH_ava[i] = 0
+	PH_condom[i] = 0	
+end
+
+
+
+--- mod_public_WC_whore_together ---------------------------------
+
