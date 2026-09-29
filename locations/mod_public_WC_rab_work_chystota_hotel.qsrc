@@ -584,6 +584,82 @@ if $ARGS[0] = 'nomer_empty':
 			'"Yea, I see, keep going"'
 			act 'continue': gt 'mod_public_WC_rab_work_chystota_hotel', 'nomer_full'
 		end
+	elseif ph_elevator_bind_girl = 1:
+		ph_elevator_bind_girl = 0
+		if rand(1,5) = 1:
+			*clr & cla
+			if $metka = '4': 
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+			elseif $metka = '3': 
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+			elseif $metka = '2': 
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'	
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+			end
+			'the room is NOT empty!'
+			'<center><img <<$set_imgh>> src="mod/public_WC/PH_update_2026/PH/blindfolded_bound ('+rand(1,1)+').jpg"></center>'
+			'I see a tied girl on the bed! I saw the girl in a girls room during this evening preparations'
+			'SHE: "I hear the doors, I know you are here, please unbound me!"'
+
+			act 'run away!':
+				cla
+				if bhour >= hour:
+					if bminut > minut:
+						bhour = hour
+						bminut = minut
+						if solotable ! 1:
+							'Why you didn''t come to me at <<bhour>>:<<bminut>>?'
+							'You MUST come to me every 2 hours!'
+							temp = hour - bhour
+							if temp >= 10:
+								shtraf += 6
+							elseif temp >= 8:
+								shtraf += rand(5,6)
+							elseif temp >= 6:
+								shtraf += rand(4,5)
+							elseif temp >= 4:
+								shtraf += rand(2,5)
+							elseif temp >= 2:
+								shtraf += rand(1,3)
+							elseif temp >= 0:
+								shtraf += rand(0,1)
+							end
+						else
+							solotable = 0
+						end
+					end
+				else
+					bhour = hour
+					bminut = minut
+				end
+
+				if phcleantable = 0 and phcleanpyl = 0 and phcleanpidloga = 0:
+					bcil = 1
+					bcilg = 0
+				else
+					''
+				end
+
+				$func('wrap', 'header center b', 'Toha')
+				'<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/toha.jpg"></center>'				
+				shtraf += rand(-1,2)
+				'I did not notice as I come to Toha'
+				'ME: "I have cleaned the room, here are the keys"'
+				'Okay, Betsy, good.'
+				bcil = 0
+				+$OpenInnerThought+'I think he will know I did nothing'+$CloseInnerThought
+				act 'continue':	gt 'mod_public_WC_rab_work_TOHA', 'tohachystota'
+			end
+			act 'Unbound her':
+				*clr & cla
+				'The girl is very happy, thanking me a lot and run away.'
+				+$OpenInnerThought+'I think I will help problems because of this'+$CloseInnerThought
+				phgirlsrelations += rand(5,10)
+				shtraf += 10
+				+$OpenInnerThought+'At least I improve my relationship with local girls'+$CloseInnerThought
+			end
+		end
 	end
 end
 

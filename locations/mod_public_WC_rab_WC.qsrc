@@ -340,6 +340,230 @@ if $ARGS[0] = 'hole':
 		else
 			act 'Start to Work' + $func('willpower', 'get_willcost_string'): $noWillpower
 		end
+	elseif (rand(1,100) <= CHANCE_MEET_HER_GH) OR (temptemp = 2762940):
+		*clr & cla
+		killvar 'temptemp'
+		gs 'stat'
+		if ztemp = 2:
+			*clr
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/Enter_Booth/1 random_girl_event/3 girl you are wet.jpg"></center>'
+			'Soft hand rubbing my pussy.'
+			ztemp = 0
+			gs 'arousal', 'vaginal_finger', 4
+			gs 'stat'
+			'In a few minutes the nice woman''s voice: "Hello, Let''s join forces!!"'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/Enter_Booth/1 random_girl_event/1 hello.jpg"></center>'
+			'Soft woman''s hand appears from the hole: "Hello, Do you mind if I join you? I think there is enough place for two of us. Also it could be fun!" '
+		end
+
+		act 'Please join me':	
+			*clr & cla
+			phgirlsrelations += rand(3,5)
+			'I open the door and she joins me inside the cabine'
+			act 'Continue':
+				gt 'mod_public_WC_2PH2girls1booth', 'start'
+			end
+		end
+
+		act 'Nah, I was first here, go away':
+			cla
+			minut += 3
+			gs 'stat'
+			'Woman: "I am sad to hear that. Well okey, maybe we will met again and you will be lesss bitchy."'
+			'I hear the sound of heels clicking away from me.'
+
+			act 'Continue':
+				*clr & cla
+				act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+				act 'Wait':
+					*clr & cla
+					'You decide stay and wait for someone to come.'
+					act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+				end
+				if gloryhole >= 50:
+					act 'Try to sell my pussy':
+						ztemp = 2
+						gt 'mod_public_WC_rab_WC', 'hole'
+					end
+				end
+				if mc_inventory['cigarettes'] > 0:
+					act 'Smoke':
+						*clr & cla
+						'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/smoke/wait.jpg"></center>'
+						minut += 5
+						gs 'drugs','smoke'
+						gs 'stat'
+						'You decide to kill some time with cigarette.'
+						act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+						if gloryhole >= 50:
+							act 'Try to sell my pussy':
+								ztemp = 2
+								gt 'mod_public_WC_rab_WC', 'hole'
+							end
+						end
+					end
+				end
+				if ghnow < 4:
+					act 'Have a look through the hole':
+						*clr & cla
+						if hour < 10 or hour >= 21:
+							temp = 0
+						else
+							temp = 100
+						end
+						if rand(1, 10) >= 7 - (ghnow * 2) - ztemp + temp:
+
+							gs 'npcgeneratec', 0, 'unknown guy from PH toilet', rand(25,40)
+							gs 'boyStat', $npclastgenerated
+							$boy[0] = $boy
+							if rand(1,2) = 1:
+								colir = 1
+							else
+								colir = 2
+							end
+
+							'While looking through the hole, I see some juicy dick'
+							'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/ask.jpg"></center>'
+							gs 'arousal', 'voyeur', 5
+							gs 'stat'
+
+							gs 'willpower', 'bj', 'self'
+							temp = will_cost - sexcorrupt / 5 / 5
+							will_cost -= (sexcorrupt / 5)
+							if will_cost <= 0: will_cost = 0
+							if will_cost <= pcs_willpwr:
+								act 'ask the guy to suck his dick' + $func('willpower', 'get_willcost_string'):
+									*clr & cla
+
+									gs 'willpower', 'pay', 'self'
+
+									'The guy stand in shock a little'
+									if rand(1, 10) >= 5 - (ghnow * 2):
+										'but after few moment I here "Shure why not"'
+										'I see his dick comes through the hole'
+										if colir = 1:
+											'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick1.jpg"></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick2.jpg"></center>'
+										end
+
+										act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+										act 'Give a hand job': gt 'mod_public_WC_rab_WC', 'hj'
+										act 'Give a foot job': gt 'mod_public_WC_rab_WC', 'lj'
+									else
+										'The guy said "Nope", and went out obviously quicker than he needed to.'
+
+										act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+										act 'Wait':
+											*clr & cla
+											'You decide stay and wait for someone to come.'
+											act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+										end
+										if gloryhole >= 50:
+											act 'Try to sell my pussy':
+												ztemp = 2
+												gt 'mod_public_WC_rab_WC', 'hole'
+											end
+										end
+									end
+								end
+							else
+								act 'ask the guy to suck his dick' + $func('willpower', 'get_willcost_string'): $noWillpower
+							end
+
+							gs 'willpower', 'bj', 'self'
+
+							temp = will_cost - sexcorrupt / 5
+							will_cost -= (sexcorrupt / 5)
+							if will_cost <= 0: will_cost = 0
+							if will_cost <= pcs_willpwr:
+								act 'offer my service to the guy' + $func('willpower', 'get_willcost_string'):
+									*clr & cla
+
+									gs 'willpower', 'pay', 'self'
+
+									'The guy stood in shock a little'
+									if rand(1, 10) >= 6 - (ghnow * 2):
+										'but after few moment I here "Sounds like a good idea"'
+										'few banknotes slip through the hole'
+										'I see his dick comes through the hole'
+
+
+										$dodatkovi = rand(1,5) * 50
+										$GROSHI = 150 + $dodatkovi
+										money += $GROSHI
+										minut += 10 + (3 * $dodatkovi / 50)
+
+										gs 'stat'
+
+
+
+										if colir = 1:
+											'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick1.jpg"></center>'
+										else
+											'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/wait/walldick2.jpg"></center>'
+										end
+
+										act 'Blow Him': gt 'mod_public_WC_rab_WC', 'blowjob'
+										act 'Give a hand job': gt 'mod_public_WC_rab_WC', 'hj'
+										act 'Give a foot job': gt 'mod_public_WC_rab_WC', 'lj'
+									else
+										'The guy said "Nope", and went out obviously quicker then must to.'
+
+										act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+										act 'Wait':
+											*clr & cla
+											'You decide stay and wait for someone to come.'
+											act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+										end
+										if gloryhole >= 50:
+											act 'Try to sell my pussy':
+												ztemp = 2
+												gt 'mod_public_WC_rab_WC', 'hole'
+											end
+										end
+									end
+								end
+							else
+								act 'offer my service to the guy' + $func('willpower', 'get_willcost_string'): $noWillpower
+							end
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+						else
+							*clr & cla
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/WC/womens/sex/ghseenomen.jpg"></center>'
+							'Looking through the hole, I can see a row of urinals. There are no men currently here.'
+
+							act 'Leave': gt 'mod_public_WC_rab_WC', 'mod_public_WC_cabine_WORK'
+							act 'Wait':
+								*clr & cla
+								'You decide stay and wait for someone to come.'
+								act 'Open your mouth wider': gt 'mod_public_WC_rab_WC', 'hole'
+							end
+							if gloryhole >= 50:
+								act 'Try to sell my pussy':
+									ztemp = 2
+									gt 'mod_public_WC_rab_WC', 'hole'
+								end
+							end
+						end
+					end
+				end
+			end
+		end		
 	else
 		*clr & cla
 		gs 'stat'

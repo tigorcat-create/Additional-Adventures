@@ -3,7 +3,6 @@ if $ARGS[0] = 'enter':
 	!*clr & cla
 	!-=wip=-
 	!тут треба логіка не рандомних змінних знизу.
-
 end
 
 if $ARGS[0] = 'start':
@@ -20,7 +19,7 @@ if $ARGS[0] = 'start':
 	PH_nude_she = 0
 
 	She_dom = rand(-30,30)
-	if $She_name = ''
+	if $She_name = '':
 		i = rand(1,10)
 		if i = 1:
 			$She_name = 'Vika'
@@ -345,6 +344,30 @@ if $ARGS[0] = 'start2':
 				gs 'arousal', 'voyeur_sex', rand(5,5), 'prostitution'
 				gs 'stat'		
 				PH_arounsed_me = pcs_horny
+			elseif (PH_act_me/100000) MOD 10 = 6 OR (PH_act_me/100000) MOD 10 = 7:
+				!Iamdoingher
+				!she wait or give back
+				temp = rand(1,50) + PH_arounsed_she
+
+				If temp <= 40:
+					!stop
+					'It is fun and all, but I need a small pause. She moves back'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 100000
+
+					temp = (PH_act_me/100000) MOD 10
+					PH_act_me = -temp*100000 + 100000						
+				elseif temp <= 60:
+					!keep
+					'She enjoyes much!'
+				elseif temp <= 80 and (PH_act_me/100000) MOD 10 = 6:
+					!fisting
+					'She start fisting me!!...'
+					temp = (PH_act_she/100000) MOD 10
+					PH_act_she = -temp*100000 + 600000	
+				else
+					'She enjoyes much!'
+				end
 			elseif (PH_act_me/100000) MOD 10 > 1:
 				!Iamdoingher
 				!she wait or give back
@@ -373,7 +396,7 @@ if $ARGS[0] = 'start2':
 						!justpleased
 						'She enjoyes the pleasure I am doing to her'
 					end
-				if (PH_act_she/100000) MOD 10 = 2:
+				elseif (PH_act_she/100000) MOD 10 = 2:
 					!sheiskissing
 					If temp <= 40:
 						!stop
@@ -458,7 +481,7 @@ if $ARGS[0] = 'start2':
 						!keep
 						'We are pleasuring each other...'
 					end					
-				end
+				end			
 			elseif (PH_act_she/100000) MOD 10 > 1:
 				!onlyshedoingme
 				!she keeps our improves or stops
@@ -542,11 +565,19 @@ if $ARGS[0] = 'start2':
 							'She starts fisting me!'
 							temp = (PH_act_she/100000) MOD 10
 							PH_act_she = -temp*100000 + 600000
+
+							if (PH_act_me/100000) MOD 10 ! 6:
+								temp = (PH_act_me/100000) MOD 10
+								PH_act_me = -temp*100000 + 100000
+							end
 						else
 							!rimming
 							'She starts lick my asshole!'
 							temp = (PH_act_she/100000) MOD 10
-							PH_act_she = -temp*100000 + 700000						
+							PH_act_she = -temp*100000 + 700000	
+
+							temp = (PH_act_me/100000) MOD 10
+							PH_act_me = -temp*100000 + 100000													
 						end	
 					end
 				elseif (PH_act_she/100000) MOD 10 = 6:
@@ -584,6 +615,7 @@ if $ARGS[0] = 'start2':
 					!undress
 					PH_nude_she = 1
 					'<<$She_name>> undress herself'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/undress/undress ('+rand(1,2)+').mp4"></video></center>'
 				elseif temp <= 50 and me_do_dicks = 0:
 					!kiss
 					'She approached me and kiss'
@@ -594,9 +626,16 @@ if $ARGS[0] = 'start2':
 					PH_act_me = -temp*100000 + 200000
 				elseif temp <= 60:
 					!masturb
-					'She start pleasuring herself'
-					temp = (PH_act_she/100000) MOD 10
-					PH_act_she = -temp*100000 + 800000
+					if me_do_dicks = 0 and (rand(1,50) - she_dom <= 5):
+						'She: "Lick this juicy pussy"'
+						she_dom_command = 2
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/0dicks/order to lick ('+rand(1,1)+').mp4"></video></center>'
+						she_dom += 1
+					else
+						'She start pleasuring herself'
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 800000
+					end
 				elseif (temp <= 100) and (rand(1,50) - she_dom <= -15) and (PH_man - PH_active_man > 0):
 					!she command me!
 					she_dom_command = 1
@@ -690,7 +729,7 @@ if $ARGS[0] = 'start2':
 							jump 'PHloopfindtheguy12'
 						end
 					end
-				elseif me_do_dicks = 0
+				elseif me_do_dicks = 0:
 					!play with me(grope)
 					'She start licking my body and playing with it'
 					temp = (PH_act_she/100000) MOD 10
@@ -1047,7 +1086,7 @@ if $ARGS[0] = 'start2':
 
 						i = GBPHtemp
 						
-						if (PH_act_she/10) MOD = 2:
+						if (PH_act_she/10) MOD 10 = 2:
 							PH_act_man[i] = 1020
 							PH_active_man[i] = 1
 							PH_active_man += 1
@@ -1413,7 +1452,7 @@ if $ARGS[0] = 'start2':
 					temp = rand(1,50) - she_dom
 					if me_dom_command = 1: 
 						temp = 50
-						'SHE: "I am sorry, I just can't please one more!" - she really can''t'
+						'SHE: "I am sorry, I just can''t please one more!" - she really can''t'
 						she_dom -= rand(5,10)
 						me_dom_command = 0
 					end					
@@ -1440,91 +1479,129 @@ if $ARGS[0] = 'start2':
 
 		!мої дії (спочатку дії з поточними членами, потім зміна поточної ситуації, потім дії дефольні, потім дії з новими членами)
 		if she_dom_command > 0:
-			!вона сказала взяти ще 1-го клієнта
+			if she_dom_command = 1:
+				!вона сказала взяти ще 1-го клієнта
 
-			she_dom_command = 0
+				she_dom_command = 0
 
-			gs 'willpower', 'skill', 'sex', 'resist', 'medium'
-			if pcs_willpwr < will_cost:
-				act 'Ignore her command' + $func('willpower', 'get_willcost_string'): $noWillpower
-			else
-				act 'Ignore her command' + $func('willpower', 'get_willcost_string'):
+				gs 'willpower', 'skill', 'sex', 'resist', 'medium'
+				if pcs_willpwr < will_cost:
+					act 'Ignore her command' + $func('willpower', 'get_willcost_string'): $noWillpower
+				else
+					act 'Ignore her command' + $func('willpower', 'get_willcost_string'):
+						cla
+						gs 'willpower', 'pay', 'resist'
+						gs 'stat'
+						minut += 5
+						she_dom -= 3
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+
+				act 'Obbey':
 					cla
-					gs 'willpower', 'pay', 'resist'
+					she_dom += rand(3,10)
+
+					gs 'mod_public_WC_whore_together', 'findlonelydick'
+					i = GBPHtemp
+
+					if (PH_act_me/10) MOD 10 < 2:
+						!hj
+						act 'Jerk this guy':
+							PH_act_me += 10
+							she_dom += 2
+							i = GBPHtemp
+
+							PH_act_man[i] = 1100
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							*clr & cla
+							gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+					if (PH_act_me/100) MOD 10 < 1:
+						!bj
+						act 'suck this guy':
+							PH_act_me += 100
+							she_dom += 3
+							i = GBPHtemp
+
+							PH_act_man[i] = 1200
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							*clr & cla
+							gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+					if (PH_act_me/1000) MOD 10 < 1:
+						!vag
+						act 'fuck this guy':
+							PH_act_me += 1000
+							she_dom += 4
+							i = GBPHtemp
+
+							PH_act_man[i] = 1300
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							*clr & cla
+							gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+					if (PH_act_me/10000) MOD 10 < 1:
+						!ass
+						act 'assfuck this guy':
+							PH_act_me += 10000
+							she_dom += 5
+							i = GBPHtemp
+
+							PH_act_man[i] = 1400
+							PH_active_man[i] = 1
+							PH_active_man += 1
+
+							*clr & cla
+							gs 'mod_public_WC_whore_together', 'start2'
+						end
+					end
+				end
+			elseif she_dom_command = 2:
+				!вона сказала лизати її
+
+				she_dom_command = 0
+
+				gs 'willpower', 'skill', 'sex', 'resist', 'medium'
+				if pcs_willpwr < will_cost:
+					act 'Ignore her command' + $func('willpower', 'get_willcost_string'): $noWillpower
+				else
+					act 'Ignore her command' + $func('willpower', 'get_willcost_string'):
+						cla
+						gs 'willpower', 'pay', 'resist'
+						gs 'stat'
+						minut += 5
+						she_dom -= 3
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+				end
+
+				act 'Obbey':
+					cla
+					she_dom += rand(2,6)
+					gs 'arousal', 'cuni_give', rand(5,10), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
 					gs 'stat'
-					minut += 5
-					she_dom -= 3
-					act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
-				end
-			end
 
-			act 'Listen her':
-				cla
-				she_dom += rand(3,10)
+					PH_arounsed_she += ( rand(1,3) + stat['cuni']/10 )
+					PH_arounsed_me = pcs_horny
 
-				gs 'mod_public_WC_whore_together', 'findlonelydick'
-				i = GBPHtemp
+					temp = (PH_act_me/100000) MOD 10
+					PH_act_me = -temp*100000 + 400000	
 
-				if (PH_act_me/10) MOD 10 < 2:
-					!hj
-					act 'Jerk this guy':
-						PH_act_me += 10
-						she_dom += 2
-						i = GBPHtemp
-
-						PH_act_man[i] = 1100
-						PH_active_man[i] = 1
-						PH_active_man += 1
-
-						*clr & cla
-						gs 'mod_public_WC_whore_together', 'start2'
-					end
-				end
-				if (PH_act_me/100) MOD 10 < 1:
-					!bj
-					act 'suck this guy':
-						PH_act_me += 100
-						she_dom += 3
-						i = GBPHtemp
-
-						PH_act_man[i] = 1200
-						PH_active_man[i] = 1
-						PH_active_man += 1
-
-						*clr & cla
-						gs 'mod_public_WC_whore_together', 'start2'
-					end
-				end
-				if (PH_act_me/1000) MOD 10 < 1:
-					!vag
-					act 'fuck this guy':
-						PH_act_me += 1000
-						she_dom += 4
-						i = GBPHtemp
-
-						PH_act_man[i] = 1300
-						PH_active_man[i] = 1
-						PH_active_man += 1
-
-						*clr & cla
-						gs 'mod_public_WC_whore_together', 'start2'
-					end
-				end
-				if (PH_act_me/10000) MOD 10 < 1:
-					!ass
-					act 'assfuck this guy':
-						PH_act_me += 10000
-						she_dom += 5
-						i = GBPHtemp
-
-						PH_act_man[i] = 1400
-						PH_active_man[i] = 1
-						PH_active_man += 1
-
-						*clr & cla
-						gs 'mod_public_WC_whore_together', 'start2'
-					end
-				end
+					*clr & cla
+					'She pushed my face to her juicy pussy'
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/0dicks/order to lick ('+rand(2,2)+').mp4"></video></center>'
+					gs 'mod_public_WC_whore_together', 'start2'						
+				end			
 			end
 		elseif me_do_dicks = 0:			
 			if ((PH_act_she/100000) MOD 10 > 0) and ((PH_act_she/100000) MOD 10 < 8):
@@ -1615,7 +1692,7 @@ if $ARGS[0] = 'start2':
 						'I am eating her'
 						gs 'mod_public_WC_whore_together', 'start2'							
 					end
-				elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she <>=> 60:
+				elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she >= 60:
 					act 'finger her':
 						'<i>She is not HORNY enough.</i>'
 					end
@@ -1633,7 +1710,12 @@ if $ARGS[0] = 'start2':
 						PH_arounsed_me = pcs_horny
 
 						temp = (PH_act_me/100000) MOD 10
-						PH_act_me = -temp*100000 + 600000	
+						PH_act_me = -temp*100000 + 600000
+
+						if (PH_act_she/100000) MOD 10 ! 6:
+							temp = (PH_act_she/100000) MOD 10
+							PH_act_she = -temp*100000 + 100000
+						end	
 
 						*clr & cla
 						'I am fiting my fist inside her'
@@ -1654,6 +1736,9 @@ if $ARGS[0] = 'start2':
 
 						temp = (PH_act_me/100000) MOD 10
 						PH_act_me = -temp*100000 + 700000	
+
+						temp = (PH_act_she/100000) MOD 10
+						PH_act_she = -temp*100000 + 100000							
 
 						*clr & cla
 						'I start licking her asshole'
@@ -1678,6 +1763,7 @@ if $ARGS[0] = 'start2':
 						PH_nude_Me = 1
 
 						*clr & cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/undress/undress ('+rand(1,2)+').mp4"></video></center>'
 						'I have undressed myself.'
 						gs 'mod_public_WC_whore_together', 'start2'
 					end
@@ -1813,7 +1899,7 @@ if $ARGS[0] = 'start2':
 							'I am eating her'
 							gs 'mod_public_WC_whore_together', 'start2'							
 						end
-					elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she <>=> 60:
+					elseif ((PH_act_me/100000) MOD 10 >= 4) and ((PH_act_me/100000) MOD 10 ! 8) and PH_arounsed_she >= 60:
 						act 'finger her':
 							'<i>She is not HORNY enough.</i>'
 						end
@@ -1833,7 +1919,12 @@ if $ARGS[0] = 'start2':
 							PH_arounsed_me = pcs_horny
 
 							temp = (PH_act_me/100000) MOD 10
-							PH_act_me = -temp*100000 + 600000	
+							PH_act_me = -temp*100000 + 600000
+
+							if (PH_act_she/100000) MOD 10 ! 6:
+								temp = (PH_act_she/100000) MOD 10
+								PH_act_she = -temp*100000 + 100000
+							end								
 
 							*clr & cla
 							'I am fiting my fist inside her'
@@ -1853,7 +1944,10 @@ if $ARGS[0] = 'start2':
 							PH_arounsed_me = pcs_horny
 
 							temp = (PH_act_me/100000) MOD 10
-							PH_act_me = -temp*100000 + 700000	
+							PH_act_me = -temp*100000 + 700000
+
+							temp = (PH_act_she/100000) MOD 10
+							PH_act_she = -temp*100000 + 100000									
 
 							*clr & cla
 							'I start licking her asshole'
@@ -2006,22 +2100,22 @@ if $ARGS[0] = 'start2':
 			!lesbo/ass/vag/blowjob/hands/leg
 			!dvag orr dass
 			if PH_man - PH_active_man > 0:
-				
+				!нові члени дії
 			end			
 		elseif me_do_dicks = 1:
 			!-=wip=-
 			if PH_man - PH_active_man > 0:
-				
+				!нові члени дії
 			end		
 		elseif me_do_dicks = 2:
 			!-=wip=-
 			if PH_man - PH_active_man > 0:
-				
+				!нові члени дії
 			end			
 		elseif me_do_dicks = 3:
 			!-=wip=-
 			if PH_man - PH_active_man > 0:
-				
+				!нові члени дії
 			end
 		end		
 	end

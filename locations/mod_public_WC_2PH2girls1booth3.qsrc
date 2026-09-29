@@ -1,0 +1,400 @@
+# mod_public_WC_2PH2girls1booth3
+if ARGS[0] = 1:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	if GBPH_color_man[i] = 1:
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+	else
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+	end
+	GBPH_condom[i] = 0
+	!GBPH_act_me = 0
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		'"Ni-i-ice"... few more banknots slip throught the hole.'
+		money += rand(1,8) * 25
+		!act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2PH2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		!act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end	
+	act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+end
+
+if ARGS[0] = 2:
+	*clr & cla
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+	GBPH_condom[i] = 1
+	prezik -= 1
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/condom action/on/she ('+rand(1,1)+').mp4"></video></center>'
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		!'"Ni-i-ice"... few more banknots slip throught the hole.'
+		!money += rand(1,8) * 25
+		act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2PH2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 3:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	stat['hj'] += 1
+	if GBPH_act_me = 1100: 
+		GBPH_act_me = 1100
+	else
+		GBPH_act_me = 1001
+	end
+
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'	
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'		
+		else
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'		
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'	
+		end	
+	end
+	
+	'I am jerking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+	gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'	
+	
+	i = otemp
+	temp = 2 + ( stat['hj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(0,temp)
+	
+	
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 4:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	stat['hj'] += 1
+	GBPH_act_me = 1100
+
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'	
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'		
+		else
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'		
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'	
+		end	
+	end
+	
+	'I wrap my hands around his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock and start to jerk it enthusiastically.'
+	gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'	
+	
+	i = otemp
+	temp = 2 + ( stat['hj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(0,temp)
+	
+	
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 5:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	GBPH_act_me = 1010
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+			end
+		elseif GBPH_color_man[i] = 2:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+		end	
+	end
+	
+	'I am sucking his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock.'
+	gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'
+	
+	i = otemp
+	temp = 2 + ( stat['bj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(5,temp)		
+
+
+	GBPH_act_man[i] = 1200
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 6:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	GBPH_act_me = 1010
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/bj/bjv.mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/b/bj/bj ('+rand(1,20)+').jpg"></center>'
+			end
+		elseif GBPH_color_man[i] = 2:
+			temp = rand(1,5)
+			if temp = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/bj/bjv ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/bj/bj ('+rand(1,18)+').jpg"></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/bjv ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/bjv.mp4"></video></center>'
+		end	
+	end
+	
+	'You wrap your lips around his dick and take his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock in your mouth and start to suck it, you suck the cock enthusiastically.'
+	gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole'
+	gs 'stat'
+	
+	i = otemp
+	temp = 2 + ( stat['bj'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(5,temp)		
+
+
+	GBPH_act_man[i] = 1200
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 7:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	GBPH_act_me = 9000
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+			end
+		else
+			if rand(1,7) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+			end
+		end
+	end
+
+	i = otemp
+	temp = 0 + ( stat['vaginal'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(15,temp)
+	
+	
+	
+	gs 'arousal', 'vaginal', rand(5,10), 'sub', 'gloryhole'
+	gs 'stat'
+
+
+	GBPH_act_man[i] = 1300
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+if ARGS[0] = 8:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+	GBPH_act_me = 9000
+
+	if GBPH_condom[i] = 0:
+		if GBPH_color_man[i] = 1:
+			'<center><video autoplay loop src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+			$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/vag/vag ('+rand(1,4)+').mp4"></video></center>'
+		else
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/vag/vag ('+rand(1,5)+').jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/vag/vagv ('+rand(1,3)+').mp4"></video></center>'
+			end
+		end
+	else
+		if GBPH_color_man[i] = 1:
+			if rand(1,4) <= 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/b/vag ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/vagv ('+rand(1,5)+').mp4"></video></center>'
+			end
+		else
+			if rand(1,7) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/gandon/ch/vag.jpg"></center>'
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/vagv ('+rand(1,4)+').mp4"></video></center>'
+			end
+		end
+	end
+
+	i = otemp
+	temp = 0 + ( stat['vaginal'] / 10 ) - (GBPH_condom[i]*12)
+	GBPH_cum_man[i] -= rand(15,temp)
+	
+	
+	
+	gs 'arousal', 'vaginal', rand(5,10), 'sub', 'gloryhole'
+	gs 'stat'
+
+
+	GBPH_act_man[i] = 1300
+	GBPH_active_man[i] = 1
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+
+
+
+--- mod_public_WC_2PH2girls1booth3 ---------------------------------
+

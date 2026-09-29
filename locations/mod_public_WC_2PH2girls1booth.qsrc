@@ -1,0 +1,2424 @@
+# mod_public_WC_2PH2girls1booth
+if $ARGS[0] = 'enter':
+	*clr & cla
+end
+
+if $ARGS[0] = 'start':
+	*clr & cla
+	ryskahand = 1
+
+	GBPH_side_Me = 1	
+	GBPH_side_she = 2
+	if $clothingworntype ! 'nude': 
+		GBPH_nude_Me = 0
+	else
+		GBPH_nude_Me = 1
+	end
+	GBPH_nude_she = 0
+	GBPH_arounsed_she = rand(5,50)
+	GBPH_arounsed_me = pcs_horny
+
+	GBPH_act_me = 0
+	GBPH_act_she = 0
+	GBPH_act_she_together = 0
+	GBPH_act_me_together = 0
+
+	GBPH_she_cummed = 10000
+	!face/tits/hands/pussy
+
+
+	GBPH_man = 0
+
+	i = 0
+	:loopmanclear
+
+	i += 1
+	GBPH_man[i] = 0
+	!чи є людина
+
+	GBPH_man_fun[i] = 0
+
+	
+	GBPH_side_man[i] = 0
+
+	GBPH_active_man[i] = 0
+	!чи він чекає чи ні
+
+	GBPH_act_man[i] = 0
+	!що роблять з чоловіком
+	![1][яроблю][вона робить][він робить] - 1000 - чекає
+
+	GBPH_cum_man[i] = 0
+	GBPH_color_man[i] = 0
+	GBPH_dickpic[i] = 0
+	GBPH_condom[i] = 0
+
+
+	PH_suck_order = 0
+	xtemp = rand(1,3)
+	ytemp = rand(0,1)
+
+
+	GBPH_time = 0
+	GBPH_popularity = 0
+	GBPH_GB_penalty = 0
+
+	$picme = ''
+	$picshe = ''
+	$mecon = ''
+	$shecon = ''
+	
+	if i < 6:
+		jump 'loopmanclear'
+	end
+
+	otemp = 0
+
+	me_together = 0
+	she_together = 0
+
+	she_do_dicks = 0
+	me_do_dicks = 0
+	
+
+	gt 'mod_public_WC_2PH2girls1booth2', 'start2'	
+	!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/cum/on tits ('+rand(1,1)+').mp4"></video></center>'
+	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
+end
+
+
+
+if $ARGS[0] = 'start2':
+	gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+end
+
+
+if $ARGS[0] = 'CUM_trigger':
+	gs 'mod_public_WC_2PH2girls1booth2', 'CUM_trigger'	
+end
+
+
+if $ARGS[0] = 'gb':	
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb'
+	cla
+	*clr
+
+	gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	'Two guys break into the booth...'
+	if rand(1,2) = 1:
+		'...One of them grab my colegue and go away with her'
+		'The one, who stays with me says: "You are very slow! You do not serve everyone even until your death! The cabin embar you and we will help you!" After the speech I hear the happy cries of the crowd.  "And do not think to bite!" - he whispers a little bit later.'
+		'I think I have no choice but listen him'
+
+		if rand(1,2) = 1:
+			!b
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/2 ('+rand(1,1)+').jpg"></center>'
+			'Man: "Suck it!"'
+
+			act 'Suck it':
+				cla & *clr
+
+				'I am sucking it'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/2 ('+rand(2,2)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+				gs 'stat'
+
+				temptemp = 0
+
+				
+				temptemp += 1
+
+				'He gropes me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/3 ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+				gs 'stat'
+				minut -= 5
+				gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+				gs 'stat'
+
+				act 'Keep sucking':
+					if temptemp <= rand(2,4):						
+						*clr
+						temptemp += 1
+
+						'He gropes me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/3 ('+rand(1,2)+').jpg"></center>'
+						gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						gs 'stat'
+						minut -= 5
+						gs 'arousal', 'foreplay', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						gs 'stat'
+					else						
+						cla & *clr
+						temptemp = 0
+						'He rotates me, push his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock to me. So, I please him.'
+
+						
+						temptemp += 1
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/4 2+1 ('+rand(1,2)+').jpg"></center>'
+						gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						gs 'stat'
+						gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						minut -= 5
+						gs 'stat'
+
+						act 'Continue':
+							if temptemp <= rand(2,4):								
+								*clr
+								temptemp += 1
+								
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/4 2+1 ('+rand(1,2)+').jpg"></center>'
+								gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+								gs 'stat'
+								gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+								minut -= 5
+								gs 'stat'
+							else								
+								cla & *clr
+								'Guy opens the the door: "Come on, you must shaare!"'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 b/5 ('+rand(1,3)+').jpg"></center>'
+
+								act 'Continue':
+									cla & *clr
+									'Guy binds me with a rope'
+									minut += 5
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 b rope/1 ('+rand(1,3)+').jpg"></center>'
+
+									act 'Continue':
+										cla & *clr
+
+										'He grabs me and pulls me out from the toilet. I have no choice except move quick.'
+										'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/3 walk/b pushed ('+rand(1,5)+').jpg"></center>'
+										fame['pav_prostitute'] += 5
+										minut += 6
+										gs 'stat'
+
+										act 'Continue':
+											temptemp = 10
+											gt 'mod_public_WC_2PH2girls1booth', 'gb2'								
+										end
+									end
+								end														
+							end
+						end
+					end
+				end
+			end
+		else
+			!ch
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/1 ('+rand(1,1)+').jpg"></center>'
+
+			act 'continue':
+				cla & *clr
+
+				'As a dick appears from the hole and he forced me to suck it'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/2 ('+rand(6,6)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+				gs 'stat'
+
+				temptemp = 0
+
+				
+				temptemp += 1
+
+				'He pushed me balls deep each time'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/2 ('+rand(1,5)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+				gs 'stat'
+
+
+				act 'Keep sucking':
+					if temptemp <= rand(2,4):					
+						*clr
+						temptemp += 1
+
+						'He pushed me balls deep each time'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/2 ('+rand(1,5)+').jpg"></center>'
+						gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						gs 'stat'
+					else					
+						cla & *clr
+						temptemp = 0
+						'He rotates my head and penetrates my mouth with his <<npc_dick[$npclastgenerated]>>cm long <<$npc_thdick[$npclastgenerated]>> cock'
+
+						
+						temptemp += 1
+						
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/3 2+1 ('+rand(1,3)+').jpg"></center>'
+						gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						gs 'stat'
+						gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+						minut -= 5
+						gs 'stat'
+
+						act 'Continue':
+							if temptemp <= rand(2,4):
+								*clr
+								temptemp += 1
+								
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/3 2+1 ('+rand(1,3)+').jpg"></center>'
+								gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+								gs 'stat'
+								gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+								minut -= 5
+								gs 'stat'
+							else								
+								cla & *clr
+								'Other guy enter the toilet: "Come on guys, you must shaare"'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/1 ch/4 ('+rand(1,1)+').jpg"></center>'
+
+								act 'Continue':
+									cla & *clr
+
+									'He grab my hair and pull me out from the toilet. I have no choice except move quick "auching" by the way.'
+									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/3 walk/ch pushed ('+rand(1,1)+').jpg"></center>'
+									fame['pav_prostitute'] += 5
+									minut += 6
+									gs 'stat'
+
+									act 'Continue':
+										temptemp = 20
+										gt 'mod_public_WC_2PH2girls1booth', 'gb2'								
+									end
+								end								
+							end
+						end				
+					end
+				end
+			end
+		end
+	else
+		'...One of them grab me and pulled me out from the cabine, a crowd of man look at me with the animal hunger in their eyes.'
+		'One of them says: "You are very slow! You do not serve everyone even until your death! The cabin embar you and we will help you!" After the speech I hear the happy cries of the crowd.  "And do not think to bite!" - he whispers a little bit later.'
+		'Other guy pushed me down to the first once''s dick'
+
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 ch toilet/1 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'voyeur', rand(2,5), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+		gs 'stat'
+
+		act 'suck his dick':
+			cla & *clr
+			temptemp = 0
+
+			
+			temptemp += 1
+
+			'Other guy fingering me while I am sucking a dick'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 ch toilet/2 ('+rand(1,3)+').jpg"></center>'
+			gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			gs 'arousal', 'vaginal_finger', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			minut -= 5
+			gs 'stat'
+
+			act 'Keep sucking':
+				if temptemp <= rand(2,4):
+					*clr
+					temptemp += 1
+
+					'Other guy fingering me while I am sucking a dick'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 ch toilet/2 ('+rand(1,3)+').jpg"></center>'
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'vaginal_finger', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 5
+					gs 'stat'					
+				else
+					cla & *clr
+					temptemp = 0
+					'Other guy penetrates me'
+
+					temptemp += 1
+					
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 ch toilet/3 ('+rand(1,3)+').jpg"></center>'
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'vaginal', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 5
+					gs 'stat'
+
+					act 'Continue':
+						if temptemp <= rand(2,4):
+							*clr
+							temptemp += 1
+							
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/2 ch toilet/3 ('+rand(1,3)+').jpg"></center>'
+							gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+							gs 'arousal', 'vaginal', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							minut -= 5
+							gs 'stat'
+						else
+							cla & *clr
+							'Other guy enter the toilet: "Come on guys, you must shaare" - he grab my hair and pull me out from the toilet. I have no choice except move quick "auching" by the way.'
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/1 cabin/3 walk/ch pushed ('+rand(1,1)+').jpg"></center>'
+							fame['pav_prostitute'] += 5
+							minut += 6
+							gs 'stat'
+
+							act 'Continue':
+								temptemp = 20
+								gt 'mod_public_WC_2PH2girls1booth', 'gb2'								
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/ ('+rand(1,1)+').jpg"></center>'
+end
+
+if $ARGS[0] = 'gb2':	
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb2'
+	cla
+	*clr
+	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/ ('+rand(1,1)+').jpg"></center>'
+
+	if temptemp = 20:
+		!ch
+		'He pushed me on my knees in front of a crowd of men.'
+		'Man: "Suck!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/1 ('+rand(1,1)+').jpg"></center>'
+
+		act 'Suck':
+			cla & *clr
+			gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/2 ('+rand(1,1)+').jpg"></center>'
+
+			temptemp = 0
+
+
+			temptemp += 1
+
+			'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+			if rand(1,7) = 1:
+				'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/3 grab ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			minut -= 10
+			gs 'stat'
+
+			act 'please the men':
+				if temptemp <= rand(3,6):
+					*clr
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/3 ('+rand(1,8)+').jpg"></center>'
+					temptemp += 1
+
+					'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+					if rand(1,7) = 1:
+						'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/3 grab ('+rand(1,1)+').jpg"></center>'
+					end
+					
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 10
+					gs 'stat'
+				else					
+					cla & *clr
+					temptemp = 0
+
+
+					temptemp += 1
+
+					'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+					if rand(1,15) = 1:
+						'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/3 grab ('+rand(1,1)+').jpg"></center>'
+					end
+					
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 10
+					gs 'stat'
+
+					act 'Please the men':
+						if temptemp <= rand(3,6):
+							*clr
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/4 ('+rand(1,5)+').jpg"></center>'
+							temptemp += 1
+
+							'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+							if rand(1,15) = 1:
+								'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/3 grab ('+rand(1,1)+').jpg"></center>'
+							end
+							
+							gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+							gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+							gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							minut -= 10
+							gs 'stat'								
+						else
+							cla & *clr
+							'They brake my hands and bind them'
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/5 rope ('+rand(1,4)+').jpg"></center>'
+							minut += 7
+							gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+
+							act 'Continue':
+								cla & *clr
+								'Man: "So, good Bitch"'
+								'Other man: "It''s time to bring her to the room"'
+								'Other men nods.'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 ch/6 ('+rand(1,1)+').jpg"></center>'
+
+								act 'Continue':
+									cla & *clr
+									'They put me on my legs and walk me somewhere deeper to the building we are in'
+									minut += rand (3,5)
+									gs 'stat'
+									'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/ch ('+rand(1,2)+').jpg"></center>'
+									
+									temptemp = 20
+									act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb3'
+								end
+							end
+						end
+					end			
+				end
+			end
+		end
+	else
+		!b
+		'He pushed me on my knees in front of a crowd of men.'
+		'Man: "Suck!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/2 ('+rand(1,3)+').jpg"></center>'
+
+		act 'Suck':
+			cla & *clr
+			gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 ('+rand(1,3)+').jpg"></center>'
+
+			temptemp = 0
+
+
+			temptemp += 1
+
+			'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+			if rand(1,7) = 1:
+				'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 grab ('+rand(1,1)+').jpg"></center>'
+			end
+			
+			gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			gs 'stat'
+			gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+			minut -= 10
+			gs 'stat'
+
+			act 'please the men':
+				if temptemp <= rand(3,6):					
+					*clr
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 ('+rand(1,3)+').jpg"></center>'
+					temptemp += 1
+
+					'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+					if rand(1,7) = 1:
+						'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 grab ('+rand(1,1)+').jpg"></center>'
+					end
+					
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 10
+					gs 'stat'
+				else
+					cla & *clr
+
+					temptemp = 0
+
+
+					temptemp += 1
+
+					'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+					if rand(1,15) = 1:
+						'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 grab ('+rand(1,1)+').jpg"></center>'
+					end
+					
+					gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					gs 'stat'
+					gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+					minut -= 10
+					gs 'stat'
+
+					act 'Please the men':
+						if temptemp <= rand(3,6):							
+							*clr
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 ('+rand(1,3)+').jpg"></center>'
+							temptemp += 1
+
+							'All my hands full of dicks. Dicks one by one railing my mouth.'
+
+							if rand(1,15) = 1:
+								'"Don''t forget about me" - man grab my hair and pushed my face to his dick'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/5 grab ('+rand(1,1)+').jpg"></center>'
+							end
+							
+							gs 'arousal', 'bj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+							gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							gs 'stat'
+							gs 'arousal', 'hj', rand(5,7), 'prostitution', 'sub', 'group', 'gangbang', 'gloryhole', 'rape'
+							minut -= 10
+							gs 'stat'
+						else
+							cla & *clr
+							'Man: "So, good Bitch"'
+							'Other man: "It''s time to bring her to the room"'
+							'Other men nods.'
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/2 corridor/1 b/2 ('+rand(3,3)+').jpg"></center>'
+
+							act 'Continue':
+								cla & *clr
+								'They put me on my legs and walk me somewhere deeper to the building we are in'
+								minut += rand (3,5)
+								gs 'stat'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/b ('+rand(1,2)+').jpg"></center>'
+								
+								temptemp = 10
+								act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb3'
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'gb3':
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb3'
+	cla
+	*clr
+	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/ ('+rand(1,1)+').jpg"></center>'
+
+	if temptemp = 20:
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/ch ('+rand(1,2)+').jpg"></center>'
+	else
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/b ('+rand(1,2)+').jpg"></center>'
+	end
+
+	'They bring me to some room, ow my colegue here! She seems exhausted and she is bind too.'
+	'Man: "Ladies its time for a kiss" - they pushed us together'
+
+	act 'kiss':
+		cla & *clr
+
+		gs 'arousal', 'kiss', rand(7,15), 'prostitution', 'sub', 'group', 'lesbian', 'gloryhole'
+		gs 'stat'
+		'We are kissing'		
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/3 kiss/kiss ('+rand(1,2)+').jpg"></center>'
+		wait 2000
+		'It takes some time... and all this time guys was jerking'
+		wait 2000
+		'We were kissing till they pull us from each other'
+		'MAN: "Let''s go, we are ready for the CINEMA!"'
+
+
+		act 'Continue':
+			cla & *clr
+			if temptemp = 20:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/ch ('+rand(1,2)+').jpg"></center>'
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/walk/b ('+rand(1,2)+').jpg"></center>'
+			end
+
+			'They pull us deeper to the building... it is some kind of old warehouse'
+			act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb4'
+		end
+	end
+end
+
+
+if $ARGS[0] = 'gb4':	
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb4'
+	cla
+	*clr
+	!'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/ ('+rand(1,1)+').jpg"></center>'
+
+	if temptemp = 20:
+		!ch
+		'They walked me to a big room, constantly groping me on the way'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/0 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'foreplay', rand(2,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+
+		act 'Continue':
+			cla & *clr
+			temptemp = 20
+
+			if rand(1,2) = 1:
+				gt 'mod_public_WC_2PH2girls1booth', 'gb4_b_d'
+			else
+				gt 'mod_public_WC_2PH2girls1booth', 'gb4_b_sr'
+			end
+		end
+	else
+		!b
+		'They walked me to a big room, constantly groping me on the way'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/0 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'foreplay', rand(2,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+
+		act 'Continue':
+			cla & *clr
+			temptemp = 10
+
+			temp = rand(1,2)
+			if temp = 1:
+				gt 'mod_public_WC_2PH2girls1booth', 'gb4_bb'
+			else
+				gt 'mod_public_WC_2PH2girls1booth', 'gb4_cg'
+			!else
+				!gt 'mod_public_WC_2PH2girls1booth', 'gb4_sr'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'gb4_bb':
+	cla & *clr
+	If GBPH_MAN <= 0: GBPH_MAN = rand(10,15)
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/blowgang/1 ('+rand(1,1)+').jpg"></center>'
+	'They throw me on the floor and loose ropes a bit'
+	
+
+	act 'Continue':
+		cla & *clr
+		'They push dicks to my face - "SUCK!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/blowgang/2 ('+rand(1,1)+').jpg"></center>'
+
+		act 'Suck':
+			cla & *clr
+
+			temptemp = 0
+
+
+			temptemp += 1
+
+			'I am doing my best to pleasure all the dicks!'
+			gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'	
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'	
+			gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			minut -= 20
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/blowgang/3 ('+rand(1,8)+').jpg"></center>'
+
+			
+			act 'Please all the dicks!':
+				if temptemp <= rand(3,11):					
+					*clr
+					temptemp += 1
+
+					'I am doing my best to pleasure all the dicks!'
+					gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'	
+					gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'	
+					gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					minut -= 20
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/blowgang/3 ('+rand(1,8)+').jpg"></center>'
+				else
+					cla
+					'Guys decide to change the position'
+
+					act 'Continue':
+						cla & *clr
+						temptemp = 10
+						gt 'mod_public_WC_2PH2girls1booth', 'gb4_sr'
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'gb4_cg':
+	cla & *clr
+	If GBPH_MAN <= 0: GBPH_MAN = rand(10,15)
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/1 ('+rand(1,1)+').jpg"></center>'
+	'They throw me on the floor and loose ropes a bit'
+	
+	act 'Continue':
+		cla & *clr
+		'Guy approach my face with a naked dick - "SUCK!"'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/2 ('+rand(1,1)+').jpg"></center>'
+
+		act 'Suck':
+			cla & *clr
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+			'I have no choice, I am sucking it.'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/3 ('+rand(1,1)+').jpg"></center>'
+
+			act 'Continue':
+				cla & *clr
+				'Guy penetrates me while I am sucking the other.'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/4 ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'	
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				minut -= 10
+				gs 'stat'
+
+				act 'Continue':
+					cla & *clr
+					'Guy put me on top. and hit my ass few time to engage me to jump!'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/5 ('+rand(1,1)+').jpg"></center>'
+					gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'	
+					gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					minut -= 10
+					gs 'stat'
+
+
+					act 'Jump':
+						cla & *clr
+
+						temptemp = 0
+
+
+						temptemp += 1
+
+						'I am doing my best to pleasure all the dicks!'
+						gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'	
+						gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'
+						gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'	
+						gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						gs 'stat'
+						gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+						minut -= 25
+						gs 'stat'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/6 ('+rand(1,4)+').jpg"></center>'
+
+						act 'keep jumping':
+							if temptemp <= rand(4,8):							
+								*clr				
+								temptemp += 1
+
+								'I am doing my best to pleasure all the dicks!'
+								gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'	
+								gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'
+								gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'	
+								gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								gs 'stat'
+								gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+								minut -= 25
+								gs 'stat'
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/cowgirl/6 ('+rand(1,4)+').jpg"></center>'									
+							else
+								cla
+								'Guys decide to change the position'
+
+								act 'Continue':
+									cla & *clr
+									temptemp = 10
+									gt 'mod_public_WC_2PH2girls1booth', 'gb4_sr'
+								end								
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'gb4_sr':
+	cla & *clr
+	If GBPH_MAN <= 0: GBPH_MAN = rand(10,15)
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/1 ('+rand(1,1)+').jpg"></center>'
+	'They discuss what to do next'
+	minut += 5
+	gs 'stat'
+
+	act 'Continue':
+		cla & *clr
+		'Guy bend me and penetrates my pussy'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/2 ('+rand(1,1)+').jpg"></center>'
+		gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+
+		act 'Continue':
+			cla & *clr
+			'The other fill my mouth'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/3 ('+rand(1,1)+').jpg"></center>'
+			gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+			gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			minut -= 5
+			gs 'stat'	
+
+			temptemp = 0
+
+			temptemp += 1
+
+
+			gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+			gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/4 ('+rand(1,6)+').jpg"></center>'	
+
+			if rand(1,10) = 1:
+				GBPH_MAN -= 1
+				if GBPH_MAN <=0: GBPH_MAN = 3
+				spafinloc = 0
+				gs 'cum_manage'
+				gs 'cuminsidereact', $npclastgenerated
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/cum ('+rand(1,1)+').jpg"></center>'	
+
+				gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+				gs 'boyStat', $npclastgenerated
+				gs 'stat'						
+			end
+
+			
+			act 'Continue?':
+				if temptemp <= rand(4,9):
+					*clr				
+					temptemp += 1
+
+					gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/4 ('+rand(1,6)+').jpg"></center>'	
+
+					if rand(1,10) = 1:
+						GBPH_MAN -= 1
+						if GBPH_MAN <=0: GBPH_MAN = 3
+						spafinloc = 0
+						gs 'cum_manage'
+						gs 'cuminsidereact', $npclastgenerated
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 b/spitroast/cum ('+rand(1,1)+').jpg"></center>'	
+
+						gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+						gs 'boyStat', $npclastgenerated
+						gs 'stat'						
+					end
+				else
+					cla & *clr	
+					temptemp = 10
+
+					'they push me on the floor and walk me by me leash to the place where they are fucking my colegue...'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/2 walk b to ch ('+rand(1,1)+').jpg"></center>'	
+
+
+					act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb5'
+				end
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'gb4_b_d':
+	cla & *clr
+	If GBPH_MAN <= 0: GBPH_MAN = rand(10,15)
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/1 ('+rand(1,1)+').jpg"></center>'
+	'They throw me on the floor and loose ropes a bit'
+	'Their fingers everywhere on my body'
+	gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'	
+	gs 'arousal', 'voyeur', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'
+	gs 'arousal', 'vaginal_finger', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'	
+	gs 'arousal', 'massage', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	minut -= 20
+	gs 'stat'
+
+	act 'Continue':
+		cla & *clr
+
+		temptemp = 0
+
+
+		temptemp += 1
+
+		'Their fingers everywhere on my body'
+		gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'	
+		gs 'arousal', 'voyeur', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+		gs 'arousal', 'vaginal_finger', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'	
+		gs 'arousal', 'massage', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		minut -= 20
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/2 ('+rand(1,4)+').jpg"></center>'
+
+		act 'Moaning in pleasure':
+			if temptemp <= rand(2,4):				
+				*clr				
+				temptemp += 1
+
+				'Their fingers everywhere on my body'
+				gs 'arousal', 'foreplay', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'	
+				gs 'arousal', 'voyeur', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+				gs 'arousal', 'vaginal_finger', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'	
+				gs 'arousal', 'massage', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				minut -= 20
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/2 ('+rand(1,4)+').jpg"></center>'
+			else
+				cla & *clr	
+				'Guys create a queue, only one at a time use me...'
+
+
+				temptemp += 1
+
+				if rand(1,2) = 1:
+					gs 'arousal', 'vaginal_finger', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/3_1 ('+rand(1,1)+').jpg"></center>'					
+				else
+					gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/3_2 ('+rand(1,1)+').jpg"></center>'	
+
+					if rand(1,10) = 1:
+						GBPH_MAN -= 1
+						if GBPH_MAN <=0: GBPH_MAN = 3
+						spafinloc = 0
+						gs 'cum_manage'
+						gs 'cuminsidereact', $npclastgenerated
+						gs 'stat'
+						gs 'arousal', 'end'
+						gs 'stat'
+
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/cum ('+rand(1,1)+').jpg"></center>'	
+
+						gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+						gs 'boyStat', $npclastgenerated
+						gs 'stat'						
+					end
+				end
+				
+
+				act 'Another one?':
+					if temptemp <= rand(3,8):						
+						*clr	
+						temptemp += 1
+
+						if rand(1,2) = 1:
+							gs 'arousal', 'vaginal_finger', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+							gs 'stat'
+							gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/3_1 ('+rand(1,1)+').jpg"></center>'					
+						else
+							gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+							gs 'stat'
+							'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/3_2 ('+rand(1,1)+').jpg"></center>'	
+
+							if rand(1,10) = 1:
+								GBPH_MAN -= 1
+								if GBPH_MAN <=0: GBPH_MAN = 3
+								spafinloc = 0
+								gs 'cum_manage'
+								gs 'cuminsidereact', $npclastgenerated
+								gs 'stat'
+								gs 'arousal', 'end'
+								gs 'stat'
+
+								'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/splitroast/cum ('+rand(1,1)+').jpg"></center>'	
+
+								gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+								gs 'boyStat', $npclastgenerated
+								gs 'stat'						
+							end
+						end
+					else
+						cla & *clr	
+						temptemp = 21
+						'Guys rotates me'
+						'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/2 rotate ('+rand(1,1)+').jpg"></center>'	
+
+						act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb4_b_sr'
+					end
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'gb4_b_sr':
+	cla & *clr
+	If GBPH_MAN <= 0: GBPH_MAN = rand(10,15)
+
+	If temptemp ! 21:
+		!вставити початок
+		'They throw me on the floor and loose ropes a bit'		
+	end
+	temptemp = 20
+
+	'Guy penetrates my pussy'
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/doggy/1 ('+rand(1,1)+').jpg"></center>'
+
+	gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'
+
+	act 'Continue':
+		cla & *clr	
+		'Other guy pushes his dick in my mouth!'
+
+
+
+		temptemp += 1
+
+
+		gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+		gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/doggy/2 ('+rand(1,4)+').jpg"></center>'	
+
+		if rand(1,10) = 1:
+			GBPH_MAN -= 1
+			if GBPH_MAN <=0: GBPH_MAN = 3
+			spafinloc = 0
+			gs 'cum_manage'
+			gs 'cuminsidereact', $npclastgenerated
+			gs 'stat'
+			gs 'arousal', 'end'
+			gs 'stat'
+
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/doggy/cum ('+rand(1,1)+').jpg"></center>'	
+
+			gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+			gs 'boyStat', $npclastgenerated
+			gs 'stat'						
+		end
+
+		
+		act 'Continue':
+			if temptemp <= rand(4,9):				
+				*clr				
+				temptemp += 1
+
+
+				gs 'arousal', 'bj', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+				gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/doggy/2 ('+rand(1,4)+').jpg"></center>'	
+
+				if rand(1,10) = 1:
+					GBPH_MAN -= 1
+					if GBPH_MAN <=0: GBPH_MAN = 3
+					spafinloc = 0
+					gs 'cum_manage'
+					gs 'cuminsidereact', $npclastgenerated
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/1 ch/doggy/cum ('+rand(1,1)+').jpg"></center>'	
+
+					gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					gs 'stat'						
+				end
+			else
+				cla & *clr	
+				temptemp = 20
+
+				'I see my colegue crowling... when will it end?'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/4 warehouse/2 walk b to ch ('+rand(1,1)+').jpg"></center>'	
+
+
+				act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb5'
+			end
+		end
+	end
+end
+
+
+if $ARGS[0] = 'gb5':
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb5'
+	cla & *clr
+	'Crowd approaches us, trying to fill every hole with a cock.'
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/1 together/together ('+rand(1,4)+').jpg"></center>'
+
+	i = 0
+	:cumcycle_1
+
+	i += 1
+	GBPH_cum_gb[i] = 10 + rand(0,70)
+	if i < GBPH_MAN: jump 'cumcycle_1'
+
+	if rand(1,10) = 1:
+		'New guy enters the room'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 new guy ('+rand(1,1)+').jpg"></center>'
+		GBPH_MAN += 1
+		i = GBPH_MAN
+		GBPH_cum_gb[i] = 30 + rand(0,70)
+	end
+
+	if temptemp = 20:
+		!ch
+		act 'Continue':
+			cla & *clr
+			'Guy penetrates me'			
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 ch/34 ('+rand(1,2)+').jpg"></center>'
+			i = GBPH_MAN
+			GBPH_cum_gb[i] -= rand(10,20)
+			gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+
+			GBPH_act_me = 9000
+			
+			act 'Continue':
+				cla
+				gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions_cum'
+			end
+		end
+	else
+		!b
+		act 'Continue':
+			cla & *clr
+			'Guy penetrates me'			
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 b/34 ('+rand(1,1)+').jpg"></center>'
+			i = GBPH_MAN
+			GBPH_cum_gb[i] -= rand(10,20)
+			gs 'arousal', 'vaginal', rand(5,5), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+			gs 'stat'
+
+			GBPH_act_me = 9000
+			
+			act 'Continue':
+				cla
+				gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions_cum'
+			end
+		end
+	end	
+end
+
+
+if $ARGS[0] = 'gb5_actions_cum':
+	i = 0
+
+	:cumloopgbpenaltie
+	i += 1
+	GBPH_cum_gb[i] = rand(15,100)
+
+	if i < GBPH_MAN:
+		jump 'cumloopgbpenaltie'
+	else
+		gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions'
+	end	
+end
+if $ARGS[0] = 'gb5_actions':
+
+	xtemp = 0
+
+	if temptemp = 20:
+		if GBPH_act_me = 9000:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 ch/34 ('+rand(1,2)+').jpg"></center>'
+		elseif GBPH_act_me = 9100:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 ch/34+1 ('+rand(1,2)+').jpg"></center>'
+		elseif GBPH_act_me = 9010:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 ch/34+2 ('+rand(1,1)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 ch/34+2+1 ('+rand(1,2)+').jpg"></center>'
+		end
+	else
+		if GBPH_act_me = 9000:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 b/34 ('+rand(1,1)+').jpg"></center>'
+		elseif GBPH_act_me = 9100:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 b/34+1 ('+rand(1,5)+').jpg"></center>'
+		elseif GBPH_act_me = 9010:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 b/34+2 ('+rand(1,3)+').jpg"></center>'
+		else
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 b/34+2+1 ('+rand(1,2)+').jpg"></center>'
+		end	
+	end
+
+	gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+	gs 'boyStat', $npclastgenerated
+	gs 'stat'
+
+	i = GBPH_MAN
+	GBPH_cum_gb[i] -= rand(10,20)
+	gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+	gs 'stat'
+	i = GBPH_MAN
+	If GBPH_cum_gb[i] <= 0:
+		if temptemp = 20:
+			if rand(1,5) >= 3:
+				'He pump me up with his semen'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/inside ('+rand(1,1)+').jpg"></center>'
+			else
+				'He pulls his dick out and cum on my belly'
+				gs 'cum_call','pantyfront',$boy
+				gs 'stat'
+				gs 'cum_call','labia',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','',$boy, 2
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/ch/labia ('+rand(1,4)+').jpg"></center>'
+			end
+		else
+			if rand(1,5) >= 3:
+				'He pump me up with his semen'
+				gs 'cum_call','',$boy
+				gs 'cuminsidereact', $boydesc
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/inside ('+rand(1,1)+').jpg"></center>'
+			else
+				'He pulls his dick out and cum on my belly'
+				gs 'cum_call','pantyfront',$boy
+				gs 'stat'
+				gs 'cum_call','labia',$boy
+				gs 'stat'
+				gs 'cum_call','stomach',$boy
+				gs 'stat'
+				gs 'cum_call','',$boy, 2
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/b/labia ('+rand(1,4)+').jpg"></center>'
+			end	
+		end
+		'Next guy instantly take his place.'
+
+		xtemp += 1
+	end
+
+	act 'wait':
+		cla & *clr
+		gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions'		
+	end
+
+
+	if (GBPH_act_me / 10) MOD 10 > 0:
+		i = GBPH_MAN - 1
+		GBPH_cum_gb[i] -= rand(10,20)
+		gs 'arousal', 'bj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		minut -= 5
+		gs 'stat'
+		i = GBPH_MAN - 1
+		
+		If GBPH_cum_gb[i] <= 0:
+			if temptemp = 20:
+				'He points his dick to my mouth'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/ch/inmouth ('+rand(1,1)+').jpg"></center>'
+			else
+				if rand(1,2) = 1:
+					'He points his dick to my face'	
+					if rand(1,3) = 1:
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+					end
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/b/onface ('+rand(1,2)+').jpg"></center>'				
+				else
+					'He points his dick to my mouth'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/b/inmouth ('+rand(1,2)+').jpg"></center>'	
+				end
+			end
+			xtemp += 1
+
+			GBPH_act_me -= 10
+		end
+	end
+
+
+	if (GBPH_act_me / 100) MOD 10 > 0:
+		i = GBPH_MAN - 2
+		GBPH_cum_gb[i] -= rand(10,20)
+		gs 'arousal', 'hj', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+		minut -= 5
+		gs 'stat'
+		i = GBPH_MAN - 2
+
+		If GBPH_cum_gb[i] <= 0:
+			if temptemp = 20:
+				'He points his dick to my mouth'
+				gs 'cum_call','mouth',$boy
+				gs 'stat'
+				gs 'cum_call','mouth_swallow',$boy
+				gs 'stat'
+				gs 'arousal', 'end'
+				gs 'stat'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/ch/inmouth ('+rand(1,1)+').jpg"></center>'
+			else
+				if rand(1,2) = 1:
+					'He points his dick to my face'	
+					if rand(1,3) = 1:
+						gs 'cum_call','hair',$boy
+						gs 'stat'
+					end
+					gs 'cum_call','face',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/b/onface ('+rand(1,2)+').jpg"></center>'				
+				else
+					'He points his dick to my mouth'
+					gs 'cum_call','mouth',$boy
+					gs 'stat'
+					gs 'cum_call','mouth_swallow',$boy
+					gs 'stat'
+					gs 'arousal', 'end'
+					gs 'stat'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/4 cum/b/inmouth ('+rand(1,2)+').jpg"></center>'	
+				end
+			end			
+			xtemp += 1
+
+			GBPH_act_me -= 100
+		end
+	end
+
+	GBPH_MAN -= xtemp
+	xtemp = 0
+
+	if rand(1,10) = 1 and GBPH_MAN > 3:
+		'New guy enters the room'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/2 new guy ('+rand(1,1)+').jpg"></center>'
+		GBPH_MAN += 1
+		i = GBPH_MAN
+		GBPH_cum_gb[i] = 30 + rand(0,70)
+	end
+
+	if (GBPH_act_me / 10) MOD 10 = 0 and GBPH_MAN >= 3:	
+		act 'find a dick to suck':
+			cla & *clr
+			'It is easy, there are a lot of guys around'
+			GBPH_act_me += 10
+			gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions'
+		end
+	end
+
+	if (GBPH_act_me / 100) MOD 10 = 0 and GBPH_MAN >= 3:
+		act 'find a dick to jerk':
+			cla & *clr
+			'It is easy, there are a lot of guys around'
+			GBPH_act_me += 100
+			gs 'mod_public_WC_2PH2girls1booth', 'gb5_actions'
+		end
+	end
+
+
+
+	If GBPH_MAN <= 1:
+		cla
+		!last
+
+		if temptemp = 20:
+			act'Last man standing':
+				cla & *clr
+				'This is the last one. All other guys just talking and ignoring me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/3 last/ch/last ('+rand(1,2)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+
+				act 'He cums':
+					cla & *clr
+					'The last one cums!'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/3 last/ch/cum ('+rand(1,1)+').jpg"></center>'
+					gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					gs 'stat'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb6'
+				end
+			end
+		else
+			!b
+			act'Last man standing':
+				cla & *clr
+				'This is the last one. All other guys just talking and ignoring me'
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/3 last/b/last ('+rand(1,6)+').jpg"></center>'
+				gs 'arousal', 'vaginal', rand(5,10), 'prostitution', 'sub', 'group', 'gangbang', 'rape', 'humiliation'
+				gs 'stat'
+
+				act 'He cums':
+					cla & *clr
+					'The last one cums!'
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/5 table/3 last/ch/cum ('+rand(1,1)+').jpg"></center>'
+					gs 'npcgeneratec', 0, 'Toilet rapist', rand(18,40)
+					gs 'boyStat', $npclastgenerated
+					gs 'stat'
+					gs 'cum_call','',$boy
+					gs 'cuminsidereact', $boydesc
+					gs 'arousal', 'end'
+					gs 'stat'
+
+					act 'Continue': gt 'mod_public_WC_2PH2girls1booth', 'gb6'
+				end
+			end
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'gb6':
+	!gt 'mod_public_WC_2PH2girls1booth', 'gb6'
+	cla
+	*clr
+	'Finally it ends... My colegue also has no guys around'
+	'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/6 end/1 ('+rand(1,1)+').jpg"></center>'
+
+	act 'stand up':
+		cla & *clr
+		minut += rand(3,5)
+		gs 'stat'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/gb_event/6 end/2 ('+rand(1,2)+').jpg"></center>'
+		'We quickly dress up and run away from the building till guys pay no attention to us'
+
+		act'Leave':			
+			if $clothingworntype = 'nude':
+				minut += 3
+				gs 'clothing', 'wear_last_worn'
+				gs 'underwear', 'wear'
+				gs 'stat'
+			end
+			killvar 'GBPH_MAN'
+			gt $PHwcloc, $PHwcloc_arg
+		end
+	end
+end
+
+
+if $ARGS[0] = 'videotogether':
+	i = otemp
+	If GBPH_act_me_together ! 1020: PH_suck_order = 0
+
+	if GBPH_act_me_together = -9001:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+push/2+push ('+rand(1,3)+').mp4"></video></center>'
+	elseif GBPH_act_me_together = -9002:
+		if GBPH_act_she_together = 1100:
+			if GBPH_color_man[i] = 1:
+				if rand(1,3) <= 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+foreplay/cuni ('+rand(1,1)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+foreplay/cuni ('+rand(1,2)+').mp4"></video></center>'
+				end
+			else
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+foreplay/cuni_ch ('+rand(1,1)+').jpg"></center>'
+			end
+		elseif GBPH_act_she_together = 1020:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/foreplay/cuni ('+rand(1,2)+').mp4"></video></center>'
+		elseif GBPH_act_she_together = 9000:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+foreplay/cuni ('+rand(1,4)+').jpg"></center>'
+		end
+	elseif PH_suck_order > 0:
+		if PH_suck_order = 1 or PH_suck_order = 2:
+			ytemp += 1
+			i = otemp
+			if GBPH_color_man[i] = 2:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/turnbased bj/1_ch ('+ytemp+').jpg"></center>'
+			elseif xtemp >= 1 AND xtemp <= 2:
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/turnbased bj/'+xtemp+' ('+ytemp+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/turnbased bj/1_ch ('+ytemp+').jpg"></center>'
+				end
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/turnbased bj/turnbased bj (1).mp4"></video></center>'
+			end
+			if ytemp >= 2: ytemp = 0		
+		elseif PH_suck_order = 10:
+			i = otemp
+			if GBPH_color_man[i] = 1:
+				if rand(1,11) <= 8:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,3)+').mp4"></video></center>'
+				end
+			else
+				if rand(1,6) <= 5:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
+				end
+			end
+		elseif PH_suck_order = 20:
+			i = otemp
+			if GBPH_color_man[i] = 1:
+				if rand(1,18) <= 15:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/balls/balls ('+rand(1,15)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/balls/balls ('+rand(1,3)+').mp4"></video></center>'
+				end
+			else
+				if rand(1,8) <= 7:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/balls/balls_ch ('+rand(1,7)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/balls/balls_ch ('+rand(1,1)+').mp4"></video></center>'
+				end
+			end
+		elseif PH_suck_order = 30:
+			i = otemp
+			if GBPH_color_man[i] = 1:
+				if rand(1,2) <= 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/lick/lick ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/lick/lick ('+rand(1,2)+').mp4"></video></center>'
+				end
+			else
+				if rand(1,8) <= 5:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/lick/lick_ch ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/lick/lick_ch ('+rand(1,3)+').mp4"></video></center>'
+				end
+			end
+		end
+	elseif GBPH_act_me_together = 1100 OR GBPH_act_she_together = 1100:
+		if GBPH_act_me_together = 1100 AND GBPH_act_she_together = 1100:
+			if rand(1,3) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/1/1+1/1+1 ('+rand(1,2)+').mp4"></video></center>'
+			end
+		elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+			if GBPH_color_man[i] = 1:
+				if rand(1,3) ! 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,2)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk ('+rand(1,1)+').mp4"></video></center>'
+				end							
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+1/jerk_ch ('+rand(1,2)+').mp4"></video></center>'
+			end
+		elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
+			if rand(1,12) <= 9:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
+			end	
+		end
+	elseif GBPH_act_me_together = 1020 OR GBPH_act_she_together = 1020:
+		if GBPH_act_me_together = 1020 AND GBPH_act_she_together = 1020:
+			if GBPH_color_man[i] = 1:
+				if rand(1,11) <= 8:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,8)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck ('+rand(1,3)+').mp4"></video></center>'
+				end							
+			else
+				if rand(1,6) <= 5:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,5)+').jpg"></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/2/2+2/doublesuck/doublesuck_ch ('+rand(1,1)+').mp4"></video></center>'
+				end		
+			end
+		elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+2/34+2 ('+rand(1,2)+').mp4"></video></center>'
+		end
+	elseif GBPH_act_me_together = 9000 OR GBPH_act_she_together = 9000:
+		if rand(1,12) <= 9:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,9)+').jpg"></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1_action/together/34/34+1/34+1 ('+rand(1,3)+').mp4"></video></center>'
+		end
+	else			
+	end	
+	gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+end
+
+if $ARGS[0] = 'videoNOTtogether':
+	!gs 'mod_public_WC_2PH2girls1booth', 'videoNOTtogether'
+	!show all video options here
+	i = otemp
+
+	If (GBPH_act_me = 1100 OR GBPH_act_me = 1001) and GBPH_act_she ! 1100 and GBPH_act_she ! 1001 and GBPH_act_she ! 1010:
+		if GBPH_condom[i] = 0:
+			if GBPH_color_man[i] = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/b/hj/hjv ('+rand(1,4)+').mp4"></video></center>'
+			else
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+					$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/wc/gh/ch/hj/hj.jpg"></center>'
+				else
+					'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+					$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/ch/hj/hjv'+rand(1,2)+'.mp4"></video></center>'
+				end
+			end
+		else
+			if GBPH_color_man[i] = 1:
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'	
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/b/hjv ('+rand(1,3)+').mp4"></video></center>'		
+			else
+				'<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'		
+				$mecon = '<center><video autoplay loop src="mod/public_WC/wc/gh/gandon/ch/hjv.mp4"></video></center>'	
+			end	
+		end		
+	elseIf (GBPH_act_she = 1100 OR GBPH_act_she = 1001) OR (GBPH_act_me = 1100 OR GBPH_act_me = 1001):
+		$mecon = '' & $shecon = ''
+		If (GBPH_act_she = 1100 OR GBPH_act_she = 1001) AND (GBPH_act_me = 1100 OR GBPH_act_me = 1001):
+			if rand(1,5) <= 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+1/1+1 ('+rand(1,1)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+1/1+1 ('+rand(1,4)+').mp4"></video></center>'
+			end
+		elseIf GBPH_act_she = 1010 OR GBPH_act_me = 1010:
+			if rand(1,6) <= 4:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+2/1+2 ('+rand(1,4)+').jpg"></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/1+2/1+2 ('+rand(1,2)+').mp4"></video></center>'
+			end
+		elseIf GBPH_act_she = 9000 OR GBPH_act_me = 9000:
+		'wip'
+		end
+	elseIf GBPH_act_she = 1010 or GBPH_act_me = 1010:
+		$mecon = '' & $shecon = ''
+		If GBPH_act_she = 1010 and GBPH_act_me = 1010:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/2+2/2+2 ('+rand(1,3)+').mp4"></video></center>'
+		elseif GBPH_act_she = 9000 or GBPH_act_me = 9000:
+			'wip'
+		end
+	elseIf GBPH_act_she = 9000:
+		$mecon = '' & $shecon = ''
+		if GBPH_act_she = 9000 and GBPH_act_me = 9000:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2_action/34+34/34+34 ('+rand(1,3)+').jpg"></center>'
+		end
+	end
+end
+
+
+
+if $ARGS[0] = 'manleave':
+	gs 'mod_public_WC_2PH2girls1booth2', 'manleave'
+end
+
+
+
+if $ARGS[0] = 'manaction':
+	i = otemp
+	temp = otemp	
+	if temp >= 4: temp -= 3
+
+	If GBPH_act_me ! 1100 and GBPH_act_me ! 1001 and GBPH_act_me ! 1010 and GBPH_act_me ! 1110 and GBPH_act_me ! 1011 and GBPH_act_me ! 1101 and GBPH_act_me ! 1111:
+		if otemp <= 3:
+			'My wall'
+		else
+			'Her wall'
+		end
+
+		'HOLE #<<temp>>'
+
+		if GBPH_color_man[i] = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+		elseif GBPH_color_man[i] = 2:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+		end
+	end
+
+
+	if GBPH_condom[i] = 1 and rand(1,100) <= 28 and GBPH_act_man[i] = 1000:
+		'She removes condom from the dick'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/condom action/off/she ('+rand(1,1)+').jpg"></center>'
+		GBPH_condom[i] = 0
+	end
+
+	if GBPH_condom[i] = 1:		
+
+		dynamic "act 'remove condom': gs 'mod_public_WC_2PH2girls1booth3', 1, <<i>>"		
+		
+		
+	elseif GBPH_condom[i] = 0 and prezik > 0:
+		
+		dynamic "act 'put condom': gs 'mod_public_WC_2PH2girls1booth3', 2, <<i>>"	
+
+
+	end
+
+	if GBPH_act_me = 1100 OR GBPH_act_me = 1001:
+		
+		dynamic "act 'keep jerking him': gs 'mod_public_WC_2PH2girls1booth3', 3, <<i>>"	
+
+
+	else
+		
+		dynamic "act 'strock his dick': gs 'mod_public_WC_2PH2girls1booth3', 4, <<i>>"	
+
+		
+	end
+
+	if GBPH_act_me = 1010:
+		
+		dynamic "act 'keep sucking him': gs 'mod_public_WC_2PH2girls1booth3', 5, <<i>>"	
+
+	
+	else
+		
+		dynamic "act 'blow him': gs 'mod_public_WC_2PH2girls1booth3', 6, <<i>>"	
+
+
+	end
+
+
+	if GBPH_nude_Me = 1:
+		if GBPH_act_me = 9000:
+			
+			dynamic "act 'keep riding the dick': gs 'mod_public_WC_2PH2girls1booth3', 7, <<i>>"	
+	
+
+		else
+			
+			dynamic "act 'ride his dick': gs 'mod_public_WC_2PH2girls1booth3', 8, <<i>>"	
+
+
+		end
+	else
+		act 'ride his dick':
+			'<i>I must be naked to ride his dick.</i>'
+		end
+	end
+
+	!mod_public_WC_cabine - дії
+	!mod_public_WC_street_sex_pidizd - зменшення куммен
+end
+
+if $ARGS[0] = 'manaction2nd':
+	i = otemp
+	temp = otemp	
+	if temp >= 4: temp -= 3
+
+	!If GBPH_act_me ! 1100 and GBPH_act_me ! 1001 and GBPH_act_me ! 1010 and GBPH_act_me ! 1110 and GBPH_act_me ! 1011 and GBPH_act_me ! 1101 and GBPH_act_me ! 1111:
+	if otemp <= 3:
+		'My wall'
+	else
+		'Her wall'
+	end
+
+	'HOLE #<<temp>>'
+
+	if GBPH_condom[i] = 1 and rand(1,100) <= 28 and GBPH_act_man[i] = 1000:
+		'She removes condom from the dick'
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/condom action/off/she ('+rand(1,1)+').jpg"></center>'
+		GBPH_condom[i] = 0
+	end
+
+	if GBPH_condom[i] = 1:
+		dynamic "act 'remove condom': gs 'mod_public_WC_2PH2girls1booth4', 1, <<i>>"
+
+	elseif GBPH_condom[i] = 0 and prezik > 0:
+		dynamic "act 'put condom': gs 'mod_public_WC_2PH2girls1booth4', 2, <<i>>"
+
+	end
+
+
+	if GBPH_act_me = 1100 OR GBPH_act_me = 1001:
+		dynamic "act 'jerk this dick too': gs 'mod_public_WC_2PH2girls1booth4', 3, <<i>>"
+
+
+		dynamic "act 'blow the dick': gs 'mod_public_WC_2PH2girls1booth4', 4, <<i>>"
+
+
+		if GBPH_nude_Me = 1:
+			dynamic "act 'ride this dick': gs 'mod_public_WC_2PH2girls1booth4', 5, <<i>>"
+
+		else
+			act 'ride this dick':
+				'<i>I must be naked to ride his dick.</i>'
+			end
+		end
+	end 
+
+
+	if GBPH_act_me = 1010:
+		dynamic "act 'jerk the dick': gs 'mod_public_WC_2PH2girls1booth4', 6, <<i>>"
+
+	end
+
+
+	if GBPH_act_me = 9000:
+		dynamic "act 'Jerk this dick': gs 'mod_public_WC_2PH2girls1booth4', 7, <<i>>"
+
+	end
+
+	if GBPH_act_me = 9100 OR GBPH_act_me = 9001 OR GBPH_act_me = 1101 OR GBPH_act_me = 1110 OR GBPH_act_me = 1011:
+		*clr & cla
+		if GBPH_act_me = 9100 OR GBPH_act_me = 9001:
+			if rand(1,2) = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'				
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+				$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+			end
+
+			gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+			minut += 10
+
+			act 'Continue': 
+				cla
+				gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+			end
+		elseif GBPH_act_me = 1101:
+			if GBPH_color_man[i] = 1:
+				'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'
+				$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'	
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
+				$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
+			end	
+
+			gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+			minut += 10
+
+			act 'Continue': 
+				cla
+				gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+			end
+		elseif GBPH_act_me = 1110 OR GBPH_act_me = 1011:
+			if GBPH_color_man[i] = 1:
+				if rand(1,2) = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'		
+					$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'				
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+					$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+				end
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+				$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+			end
+
+			gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+			minut += 10
+
+			act 'Continue': 
+				cla
+				gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+			end		
+		end
+	end
+
+
+
+	!mod_public_WC_cabine - дії
+	!mod_public_WC_street_sex_pidizd - зменшення куммен
+end
+
+if $ARGS[0] = 'manactionSAMEwall':	
+	i = otemp
+	temp = otemp	
+	if temp >= 4: temp -= 3
+
+	if otemp <= 3:
+		'My wall'
+	else
+		'Her wall'
+	end
+
+	'HOLE #<<temp>>'
+
+
+	If GBPH_act_me ='':
+		dynamic "act 'work the dick from the #<<otemp>> hole': gs 'mod_public_WC_2PH2girls1booth5', 7, <<i>>"
+
+	else
+		if GBPH_condom[i] = 1 and rand(1,100) <= 28 and GBPH_act_man[i] = 1000:
+			'She removes condom from the dick'
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/condom action/off/she ('+rand(1,1)+').jpg"></center>'
+			GBPH_condom[i] = 0
+		end
+
+		if GBPH_condom[i] = 1:
+			dynamic "act 'remove condom': gs 'mod_public_WC_2PH2girls1booth5', 1, <<i>>"
+
+		elseif GBPH_condom[i] = 0 and prezik > 0:
+			dynamic "act 'put condom': gs 'mod_public_WC_2PH2girls1booth5', 2, <<i>>"
+
+		end
+
+		dynamic "act 'Jerk him': gs 'mod_public_WC_2PH2girls1booth5', 3, <<i>>"
+
+
+		dynamic "act 'blow him': gs 'mod_public_WC_2PH2girls1booth5', 4, <<i>>"
+
+
+		if GBPH_nude_Me = 1:
+			dynamic "act 'fuck him': gs 'mod_public_WC_2PH2girls1booth5', 5, <<i>>"
+
+
+			dynamic "act 'assfuck him': gs 'mod_public_WC_2PH2girls1booth5', 6, <<i>>"
+
+		else
+			act 'fuck him':
+				'<i>I must be naked to to do this.</i>'
+			end
+			act 'assfuck him':
+				'<i>I must be naked to to do this.</i>'
+			end
+		end	
+	end
+
+	!mod_public_WC_cabine - дії
+	!mod_public_WC_street_sex_pidizd - зменшення куммен
+end
+
+
+
+if $ARGS[0] = 'dicksinfo':
+	!*clr & cla
+	!If phtemp = 0:
+		!'No dicks around'
+	!elseif phtemp = 1:
+		!'There is a dick in the hole'
+	!else
+		!'<<phtemp>> busy holes with dicks'
+	!end
+
+	temp = GBPH_active_man[1]+GBPH_active_man[2]+GBPH_active_man[3]+GBPH_active_man[4]+GBPH_active_man[5]+GBPH_active_man[6]
+	If temp = 0:
+		!''
+	elseif temp = 1:
+		If GBPH_act_me >= 1000 and GBPH_act_me ! -9003 and GBPH_act_me ! -9004 and GBPH_act_me ! -9007 and GBPH_act_me ! -9002 and GBPH_act_me ! -9006:
+			'I am pleasuring a dick now.'
+		else
+			'She is pleasuring a dick now.'
+		end
+	else
+		If GBPH_act_me >= 1000 and GBPH_act_me ! -9003 and GBPH_act_me ! -9004 and GBPH_act_me ! -9007 and GBPH_act_me ! -9002 and GBPH_act_me ! -9006 and GBPH_act_she >= 1000:
+			'We are pleasuring <<temp>> dicks now.'
+		elseIf GBPH_act_me >= 1000 and GBPH_act_me ! -9003 and GBPH_act_me ! -9004 and GBPH_act_me ! -9007 and GBPH_act_me ! -9002 and GBPH_act_me ! -9006:
+			'I am pleasuring <<temp>> dicks now.'
+		else
+			'She is pleasuring <<temp>> dicks now.'
+		end
+	end
+
+	temp = GBPH_man[1]+GBPH_man[2]+GBPH_man[3]
+	if temp = 0:
+		'There are NO dicks on one side.'
+	elseif temp = 1:
+		'There is a dick on one side'
+	elseif temp > 1:
+		'There are <<temp>> dicks on one side'
+	end
+
+	temp = GBPH_man[4]+GBPH_man[5]+GBPH_man[6]
+	if temp = 0:
+		'There are NO dicks on other side.'
+	elseif temp = 1:
+		'There is a dick on other side'
+	elseif temp > 1:
+		'There are <<temp>> dicks on other side'
+	end
+
+
+	i = 0
+	:GBPHloopmanactionscheck
+	i += 1
+	if GBPH_act_man[i] = 1000 or GBPH_man[i] = 0:
+		GBPH_active_man[i] = 0
+	else
+		!''
+	end
+	if i < 6:
+		jump 'GBPHloopmanactionscheck'
+	else
+		!''
+	end
+end
+
+if $ARGS[0] = 'MANCUM':
+	i = otemp
+	$cum1 = GBPH_cum_man[i]
+	if $cum1 > 100 and GBPH_man[i] = 1:		
+		if $cum1 >= 200: $zadovolennia1_100 = '<font color = blue	> ██████████ </font> '
+		if $cum1 >= 190 and $cum1 < 200: $zadovolennia1_100 = '<font color = green	> ██████████ </font> '
+		if $cum1 >= 180 and $cum1 < 190: $zadovolennia1_100 = '<font color = green	> █████████_ </font> '
+		if $cum1 >= 170 and $cum1 < 180: $zadovolennia1_100 = '<font color = green	> ████████__ </font> '	
+		if $cum1 >= 160 and $cum1 < 170: $zadovolennia1_100 = '<font color = yellow	> ███████___ </font> '
+		if $cum1 >= 150 and $cum1 < 160: $zadovolennia1_100 = '<font color = yellow	> ██████____ </font> '
+		if $cum1 >= 140 and $cum1 < 150: $zadovolennia1_100 = '<font color = yellow	> █████_____ </font> '
+		if $cum1 >= 130 and $cum1 < 140: $zadovolennia1_100 = '<font color = yellow	> ████______ </font> '
+		if $cum1 >= 120 and $cum1 < 130: $zadovolennia1_100 = '<font color = yellow	> ███_______ </font> '
+		if $cum1 >= 110 and $cum1 < 120: $zadovolennia1_100 = '<font color = red	> ██________ </font> '
+		if $cum1 < 110: $zadovolennia1 = '<font color = red	> █________ </font> '		
+	end
+	if GBPH_man[i] = 1:
+		if $cum1 >= 100: $zadovolennia1 = '<font color = blue	> ██████████ </font> '
+		if $cum1 >= 90 and $cum1 < 100: $zadovolennia1 = '<font color = green	> ██████████ </font> '
+		if $cum1 >= 80 and $cum1 < 90: $zadovolennia1 = '<font color = green	> █████████_ </font> '
+		if $cum1 >= 70 and $cum1 < 80: $zadovolennia1 = '<font color = green	> ████████__ </font> '	
+		if $cum1 >= 60 and $cum1 < 70: $zadovolennia1 = '<font color = yellow	> ███████___ </font> '
+		if $cum1 >= 50 and $cum1 < 60: $zadovolennia1 = '<font color = yellow	> ██████____ </font> '
+		if $cum1 >= 40 and $cum1 < 50: $zadovolennia1 = '<font color = yellow	> █████_____ </font> '
+		if $cum1 >= 30 and $cum1 < 40: $zadovolennia1 = '<font color = yellow	> ████______ </font> '
+		if $cum1 >= 20 and $cum1 < 30: $zadovolennia1 = '<font color = yellow	> ███_______ </font> '
+		if $cum1 >= 10 and $cum1 < 20: $zadovolennia1 = '<font color = red	> ██________ </font> '
+		if $cum1 < 10: $zadovolennia1 = '<font color = red	> █________ </font> '
+		if $cum1 >= -100 and $cum1 <= 0: $zadovolennia1 = '<font color = red	> Client cums! </font> '
+		
+		if $cum1 > 100:
+			'Client''s hole #<<otemp>> endurance meter:'
+			'<<$zadovolennia1_100>>'
+			'<<$zadovolennia1>>'
+		else
+			'Client''s hole #<<otemp>> endurance meter: <<$zadovolennia1>>'
+		end
+	end
+end
+
+if $ARGS[0] = 'ME_DAMAGEALL':
+	!gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	i = 0
+	:GBPHloopcheck1
+	i += 1
+	if (GBPH_act_man[i] / 100) MOD 10 = 1:
+		
+		
+		otemp = i
+		temp = 2 + ( stat['hj'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(0,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		gs 'arousal', 'hj', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10	
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck1'
+
+	i = 0
+	:GBPHloopcheck2
+	i += 1
+	if (GBPH_act_man[i] / 100) MOD 10 = 2:
+		
+
+		otemp = i
+		temp = 2 + ( stat['bj'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(5,temp)	
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		gs 'arousal', 'bj', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10	
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck2'
+
+
+	i = 0
+	:GBPHloopcheck3
+	i += 1
+	if (GBPH_act_man[i] / 100) MOD 10 = 3:
+			
+
+		otemp = i
+		temp = 0 + ( stat['vaginal'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		gs 'arousal', 'vaginal', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck3'	
+
+
+	i = 0
+	:GBPHloopcheck4
+	i += 1
+	if (GBPH_act_man[i] / 100) MOD 10 = 4:
+			
+
+		otemp = i
+		temp = 0 + ( stat['anal'] / 10 ) - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		gs 'arousal', 'anal', 10, 'unknown', 'sub', 'gloryhole', 'group'
+		gs 'stat'
+		minut -= 10
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopcheck4'		
+end
+
+if $ARGS[0] = 'SHE_DAMAGEALL':
+	!gs 'mod_public_WC_2PH2girls1booth', 'SHE_DAMAGEALL'
+	i = 0
+	:GBPHloopchecks1
+	i += 1
+	if (GBPH_act_man[i] / 10) MOD 10 = 1:
+		otemp = i
+		temp = rand(6,16)*SHE_SLUT_LEVEL_GH/100  - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(0,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		GBPH_arounsed_she += rand(1,5)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks1'
+
+	i = 0
+	:GBPHloopchecks2
+	i += 1
+	if (GBPH_act_man[i] / 10) MOD 10 = 2:
+		otemp = i
+		temp = rand(8,18)*SHE_SLUT_LEVEL_GH/100 - (GBPH_condom[i]*12)
+		GBPH_cum_man[i] -= rand(5,temp)	
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		GBPH_arounsed_she += rand(3,6)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks2'
+
+
+	i = 0
+	:GBPHloopchecks3
+	i += 1
+	if (GBPH_act_man[i] / 10) MOD 10 = 3:
+		otemp = i
+		temp = rand(10,20)*SHE_SLUT_LEVEL_GH/100 - (GBPH_condom[i]*10)
+		GBPH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		GBPH_arounsed_she += rand(5,10)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks3'	
+
+
+	i = 0
+	:GBPHloopchecks4
+	i += 1
+	if (GBPH_act_man[i] / 10) MOD 10 = 4:
+		otemp = i
+		temp = rand(10,20)*SHE_SLUT_LEVEL_GH/100 - (GBPH_condom[i]*8)
+		GBPH_cum_man[i] -= rand(15,temp)
+		gs 'mod_public_WC_2PH2girls1booth', 'MANCUM'
+		GBPH_arounsed_she += rand(5,10)
+	else
+		!' '
+	end			
+
+	if i < 6: jump 'GBPHloopchecks4'	
+end
+
+
+
+if $ARGS[0] = 'freeclients':
+	i = 0
+	:freeclientsloop
+	i += 1
+	if GBPH_act_man[i] = 1000:
+		if i > 3: 
+			temp = i
+			temp -= 3
+			'Dick from the hole #<<temp>> on her side of the cabine is alone.'
+		else
+			temp = i				
+			'Dick from the hole #<<temp>> is alone.'
+		end
+	elseif GBPH_act_man[i] = 1001 OR GBPH_act_man[i] = 1002:
+		if i > 3: 
+			temp = i
+			temp -= 3
+			'Dick from the hole #<<temp>> on her side of the cabine is alone. But the hand of the dick''s owner busy.'				
+		else
+			temp = i				
+			'Dick from the hole #<<temp>> is alone. But the hand of the dick''s owner busy.'
+		end			
+	end
+
+	if GBPH_man[i] = 1:
+		if GBPH_dickpic[i] = 0:
+			If GBPH_color_man[i] = 1:
+				!b
+				GBPH_dickpic[i] = rand(1,8)
+			else					
+				GBPH_dickpic[i] = rand(1,2)
+				!ch
+			end
+		end
+	end
+
+
+
+	if i < 6:
+		jump 'freeclientsloop'
+	else
+		if GBPH_man[1] = 1:
+			act'Look at the dick from the hole #1':
+				i = 1
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+		if GBPH_man[2] = 1:
+			act'Look at the dick from the hole #2':
+				i = 2
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+		if GBPH_man[3] = 1:
+			act'Look at the dick from the hole #3':
+				i = 3
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+		if GBPH_man[4] = 1:
+			act'Look at the dick from the hole #4':
+				i = 4
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+		if GBPH_man[5] = 1:
+			act'Look at the dick from the hole #5':
+				i = 5
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+		if GBPH_man[6] = 1:
+			act'Look at the dick from the hole #6':
+				i = 6
+				if GBPH_color_man[i] = 1:
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/b ('+GBPH_dickpic[i]+').jpg"></center>'
+				else
+					'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/EVENTS/dick_appears/dick/ch ('+GBPH_dickpic[i]+').jpg"></center>'
+				end
+			end
+		end
+	end
+end
+
+if $ARGS[0] = 'Find_together_active':
+	!gs 'mod_public_WC_2PH2girls1booth', 'Find_together_active'
+	if GBPH_active_man[1] = 1: otemp = 1
+	if GBPH_active_man[2] = 1: otemp = 2
+	if GBPH_active_man[3] = 1: otemp = 3
+	if GBPH_active_man[4] = 1: otemp = 4
+	if GBPH_active_man[5] = 1: otemp = 5
+	if GBPH_active_man[6] = 1: otemp = 6
+end
+
+
+--- mod_public_WC_2PH2girls1booth ---------------------------------
+

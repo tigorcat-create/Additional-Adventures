@@ -1,0 +1,242 @@
+# mod_public_WC_2PH2girls1booth4
+if ARGS[0] = 1:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+		
+	*clr & cla
+	if GBPH_color_man[i] = 1:
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/b/start/condomoff1.mp4"></video></center>'
+	else
+		'<center><video autoplay loop src="mod/public_WC/wc/gh/ch/start/condomoff'+rand(1,2)+'.mp4"></video></center>'
+	end
+	GBPH_condom[i] = 0
+	!GBPH_act_me = 0
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		'"Ni-i-ice"... few more banknots slip throught the hole.'
+		money += rand(1,8) * 25
+		!act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2PH2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		!act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+	act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+end
+
+if ARGS[0] = 2:
+	*clr & cla
+	target_id = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla			
+	GBPH_condom[i] = 1
+	prezik -= 1
+
+	'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/condom action/on/she ('+rand(1,1)+').mp4"></video></center>'
+	
+	temp = rand(1,20)
+	if temp <= 10:
+		!'"Ni-i-ice"... few more banknots slip throught the hole.'
+		!money += rand(1,8) * 25
+		act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	elseif temp >= 18:
+		'The guy said WTF bitch!!!'
+		cla
+
+		gs 'mod_public_WC_2PH2girls1booth2', 'manleave'
+
+		'He quickly remove his cock and angrily go away.'
+		act 'Continue': gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end	
+
+end
+
+if ARGS[0] = 3:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	stat['hj'] += 1
+	if GBPH_act_me = 1100: 
+		GBPH_act_me = 1101
+	else
+		GBPH_act_me = 1101
+	end
+	
+	
+	
+
+	if GBPH_color_man[i] = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'
+		$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1 ('+rand(1,2)+').jpg"></center>'	
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
+		$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/1+1/1+1_ch ('+rand(1,2)+').mp4"></video></center>'
+	end	
+
+	
+	'I am jerking 2 cocks.'
+
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+
+	gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	minut += 10
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+
+end
+
+if ARGS[0] = 4:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	if GBPH_act_me = 1100: GBPH_act_me = 1110
+	if GBPH_act_me = 1001: GBPH_act_me = 1011
+
+	
+	if GBPH_color_man[i] = 1:
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'		
+			$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'				
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+			$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+		end
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+		$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+	end
+
+	GBPH_act_man[i] = 1200
+	GBPH_active_man[i] = 1
+
+	gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	minut += 10
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+
+end
+
+if ARGS[0] = 5:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	if GBPH_act_me = 1100: GBPH_act_me = 9100
+	if GBPH_act_me = 1001: GBPH_act_me = 9001
+
+	if rand(1,2) = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
+		$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'				
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+		$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+	end
+
+	GBPH_act_man[i] = 1300
+	GBPH_active_man[i] = 1
+
+	gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	minut += 10
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end			
+end
+
+
+if ARGS[0] = 6:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	GBPH_act_me = 1110
+	
+	if GBPH_color_man[i] = 1:
+		if rand(1,2) = 1:
+			'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'		
+			$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').jpg"></center>'				
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+			$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1 ('+rand(1,1)+').mp4"></video></center>'
+		end
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+		$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/2+1/2+1_ch ('+rand(1,7)+').mp4"></video></center>'
+	end
+
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+
+	gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	minut += 10
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end
+end
+
+
+if ARGS[0] = 7:
+	*clr & cla
+	target_id   = ARGS[1]
+	otemp = target_id
+	i = otemp
+
+	*clr & cla
+	GBPH_act_me = 9100
+	
+
+	if rand(1,2) = 1:
+		'<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'		
+		$mecon = '<center><img <<$set_imgh>> src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').jpg"></center>'				
+	else
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+		$mecon = '<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/2girls1booth/2girls work/1walls_2-3_action/2 dicks/34+1/34+1 ('+rand(1,1)+').mp4"></video></center>'
+	end
+
+	GBPH_act_man[i] = 1100
+	GBPH_active_man[i] = 1
+
+	gs 'mod_public_WC_2PH2girls1booth', 'ME_DAMAGEALL'
+	minut += 10
+
+	act 'Continue': 
+		cla
+		gs 'mod_public_WC_2PH2girls1booth2', 'start2'
+	end			
+end
+
+
+
+
+
+--- mod_public_WC_2PH2girls1booth4 ---------------------------------
+
