@@ -3,7 +3,7 @@ if $ARGS[0] = 'start':
 	*clr & cla
 	menu_off = 1
 	gs 'stat'
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/finish_round.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/finish_round.jpg"></center>'
 	if pcs_sleep <= 20:
 		'I''m tired and fall asleep hanging on the door.'
 		wait 500
@@ -140,7 +140,7 @@ if $ARGS[0] = 'sex':
 	act 'no':
 		cla
 		'Goodbye, girl…'
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/finish_round.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/finish_round.jpg"></center>'
 		act 'Goodbye':
 			cla
 			if hour = 5: minut += 121

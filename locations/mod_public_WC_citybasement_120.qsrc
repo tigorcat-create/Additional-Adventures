@@ -12,13 +12,13 @@ if $ARGS[0] = '120':
 	$menu_arg = '120'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Undercity tunnels')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p29.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p29.jpg"></center>'
 	'There is a stairs and I see some light from the next room'
 
 	if vhid1 >= 1: 'to exit in the center go up the stairs'
 	act 'go up the stairs':
 		*clr & cla
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/1centr.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/vhid/1centr.jpg"></center>'
 		if vhid1 > 1 and vhid1 < 10:
 			'well, I don''t know where I am. But somewhere in the city center'
 			if rand (1,5) = 1: vhid1 += 1
@@ -126,7 +126,7 @@ if $ARGS[0] = '120':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -175,7 +175,7 @@ if $ARGS[0] = '121':
 	$menu_arg = '121'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Nice room')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p21.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p21.jpg"></center>'
 	'I see few beds, some stuf like someone lives here, and even a sink '
 
 	act 'Go to the tunnel':
@@ -211,7 +211,7 @@ if $ARGS[0] = '121':
 		end
 	end
 	act 'drink water from the tap':
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
 		minut += 3
 		pcs_health -= rand (0,70)
 
@@ -257,7 +257,7 @@ if $ARGS[0] = '121':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -303,7 +303,7 @@ if $ARGS[0] = '122':
 	$menu_arg = '122'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Manhole')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p14.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p14.jpg"></center>'
 
 	if pr = 114:
 		if vhid1 >= 1: 'to exit in the center go back'
@@ -356,7 +356,7 @@ if $ARGS[0] = '122':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -402,13 +402,13 @@ if $ARGS[0] = '123':
 	$menu_arg = '123'
 	gs 'stat'
 	$func('wrap', 'header center b', 'fork in the tunnel')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p30.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p30.jpg"></center>'
 	'There is a stairs'
 
 	if vhid2 >= 1: 'to exit in the industrial go up the stairs'
 	act 'go up the stairs':
 		*clr & cla
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/2indastrial.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/vhid/2indastrial.jpg"></center>'
 		if vhid2 > 1 and vhid2 < 10:
 			'well, I don''t know where I am. But somewhere in the indastrial area'
 			if rand (1,5) = 1: vhid2 += 1
@@ -514,7 +514,7 @@ if $ARGS[0] = '123':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -560,7 +560,7 @@ if $ARGS[0] = '124':
 	$menu_arg = '124'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Undercity tunnels')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p5.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p5.jpg"></center>'
 	temp = rand(1,5)
 	if temp = 1:
 		'It''s dark here'
@@ -626,7 +626,7 @@ if $ARGS[0] = '124':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -674,7 +674,7 @@ if $ARGS[0] = '125':
 	$menu_arg = '125'
 	gs 'stat'
 	$func('wrap', 'header center b', 'fork in the tunnel')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p31.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p31.jpg"></center>'
 
 	act'Go to side way':
 		pr = 125
@@ -739,7 +739,7 @@ if $ARGS[0] = '125':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -785,7 +785,7 @@ if $ARGS[0] = '126':
 	$menu_arg = '126'
 	gs 'stat'
 	$func('wrap', 'header center b', '"КОЛЯ" dead end ')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p3.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p3.jpg"></center>'
 	'I see some boxes. And the door it bloks.'
 	if ubutton ! 1:
 		ubutton = 0
@@ -895,7 +895,7 @@ if $ARGS[0] = '126':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -936,7 +936,7 @@ if $ARGS[0] = 'karroom':
 	$loc_arg = 'karroom'
 	'I entered a room with shine light. I become blind for a moment.'
 	'There are bed, some metal pole and a ladder in the room.'
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/door.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/door.jpg"></center>'
 
 	phtemp = 0
 	act 'Take a nap (1:00)':
@@ -1032,7 +1032,7 @@ if $ARGS[0] = '127':
 	$menu_arg = '127'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Undercity tunnels')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p12.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p12.jpg"></center>'
 	temp = rand(1,5)
 	if temp = 1:
 		'It''s dark here'
@@ -1098,7 +1098,7 @@ if $ARGS[0] = '127':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -1144,7 +1144,7 @@ if $ARGS[0] = '128':
 	$menu_arg = '128'
 	gs 'stat'
 	$func('wrap', 'header center b', 'fork in the tunnel')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p32.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p32.jpg"></center>'
 
 	act'Go to side way':
 		pr = 128
@@ -1209,7 +1209,7 @@ if $ARGS[0] = '128':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end
@@ -1256,7 +1256,7 @@ if $ARGS[0] = '129':
 	$menu_arg = '129'
 	gs 'stat'
 	$func('wrap', 'header center b', 'Dead end')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p6.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p6.jpg"></center>'
 	'Absolute silence, the only noise is the water in the tubes… I feel peaceful'
 	if vhid1 >= 1: 'to exit in the center go back'
 	if vhid2 >= 1: 'to exit in the industrial go back'
@@ -1292,7 +1292,7 @@ if $ARGS[0] = '129':
 		end
 	end
 	act 'drink water from the tap':
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
 		minut += 3
 		pcs_health -= rand (0,70)
 
@@ -1334,7 +1334,7 @@ if $ARGS[0] = '129':
 			act 'ask to drink with them':
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end

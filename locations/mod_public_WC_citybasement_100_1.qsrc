@@ -15,11 +15,11 @@ if $ARGS[0] = '101':
 	
 	gs 'stat'
 	$func('wrap', 'header center b', 'room')
-	'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/p4.jpg"></center>'
+	'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/p4.jpg"></center>'
 	'I see bed, some tap with water and stuf like someone lives here'
 	act 'go up the stairs':
 		*clr & cla
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/vhid/4residental.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/vhid/4residental.jpg"></center>'
 		if vhid4 > 1 and vhid4 < 10:
 			'well, I don''t know where I am. But somewhere in the residential area'
 			if rand (1,5) = 1: vhid4 += 1
@@ -102,7 +102,7 @@ if $ARGS[0] = '101':
 	end
 	
 	act 'drink water from the tap':
-		'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
+		'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/pidzem/kran.jpg"></center>'
 		minut += 3
 		pcs_health -= rand (0,70)
 		
@@ -145,7 +145,7 @@ if $ARGS[0] = '101':
 			act 'ask to drink with them': 
 				atemp = 0
 				tabir = rand(1,4)
-				'<center><img <<$set_imgh>> src="mod/public_WC/wc/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'			
+				'<center><img <<$set_imgh>> src="mod/public_WC/WC/events/90/101gopotamista/pidval/bomji/tabir (<<tabir>>).jpg"></center>'			
 				killvar 'atemp'
 				gt 'mod_public_WC_citybasement_bumsex', 'bomj2drink'
 			end

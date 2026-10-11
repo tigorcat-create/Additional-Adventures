@@ -7,7 +7,8 @@ end
 
 if $ARGS[0] = 'start':
 	*clr & cla
-	PH_turn = 100
+	PH_turn = 1000
+	PH_turn_active = 0
 
 	she_dom_command = 0
 	me_dom_command = 0
@@ -2174,7 +2175,7 @@ if $ARGS[0] = 'start2':
 	end
 
 	!act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
-	me_dom_command = 0
+	me_dom_command = 0	
 end
 
 if $ARGS[0] = 'together1dick':
@@ -2193,13 +2194,71 @@ if $ARGS[0] = 'together1dick':
 		if i < 10: jump 'GBPHloopcheck111'
 	end
 
-	!PH_turn = 100
+	!PH_turn = 2000
+	!PH_turn_active (1 - me, 2 - she)
 	!She_dom
 	!PH_arounsed_she
 
 	!-=wip=- her actions
 	PH_hisaction = 0
-	if (PH_act_man[i] / 10) MOD 10 = 0:
+
+	if (PH_act_man[i] / 10 ) MOD 10 = 2 OR (PH_act_man[i] / 100 ) MOD 10 = 2:
+		!''
+	else
+		if (PH_act_me_together / 1) = 7:
+			PH_act_me_together -= 7
+			'I stopped rimming him'
+		end
+		if (PH_act_she_together / 1) = 7:
+			PH_act_she_together -= 7
+			'She stops rimming a client'
+		end		
+	end
+	if (PH_act_me_together / 1) = 7 OR (PH_act_she_together / 1) = 7:
+		if (PH_act_me_together / 1) = 7:
+			'I am rimming the client'
+		elseif (PH_act_she_together / 1) = 7:
+			'She is rimming the client'
+		end
+		if rand(1,5) <= 2:
+			'She stops rimming a client'
+			PH_act_she_together -= 7
+		end
+	elseif PH_act_man[i] MOD 10 = 2 OR PH_act_man[i] MOD 10 = 4:
+		if (PH_act_me_together / 100000) = 9:
+			'Clients licking and sucking my pussy'
+		elseif (PH_act_she_together / 100000) = 9:
+			'Clients licking and sucking her pussy'
+		end
+
+		if (PH_act_me_together / 1) = 9:
+			'WE are kissing with client'
+		elseif (PH_act_she_together / 1) = 9:
+			'She is kissing the client'
+		end
+		PH_hisaction = 1
+		if rand(1,4) = 1:
+			if (PH_act_me_together / 100000) = 9:
+				'Clients stopped eating my pussy'
+				PH_act_me_together -= 800000
+				PH_act_man[i] -= 4
+			elseif (PH_act_she_together / 100000) = 9:
+				'Clients stopped eating her pussy'
+				PH_act_she_together -= 800000
+				PH_act_man[i] -= 4
+			end
+		elseif rand(1,4) = 1:	
+			if (PH_act_me_together / 1) = 9:
+				'Client stopped kissing'
+				PH_act_me_together -= 9
+				PH_act_man[i] -= 2
+			elseif (PH_act_she_together / 1) = 9:
+				'Client stopped kissing with her'
+				PH_act_she_together -= 9
+				PH_act_man[i] -= 2
+			end
+		end		
+	elseif (PH_act_man[i] / 10) MOD 10 = 0:
 		if (PH_act_man[i] / 100) MOD 10 = 0:
 			'IMPOSIBBLE!!! PTN PNH'
 		elseif (PH_act_man[i] / 100) MOD 10 = 1:
@@ -2285,7 +2344,7 @@ if $ARGS[0] = 'together1dick':
 		elseif (PH_act_man[i] / 100) MOD 10 = 2:
 			temp = rand(1,100)
 
-			if (rand(1,50) - she_dom < 5) and (PH_arounsed_she >= 30):
+			if (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
 				!sit on his face
 				PH_act_man[i] += 4
 				temp = (PH_act_she_together / 100000) MOD 10
@@ -2345,7 +2404,7 @@ if $ARGS[0] = 'together1dick':
 			elseif temp <= 85:
 				!rimming
 				'<<$She_name>> start rimming him'
-				PH_act_man[i] += 70
+				!PH_act_man[i] += 70
 				temp = (PH_act_she_together / 1) MOD 10
 				PH_act_she_together += -1 * temp + 7
 				she_dom -= rand(0,2)
@@ -2366,80 +2425,490 @@ if $ARGS[0] = 'together1dick':
 		elseif (PH_act_man[i] / 100) MOD 10 = 3:
 			temp = rand(1,100)
 
-			!cuni
-			!sit on my face -> kiss him
-			!sit on his face
-			!hj
-			!bj
-			!vag
-			!ass			
+			if (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 900000
+
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)
+			elseif (rand(1,50) - she_dom < 5) and (PH_arounsed_she >= 30):
+				!sit on my face -> kiss him
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000				
+
+				she_dom += rand(5,10)
+				'<<$She_name>> sits on my face and force my to eat her.'				
+				PH_arounsed_she += rand(1,3)
+			elseif temp <= 50 and PH_arounsed_me >= 40:
+				!cuni me
+				'<<$She_name>> she reached my pussy and lick it.'
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 400000
+			elseif temp <= 30:	
+				!kiss him
+				'<<$She_name>> reaches him and passionatelly kissing him'
+				PH_hisaction = 1
+				PH_act_man[i] += 2
+				temp = (PH_act_she_together / 1) MOD 10
+				PH_act_she_together += -1 * temp + 9
+			elseif temp <= 65:
+				!hj
+				'<<$She_name>> helps me, she starts strocking the client''s dick'
+				PH_act_man[i] += 10
+				temp = (PH_act_she_together / 10) MOD 10
+				PH_act_she_together += -10 * temp + 10
+			elseif temp <= 85:
+				!bj
+				'<<$She_name>> starts sucking client''s balls and lick its shaft'
+				PH_act_man[i] += 20
+				temp = (PH_act_she_together / 100) MOD 10
+				PH_act_she_together += -100 * temp + 100
+			elseif temp <= 93:
+				!vag
+				'<<$She_name>> stands nearby "Fuck me" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 30
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -1000 * temp + 1000
+			else
+				!ass
+				'<<$She_name>> stands nearby "Fuck my ass!" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 40
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -10000 * temp + 10000
+			end
 		elseif (PH_act_man[i] / 100) MOD 10 = 4:
 			temp = rand(1,100)
-			
-			!cuni
-			!sit on her face -> kiss him
-			!sit on his face
-			!hj
-			!bj
-			!vag
-			!ass
-			!spit
+
+			if (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 900000
+
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)
+			elseif (rand(1,50) - she_dom < 5) and (PH_arounsed_she >= 30):
+				!sit on my face -> kiss him
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000				
+
+				she_dom += rand(5,10)
+				'<<$She_name>> sits on my face and force my to eat her.'				
+				PH_arounsed_she += rand(1,3)
+			elseif temp <= 50 and PH_arounsed_me >= 40:
+				!cuni me
+				'<<$She_name>> she reached my pussy and lick it.'
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 400000
+			elseif temp <= 30:	
+				!kiss him
+				'<<$She_name>> reaches him and passionatelly kissing him'
+				PH_hisaction = 1
+				PH_act_man[i] += 2
+				temp = (PH_act_she_together / 1) MOD 10
+				PH_act_she_together += -1 * temp + 9
+			elseif temp <= 55:
+				!hj
+				'<<$She_name>> helps me, she starts strocking the client''s dick'
+				PH_act_man[i] += 10
+				temp = (PH_act_she_together / 10) MOD 10
+				PH_act_she_together += -10 * temp + 10
+			elseif temp <= 75:
+				!bj
+				'<<$She_name>> starts sucking client''s balls and lick its shaft'
+				PH_act_man[i] += 20
+				temp = (PH_act_she_together / 100) MOD 10
+				PH_act_she_together += -100 * temp + 100
+			elseif temp <= 85:
+				!spit
+				'<<$She_name>> spits on my asshole: "Here is some lube, for your pleasure" - she winks to the client'
+				if PH_color_man[i] = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/34+/4+spit ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/34+/4+spit_ch ('+rand(1,1)+').mp4"></video></center>'
+				end
+			elseif temp <= 93:
+				!vag
+				'<<$She_name>> stands nearby "Fuck me" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 30
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -1000 * temp + 1000
+			else
+				!ass
+				'<<$She_name>> stands nearby "Fuck my ass!" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 40
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -10000 * temp + 10000
+			end			
 		end
 	elseif (PH_act_man[i] / 10) MOD 10 = 1:
-		if (PH_act_man[i] / 100) MOD 10 = 0:
-			!pushmyhead to cuni
-			!bj
-			!vag
-			!ass
-			!kiss me
-			!ad myholes				
+		if (PH_act_man[i] / 100) MOD 10 = 0:		
+			temp = rand(1,100)
+
+			if temp <= 35:
+				!keep
+				!' '
+			elseif rand(1,50) - she_dom < 10:
+				!ad myholes
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/ad_her_holes ('+rand(1,2)+').mp4"></video></center>'
+				she_dom += rand(1,2)
+				'She pushed my face down...'
+				'SHE: "Look how sweet and lonely this hole is" - she is talking to the client'
+				PH_hisaction = 1
+				if rand(1,50) + PH_cum_man[i] >= 70:
+					'HE: "Nice, I will check it later, now you better please me too"'
+					'He pushed <<$She_name>> on his dick'					
+					killvar 'PH_hisaction'
+					PH_act_man[i] += 10
+					PH_act_she_together += -10 + 100
+				else
+					'He: "I definitely want!"'
+					'He penetrates me!'
+					if rand(1,4) ! 1:
+						PH_act_man[i] += 300
+						temp = (PH_act_me_together / 1000) MOD 10
+						PH_act_me_together += -1000 * temp + 1000							
+					else
+						PH_act_man[i] += 400
+						temp = (PH_act_me_together / 10000) MOD 10
+						PH_act_me_together += -10000 * temp + 10000						
+					end				
+				end
+			elseif temp <= 55:
+				!kiss me
+				'<<$She_name>> start kissing me.'
+
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 200000
+
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 200000
+			elseif rand(1,50) - she_dom < 15:
+				!pushmyhead to cuni
+				'As I am sitting end enjoying the view - she grab my head and pushed it to her pussy. I am forced to lick it to not trouble the client...'
+				she_dom += rand(5,10)
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000		
+				PH_arounsed_she += rand(1,3)
+			elseif temp <= 80:
+				!bj
+				'<<$She_name>> starts sucking client''s dick'
+				PH_act_man[i] += 10
+				temp = (PH_act_she_together / 10) MOD 10
+				PH_act_she_together += -10 * temp				
+				temp = (PH_act_she_together / 100) MOD 10
+				PH_act_she_together += -100 * temp + 100	
+			elseif temp <= 92:
+				!vag
+				'<<$She_name>> mounts the client'
+				PH_act_man[i] += 20
+				PH_act_she_together += -10 + 1000
+			elseif temp <= 100:
+				!ass
+				'<<$She_name>> mounts the client and put his dick in her ass'
+				PH_act_man[i] += 30
+				PH_act_she_together += -10 + 10000
+			end
 		elseif (PH_act_man[i] / 100) MOD 10 = 1:
-			!keep
-			!kiss
-			!sit on his face
-			!bj
-			!vag
-			!ass	
-			!ad myholes									
-		elseif (PH_act_man[i] / 100) MOD 10 = 2:
-			!keep
-			!sit on his face
-			!kiss him
-			!rimming
-			!bj
-			!vag
-			!ass
-			!ad myholes							
-		elseif (PH_act_man[i] / 100) MOD 10 = 3:
-			!keep
-			!cuni
-			!sit on her face -> kiss him
-			!sit on his face
-			!bj
-			!vag
-			!ass				
-		elseif (PH_act_man[i] / 100) MOD 10 = 4:
-			!keep
-			!cuni
-			!sit on her face -> kiss him
-			!sit on his face
-			!bj
-			!vag
-			!ass
-			!spit
+			temp = rand(1,100)
+			
+			if temp <= 35:
+				!keep
+				!' '
+			elseif rand(1,50) - she_dom < 10:
+				!ad myholes
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/ad_her_holes ('+rand(1,2)+').mp4"></video></center>'
+				she_dom += rand(1,2)
+				'She pushed my face down...'
+				'SHE: "Look how sweet and lonely this hole is" - she is talking to the client'
+				PH_hisaction = 1
+				if rand(1,50) + PH_cum_man[i] >= 70:
+					'HE: "Nice, I will check it later, now you better please me too"'
+					'He pushed <<$She_name>> on his dick'					
+					killvar 'PH_hisaction'
+					PH_act_man[i] += 10
+					PH_act_she_together += -10 +100
+				else
+					'He: "I definitely want!"'
+					'He penetrates me!'
+					if rand(1,4) ! 1:
+						PH_act_man[i] += 200
+						temp = (PH_act_me_together / 1000) MOD 10
+						PH_act_me_together += -1000 * temp + 1000	
+						PH_act_me_together -= 10						
+					else
+						PH_act_man[i] += 300
+						temp = (PH_act_me_together / 10000) MOD 10
+						PH_act_me_together += -10000 * temp + 10000		
+						PH_act_me_together -= 10				
+					end				
+				end
+			elseif temp <= 60:
+				!kiss me
+				'<<$She_name>> start kissing me.'
+
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 200000
+
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 200000
+			elseif rand(1,50) - she_dom < 15:
+				!pushmyhead to cuni
+				'As I am sitting end enjoying the view - she grab my head and pushed it to her pussy. I am forced to lick it to not trouble the client...'
+				she_dom += rand(5,10)
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000		
+				PH_act_me_together -= 10
+				PH_arounsed_she += rand(1,3)
+			elseif (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4 - 10
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 900000
+				PH_act_she_together -= 10
+
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)
+			elseif temp <= 80:
+				!bj
+				'<<$She_name>> starts sucking client''s dick'
+				PH_act_man[i] += 10
+				PH_act_she_together += -10 + 100
+			elseif temp <= 92:
+				!vag
+				'<<$She_name>> mounts the client'
+				PH_act_man[i] += 20
+				PH_act_she_together += -10 + 1000
+			elseif temp <= 100:
+				!ass
+				'<<$She_name>> mounts the client and put his dick in her ass'
+				PH_act_man[i] += 30
+				PH_act_she_together += -10 + 10000
+			end									
+		elseif (PH_act_man[i] / 100) MOD 10 = 2:		
+			temp = rand(1,100)
+			
+			if temp <= 35:
+				!keep
+				!' '
+			elseif (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4 -10
+				PH_act_she_together += 800000 - 10
+
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)				
+			elseif rand(1,50) - she_dom < 10:
+				!ad myholes
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/ad_her_holes ('+rand(1,2)+').mp4"></video></center>'
+				she_dom += rand(1,2)
+				'She pulled my face from his dick and push down my head'
+				'SHE: "Look how sweet and lonely this hole is" - she is talking to the client'
+				PH_hisaction = 1
+				if rand(1,50) + PH_cum_man[i] >= 70:
+					'HE: "Nice, I will check it later, now you better please me too"'
+					'He pushed <<$She_name>> on his dick'					
+					killvar 'PH_hisaction'
+
+					PH_act_man[i] += 10					
+					PH_act_she_together += -10 + 100			
+				else
+					'He: "I definitely want!"'
+					'He penetrates me!'
+					if rand(1,4) ! 1:
+						PH_act_man[i] += 100
+						PH_act_me_together += -100 + 1000
+					else
+						PH_act_man[i] += 200
+						PH_act_me_together += -100 + 10000					
+					end				
+				end
+			elseif temp <= 45:	
+				!kiss him
+				'<<$She_name>> reaches him and passionatelly kissing him'
+				PH_hisaction = 1
+				PH_act_man[i] += 2
+
+				PH_act_she_together += 9 - 10
+			elseif temp <= 70:
+				!bj
+				'<<$She_name>> starts sucking client''s dick. Now we both mouth-pleasure him'
+				PH_act_man[i] += 10
+				PH_act_she_together += -10 + 100
+			elseif temp <= 85:
+				!rimming
+				'<<$She_name>> start rimming him'
+				PH_act_she_together += -10 + 7
+				she_dom -= rand(0,2)
+				PH_hisaction = 1
+			elseif temp <= 93:
+				!vag
+				'<<$She_name>> mounts the client''s dick'
+				PH_act_man[i] += 20
+				PH_act_she_together += -10 + 1000
+			else
+				!ass
+				'<<$She_name>> mounts the client''s dick'
+				PH_act_man[i] += 30
+				PH_act_she_together += -10 + 10000
+			end						
+		elseif (PH_act_man[i] / 100) MOD 10 = 3:		
+			temp = rand(1,100)
+
+			if temp <= 45:
+				!keep
+				!' '
+			elseif (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4 -10
+				PH_act_she_together += -10 + 800000
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)
+			elseif (rand(1,50) - she_dom < 5) and (PH_arounsed_she >= 30):
+				!sit on my face -> kiss him
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000
+				she_dom += rand(5,10)
+				'<<$She_name>> sits on my face and force my to eat her.'				
+				PH_arounsed_she += rand(1,3)
+			elseif temp <= 50 and PH_arounsed_me >= 40:
+				!cuni me
+				'<<$She_name>> she reached my pussy and lick it.'
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 400000 -10
+			elseif temp <= 65:	
+				!kiss him
+				'<<$She_name>> reaches him and passionatelly kissing him'
+				PH_hisaction = 1
+				PH_act_man[i] += 2
+				temp = (PH_act_she_together / 1) MOD 10
+				PH_act_she_together += -1 * temp + 9 -10
+			elseif temp <= 85:
+				!bj
+				'<<$She_name>> starts sucking client''s balls and lick its shaft'
+				PH_act_man[i] += 10
+				temp = (PH_act_she_together / 100) MOD 10
+				PH_act_she_together += -100 * temp + 100 - 10
+			elseif temp <= 93:
+				!vag
+				'<<$She_name>> stands nearby "Fuck me" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 20
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -1000 * temp + 1000 - 10
+			else
+				!ass
+				'<<$She_name>> stands nearby "Fuck my ass!" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 30
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -10000 * temp + 10000 -10
+			end
+		elseif (PH_act_man[i] / 100) MOD 10 = 4:		
+			temp = rand(1,100)
+
+			if temp <= 45:
+				!keep
+				!' '
+			elseif (rand(1,50) - she_dom < 10) and (PH_arounsed_she >= 30):
+				!sit on his face
+				PH_act_man[i] += 4 -10
+				PH_act_she_together += -10 + 800000
+				she_dom += rand(1,3)
+				'<<$She_name>> sits on the clients face: "Eat it, it''s fresh and juicy"'
+				'I see the client enjoyes it.'
+				PH_arounsed_she += rand(3,5)
+			elseif (rand(1,50) - she_dom < 5) and (PH_arounsed_she >= 30):
+				!sit on my face -> kiss him
+				temp = (PH_act_me_together / 100000) MOD 10
+				PH_act_me_together += -100000 * temp + 400000
+				she_dom += rand(5,10)
+				'<<$She_name>> sits on my face and force my to eat her.'				
+				PH_arounsed_she += rand(1,3)
+			elseif temp <= 50 and PH_arounsed_me >= 40:
+				!cuni me
+				'<<$She_name>> she reached my pussy and lick it.'
+				temp = (PH_act_she_together / 100000) MOD 10
+				PH_act_she_together += -100000 * temp + 400000 -10
+			elseif temp <= 60:	
+				!kiss him
+				'<<$She_name>> reaches him and passionatelly kissing him'
+				PH_hisaction = 1
+				PH_act_man[i] += 2
+				temp = (PH_act_she_together / 1) MOD 10
+				PH_act_she_together += -1 * temp + 9 -10
+			elseif temp <= 77:
+				!bj
+				'<<$She_name>> starts sucking client''s balls and lick its shaft'
+				PH_act_man[i] += 10
+				temp = (PH_act_she_together / 100) MOD 10
+				PH_act_she_together += -100 * temp + 100 - 10
+			elseif temp <= 85:
+				!spit
+				'<<$She_name>> spits on my asshole: "Here is some lube, for your pleasure" - she winks to the client'
+				if PH_color_man[i] = 1:
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/34+/4+spit ('+rand(1,3)+').mp4"></video></center>'
+				else
+					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/34+/4+spit_ch ('+rand(1,1)+').mp4"></video></center>'
+				end				
+			elseif temp <= 93:
+				!vag
+				'<<$She_name>> stands nearby "Fuck me" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 20
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -1000 * temp + 1000 - 10
+			else
+				!ass
+				'<<$She_name>> stands nearby "Fuck my ass!" - she asks the client'
+				PH_turn = 2050
+				PH_turn_active = 1
+				PH_act_man[i] += 30
+				temp = (PH_act_she_together / 1000) MOD 10
+				PH_act_she_together += -10000 * temp + 10000 -10
+			end
 		end
 	elseif (PH_act_man[i] / 10) MOD 10 = 2:		
-		if (PH_act_man[i] / 100) MOD 10 = 0:
+		if (PH_act_man[i] / 100) MOD 10 = 0:		
+			temp = rand(1,100)
+			
 			!keep
 			!hj
 			!vag
 			!ass			
-		elseif (PH_act_man[i] / 100) MOD 10 = 1:
+		elseif (PH_act_man[i] / 100) MOD 10 = 1:		
+			temp = rand(1,100)
+			
 			!keep
 			!hj
 			!vag
 			!ass			
-		elseif (PH_act_man[i] / 100) MOD 10 = 2:
+		elseif (PH_act_man[i] / 100) MOD 10 = 2:		
+			temp = rand(1,100)
+			
 			!bj or turnbased her turn:
 				!keep
 				!hj
@@ -2468,7 +2937,9 @@ if $ARGS[0] = 'together1dick':
 				!vag
 				!ass
 				!ad myholes			
-		elseif (PH_act_man[i] / 100) MOD 10 = 3:
+		elseif (PH_act_man[i] / 100) MOD 10 = 3:		
+			temp = rand(1,100)
+			
 			!keep
 			!cuni
 			!sit on her face -> kiss him
@@ -2483,7 +2954,9 @@ if $ARGS[0] = 'together1dick':
 				!keep
 				!vag
 				!ass
-		elseif (PH_act_man[i] / 100) MOD 10 = 4:
+		elseif (PH_act_man[i] / 100) MOD 10 = 4:		
+			temp = rand(1,100)
+			
 			!keep
 			!cuni
 			!sit on her face -> kiss him
@@ -2501,13 +2974,19 @@ if $ARGS[0] = 'together1dick':
 				!ass				
 		end
 	elseif (PH_act_man[i] / 10) MOD 10 = 3:
-		if (PH_act_man[i] / 100) MOD 10 = 0:
+		if (PH_act_man[i] / 100) MOD 10 = 0:		
+			temp = rand(1,100)
+			
 			!keep
 			!ass
-		elseif (PH_act_man[i] / 100) MOD 10 = 1:
+		elseif (PH_act_man[i] / 100) MOD 10 = 1:		
+			temp = rand(1,100)
+			
 			!keep
 			!ass
-		elseif (PH_act_man[i] / 100) MOD 10 = 2:
+		elseif (PH_act_man[i] / 100) MOD 10 = 2:		
+			temp = rand(1,100)
+			
 			!keep
 			!bj turnbased -> her turn: 
 				!keep
@@ -2515,13 +2994,17 @@ if $ARGS[0] = 'together1dick':
 				!keep
 				!bj
 				!ass
-		elseif (PH_act_man[i] / 100) MOD 10 = 3:
+		elseif (PH_act_man[i] / 100) MOD 10 = 3:		
+			temp = rand(1,100)
+			
 			!turnbased -> her turn:
 				!keep
 			!turnbased -> NOT her turn:
 				!keep
 				!ass
-		elseif (PH_act_man[i] / 100) MOD 10 = 4:
+		elseif (PH_act_man[i] / 100) MOD 10 = 4:		
+			temp = rand(1,100)
+			
 			!turnbased -> her turn:
 				!keep
 			!turnbased -> NOT her turn:
@@ -2529,13 +3012,19 @@ if $ARGS[0] = 'together1dick':
 				!vag		
 		end	
 	elseif (PH_act_man[i] / 10) MOD 10 = 4:
-		if (PH_act_man[i] / 100) MOD 10 = 0:
+		if (PH_act_man[i] / 100) MOD 10 = 0:		
+			temp = rand(1,100)
+			
 			!keep
 			!vag
-		elseif (PH_act_man[i] / 100) MOD 10 = 1:
+		elseif (PH_act_man[i] / 100) MOD 10 = 1:		
+			temp = rand(1,100)
+			
 			!keep
 			!vag
-		elseif (PH_act_man[i] / 100) MOD 10 = 2:
+		elseif (PH_act_man[i] / 100) MOD 10 = 2:		
+			temp = rand(1,100)
+			
 			!keep
 			!bj turnbased -> her turn: 
 				!keep
@@ -2543,13 +3032,17 @@ if $ARGS[0] = 'together1dick':
 				!keep
 				!bj
 				!vag
-		elseif (PH_act_man[i] / 100) MOD 10 = 3:
+		elseif (PH_act_man[i] / 100) MOD 10 = 3:		
+			temp = rand(1,100)
+			
 			!turnbased -> her turn:
 				!keep
 			!turnbased -> NOT her turn:
 				!keep
 				!vag
-		elseif (PH_act_man[i] / 100) MOD 10 = 4:
+		elseif (PH_act_man[i] / 100) MOD 10 = 4:		
+			temp = rand(1,100)
+			
 			!turnbased -> her turn:
 				!keep
 			!turnbased -> NOT her turn:
@@ -2560,11 +3053,43 @@ if $ARGS[0] = 'together1dick':
 
 
 	!-=wip=- his actions
-	if PH_hisaction = 0:
+	if PH_turn >= 2000:
+		PH_turn += 1
 
+		if PH_turn_active = 1:
+			PH_turn += 10
+			'It''s my turn now XD'
+		elseif PH_turn_active = 2:
+			PH_turn += 100
+			'It''s her turn now XD'
+		end
+	end	
+	if PH_hisaction = 0:
+		if PH_turn >= 2000:
+			If (PH_turn / 10) MOD 10 >= rand(3,5):
+				!change to her
+				temp = PH_turn MOD 10
+				PH_turn = -temp
+				temp = (PH_turn / 10) MOD 10
+				PH_turn += -temp * 10
+			elseif (PH_turn / 100) MOD 10 >= rand(3,5):
+				!change to me
+				temp = PH_turn MOD 10
+				PH_turn = -temp
+				temp = (PH_turn / 100) MOD 10
+				PH_turn += -temp * 100
+			elseif (PH_turn / 1) MOD 10 >= rand(3,5):
+				!change to other (he wants)
+				temp = PH_turn MOD 10
+				PH_turn = -temp
+			end
+		else
+			!' '
+		end
 	else
 		!' '
 	end
+
 
 
 	!-=wip=- my actions
