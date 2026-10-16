@@ -2225,7 +2225,212 @@ if $ARGS[0] = 'together1dick':
 			'She stops rimming a client'
 		end		
 	end
-	if (PH_act_me_together / 1) = 7 OR (PH_act_she_together / 1) = 7:
+	if me_lasy_action > 0:
+		!her reaction on my lasy actions
+
+		temp = 0
+		if (rand(1,50) - she_dom < 5):
+			temp += 1
+			temp += rand(1,5)
+			if she_dom > 0: temp += she_dom / 5
+		end
+
+		if me_lasy_action = 1:
+			if temp >= 3:
+				she_dom += 3
+				'<<$She_name>> brake free from my grab'
+				me_lasy_action = 0
+				i = Togetherdick[1]
+				temp = ( PH_act_man[i] / 100) MOD 10
+				PH_act_man[i] += -temp * 100 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1			
+			end
+		elseif me_lasy_action = 2:
+			if temp >= 3:
+				she_dom += 3
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				i = Togetherdick[1]
+				temp = ( PH_act_man[i] / 1) MOD 10
+				PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 3:
+			if temp >= 1:
+				she_dom += 1
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 4:
+			if temp >= 1:
+				she_dom += 1
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0	
+				PH_hisaction = 1			
+			end		
+		elseif me_lasy_action = 5:
+			if temp >= 3:
+				she_dom += 3
+				'<<$She_name>> brake free from my grab'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 6:
+			if temp >= 4:
+				she_dom += 5
+				'<<$She_name>> brake free from my grab'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end			
+		elseif me_lasy_action = 7:
+			if temp >= 6:
+				she_dom += 10
+				'<<$She_name>> brake free from my grab'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 8:
+			if temp >= 8:
+				she_dom += 15
+				'<<$She_name>> brake free from my grab'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 9:
+			if temp >= 3:
+				she_dom += 3
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				i = Togetherdick[1]
+				temp = ( PH_act_man[i] / 1) MOD 10
+				PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				PH_hisaction = 1				
+			end	
+		elseif me_lasy_action = 10:
+			if temp >= 1:
+				she_dom += 1
+				'<<$She_name>> stop the kiss'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				temp = ( PH_act_she_together / 100000 ) MOD 10
+				PH_act_she_together += -temp * 100000 + 100000
+				PH_hisaction = 1				
+			end		
+		elseif me_lasy_action = 11:
+			if temp >= 2:
+				she_dom += 1
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				!temp = ( PH_act_she_together / 100000 ) MOD 10
+				!PH_act_she_together += -temp * 100000 + 100000	
+				PH_hisaction = 1			
+			end			
+		elseif me_lasy_action = 12:
+			if temp >= 2:
+				she_dom += 1
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				!temp = ( PH_act_she_together / 100000 ) MOD 10
+				!PH_act_she_together += -temp * 100000 + 100000				
+				PH_hisaction = 1
+			end			
+		elseif me_lasy_action = 13:
+			if temp >= 2:
+				she_dom += 2
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				PH_act_me_together = 100000
+				me_lasy_action = 0
+				!temp = ( PH_act_she_together / 100000 ) MOD 10
+				!PH_act_she_together += -temp * 100000 + 100000				
+				PH_hisaction = 1
+			end			
+		elseif me_lasy_action = 14:
+			if temp >= 2:
+				she_dom += 2
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				!i = Togetherdick[1]
+				!temp = ( PH_act_man[i] / 1) MOD 10
+				!PH_act_man[i] += -temp * 1 + 0
+				!PH_act_me_together = 100000
+				me_lasy_action = 0				
+				PH_hisaction = 1
+			end		
+		elseif me_lasy_action = 15:
+			if temp >= rand(3,4):
+				she_dom += 2
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				me_lasy_action = 0
+				PH_turn_active = 1				
+				PH_hisaction = 1
+			end			
+		elseif me_lasy_action = 16:
+			if temp >= rand(3,4):
+				she_dom += 2
+				'<<$She_name>> pull me to herself - her gaze telling: "You must help me!"'
+				me_lasy_action = 0
+				me_lasy_action = 0
+				PH_turn_active = 1		
+				PH_hisaction = 1		
+			end		
+		end
+	elseif (PH_act_me_together / 1) = 7 OR (PH_act_she_together / 1) = 7:
 		if (PH_act_me_together / 1) = 7:
 			'I am rimming the client'
 		elseif (PH_act_she_together / 1) = 7:
@@ -3929,6 +4134,7 @@ if $ARGS[0] = 'together1dick':
 				PH_turn += -temp * 10
 				'He put his dick back into my hole'
 				PH_turn_active = 1
+				me_lasy_action = 0
 			elseif (PH_turn / 100) MOD 10 >= rand(3,5):
 				!change to me
 				temp = PH_turn MOD 10
@@ -3937,6 +4143,7 @@ if $ARGS[0] = 'together1dick':
 				PH_turn += -temp * 100
 				'He put his dick back into her hole'
 				PH_turn_active = 2
+				me_lasy_action = 0
 			elseif (PH_turn / 1) MOD 10 >= rand(3,5):
 				!change to other (he wants)
 				PH_turn = 2000
@@ -3947,6 +4154,7 @@ if $ARGS[0] = 'together1dick':
 					'He put his dick back into my hole'
 					PH_turn_active = 1
 				end
+				me_lasy_action = 0
 			end
 		else
 			i = Togetherdick[1]
@@ -3963,6 +4171,7 @@ if $ARGS[0] = 'together1dick':
 					PH_act_me_together = 100000 + 500
 					PH_act_she_together = 100000 + 100					
 				end
+				me_lasy_action = 0
 			elseif PH_man_fun[i] * 5 <= 35 and PH_cum_man[i] <= 30 and (PH_act_man[i] / 10) MOD 10 <= 1 and (PH_act_man[i] / 100) MOD 10 <= 1:
 				'Girls, I need more!'
 				if (PH_act_man[i] / 10) MOD 10 = 2 and (PH_act_she_together / 100) MOD 10 ! 5:
@@ -3976,8 +4185,10 @@ if $ARGS[0] = 'together1dick':
 					PH_act_me_together = 100000 + 500
 					PH_act_she_together = 100000 + 100					
 				end	
+				me_lasy_action = 0
 			elseif rand(1,10) = 1:
-				!-=wip=- his other actions		
+				!-=wip=- his other actions	
+				!me_lasy_action = 0	
 			end
 		end
 	else
@@ -5479,80 +5690,666 @@ if $ARGS[0] = 'together1dick':
 		end
 	else
 		!my dom commands
-		act 'Try to avoid serving the client':
-			cla			
-			if (( PH_act_she_together / 1000) MOD 10 = 0) AND (( PH_act_she_together / 10000) MOD 10 = 0) and (( PH_act_she_together / 100000) MOD 10 = 0) and (( PH_act_she_together / 1) MOD 10 = 0) and (( PH_act_she_together / 100) MOD 10 ! 5):
-				act 'Advertise her holes':
-					cla
-					'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/ad_her_holes ('+rand(1,2)+').mp4"></video></center>'
-					she_dom -= rand(1,2)
-					'I pushed her face down...'
-					'ME: "Look how sweet and lonely this hole is" - I am talking to the client'
-					
-					if rand(1,50) + PH_cum_man[i] >= 70:
-						'HE: "Nice, I will check it later, now you better please me too"'
-						'He pushed my face on his dick'					
-						
-						temp = (PH_act_man[i] / 100) MOD 10
-						PH_act_man[i] += -temp * 100 + 200
 
-						temp = (PH_act_she_together / 100) MOD 10
-						PH_act_she_together += -100 * temp + 100			
-					else
-						'He: "I definitely want!"'
-						'He penetrates her!'
-						if rand(1,4) ! 1:
-							temp = (PH_act_man[i] / 10) MOD 10
-							PH_act_man[i] += -temp * 10 +30
-							PH_act_she_together = 100000 + 1000							
+		if me_lasy_action = 0:
+			act 'Try to avoid serving the client':
+				cla			
+				if (( PH_act_she_together / 1000) MOD 10 = 0) AND (( PH_act_she_together / 10000) MOD 10 = 0) and (( PH_act_she_together / 100000) MOD 10 = 0) and (( PH_act_she_together / 1) MOD 10 = 0) and (( PH_act_she_together / 100) MOD 10 ! 5):
+					act 'Advertise her holes':
+						cla
+						'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/ad_her_holes ('+rand(1,2)+').mp4"></video></center>'
+						she_dom -= rand(1,2)
+						'I pushed her face down...'
+						'ME: "Look how sweet and lonely this hole is" - I am talking to the client'
+						
+						if rand(1,50) + PH_cum_man[i] >= 70:
+							'HE: "Nice, I will check it later, now you better please me too"'
+							'He pushed my face on his dick'					
+							
+							temp = (PH_act_man[i] / 100) MOD 10
+							PH_act_man[i] += -temp * 100 + 200
+
+							temp = (PH_act_she_together / 100) MOD 10
+							PH_act_she_together += -100 * temp + 100			
 						else
-							temp = (PH_act_man[i] / 10) MOD 10
-							PH_act_man[i] += -temp * 10 + 40
-							PH_act_she_together = 100000 + 10000						
+							'He: "I definitely want!"'
+							'He penetrates her!'
+							if rand(1,4) ! 1:
+								temp = (PH_act_man[i] / 10) MOD 10
+								PH_act_man[i] += -temp * 10 +30
+								PH_act_she_together = 100000 + 1000							
+							else
+								temp = (PH_act_man[i] / 10) MOD 10
+								PH_act_man[i] += -temp * 10 + 40
+								PH_act_she_together = 100000 + 10000						
+							end				
+						end
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'				
+					end
+				end			
+				
+				if (( PH_act_she_together / 100) MOD 10 > 0) and (( PH_act_she_together / 100000) MOD 10 = 0) and (( PH_act_she_together / 1) MOD 10 = 0) and (( PH_act_she_together / 100) MOD 10 ! 5):
+					i = Togetherdick[1]
+					if PH_color_man[i] = 1:
+						if she_dom <= 15:
+							act 'Stand behind to force her suck':
+								*clr & cla
+								me_lasy_action = 1
+								she_dom -= 4
+								'I stand behind her so close to the client, so she can''t pull out his dick from her mouth'
+								gs 'mod_public_WC_whore_together', 'shelasyvideo'
+								i = Togetherdick[1]
+								temp = ( PH_act_man[i] / 100) MOD 10
+								PH_act_man[i] += -temp * 100 + 1
+								PH_act_me_together = 100010
+								gs 'mod_public_WC_whore_together', 'shelasyvideo'
+
+								act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'	
+							end
+						elseif she_dom > 85:
+							act 'Stand behind to force her suck':
+								''+$OpenInnerThought+'She is too dominant. She just ignores me.'+$CloseInnerThought
+							end
+						else
+							if she_dom >= 55:
+								$PH_diff = 'hard'
+							elseif she_dom >= 35:
+								$PH_diff = 'medium'
+							else
+								$PH_diff = 'easy'
+							end
+
+							gs 'willpower', 'force', '<<$PH_diff>>'
+							if pcs_willpwr < will_cost:
+								act 'Stand behind to force her suck' + $func('willpower', 'get_willcost_string'): $noWillpower
+							else
+								act 'Stand behind to force her suck' + $func('willpower', 'get_willcost_string'):
+									gs 'willpower', 'pay', 'force'
+									gs 'stat'
+
+									*clr & cla
+									me_lasy_action = 1
+									she_dom -= 4
+									'I stand behind her so close to the client, so she can''t pull out his dick from her mouth'
+									gs 'mod_public_WC_whore_together', 'shelasyvideo'
+									i = Togetherdick[1]
+									temp = ( PH_act_man[i] / 100) MOD 10
+									PH_act_man[i] += -temp * 100 + 1
+									PH_act_me_together = 100010
+
+									killvar '$PH_diff'
+									gs 'mod_public_WC_whore_together', 'shelasyvideo'
+									act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+								end
+							end
+						end
+					else
+						if she_dom <= 15:
+							act 'Grab her head and keep his dick in her mouth':
+								*clr & cla
+								me_lasy_action = 1
+								she_dom -= 4
+								'I grab her heair and strock his dick in her mouth.'
+								gs 'mod_public_WC_whore_together', 'shelasyvideo'
+								i = Togetherdick[1]
+								temp = ( PH_act_man[i] / 100) MOD 10
+								PH_act_man[i] += -temp * 100 + 1
+								PH_act_me_together = 100010
+								gs 'mod_public_WC_whore_together', 'shelasyvideo'
+
+								act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'	
+							end
+						elseif she_dom > 85:
+							act 'Grab her head and keep his dick in her mouth':
+								''+$OpenInnerThought+'She is too dominant. She just ignores me.'+$CloseInnerThought
+							end
+						else
+							if she_dom >= 55:
+								$PH_diff = 'hard'
+							elseif she_dom >= 35:
+								$PH_diff = 'medium'
+							else
+								$PH_diff = 'easy'
+							end
+
+							gs 'willpower', 'force', '<<$PH_diff>>'
+							if pcs_willpwr < will_cost:
+								act 'Grab her head and keep his dick in her mouth' + $func('willpower', 'get_willcost_string'): $noWillpower
+							else
+								act 'Grab her head and keep his dick in her mouth' + $func('willpower', 'get_willcost_string'):
+									gs 'willpower', 'pay', 'force'
+									gs 'stat'
+
+									*clr & cla
+									me_lasy_action = 1
+									she_dom -= 4
+									'I stand behind her so close to the client, so she can''t pull out his dick from her mouth'
+									gs 'mod_public_WC_whore_together', 'shelasyvideo'
+									i = Togetherdick[1]
+									temp = ( PH_act_man[i] / 100) MOD 10
+									PH_act_man[i] += -temp * 100 + 1
+									PH_act_me_together = 100010
+
+									killvar '$PH_diff'
+									gs 'mod_public_WC_whore_together', 'shelasyvideo'
+									act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+								end
+							end
+						end									
+					end
+
+									
+					act 'Kiss client very seductively':
+						*clr & cla
+						me_lasy_action = 2
+						'I am kissing the Client, keeps all his attention on me!'
+
+						i = Togetherdick[1]
+						temp = ( PH_act_man[i] / 1) MOD 10
+						PH_act_man[i] += -temp * 1 + 2
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0						
+						PH_act_me_together = 100009
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+					
+					if pcs_horny >= 50:
+						act 'Masturbate':
+							*clr & cla
+							me_lasy_action = 3
+
+							'I am pleasuring myself as a performanse for the client, while <<$She_name>> is doing all the job'
+
+							i = Togetherdick[1]
+							temp = ( PH_act_man[i] / 100) MOD 10
+							PH_act_man[i] += -temp * 100 + 0
+							PH_act_me_together = 800000	
+							gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+							act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					else
+						act 'Masturbate':
+							'<i>I am not horny enough</i>'
 						end				
 					end
+
+					
+					act 'simulate to do smth':
+						*clr & cla
+						me_lasy_action = 4
+						'I am just create an illusion of active action for <<$She_name>>'
+
+						i = Togetherdick[1]
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0
+						PH_act_me_together = 100000	
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'						
+					end
+
+					
+					if me_lasy_action = 5:
+						!me_lasy_action = 6
+					elseif me_lasy_action = 6:
+						!me_lasy_action = 7
+					elseif me_lasy_action = 7:
+						!me_lasy_action = 8
+					else
+						act 'Push her on client''s dick':
+							*clr & cla
+							me_lasy_action = 5
+							'I am helping her to pleasure a client'
+							gs 'mod_public_WC_whore_together', 'shelasyvideo'
+							i = Togetherdick[1]
+							temp = ( PH_act_man[i] / 100) MOD 10
+							PH_act_man[i] += -temp * 100 + 0
+							PH_act_me_together = 100000
+
+							act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'	
+						end
+					end
+				end
+
+				
+				if (( PH_act_she_together / 1000) MOD 10 > 0) OR (( PH_act_she_together / 10000) MOD 10 > 0):
+					act 'Kiss client very seductively':
+						*clr & cla
+						me_lasy_action = 9
+						'I am kissing the Client, keeps all his attention on me!'
+
+						i = Togetherdick[1]
+						temp = ( PH_act_man[i] / 1) MOD 10
+						PH_act_man[i] += -temp * 1 + 2
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0						
+						PH_act_me_together = 100009
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+
+					act 'Kiss her':
+						*clr & cla
+						me_lasy_action = 10
+						'I am kissing her, while she is doing all the work'
+
+						i = Togetherdick[1]
+						!temp = ( PH_act_man[i] / 1) MOD 10
+						!PH_act_man[i] += -temp * 1 + 2
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0						
+						PH_act_me_together = 200000	
+						temp = ( PH_act_she_together / 100000) MOD 10	
+						PH_act_she_together += - temp * 100000 + 200000				
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+
+					
+					if pcs_horny >= 50:
+						act 'Masturbate':
+							*clr & cla
+							me_lasy_action = 11
+
+							'I am pleasuring myself as a performanse for the client, while <<$She_name>> is doing all the job'
+
+							i = Togetherdick[1]
+							temp = ( PH_act_man[i] / 100) MOD 10
+							PH_act_man[i] += -temp * 100 + 0
+							PH_act_me_together = 800000	
+							gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+							act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'							
+						end
+					else
+						act 'Masturbate':
+							'<i>I am not horny enough</i>'
+						end				
+					end
+
+					
+					act 'Masturbate her':
+						*clr & cla
+						me_lasy_action = 12
+						'I am pleasuring her to avoid the actual work'
+
+						i = Togetherdick[1]
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0
+						PH_act_me_together = 300000							
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
+					end
+
+					act 'just wait':
+						*clr & cla
+						me_lasy_action = 13
+						'I sitting and do nothing'
+						she_dom -= 1
+
+						i = Togetherdick[1]
+						temp = ( PH_act_man[i] / 100) MOD 10
+						PH_act_man[i] += -temp * 100 + 0
+						PH_act_me_together = 100000	
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'						
+					end
+				end	
+
+				act 'Simulate to do smth':
+					*clr & cla
+					me_lasy_action = 14
+					'I am just create an illusion of active action for <<$She_name>>'
+
+					i = Togetherdick[1]
+					temp = ( PH_act_man[i] / 100) MOD 10
+					PH_act_man[i] += -temp * 100 + 0
+					PH_act_me_together = 100000	
+					gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
 					act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'				
 				end
+
+				if ( PH_act_me_together / 1000 ) MOD 10 > 0 OR ( PH_act_me_together / 10000 ) MOD 10 > 0 and PH_turn_active = 2:
+					act 'Move away a bit, So client can''t get me':
+						*clr & cla
+						me_lasy_action = 15
+						''
+
+						!i = Togetherdick[1]
+						!temp = ( PH_act_man[i] / 100) MOD 10
+						!PH_act_man[i] += -temp * 100 + 0
+						!PH_act_me_together = 100000	
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'				
+					end
+				end
+
+				if ( PH_act_me_together / 100 ) MOD 10 > 0 and ( PH_act_me_together / 100 ) MOD 10 ! 5 and PH_turn_active = 2:
+					act 'Move away a bit, So client can''t put it in my mouth':
+						*clr & cla
+						me_lasy_action = 16
+						''
+
+						!i = Togetherdick[1]
+						!temp = ( PH_act_man[i] / 100) MOD 10
+						!PH_act_man[i] += -temp * 100 + 0
+						!PH_act_me_together = 100000	
+						gs 'mod_public_WC_whore_together', 'shelasyvideo'					
+
+						act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'				
+					end
+				end				
+
+				act 'Change my mind': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
 			end
-			
-			!-=wip=-
-			if (( PH_act_she_together / 100) MOD 10 > 0) and (( PH_act_she_together / 100000) MOD 10 = 0) and (( PH_act_she_together / 1) MOD 10 = 0) and (( PH_act_she_together / 100) MOD 10 ! 5):
-				act '':
-					me_lasy_action = 1
+		else
+			cla
+			gs 'mod_public_WC_whore_together', 'shelasyvideo'
+			if me_lasy_action = 1:
+				act 'Keep her head':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
 				end
-				act '':
+				act 'Release her head':
+					*clr & cla
+
+					i = Togetherdick[1]
+					temp = ( PH_act_man[i] / 100) MOD 10
+					PH_act_man[i] += -temp * 100 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
 				end
-				act '':
+			elseif me_lasy_action = 2:
+				act 'Keep kissing him':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
 				end
-				act '':
+				act 'Stop kissing him':
+					*clr & cla
+
+					i = Togetherdick[1]
+					temp = ( PH_act_man[i] / 1) MOD 10
+					PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end				
+			elseif me_lasy_action = 3:
+				act 'Keep masturbating':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
 				end
-				act '':
+				act 'Stop masturbating':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end							
+			elseif me_lasy_action = 4:
+				act 'Keep do nothing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'stop simulating':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'				
+				end		
+			elseif me_lasy_action = 5:
+				she_dom -= rand(1,5)
+				act 'Keep pushing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Let her head':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end	
+				act 'Force her to suck balls deep':
+					*clr & cla
+					me_lasy_action = 6
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end							
+			elseif me_lasy_action = 6:
+				she_dom -= rand(3,8)
+				act 'Keep pushing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Let her head':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+
+				act 'Push her less':
+					*clr & cla
+					me_lasy_action = 5
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end					
+				act 'Brake her':
+					*clr & cla
+					me_lasy_action = 7
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end							
+			elseif me_lasy_action = 7:
+				she_dom -= rand(5,10)
+				act 'Keep pushing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Let her head':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+
+				act 'Release her a bit':
+					*clr & cla
+					me_lasy_action -= 1
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end					
+				act 'Sit on her':
+					*clr & cla
+					me_lasy_action += 1
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end					
+			elseif me_lasy_action = 8:
+				she_dom -= rand(8,15)
+				act 'Keep pushing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Let her head':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+
+				act 'Stand up and brake her':
+					*clr & cla
+					me_lasy_action -= 1
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end						
+			elseif me_lasy_action = 9:
+				act 'Keep kissing him':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Stop kissing him':
+					*clr & cla
+
+					i = Togetherdick[1]
+					temp = ( PH_act_man[i] / 1) MOD 10
+					PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end			
+			elseif me_lasy_action = 10:
+				act 'keep kissing her':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Stop kissing her':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+					temp = ( PH_act_she_together / 100000 ) MOD 10
+					PH_act_she_together += -temp * 100000 + 100000
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end			
+			elseif me_lasy_action = 11:
+				act 'Keep masturbating':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Stop masturbating':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+					!temp = ( PH_act_she_together / 100000 ) MOD 10
+					!PH_act_she_together += -temp * 100000 + 100000
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end		
+			elseif me_lasy_action = 12:
+				act 'Keep masturbating her':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Stop masturbating her':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+					!temp = ( PH_act_she_together / 100000 ) MOD 10
+					!PH_act_she_together += -temp * 100000 + 100000
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end		
+			elseif me_lasy_action = 13:
+				act 'Breath deeply':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Breake my pause':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					PH_act_me_together = 100000
+					me_lasy_action = 0
+					!temp = ( PH_act_she_together / 100000 ) MOD 10
+					!PH_act_she_together += -temp * 100000 + 100000
+
+					gs 'mod_public_WC_whore_together', 'start2'
+				end			
+			elseif me_lasy_action = 14:
+				act 'Keep do nothing':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'stop simulating':
+					*clr & cla
+
+					!i = Togetherdick[1]
+					!temp = ( PH_act_man[i] / 1) MOD 10
+					!PH_act_man[i] += -temp * 1 + 0
+					!PH_act_me_together = 100000
+					me_lasy_action = 0
+
+					gs 'mod_public_WC_whore_together', 'start2'				
+				end				
+			elseif me_lasy_action = 15:
+				act 'Keep the distance':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Start helping':
+					*clr & cla
+					me_lasy_action = 0
+					PH_turn_active = 1
+					gs 'mod_public_WC_whore_together', 'start2'
+				end		
+			elseif me_lasy_action = 16:
+				act 'Keep the distance':
+					*clr & cla
+					gs 'mod_public_WC_whore_together', 'start2'
+				end
+				act 'Start helping':
+					*clr & cla
+					me_lasy_action = 0
+					PH_turn_active = 1
+					gs 'mod_public_WC_whore_together', 'start2'
 				end
 			end
-
-			if (( PH_act_she_together / 1000) MOD 10 > 0) OR (( PH_act_she_together / 10000) MOD 10 > 0):
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-				act '':
-				end
-			end	
-
-			act '':
-			end										
-
-			act 'Change my mind': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
 		end
 	end	
 	killvar 'PH_hisaction'
@@ -5561,6 +6358,94 @@ end
 if $ARGS[0] = 'shelasyvideo':
 	!*clr & cla
 	!gs 'mod_public_WC_whore_together', 'shelasyvideo'
+	i = Togetherdick[1]
+	if me_lasy_action = 1:
+		if PH_color_man[i] = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+1 ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+1_ch ('+rand(1,1)+').mp4"></video></center>'
+		end	
+	elseif me_lasy_action = 2:
+		if PH_color_man[i] = 1:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+kiss ('+rand(1,2)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+kiss_ch ('+rand(1,1)+').mp4"></video></center>'
+		end	
+	elseif me_lasy_action = 3:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+masturb ('+rand(1,2)+').mp4"></video></center>'
+	elseif me_lasy_action = 4:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2+wait ('+rand(1,1)+').mp4"></video></center>'
+	elseif me_lasy_action = 5:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/1Push/1Push ('+rand(1,1)+').mp4"></video></center>'
+	elseif me_lasy_action = 6:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/2Push/2Push ('+rand(1,8)+').mp4"></video></center>'	
+	elseif me_lasy_action = 7:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/31Push/31Push ('+rand(1,3)+').mp4"></video></center>'
+	elseif me_lasy_action = 8:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/2/33Push/33Push ('+rand(1,2)+').mp4"></video></center>'
+	elseif me_lasy_action = 9:
+		if (PH_act_me_together / 1000) MOD 10 > 0:
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+kiss/3+kiss ('+rand(1,2)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+kiss/34+kiss ('+rand(1,2)+').mp4"></video></center>'
+			end
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+kiss/34+kiss ('+rand(1,2)+').mp4"></video></center>'
+		end
+	elseif me_lasy_action = 10:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+kiss_her/3+kiss_her ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+kiss_her/4+kiss_her ('+rand(1,3)+').mp4"></video></center>'
+		end	
+	elseif me_lasy_action = 11:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb/3+masturb ('+rand(1,4)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb/34+masturb ('+rand(1,5)+').mp4"></video></center>'
+			end
+		else
+			if rand(1,2) = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb/4+masturb ('+rand(1,1)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb/34+masturb ('+rand(1,5)+').mp4"></video></center>'
+			end			
+		end		
+	elseif me_lasy_action = 12:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb_give/3+masturb_give ('+rand(1,3)+').mp4"></video></center>'
+		else
+			i = Togetherdick[1]
+			IF PH_color_man[i] = 1:
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb_give/4+masturb_give ('+rand(1,3)+').mp4"></video></center>'
+			else
+				'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+masturb_give/4+masturb_give_ch ('+rand(1,2)+').mp4"></video></center>'
+			end
+		end	
+	elseif me_lasy_action = 13:
+		'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/34+wait ('+rand(1,1)+').mp4"></video></center>'
+	elseif me_lasy_action = 14:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/3+wait/help ('+rand(1,4)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/4+wait/help ('+rand(1,4)+').mp4"></video></center>'
+		end	
+	elseif me_lasy_action = 15:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/3+wait/3 turnbased_like ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/4+wait/4 turnbased_like ('+rand(1,1)+').mp4"></video></center>'
+		end
+	elseif me_lasy_action = 16:
+		if (PH_act_she_together / 1000) MOD 10 > 0:
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/3+wait/3+2 turnbased_like ('+rand(1,1)+').mp4"></video></center>'
+		else
+			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/34+wait/4+wait/4+2 turnbased_like ('+rand(1,2)+').mp4"></video></center>'
+		end		
+	end
+
 	if she_lasy_action = 1:
 		if PH_color_man[i] = 1:
 			'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/PH_update_2026/TWH/1dicks/SHE_DOM_OR_LASY/34/69+34/69+34 ('+rand(1,1)+').mp4"></video></center>'
