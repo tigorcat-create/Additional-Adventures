@@ -2282,6 +2282,64 @@ if $ARGS[0] = 'fun':
 
 							gt 'mod_public_WC_rab_work_whore', 'start_sex'
 						end
+
+						if phgirls >= 1 and $phfunclient ! 'BDSM request':
+							act 'Ask him to take one more girl with us':
+								cla
+								if rand(1,5) >= 3:
+									'Client: "Hmm, girl will you come with us?"'
+									'She agreed and we are going to please the client together'
+									phgirlsrelations += 5
+
+									act 'Go with the Client and the girl':
+										phtempttemp = 1
+
+										killvar 'phdeal'
+										killvar 'phphi'
+
+										phgirls = rand(0,6)
+										if phgirls = 1: phonegirl = rand(1,3)
+										
+										*clr & cla
+										minut += rand(5,10)
+										gs 'stat'
+										
+										gs 'mod_public_WC_rab_work_whore', 'room'
+										killvar 'phfunclient'
+
+										*clr & cla
+										menu_off = 0
+										phclientava = rand(1,3)
+
+										if colir = 1:
+											'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+										else
+											'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+										end
+
+										if phwork = 7: phwhoreshift -= 1
+										phclient = 2
+										$cum1 = rand (60,120)
+										$PH_client_source = 'PH_FUN_ROOM_1'								
+
+										gt 'mod_public_WC_whore_together', 'enter'
+									end
+								else
+									'Client: "No, I need you only"'
+									act 'go with him to his room':
+										phtempttemp = 1
+
+										killvar 'phdeal'
+										killvar 'phphi'
+
+										phgirls = rand(0,6)
+										if phgirls = 1: phonegirl = rand(1,3)
+
+										gt 'mod_public_WC_rab_work_whore', 'start_sex'
+									end									
+								end
+							end
+						end
 					end
 
 					if phtempttemp >= 1 and rand(1,3) = 1:
@@ -2313,10 +2371,48 @@ if $ARGS[0] = 'fun':
 						'<<temp>> other clients go with the girl'
 						phtempttemp -= temp
 					end
+					
+					if $phfunclient ! 'BDSM request':
+						if rand(0,50) + phgirlsrelations >= rand(40,50):
+							!cla & 
+							'Girl: "Let''s take this girl with us!"'
+							'Client look at me from the head to toes: "Ok, so girl, d ooyu go with us?"'
 
-					!if rand(0,50) + phgirlsrelations >= rand(40,50): '-=wip=-' cla & '"Let''s take this girl with us!"'
+							act 'Go with the Client and the girl':
+								phtempttemp = 1
 
+								killvar 'phdeal'
+								killvar 'phphi'
 
+								phgirls = rand(0,6)
+								if phgirls = 1: phonegirl = rand(1,3)
+								
+								*clr & cla
+								minut += rand(5,10)
+								gs 'stat'
+								
+								gs 'mod_public_WC_rab_work_whore', 'room'
+								killvar 'phfunclient'
+
+								*clr & cla
+								menu_off = 0
+								phclientava = rand(1,3)
+
+								if colir = 1:
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+								else
+									'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+								end
+
+								if phwork = 7: phwhoreshift -= 1
+								phclient = 2
+								$cum1 = rand (60,120)
+								$PH_client_source = 'PH_FUN_ROOM_1'								
+
+								gt 'mod_public_WC_whore_together', 'enter'
+							end
+						end
+					end
 				end
 				killvar 'zztemp'
 

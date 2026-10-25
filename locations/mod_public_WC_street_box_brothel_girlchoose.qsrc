@@ -1,12 +1,18 @@
 # mod_public_WC_street_box_brothel_girlchoose
 if $ARGS[0] = 'moneyfirst2':
-	'I recomend him a girl'		
-	
+	If $PH_client_source = 'PH_BOX_1':
+		'I am choosing a girl for a threesome'
+	else
+		'I recomend him a girl'		
+	end
+
 	if ph_Iammaownwhore = 0:
 		i = 2
 	else
 		i = 1
 	end
+
+	If $PH_client_source = 'PH_BOX_1': i = 2
 	
 	ztemp = 0
 	
@@ -101,7 +107,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[1]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -110,27 +116,41 @@ if $ARGS[0] = 'choosegirlaction':
 			if PH_full_pay <= 20: phjoy[i] += 30
 			!! gs 'stat'
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 1
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -140,7 +160,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[2]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -149,27 +169,42 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1	
+						
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 2
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -179,7 +214,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[3]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -188,27 +223,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 3
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -218,7 +267,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[4]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -227,27 +276,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 4
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -257,7 +320,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[5]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -266,27 +329,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 5
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -296,7 +373,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[6]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -305,27 +382,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 6
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -335,7 +426,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[7]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -344,27 +435,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 7
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -374,7 +479,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[8]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -383,27 +488,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 8
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -413,7 +532,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[9]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -422,27 +541,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 9
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -452,7 +585,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[10]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -461,27 +594,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 10
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -491,7 +638,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[11]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -500,27 +647,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 11
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -530,7 +691,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[12]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -539,27 +700,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 12
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -569,7 +744,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[13]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -578,27 +753,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 13
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -608,7 +797,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[14]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -617,27 +806,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 14
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -647,7 +850,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[15]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -656,27 +859,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 15
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -686,7 +903,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[16]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -695,27 +912,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 16
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -725,7 +956,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[17]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -734,27 +965,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 17
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -764,7 +1009,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[18]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -773,27 +1018,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 18
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -803,7 +1062,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[19]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -812,27 +1071,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 19
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	
@@ -842,7 +1115,7 @@ if $ARGS[0] = 'choosegirlaction':
 			cla
 			i = ztemp[20]
 			*nl
-			'TEST THE I VALUE = <<i>>'
+			!'TEST THE I VALUE = <<i>>'
 			*nl
 			
 			phwhores[i] = 1
@@ -851,27 +1124,41 @@ if $ARGS[0] = 'choosegirlaction':
 			!! gs 'stat'
 			if PH_full_pay <= 20: phjoy[i] += 30
 			
-			if i = 1:
-				'He took me to the free room'
+			If $PH_client_source = 'PH_BOX_1':
+				'He tooks me and  <<$phgirlname[i]>> to the free room'
 				phwhores[1] = 1
-				
-				act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
-			else
-				'He took <<$phgirlname[i]>> to the free room'
 				phserv[i] = phsex
-				todayclientsgirlsboxnumber += 1
+				todayclientsgirlsboxnumber += 1			
+			else
+				if i = 1:
+					'He took me to the free room'
+					phwhores[1] = 1
+					
+					act 'continue': gt 'mod_public_WC_street_sex_box', 'start'				
+				else
+					'He took <<$phgirlname[i]>> to the free room'
+					phserv[i] = phsex
+					todayclientsgirlsboxnumber += 1
+					
+					act 'continue': gt 'mod_public_WC_street_box_brothel', 'start' & otemp = 20
+				end
+			end
+
+			If $PH_client_source = 'PH_BOX_1':
+				cla
+				ph_bussygirls += 2
+				act 'continue': gt 'mod_public_WC_whore_together', 'enter'
+			else
+				phwhores_hour[i] = hour + rand(1,2)
+				phwhores_day[i] = daystart
 				
-				act 'continue': gt 'mod_public_WC_street_box_brothel', 'start'
+				if phwhores_hour[i] >= 24: 
+					phwhores_day[i] = daystart + 1
+					phwhores_hour[i] -= 24
+				end
+				
+				ph_bussygirls += 1			
 			end
-			phwhores_hour[i] = hour + rand(1,2)
-			phwhores_day[i] = daystart
-			
-			if phwhores_hour[i] >= 24: 
-				phwhores_day[i] = daystart + 1
-				phwhores_hour[i] -= 24
-			end
-			
-			ph_bussygirls += 1
 		end
 	end
 	

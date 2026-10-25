@@ -1,8 +1,21 @@
 # mod_public_WC_whore_together
 if $ARGS[0] = 'enter':
 	!*clr & cla
-	!-=wip=-
 	!тут треба логіка не рандомних змінних знизу.
+	if $PH_client_source = 'PH_BOX_1':
+		i = otemp
+		PH_MYWHORE = otemp
+
+		PH_she_hj_skill = phgirlstatHJ[i]
+		PH_she_bj_skill = phgirlstatBJ[i]	
+		PH_she_vag_skill = phgirlstatVAG[i]
+		PH_she_ass_skill = phgirlstatASS[i]
+
+		$She_name = $phgirlname[i]
+
+		otemp = 0		
+	end
+	gt 'mod_public_WC_whore_together', 'start'
 end
 
 if $ARGS[0] = 'start':
@@ -30,30 +43,35 @@ if $ARGS[0] = 'start':
 	PH_nude_she = 0
 
 	She_dom = rand(-30,30)
-	if $She_name = '':
-		i = rand(1,10)
-		if i = 1:
-			$She_name = 'Vika'
-		elseif i = 2:
-			$She_name = 'Liza'
-		elseif i = 3:
-			$She_name = 'Olha'
-		elseif i = 4:
-			$She_name = 'Katia'
-		elseif i = 5:
-			$She_name = 'Zina'
-		elseif i = 6:
-			$She_name = 'Mal''vina'
-		elseif i = 7:
-			$She_name = 'Janna'
-		elseif i = 8:
-			$She_name = 'Nastia'
-		elseif i = 9:
-			$She_name = 'Lena'
-		elseif i = 10:
-			$She_name = 'Nadia'
+
+	if $PH_client_source = 'PH_BOX_1':
+		!' '
+	else
+		if $She_name = '':
+			i = rand(1,10)
+			if i = 1:
+				$She_name = 'Vika'
+			elseif i = 2:
+				$She_name = 'Liza'
+			elseif i = 3:
+				$She_name = 'Olha'
+			elseif i = 4:
+				$She_name = 'Katia'
+			elseif i = 5:
+				$She_name = 'Zina'
+			elseif i = 6:
+				$She_name = 'Mal''vina'
+			elseif i = 7:
+				$She_name = 'Janna'
+			elseif i = 8:
+				$She_name = 'Nastia'
+			elseif i = 9:
+				$She_name = 'Lena'
+			elseif i = 10:
+				$She_name = 'Nadia'
+			end
+			i = 0
 		end
-		i = 0
 	end
 
 	PH_arounsed_she = rand(5,50)
@@ -73,10 +91,14 @@ if $ARGS[0] = 'start':
 	she_do_dicks = 0
 	me_do_dicks = 0
 
-	PH_she_hj_skill = rand(50,100)
-	PH_she_bj_skill = rand(10,100)
-	PH_she_vag_skill = rand(30,120)
-	PH_she_ass_skill = rand(0,70)
+	if $PH_client_source = 'PH_BOX_1':
+		!' '
+	else
+		PH_she_hj_skill = rand(50,100)
+		PH_she_bj_skill = rand(10,100)
+		PH_she_vag_skill = rand(30,120)
+		PH_she_ass_skill = rand(0,70)
+	end
 
 	otemp = 0
 
@@ -265,6 +287,9 @@ if $ARGS[0] = 'start2':
 	$loc = 'mod_public_WC_whore_together'
 	$metka = 'start2'
 	gs 'stat'
+
+	if $PH_client_source = 'PH_FUN_ROOM_1' and PH_time = 0: 'He sits: "Girls entertain me!"'
+	if $PH_client_source = 'PH_BOX_1' and PH_time = 0: 'He sits: "Girls entertain me!"'
 
 	gs 'mod_public_WC_whore_together', 'startchecks'
 
@@ -2383,7 +2408,69 @@ if $ARGS[0] = 'start2':
 	PH_hisaction = 0
 
 	!act 'Continue': *clr & cla & gs 'mod_public_WC_whore_together', 'start2'
-	me_dom_command = 0	
+	me_dom_command = 0
+
+	if PH_man = 0:
+		*clr & cla
+		if $PH_client_source = 'PH_FUN_ROOM_1':
+			$func('wrap', 'header center b', '"Room <<bcil>>"')
+			if bcil >= 4 and bcil <= 20: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/4.jpg"></center>'
+			if bcil >= 21 and bcil <= 30: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/3.jpg"></center>'
+			if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'		
+			'The client is happy'
+			otemp = 7
+
+			if colir = 1:
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/b (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			else
+				'</center><br><table width="100%" cellspacing="0" cellpadding="5"><td width="200" valign="top"><img Height = 450 src="mod/public_WC/lisrab/work/PH/SEX_ALL/he/ch (<<phclientava>>).jpg"></td><td valign="top"><br>'
+			end
+
+			if sexcorrupt <= rand(30,50) and otemp ! 0:
+				act 'ask about money':
+					cla
+					'"yes, sure, here you go."'
+					money += 100 * rand(2,6) * ( PH_man_fun[1] * 15 / 100 )
+					gs 'stat'
+					sexcorrupt -= 1
+					phtemp = 1
+					otemp = 0
+
+					If PH_man_fun[1] >= rand(40,70): 'He marks me and give the money: "It was really good"' & ryska += 1
+
+
+					act 'go away' :gt $PHloc, $PHloc_arg
+				end
+			end
+
+			act 'Go away' :gt $PHloc, $PHloc_arg
+		elseif $PH_client_source = 'PH_BOX_1':
+			$phsexstart = 'mod_public_WC_street_sex_box'
+			$phsexstart_arg	= 'start'
+			
+			phsextimes = 0
+			killvar 'ztempmax'			
+			phwait = 0	
+			phclient['pay'] = 4
+
+			i = PH_MYWHORE
+
+			phwhores[i] = 0
+			phserv[i] = 0
+
+			phwhores[1] = 0
+			phserv[1] = 0
+
+			ph_bussygirls -= 2
+
+
+			killvar 'PH_MYWHORE'
+			killvar '$PH_client_source'
+			act 'go away': gt $loc, $loc_arg	
+		else
+			'BUG!'
+		end		
+	end
 end
 
 if $ARGS[0] = 'together1dick':
@@ -2391,6 +2478,7 @@ if $ARGS[0] = 'together1dick':
 	!gs 'mod_public_WC_whore_together', 'together1dick'
 	! PH_act_she_together = 0
 	! PH_act_me_together = 0
+	
 
 	i = 0
 	:GBPHloopcheck111
@@ -11301,7 +11389,7 @@ if $ARGS[0] = 'manleave':
 		if PH_act_she < 0: PH_act_she = 0
 	end
 
-	PH_man_fun[i] = 0
+	!PH_man_fun[i] = 0
 	PH_active_man[i] = 0
 	PH_active_man -= 1
 	!чи він чекає чи ні

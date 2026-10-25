@@ -13,6 +13,8 @@ if $ARGS[0] = 'start':
 		if bcil >= 31 and bcil <= 37: '<center><img <<$set_imgh>> src="mod/public_WC/lisrab/work/serving/serv/2.jpg"></center>'
 	end
 
+	killvar '$PH_client_source'
+
 	'Next to the door, you can find a <a href="exec:gt ''mirror'',''start''">mirror</a>. The door to the <a href="exec:gt ''mod_public_WC_rab_work_chystota_hotel'',''shower1''">bathroom</a> is to the right.'
 
 	$PHloc = $loc
