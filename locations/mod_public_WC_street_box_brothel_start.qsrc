@@ -6,6 +6,7 @@ if $ARGS[0] = 'start':
 	phsex = 0
 	girlid[1] = 1
 	killvar 'ztempmax'
+	killvar '$PH_client_source'
 
 	
 	if phwhores[1] = 1:
@@ -84,12 +85,13 @@ if $ARGS[0] = 'start':
 				
 				gs 'mod_public_WC_street_box_brothel', 'ph_clientgenerate'
 				
-				
-				act 'FREE service for you, honey!':
-					PH_full_pay = 0
-					phclient_mood += rand(0,2)
-					ph_brothelfame += rand(0,2)
-					gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+				if $PH_client_source ! 'PH_BOX_1':
+					act 'FREE service for you, honey!':
+						PH_full_pay = 0
+						phclient_mood += rand(0,2)
+						ph_brothelfame += rand(0,2)
+						gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+					end
 				end
 			end	
 		else
@@ -105,11 +107,12 @@ if $ARGS[0] = 'start':
 				
 				gs 'mod_public_WC_street_box_brothel', 'ph_clientgenerate'
 				
-				
-				act 'FREE service for you, honey!':
-					PH_full_pay = 0
-					phclient_mood += rand(0,2)
-					gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+				if $PH_client_source ! 'PH_BOX_1':
+					act 'FREE service for you, honey!':
+						PH_full_pay = 0
+						phclient_mood += rand(0,2)
+						gs 'mod_public_WC_street_box_brothel', 'thinktopay'
+					end
 				end
 			end	
 		end

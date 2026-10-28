@@ -387,9 +387,10 @@ if $ARGS[0] = 'ph_clientgenerate':
 		end		
 	end
 
-	if rand(1,100) <= 10 and (phsex = 3 or phsex = 4 or phsex = 104 or phsex = 103) and ytemp >= 7:
+	if (rand(1,100) <= 10 and (phsex = 3 or phsex = 4 or phsex = 104 or phsex = 103) and ytemp >= 7) OR phtestcheat = 1378:
 		cla
 		'Client: "...wait, you know what? how much to fuck YOU together with the other girl?!"'
+		$PH_client_source = 'PH_BOX_1'
 		temp = ph_brothelvag * 2
 		act 'It costs <<temp>>':			
 			PH_full_pay = temp

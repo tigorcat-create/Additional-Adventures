@@ -135,7 +135,7 @@ if $ARGS[0] = 'start':
 		jump 'loopmanclear'
 	end
 
-	!gt 'mod_public_WC_whore_together', 'start2'	
+	gt 'mod_public_WC_whore_together', 'start2'	
 	!'<center><video width="<<WCvideoweight>>" autoplay loop src="mod/public_WC/ ('+rand(1,1)+').mp4"></video></center>'
 	!'<center><img <<$set_imgh>> src="mod/public_WC/ ('+rand(1,1)+').jpg"></center>'
 end
@@ -284,8 +284,8 @@ end
 
 if $ARGS[0] = 'start2':
 	!*clr & cla
-	$loc = 'mod_public_WC_whore_together'
-	$metka = 'start2'
+	!$loc = 'mod_public_WC_whore_together'
+	!$metka = 'start2'
 	gs 'stat'
 
 	if $PH_client_source = 'PH_FUN_ROOM_1' and PH_time = 0: 'He sits: "Girls entertain me!"'
